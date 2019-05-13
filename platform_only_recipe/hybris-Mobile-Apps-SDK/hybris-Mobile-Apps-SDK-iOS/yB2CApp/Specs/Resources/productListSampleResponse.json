@@ -1,0 +1,545 @@
+{
+    "type": "productCategorySearchPageWsDTO",
+    "categoryCode": "1800",
+    "currentQuery": {
+        "query": {
+            "value": ":relevance"
+        },
+        "url": "/Open-Catalogue/Safety/c/1800?q=%3Arelevance"
+    },
+    "freeTextSearch": "",
+    "pagination": {
+        "currentPage": 0,
+        "pageSize": 100,
+        "sort": "relevance",
+        "totalPages": 1,
+        "totalResults": 14
+    },
+    "products": [
+        {
+            "code": "26002000",
+            "description": "Direct Attach Waterproof Insulated 8\" Steel Toe",
+            "firstVariantCode": "26002000_1",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3wzMDExMXxpbWFnZS9qcGVnfGltYWdlcy9oMjEvaGI1Lzg3OTYzMDQzMTAzMDIuanBnfDZiMjY5ZjIwY2VjZDg2N2Y3NjA1YjI1NWUyMTQxYzYxY2IxMmVjN2UzNTNhMTJlNjYxYWQzODcyNmFiNTVmZDk",
+            "manufacturer": "Direct Attach Waterproof Insulated 8\" Steel Toe",
+            "multidimensional": true,
+            "name": "Direct Attach Waterproof Insulated 8\" Steel Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Direct Attach Waterproof Insulated 8\" Steel Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Men%27s/Direct-Attach-Waterproof-Insulated-8%22-Steel-Toe/p/26002000"
+        },
+        {
+            "code": "88116000",
+            "description": "Woman's Rigmaster Waterproof Insulated 8\"",
+            "firstVariantCode": "88116000_1",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3w0ODY5NXxpbWFnZS9qcGVnfGltYWdlcy9oMDgvaGUzLzg3OTYzMDM1MjM4NzAuanBnfDA0MzM4NmVlZDNiNjQ4YWRhYzJlNzE4ZGQ0ZWM0NWUxMWVhOGZjYzQzYmI3MzE0OGI4MWEwMjI4MTc1ODA4ZjM",
+            "manufacturer": "Woman's Rigmaster Waterproof Insulated 8\"",
+            "multidimensional": true,
+            "name": "Woman's Rigmaster Waterproof Insulated 8\"",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevelStatus": "inStock"
+            },
+            "summary": "Woman's Rigmaster Waterproof Insulated 8\"",
+            "url": "/Open-Catalogue/Safety/Footwear/Women%27s/Woman%27s-Rigmaster-Waterproof-Insulated-8%22/p/88116000"
+        },
+        {
+            "code": "88117000",
+            "description": "Woman's Rigmaster Waterproof 6\" Alloy Safety Toe",
+            "firstVariantCode": "88117000_1",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3w5OTk0MHxpbWFnZS9qcGVnfGltYWdlcy9oZjAvaGUwLzg3OTYzMDE1NTc3OTAuanBnfDhiYjkxMDE3MTU2ODdhMGMzZGY0ZGQyZmNiNTM4MGQ1N2RkMzIwMWJlNzBlY2JiZWRiYTg1ZTg3ZmRjMGVlZWE",
+            "manufacturer": "Woman's Rigmaster Waterproof 6\" Alloy Safety Toe",
+            "multidimensional": true,
+            "name": "Woman's Rigmaster Waterproof 6\" Alloy Safety Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$97.00",
+                "priceType": "BUY",
+                "value": 97
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Woman's Rigmaster Waterproof 6\" Alloy Safety Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Women%27s/Woman%27s-Rigmaster-Waterproof-6%22-Alloy-Safety-Toe/p/88117000"
+        },
+        {
+            "code": "26038000",
+            "description": "Direct Attach Waterproof Insulated 6\" Steel Toe",
+            "firstVariantCode": "26038000_1",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3wyNDE1NHxpbWFnZS9qcGVnfGltYWdlcy9oZWYvaDc3Lzg3OTYzMDI3Mzc0MzguanBnfDliOWNlYTc2NjYxNDczNWY2OTk1NjkyMzEzZjQ3ZjVjZjQ2NWUzZTRkMjIwMDMzNjBjMzY3ZTUzMGJlMmNiNTk",
+            "manufacturer": "Direct Attach Waterproof Insulated 6\" Steel Toe",
+            "multidimensional": true,
+            "name": "Direct Attach Waterproof Insulated 6\" Steel Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$97.00",
+                "priceType": "BUY",
+                "value": 97
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Direct Attach Waterproof Insulated 6\" Steel Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Men%27s/Direct-Attach-Waterproof-Insulated-6%22-Steel-Toe/p/26038000"
+        },
+        {
+            "code": "33031000",
+            "description": "Pit Boss 6\" Steel Toe",
+            "firstVariantCode": "33032000_29",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3wyNzY4NnxpbWFnZS9qcGVnfGltYWdlcy9oODcvaDUyLzg3OTYyOTkxOTg0OTQuanBnfGJiYjJiNzJmMTQxNWZiZjlmNGY1NGUyMTdmMzU0NzQzZWNjNzZhYTZhMWM0ZTU3Zjc4OTRmZWU4YzAxOWUyNDM",
+            "manufacturer": "Pit Boss 6\" Steel Toe",
+            "multidimensional": true,
+            "name": "Pit Boss 6\" Steel Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Pit Boss 6\" Steel Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Men%27s/Pit-Boss-6%22-Steel-Toe/p/33031000"
+        },
+        {
+            "code": "47003000",
+            "description": "PowerWelt 6\" Steel Toe",
+            "firstVariantCode": "47003000_1",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3w0NjUxNXxpbWFnZS9qcGVnfGltYWdlcy9oNGMvaDQzLzg3OTYzMDU0ODk5NTAuanBnfDM2M2RjYmRlNmE1Y2JjZGRjNzU5YjhiNDI1ZjRiNzg3OGU3ZjkwMTRhOWU1ZTRmMDc5YjMwZTM3NGM4ODljYTI",
+            "manufacturer": "PowerWelt Waterproof 6\" Steel Toe",
+            "multidimensional": true,
+            "name": "PowerWelt 6\" Waterproof Steel Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "PowerWelt 6\" Steel Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Men%27s/PowerWelt-6%22-Waterproof-Steel-Toe/p/47003000"
+        },
+        {
+            "code": "40008000",
+            "description": "Mudsill Low Steel Toe",
+            "firstVariantCode": "40008000_1",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3wyNDI1OXxpbWFnZS9qcGVnfGltYWdlcy9oYTAvaDI5Lzg3OTYyOTg4MDUyNzguanBnfGZiZDI1N2NiZjRlNWJmYWE5OGUxMGYzODIzZTFlZjMwMTI5YTFkNDNiMzFhMzNhN2FhNmYxMTNmYzAzNGFlODk",
+            "manufacturer": "Mudsill Low Steel Toe",
+            "multidimensional": true,
+            "name": "Mudsill Low Steel Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Mudsill Low Steel Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Men%27s/Mudsill-Low-Steel-Toe/p/40008000"
+        },
+        {
+            "code": "47591000",
+            "description": "Endurance PR Waterproof 6\" Steel Toe",
+            "firstVariantCode": "47592000_37",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3wxMjAwMzd8aW1hZ2UvanBlZ3xpbWFnZXMvaDI3L2hlMC84Nzk2MzAxOTUxMDA2LmpwZ3xjOTVkNmI2Y2EyYzVmNDM1NGQwYmI5ZjZkZDQ2Zjc2MzVlMTQwYTlhOGVlMTNmODM3NTk1NjZjZWU4NzViNDFj",
+            "manufacturer": "Endurance PR Waterproof 6\" Steel Toe",
+            "multidimensional": true,
+            "name": "Endurance PR Waterproof 6\" Steel Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$97.00",
+                "priceType": "BUY",
+                "value": 97
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Endurance PR Waterproof 6\" Steel Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Men%27s/Endurance-PR-Waterproof-6%22-Steel-Toe/p/47591000"
+        },
+        {
+            "code": "50500000",
+            "description": "Expertise Hiker Steel Toe",
+            "firstVariantCode": "50500000_1",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3wyOTM2NHxpbWFnZS9qcGVnfGltYWdlcy9oY2QvaGYyLzg3OTYzMDYyNzYzODIuanBnfDk0Zjg5Mzk0ZmNhN2E1ZWQ2NTM4MGQ1M2E4ODU4MGFkM2I3MzY4NDdjNzkxMzU3ODU4YzIzZmM1ZWJjZGRiNjc",
+            "manufacturer": "Expertise Hiker Steel Toe",
+            "multidimensional": true,
+            "name": "Expertise Hiker Steel Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Expertise Hiker Steel Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Women%27s/Expertise-Hiker-Steel-Toe/p/50500000"
+        },
+        {
+            "code": "61096000",
+            "description": "Mudslinger Mid Steel Toe",
+            "firstVariantCode": "61096000_1",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3wyNzExNnxpbWFnZS9qcGVnfGltYWdlcy9oYjgvaDJiLzg3OTYyOTY4MzkxOTguanBnfDRjZGNlZjg5MDk3YzQ3Mjg5YTY4ZjBhYTRlYjg1MjI2Y2QyODQ4ZDM1N2YyNzc0ZGIyZjEyMzRkZWMwYzNjZDU",
+            "manufacturer": "Mudslinger Mid Steel Toe",
+            "multidimensional": true,
+            "name": "Mudslinger Mid Steel Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Mudslinger Mid Steel Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Men%27s/Mudslinger-Mid-Steel-Toe/p/61096000"
+        },
+        {
+            "code": "89649000",
+            "description": "Rigmaster Waterproof Internal Met Guard 8\" Steel Toe",
+            "firstVariantCode": "95553000_37",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3w0NzMyOXxpbWFnZS9qcGVnfGltYWdlcy9oNTEvaDA2Lzg3OTYzMDUwOTY3MzQuanBnfDg2OWUzNWQ3Yzc1NWU4ZjgxOWJiMmJiZTZmYTlmMDhjNWJiZTM0Y2Q5YTdlMWUyNjQ4ZjcyNjFlYTViMTEwYzA",
+            "manufacturer": "Rigmaster Waterproof Internal Met Guard 8\" Steel Toe",
+            "multidimensional": true,
+            "name": "Rigmaster Waterproof Internal Met Guard 8\" Steel Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Rigmaster Waterproof Internal Met Guard 8\" Steel Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Men%27s/Rigmaster-Waterproof-Internal-Met-Guard-8%22-Steel-Toe/p/89649000"
+        },
+        {
+            "code": "52561000",
+            "description": "Endurance PR 8\" Steel Toe",
+            "firstVariantCode": "95567000_37",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3wxMDI2ODF8aW1hZ2UvanBlZ3xpbWFnZXMvaDkzL2hlNy84Nzk2Mjk3NjI1NjMwLmpwZ3w5ZDQ3MWI2ZTM4N2FkNjEzMWQyNmVkMzE0NjgzN2M5ZTk2YmU3M2YyMTI4Yzk3MjlmYTViODM2NWQ0MTIyMjk5",
+            "manufacturer": "Endurance PR 8\" Insulated Waterproof Steel Toe",
+            "multidimensional": true,
+            "name": "Endurance PR 8\" Steel Toe",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Endurance PR 8\" Steel Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Men%27s/Endurance-PR-8%22-Steel-Toe/p/52561000"
+        },
+        {
+            "code": "49042000",
+            "description": "Drifter Steel Toe MDRSTL-001",
+            "firstVariantCode": "49042000_1",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3wyMTc5OHxpbWFnZS9qcGVnfGltYWdlcy9oMzkvaGI3Lzg3OTYzMDIzNDQyMjIuanBnfDI0NjFlYzRkNmI1MzkyNjFjMDJhZmNlNmNlZjU4MmUyZTJkZTYzZWU1ZmQwZDhlMDk1ZGI4NzgxNjFiNTI2ZWM",
+            "manufacturer": "Drifter Steel Toe MDRSTL-001",
+            "multidimensional": true,
+            "name": "Drifter Steel Toe MDRSTL-001",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 0,
+                "stockLevelStatus": "outOfStock"
+            },
+            "summary": "Drifter Steel Toe MDRSTL-001",
+            "url": "/Open-Catalogue/Safety/Footwear/Men%27s/Drifter-Steel-Toe-MDRSTL-001/p/49042000"
+        },
+        {
+            "code": "26388000",
+            "description": "Womens's TiTAN 6\" Safety Toe",
+            "firstVariantCode": "72399000_53",
+            "firstVariantImage": "/medias/?context=bWFzdGVyfGltYWdlc3wyOTg5OXxpbWFnZS9qcGVnfGltYWdlcy9oMGQvaGE2Lzg3OTYzMDMxMzA2NTQuanBnfDE3NmU3YWRmN2I2MDA5ZTgzNjg5ZGIwMDBjZDA5OGY2YzIwMjdmNzY5OGYzN2Q1NDRlYWY4YWU2YmE3YWI1MDc",
+            "manufacturer": "Womens's TiTAN 6\" Safety Toe Waterproof",
+            "multidimensional": true,
+            "name": "Womens's TiTAN 6\" Safety Toe Waterproof",
+            "price": {
+                "currencyIso": "USD",
+                "formattedValue": "$85.00",
+                "priceType": "BUY",
+                "value": 85
+            },
+            "priceRange": {
+                "maxPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$97.00",
+                    "priceType": "FROM",
+                    "value": 97
+                },
+                "minPrice": {
+                    "currencyIso": "USD",
+                    "formattedValue": "$85.00",
+                    "priceType": "FROM",
+                    "value": 85
+                }
+            },
+            "stock": {
+                "stockLevel": 3,
+                "stockLevelStatus": "lowStock"
+            },
+            "summary": "Womens's TiTAN 6\" Safety Toe",
+            "url": "/Open-Catalogue/Safety/Footwear/Women%27s/Womens%27s-TiTAN-6%22-Safety-Toe-Waterproof/p/26388000"
+        }
+    ],
+    "sorts": [
+        {
+            "code": "relevance",
+            "name": "Relevance",
+            "selected": true
+        },
+        {
+            "code": "topRated",
+            "name": "Top Rated",
+            "selected": false
+        },
+        {
+            "code": "name-asc",
+            "name": "Name (ascending)",
+            "selected": false
+        },
+        {
+            "code": "name-desc",
+            "name": "Name (descending)",
+            "selected": false
+        },
+        {
+            "code": "price-asc",
+            "name": "Price (lowest first)",
+            "selected": false
+        },
+        {
+            "code": "price-desc",
+            "name": "Price (highest first)",
+            "selected": false
+        }
+    ],
+    "spellingSuggestion": {
+        "query": "sheet:relevance",
+        "suggestion": "sheet"
+    }
+}

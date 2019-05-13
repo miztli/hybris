@@ -1,0 +1,29 @@
+version: '2'
+services:
+  hsql:
+    image: platform_on_grid_f_s_hsql
+    volumes:
+      - ./state/hsql:/opt/hsqldb/data
+
+  mongo_master:
+    image: platform_on_grid_f_s_mongodb
+    ports:
+      - "27017"
+
+  mongo_slave:
+    image: platform_on_grid_f_s_mongodb
+    ports:
+      - "27017"
+
+  platform_hac:
+    image: platform_on_grid_f_s_platform
+    command: hac
+    environment:
+      - WAIT_FOR=hsql:9090 mongo_master:27017
+    depends_on:
+      - hsql
+    volumes:
+      - ./state/media:/opt/hybris/data/media
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+    ports:
+      - "8080:8088"

@@ -1,0 +1,66 @@
+version: '2'
+services:
+  sourcesolr:
+    image: ybase_solr
+    command: default
+  targetsolr:
+    image: ybase_solr
+    command: default
+  sourcehsql:
+    image: y2y_sync_source_hsql
+    volumes:
+      - ./state/source_hsql:/opt/hsqldb/data
+  targethsql:
+    image: y2y_sync_target_hsql
+    volumes:
+      - ./state/target_hsql:/opt/hsqldb/data
+  upload_datahub_extension:
+    image: y2y_sync_source_platform
+    command: admin executeScript -Dresource=model://uploadDhExtension
+    environment:
+      - WAIT_FOR=datahub:8080 sourcehsql:9090 sourcesolr:8983
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./resources/init/:/opt/hybris/bin/platform/resources/init
+      - ./state/target_media:/opt/hybris/data/media
+    depends_on:
+      - sourcehsql
+      - sourcesolr
+      - datahub
+  sourceplatform:
+    image: y2y_sync_source_platform
+    command: default
+    environment:
+      - WAIT_FOR=sourcehsql:9090 datahub:8080 sourcesolr:8983
+    environment:
+      - y_y2ysync_home_url=http://sourceplatform:8081
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./state/source_media:/opt/hybris/data/media
+    ports:
+      - "8080:8088"
+    depends_on:
+      - sourcehsql
+      - sourcesolr
+      - datahub
+  targetplatform:
+    image: y2y_sync_target_platform
+    command: default
+    environment:
+      - WAIT_FOR=targethsql:9091 datahub:8080 targetsolr:8983
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./state/target_media:/opt/hybris/data/media
+    ports:
+      - "8081:8088"
+    depends_on:
+      - targethsql
+      - targetsolr
+      - datahub
+  datahub:
+    image: y2y_sync_datahub-webapp
+    ports:
+      - "9999:8080"
+      - "9793:9793"
+      - "5005:5005"
+

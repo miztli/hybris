@@ -1,0 +1,19 @@
+version: '2'
+services:   
+    hsql:
+        image: b2c_b2b_oms_dockerized_hsql
+        volumes:
+            - ./state/hsql:/opt/hsqldb/data
+       
+    platform_webservices:
+        image: b2c_b2b_oms_dockerized_platform
+        environment:            
+            - WAIT_FOR=hsql:9090
+        volumes:
+            - ./resources/secrets/:/etc/ssl/certs/hybris
+            - ./state/media:/opt/hybris/data/media
+        links:
+            - hsql      
+        ports:
+            - "9002:8088"
+        command: webservices   

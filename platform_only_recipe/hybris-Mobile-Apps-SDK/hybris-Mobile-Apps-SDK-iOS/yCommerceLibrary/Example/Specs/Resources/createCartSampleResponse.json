@@ -1,0 +1,37 @@
+{
+    "type": "cartWsDTO",
+    "code": "00011306",
+    "guid": "ba0e82bc14cb4edbea08117bbf86a69ae7f83a0f",
+    "subTotal": {
+        "currencyIso": "USD",
+        "formattedValue": "$0.00",
+        "priceType": "BUY",
+        "value": 0
+    },
+    "totalDiscounts": {
+        "currencyIso": "USD",
+        "formattedValue": "$0.00",
+        "priceType": "BUY",
+        "value": 0
+    },
+    "totalItems": 0,
+    "totalPrice": {
+        "currencyIso": "USD",
+        "formattedValue": "$0.00",
+        "priceType": "BUY",
+        "value": 0
+    },
+    "totalPriceWithTax": {
+        "currencyIso": "USD",
+        "formattedValue": "$0.00",
+        "priceType": "BUY",
+        "value": 0
+    },
+    "totalTax": {
+        "currencyIso": "USD",
+        "formattedValue": "$0.00",
+        "priceType": "BUY",
+        "value": 0
+    },
+    "totalUnitCount": 0
+}

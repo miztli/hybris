@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<profile>
+	<name>EC-hybris-JSON</name>
+	<language>json</language>
+	<rules>
+		<rule>
+			<repositoryKey>json</repositoryKey>
+			<key>S2260</key>
+			<priority>BLOCKER</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>json</repositoryKey>
+			<key>bom-utf8-files</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+	</rules>
+</profile>

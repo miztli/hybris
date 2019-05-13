@@ -1,0 +1,66 @@
+# B2C Accelerator Compose
+# Centralized logging components
+#
+# Run together with main docker-compose file
+# https://docs.docker.com/compose/extends/#multiple-compose-files
+
+version: '2'
+
+services:
+
+  platform_hac_logshipper:
+    extends:
+      file: common.logging.yaml
+      service: hybris_logshipper
+    volumes:
+      - platform_hac_log:/log
+
+  platformbackoffice1_logshipper:
+    extends:
+      file: common.logging.yaml
+      service: hybris_logshipper
+    volumes:
+      - platformbackoffice1_log:/log
+
+  platformbackoffice2_logshipper:
+    extends:
+      file: common.logging.yaml
+      service: hybris_logshipper
+    volumes:
+      - platformbackoffice2_log:/log
+
+  platformacceleratorstorefront1_logshipper:
+    extends:
+      file: common.logging.yaml
+      service: hybris_logshipper
+    volumes:
+      - platformacceleratorstorefront1_log:/log
+
+  platformacceleratorstorefront2_logshipper:
+    extends:
+      file: common.logging.yaml
+      service: hybris_logshipper
+    volumes:
+      - platformacceleratorstorefront2_log:/log
+
+  solrc1_logshipper:
+    extends:
+      file: common.logging.yaml
+      service: solr_logshipper
+    volumes:
+      - solrc1_log:/log
+
+  solrc2_logshipper:
+    extends:
+      file: common.logging.yaml
+      service: solr_logshipper
+    volumes:
+      - solrc2_log:/log
+
+networks:
+
+  elk:
+    # external network - created by the 'centralized_logging' recipe
+    # must exist
+    external:
+      name: centralizedlogging_elk

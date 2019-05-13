@@ -1,0 +1,23 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="settings_sync"
+        android:title="@string/settings_sync_title">
+        <SwitchPreference
+            android:icon="@null"
+            android:key="settings_sync_status"
+            android:summary="@string/settings_sync_status"
+            android:title="@string/settings_sync_status_title" />
+
+        <com.hybris.mobile.app.commerce.preference.SyncCategoryPreference android:key="settings_sync_categories" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="app_options"
+        android:title="@string/settings_backend_title">
+
+        <com.hybris.mobile.app.commerce.preference.BackendUrlValuePreference android:key="application_options" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

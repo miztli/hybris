@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/account_scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/account_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_large">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_small">
+
+            <TextView
+                android:id="@+id/account_title"
+                style="@style/h1_title_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/account_title" />
+
+            <TextView
+                android:id="@+id/account_email_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_small"
+                android:paddingLeft="@dimen/padding_small"
+                android:paddingTop="@dimen/padding_small"
+                android:text="@string/account_email" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_medium">
+
+
+            <TextView
+                android:id="@+id/account_profile_title"
+                style="@style/h2_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_small"
+                android:text="@string/account_profile_title" />
+
+            <LinearLayout
+                android:id="@+id/account_payment_details_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium">
+
+                <Spinner
+                    android:id="@+id/account_user_title_spinner"
+                    style="@style/spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spinner_height"
+                    android:prompt="@string/account_title_spinner_dialog"
+                    android:spinnerMode="dialog" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/account_firstname_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium">
+                <EditText
+                    android:id="@+id/account_firstname_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:background="@drawable/account_edittext"
+                    android:singleLine="true"
+                    android:hint="@string/account_profile_firstname_hint"
+                    android:paddingLeft="@dimen/padding_medium"
+                    android:textSize="16sp"
+                    android:imeOptions="actionDone"
+                    android:ems="10"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/account_lastname_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium">
+                <EditText
+                    android:id="@+id/account_lastname_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:ems="10"
+                    android:background="@drawable/account_edittext"
+                    android:singleLine="true"
+                    android:textSize="16sp"
+                    android:paddingLeft="@dimen/padding_medium"
+                    android:imeOptions="actionDone"
+                    android:hint="@string/account_profile_lastname_hint" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/account_language_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_medium">
+
+            <TextView
+                android:id="@+id/account_language_title"
+                style="@style/h2_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium"
+                android:text="@string/account_language_title" />
+
+            <Spinner
+                android:id="@+id/account_language_spinner"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spinner_height"
+                android:prompt="@string/account_language_spinner_dialog"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/account_payment_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_medium">
+
+            <TextView
+                android:id="@+id/account_payment_details_title"
+                style="@style/h2_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium"
+                android:text="@string/account_payment_details_title" />
+
+            <TextView
+                android:id="@+id/account_credit_card_title"
+                style="@style/h4_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium"
+                android:text="@string/account_credit_card_title" />
+
+
+            <!-- Begin default payment-->
+
+            <LinearLayout
+                android:id="@+id/account_payment_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:padding="@dimen/padding_medium">
+
+
+                <LinearLayout
+                    android:id="@+id/account_payemnt_info_layout"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+
+                    style="@style/shadow_layout_select"
+
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+
+
+
+                        <TextView
+                            android:id="@+id/account_default_payment_cardholder_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/padding_small"
+                            android:textStyle="bold"
+                            android:textColor="@color/account_address_set_default_text"
+                            android:text="@string/payment_add_new" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/margin_large"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/account_default_card_details"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="@dimen/padding_small"
+                                android:textColor="@color/account_address_set_default_text"
+                                android:text="@null" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_large"
+                            android:orientation="horizontal">
+
+
+
+
+                            <TextView
+                                android:id="@+id/account_default_billing_address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="@dimen/padding_small"
+                                android:textColor="@color/account_address_set_default_text"
+                                android:text="@null" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/account_payment_update_layout"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="right|center_vertical"
+                    >
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- End default payment-->
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/account_address_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_medium">
+
+
+            <TextView
+                android:id="@+id/account_address_book_title"
+                style="@style/h2_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium"
+                android:text="@string/account_address_book_title" />
+
+
+            <!-- Begin default shipping address-->
+
+            <TextView
+                android:id="@+id/account_address_title"
+                style="@style/h4_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_medium"
+                android:text="@string/account_default_shipping_address_title" />
+
+
+            <LinearLayout
+                android:id="@+id/account_shipping_address_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_small"
+                android:paddingTop="@dimen/padding_medium"
+                android:paddingLeft="@dimen/padding_small">
+
+
+                <LinearLayout
+                    android:id="@+id/account_shipping_info_layout"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/shadow_layout_select"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:id="@+id/account_default_shipping_address_contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/padding_small"
+                        android:textStyle="bold"
+                        android:textColor="@color/account_address_set_default_text"
+                        android:text="@string/address_book_title_new" />
+
+                    <TextView
+                        android:id="@+id/account_default_shipping_address_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/padding_small"
+                        android:textColor="@color/account_address_set_default_text"
+                        android:text="@null" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/account_shipping_address_update_layout"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="right|center_vertical"
+                    >
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- End default shipping address-->
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

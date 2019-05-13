@@ -1,0 +1,31 @@
+{
+    "costCenters": [
+        {
+            "active": "true",
+            "code": "Custom Retail",
+            "name": "Custom Retail",
+            "unit": {
+                "addresses": [
+                    {
+                        "country": {
+                            "isocode": "US",
+                            "name": "United States"
+                        },
+                        "email": "carla.torres@rustic-hw.com",
+                        "firstName": "Carla",
+                        "formattedAddress": "1000 Bagby Street, Houston, Texas",
+                        "id": "8796093218839",
+                        "lastName": "Torres",
+                        "line1": "1000 Bagby Street",
+                        "postalCode": "Texas",
+                        "shippingAddress": true,
+                        "title": "Ms",
+                        "titleCode": "ms",
+                        "town": "Houston",
+                        "visibleInAddressBook": true
+                    }
+                ]
+            }
+        }
+    ]
+}

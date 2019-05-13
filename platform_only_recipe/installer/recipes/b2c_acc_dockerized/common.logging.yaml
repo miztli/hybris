@@ -1,0 +1,24 @@
+# B2C Accelerator Compose
+# Common components for centralized logging
+#
+# Contains service templates included / extended by other services
+# https://docs.docker.com/compose/extends/#extending-services
+
+version: '2'
+
+services:
+
+  logshipper:
+    image: b2cacc_deployment_filebeat
+    networks:
+      - elk
+
+  hybris_logshipper:
+    extends: logshipper
+    volumes:
+      - ./resources/filebeat/config/hybris/filebeat.yml:/filebeat.yml
+
+  solr_logshipper:
+    extends: logshipper
+    volumes:
+      - ./resources/filebeat/config/solr/filebeat.yml:/filebeat.yml

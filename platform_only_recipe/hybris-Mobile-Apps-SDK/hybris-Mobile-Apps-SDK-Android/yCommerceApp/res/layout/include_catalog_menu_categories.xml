@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/catalog_menu_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/catalog_menu_logo_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/catalog_menu_item_margin"
+            android:src="@drawable/catalog_logo"
+            android:contentDescription="@null" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/catalog_menu_item_divider" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/catalog_menu_top_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/catalog_menu_top_category_name_background"
+        android:padding="@dimen/catalog_menu_item_margin"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/catalog_menu_item_arrow_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/arrow_left_big"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/catalog_menu_top_category_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/catalog_menu_item_margin"
+            android:paddingStart="@dimen/catalog_menu_item_margin"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:layout_toRightOf="@id/catalog_menu_item_arrow_left"
+            android:layout_toEndOf="@id/catalog_menu_item_arrow_left"
+            android:textColor="@color/catalog_menu_item"
+            android:textSize="@dimen/catalog_menu_item_text_size" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/catalog_menu_list_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
+        android:divider="@color/catalog_menu_item_divider"
+        android:dividerHeight="1dp" />
+
+</LinearLayout>

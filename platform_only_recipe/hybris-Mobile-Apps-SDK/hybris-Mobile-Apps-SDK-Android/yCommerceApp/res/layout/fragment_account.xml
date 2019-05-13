@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/account_scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/account_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_large">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_small">
+
+            <TextView
+                android:id="@+id/account_title"
+                style="@style/h1_title_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/account_title" />
+
+            <TextView
+                android:id="@+id/account_email_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_small"
+                android:paddingTop="@dimen/padding_small"
+                android:paddingLeft="@dimen/padding_small"
+                android:text="@string/account_email" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_medium">
+
+
+            <TextView
+                android:id="@+id/account_profile_title"
+                style="@style/h2_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_small"
+                android:text="@string/account_profile_title" />
+
+            <LinearLayout
+                android:id="@+id/account_payment_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium">
+
+                <Spinner
+                    android:id="@+id/account_user_title_spinner"
+                    style="@style/spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spinner_height"
+                    android:spinnerMode="dialog" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/account_firstname_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium">
+                <EditText
+                    android:id="@+id/account_firstname_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:background="@drawable/account_edittext"
+                    android:singleLine="true"
+                    android:hint="@string/account_profile_firstname_hint"
+                    android:paddingLeft="@dimen/padding_medium"
+                    android:textSize="16sp"
+                    android:imeOptions="actionDone"
+                    android:ems="10"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/account_lastname_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium">
+                <EditText
+                    android:id="@+id/account_lastname_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:ems="10"
+                    android:background="@drawable/account_edittext"
+                    android:singleLine="true"
+                    android:textSize="16sp"
+                    android:paddingLeft="@dimen/padding_medium"
+                    android:imeOptions="actionDone"
+                    android:hint="@string/account_profile_lastname_hint" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/account_language_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_medium">
+            <TextView
+                android:id="@+id/account_language_title"
+                style="@style/h2_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_medium"
+                android:paddingBottom="@dimen/padding_medium"
+                android:text="@string/account_language_title" />
+
+            <Spinner
+                android:id="@+id/account_language_spinner"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spinner_height"
+                android:prompt="@string/account_language_spinner_dialog"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/account_delivery_details_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_medium">
+
+            <TextView
+                android:id="@+id/account_delivery_details_title"
+                style="@style/h2_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium"
+                android:text="@string/account_delivery_details_title" />
+
+            <TextView
+                android:id="@+id/account_cost_center_title"
+                style="@style/h3_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium"
+                android:text="@string/account_cost_center_title" />
+
+            <Spinner
+                android:id="@+id/account_cost_center_spinner"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spinner_height"
+                android:prompt="@string/account_cost_center_spinner_dialog"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/account_address_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.20"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:paddingBottom="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_medium"
+            >
+            <TextView
+                android:id="@+id/account_address_title"
+                style="@style/h3_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium"
+                android:text="@string/account_address_title" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/account_divider" />
+
+            <ListView
+                android:id="@+id/user_address_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:choiceMode="none"
+                android:divider="@color/account_divider"
+                android:dividerHeight="1dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<profile>
+	<name>EC-hybris-TypeScript</name>
+	<language>ts</language>
+	<rules>
+		<rule>
+			<repositoryKey>common-ts</repositoryKey>
+			<key>FailedUnitTests</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S1143</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S1226</key>
+			<priority>MINOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S1523</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S1525</key>
+			<priority>MINOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S1526</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S1656</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S1751</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S1764</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S1862</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S2068</key>
+			<priority>BLOCKER</priority>
+			<parameters>
+				<parameter>
+					<key>credentialWords</key>
+					<value>password,pwd,passwd</value>
+				</parameter>
+			</parameters>
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S2123</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S2201</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S2228</key>
+			<priority>MINOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S2688</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S2757</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S3616</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S3699</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S3786</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S3799</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S3854</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S3923</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S3981</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S3984</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S4043</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S4124</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S4143</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S4275</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S4335</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S4619</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>typescript</repositoryKey>
+			<key>S905</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+	</rules>
+</profile>

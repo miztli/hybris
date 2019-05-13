@@ -1,0 +1,62 @@
+version: '3'
+
+services:
+
+  # ELK stack
+
+  redis:
+    image: logging_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - elk
+
+  elasticsearch:
+    image: logging_elasticsearch
+    volumes:
+        # https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+      - ./resources/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+        # map to random host ports instead of static ports, eg. 32000:9200
+        # allows scaling elasticsearch with 'docker-compose scale'
+      - "9200"
+      - "9300"
+    environment:
+      ES_JAVA_OPTS: "-Xms256m -Xmx256m"
+      # use internal Docker DNS for unicast discovery
+      discovery.zen.ping.unicast.hosts: elasticsearch
+    networks:
+      - elk
+
+  logstash:
+    image: logging_logstash
+    volumes:
+        # https://www.elastic.co/guide/en/logstash/current/docker.html
+      - ./resources/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./resources/logstash/pipeline:/usr/share/logstash/pipeline
+    ports:
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xms256m -Xmx256m"
+    networks:
+      - elk
+    depends_on:
+      - redis
+      - elasticsearch
+
+  kibana:
+    image: logging_kibana
+    volumes:
+        # https://www.elastic.co/guide/en/kibana/current/_configuring_kibana_on_docker.html
+      - ./resources/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+networks:
+
+  elk:
+    driver: bridge

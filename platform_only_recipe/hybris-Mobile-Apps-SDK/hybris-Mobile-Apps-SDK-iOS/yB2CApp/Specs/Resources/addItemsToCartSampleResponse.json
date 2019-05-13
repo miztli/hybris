@@ -1,0 +1,25 @@
+{
+    "entry": {
+        "entryNumber": 0,
+        "product": {
+            "availableForPickup": false,
+            "code": "3921095",
+            "name": "W6VA4 6mm Screwdriver",
+            "purchasable": true,
+            "stock": {
+                "stockLevel": 300
+            },
+            "url": "/Open-Catalogue/Tools/Screwdrivers/W6VA4-6mm-Screwdriver/p/3921095"
+        },
+        "quantity": 5,
+        "totalPrice": {
+            "currencyIso": "USD",
+            "formattedValue": "$600.00",
+            "priceType": "BUY",
+            "value": 600
+        }
+    },
+    "quantity": 5,
+    "quantityAdded": 5,
+    "statusCode": "success"
+}

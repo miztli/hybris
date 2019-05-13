@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <title>hybris-cis-mock-subscription-web: cisSubscriptionOrderPostRequest</title>
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!--custom css for these pages-->
+  <link rel="stylesheet" href="css/enunciate.css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target="#apinav">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">hybris-cis-mock-subscription-web: cisSubscriptionOrderPostRequest</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="data.html">Data Types</a></li>
+          <li><a href="downloads.html">Files and Libraries</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar" id="apinav">
+        <ul class="nav nav-sidebar">
+          <li class="text-right"><a href="#top"><small>Back to Top</small></a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <ol class="breadcrumb" id="top">
+          <li class="active dropdown"><a href="index.html">Home</a></li>
+          <li class="active dropdown"><a href="syntax_xml.html">XML</a></li>
+          <li class="dropdown"><a href="xml_ns0_cisSubscriptionOrderPostRequest.html">cisSubscriptionOrderPostRequest</a></li>
+        </ol>
+
+      <h1 class="page-header">cisSubscriptionOrderPostRequest <small>Data Type</small></h1>
+
+      <p>A subscription order request.</p>
+
+      <dl class="dl-horizontal">
+        <dt>Namespace</dt>
+        <dd>(Default)</dd>
+        <dt>Schema</dt>
+        <dd><a href="ns0.xsd">ns0.xsd</a></dd>
+      </dl>
+
+      <table class="table datatype-properties">
+        <caption>Properties</caption>
+        <thead>
+        <tr>
+          <th>name</th>
+          <th>data type</th>
+          <th>type</th>
+          <th>namespace</th>
+          <th>min/max occurs</th>
+          <th>description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>  <span class="property-name">currency</span>
+</td>
+          <td>  <span class="datatype-reference">string
+</span>
+</td>
+          <td>  <span class="property-type">element
+</span>
+</td>
+          <td>  <span class="property-namespaceInfo">
+</span>
+</td>
+          <td>  <span class="property-minMaxOccurs">0/1
+</span>
+</td>
+          <td>  <span class="property-description">3 letter ISO 4217 currency code.</span>
+</td>
+        </tr>
+        <tr>
+          <td>  <span class="property-name">merchantAccountId</span>
+</td>
+          <td>  <span class="datatype-reference">string
+</span>
+</td>
+          <td>  <span class="property-type">element
+</span>
+</td>
+          <td>  <span class="property-namespaceInfo">
+</span>
+</td>
+          <td>  <span class="property-minMaxOccurs">0/1
+</span>
+</td>
+          <td>  <span class="property-description">Identifying attribute of the buyer.</span>
+</td>
+        </tr>
+        <tr>
+          <td>  <span class="property-name">merchantPaymentMethodId</span>
+</td>
+          <td>  <span class="datatype-reference">string
+</span>
+</td>
+          <td>  <span class="property-type">element
+</span>
+</td>
+          <td>  <span class="property-namespaceInfo">
+</span>
+</td>
+          <td>  <span class="property-minMaxOccurs">0/1
+</span>
+</td>
+          <td>  <span class="property-description">Identifying attribute of the payment method (if available).</span>
+</td>
+        </tr>
+        <tr>
+          <td>  <span class="property-name">subscriptionOrder</span>
+</td>
+          <td>  <span class="datatype-reference"><a href="xml_ns0_cisSubscriptionOrder.html">cisSubscriptionOrder</a>
+</span>
+</td>
+          <td>  <span class="property-type">element
+</span>
+</td>
+          <td>  <span class="property-namespaceInfo">
+</span>
+</td>
+          <td>  <span class="property-minMaxOccurs">0/1
+</span>
+</td>
+          <td>  <span class="property-description">The subscription order.</span>
+</td>
+        </tr>
+        <tr>
+          <td>  <span class="property-name">vendorParameters</span>
+</td>
+          <td>  <span class="datatype-reference"><a href="xml_ns0_annotationHashMap.html">annotationHashMap</a>
+</span>
+</td>
+          <td>  <span class="property-type">element
+</span>
+</td>
+          <td>  <span class="property-namespaceInfo">
+</span>
+</td>
+          <td>  <span class="property-minMaxOccurs">0/1
+</span>
+</td>
+          <td>  <span class="property-description">Vendor specific parameters which aren't represented in the generic interface.</span>
+</td>
+        </tr>
+        </tbody>
+        <tr>
+          <td colspan="6"><h5 class="text-muted">Properties inherited from <a href="xml_ns0_cisSubscriptionRequest.html">cisSubscriptionRequest</a></h5></td>
+        </tr>
+        <tbody>
+        <tr>
+          <td><span class="property-name">vendorParameters</span></td>
+          <td><span class="datatype-reference"><a href="xml_ns0_annotationHashMap.html">annotationHashMap</a>
+</span></td>
+          <td><span class="property-type">element
+</span></td>
+          <td><span class="property-namespaceInfo">
+</span></td>
+          <td><span class="property-minMaxOccurs">0/1
+</span></td>
+          <td><span class="property-description">Vendor specific parameters which aren't represented in the generic interface.</span></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p class="lead">Example</p>
+      
+      <pre class="prettyprint language-xml example">&lt;subscriptionOrderPostRequest&gt;
+  &lt;merchantAccountId&gt;...&lt;/merchantAccountId&gt;
+  &lt;merchantPaymentMethodId&gt;...&lt;/merchantPaymentMethodId&gt;
+  &lt;subscriptionOrder id=&quot;...&quot;&gt;
+    &lt;date&gt;...&lt;/date&gt;
+    &lt;currency&gt;...&lt;/currency&gt;
+    &lt;addresses&gt;
+      &lt;address&gt;
+        &lt;type&gt;...&lt;/type&gt;
+        &lt;title&gt;...&lt;/title&gt;
+        &lt;firstName&gt;...&lt;/firstName&gt;
+        &lt;lastName&gt;...&lt;/lastName&gt;
+        &lt;email&gt;...&lt;/email&gt;
+        &lt;addressLine1&gt;...&lt;/addressLine1&gt;
+        &lt;addressLine2&gt;...&lt;/addressLine2&gt;
+        &lt;addressLine3&gt;...&lt;/addressLine3&gt;
+        &lt;addressLine4&gt;...&lt;/addressLine4&gt;
+        &lt;zipCode&gt;...&lt;/zipCode&gt;
+        &lt;city&gt;...&lt;/city&gt;
+        &lt;state&gt;...&lt;/state&gt;
+        &lt;country&gt;...&lt;/country&gt;
+        &lt;phone&gt;...&lt;/phone&gt;
+        &lt;company&gt;...&lt;/company&gt;
+        &lt;longitude&gt;...&lt;/longitude&gt;
+        &lt;latitude&gt;...&lt;/latitude&gt;
+        &lt;facilityType&gt;...&lt;/facilityType&gt;
+        &lt;facilityName&gt;...&lt;/facilityName&gt;
+        &lt;faxNumber&gt;...&lt;/faxNumber&gt;
+        &lt;vendorParameters/&gt;
+      &lt;/address&gt;
+    &lt;/addresses&gt;
+    &lt;lineItems&gt;
+      &lt;lineItem id=&quot;...&quot;&gt;
+        &lt;itemCode&gt;...&lt;/itemCode&gt;
+        &lt;quantity&gt;...&lt;/quantity&gt;
+        &lt;productDescription&gt;...&lt;/productDescription&gt;
+        &lt;unitPrice&gt;...&lt;/unitPrice&gt;
+        &lt;taxCode&gt;...&lt;/taxCode&gt;
+        &lt;vendorParameters/&gt;
+      &lt;/lineItem&gt;
+    &lt;/lineItems&gt;
+    &lt;vendorParameters&gt;
+      &lt;parameter/&gt;
+    &lt;/vendorParameters&gt;
+    &lt;merchantAccountId&gt;...&lt;/merchantAccountId&gt;
+    &lt;items&gt;
+      &lt;item id=&quot;...&quot;&gt;
+        &lt;code&gt;...&lt;/code&gt;
+        &lt;name&gt;...&lt;/name&gt;
+        &lt;vendorParameters/&gt;
+        &lt;subscriptionTerm/&gt;
+        &lt;subscriptionPlan/&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/subscriptionOrder&gt;
+  &lt;currency&gt;...&lt;/currency&gt;
+  &lt;vendorParameters&gt;
+    &lt;parameter key=&quot;...&quot; value=&quot;...&quot;/&gt;
+  &lt;/vendorParameters&gt;
+  &lt;vendorParameters&gt;
+    &lt;parameter/&gt;
+  &lt;/vendorParameters&gt;
+&lt;/subscriptionOrderPostRequest&gt;
+</pre>
+
+        <footer class="footer">
+          <div class="container">
+            <p class="text-muted">Generated by <a href="http://enunciate.webcohesion.com">Enunciate</a>.</p>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- JavaScript placed at the end of the document so the pages load faster. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <!-- prettify code blocks. see http://code.google.com/p/google-code-prettify/ -->
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js" type="text/javascript"></script>
+  <script>
+    $(function() {
+      $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+      });
+
+      $('[data-toggle="tooltip"]').tooltip()
+    });
+  </script>
+
+</body>
+</html>

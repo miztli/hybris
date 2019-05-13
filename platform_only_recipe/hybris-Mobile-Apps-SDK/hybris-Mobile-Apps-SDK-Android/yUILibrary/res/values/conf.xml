@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Threshold determining from how many number of visible items starting from the bottom (when scrolling) we begin to load the next items -->
+    <item name="infinite_scroll_threshold" type="integer">0</item>
+</resources>

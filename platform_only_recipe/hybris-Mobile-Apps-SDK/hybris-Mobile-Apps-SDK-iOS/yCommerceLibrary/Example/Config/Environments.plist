@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Defaults</key>
+	<dict>	
+		<key>CURRENT_CATALOG_VERSION_ATTRIBUTE_KEY</key>
+		<string>Online</string>
+        <key>USE_CACHE_ATTRIBUTE_KEY</key>
+        <string>true</string>
+        <key>CURRENT_STORE_ATTRIBUTE_KEY</key>
+        <string>powertools</string>
+        <key>CURRENT_CATALOG_ATTRIBUTE_KEY</key>
+        <string>powertoolsProductCatalog</string>
+        <key>CURRENT_ROOT_CATEGORY_KEY</key>
+		<string>1</string>
+        <key>REST_URL_ATTRIBUTE_KEY</key>
+        <string>rest/v2</string>
+	</dict>
+	<key>Debug</key>
+	<dict>
+		<key>HOST_ATTRIBUTE_KEY</key>
+		<string>server_url</string>
+		<key>PORT_ATTRIBUTE_KEY</key>
+		<string>port_if_needed</string>
+	</dict>
+	<key>Release</key>
+	<dict>
+		<key>HOST_ATTRIBUTE_KEY</key>
+		<string>server_url</string>
+		<key>PORT_ATTRIBUTE_KEY</key>
+		<string>port_if_needed</string>
+	</dict>
+</dict>
+</plist>

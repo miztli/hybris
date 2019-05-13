@@ -1,0 +1,40 @@
+apply plugin: 'installer-platform-plugin'
+apply plugin: 'installer-platform-containerization-plugin'
+
+
+def dpl = deployment('ybase') {
+    os("${project.projectDir}/resources/base_os")
+    jdk("${project.projectDir}/resources/base_jdk")
+    loadBalancer("${project.projectDir}/resources/base_apache")
+}
+
+def dplAdditional = deployment('ybase') {
+    solrImage('solr') {
+        templateDir "${project.projectDir}/resources/solr"
+    }
+    zookeeper("${project.projectDir}/resources/zookeeper/")
+}
+
+task createImagesStructure {
+    doLast {
+        dpl.createImagesStructure()
+    }
+}
+
+task buildImages {
+    doLast {
+        dpl.buildImages()
+    }
+}
+
+task createAdditionalImagesStructure {
+    doLast {
+        dplAdditional.createImagesStructure()
+    }
+}
+
+task buildAdditionalImages(dependsOn: createAdditionalImagesStructure) {
+    doLast {
+        dplAdditional.buildImages()
+    }
+}

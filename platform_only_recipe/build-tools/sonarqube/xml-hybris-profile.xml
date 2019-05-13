@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<profile>
+	<name>EC-hybris-XML</name>
+	<language>xml</language>
+	<rules>
+		<rule>
+			<repositoryKey>xml</repositoryKey>
+			<key>A_deployment_table_must_be_defined_for_all_Items_extending_GenericItem</key>
+			<priority>MAJOR</priority>
+			<parameters>
+				<parameter>
+					<key>filePattern</key>
+					<value>*items.xml</value>
+				</parameter>
+				<parameter>
+					<key>expression</key>
+					<value>//itemtype[(not(@extends) or @extends='GenericItem') and not(@abstract='true') and not(deployment)]</value>
+				</parameter>
+				<parameter>
+					<key>message</key>
+					<value>A deployment table must be defined for all Items extending GenericItem</value>
+				</parameter>
+			</parameters>
+		</rule>
+		<rule>
+			<repositoryKey>xml</repositoryKey>
+			<key>CMSNHO</key>
+			<priority>MAJOR</priority>
+			<parameters>
+				<parameter>
+					<key>filePattern</key>
+					<value>*items.xml</value>
+				</parameter>
+				<parameter>
+					<key>expression</key>
+					<value>//relation/*[(self::sourceElement or self::targetElement) and @ordered='true']</value>
+				</parameter>
+				<parameter>
+					<key>message</key>
+					<value>A relation that has cardinality='many' should not have ordered='true'</value>
+				</parameter>
+			</parameters>
+		</rule>
+		<rule>
+			<repositoryKey>xml</repositoryKey>
+			<key>DTMDMTMR</key>
+			<priority>MAJOR</priority>
+			<parameters>
+				<parameter>
+					<key>filePattern</key>
+					<value>*items.xml</value>
+				</parameter>
+				<parameter>
+					<key>expression</key>
+					<value>//relation[sourceElement[@cardinality='many']][targetElement[@cardinality='many']][not(deployment)]</value>
+				</parameter>
+				<parameter>
+					<key>message</key>
+					<value>A deployment table must be defined for all many-to-many relations</value>
+				</parameter>
+			</parameters>
+		</rule>
+		<rule>
+			<repositoryKey>xml</repositoryKey>
+			<key>EHND</key>
+			<priority>MAJOR</priority>
+			<parameters>
+				<parameter>
+					<key>filePattern</key>
+					<value>*items.xml</value>
+				</parameter>
+				<parameter>
+					<key>expression</key>
+					<value>//*[(self::itemtype or self::relation or self::enumtype or self::attribute) and not(description)]</value>
+				</parameter>
+				<parameter>
+					<key>message</key>
+					<value>Element has no description</value>
+				</parameter>
+			</parameters>
+		</rule>
+		<rule>
+			<repositoryKey>xml</repositoryKey>
+			<key>S1778</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>xml</repositoryKey>
+			<key>S2260</key>
+			<priority>BLOCKER</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>xml</repositoryKey>
+			<key>TNMNSG</key>
+			<priority>MAJOR</priority>
+			<parameters>
+				<parameter>
+					<key>filePattern</key>
+					<value>*items.xml</value>
+				</parameter>
+				<parameter>
+					<key>expression</key>
+					<value>//itemtype[starts-with(translate(./@code, 'abcdefghijklmnopqrstuvwxyz0123456789', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ----------'), 'GENERATED')]</value>
+				</parameter>
+				<parameter>
+					<key>message</key>
+					<value>Type Names must not start with the string Generated</value>
+				</parameter>
+			</parameters>
+		</rule>
+		<rule>
+			<repositoryKey>xml</repositoryKey>
+			<key>TNMSU</key>
+			<priority>MAJOR</priority>
+			<parameters>
+				<parameter>
+					<key>filePattern</key>
+					<value>*items.xml</value>
+				</parameter>
+				<parameter>
+					<key>expression</key>
+					<value>//*[(self::relation or self::enumtype or self::itemtype) and substring(@code, 1, 1) != translate(substring(@code, 1, 1), 'abcdefghijklmnopqrstuvwxyz0123456789', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ----------')]</value>
+				</parameter>
+				<parameter>
+					<key>message</key>
+					<value>Type Names must start with an uppercase letter</value>
+				</parameter>
+			</parameters>
+		</rule>
+	</rules>
+</profile>

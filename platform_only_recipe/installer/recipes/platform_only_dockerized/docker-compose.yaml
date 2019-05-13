@@ -1,0 +1,43 @@
+version: '2'
+services:
+  hsql:
+    image: simple_deployment_hsql
+    volumes:
+      - ./state/hsql:/opt/hsqldb/data
+
+  platform_hac:
+    image: simple_deployment_platform
+    command: hac
+    environment:
+      - JVM_ROUTE=dynamic
+      - WAIT_FOR=hsql:9090
+      - MOD_CLUSTER_ADDRESS_GROUP=224.0.1.105
+      - MOD_CLUSTER_ADDRESS_PORT=23364
+    depends_on:
+      - hsql
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./state/media:/opt/hybris/data/media
+
+  platform_background_processing:
+    image: simple_deployment_platform
+    command: backgroundProcessing
+    environment:
+      - WAIT_FOR=hsql:9090
+    depends_on:
+      - hsql
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./state/media:/opt/hybris/data/media
+
+  load_balancer:
+    image: ybase_load_balancer
+    environment:
+      - MOD_CLUSTER_ADDRESS_GROUP=224.0.1.105
+      - MOD_CLUSTER_ADDRESS_PORT=23364
+    volumes:
+      - ./resources/secrets:/etc/httpd/conf/ssl
+    ports:
+      - "80:80"
+      - "443:443"
+      - "7777:6666"

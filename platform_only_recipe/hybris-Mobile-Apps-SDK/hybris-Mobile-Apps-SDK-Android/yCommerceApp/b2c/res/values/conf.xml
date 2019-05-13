@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">yB2CApp</string>
+    <string name="hockeyapp_app_id" />
+    <string name="googlemaps_api_key"></string>
+    <string name="url_backend" />
+    <string name="link_storefront" />
+    <string name="provider_authority">com.hybris.mobile.b2c.provider</string>
+    <string name="id_category_main">1</string>
+    <string name="url_path_catalog">electronics</string>
+    <string name="url_path_catalog_id">electronicsProductCatalog</string>
+    <string name="url_path_catalog_version_id">Online</string>
+    <string name="db_name">hybris_mobile_b2c</string>
+    <integer name="db_version">1</integer>
+    <string name="name_storefront">APPAREL</string>
+
+    <string-array name="backend_url_keys">
+        <item>Dev</item>
+        <item>Prod</item>
+        <item>Local</item>
+        <item>Custom</item>
+    </string-array>
+    <string-array name="backend_url_values">
+        <item></item>
+        <item></item>
+        <item>https://10.0.2.2:9002</item>
+        <item>http://</item>
+    </string-array>
+
+    <string-array name="backend_catalog_keys">
+        <item>Electronics</item>
+        <item>Apparel UK</item>
+        <item>Custom</item>
+    </string-array>
+    <string-array name="backend_catalog_values">
+        <item>electronics|electronicsProductCatalog|1</item>
+        <item>apparel-uk|apparelProductCatalog|categories</item>
+        <item />
+    </string-array>
+
+</resources>

@@ -1,0 +1,1531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0"
+  
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="address" type="cisAddress"/>
+  <xs:element name="subscriptionChangePaymentMethodRequest" type="cisChangePaymentMethodRequest"/>
+  <xs:element name="customerUsageRequest" type="cisCustomerUsageRequest"/>
+  <xs:element name="customerUsage" type="cisCustomerUsageResult"/>
+  <xs:element name="fileStream" type="cisFileStreamResult"/>
+  <xs:element name="paymentMethodResult" type="cisPaymentMethodResult"/>
+  <xs:element name="paymentMethodUpdateRequest" type="cisPaymentMethodUpdateRequest"/>
+  <xs:element name="billingActivityList" type="cisSubscriptionBillingActivityList"/>
+  <xs:element name="billing" type="cisSubscriptionBillingInfo"/>
+  <xs:element name="subscriptionCancelSubscriptionRequest" type="cisSubscriptionCancelSubscriptionRequest"/>
+  <xs:element name="subscriptionChangeStateRequest" type="cisSubscriptionChangeStateRequest"/>
+  <xs:element name="subscriptionCreateRequest" type="cisSubscriptionCreateRequest"/>
+  <xs:element name="subscriptionData" type="cisSubscriptionData"/>
+  <xs:element name="subscriptionorder" type="cisSubscriptionOrder"/>
+  <xs:element name="subscriptionOrderPostRequest" type="cisSubscriptionOrderPostRequest"/>
+  <xs:element name="subscriptionProcessPayNowRequest" type="cisSubscriptionPayNowRequest"/>
+  <xs:element name="subscriptionProfileRequest" type="cisSubscriptionProfileRequest"/>
+  <xs:element name="subscriptionProfileResult" type="cisSubscriptionProfileResult"/>
+  <xs:element name="subscriptionReplacePaymentMethodRequest" type="cisSubscriptionReplacePaymentMethodRequest"/>
+  <xs:element name="subscriptionRequest" type="cisSubscriptionRequest"/>
+  <xs:element name="subscriptionSessionFinalization" type="cisSubscriptionSessionFinalizeRequest"/>
+  <xs:element name="subscriptionSessionInitRequest" type="cisSubscriptionSessionInitRequest"/>
+  <xs:element name="subscriptionTransactionResult" type="cisSubscriptionTransactionResult"/>
+  <xs:element name="subscriptionUpdateRequest" type="cisSubscriptionUpdateRequest"/>
+  <xs:element name="subscriptionUpgradeRequest" type="cisSubscriptionUpgradeRequest"/>
+  <xs:element name="subscriptionUpgradeResult" type="cisSubscriptionUpgradeResult"/>
+<xs:complexType name="annotationHashMap">
+       <xs:sequence>
+              <xs:element name="parameter" type="annotationHashMapEntryType" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+      </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="annotationHashMapEntryType">
+       <xs:attribute name="key" type="xs:string">
+      </xs:attribute>
+      <xs:attribute name="value" type="xs:string">
+      </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="cisAddress">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Representation of an address.]]>
+    </xs:documentation>
+  </xs:annotation>
+       <xs:sequence>
+              <xs:element name="type" type="cisAddressType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Type of the address.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="title" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Title.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="firstName" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[First name.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="lastName" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Last name.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="email" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Email.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="addressLine1" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[First address line.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="addressLine2" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Second address line.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="addressLine3" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Third address line.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="addressLine4" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Fourth address line.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="zipCode" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Zip/Postal code.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="city" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[City.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="state" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Second part of the ISO 3166-2 subdivision code (e.g. state or province code without country).]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="country" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[2 letter ISO 3166-1 alpha-2 country code.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="phone" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The phone number.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="company" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The company name.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="longitude" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Longitude of the address. Negative values are in the Western hemisphere. Positive values are in the Eastern hemisphere.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="latitude" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Latitude of the address. Negative values are in the Southern hemisphere. Positive values are in the Northern hemisphere.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="facilityType" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[the type of the facility.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="facilityName" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The name of the facility.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="faxNumber" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The fax number belonging to this address.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="vendorParameters" type="annotationHashMap" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Vendor specific values to pass in the request.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="cisAddressType">
+  <xs:restriction base="xs:string">
+     
+    <xs:enumeration value="SHIP_TO"/>
+ 
+    <xs:enumeration value="SHIP_FROM"/>
+ 
+    <xs:enumeration value="BILL_TO"/>
+ 
+    <xs:enumeration value="ADMIN_ORIGIN"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="cisDecision">
+  <xs:restriction base="xs:string">
+     
+    <xs:enumeration value="ACCEPT"/>
+ 
+    <xs:enumeration value="REVIEW"/>
+ 
+    <xs:enumeration value="REJECT"/>
+ 
+    <xs:enumeration value="ERROR"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="cisLineItem">
+       <xs:sequence>
+              <xs:element name="itemCode" type="xs:string" minOccurs="1">
+              </xs:element>
+              <xs:element name="quantity" type="xs:int" minOccurs="1">
+              </xs:element>
+              <xs:element name="productDescription" type="xs:string" minOccurs="1">
+              </xs:element>
+              <xs:element name="unitPrice" type="xs:decimal" minOccurs="1">
+              </xs:element>
+              <xs:element name="taxCode" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="vendorParameters" type="annotationHashMap" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:int">
+      </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="cisResult">
+       <xs:sequence>
+              <xs:element name="decision" type="cisDecision" minOccurs="0">
+              </xs:element>
+              <xs:element name="vendorResponses" type="annotationHashMap" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+      <xs:attribute name="clientRefId" type="xs:string">
+      </xs:attribute>
+      <xs:attribute name="vendorId" type="xs:string">
+      </xs:attribute>
+      <xs:attribute name="vendorReasonCode" type="xs:string">
+      </xs:attribute>
+      <xs:attribute name="vendorStatusCode" type="xs:string">
+      </xs:attribute>
+      <xs:attribute name="id" type="xs:string">
+      </xs:attribute>
+      <xs:attribute name="href" type="xs:string">
+      </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="abstractCisSubscriptionUpdateRequest" abstract="true">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[A payment request to for example authorize or capture an amount.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="effectiveFrom" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="merchantSubscriptionId" type="xs:string" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisChangePaymentMethodRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[A request for changing an existing payment method.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="merchantPaymentMethodId" type="xs:string" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The payment method to change.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="action" type="xs:string" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The action to perform.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="newValue" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[New value to be provided.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="propagate" type="xs:boolean" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Indicates if the changes should also be applied to subscriptions that use the payment method.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisChargeEntry">
+       <xs:sequence>
+              <xs:element name="oneTimeChargeTime" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="chargePrice" type="xs:decimal" minOccurs="1">
+              </xs:element>
+              <xs:element name="vendorParameters" type="annotationHashMap" minOccurs="0">
+              </xs:element>
+              <xs:element name="numberOfCycles" type="xs:int" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cisCustomerUsageRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Customer usage request that holds customer usage information.]]>
+    </xs:documentation>
+  </xs:annotation>
+       <xs:sequence>
+              <xs:element name="fromDate" type="xs:dateTime" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[from date for the customer usage.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="toDate" type="xs:dateTime" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[to date for the customer usage.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="customerId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[customer id for the current usage.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[the subscription id.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="usageChargeName" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[usage charge name for the customer usage.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="unitsConsumed" type="xs:decimal" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[units consumed.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cisCustomerUsageResult">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[The result of a pass customer usage call.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisResult">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisFileStreamResult">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Presents result of billing activity detail request.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisResult">
+      <xs:sequence>
+              <xs:element name="bytes" type="xs:base64Binary" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Byte stream for file downloading.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="mimeType" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Describes content type.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="fileName" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The file name.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisPaymentMethod">
+       <xs:sequence>
+              <xs:element name="ccNumber" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="enabled" type="xs:boolean" minOccurs="1">
+              </xs:element>
+              <xs:element name="expirationMonth" type="xs:int" minOccurs="1">
+              </xs:element>
+              <xs:element name="billingAddress" type="cisAddress" minOccurs="0">
+              </xs:element>
+              <xs:element name="expirationYear" type="xs:int" minOccurs="1">
+              </xs:element>
+              <xs:element name="merchantPaymentMethodId" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="cardHolder" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="cardType" type="xs:string" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cisPaymentMethodResult">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Result type for payment method related requests.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisResult">
+      <xs:sequence>
+              <xs:element name="paymentMethod" type="cisPaymentMethod" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The payment method.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisPaymentMethodUpdateRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Request for updating an existing payment method.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="merchantPaymentMethodId" type="xs:string" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The payment method to change.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="enabled" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Enable or disable the payment method.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="billingAddress" type="cisAddress" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Updated billing address.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="propagate" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Indicates whether the updates should also be applied to subscriptions that use the payment method.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionBillingActivityList">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Retrieves a billing activity list for subscription.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisResult">
+      <xs:sequence>
+              <xs:element name="merchantSubscriptionId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Merchant ID of a subscription.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+        <xs:element name="billings" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <![CDATA[List billings.]]>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="billing" type="cisSubscriptionBillingInfo" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[List billings.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionBillingInfo">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Sub-Element defining a billing for subscription.]]>
+    </xs:documentation>
+  </xs:annotation>
+       <xs:sequence>
+              <xs:element name="billingId" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="billingPeriod" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="billingDate" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="amount" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="status" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="customFields" type="annotationHashMap" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionCancelSubscriptionRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[A request to cancel an existing subscription.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="merchantSubscriptionId" type="xs:string" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Identifying attribute of the subscription.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="cancelationMode" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The cancellation mode.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="force" type="xs:boolean" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[If subscription should be canceled immediately.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionChangeStateRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Generic request type for subscription state changes.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="abstractCisSubscriptionUpdateRequest">
+      <xs:sequence>
+              <xs:element name="newState" type="xs:string" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionCreateRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Request for subscription creation.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="orderId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Identifying order that subscription related to.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="currency" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[3 letter ISO 4217 currency code.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="orderDate" type="xs:date" minOccurs="0">
+              </xs:element>
+              <xs:element name="merchantAccountId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Identifying attribute of the buyer.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="merchantPaymentMethodId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[ID of the payment method.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionItem" type="cisSubscriptionItem" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionData">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Retrieves subscription data from a Subscription Billing Provider.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisResult">
+      <xs:sequence>
+              <xs:element name="merchantAccountId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[merchant ID of a customer account.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="currency" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[3 letter ISO 4217 currency code. Default currency for this profile.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Merchant ID of a subscription.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionName" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Merchant name of a subscription product.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionDescription" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Merchant description of a subscription product.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionProductId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Merchant ID of a subscription product.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionOrderId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Merchant order number containing this subscription product.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionOrderEntryId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Merchant order entry number containing this subscription product.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="billingSystemId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Billing system id.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionStartDate" type="xs:date" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Start date of a subscription.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionEndDate" type="xs:date" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[End date of a subscription.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionStatus" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Status of a subscription.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="cancellationPossible" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Determines if a subscription is cancellable.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="billingFrequency" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Billing frequency.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="contractDuration" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Contract duration.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="orderDate" type="xs:dateTime" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[When was the subscription order placed originally.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="cancelDate" type="xs:dateTime" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[When was the subscription order cancelled.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="comments" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Comments about the creation.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="paymentMethod" type="cisPaymentMethod" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Copy of the payment method of the corresponding account used by this subscription.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="autoRenewal" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[AutoRenewal flag of a subscription.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionItem">
+       <xs:sequence>
+              <xs:element name="code" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="name" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="vendorParameters" type="annotationHashMap" minOccurs="0">
+              </xs:element>
+              <xs:element name="subscriptionTerm" type="cisTermsOfService" minOccurs="0">
+              </xs:element>
+              <xs:element name="subscriptionPlan" type="cisSubscriptionPlan" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string">
+      </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionOrder">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[A subscription order containing a list of subscription items.]]>
+    </xs:documentation>
+  </xs:annotation>
+       <xs:sequence>
+              <xs:element name="date" type="xs:dateTime" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Date used for records (e.g. order/shipping/return date).]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="currency" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[3 letter ISO 4217 currency code.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+        <xs:element name="addresses" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <![CDATA[List of addresses.]]>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="address" type="cisAddress" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[List of addresses.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="lineItems" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <![CDATA[List of line items. intended for "Buy now" items in cart]]>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="lineItem" type="cisLineItem" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[List of line items. intended for "Buy now" items in cart]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+              <xs:element name="vendorParameters" type="annotationHashMap" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Vendor specific values to pass in the request.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="merchantAccountId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[unique identifier for a specific account.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+        <xs:element name="items" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <![CDATA[List of subscription items.]]>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" type="cisSubscriptionItem" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[List of subscription items.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            <![CDATA[Unique id (e.g order/shipment/return number).]]>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionOrderPostRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[A subscription order request.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="merchantAccountId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Identifying attribute of the buyer.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="merchantPaymentMethodId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Identifying attribute of the payment method (if available).]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="subscriptionOrder" type="cisSubscriptionOrder" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The subscription order.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="currency" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[3 letter ISO 4217 currency code.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionPayNowRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[A payment request to for example authorize or capture an amount.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="amount" type="xs:decimal" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The amount of the transaction.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="currency" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[3 letter ISO 4217 currency code.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="profileId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[ID of a payment profile.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="paymentMethodId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[ID of the payment method.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="merchantTransactionId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Merchant ID of the transaction.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="merchantTransactionDescription" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Descriptive text for transaction.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+        <xs:element name="lineItems" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <![CDATA[List of line items.]]>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="lineItem" type="cisLineItem" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[List of line items.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+              <xs:element name="transactionMode" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Transaction mode (AUTH, CAPTURE or AUTHCAPTURE).]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionPlan">
+       <xs:sequence>
+              <xs:element name="vendorParameters" type="annotationHashMap" minOccurs="0">
+              </xs:element>
+        <xs:element name="usageCharges" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="usageCharge" type="cisUsageCharge" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="charges" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="charge" type="cisChargeEntry" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+              <xs:element name="name" type="xs:string" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string">
+      </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionProfileRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Contains profile information.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="profileId" type="xs:string" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[ID of a customer/account profile.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="customerName" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Profile name.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="company" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Company.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="currency" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[3 letter ISO 4217 currency code.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="emailPreference" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Email preference, either "plaintext", "html" or "multipart".]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="languagePreference" type="xs:string" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Language preference, ISO 639-1 two-letter language code, e.g. de,en,.. .]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="emailAddress" type="xs:string" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[ID of a payment profile.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="shippingAddress" type="cisAddress" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The shipping address.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionProfileResult">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Retrieves customer profile info from a Subscription Billing Provider.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionTransactionResult">
+      <xs:sequence>
+              <xs:element name="profileId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[ID of a payment profile.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="currency" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[3 letter ISO 4217 currency code. Default currency for this profile.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="validationResult" type="cisSubscriptionTransactionResult" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Result of either a profile check or of a set up fee capture used to validate the credit card.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+        <xs:element name="paymentMethods" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <![CDATA[List of payment methods.]]>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="paymentMethod" type="cisPaymentMethod" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[List of payment methods.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="subscriptions" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <![CDATA[Placeholder to contain list of subscriptions.]]>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="subscriptions" type="cisSubscriptionData" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Placeholder to contain list of subscriptions.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+              <xs:element name="customerAddress" type="cisAddress" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Customer information.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="comments" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Comments about the creation.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionReplacePaymentMethodRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[A request to replace the payment method for an existing subscription with another existing payment method.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="merchantSubscriptionId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[identifying attribute of the subscription.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="merchantPaymentMethodId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[identifying attribute of the payment method.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[A payment request to for example authorize or capture an amount.]]>
+    </xs:documentation>
+  </xs:annotation>
+       <xs:sequence>
+              <xs:element name="vendorParameters" type="annotationHashMap" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Vendor specific parameters which aren't represented in the generic interface.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionSessionFinalizeRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[A request to finalize a transactional WebSession based on an issued token.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="authorizationRequestId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[the request id of the authorization to capture on.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="authorizationRequestToken" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[the authorization request token used.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionSessionInitRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[A payment request to initiate payment session.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionRequest">
+      <xs:sequence>
+              <xs:element name="returnUrl" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[If the service approves the transaction, the customer will be redirected to this URL.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="cancelReturnUrl" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[If the service cancels the transaction or discovers an error, the customer will be redirected to this URL.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="ipAddress" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The ipAddress of the client.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="merchantAccountId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Identifying attribute of the buyer.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionTransactionResult">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[The result of a payment transaction such as authorizing or capturing.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisResult">
+      <xs:sequence>
+              <xs:element name="amount" type="xs:decimal" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The amount / subscription price .]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="sessionTransactionToken" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="merchantProductId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The transaction verification key.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionUpdateRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Generic request type for subscription updates.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="abstractCisSubscriptionUpdateRequest">
+      <xs:sequence>
+              <xs:element name="merchantPaymentMethodId" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[The merchantPaymentMethodId.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="autoRenewal" type="xs:boolean" minOccurs="0">
+              </xs:element>
+              <xs:element name="contractDurationExtension" type="xs:int" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionUpgradeRequest">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[Generic request type for subscription upgrades.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionCreateRequest">
+      <xs:sequence>
+              <xs:element name="sourceSubscriptionId" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="settlement" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="effectiveFrom" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Indicates when the upgrade will be effective.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+              <xs:element name="preview" type="xs:boolean" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[Indicates whether it's preview upgrade call or real upgrade.]]>
+                </xs:documentation>
+              </xs:annotation>
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisSubscriptionUpgradeResult">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[The result of a subscription upgrade call.]]>
+    </xs:documentation>
+  </xs:annotation>
+   <xs:complexContent>
+    <xs:extension base="cisSubscriptionData">
+      <xs:sequence>
+        <xs:element name="futureBillings" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="futureBillings" type="cisSubscriptionBillingInfo" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cisTermsOfService">
+       <xs:sequence>
+              <xs:element name="billingCycleDay" type="xs:int" minOccurs="1">
+              </xs:element>
+              <xs:element name="billingPlanName" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="name" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="billingPlanId" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="billingFrequency" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="frequency" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="number" type="xs:int" minOccurs="1">
+              </xs:element>
+              <xs:element name="vendorParameters" type="annotationHashMap" minOccurs="0">
+              </xs:element>
+              <xs:element name="cancellable" type="xs:boolean" minOccurs="0">
+              </xs:element>
+              <xs:element name="autoRenewal" type="xs:boolean" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string">
+      </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="cisUsageCharge">
+       <xs:sequence>
+              <xs:element name="name" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="type" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="unitId" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="tier" type="cisUsageChargeTier" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+      </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cisUsageChargeTier">
+       <xs:sequence>
+              <xs:element name="numberOfUnits" type="xs:int" minOccurs="0">
+              </xs:element>
+              <xs:element name="chargePrice" type="xs:decimal" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+</xs:complexType>
+
+</xs:schema>

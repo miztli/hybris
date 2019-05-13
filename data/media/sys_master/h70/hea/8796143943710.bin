@@ -1,2 +1,0 @@
-${ctx.messages.getMessage('emailSubject', ${ctx.order.code})}
-

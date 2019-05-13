@@ -1,0 +1,212 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Holo">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+
+			android:fontFamily="sans-serif"           // roboto regular
+			android:fontFamily="sans-serif-light"     // roboto light
+			android:fontFamily="sans-serif-condensed" // roboto condensed
+			android:fontFamily="sans-serif-thin"      // roboto thin (android 4.2)
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="main_button">
+        <item name="android:textColor">#ECEFF1</item>
+        <item name="android:textSize">@dimen/button_text_height_medium</item>
+        <item name="android:background">@drawable/login_btn_selector</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="second_button">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">@dimen/button_text_height_small</item>
+        <item name="android:background">@drawable/second_btn_selector</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="action_button">
+        <item name="android:textColor">#003E9B</item>
+        <item name="android:textSize">@dimen/button_text_height_medium</item>
+        <item name="android:background">@drawable/action_btn_selector</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="bulk_button">
+        <item name="android:textColor">#30639E</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:shadowColor">#316BAF</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:background">@drawable/bulk_btn_selector</item>
+    </style>
+
+    <style name="triangle_button_product_item">
+        <item name="android:background">@drawable/triangle_button_product_item_selector</item>
+    </style>
+
+    <style name="layout_product_item">
+        <item name="android:background">@drawable/layout_product_item_selector</item>
+    </style>
+
+    <style name="shadow_layout_select">
+        <item name="android:background">@drawable/shadow_layout_selector</item>
+    </style>
+
+    <style name="layout_account_user_address_item">
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="expandable_layout_product_item">
+        <item name="android:background">@drawable/expandable_btn_selector</item>
+    </style>
+
+    <style name="layout_order_item">
+        <item name="android:background">@drawable/layout_order_item_selector</item>
+    </style>
+
+    <style name="spinner_style" parent="@android:style/Widget.Spinner">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:background">@drawable/spinner_background</item>
+    </style>
+
+    <style name="terms_conditions_validation">
+        <item name="android:background">@drawable/terms_conditions_selector</item>
+    </style>
+
+    <style name="expandable_button">
+        <item name="android:textColor">#ECEFF1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:shadowColor">#316BAF</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:background">@drawable/expandable_btn_selector</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="expandable_layout">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">#316BAF</item>
+        <item name="android:paddingLeft">5sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="login_edittext">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@color/signin_hint_color</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">#316BAF</item>
+        <item name="android:paddingLeft">5sp</item>
+    </style>
+
+    <style name="dropdown">
+        <item name="android:background">@android:drawable/btn_dropdown</item>
+    </style>
+
+    <style name="AlertDialogCustom" parent="android:style/android:Theme.Holo" />
+
+    <style name="viewpager_indicator_button">
+        <item name="android:shadowColor">#1AD3E8</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:background">@drawable/viewpager_indicator_selector</item>
+    </style>
+
+    <style name="h1_title_blue">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#0054AE</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="h1_title_black">
+        <item name="android:textSize">42sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="h2_title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="h2_title_white">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="h3_title">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="h3_title_grey">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#C7C7C7</item>
+    </style>
+
+    <style name="h4_title">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="h4_title_white">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="info_italic_small">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#41c769</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <!-- Cart menu -->
+    <style name="cart_header_button" parent="h2_title">
+        <item name="android:padding">10sp</item>
+    </style>
+
+    <style name="style_tooltip" parent="android:Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:minWidth">100dp</item>
+        <item name="android:maxWidth">250dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Action bar -->
+    <style name="action_bar_cart_item">
+        <item name="android:textColor">#112c59</item>
+        <item name="android:background">@drawable/menu_item_cart_nb_items</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginRight">3dp</item>
+    </style>
+
+    <!-- Errors text field -->
+    <style name="error_text">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/error_color</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+</resources>

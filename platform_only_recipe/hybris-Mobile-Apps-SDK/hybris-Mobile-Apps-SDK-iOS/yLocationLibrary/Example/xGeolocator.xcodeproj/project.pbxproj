@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C44AADF1A1A700E005C6249 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AADE1A1A700E005C6249 /* main.m */; };
+		3C44AAE21A1A700E005C6249 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AAE11A1A700E005C6249 /* AppDelegate.m */; };
+		3C44AAE41A1A700E005C6249 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C44AAE31A1A700E005C6249 /* Images.xcassets */; };
+		3C44AAF31A1A700E005C6249 /* xGeolocatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AAF21A1A700E005C6249 /* xGeolocatorTests.m */; };
+		3C44AAFF1A1A71BC005C6249 /* FakeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AAFE1A1A71BC005C6249 /* FakeData.m */; };
+		3C44AB021A1A7207005C6249 /* HYBGeolocatorMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AB011A1A7207005C6249 /* HYBGeolocatorMapController.m */; };
+		3C44AB051A1A722A005C6249 /* HYBGeolocatorDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AB041A1A722A005C6249 /* HYBGeolocatorDetailController.m */; };
+		3C44AB091A1A7521005C6249 /* HYBGeolocatorObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AB081A1A7521005C6249 /* HYBGeolocatorObject.m */; };
+		3C44AB0D1A1A7648005C6249 /* HYBGeolocatorMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AB0C1A1A7648005C6249 /* HYBGeolocatorMapView.m */; };
+		3C44AB111A1A7671005C6249 /* HYBGeolocatorDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AB101A1A7671005C6249 /* HYBGeolocatorDetailView.m */; };
+		3C44AB141A1A77EB005C6249 /* HYBGeolocatorWaitingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AB131A1A77EB005C6249 /* HYBGeolocatorWaitingController.m */; };
+		3C44AB171A1A8AB0005C6249 /* HYBFoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AB161A1A8AB0005C6249 /* HYBFoldView.m */; };
+		3C44AB211A1A904A005C6249 /* HYBGeolocatorTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AB201A1A904A005C6249 /* HYBGeolocatorTools.m */; };
+		3C44AB231A1AA0B0005C6249 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C44AB221A1AA0B0005C6249 /* Default-568h@2x.png */; };
+		3C664D781A2FA69000F7E677 /* HYBGeolocatorListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C664D771A2FA69000F7E677 /* HYBGeolocatorListController.m */; };
+		3C664D7B1A2FA84E00F7E677 /* HYBGeolocatorListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C664D7A1A2FA84E00F7E677 /* HYBGeolocatorListView.m */; };
+		3C664D7E1A2FA9C200F7E677 /* HYBGeolocatorMasterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C664D7D1A2FA9C200F7E677 /* HYBGeolocatorMasterController.m */; };
+		3C664D811A2FA9E200F7E677 /* HYBGeolocatorMasterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C664D801A2FA9E200F7E677 /* HYBGeolocatorMasterView.m */; };
+		3C9457D61A1B8FCB00E0CA0D /* HYBGeolocatorPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9457D51A1B8FCB00E0CA0D /* HYBGeolocatorPinView.m */; };
+		3C9457DB1A1BAF7B00E0CA0D /* HYBGeolocatorDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9457DA1A1BAF7B00E0CA0D /* HYBGeolocatorDefaultCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3C44AAED1A1A700E005C6249 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C44AAD11A1A700E005C6249 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C44AAD81A1A700E005C6249;
+			remoteInfo = xGeolocator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3C44AAD91A1A700E005C6249 /* xGeolocator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xGeolocator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C44AADD1A1A700E005C6249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C44AADE1A1A700E005C6249 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3C44AAE01A1A700E005C6249 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3C44AAE11A1A700E005C6249 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3C44AAE31A1A700E005C6249 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3C44AAEC1A1A700E005C6249 /* xGeolocatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xGeolocatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C44AAF11A1A700E005C6249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C44AAF21A1A700E005C6249 /* xGeolocatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xGeolocatorTests.m; sourceTree = "<group>"; };
+		3C44AAFD1A1A71BC005C6249 /* FakeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeData.h; sourceTree = "<group>"; };
+		3C44AAFE1A1A71BC005C6249 /* FakeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeData.m; sourceTree = "<group>"; };
+		3C44AB001A1A7207005C6249 /* HYBGeolocatorMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorMapController.h; sourceTree = "<group>"; };
+		3C44AB011A1A7207005C6249 /* HYBGeolocatorMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorMapController.m; sourceTree = "<group>"; };
+		3C44AB031A1A722A005C6249 /* HYBGeolocatorDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorDetailController.h; sourceTree = "<group>"; };
+		3C44AB041A1A722A005C6249 /* HYBGeolocatorDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorDetailController.m; sourceTree = "<group>"; };
+		3C44AB071A1A7521005C6249 /* HYBGeolocatorObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorObject.h; sourceTree = "<group>"; };
+		3C44AB081A1A7521005C6249 /* HYBGeolocatorObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorObject.m; sourceTree = "<group>"; };
+		3C44AB0B1A1A7648005C6249 /* HYBGeolocatorMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorMapView.h; sourceTree = "<group>"; };
+		3C44AB0C1A1A7648005C6249 /* HYBGeolocatorMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorMapView.m; sourceTree = "<group>"; };
+		3C44AB0F1A1A7671005C6249 /* HYBGeolocatorDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorDetailView.h; sourceTree = "<group>"; };
+		3C44AB101A1A7671005C6249 /* HYBGeolocatorDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorDetailView.m; sourceTree = "<group>"; };
+		3C44AB121A1A77EB005C6249 /* HYBGeolocatorWaitingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorWaitingController.h; sourceTree = "<group>"; };
+		3C44AB131A1A77EB005C6249 /* HYBGeolocatorWaitingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorWaitingController.m; sourceTree = "<group>"; };
+		3C44AB151A1A8AB0005C6249 /* HYBFoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBFoldView.h; sourceTree = "<group>"; };
+		3C44AB161A1A8AB0005C6249 /* HYBFoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBFoldView.m; sourceTree = "<group>"; };
+		3C44AB1F1A1A904A005C6249 /* HYBGeolocatorTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorTools.h; sourceTree = "<group>"; };
+		3C44AB201A1A904A005C6249 /* HYBGeolocatorTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorTools.m; sourceTree = "<group>"; };
+		3C44AB221A1AA0B0005C6249 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		3C664D761A2FA69000F7E677 /* HYBGeolocatorListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorListController.h; sourceTree = "<group>"; };
+		3C664D771A2FA69000F7E677 /* HYBGeolocatorListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorListController.m; sourceTree = "<group>"; };
+		3C664D791A2FA84E00F7E677 /* HYBGeolocatorListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorListView.h; sourceTree = "<group>"; };
+		3C664D7A1A2FA84E00F7E677 /* HYBGeolocatorListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorListView.m; sourceTree = "<group>"; };
+		3C664D7C1A2FA9C200F7E677 /* HYBGeolocatorMasterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorMasterController.h; sourceTree = "<group>"; };
+		3C664D7D1A2FA9C200F7E677 /* HYBGeolocatorMasterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorMasterController.m; sourceTree = "<group>"; };
+		3C664D7F1A2FA9E200F7E677 /* HYBGeolocatorMasterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorMasterView.h; sourceTree = "<group>"; };
+		3C664D801A2FA9E200F7E677 /* HYBGeolocatorMasterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorMasterView.m; sourceTree = "<group>"; };
+		3C9457D41A1B8FCB00E0CA0D /* HYBGeolocatorPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorPinView.h; sourceTree = "<group>"; };
+		3C9457D51A1B8FCB00E0CA0D /* HYBGeolocatorPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorPinView.m; sourceTree = "<group>"; };
+		3C9457D91A1BAF7B00E0CA0D /* HYBGeolocatorDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBGeolocatorDefaultCell.h; sourceTree = "<group>"; };
+		3C9457DA1A1BAF7B00E0CA0D /* HYBGeolocatorDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBGeolocatorDefaultCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3C44AAD61A1A700E005C6249 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C44AAE91A1A700E005C6249 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3C44AAD01A1A700E005C6249 = {
+			isa = PBXGroup;
+			children = (
+				3C44AADB1A1A700E005C6249 /* xGeolocator */,
+				3C44AAEF1A1A700E005C6249 /* xGeolocatorTests */,
+				3C44AADA1A1A700E005C6249 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3C44AADA1A1A700E005C6249 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3C44AAD91A1A700E005C6249 /* xGeolocator.app */,
+				3C44AAEC1A1A700E005C6249 /* xGeolocatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3C44AADB1A1A700E005C6249 /* xGeolocator */ = {
+			isa = PBXGroup;
+			children = (
+				3C44AAE01A1A700E005C6249 /* AppDelegate.h */,
+				3C44AAE11A1A700E005C6249 /* AppDelegate.m */,
+				3C44AB0A1A1A75EF005C6249 /* Utilities */,
+				3C44AB061A1A74D0005C6249 /* Models */,
+				3C44AB0E1A1A764B005C6249 /* Views */,
+				3C44AAFC1A1A7191005C6249 /* Controllers */,
+				3C44AAE31A1A700E005C6249 /* Images.xcassets */,
+				3C44AADC1A1A700E005C6249 /* Supporting Files */,
+			);
+			path = xGeolocator;
+			sourceTree = "<group>";
+		};
+		3C44AADC1A1A700E005C6249 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C44AB221A1AA0B0005C6249 /* Default-568h@2x.png */,
+				3C44AADD1A1A700E005C6249 /* Info.plist */,
+				3C44AADE1A1A700E005C6249 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C44AAEF1A1A700E005C6249 /* xGeolocatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C44AAF21A1A700E005C6249 /* xGeolocatorTests.m */,
+				3C44AAF01A1A700E005C6249 /* Supporting Files */,
+			);
+			path = xGeolocatorTests;
+			sourceTree = "<group>";
+		};
+		3C44AAF01A1A700E005C6249 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C44AAF11A1A700E005C6249 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C44AAFC1A1A7191005C6249 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C664D7C1A2FA9C200F7E677 /* HYBGeolocatorMasterController.h */,
+				3C664D7D1A2FA9C200F7E677 /* HYBGeolocatorMasterController.m */,
+				3C44AB001A1A7207005C6249 /* HYBGeolocatorMapController.h */,
+				3C44AB011A1A7207005C6249 /* HYBGeolocatorMapController.m */,
+				3C664D761A2FA69000F7E677 /* HYBGeolocatorListController.h */,
+				3C664D771A2FA69000F7E677 /* HYBGeolocatorListController.m */,
+				3C44AB031A1A722A005C6249 /* HYBGeolocatorDetailController.h */,
+				3C44AB041A1A722A005C6249 /* HYBGeolocatorDetailController.m */,
+				3C44AB121A1A77EB005C6249 /* HYBGeolocatorWaitingController.h */,
+				3C44AB131A1A77EB005C6249 /* HYBGeolocatorWaitingController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3C44AB061A1A74D0005C6249 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3C44AB071A1A7521005C6249 /* HYBGeolocatorObject.h */,
+				3C44AB081A1A7521005C6249 /* HYBGeolocatorObject.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3C44AB0A1A1A75EF005C6249 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3C44AAFD1A1A71BC005C6249 /* FakeData.h */,
+				3C44AAFE1A1A71BC005C6249 /* FakeData.m */,
+				3C44AB151A1A8AB0005C6249 /* HYBFoldView.h */,
+				3C44AB161A1A8AB0005C6249 /* HYBFoldView.m */,
+				3C44AB1F1A1A904A005C6249 /* HYBGeolocatorTools.h */,
+				3C44AB201A1A904A005C6249 /* HYBGeolocatorTools.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		3C44AB0E1A1A764B005C6249 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3C664D7F1A2FA9E200F7E677 /* HYBGeolocatorMasterView.h */,
+				3C664D801A2FA9E200F7E677 /* HYBGeolocatorMasterView.m */,
+				3C44AB0B1A1A7648005C6249 /* HYBGeolocatorMapView.h */,
+				3C44AB0C1A1A7648005C6249 /* HYBGeolocatorMapView.m */,
+				3C664D791A2FA84E00F7E677 /* HYBGeolocatorListView.h */,
+				3C664D7A1A2FA84E00F7E677 /* HYBGeolocatorListView.m */,
+				3C44AB0F1A1A7671005C6249 /* HYBGeolocatorDetailView.h */,
+				3C44AB101A1A7671005C6249 /* HYBGeolocatorDetailView.m */,
+				3C664D821A2FAD6500F7E677 /* Callout */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		3C664D821A2FAD6500F7E677 /* Callout */ = {
+			isa = PBXGroup;
+			children = (
+				3C9457D91A1BAF7B00E0CA0D /* HYBGeolocatorDefaultCell.h */,
+				3C9457DA1A1BAF7B00E0CA0D /* HYBGeolocatorDefaultCell.m */,
+				3C9457D41A1B8FCB00E0CA0D /* HYBGeolocatorPinView.h */,
+				3C9457D51A1B8FCB00E0CA0D /* HYBGeolocatorPinView.m */,
+			);
+			name = Callout;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3C44AAD81A1A700E005C6249 /* xGeolocator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C44AAF61A1A700E005C6249 /* Build configuration list for PBXNativeTarget "xGeolocator" */;
+			buildPhases = (
+				3C44AAD51A1A700E005C6249 /* Sources */,
+				3C44AAD61A1A700E005C6249 /* Frameworks */,
+				3C44AAD71A1A700E005C6249 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = xGeolocator;
+			productName = xGeolocator;
+			productReference = 3C44AAD91A1A700E005C6249 /* xGeolocator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3C44AAEB1A1A700E005C6249 /* xGeolocatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C44AAF91A1A700E005C6249 /* Build configuration list for PBXNativeTarget "xGeolocatorTests" */;
+			buildPhases = (
+				3C44AAE81A1A700E005C6249 /* Sources */,
+				3C44AAE91A1A700E005C6249 /* Frameworks */,
+				3C44AAEA1A1A700E005C6249 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C44AAEE1A1A700E005C6249 /* PBXTargetDependency */,
+			);
+			name = xGeolocatorTests;
+			productName = xGeolocatorTests;
+			productReference = 3C44AAEC1A1A700E005C6249 /* xGeolocatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3C44AAD11A1A700E005C6249 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = hybris;
+				TargetAttributes = {
+					3C44AAD81A1A700E005C6249 = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = D5R5F3X4EB;
+					};
+					3C44AAEB1A1A700E005C6249 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 3C44AAD81A1A700E005C6249;
+					};
+				};
+			};
+			buildConfigurationList = 3C44AAD41A1A700E005C6249 /* Build configuration list for PBXProject "xGeolocator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3C44AAD01A1A700E005C6249;
+			productRefGroup = 3C44AADA1A1A700E005C6249 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3C44AAD81A1A700E005C6249 /* xGeolocator */,
+				3C44AAEB1A1A700E005C6249 /* xGeolocatorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3C44AAD71A1A700E005C6249 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C44AAE41A1A700E005C6249 /* Images.xcassets in Resources */,
+				3C44AB231A1AA0B0005C6249 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C44AAEA1A1A700E005C6249 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C44AAD51A1A700E005C6249 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C9457DB1A1BAF7B00E0CA0D /* HYBGeolocatorDefaultCell.m in Sources */,
+				3C44AAE21A1A700E005C6249 /* AppDelegate.m in Sources */,
+				3C44AB091A1A7521005C6249 /* HYBGeolocatorObject.m in Sources */,
+				3C664D7B1A2FA84E00F7E677 /* HYBGeolocatorListView.m in Sources */,
+				3C44AB021A1A7207005C6249 /* HYBGeolocatorMapController.m in Sources */,
+				3C44AB171A1A8AB0005C6249 /* HYBFoldView.m in Sources */,
+				3C44AB141A1A77EB005C6249 /* HYBGeolocatorWaitingController.m in Sources */,
+				3C44AB051A1A722A005C6249 /* HYBGeolocatorDetailController.m in Sources */,
+				3C664D7E1A2FA9C200F7E677 /* HYBGeolocatorMasterController.m in Sources */,
+				3C9457D61A1B8FCB00E0CA0D /* HYBGeolocatorPinView.m in Sources */,
+				3C44AB111A1A7671005C6249 /* HYBGeolocatorDetailView.m in Sources */,
+				3C664D781A2FA69000F7E677 /* HYBGeolocatorListController.m in Sources */,
+				3C44AB211A1A904A005C6249 /* HYBGeolocatorTools.m in Sources */,
+				3C664D811A2FA9E200F7E677 /* HYBGeolocatorMasterView.m in Sources */,
+				3C44AADF1A1A700E005C6249 /* main.m in Sources */,
+				3C44AAFF1A1A71BC005C6249 /* FakeData.m in Sources */,
+				3C44AB0D1A1A7648005C6249 /* HYBGeolocatorMapView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C44AAE81A1A700E005C6249 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C44AAF31A1A700E005C6249 /* xGeolocatorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C44AAEE1A1A700E005C6249 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C44AAD81A1A700E005C6249 /* xGeolocator */;
+			targetProxy = 3C44AAED1A1A700E005C6249 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3C44AAF41A1A700E005C6249 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3C44AAF51A1A700E005C6249 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3C44AAF71A1A700E005C6249 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = xGeolocator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3C44AAF81A1A700E005C6249 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = xGeolocator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3C44AAFA1A1A700E005C6249 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = xGeolocatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/xGeolocator.app/xGeolocator";
+			};
+			name = Debug;
+		};
+		3C44AAFB1A1A700E005C6249 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = xGeolocatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/xGeolocator.app/xGeolocator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3C44AAD41A1A700E005C6249 /* Build configuration list for PBXProject "xGeolocator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C44AAF41A1A700E005C6249 /* Debug */,
+				3C44AAF51A1A700E005C6249 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C44AAF61A1A700E005C6249 /* Build configuration list for PBXNativeTarget "xGeolocator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C44AAF71A1A700E005C6249 /* Debug */,
+				3C44AAF81A1A700E005C6249 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C44AAF91A1A700E005C6249 /* Build configuration list for PBXNativeTarget "xGeolocatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C44AAFA1A1A700E005C6249 /* Debug */,
+				3C44AAFB1A1A700E005C6249 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3C44AAD11A1A700E005C6249 /* Project object */;
+}

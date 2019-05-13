@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<profile>
+	<name>EC-hybris-CSS</name>
+	<language>css</language>
+	<rules>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>S1134</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>S1135</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>S2260</key>
+			<priority>BLOCKER</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>S2732</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>S2735</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>charset-first</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>font-family-not-ending-with-generic-font-family</key>
+			<priority>CRITICAL</priority>
+			<parameters>
+				<parameter>
+					<key>Exclusions</key>
+					<value>(?i)^(FontAwesome|Glyphicons Halflings|Ionicons|Genericons)$</value>
+				</parameter>
+			</parameters>
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>import-first</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>important-position</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>known-properties</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>protocol-relative-url</key>
+			<priority>MINOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>quoted-generic-font-family-names</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>unknown-at-rules</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>unknown-functions</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>unknown-pseudo</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>unknown-type-selector</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>css</repositoryKey>
+			<key>validate-property-value</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+	</rules>
+</profile>

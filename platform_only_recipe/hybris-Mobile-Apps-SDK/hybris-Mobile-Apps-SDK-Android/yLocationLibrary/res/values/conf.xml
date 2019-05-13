@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="maps_direction_url">http://maps.google.com/maps?saddr=%1$s,%2$s&amp;daddr=%3$s,%4$s</string>
+</resources>

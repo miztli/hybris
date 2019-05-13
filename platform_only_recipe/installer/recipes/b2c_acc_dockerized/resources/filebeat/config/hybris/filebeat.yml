@@ -1,0 +1,34 @@
+---
+
+filebeat.prospectors:
+
+  - input_type: log
+    paths:
+      - /log/console*.log
+    fields:
+      source_type: console
+      service: hybris
+    multiline.pattern: '^[[:space:]]+|^Caused by:'
+    multiline.negate: false
+    multiline.match: after
+
+  - input_type: log
+    paths:
+      - /log/catalina*.log
+    fields:
+      source_type: catalina
+      service: hybris
+    multiline.pattern: '^[[:space:]]+|^Caused by:'
+    multiline.negate: false
+    multiline.match: after
+
+  - input_type: log
+    paths:
+      - /log/*access*.txt
+    fields:
+      source_type: access
+      service: hybris
+
+output.redis:
+  hosts:
+    - redis

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/order_detail_bar"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/order_detail_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/order_detail_bar"
+        android:contentDescription="@string/order_detail_exit"
+        android:drawableLeft="@drawable/back_icon"
+        android:drawableStart="@drawable/back_icon"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="@dimen/padding_small"
+        android:text="@string/order_detail_orders"
+        android:textColor="@color/order_detail_exit" />
+
+</LinearLayout>

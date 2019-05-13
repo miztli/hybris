@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="alert_view_top" type="id" />
+    <item name="alert_view_bottom" type="id" />
+    <item name="alert_view_text" type="id" />
+    <item name="alert_view_icon" type="id" />
+</resources>

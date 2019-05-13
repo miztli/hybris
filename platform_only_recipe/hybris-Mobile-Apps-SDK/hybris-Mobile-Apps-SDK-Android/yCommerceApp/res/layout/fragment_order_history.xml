@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_medium">
+
+    <!-- Order History Header -->
+
+    <LinearLayout
+        android:id="@+id/order_history_header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:background="@color/catalog_header_background">
+
+        <TextView
+            android:id="@+id/order_history_breadcumb"
+            style="@style/h1_title_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingEnd="0dp"
+            android:paddingLeft="@dimen/padding_medium"
+            android:paddingRight="0dp"
+            android:paddingStart="@dimen/padding_medium"
+            android:text="@string/order_history_title" />
+    </LinearLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        layout="@layout/header_order_history" />
+
+    <ListView
+        android:id="@+id/order_history_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.80"
+        android:choiceMode="none"
+        android:divider="@color/order_confirm_divider"
+        android:dividerHeight="1dp" />
+
+</LinearLayout>

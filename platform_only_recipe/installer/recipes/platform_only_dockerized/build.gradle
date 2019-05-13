@@ -1,0 +1,87 @@
+apply plugin: 'installer-platform-plugin'
+apply plugin: 'installer-platform-containerization-plugin'
+apply plugin: 'java'
+
+def pl = platform {
+    localProperties {
+        property 'persistence.legacy.mode', 'false'
+        property 'installed.tenants', ''
+        property 'log4j2.appender.rolling.type', 'RollingFile'
+        property 'log4j2.appender.rolling.name', 'ROLLING'
+        property 'log4j2.appender.rolling.fileName', '${HYBRIS_LOG_DIR}/platform.log'
+        property 'log4j2.appender.rolling.filePattern', '${HYBRIS_LOG_DIR}/platform-%d{MM-dd-yy-HH-mm-ss}-%i.log.gz'
+        property 'log4j2.appender.rolling.layout.type' , 'PatternLayout'
+        property 'log4j2.appender.rolling.layout.pattern', '%highlight{%-5p [%t] %X{RemoteAddr}%X{Tenant}%X{CronJob}[%c{1}] %m%n}'
+        property 'log4j2.appender.rolling.policies.type', 'Policies'
+        property 'log4j2.appender.rolling.policies.time.type', 'TimeBasedTriggeringPolicy'
+        property 'log4j2.appender.rolling.policies.time.interval', '60'
+        property 'log4j2.appender.rolling.policies.time.modulate', 'true'
+        property 'log4j2.appender.rolling.policies.size.type', 'SizeBasedTriggeringPolicy'
+        property 'log4j2.appender.rolling.policies.size.size', '100MB'
+        property 'log4j2.appender.rolling.strategy.type', 'DefaultRolloverStrategy'
+        property 'log4j2.appender.rolling.strategy.max', '5'
+        property 'log4j2.rootLogger.appenderRefs', 'RollingFile'  
+        property 'log4j2.rootLogger.appenderRef.file.ref', 'ROLLING'     
+    }
+
+    dbSetup {
+        dbType 'hsqldb'
+        dbUrl 'jdbc:hsqldb:hsql://hsql:9090/hybris;hsqldb.tx=MVCC'
+        dbUser 'hybris'
+        dbPassword 'hybris'
+    }
+
+    clusterSettings {
+        enableAutodiscovery()
+        udpMulticast()
+    }
+}
+
+def dpl = deployment('simpleDeployment') {
+
+    hsqlImage('hsql') {
+        properties {
+            property 'port', '9090'
+        }
+    }
+
+    platformImage('platform') {
+        basedOn pl
+
+        customTomcatFiles "${project.projectDir}/resources/mod-cluster-binaries"
+        
+        aspect('hac') {
+            enabledWebApps 'hac'
+            disableBackgroundProcessing()
+            
+            localProperties {
+                property 'spring.session.enabled', 'true'
+                property 'spring.session.hac.save', 'async'
+                property 'spring.session.hac.cookie.name', 'JSESSIONID'
+                property 'spring.session.hac.cookie.path', '/'
+            }
+              
+            templatesProperties {
+              property 'httpsConnectorEnabled', 'false'
+              property 'serverXmlServerHook', '''<Listener className="org.jboss.modcluster.container.catalina.standalone.ModClusterListener" advertise="true" advertiseGroupAddress="${ENV::MOD_CLUSTER_ADDRESS_GROUP}" advertisePort="${ENV::MOD_CLUSTER_ADDRESS_PORT}" stickySession="true" stickySessionForce="false" stickySessionRemove="true" />'''
+            }
+        }
+
+        aspect('backgroundProcessing')
+
+        adminAspect()
+    }
+}
+
+
+task createImagesStructure {
+    doLast {
+        dpl.createImagesStructure()
+    }
+}
+
+task buildImages {
+    doLast {
+        dpl.buildImages()
+    }
+}

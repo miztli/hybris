@@ -1,0 +1,5 @@
+include ':yCommerceLibrary', ':yB2BLibrary', ':yB2CLibrary', 'yScannerLibrary'
+include ':yHTTPClientLibrary'
+include ':yUILibrary'
+include ':yLocationLibrary'
+include ':yCommerceApp'

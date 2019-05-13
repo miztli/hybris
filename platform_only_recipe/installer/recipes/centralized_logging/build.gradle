@@ -1,0 +1,21 @@
+apply plugin: 'installer-platform-plugin'
+apply plugin: 'installer-platform-containerization-plugin'
+
+def dpl = deployment('logging') {
+    redis("${project.projectDir}/resources/redis")
+    elasticsearch("${project.projectDir}/resources/elasticsearch")
+    logstash("${project.projectDir}/resources/logstash")
+    kibana("${project.projectDir}/resources/kibana")
+}
+
+task createImagesStructure {
+    doLast {
+        dpl.createImagesStructure()
+    }
+}
+
+task buildImages(dependsOn: createImagesStructure) {
+    doLast {
+        dpl.buildImages()
+    }
+}

@@ -1,0 +1,161 @@
+apply plugin: 'installer-platform-plugin'
+apply plugin: 'installer-addon2-plugin'
+
+def pl = platform {
+    localProperties {
+        property 'commerceservices.default.desktop.ui.experience', 'responsive'
+        property 'csrf.allowed.url.patterns', '/[^/]+(/[^?]*)+(sop/response)$,/[^/]+(/[^?]*)+(merchant_callback)$,/[^/]+(/[^?]*)+(hop/response)$,/[^/]+(/[^?]*)+(language)$,/[^/]+(/[^?]*)+(currency)$,/[^/]+(/[^?]*)+(alipay)+/(.)*$,/[^/]+(/[^?]*)+(wechat)+/(.)*$'
+        property 'task.polling.interval.min', '0'
+    }
+
+    extensions {
+        extName 'adaptivesearchsolr'
+        extName 'adaptivesearchbackoffice'
+        extName 'adaptivesearchwebservices'
+        extName 'adaptivesearchsamplesaddon'
+        extName 'commerceservicesbackoffice'
+        extName 'solrfacetsearchbackoffice'
+        extName 'solrserver'
+        extName 'yacceleratorbackoffice'
+        extName 'yacceleratorinitialdata'
+        extName 'yacceleratorfulfilmentprocess'
+        extName 'yacceleratorstorefront'
+        extName 'yacceleratormarketplaceintegration'
+        extName 'ycommercewebservices'
+        extName 'ycommercewebservicestest'
+
+        extName 'acceleratorwebservicesaddon'
+        extName 'orderselfserviceaddon'
+
+        extName 'customersupportbackoffice'
+        extName 'customerticketingaddon'
+        extName 'commerceorgsamplesaddon'
+
+        extName 'rulebuilderbackoffice'
+        extName 'couponbackoffice'
+        extName 'droolsruleengineservices'
+        extName 'couponfacades'
+        extName 'couponservices'
+        extName 'promotionenginesamplesaddon'
+        extName 'marketplacepromotionenginesamplesaddon'
+
+        extName 'cmswebservices'
+        extName 'smarteditwebservices'
+        extName 'permissionswebservices'
+        extName 'smarteditaddon'
+        extName 'cmssmartedit'
+        extName 'cmsbackoffice'
+        extName 'cmssmarteditwebservices'
+        extName 'previewwebservices'
+        extName 'cmsoccaddon'
+
+        extName 'previewpersonalizationweb'
+        extName 'personalizationcmsweb'
+        extName 'personalizationsmartedit'
+        extName 'personalizationpromotionssmartedit'
+        extName 'personalizationsampledataaddon'
+        extName 'personalizationpromotionssampledataaddon'
+        extName 'personalizationpromotions'
+        extName 'personalizationpromotionsweb'
+        extName 'personalizationservicesbackoffice'
+        extName 'personalizationpromotionsbackoffice'
+        extName 'personalizationsearchbackoffice'
+        extName 'personalizationsearchsmartedit'
+        extName 'personalizationsearchweb'
+        extName 'personalizationsearchsamplesaddon'
+
+        extName 'textfieldconfiguratortemplatebackoffice'
+        extName 'textfieldconfiguratortemplateaddon'
+
+        extName 'consignmenttrackingaddon'
+        extName 'consignmenttrackingmock'
+        extName 'consignmenttrackingbackoffice'
+
+        extName 'marketplaceaddon'
+        extName 'marketplaceoccaddon'
+        extName 'marketplacebackofficesamplesaddon'
+        extName 'marketplacebackoffice'
+        extName 'marketplacestore'
+
+        extName 'chineseprofileaddon'
+        extName 'chineselogisticaddon'
+        extName 'chineselogisticbackoffice'
+
+        extName 'chinesepaymentaddon'
+        extName 'chinesetaxinvoiceaddon'
+        extName 'chinesetaxinvoicebackoffice'
+        extName 'chinesepspalipaymock'
+        extName 'chinesepspalipaysamplesaddon'
+        extName 'chinesepspalipaysbackoffice'
+        extName 'chinesestoreaddon'
+        extName 'verticalnavigationaddon'
+
+        extName 'chineseaddressaddon'
+        extName 'chineseaddressbackoffice'
+
+        extName 'chinesepspwechatpaymentaddon'
+        extName 'chinesepspwechatpaysamplesaddon'
+        extName 'chinesepspwechatpaysbackoffice'
+
+        extName 'notificationaddon'
+        extName 'customerinterestsaddon'
+        extName 'stocknotificationaddon'
+        extName 'chineseproductsharingaddon'
+
+        extName 'backofficesolrsearch'
+        extName 'pcmbackofficesamplesaddon'
+
+        extName 'consignmenttrackingoccaddon'
+        extName 'customerinterestsoccaddon'
+        extName 'notificationoccaddon'
+        extName 'stocknotificationoccaddon'
+
+        extName 'personalizationcmsbackoffice'
+
+        /* integration-apis */
+        extName 'outboundservices'
+        extName 'odata2webservices'
+        extName 'odata2webservicesfeaturetests'
+
+        extName 'kymaintegrationbackoffice'
+        extName 'kymaintegrationsampledata'
+    }
+
+    addons {
+         forStoreFronts('yacceleratorstorefront') {
+            names "commerceorgsamplesaddon,promotionenginesamplesaddon,marketplacepromotionenginesamplesaddon,smarteditaddon,textfieldconfiguratortemplateaddon,customerticketingaddon,orderselfserviceaddon,consignmenttrackingaddon,marketplaceaddon,marketplacebackofficesamplesaddon,chineseprofileaddon,chineselogisticaddon,chinesepaymentaddon,chinesetaxinvoiceaddon,chinesepspalipaysamplesaddon,chinesestoreaddon,verticalnavigationaddon,chineseaddressaddon,chinesepspwechatpaymentaddon,chinesepspwechatpaysamplesaddon,consignmenttrackingaddon,notificationaddon,customerinterestsaddon,stocknotificationaddon,chineseproductsharingaddon,adaptivesearchsamplesaddon,personalizationsearchsamplesaddon,pcmbackofficesamplesaddon"
+            template "yacceleratorstorefront"
+         }
+
+         forStoreFronts('ycommercewebservices') {
+            names "acceleratorwebservicesaddon,marketplaceoccaddon,consignmenttrackingoccaddon,customerinterestsoccaddon,notificationoccaddon,stocknotificationoccaddon,cmsoccaddon"
+            template "ycommercewebservices"
+         }
+    }
+
+}
+
+task setup {
+    doLast {       
+        pl.setup()
+    }
+}
+
+task buildSystem(dependsOn: setup) {
+    doLast {
+        pl.build()
+    }
+}
+
+task initialize(dependsOn: buildSystem) {
+    doLast {
+        pl.initialize()
+    }
+}
+
+
+task start {
+    doLast {
+        pl.start()
+    }
+}

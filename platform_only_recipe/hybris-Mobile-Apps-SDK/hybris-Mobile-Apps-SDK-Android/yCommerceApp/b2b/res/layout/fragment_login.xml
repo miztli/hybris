@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/hybris_login_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/login_img_description"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingBottom="@dimen/padding_large"
+        android:src="@drawable/login_logo">
+
+        <requestFocus />
+    </ImageView>
+
+    <FrameLayout
+        android:id="@+id/email_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/hybris_login_img"
+        android:layout_alignLeft="@+id/hybris_login_img"
+        android:layout_alignRight="@+id/hybris_login_img"
+        android:layout_alignStart="@+id/hybris_login_img"
+        android:layout_below="@+id/hybris_login_img"
+        android:paddingBottom="@dimen/padding_large">
+
+        <com.hybris.mobile.lib.ui.view.EditTextPushContent
+            android:id="@+id/email_edit_text"
+            style="@style/login_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/signin_edittext_height"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:ems="10"
+            android:focusableInTouchMode="true"
+            android:hint="@string/signin_email_hint"
+            android:inputType="textEmailAddress"
+            app:anchorId="@+id/login_button" />
+
+        <Button
+            android:id="@+id/clear_email_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:background="@drawable/ic_reset" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/password_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/email_frame_layout"
+        android:layout_alignLeft="@id/email_frame_layout"
+        android:layout_alignRight="@id/email_frame_layout"
+        android:layout_alignStart="@id/email_frame_layout"
+        android:layout_below="@id/email_frame_layout"
+        android:paddingBottom="@dimen/padding_large">
+
+        <com.hybris.mobile.lib.ui.view.EditTextPushContent
+            android:id="@+id/password_edit_text"
+            style="@style/login_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/signin_edittext_height"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:ems="10"
+            android:focusableInTouchMode="true"
+            android:hint="@string/password_hint"
+            android:imeOptions="actionGo"
+            android:inputType="textPassword"
+            app:anchorId="@+id/login_button" />
+
+        <Button
+            android:id="@+id/clear_password_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:background="@drawable/ic_reset" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/sign_in_button_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/email_frame_layout"
+        android:layout_alignLeft="@id/email_frame_layout"
+        android:layout_alignRight="@id/email_frame_layout"
+        android:layout_alignStart="@id/email_frame_layout"
+        android:layout_below="@id/password_frame_layout">
+
+        <Button
+            android:id="@+id/login_button"
+            style="@style/main_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/signin_edittext_height"
+            android:text="@string/signin_text_button"
+            android:textColor="@color/login_button_text" />
+
+        <ProgressBar
+            android:id="@+id/sign_in_loading_spinner"
+            style="@android:style/Widget.Holo.Light.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical|end"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</RelativeLayout>

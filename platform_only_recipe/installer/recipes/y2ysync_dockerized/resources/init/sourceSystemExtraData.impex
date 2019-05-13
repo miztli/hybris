@@ -1,0 +1,2 @@
+INSERT_UPDATE DataHubInstanceModel;instanceName[unique=true];InstanceLocation;
+;localhost;https://datahub:9793/datahub-webapp/v1;

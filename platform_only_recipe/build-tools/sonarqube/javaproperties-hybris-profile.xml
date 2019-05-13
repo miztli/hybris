@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<profile>
+	<name>EC-hybris-JavaProperties</name>
+	<language>jproperties</language>
+	<rules>
+		<rule>
+			<repositoryKey>jproperties</repositoryKey>
+			<key>S1134</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>jproperties</repositoryKey>
+			<key>S1135</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>jproperties</repositoryKey>
+			<key>S2260</key>
+			<priority>BLOCKER</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>jproperties</repositoryKey>
+			<key>bom-utf8-files</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>jproperties</repositoryKey>
+			<key>indentation</key>
+			<priority>MINOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>jproperties</repositoryKey>
+			<key>no-properties</key>
+			<priority>INFO</priority>
+			<parameters />
+		</rule>
+	</rules>
+</profile>

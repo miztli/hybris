@@ -1,0 +1,27 @@
+---
+
+filebeat.prospectors:
+
+  - input_type: log
+    paths:
+      - /log/solr*.log
+    fields:
+      source_type: console
+      service: solr
+    multiline.pattern: '^[[:space:]]+|^Caused by:'
+    multiline.negate: false
+    multiline.match: after
+
+  - input_type: log
+    paths:
+      - /log/solr_gc*.log
+    fields:
+      source_type: gc
+      service: solr
+    multiline.pattern: '^[[:space:]]+|^Caused by:'
+    multiline.negate: false
+    multiline.match: after
+
+output.redis:
+  hosts:
+    - redis

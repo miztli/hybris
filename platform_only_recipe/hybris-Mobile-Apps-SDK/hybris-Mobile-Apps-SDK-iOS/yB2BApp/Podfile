@@ -1,0 +1,21 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '7.1'
+
+target 'yB2BApp' do
+	pod 'MMDrawerController', '~> 0.6.0'
+	pod 'OLGhostAlertView', '~> 1.8.1'
+
+	pod "yCommerceLibrary", :path => "../yCommerceLibrary"
+	pod "yLocationLibrary", :path => "../yLocationLibrary"
+	pod "yScanningLibrary", :path => "../yScanningLibrary"
+
+	target :Specs do
+	    pod 'Specta'
+	    pod 'Expecta'
+	end
+end
+#post_install do | installer |
+#    installer.project.build_configurations.each do |config|
+#        config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+#    end
+#end

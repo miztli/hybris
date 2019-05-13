@@ -1,0 +1,123 @@
+def config = {
+    localProperties {
+        property 'googleApiKey', ''
+        property 'multicountrysampledataaddon.import.active', 'false'
+        property 'apiregistryservices.events.exporting', 'false'
+    }
+
+    extensions {
+        extName 'adaptivesearchsolr'
+        extName 'adaptivesearchbackoffice'
+        extName 'adaptivesearchsamplesaddon'
+        extName 'adaptivesearchwebservices'
+        extName 'commerceservicesbackoffice'
+        extName 'solrfacetsearchbackoffice'
+        extName 'solrserver'
+        extName 'yacceleratorbackoffice'
+        extName 'yacceleratorinitialdata'
+        extName 'yacceleratorfulfilmentprocess'
+        extName 'yacceleratorstorefront'
+        extName 'ycommercewebservices'
+        extName 'ycommercewebservicestest'
+
+        extName 'electronicsstore'
+        extName 'apparelstore'
+
+        extName 'acceleratorwebservicesaddon'
+        extName 'orderselfserviceaddon'
+
+        extName 'customersupportbackoffice'
+        extName 'customerticketingaddon'
+        extName 'commerceorgsamplesaddon'
+
+        extName 'rulebuilderbackoffice'
+        extName 'couponbackoffice'
+        extName 'droolsruleengineservices'
+        extName 'couponfacades'
+        extName 'couponservices'
+        extName 'promotionenginesamplesaddon'
+
+        extName 'cmswebservices'
+        extName 'smarteditwebservices'
+        extName 'cmssmarteditwebservices'
+        extName 'permissionswebservices'
+        extName 'smarteditaddon'
+        extName 'cmssmartedit'
+        extName 'cmsbackoffice'
+        extName 'multicountrysampledataaddon'
+        extName 'cmsoccaddon'
+
+        extName 'previewpersonalizationweb'
+        extName 'personalizationcmsweb'
+        extName 'personalizationsmartedit'
+        extName 'personalizationpromotionssmartedit'
+        extName 'personalizationsampledataaddon'
+        extName 'personalizationpromotionssampledataaddon'
+        extName 'personalizationpromotions'
+        extName 'personalizationpromotionsweb'
+        extName 'personalizationservicesbackoffice'
+        extName 'personalizationpromotionsbackoffice'
+        extName 'personalizationcmsbackoffice'
+        extName 'personalizationsearchbackoffice'
+        extName 'personalizationsearchsmartedit'
+        extName 'personalizationsearchweb'
+        extName 'personalizationsearchsamplesaddon'
+
+        extName 'textfieldconfiguratortemplatebackoffice'
+        extName 'textfieldconfiguratortemplateaddon'
+        extName 'assistedservicestorefront'
+        extName 'assistedservicewebservices'
+        extName 'assistedservicepromotionaddon'
+
+        extName 'pcmbackofficesamplesaddon'
+
+        /* integration-apis */
+        extName 'outboundservices'
+        extName 'odata2webservices'
+        extName 'odata2webservicesfeaturetests'
+
+        extName 'kymaintegrationbackoffice'
+        extName 'kymaintegrationsampledata'
+
+    }
+}
+
+task setup {
+    doLast {
+        apply plugin: 'installer-platform-plugin'
+        apply plugin: 'installer-addon-plugin'
+        def pl = platform(config)
+        pl.setup()
+
+        pl.project.addons {
+            names "commerceorgsamplesaddon,promotionenginesamplesaddon,smarteditaddon,textfieldconfiguratortemplateaddon,assistedservicestorefront,assistedservicepromotionaddon,customerticketingaddon,orderselfserviceaddon,adaptivesearchsamplesaddon,multicountrysampledataaddon,pcmbackofficesamplesaddon,personalizationsearchsamplesaddon"
+            template "yacceleratorstorefront"
+            storeFronts "yacceleratorstorefront"
+            platform pl
+        }
+
+        pl.project.addons {
+            names "acceleratorwebservicesaddon,cmsoccaddon"
+            template "ycommercewebservices"
+            storeFronts "ycommercewebservices"
+            platform pl
+        }
+    }
+}
+
+task initialize {
+    doLast {
+        apply plugin: 'installer-platform-plugin'
+        def pl = platform(config)
+        pl.build()
+        pl.initialize()
+    }
+}
+
+task start {
+    doLast {
+        apply plugin: 'installer-platform-plugin'
+        def pl = platform(config)
+        pl.start()
+    }
+}

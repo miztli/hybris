@@ -1,0 +1,134 @@
+apply plugin: 'installer-platform-plugin'
+apply plugin: 'installer-addon2-plugin'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+    }
+}
+
+ext {
+    workDir = "./work"
+}
+
+def platform = platform() {
+    localProperties {
+        '# place your custom properties into this file instead of modifying the project.properties'
+        '# all properties in this file have higher priority and will overwrite the platform/project.properties settings.'
+
+        property 'googleApiKey', ''
+
+        property '#mykey', '#myvalue'
+        property '#hac.webroot', '/hac'
+
+        '# using higher memory settings (4G heap and 512 permgen) to prevent out of memory issues on tcserver'
+        property 'tomcat.generaloptions', '-Xmx4096M -XX:-UseLoopPredicate -XX:MaxPermSize=512M -XX:+HeapDumpOnOutOfMemoryError -ea -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dorg.tanukisoftware.wrapper.WrapperManager.mbean=true -Djava.endorsed.dirs="%CATALINA_HOME%/lib/endorsed" -Dcatalina.base=%CATALINA_BASE% -Dcatalina.home=%CATALINA_HOME% -Dfile.encoding=UTF-8 -Dlog4j.configuration=log4j_init_tomcat.properties -Djava.util.logging.config.file=jdk_logging.properties -Djava.io.tmpdir="${HYBRIS_TEMP_DIR}"'
+
+        property 'standalone.javaoptions', '-Xmx2040M -XX:MaxPermSize=512M -XX:+HeapDumpOnOutOfMemoryError -ea -XX:-UseLoopPredicate'
+
+        property 'website.electronics.http', 'http://electronics.local:9001/yacceleratorstorefront'
+        property 'website.electronics.https', 'https://electronics.local:9002/yacceleratorstorefront'
+        property 'website.apparel-de.http', 'http://apparel-de.local:9001/yacceleratorstorefront'
+        property 'website.apparel-de.https', 'https://apparel-de.local:9002/yacceleratorstorefront'
+        property 'website.apparel-uk.http', 'http://apparel-uk.local:9001/yacceleratorstorefront'
+        property 'website.apparel-uk.https', 'https://apparel-uk.local:9002/yacceleratorstorefront'
+        property 'apiregistryservices.events.exporting', 'false'
+    }
+
+    extensions {
+        extensionNames 'ordermanagementaddon',
+        'orderselfserviceaddon',
+        'ordermanagementwebservices',
+
+        'warehousing', 
+        'warehousingbackoffice', 
+        'warehousingwebservices',
+
+        'adaptivesearchsolr',
+        'adaptivesearchbackoffice',
+        'adaptivesearchsamplesaddon',
+        'commerceservicesbackoffice',
+        'solrfacetsearchbackoffice',
+        'solrserver',
+        'yacceleratorbackoffice',
+        'yacceleratorinitialdata',
+        'yacceleratorordermanagement',
+        'yacceleratorstorefront',
+        'yaddon',
+        'ycommercewebservices',
+        'cmsoccaddon',
+
+        'electronicsstore',
+        'apparelstore',
+
+        'acceleratorwebservicesaddon',
+
+        'assistedservicestorefront',
+        'assistedservicewebservices',
+        'customersupportbackoffice',
+        'customerticketingaddon',
+        'commerceorgsamplesaddon',
+        'ticketsystembackoffice',
+        'consignmenttrackingbackoffice',
+
+        'rulebuilderbackoffice',
+        'couponbackoffice',
+        'droolsruleengineservices',
+        'couponfacades',
+        'promotionenginesamplesaddon',
+        'consignmenttrackingaddon',
+
+        'pcmbackofficesamplesaddon',
+        'consignmenttrackingoccaddon',
+
+        'outboundservices',
+        'odata2webservices',
+        'odata2webservicesfeaturetests',
+
+        'kymaintegrationbackoffice',
+        'kymaintegrationsampledata'
+    }
+
+    addons {
+        forStoreFronts('yacceleratorstorefront') {
+            names 'promotionenginesamplesaddon', 'customerticketingaddon', 'ordermanagementaddon', 'orderselfserviceaddon', 'consignmenttrackingaddon',
+                'commerceorgsamplesaddon', 'adaptivesearchsamplesaddon', 'pcmbackofficesamplesaddon', 'assistedservicestorefront'
+            template 'yacceleratorstorefront'
+        }
+
+        forStoreFronts('ycommercewebservices') {
+            names 'acceleratorwebservicesaddon', 'consignmenttrackingoccaddon', 'cmsoccaddon'
+            template 'ycommercewebservices'
+        }
+    }
+
+}
+
+task setup {
+    doLast {
+        platform.setup()
+    }
+}
+
+task buildSystem(dependsOn: setup) {
+    doLast {
+        platform.build()
+    }
+}
+
+task initialize(dependsOn: buildSystem) {
+    doLast {
+        platform.initialize()
+    }
+}
+
+task start {
+    doLast {
+        platform.start()
+    }
+}
+

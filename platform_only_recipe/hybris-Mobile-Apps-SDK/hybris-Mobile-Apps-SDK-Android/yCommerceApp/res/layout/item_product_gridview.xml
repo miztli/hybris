@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="270dp"
+    android:background="@drawable/gridview_item_shadow"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/collapsed_layout"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@android:color/white">
+
+        <FrameLayout
+            android:id="@+id/product_item_main_layout_collapsed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:gravity="center">
+
+            <ProgressBar
+                android:id="@+id/product_item_image_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/product_item_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:src="@drawable/y_logo" />
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/product_item_button_layout"
+            style="@style/triangle_button_product_item"
+            android:layout_width="@dimen/product_item_button_width"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:gravity="bottom|end"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/product_item_button_cart_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/checkout_payment_number_button_description"
+                android:padding="@dimen/padding_medium"
+                android:src="@drawable/cart_icon" />
+
+            <ImageView
+                android:id="@+id/product_item_button_expand_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/checkout_payment_number_button_description"
+                android:padding="@dimen/padding_medium"
+                android:src="@drawable/expand_icon" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/product_item_block_name_collapsed"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:padding="@dimen/padding_medium">
+
+        <TextView
+            android:id="@+id/product_item_name"
+            style="@style/h4_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="product_item_name"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/product_item_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="product_item_no"
+
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/product_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="product_item_price"
+
+            android:textSize="14sp" />
+
+
+
+        <RatingBar
+            android:id="@+id/product_item_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/ratingBarStyleSmall"
+            android:numStars="5"
+            android:paddingBottom="@dimen/padding_small"
+            android:stepSize="0.5"
+            android:isIndicator="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true" />
+    </LinearLayout>
+
+</LinearLayout>

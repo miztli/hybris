@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Sign In Button -->
+    <color name="signin_text_button_enabled">#0052AE</color>
+    <color name="signin_text_button_disabled">#B8BEC6</color>
+    <color name="signin_background_button_disabled">#749DCD</color>
+    <color name="signin_background_button_default">#FAC612</color>
+    <color name="signin_background_button_pressed">#FBB32D</color>
+    <color name="signin_hint_color">#91B5DD</color>
+
+    <!-- Drawer Button -->
+    <color name="drawer_selected">#131E2B</color>
+    <color name="drawer_divider">#28292B</color>
+
+    <!-- Action buttons -->
+    <color name="action_button_text_enabled">#0052AE</color>
+    <color name="action_button_text_disabled">#B8BEC8</color>
+
+    <!-- Cart menu -->
+    <color name="cart_menu_background">#f0f0f0</color>
+    <color name="cart_menu_continue_shopping">#D3D6DB</color>
+    <color name="cart_menu_products_header_background">#b3b6bd</color>
+    <color name="cart_menu_products_background">#ffffff</color>
+    <color name="cart_menu_products_item_remove_button_background">#E35F53</color>
+    <color name="cart_menu_products_item_cancel_button_background">#C5CAD0</color>
+    <color name="cart_menu_products_item_delete_zone_text_color">#ffffff</color>
+    <color name="cart_menu_products_item_promotion">#41c769</color>
+
+    <!-- Product list -->
+    <color name="products_background_search_header">#e0e0e0</color>
+    <color name="products_background_search_header_border_bottom">#DDDDDD</color>
+    <color name="products_background_search_header_did_you_mean">#115EB2</color>
+    <color name="products_background_no_product_found">#e0e0e0</color>
+
+    <!-- Catalog menu -->
+    <color name="catalog_menu_background">#FA283141</color>
+    <color name="catalog_menu_top_category_name_background">#161b23</color>
+    <color name="catalog_menu_item">#ffffff</color>
+    <color name="catalog_menu_item_divider">#d8dee6</color>
+
+    <!-- Catalog header -->
+    <color name="catalog_header_background">#F9F9F9</color>
+
+    <!-- Catalog Product Item -->
+    <color name="product_item_low_stock">#F34747</color>
+    <color name="product_item_in_stock">#169E08</color>
+    <color name="product_item_button_default">#30639E</color>
+    <color name="product_item_button_pressed">#C41E6B</color>
+    <color name="product_item_button_disable">#D3D9DF</color>
+    <color name="product_item_row_pressed">#0095CC</color>
+    <color name="product_item_expandable_background">#F0F0F0</color>
+
+    <!-- Gridview -->
+    <color name="product_item_gridview_background">#EEEEEE</color>
+
+    <!-- Product details -->
+    <color name="product_detail_bar">#F9FAF9</color>
+    <color name="product_detail_divider">#E6E4E1</color>
+    <color name="product_detail_viewpager_indicator_disabled">#EFEEEC</color>
+    <color name="product_detail_viewpager_indicator_enabled">#004D88</color>
+    <color name="product_detail_expandable_background">#F1F0EE</color>
+    <color name="product_detail_volume_pricing_text">#124C90</color>
+
+    <!-- Checkout -->
+    <color name="checkout_terms_conditions_text">#124C90</color>
+    <color name="checkout_entries_validation_error">#F34747</color>
+    <color name="checkout_edittext_outline">#B4B4B4</color>
+
+    <!-- Order Confirmation -->
+    <color name="order_background">#F3F4F3</color>
+    <color name="order_confirm_divider">#E6E4E1</color>
+
+    <!-- Order Confirmation -->
+    <color name="cart_summary_header_background">#F3F4F3</color>
+
+    <!-- Store locator -->
+    <color name="store_locator_title">#1A7FDC</color>
+    <color name="store_locator_nb_results_background">#F3F3F3</color>
+    <color name="store_details_separator">#EEEEEE</color>
+
+
+    <!-- Errors -->
+    <color name="error_color">#FF2E22</color>
+
+    <!-- Offline status top nav -->
+    <color name="text_offline_status_top_nav">#ffffff</color>
+    <color name="background_offline_status_top_nav">#97A3B0</color>
+
+    <!-- Order details -->
+    <color name="order_detail_bar">#F9FAF9</color>
+    <color name="order_detail_exit">#0054AE</color>
+
+    <!-- Order History -->
+    <color name="order_history_header">#969FAB</color>
+
+    <!-- Account -->
+    <color name="account_background">#F3F4F3</color>
+    <color name="account_address_set_default_text">#124C90</color>
+    <color name="account_divider">#E6E4E1</color>
+    <color name="account_edittext_outline">#B4B4B4</color>
+
+    <!-- B2C-->
+    <color name="address_dialog_header">#055CCD</color>
+
+
+</resources>

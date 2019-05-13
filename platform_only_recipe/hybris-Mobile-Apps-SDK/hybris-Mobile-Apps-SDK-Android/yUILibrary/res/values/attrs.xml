@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ListViewSwipeable">
+        <attr name="swipeSpeed" format="integer" />
+        <attr name="maxPositionLeft" format="integer" />
+        <attr name="positionAutoSwipe" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="EditTextPushContent">
+        <attr name="offset" format="dimension" />
+        <attr name="anchorId" format="reference" />
+    </declare-styleable>
+</resources>

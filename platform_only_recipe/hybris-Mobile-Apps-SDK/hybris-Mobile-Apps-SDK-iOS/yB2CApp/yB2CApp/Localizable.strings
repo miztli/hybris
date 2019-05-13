@@ -1,0 +1,249 @@
+/****************************************************************************/
+/* Localization file */
+
+"login_wrong_user_role"                        = "You don't have sufficient user rights.";
+"login_failed_wrong_credentials"               = "Your username and password do not match. Please try again.";
+"login_error_retrieving_the_user_roles"        = "Technical problem while the retrieval of user roles.";
+"login_success"                                = "Login Successfull.";
+"login_alert_failed"                           = "Sign In Error";
+"login_failed_checkcredentials_or_user_rights" = "You provided wrong credentials or you don't have the right permissions.";
+"login_first_time_not_connected"               = "Your device is not connected to the internet, please connect and try to login again.";
+"login_invalid_email"                          = "The username you provided is not in a valid email format. A usual email address has the following format: yourname@somedomain.com";
+"catalog_no_products_found_title"              = "Sorry, no products to display";
+"sidebar_dashboard"                            = "Dashboard";
+"sidebar_orders"                               = "Orders";
+"sidebar_catalog"                              = "Catalog";
+"sidebar_logout"                               = "Logout";
+"sidebar_login"                                = "Login";
+"sidebar_account"                              = "Account";
+"sidebar_main_menu"                            = "Main Menu";
+"sidebar_stores"                               = "Store Locator";
+"sidebar_scanner"                              = "Barcode Scan";
+
+"product_list_in_stock"                  = "in stock";
+"product_list_out_of_stock"              = "out of stock";
+"product_list_low_stock_number"          = "%d in stock";
+
+"product_details_details"                = "Product Details";
+"product_details_delivery"               = "Delivery Details";
+"product_details_reviews"                = "Reviews";
+"product_details_buttons_add_to_cart"    = "Add To Cart";
+"product_details_buttons_select_variant" = "Apply";
+"product_details_buttons_cancel_variant" = "Cancel";
+"product_details_volume_pricing"         = "Volume Pricing";
+
+"login_view_sign_up"                     = "Sign Up";
+"login_view_username_placeholder"        = "Username or Email";
+"login_view_password_placeholder"        = "Password";
+"Avalability: %d"                        = "Avalability: %d";
+
+"cart_label_total_items"                 = "Cart Total: %@ items";
+"cart_label_title"                       = "Shopping Cart";
+"cart_label_total"                       = "Cart Total:";
+"cart_button_checkout"                   = "Checkout >";
+"cart_button_continueshopping"           = "< Continue Shopping";
+"cart_label_your_cart_is_empty"          = "Your shopping cart is empty";
+"checkout_label_title"                   = "Checkout";
+
+"payment_label_title"                    = "1. PAYMENT DETAILS";
+"payment_account_tip_cancel"             = "Cancel";
+"payment_account_tip_open_url"           = "Open URL";
+
+"deliveryDetails_label_title"            = "2. DELIVERY DETAILS";
+"deliveryAddress_label_title"            = "DELIVERY ADDRESS";
+"delivery_address_selection"             = "DEFAULT ADDRESS";
+"deliveryMethod_label_title"             = "DELIVERY METHOD";
+"agreement_label_intro"                  = "I have read and agree with the";
+"agreement_label_link"                   = "terms and conditions";
+"agreement_label_confirmation"           = "Please read/accept our terms and conditions before submitting your order.";
+"order_button_checkout"                  = "PLACE ORDER";
+
+"order_summary"                          = "ORDER SUMMARY";
+"xx_items"                               = "%@ items";
+
+"order_summary_subtotal"                 = "Subtotal";
+"order_summary_savings"                  = "Savings";
+"order_summary_tax"                      = "Tax";
+"order_summary_shipping"                 = "Shipping";
+"order_summary_total"                    = "Order Total";
+"orders_filters_button"                  = "Filters";
+
+"order_not_found_title"                  = "Order not found";
+"orders_history_no_orders_found"         = "Sorry, no more orders to display";
+"order_not_found_message"                = "No order with this exact order number could be retrieved";
+
+"you_saved_xx_because"                   = "(You have saved %@ because your order was over %@)";
+
+"postcheckout_continue_shopping"         = "< Continue shopping";
+"postcheckout_thansk_label"              = "Thanks for your order!";
+"postcheckout_order_number_intro"        = "Your order number is ";
+"postcheckout_email_details"             = "A copy of your order details has been sent to %@";
+
+"batch_toggle_button_edit"               = "Edit";
+"batch_toggle_button_cancel"             = "Cancel";
+"batch_select_all_button"                = "Select All";
+"batch_deselect_all_button"              = "Deselect All";
+"batch_delete_button"                    = "Remove Selected";
+
+"cart_items_batch_removal_title"         = "Batch removal";
+"cart_items_batch_removal_message"       = "Are you sure you would like to remove these items from the cart?";
+
+"cart_item_removal_popup_title"          = "Item Removal";
+"cart_item_removal_popup_message"        = "Are you sure you would like to remove this item from the cart?";
+"No"                                     = "No";
+"cart_item_removal_popup_yes"            = "Yes, I am sure";
+"cart_item_removal_item_removed"         = "Item Removed!";
+"cart_item_removal_items_removed"        = "Items Removed!";
+"OK"                                     = "OK";
+"login_view_sign_in"                     = "SIGN IN";
+"catalog_view_searchfield_placeholder"   = "Search Products";
+"all_items_loaded"                       = "All items loaded.";
+"loading"                                = "Loading...";
+"login_view_cancel"                      = "CANCEL";
+
+"cancel"                                 = "Cancel";
+"Dashboard"                              = "Dashboard";
+
+"orders_label_title"                     = "Orders";
+"orders_sort_button_code"                = "Order number";
+"orders_sort_button_date"                = "Date placed";
+"orders_sort_button_status"              = "Status";
+"orders_sort_button_total"               = "Total";
+
+"search_cancel"                         = "Cancel";
+
+"orders_details_back_button"               = "< Orders";
+"orders_details_title"               = "Order Detail";
+
+"orders_details_number_format"               = "Order #: %@";
+"orders_details_date_format"               = "Date Placed: %@";
+
+"orders_details_status_format"      = "Order status: %@";
+
+"trackingNumber_label_title"    = "Tracking Number:";
+
+"store_details_hours_title" = "Hours of operation";
+"store_directions" = "Directions";
+"store_details_back" = "< Back to list";
+"store_closed" = "Closed";
+"to_key" = "to";
+
+"Sun" = "Sunday";
+"Mon" = "Monday";
+"Tue" = "Tuesday";
+"Wed" = "Wednesday";
+"Thu" = "Thursday";
+"Fri" = "Friday";
+"Sat" = "Saturday";
+
+"location_service_off_title" = "Location services disabled";
+"location_service_off_message" = "This application needs access to your location. Please turn on the location services in Settings > Privacy > Location Services";
+"problems_retrieving_location" = "Problems retrieving location";
+"technical_error_while_retrieving_your_location" = "Technical error occured while retrieving your location";
+
+"warningKey"    = "Warning";
+"settingsKey"   = "Settings";
+"settingsMessageKey"        = "Enter backend settings below:";
+"hostAndCatalogRequired"    = "Host and Catalog Id required";
+"cancelKey" = "Cancel";
+"okayKey"   = "Ok";
+"saveKey"   = "Save";
+"editKey"   = "Edit";
+"createKey" = "Create";
+"createNewKey" = "Create New";
+"closeKey"  = "Close";
+"backKey"   = "Back";
+
+"editAddressKey"  = "Edit Address";
+"newAddressKey"   = "New Address";
+
+
+"feedback_from_app" = "Feedback from app";
+"mail_feedback" = "E-mail Feedback";
+
+"account_label_title" = "Your Account";
+"account_profile_title" = "1. Profile";
+"account_firstname" = "Firstname";
+"account_lastname" = "Lastname";
+"language_label_title" = "2. Language";
+"account_payment_label_title" = "3. Payment Details";
+"payment_credit_card" = "Credit Card";
+"address_label_title" = "4. Address Book";
+
+"default_shipping_title" = "Default Shipping Address";
+"default_billing_title"  = "Default Billing Address";
+
+"all_fields_required" = "All Fields are required";
+"please_complete_form" = "Please fill all required fields";
+
+"firstNameKey"      = "First Name";
+"lastNameKey"       = "Last Name";
+"addressLineOneKey" = "Address (line one)";
+"addressLineTwoKey" = "(line two)";
+"cityKey"           = "City";
+"zipCodeKey"        = "Zip/Post Code";
+"stateKey"          = "State/Province";
+"countryKey"        = "Country/Region";
+
+"loginKey"              = "Email";
+"passwordKey"           = "Password";
+"confirmPasswordKey"    = "Confirm Password";
+
+"noDefaultAddressYet"   = "No default address registered yet";
+
+"create_new_address" = "Create new Address";
+
+"create_new_credit_card" = "Register new Credit Card";
+"noCreditCardRegisteredYet" = "No Credit Card registered yet";
+
+"creditCardType" = "Credit Card Type";
+"accountHolderNameKey" = "Name on the card";
+"creditCardNumberKey" = "Credit Card Number";
+"creditCardExpiryMonthKey" = "Month";
+"creditCardExpiryYearKey" = "Year";
+
+"deleteCardKey" = "Delete tihs Payment Details";
+
+"useDefaultShippingAddress" = "Use default shipping address";
+
+"warningMissingKey" = "Missing information";
+"missingKey" = "Please fill the following field";
+
+"accountHolderName" = "Name on the card";
+"billingAddress.country.isocode" = "Country code";
+"billingAddress.firstName" = "First Name";
+"billingAddress.lastName" = "Last Name";
+"billingAddress.line1" = "Address first line";
+"billingAddress.postalCode" = "Postal Code";
+"billingAddress.region.isocode" = "Region code";
+"billingAddress.titleCode" = "Title code";
+"billingAddress.town" = "Town";
+"cardNumber" = "Credit Card Number";
+"cardType" = "Credit Card Type";
+"expiryMonth" = "Expiry Month";
+"expiryYear"= "Expiry Year";
+"cvvKey" = "CVV";
+
+"warning_scanned_product_not_found" = "Invalid code";
+"scanned_code_not_matching_product_id" = "The scanned code doesn't match any product identifier.";
+
+"warning_scanned_invalid" = "Malformed code";
+"scanned_code_not_parsed" = "The scanned code doesn't match any pattern defined by this app.";
+
+"warning_scanned_product_found" = "Failed";
+"scanned_code_empty_product" = "The scanned code is valid but couldn't retrieve the product.";
+
+"settings_title" = "Settings";
+"settings_backend_title" = "Select a default server or enter custom one";
+"settings_backend_host_title" = "Server URL";
+"settings_backend_host" = "Server URL";
+"settings_backend_port_title" = "Server Port";
+"settings_backend_port" = "Server Port";
+"settings_catalog_title" = "Select a default catalog or enter custom one";
+"settings_store_title" = "Store Id";
+"settings_store" = "Store Id";
+"settings_catalog_id_title" = "Catalog Id";
+"settings_catalog_id" = "Catalog Id";
+"settings_catalog_root_title" = "Root Category";
+"settings_root" = "Root Category";
+

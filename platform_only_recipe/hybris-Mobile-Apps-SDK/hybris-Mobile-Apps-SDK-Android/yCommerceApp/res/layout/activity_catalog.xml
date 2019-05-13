@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_menu_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Cart menu drawer -->
+
+    <com.hybris.mobile.lib.ui.layout.DrawerPushLayout
+        android:id="@+id/cart_menu_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/catalog_menu_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Catalog Content -->
+
+            <fragment
+                android:id="@+id/catalog_content_fragment"
+                android:name="com.hybris.mobile.app.commerce.fragment.CatalogContentFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!-- Catalog navigation drawer -->
+            <fragment
+                android:id="@+id/catalog_menu_fragment"
+                android:name="com.hybris.mobile.app.commerce.fragment.CatalogMenuFragment"
+                android:layout_width="@dimen/catalog_menu_width"
+                android:layout_height="match_parent"
+                android:layout_gravity="start" />
+
+        </android.support.v4.widget.DrawerLayout>
+
+        <include layout="@layout/include_cart_drawer" />
+    </com.hybris.mobile.lib.ui.layout.DrawerPushLayout>
+
+    <!-- Main menu drawer -->
+
+    <include layout="@layout/include_main_menu_drawer" />
+
+</android.support.v4.widget.DrawerLayout>

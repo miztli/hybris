@@ -1,0 +1,6077 @@
+{
+  "swagger": "2.0",
+  "info" : {
+    "description" : "<h1>hybris-cis-mock-subscription-web<\/h1><p>Parent pom providing dependency and plugin management for applications\n\t\tbuilt with Maven<\/p>",
+    "license" : {
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0",
+      "name" : "Apache License, Version 2.0"
+    },
+    "version" : "18.08.0-SNAPSHOT",
+    "title" : "hybris-cis-mock-subscription-web"
+  },
+  "schemes" : [],
+  "tags" : [
+    {
+      "name" : "AccountController"
+      ,
+      "description" : "Controller for create, read and update operations on subscription accounts."
+    }
+    ,
+    {
+      "name" : "BillingActivityDetailsController"
+      ,
+      "description" : "Controller for reading billing activity details."
+    }
+    ,
+    {
+      "name" : "ExternalServicesController"
+      ,
+      "description" : "Controller which provides utility endpoints related to third party services."
+    }
+    ,
+    {
+      "name" : "PaymentMethodController"
+      ,
+      "description" : "Controller for updating of payment methods."
+    }
+    ,
+    {
+      "name" : "SubscriptionController"
+      ,
+      "description" : "Controller for creating, updating, changing subscription state, replacing payment method,\ncancelling and upgrading subscriptions and getting billing activity list\nfor a subscription."
+    }
+    ,
+    {
+      "name" : "TransactionsController"
+      ,
+      "description" : "Controller for processing one time transactions."
+    }
+    ,
+    {
+      "name" : "UsageController"
+      ,
+      "description" : "Controller for passing customer usage."
+    }
+    ,
+    {
+      "name" : "WebSessionController"
+      ,
+      "description" : "Controller which manages web sessions with third party billing providers."
+    }
+  ],
+  "definitions" : {
+    "json_AbstractCisSubscriptionUpdateRequest" : {
+      "type" : "object",
+      "title" : "AbstractCisSubscriptionUpdateRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "merchantSubscriptionId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "effectiveFrom" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "merchantSubscriptionId" : "...",
+  "effectiveFrom" : "...",
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "A payment request to for example authorize or capture an amount."
+    }
+    ,
+    "json_AnnotationHashMap" : {
+      "type" : "object",
+      "title" : "AnnotationHashMap",
+          "properties" : {
+            "entries" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_AnnotationHashMapEntryType"
+}
+            },
+            "map" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "object",
+"additionalProperties" : {
+  "type" : "string"
+}
+            }
+          },
+      "example" : {
+  "entries" : [ {
+    "key" : "...",
+    "value" : "..."
+  }, {
+    "key" : "...",
+    "value" : "..."
+  } ],
+  "map" : {
+    "property1" : "...",
+    "property2" : "..."
+  }
+},
+      "description" : ""
+    }
+    ,
+    "json_AnnotationHashMapEntryType" : {
+      "type" : "object",
+      "title" : "AnnotationHashMapEntryType",
+          "properties" : {
+            "key" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "value" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "key" : "...",
+  "value" : "..."
+},
+      "description" : ""
+    }
+    ,
+    "json_CisAddress" : {
+      "type" : "object",
+      "title" : "CisAddress",
+          "properties" : {
+            "addressLine1" : {
+            "readOnly" : false,
+"description" : "Gets the address line1.",
+"type" : "string"
+            },
+            "addressLine2" : {
+            "readOnly" : false,
+"description" : "Gets the address line2.",
+"type" : "string"
+            },
+            "addressLine3" : {
+            "readOnly" : false,
+"description" : "Gets the address line3.",
+"type" : "string"
+            },
+            "addressLine4" : {
+            "readOnly" : false,
+"description" : "Gets the address line4.",
+"type" : "string"
+            },
+            "longitude" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "latitude" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "zipCode" : {
+            "readOnly" : false,
+"description" : "Gets the zip code.",
+"type" : "string"
+            },
+            "city" : {
+            "readOnly" : false,
+"description" : "Gets the city.",
+"type" : "string"
+            },
+            "stateAsTwoLetter" : {
+            "readOnly" : false,
+"description" : "Returns the state in the two letter country code.",
+"type" : "string"
+            },
+            "state" : {
+            "readOnly" : false,
+"description" : "Gets the state.",
+"type" : "string"
+            },
+            "country" : {
+            "readOnly" : false,
+"description" : "Gets the country.",
+"type" : "string"
+            },
+            "type" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisAddressType"
+            },
+            "firstName" : {
+            "readOnly" : false,
+"description" : "Gets the first name.",
+"type" : "string"
+            },
+            "lastName" : {
+            "readOnly" : false,
+"description" : "Gets the last name.",
+"type" : "string"
+            },
+            "email" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "phone" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "company" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "facilityType" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "facilityName" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "faxNumber" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "title" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "vendorParameters" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            }
+          },
+      "example" : {
+  "addressLine1" : "...",
+  "addressLine2" : "...",
+  "addressLine3" : "...",
+  "addressLine4" : "...",
+  "longitude" : "...",
+  "latitude" : "...",
+  "zipCode" : "...",
+  "city" : "...",
+  "stateAsTwoLetter" : "...",
+  "state" : "...",
+  "country" : "...",
+  "type" : "SHIP_FROM",
+  "firstName" : "...",
+  "lastName" : "...",
+  "email" : "...",
+  "phone" : "...",
+  "company" : "...",
+  "facilityType" : "...",
+  "facilityName" : "...",
+  "faxNumber" : "...",
+  "title" : "...",
+  "vendorParameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Representation of an address."
+    }
+    ,
+    "json_CisAddressType" : {
+      "type" : "string",
+      "title" : "CisAddressType",
+          "enum" : [
+            "SHIP_TO",
+            "SHIP_FROM",
+            "BILL_TO",
+            "ADMIN_ORIGIN"
+          ],
+      "description" : ""
+    }
+    ,
+    "json_CisChangePaymentMethodRequest" : {
+      "type" : "object",
+      "title" : "CisChangePaymentMethodRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "merchantPaymentMethodId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "action" : {
+            "readOnly" : false,
+"description" : "Returns a String representing the change action to be performed. Potential values depend on the particular\nimplementation (e.g. <i>activate<\/i>, <i>deactivate<\/i>,...).",
+"type" : "string"
+            },
+            "newValue" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "propagate" : {
+            "readOnly" : false,
+"description" : "Returns a boolean flag indicating whether the change should be propagated to subscriptions using the payment\nmethod.",
+"type" : "boolean"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "merchantPaymentMethodId" : "...",
+  "action" : "...",
+  "newValue" : "...",
+  "propagate" : true,
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "A request for changing an existing payment method."
+    }
+    ,
+    "json_CisChargeEntry" : {
+      "type" : "object",
+      "title" : "CisChargeEntry",
+          "properties" : {
+            "vendorParameters" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            },
+            "oneTimeChargeTime" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "numberOfCycles" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "chargePrice" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            }
+          },
+      "example" : {
+  "vendorParameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  },
+  "oneTimeChargeTime" : "...",
+  "numberOfCycles" : 12345,
+  "chargePrice" : 12345.0
+},
+      "description" : ""
+    }
+    ,
+    "json_CisCustomerUsageRequest" : {
+      "type" : "object",
+      "title" : "CisCustomerUsageRequest",
+          "properties" : {
+            "fromDate" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "toDate" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "customerId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscriptionId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "usageChargeName" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "unitsConsumed" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            }
+          },
+      "example" : {
+  "fromDate" : 12345,
+  "toDate" : 12345,
+  "customerId" : "...",
+  "subscriptionId" : "...",
+  "usageChargeName" : "...",
+  "unitsConsumed" : 12345.0
+},
+      "description" : "Customer usage request that holds customer usage information."
+    }
+    ,
+    "json_CisCustomerUsageResult" : {
+      "type" : "object",
+      "title" : "CisCustomerUsageResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisResult"
+        },
+        {
+        }
+      ],
+      "example" : {
+  "clientRefId" : "...",
+  "vendorStatusCode" : "...",
+  "id" : "...",
+  "decision" : "ACCEPT",
+  "vendorId" : "...",
+  "href" : "...",
+  "vendorReasonCode" : "...",
+  "vendorResponses" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "The result of a pass customer usage call."
+    }
+    ,
+    "json_CisDecision" : {
+      "type" : "string",
+      "title" : "CisDecision",
+          "enum" : [
+            "ACCEPT",
+            "REVIEW",
+            "REJECT",
+            "ERROR"
+          ],
+      "description" : ""
+    }
+    ,
+    "json_CisFileStreamResult" : {
+      "type" : "object",
+      "title" : "CisFileStreamResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisResult"
+        },
+        {
+          "properties" : {
+            "mimeType" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "bytes" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "fileName" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "mimeType" : "...",
+  "bytes" : "...",
+  "fileName" : "...",
+  "clientRefId" : "...",
+  "vendorStatusCode" : "...",
+  "id" : "...",
+  "decision" : "ACCEPT",
+  "vendorId" : "...",
+  "href" : "...",
+  "vendorReasonCode" : "...",
+  "vendorResponses" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Presents result of billing activity detail request."
+    }
+    ,
+    "json_CisLineItem" : {
+      "type" : "object",
+      "title" : "CisLineItem",
+          "properties" : {
+            "id" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "vendorParameters" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            },
+            "unitPrice" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "itemCode" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "quantity" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "productDescription" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "taxCode" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "id" : 12345,
+  "vendorParameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  },
+  "unitPrice" : 12345.0,
+  "itemCode" : "...",
+  "quantity" : 12345,
+  "productDescription" : "...",
+  "taxCode" : "..."
+},
+      "description" : ""
+    }
+    ,
+    "json_CisPaymentMethod" : {
+      "type" : "object",
+      "title" : "CisPaymentMethod",
+          "properties" : {
+            "enabled" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "cardType" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "merchantPaymentMethodId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "cardHolder" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "billingAddress" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisAddress"
+            },
+            "ccNumber" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "expirationYear" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "expirationMonth" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            }
+          },
+      "example" : {
+  "enabled" : true,
+  "cardType" : "...",
+  "merchantPaymentMethodId" : "...",
+  "cardHolder" : "...",
+  "billingAddress" : {
+    "addressLine1" : "...",
+    "addressLine2" : "...",
+    "addressLine3" : "...",
+    "addressLine4" : "...",
+    "longitude" : "...",
+    "latitude" : "...",
+    "zipCode" : "...",
+    "city" : "...",
+    "stateAsTwoLetter" : "...",
+    "state" : "...",
+    "country" : "...",
+    "type" : "ADMIN_ORIGIN",
+    "firstName" : "...",
+    "lastName" : "...",
+    "email" : "...",
+    "phone" : "...",
+    "company" : "...",
+    "facilityType" : "...",
+    "facilityName" : "...",
+    "faxNumber" : "...",
+    "title" : "...",
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  },
+  "ccNumber" : "...",
+  "expirationYear" : 12345,
+  "expirationMonth" : 12345
+},
+      "description" : ""
+    }
+    ,
+    "json_CisPaymentMethodResult" : {
+      "type" : "object",
+      "title" : "CisPaymentMethodResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisResult"
+        },
+        {
+          "properties" : {
+            "paymentMethod" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisPaymentMethod"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "paymentMethod" : {
+    "enabled" : true,
+    "cardType" : "...",
+    "merchantPaymentMethodId" : "...",
+    "cardHolder" : "...",
+    "billingAddress" : {
+      "addressLine1" : "...",
+      "addressLine2" : "...",
+      "addressLine3" : "...",
+      "addressLine4" : "...",
+      "longitude" : "...",
+      "latitude" : "...",
+      "zipCode" : "...",
+      "city" : "...",
+      "stateAsTwoLetter" : "...",
+      "state" : "...",
+      "country" : "...",
+      "type" : "BILL_TO",
+      "firstName" : "...",
+      "lastName" : "...",
+      "email" : "...",
+      "phone" : "...",
+      "company" : "...",
+      "facilityType" : "...",
+      "facilityName" : "...",
+      "faxNumber" : "...",
+      "title" : "...",
+      "vendorParameters" : { }
+    },
+    "ccNumber" : "...",
+    "expirationYear" : 12345,
+    "expirationMonth" : 12345
+  },
+  "clientRefId" : "...",
+  "vendorStatusCode" : "...",
+  "id" : "...",
+  "decision" : "REJECT",
+  "vendorId" : "...",
+  "href" : "...",
+  "vendorReasonCode" : "...",
+  "vendorResponses" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Result type for payment method related requests."
+    }
+    ,
+    "json_CisPaymentMethodUpdateRequest" : {
+      "type" : "object",
+      "title" : "CisPaymentMethodUpdateRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "merchantPaymentMethodId" : {
+            "readOnly" : false,
+"description" : "Gets the merchant payment method id.",
+"type" : "string"
+            },
+            "enabled" : {
+            "readOnly" : false,
+"description" : "Indicates whether the payment method should be enabled or disabled if set.",
+"type" : "boolean"
+            },
+            "billingAddress" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisAddress"
+            },
+            "propagate" : {
+            "readOnly" : false,
+"description" : "Returns the propagate value, which indicates whether the updates should also be applied to subscriptions that use\nthe payment method.",
+"type" : "boolean"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "merchantPaymentMethodId" : "...",
+  "enabled" : true,
+  "billingAddress" : {
+    "addressLine1" : "...",
+    "addressLine2" : "...",
+    "addressLine3" : "...",
+    "addressLine4" : "...",
+    "longitude" : "...",
+    "latitude" : "...",
+    "zipCode" : "...",
+    "city" : "...",
+    "stateAsTwoLetter" : "...",
+    "state" : "...",
+    "country" : "...",
+    "type" : "BILL_TO",
+    "firstName" : "...",
+    "lastName" : "...",
+    "email" : "...",
+    "phone" : "...",
+    "company" : "...",
+    "facilityType" : "...",
+    "facilityName" : "...",
+    "faxNumber" : "...",
+    "title" : "...",
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  },
+  "propagate" : true,
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Request for updating an existing payment method."
+    }
+    ,
+    "json_CisResult" : {
+      "type" : "object",
+      "title" : "CisResult",
+          "properties" : {
+            "clientRefId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "vendorStatusCode" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "id" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "decision" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisDecision"
+            },
+            "vendorId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "href" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "vendorReasonCode" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "vendorResponses" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            }
+          },
+      "example" : {
+  "clientRefId" : "...",
+  "vendorStatusCode" : "...",
+  "id" : "...",
+  "decision" : "ERROR",
+  "vendorId" : "...",
+  "href" : "...",
+  "vendorReasonCode" : "...",
+  "vendorResponses" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : ""
+    }
+    ,
+    "json_CisSubscriptionBillingActivityList" : {
+      "type" : "object",
+      "title" : "CisSubscriptionBillingActivityList",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisResult"
+        },
+        {
+          "properties" : {
+            "merchantSubscriptionId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantSubscriptionId.",
+"type" : "string"
+            },
+            "billings" : {
+            "readOnly" : false,
+"description" : "Returns the billings.",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisSubscriptionBillingInfo"
+}
+            }
+          }
+        }
+      ],
+      "example" : {
+  "merchantSubscriptionId" : "...",
+  "billings" : [ {
+    "billingId" : "...",
+    "billingPeriod" : "...",
+    "billingDate" : "...",
+    "amount" : "...",
+    "customFields" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "status" : "..."
+  }, {
+    "billingId" : "...",
+    "billingPeriod" : "...",
+    "billingDate" : "...",
+    "amount" : "...",
+    "customFields" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "status" : "..."
+  } ],
+  "clientRefId" : "...",
+  "vendorStatusCode" : "...",
+  "id" : "...",
+  "decision" : "ERROR",
+  "vendorId" : "...",
+  "href" : "...",
+  "vendorReasonCode" : "...",
+  "vendorResponses" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Retrieves a billing activity list for subscription."
+    }
+    ,
+    "json_CisSubscriptionBillingInfo" : {
+      "type" : "object",
+      "title" : "CisSubscriptionBillingInfo",
+          "properties" : {
+            "billingId" : {
+            "readOnly" : false,
+"description" : "Returns the billingId.",
+"type" : "string"
+            },
+            "billingPeriod" : {
+            "readOnly" : false,
+"description" : "Returns the billingPeriod.",
+"type" : "string"
+            },
+            "billingDate" : {
+            "readOnly" : false,
+"description" : "Returns the billingDate.",
+"type" : "string"
+            },
+            "amount" : {
+            "readOnly" : false,
+"description" : "Returns the amount.",
+"type" : "string"
+            },
+            "customFields" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            },
+            "status" : {
+            "readOnly" : false,
+"description" : "Returns the status.",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "billingId" : "...",
+  "billingPeriod" : "...",
+  "billingDate" : "...",
+  "amount" : "...",
+  "customFields" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  },
+  "status" : "..."
+},
+      "description" : "Sub-Element defining a billing for subscription."
+    }
+    ,
+    "json_CisSubscriptionCancelSubscriptionRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionCancelSubscriptionRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "merchantSubscriptionId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "cancelationMode" : {
+            "readOnly" : false,
+"description" : "Returns a String representing the cancellation mode to use. The cancellation mode determines how to handle\nrefunding of pre-paid usage or charging of outstanding payments. Possible values are implementation specific.",
+"type" : "string"
+            },
+            "force" : {
+            "readOnly" : false,
+"description" : "Returns a boolean flag indicating whether the subscription should be cancelled immediately (i.e. even within a\ndefined commitment period).",
+"type" : "boolean"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "merchantSubscriptionId" : "...",
+  "cancelationMode" : "...",
+  "force" : true,
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "A request to cancel an existing subscription."
+    }
+    ,
+    "json_CisSubscriptionChangeStateRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionChangeStateRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_AbstractCisSubscriptionUpdateRequest"
+        },
+        {
+          "properties" : {
+            "newState" : {
+            "readOnly" : false,
+"description" : "Returns the new state to set (might e.g. be CANCELLED, PAUSED, ACTIVE,...).",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "newState" : "...",
+  "merchantSubscriptionId" : "...",
+  "effectiveFrom" : "...",
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Generic request type for subscription state changes."
+    }
+    ,
+    "json_CisSubscriptionCreateRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionCreateRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "orderId" : {
+            "readOnly" : false,
+"description" : "Returns the orderId.",
+"type" : "string"
+            },
+            "merchantAccountId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantAccountId.",
+"type" : "string"
+            },
+            "subscriptionItem" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisSubscriptionItem"
+            },
+            "currency" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "orderDate" : {
+            "readOnly" : false,
+"description" : "Returns the date.",
+"type" : "number"
+            },
+            "merchantPaymentMethodId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantPaymentMethodId.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "orderId" : "...",
+  "merchantAccountId" : "...",
+  "subscriptionItem" : {
+    "subscriptionTerm" : {
+      "frequency" : "...",
+      "id" : "...",
+      "billingCycleDay" : 12345,
+      "billingPlanName" : "...",
+      "cancellable" : true,
+      "vendorParameters" : { },
+      "billingFrequency" : "...",
+      "name" : "...",
+      "billingPlanId" : "...",
+      "autoRenewal" : true,
+      "number" : 12345
+    },
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "name" : "...",
+    "subscriptionPlan" : {
+      "id" : "...",
+      "usageCharges" : [ { }, { } ],
+      "name" : "...",
+      "vendorParameters" : { },
+      "charges" : [ { }, { } ]
+    },
+    "id" : "...",
+    "code" : "..."
+  },
+  "currency" : "...",
+  "orderDate" : 12345,
+  "merchantPaymentMethodId" : "...",
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Request for subscription creation."
+    }
+    ,
+    "json_CisSubscriptionData" : {
+      "type" : "object",
+      "title" : "CisSubscriptionData",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisResult"
+        },
+        {
+          "properties" : {
+            "currency" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "comments" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "merchantAccountId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscriptionId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscriptionOrderId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscriptionOrderEntryId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscriptionProductId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscriptionDescription" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscriptionStartDate" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "subscriptionEndDate" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "subscriptionStatus" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "cancellationPossible" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "billingFrequency" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "contractDuration" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "orderDate" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "cancelDate" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "subscriptionName" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "billingSystemId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "paymentMethod" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisPaymentMethod"
+            },
+            "autoRenewal" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "subscriptionStartDateInReadableFormat" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscriptionEndDateInReadableFormat" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "currency" : "...",
+  "comments" : "...",
+  "merchantAccountId" : "...",
+  "subscriptionId" : "...",
+  "subscriptionOrderId" : "...",
+  "subscriptionOrderEntryId" : "...",
+  "subscriptionProductId" : "...",
+  "subscriptionDescription" : "...",
+  "subscriptionStartDate" : 12345,
+  "subscriptionEndDate" : 12345,
+  "subscriptionStatus" : "...",
+  "cancellationPossible" : true,
+  "billingFrequency" : "...",
+  "contractDuration" : "...",
+  "orderDate" : 12345,
+  "cancelDate" : 12345,
+  "subscriptionName" : "...",
+  "billingSystemId" : "...",
+  "paymentMethod" : {
+    "enabled" : true,
+    "cardType" : "...",
+    "merchantPaymentMethodId" : "...",
+    "cardHolder" : "...",
+    "billingAddress" : {
+      "addressLine1" : "...",
+      "addressLine2" : "...",
+      "addressLine3" : "...",
+      "addressLine4" : "...",
+      "longitude" : "...",
+      "latitude" : "...",
+      "zipCode" : "...",
+      "city" : "...",
+      "stateAsTwoLetter" : "...",
+      "state" : "...",
+      "country" : "...",
+      "type" : "SHIP_FROM",
+      "firstName" : "...",
+      "lastName" : "...",
+      "email" : "...",
+      "phone" : "...",
+      "company" : "...",
+      "facilityType" : "...",
+      "facilityName" : "...",
+      "faxNumber" : "...",
+      "title" : "...",
+      "vendorParameters" : { }
+    },
+    "ccNumber" : "...",
+    "expirationYear" : 12345,
+    "expirationMonth" : 12345
+  },
+  "autoRenewal" : true,
+  "subscriptionStartDateInReadableFormat" : "...",
+  "subscriptionEndDateInReadableFormat" : "...",
+  "clientRefId" : "...",
+  "vendorStatusCode" : "...",
+  "id" : "...",
+  "decision" : "ERROR",
+  "vendorId" : "...",
+  "href" : "...",
+  "vendorReasonCode" : "...",
+  "vendorResponses" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Retrieves subscription data from a Subscription Billing Provider."
+    }
+    ,
+    "json_CisSubscriptionItem" : {
+      "type" : "object",
+      "title" : "CisSubscriptionItem",
+          "properties" : {
+            "subscriptionTerm" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisTermsOfService"
+            },
+            "vendorParameters" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            },
+            "name" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscriptionPlan" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisSubscriptionPlan"
+            },
+            "id" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "code" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "subscriptionTerm" : {
+    "frequency" : "...",
+    "id" : "...",
+    "billingCycleDay" : 12345,
+    "billingPlanName" : "...",
+    "cancellable" : true,
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "billingFrequency" : "...",
+    "name" : "...",
+    "billingPlanId" : "...",
+    "autoRenewal" : true,
+    "number" : 12345
+  },
+  "vendorParameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  },
+  "name" : "...",
+  "subscriptionPlan" : {
+    "id" : "...",
+    "usageCharges" : [ {
+      "type" : "...",
+      "name" : "...",
+      "unitId" : "...",
+      "tiers" : [ { }, { } ]
+    }, {
+      "type" : "...",
+      "name" : "...",
+      "unitId" : "...",
+      "tiers" : [ { }, { } ]
+    } ],
+    "name" : "...",
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "charges" : [ {
+      "vendorParameters" : { },
+      "oneTimeChargeTime" : "...",
+      "numberOfCycles" : 12345,
+      "chargePrice" : 12345.0
+    }, {
+      "vendorParameters" : { },
+      "oneTimeChargeTime" : "...",
+      "numberOfCycles" : 12345,
+      "chargePrice" : 12345.0
+    } ]
+  },
+  "id" : "...",
+  "code" : "..."
+},
+      "description" : ""
+    }
+    ,
+    "json_CisSubscriptionOrder" : {
+      "type" : "object",
+      "title" : "CisSubscriptionOrder",
+          "properties" : {
+            "items" : {
+            "readOnly" : false,
+"description" : "Returns the subscription items.",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisSubscriptionItem"
+}
+            },
+            "id" : {
+            "readOnly" : false,
+"description" : "Returns the id.",
+"type" : "string"
+            },
+            "date" : {
+            "readOnly" : false,
+"description" : "Returns the date.",
+"type" : "number"
+            },
+            "currency" : {
+            "readOnly" : false,
+"description" : "Returns the currency.",
+"type" : "string"
+            },
+            "addresses" : {
+            "readOnly" : false,
+"description" : "Returns the addresses.",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisAddress"
+}
+            },
+            "lineItems" : {
+            "readOnly" : false,
+"description" : "Returns the lineItems.",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisLineItem"
+}
+            },
+            "vendorParameters" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            },
+            "merchantAccountId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantAccountId.",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "items" : [ {
+    "subscriptionTerm" : {
+      "frequency" : "...",
+      "id" : "...",
+      "billingCycleDay" : 12345,
+      "billingPlanName" : "...",
+      "cancellable" : true,
+      "vendorParameters" : { },
+      "billingFrequency" : "...",
+      "name" : "...",
+      "billingPlanId" : "...",
+      "autoRenewal" : true,
+      "number" : 12345
+    },
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "name" : "...",
+    "subscriptionPlan" : {
+      "id" : "...",
+      "usageCharges" : [ { }, { } ],
+      "name" : "...",
+      "vendorParameters" : { },
+      "charges" : [ { }, { } ]
+    },
+    "id" : "...",
+    "code" : "..."
+  }, {
+    "subscriptionTerm" : {
+      "frequency" : "...",
+      "id" : "...",
+      "billingCycleDay" : 12345,
+      "billingPlanName" : "...",
+      "cancellable" : true,
+      "vendorParameters" : { },
+      "billingFrequency" : "...",
+      "name" : "...",
+      "billingPlanId" : "...",
+      "autoRenewal" : true,
+      "number" : 12345
+    },
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "name" : "...",
+    "subscriptionPlan" : {
+      "id" : "...",
+      "usageCharges" : [ { }, { } ],
+      "name" : "...",
+      "vendorParameters" : { },
+      "charges" : [ { }, { } ]
+    },
+    "id" : "...",
+    "code" : "..."
+  } ],
+  "id" : "...",
+  "date" : 12345,
+  "currency" : "...",
+  "addresses" : [ {
+    "addressLine1" : "...",
+    "addressLine2" : "...",
+    "addressLine3" : "...",
+    "addressLine4" : "...",
+    "longitude" : "...",
+    "latitude" : "...",
+    "zipCode" : "...",
+    "city" : "...",
+    "stateAsTwoLetter" : "...",
+    "state" : "...",
+    "country" : "...",
+    "type" : "SHIP_FROM",
+    "firstName" : "...",
+    "lastName" : "...",
+    "email" : "...",
+    "phone" : "...",
+    "company" : "...",
+    "facilityType" : "...",
+    "facilityName" : "...",
+    "faxNumber" : "...",
+    "title" : "...",
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  }, {
+    "addressLine1" : "...",
+    "addressLine2" : "...",
+    "addressLine3" : "...",
+    "addressLine4" : "...",
+    "longitude" : "...",
+    "latitude" : "...",
+    "zipCode" : "...",
+    "city" : "...",
+    "stateAsTwoLetter" : "...",
+    "state" : "...",
+    "country" : "...",
+    "type" : "BILL_TO",
+    "firstName" : "...",
+    "lastName" : "...",
+    "email" : "...",
+    "phone" : "...",
+    "company" : "...",
+    "facilityType" : "...",
+    "facilityName" : "...",
+    "faxNumber" : "...",
+    "title" : "...",
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  } ],
+  "lineItems" : [ {
+    "id" : 12345,
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "unitPrice" : 12345.0,
+    "itemCode" : "...",
+    "quantity" : 12345,
+    "productDescription" : "...",
+    "taxCode" : "..."
+  }, {
+    "id" : 12345,
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "unitPrice" : 12345.0,
+    "itemCode" : "...",
+    "quantity" : 12345,
+    "productDescription" : "...",
+    "taxCode" : "..."
+  } ],
+  "vendorParameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  },
+  "merchantAccountId" : "..."
+},
+      "description" : "A subscription order containing a list of subscription items."
+    }
+    ,
+    "json_CisSubscriptionOrderPostRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionOrderPostRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "parameters" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            },
+            "merchantAccountId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantAccountId.",
+"type" : "string"
+            },
+            "subscriptionOrder" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisSubscriptionOrder"
+            },
+            "merchantPaymentMethodId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantPaymentMethodId.",
+"type" : "string"
+            },
+            "currency" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  },
+  "merchantAccountId" : "...",
+  "subscriptionOrder" : {
+    "items" : [ {
+      "subscriptionTerm" : { },
+      "vendorParameters" : { },
+      "name" : "...",
+      "subscriptionPlan" : { },
+      "id" : "...",
+      "code" : "..."
+    }, {
+      "subscriptionTerm" : { },
+      "vendorParameters" : { },
+      "name" : "...",
+      "subscriptionPlan" : { },
+      "id" : "...",
+      "code" : "..."
+    } ],
+    "id" : "...",
+    "date" : 12345,
+    "currency" : "...",
+    "addresses" : [ {
+      "addressLine1" : "...",
+      "addressLine2" : "...",
+      "addressLine3" : "...",
+      "addressLine4" : "...",
+      "longitude" : "...",
+      "latitude" : "...",
+      "zipCode" : "...",
+      "city" : "...",
+      "stateAsTwoLetter" : "...",
+      "state" : "...",
+      "country" : "...",
+      "type" : "ADMIN_ORIGIN",
+      "firstName" : "...",
+      "lastName" : "...",
+      "email" : "...",
+      "phone" : "...",
+      "company" : "...",
+      "facilityType" : "...",
+      "facilityName" : "...",
+      "faxNumber" : "...",
+      "title" : "...",
+      "vendorParameters" : { }
+    }, {
+      "addressLine1" : "...",
+      "addressLine2" : "...",
+      "addressLine3" : "...",
+      "addressLine4" : "...",
+      "longitude" : "...",
+      "latitude" : "...",
+      "zipCode" : "...",
+      "city" : "...",
+      "stateAsTwoLetter" : "...",
+      "state" : "...",
+      "country" : "...",
+      "type" : "SHIP_FROM",
+      "firstName" : "...",
+      "lastName" : "...",
+      "email" : "...",
+      "phone" : "...",
+      "company" : "...",
+      "facilityType" : "...",
+      "facilityName" : "...",
+      "faxNumber" : "...",
+      "title" : "...",
+      "vendorParameters" : { }
+    } ],
+    "lineItems" : [ {
+      "id" : 12345,
+      "vendorParameters" : { },
+      "unitPrice" : 12345.0,
+      "itemCode" : "...",
+      "quantity" : 12345,
+      "productDescription" : "...",
+      "taxCode" : "..."
+    }, {
+      "id" : 12345,
+      "vendorParameters" : { },
+      "unitPrice" : 12345.0,
+      "itemCode" : "...",
+      "quantity" : 12345,
+      "productDescription" : "...",
+      "taxCode" : "..."
+    } ],
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "merchantAccountId" : "..."
+  },
+  "merchantPaymentMethodId" : "...",
+  "currency" : "..."
+},
+      "description" : "A subscription order request."
+    }
+    ,
+    "json_CisSubscriptionPayNowRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionPayNowRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "amount" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "currency" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "parameters" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            },
+            "profileId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "paymentMethodId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "merchantTransactionId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "merchantTransactionDescription" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "transactionMode" : {
+            "readOnly" : false,
+"description" : "Returns a String representing the transaction mode (AUTH, CAPTURE or AUTHCAPTURE).",
+"type" : "string"
+            },
+            "lineItems" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisLineItem"
+}
+            }
+          }
+        }
+      ],
+      "example" : {
+  "amount" : 12345.0,
+  "currency" : "...",
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  },
+  "profileId" : "...",
+  "paymentMethodId" : "...",
+  "merchantTransactionId" : "...",
+  "merchantTransactionDescription" : "...",
+  "transactionMode" : "...",
+  "lineItems" : [ {
+    "id" : 12345,
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "unitPrice" : 12345.0,
+    "itemCode" : "...",
+    "quantity" : 12345,
+    "productDescription" : "...",
+    "taxCode" : "..."
+  }, {
+    "id" : 12345,
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "unitPrice" : 12345.0,
+    "itemCode" : "...",
+    "quantity" : 12345,
+    "productDescription" : "...",
+    "taxCode" : "..."
+  } ]
+},
+      "description" : "A payment request to for example authorize or capture an amount."
+    }
+    ,
+    "json_CisSubscriptionPlan" : {
+      "type" : "object",
+      "title" : "CisSubscriptionPlan",
+          "properties" : {
+            "id" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "usageCharges" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisUsageCharge"
+}
+            },
+            "name" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "vendorParameters" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            },
+            "charges" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisChargeEntry"
+}
+            }
+          },
+      "example" : {
+  "id" : "...",
+  "usageCharges" : [ {
+    "type" : "...",
+    "name" : "...",
+    "unitId" : "...",
+    "tiers" : [ {
+      "numberOfUnits" : 12345,
+      "chargePrice" : 12345.0
+    }, {
+      "numberOfUnits" : 12345,
+      "chargePrice" : 12345.0
+    } ]
+  }, {
+    "type" : "...",
+    "name" : "...",
+    "unitId" : "...",
+    "tiers" : [ {
+      "numberOfUnits" : 12345,
+      "chargePrice" : 12345.0
+    }, {
+      "numberOfUnits" : 12345,
+      "chargePrice" : 12345.0
+    } ]
+  } ],
+  "name" : "...",
+  "vendorParameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  },
+  "charges" : [ {
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "oneTimeChargeTime" : "...",
+    "numberOfCycles" : 12345,
+    "chargePrice" : 12345.0
+  }, {
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "oneTimeChargeTime" : "...",
+    "numberOfCycles" : 12345,
+    "chargePrice" : 12345.0
+  } ]
+},
+      "description" : ""
+    }
+    ,
+    "json_CisSubscriptionProfileRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionProfileRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "customerName" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "company" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "emailPreference" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "languagePreference" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "profileId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "shippingAddress" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisAddress"
+            },
+            "emailAddress" : {
+            "readOnly" : false,
+"description" : "Returns the email address.",
+"type" : "string"
+            },
+            "currency" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "customerName" : "...",
+  "company" : "...",
+  "emailPreference" : "...",
+  "languagePreference" : "...",
+  "profileId" : "...",
+  "shippingAddress" : {
+    "addressLine1" : "...",
+    "addressLine2" : "...",
+    "addressLine3" : "...",
+    "addressLine4" : "...",
+    "longitude" : "...",
+    "latitude" : "...",
+    "zipCode" : "...",
+    "city" : "...",
+    "stateAsTwoLetter" : "...",
+    "state" : "...",
+    "country" : "...",
+    "type" : "ADMIN_ORIGIN",
+    "firstName" : "...",
+    "lastName" : "...",
+    "email" : "...",
+    "phone" : "...",
+    "company" : "...",
+    "facilityType" : "...",
+    "facilityName" : "...",
+    "faxNumber" : "...",
+    "title" : "...",
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  },
+  "emailAddress" : "...",
+  "currency" : "...",
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Contains profile information."
+    }
+    ,
+    "json_CisSubscriptionProfileResult" : {
+      "type" : "object",
+      "title" : "CisSubscriptionProfileResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionTransactionResult"
+        },
+        {
+          "properties" : {
+            "profileId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "validationResult" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisSubscriptionTransactionResult"
+            },
+            "currency" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "paymentMethods" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisPaymentMethod"
+}
+            },
+            "customerAddress" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisAddress"
+            },
+            "comments" : {
+            "readOnly" : false,
+"description" : "Returns comments about the profile creation.",
+"type" : "string"
+            },
+            "subscriptions" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisSubscriptionData"
+}
+            }
+          }
+        }
+      ],
+      "example" : {
+  "profileId" : "...",
+  "validationResult" : {
+    "request" : {
+      "parameters" : { }
+    },
+    "amount" : 12345.0,
+    "clientAuthorizationId" : "...",
+    "merchantProductId" : "...",
+    "sessionTransactionToken" : "...",
+    "clientRefId" : "...",
+    "vendorStatusCode" : "...",
+    "id" : "...",
+    "decision" : "ACCEPT",
+    "vendorId" : "...",
+    "href" : "...",
+    "vendorReasonCode" : "...",
+    "vendorResponses" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  },
+  "currency" : "...",
+  "paymentMethods" : [ {
+    "enabled" : true,
+    "cardType" : "...",
+    "merchantPaymentMethodId" : "...",
+    "cardHolder" : "...",
+    "billingAddress" : {
+      "addressLine1" : "...",
+      "addressLine2" : "...",
+      "addressLine3" : "...",
+      "addressLine4" : "...",
+      "longitude" : "...",
+      "latitude" : "...",
+      "zipCode" : "...",
+      "city" : "...",
+      "stateAsTwoLetter" : "...",
+      "state" : "...",
+      "country" : "...",
+      "type" : "BILL_TO",
+      "firstName" : "...",
+      "lastName" : "...",
+      "email" : "...",
+      "phone" : "...",
+      "company" : "...",
+      "facilityType" : "...",
+      "facilityName" : "...",
+      "faxNumber" : "...",
+      "title" : "...",
+      "vendorParameters" : { }
+    },
+    "ccNumber" : "...",
+    "expirationYear" : 12345,
+    "expirationMonth" : 12345
+  }, {
+    "enabled" : true,
+    "cardType" : "...",
+    "merchantPaymentMethodId" : "...",
+    "cardHolder" : "...",
+    "billingAddress" : {
+      "addressLine1" : "...",
+      "addressLine2" : "...",
+      "addressLine3" : "...",
+      "addressLine4" : "...",
+      "longitude" : "...",
+      "latitude" : "...",
+      "zipCode" : "...",
+      "city" : "...",
+      "stateAsTwoLetter" : "...",
+      "state" : "...",
+      "country" : "...",
+      "type" : "BILL_TO",
+      "firstName" : "...",
+      "lastName" : "...",
+      "email" : "...",
+      "phone" : "...",
+      "company" : "...",
+      "facilityType" : "...",
+      "facilityName" : "...",
+      "faxNumber" : "...",
+      "title" : "...",
+      "vendorParameters" : { }
+    },
+    "ccNumber" : "...",
+    "expirationYear" : 12345,
+    "expirationMonth" : 12345
+  } ],
+  "customerAddress" : {
+    "addressLine1" : "...",
+    "addressLine2" : "...",
+    "addressLine3" : "...",
+    "addressLine4" : "...",
+    "longitude" : "...",
+    "latitude" : "...",
+    "zipCode" : "...",
+    "city" : "...",
+    "stateAsTwoLetter" : "...",
+    "state" : "...",
+    "country" : "...",
+    "type" : "SHIP_TO",
+    "firstName" : "...",
+    "lastName" : "...",
+    "email" : "...",
+    "phone" : "...",
+    "company" : "...",
+    "facilityType" : "...",
+    "facilityName" : "...",
+    "faxNumber" : "...",
+    "title" : "...",
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  },
+  "comments" : "...",
+  "subscriptions" : [ {
+    "currency" : "...",
+    "comments" : "...",
+    "merchantAccountId" : "...",
+    "subscriptionId" : "...",
+    "subscriptionOrderId" : "...",
+    "subscriptionOrderEntryId" : "...",
+    "subscriptionProductId" : "...",
+    "subscriptionDescription" : "...",
+    "subscriptionStartDate" : 12345,
+    "subscriptionEndDate" : 12345,
+    "subscriptionStatus" : "...",
+    "cancellationPossible" : true,
+    "billingFrequency" : "...",
+    "contractDuration" : "...",
+    "orderDate" : 12345,
+    "cancelDate" : 12345,
+    "subscriptionName" : "...",
+    "billingSystemId" : "...",
+    "paymentMethod" : {
+      "enabled" : true,
+      "cardType" : "...",
+      "merchantPaymentMethodId" : "...",
+      "cardHolder" : "...",
+      "billingAddress" : { },
+      "ccNumber" : "...",
+      "expirationYear" : 12345,
+      "expirationMonth" : 12345
+    },
+    "autoRenewal" : true,
+    "subscriptionStartDateInReadableFormat" : "...",
+    "subscriptionEndDateInReadableFormat" : "...",
+    "clientRefId" : "...",
+    "vendorStatusCode" : "...",
+    "id" : "...",
+    "decision" : "REVIEW",
+    "vendorId" : "...",
+    "href" : "...",
+    "vendorReasonCode" : "...",
+    "vendorResponses" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  }, {
+    "currency" : "...",
+    "comments" : "...",
+    "merchantAccountId" : "...",
+    "subscriptionId" : "...",
+    "subscriptionOrderId" : "...",
+    "subscriptionOrderEntryId" : "...",
+    "subscriptionProductId" : "...",
+    "subscriptionDescription" : "...",
+    "subscriptionStartDate" : 12345,
+    "subscriptionEndDate" : 12345,
+    "subscriptionStatus" : "...",
+    "cancellationPossible" : true,
+    "billingFrequency" : "...",
+    "contractDuration" : "...",
+    "orderDate" : 12345,
+    "cancelDate" : 12345,
+    "subscriptionName" : "...",
+    "billingSystemId" : "...",
+    "paymentMethod" : {
+      "enabled" : true,
+      "cardType" : "...",
+      "merchantPaymentMethodId" : "...",
+      "cardHolder" : "...",
+      "billingAddress" : { },
+      "ccNumber" : "...",
+      "expirationYear" : 12345,
+      "expirationMonth" : 12345
+    },
+    "autoRenewal" : true,
+    "subscriptionStartDateInReadableFormat" : "...",
+    "subscriptionEndDateInReadableFormat" : "...",
+    "clientRefId" : "...",
+    "vendorStatusCode" : "...",
+    "id" : "...",
+    "decision" : "REVIEW",
+    "vendorId" : "...",
+    "href" : "...",
+    "vendorReasonCode" : "...",
+    "vendorResponses" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  } ],
+  "request" : {
+    "parameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  },
+  "amount" : 12345.0,
+  "clientAuthorizationId" : "...",
+  "merchantProductId" : "...",
+  "sessionTransactionToken" : "...",
+  "clientRefId" : "...",
+  "vendorStatusCode" : "...",
+  "id" : "...",
+  "decision" : "ERROR",
+  "vendorId" : "...",
+  "href" : "...",
+  "vendorReasonCode" : "...",
+  "vendorResponses" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Retrieves customer profile info from a Subscription Billing Provider."
+    }
+    ,
+    "json_CisSubscriptionReplacePaymentMethodRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionReplacePaymentMethodRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "merchantSubscriptionId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantSubscriptionId.",
+"type" : "string"
+            },
+            "merchantPaymentMethodId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantPaymentMethodId.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "merchantSubscriptionId" : "...",
+  "merchantPaymentMethodId" : "...",
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "A request to replace the payment method for an existing subscription with another existing payment method."
+    }
+    ,
+    "json_CisSubscriptionRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionRequest",
+          "properties" : {
+            "parameters" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            }
+          },
+      "example" : {
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "A payment request to for example authorize or capture an amount."
+    }
+    ,
+    "json_CisSubscriptionSessionFinalizeRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionSessionFinalizeRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "authorizationRequestId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "authorizationRequestToken" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "authorizationRequestId" : "...",
+  "authorizationRequestToken" : "...",
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "A request to finalize a transactional WebSession based on an issued token."
+    }
+    ,
+    "json_CisSubscriptionSessionInitRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionSessionInitRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "returnUrl" : {
+            "readOnly" : false,
+"description" : "If the service approves the transaction, the customer will be redirected to this URL.",
+"type" : "string"
+            },
+            "cancelReturnUrl" : {
+            "readOnly" : false,
+"description" : "If the service cancels the transaction or discovers an error, the customer will be redirected to this URL.",
+"type" : "string"
+            },
+            "merchantAccountId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantAccountId.",
+"type" : "string"
+            },
+            "ipAddress" : {
+            "readOnly" : false,
+"description" : "Returns the IP address.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "returnUrl" : "...",
+  "cancelReturnUrl" : "...",
+  "merchantAccountId" : "...",
+  "ipAddress" : "...",
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "A payment request to initiate payment session."
+    }
+    ,
+    "json_CisSubscriptionTransactionResult" : {
+      "type" : "object",
+      "title" : "CisSubscriptionTransactionResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisResult"
+        },
+        {
+          "properties" : {
+            "request" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CisSubscriptionRequest"
+            },
+            "amount" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "clientAuthorizationId" : {
+            "readOnly" : false,
+"description" : "ID provided by the client that is unique per authorization (e.g. the shipment, return or order id)",
+"type" : "string"
+            },
+            "merchantProductId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantProductId.",
+"type" : "string"
+            },
+            "sessionTransactionToken" : {
+            "readOnly" : false,
+"description" : "Returns the session transaction token.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "request" : {
+    "parameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    }
+  },
+  "amount" : 12345.0,
+  "clientAuthorizationId" : "...",
+  "merchantProductId" : "...",
+  "sessionTransactionToken" : "...",
+  "clientRefId" : "...",
+  "vendorStatusCode" : "...",
+  "id" : "...",
+  "decision" : "ACCEPT",
+  "vendorId" : "...",
+  "href" : "...",
+  "vendorReasonCode" : "...",
+  "vendorResponses" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "The result of a payment transaction such as authorizing or capturing."
+    }
+    ,
+    "json_CisSubscriptionUpdateRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionUpdateRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_AbstractCisSubscriptionUpdateRequest"
+        },
+        {
+          "properties" : {
+            "contractDurationExtension" : {
+            "readOnly" : false,
+"description" : "Returns the contractDurationExtension.",
+"type" : "number"
+            },
+            "autoRenewal" : {
+            "readOnly" : false,
+"description" : "Returns the autoRenewal.",
+"type" : "boolean"
+            },
+            "merchantPaymentMethodId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantPaymentMethodId.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "contractDurationExtension" : 12345,
+  "autoRenewal" : true,
+  "merchantPaymentMethodId" : "...",
+  "merchantSubscriptionId" : "...",
+  "effectiveFrom" : "...",
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Generic request type for subscription updates."
+    }
+    ,
+    "json_CisSubscriptionUpgradeRequest" : {
+      "type" : "object",
+      "title" : "CisSubscriptionUpgradeRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionCreateRequest"
+        },
+        {
+          "properties" : {
+            "effectiveFrom" : {
+            "readOnly" : false,
+"description" : "Returns the effectiveFrom.",
+"type" : "string"
+            },
+            "merchantSourceSubscriptionId" : {
+            "readOnly" : false,
+"description" : "Returns the merchantSourceSubscriptionId.",
+"type" : "string"
+            },
+            "settlement" : {
+            "readOnly" : false,
+"description" : "Returns the settlement.",
+"type" : "string"
+            },
+            "preview" : {
+            "readOnly" : false,
+"description" : "Returns the preview.",
+"type" : "boolean"
+            }
+          }
+        }
+      ],
+      "example" : {
+  "effectiveFrom" : "...",
+  "merchantSourceSubscriptionId" : "...",
+  "settlement" : "...",
+  "preview" : true,
+  "orderId" : "...",
+  "merchantAccountId" : "...",
+  "subscriptionItem" : {
+    "subscriptionTerm" : {
+      "frequency" : "...",
+      "id" : "...",
+      "billingCycleDay" : 12345,
+      "billingPlanName" : "...",
+      "cancellable" : true,
+      "vendorParameters" : { },
+      "billingFrequency" : "...",
+      "name" : "...",
+      "billingPlanId" : "...",
+      "autoRenewal" : true,
+      "number" : 12345
+    },
+    "vendorParameters" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "name" : "...",
+    "subscriptionPlan" : {
+      "id" : "...",
+      "usageCharges" : [ { }, { } ],
+      "name" : "...",
+      "vendorParameters" : { },
+      "charges" : [ { }, { } ]
+    },
+    "id" : "...",
+    "code" : "..."
+  },
+  "currency" : "...",
+  "orderDate" : 12345,
+  "merchantPaymentMethodId" : "...",
+  "parameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "Generic request type for subscription upgrades."
+    }
+    ,
+    "json_CisSubscriptionUpgradeResult" : {
+      "type" : "object",
+      "title" : "CisSubscriptionUpgradeResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/json_CisSubscriptionData"
+        },
+        {
+          "properties" : {
+            "futureBillings" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisSubscriptionBillingInfo"
+}
+            }
+          }
+        }
+      ],
+      "example" : {
+  "futureBillings" : [ {
+    "billingId" : "...",
+    "billingPeriod" : "...",
+    "billingDate" : "...",
+    "amount" : "...",
+    "customFields" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "status" : "..."
+  }, {
+    "billingId" : "...",
+    "billingPeriod" : "...",
+    "billingDate" : "...",
+    "amount" : "...",
+    "customFields" : {
+      "entries" : [ { }, { } ],
+      "map" : {
+        "property1" : "...",
+        "property2" : "..."
+      }
+    },
+    "status" : "..."
+  } ],
+  "currency" : "...",
+  "comments" : "...",
+  "merchantAccountId" : "...",
+  "subscriptionId" : "...",
+  "subscriptionOrderId" : "...",
+  "subscriptionOrderEntryId" : "...",
+  "subscriptionProductId" : "...",
+  "subscriptionDescription" : "...",
+  "subscriptionStartDate" : 12345,
+  "subscriptionEndDate" : 12345,
+  "subscriptionStatus" : "...",
+  "cancellationPossible" : true,
+  "billingFrequency" : "...",
+  "contractDuration" : "...",
+  "orderDate" : 12345,
+  "cancelDate" : 12345,
+  "subscriptionName" : "...",
+  "billingSystemId" : "...",
+  "paymentMethod" : {
+    "enabled" : true,
+    "cardType" : "...",
+    "merchantPaymentMethodId" : "...",
+    "cardHolder" : "...",
+    "billingAddress" : {
+      "addressLine1" : "...",
+      "addressLine2" : "...",
+      "addressLine3" : "...",
+      "addressLine4" : "...",
+      "longitude" : "...",
+      "latitude" : "...",
+      "zipCode" : "...",
+      "city" : "...",
+      "stateAsTwoLetter" : "...",
+      "state" : "...",
+      "country" : "...",
+      "type" : "SHIP_FROM",
+      "firstName" : "...",
+      "lastName" : "...",
+      "email" : "...",
+      "phone" : "...",
+      "company" : "...",
+      "facilityType" : "...",
+      "facilityName" : "...",
+      "faxNumber" : "...",
+      "title" : "...",
+      "vendorParameters" : { }
+    },
+    "ccNumber" : "...",
+    "expirationYear" : 12345,
+    "expirationMonth" : 12345
+  },
+  "autoRenewal" : true,
+  "subscriptionStartDateInReadableFormat" : "...",
+  "subscriptionEndDateInReadableFormat" : "...",
+  "clientRefId" : "...",
+  "vendorStatusCode" : "...",
+  "id" : "...",
+  "decision" : "ACCEPT",
+  "vendorId" : "...",
+  "href" : "...",
+  "vendorReasonCode" : "...",
+  "vendorResponses" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+      "description" : "The result of a subscription upgrade call."
+    }
+    ,
+    "json_CisTermsOfService" : {
+      "type" : "object",
+      "title" : "CisTermsOfService",
+          "properties" : {
+            "frequency" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "id" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "billingCycleDay" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "billingPlanName" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "cancellable" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "vendorParameters" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_AnnotationHashMap"
+            },
+            "billingFrequency" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "name" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "billingPlanId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "autoRenewal" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "number" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            }
+          },
+      "example" : {
+  "frequency" : "...",
+  "id" : "...",
+  "billingCycleDay" : 12345,
+  "billingPlanName" : "...",
+  "cancellable" : true,
+  "vendorParameters" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  },
+  "billingFrequency" : "...",
+  "name" : "...",
+  "billingPlanId" : "...",
+  "autoRenewal" : true,
+  "number" : 12345
+},
+      "description" : ""
+    }
+    ,
+    "json_CisUsageCharge" : {
+      "type" : "object",
+      "title" : "CisUsageCharge",
+          "properties" : {
+            "type" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "name" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "unitId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "tiers" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_CisUsageChargeTier"
+}
+            }
+          },
+      "example" : {
+  "type" : "...",
+  "name" : "...",
+  "unitId" : "...",
+  "tiers" : [ {
+    "numberOfUnits" : 12345,
+    "chargePrice" : 12345.0
+  }, {
+    "numberOfUnits" : 12345,
+    "chargePrice" : 12345.0
+  } ]
+},
+      "description" : ""
+    }
+    ,
+    "json_CisUsageChargeTier" : {
+      "type" : "object",
+      "title" : "CisUsageChargeTier",
+          "properties" : {
+            "numberOfUnits" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "chargePrice" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            }
+          },
+      "example" : {
+  "numberOfUnits" : 12345,
+  "chargePrice" : 12345.0
+},
+      "description" : ""
+    }
+    ,
+    "xml_ns0_annotationHashMap" : {
+      "type" : "object",
+      "title" : "annotationHashMap",
+      "allOf" : [
+        {
+          "properties" : {
+            "parameter" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_annotationHashMapEntryType"
+}
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_annotationHashMapEntryType" : {
+      "type" : "object",
+      "title" : "annotationHashMapEntryType",
+      "allOf" : [
+        {
+          "properties" : {
+            "key" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "value" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_cisAddress" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "address",
+        "namespace" : ""
+      },
+      "title" : "cisAddress",
+      "allOf" : [
+        {
+          "properties" : {
+            "addressLine1" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "First address line.",
+"type" : "string"
+            },
+            "addressLine2" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Second address line.",
+"type" : "string"
+            },
+            "addressLine3" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Third address line.",
+"type" : "string"
+            },
+            "addressLine4" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Fourth address line.",
+"type" : "string"
+            },
+            "city" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "City.",
+"type" : "string"
+            },
+            "company" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The company name.",
+"type" : "string"
+            },
+            "country" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "2 letter ISO 3166-1 alpha-2 country code.",
+"type" : "string"
+            },
+            "email" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Email.",
+"type" : "string"
+            },
+            "facilityName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The name of the facility.",
+"type" : "string"
+            },
+            "facilityType" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "the type of the facility.",
+"type" : "string"
+            },
+            "faxNumber" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The fax number belonging to this address.",
+"type" : "string"
+            },
+            "firstName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "First name.",
+"type" : "string"
+            },
+            "lastName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Last name.",
+"type" : "string"
+            },
+            "latitude" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Latitude of the address. Negative values are in the Southern hemisphere. Positive values are in the Northern hemisphere.",
+"type" : "string"
+            },
+            "longitude" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Longitude of the address. Negative values are in the Western hemisphere. Positive values are in the Eastern hemisphere.",
+"type" : "string"
+            },
+            "phone" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The phone number.",
+"type" : "string"
+            },
+            "state" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Second part of the ISO 3166-2 subdivision code (e.g. state or province code without country).",
+"type" : "string"
+            },
+            "title" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Title.",
+"type" : "string"
+            },
+            "type" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisAddressType"
+            },
+            "vendorParameters" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            },
+            "zipCode" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Zip/Postal code.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "Representation of an address."
+    }
+    ,
+    "xml_ns0_cisAddressType" : {
+      "type" : "string",
+      "title" : "cisAddressType",
+          "enum" : [
+            "SHIP_TO",
+            "SHIP_FROM",
+            "BILL_TO",
+            "ADMIN_ORIGIN"
+          ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_cisDecision" : {
+      "type" : "string",
+      "title" : "cisDecision",
+          "enum" : [
+            "ACCEPT",
+            "REVIEW",
+            "REJECT",
+            "ERROR"
+          ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_cisLineItem" : {
+      "type" : "object",
+      "title" : "cisLineItem",
+      "required" : ["id", "itemCode", "productDescription", "quantity", "unitPrice"],
+      "allOf" : [
+        {
+          "properties" : {
+            "id" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int32"
+            },
+            "itemCode" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "productDescription" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "quantity" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int32"
+            },
+            "taxCode" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "unitPrice" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int64"
+            },
+            "vendorParameters" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_cisResult" : {
+      "type" : "object",
+      "title" : "cisResult",
+      "allOf" : [
+        {
+          "properties" : {
+            "clientRefId" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "href" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "id" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "vendorId" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "vendorReasonCode" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "vendorStatusCode" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "decision" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisDecision"
+            },
+            "vendorResponses" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_abstractCisSubscriptionUpdateRequest" : {
+      "type" : "object",
+      "title" : "abstractCisSubscriptionUpdateRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "effectiveFrom" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "merchantSubscriptionId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "A payment request to for example authorize or capture an amount."
+    }
+    ,
+    "xml_ns0_cisChangePaymentMethodRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionChangePaymentMethodRequest",
+        "namespace" : ""
+      },
+      "title" : "cisChangePaymentMethodRequest",
+      "required" : ["action", "merchantPaymentMethodId"],
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "action" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The action to perform.",
+"type" : "string"
+            },
+            "merchantPaymentMethodId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The payment method to change.",
+"type" : "string"
+            },
+            "newValue" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "New value to be provided.",
+"type" : "string"
+            },
+            "propagate" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Indicates if the changes should also be applied to subscriptions that use the payment method.",
+"type" : "boolean"
+            }
+          }
+        }
+      ],
+      "description" : "A request for changing an existing payment method."
+    }
+    ,
+    "xml_ns0_cisChargeEntry" : {
+      "type" : "object",
+      "title" : "cisChargeEntry",
+      "required" : ["chargePrice"],
+      "allOf" : [
+        {
+          "properties" : {
+            "chargePrice" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int64"
+            },
+            "numberOfCycles" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int32"
+            },
+            "oneTimeChargeTime" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "vendorParameters" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_cisCustomerUsageRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "customerUsageRequest",
+        "namespace" : ""
+      },
+      "title" : "cisCustomerUsageRequest",
+      "allOf" : [
+        {
+          "properties" : {
+            "customerId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "customer id for the current usage.",
+"type" : "string"
+            },
+            "fromDate" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "from date for the customer usage.",
+"type" : "string"
+            },
+            "subscriptionId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "the subscription id.",
+"type" : "string"
+            },
+            "toDate" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "to date for the customer usage.",
+"type" : "string"
+            },
+            "unitsConsumed" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "units consumed.",
+"type" : "integer",
+"format" : "int64"
+            },
+            "usageChargeName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "usage charge name for the customer usage.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "Customer usage request that holds customer usage information."
+    }
+    ,
+    "xml_ns0_cisCustomerUsageResult" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "customerUsage",
+        "namespace" : ""
+      },
+      "title" : "cisCustomerUsageResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisResult"
+        },
+        {
+        }
+      ],
+      "description" : "The result of a pass customer usage call."
+    }
+    ,
+    "xml_ns0_cisFileStreamResult" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "fileStream",
+        "namespace" : ""
+      },
+      "title" : "cisFileStreamResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisResult"
+        },
+        {
+          "properties" : {
+            "bytes" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Byte stream for file downloading.",
+"type" : "string"
+            },
+            "fileName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The file name.",
+"type" : "string"
+            },
+            "mimeType" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Describes content type.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "Presents result of billing activity detail request."
+    }
+    ,
+    "xml_ns0_cisPaymentMethod" : {
+      "type" : "object",
+      "title" : "cisPaymentMethod",
+      "allOf" : [
+        {
+          "properties" : {
+            "billingAddress" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisAddress"
+            },
+            "cardHolder" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "cardType" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "ccNumber" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "enabled" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "expirationMonth" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int32"
+            },
+            "expirationYear" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int32"
+            },
+            "merchantPaymentMethodId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_cisPaymentMethodResult" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "paymentMethodResult",
+        "namespace" : ""
+      },
+      "title" : "cisPaymentMethodResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisResult"
+        },
+        {
+          "properties" : {
+            "paymentMethod" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisPaymentMethod"
+            }
+          }
+        }
+      ],
+      "description" : "Result type for payment method related requests."
+    }
+    ,
+    "xml_ns0_cisPaymentMethodUpdateRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "paymentMethodUpdateRequest",
+        "namespace" : ""
+      },
+      "title" : "cisPaymentMethodUpdateRequest",
+      "required" : ["merchantPaymentMethodId"],
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "billingAddress" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisAddress"
+            },
+            "enabled" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Enable or disable the payment method.",
+"type" : "boolean"
+            },
+            "merchantPaymentMethodId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The payment method to change.",
+"type" : "string"
+            },
+            "propagate" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Indicates whether the updates should also be applied to subscriptions that use the payment method.",
+"type" : "boolean"
+            }
+          }
+        }
+      ],
+      "description" : "Request for updating an existing payment method."
+    }
+    ,
+    "xml_ns0_cisSubscriptionBillingActivityList" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "billingActivityList",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionBillingActivityList",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisResult"
+        },
+        {
+          "properties" : {
+            "billing" : {
+              "xml" : {
+                "name" : "billings",
+                "wrapped" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "List billings.",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisSubscriptionBillingInfo"
+}
+            },
+            "merchantSubscriptionId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Merchant ID of a subscription.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "Retrieves a billing activity list for subscription."
+    }
+    ,
+    "xml_ns0_cisSubscriptionBillingInfo" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "billing",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionBillingInfo",
+      "allOf" : [
+        {
+          "properties" : {
+            "amount" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "billingDate" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "billingId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "billingPeriod" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "customFields" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            },
+            "status" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "Sub-Element defining a billing for subscription."
+    }
+    ,
+    "xml_ns0_cisSubscriptionCancelSubscriptionRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionCancelSubscriptionRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionCancelSubscriptionRequest",
+      "required" : ["merchantSubscriptionId"],
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "cancelationMode" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The cancellation mode.",
+"type" : "string"
+            },
+            "force" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "If subscription should be canceled immediately.",
+"type" : "boolean"
+            },
+            "merchantSubscriptionId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Identifying attribute of the subscription.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "A request to cancel an existing subscription."
+    }
+    ,
+    "xml_ns0_cisSubscriptionChangeStateRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionChangeStateRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionChangeStateRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_abstractCisSubscriptionUpdateRequest"
+        },
+        {
+          "properties" : {
+            "newState" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "Generic request type for subscription state changes."
+    }
+    ,
+    "xml_ns0_cisSubscriptionCreateRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionCreateRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionCreateRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "currency" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "3 letter ISO 4217 currency code.",
+"type" : "string"
+            },
+            "merchantAccountId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Identifying attribute of the buyer.",
+"type" : "string"
+            },
+            "merchantPaymentMethodId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "ID of the payment method.",
+"type" : "string"
+            },
+            "orderDate" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "orderId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Identifying order that subscription related to.",
+"type" : "string"
+            },
+            "subscriptionItem" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionItem"
+            }
+          }
+        }
+      ],
+      "description" : "Request for subscription creation."
+    }
+    ,
+    "xml_ns0_cisSubscriptionData" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionData",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionData",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisResult"
+        },
+        {
+          "properties" : {
+            "autoRenewal" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "AutoRenewal flag of a subscription.",
+"type" : "boolean"
+            },
+            "billingFrequency" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Billing frequency.",
+"type" : "string"
+            },
+            "billingSystemId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Billing system id.",
+"type" : "string"
+            },
+            "cancelDate" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "When was the subscription order cancelled.",
+"type" : "string"
+            },
+            "cancellationPossible" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Determines if a subscription is cancellable.",
+"type" : "boolean"
+            },
+            "comments" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Comments about the creation.",
+"type" : "string"
+            },
+            "contractDuration" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Contract duration.",
+"type" : "string"
+            },
+            "currency" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "3 letter ISO 4217 currency code. Default currency for this profile.",
+"type" : "string"
+            },
+            "merchantAccountId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "merchant ID of a customer account.",
+"type" : "string"
+            },
+            "orderDate" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "When was the subscription order placed originally.",
+"type" : "string"
+            },
+            "paymentMethod" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisPaymentMethod"
+            },
+            "subscriptionDescription" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Merchant description of a subscription product.",
+"type" : "string"
+            },
+            "subscriptionEndDate" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "End date of a subscription.",
+"type" : "string"
+            },
+            "subscriptionId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Merchant ID of a subscription.",
+"type" : "string"
+            },
+            "subscriptionName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Merchant name of a subscription product.",
+"type" : "string"
+            },
+            "subscriptionOrderEntryId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Merchant order entry number containing this subscription product.",
+"type" : "string"
+            },
+            "subscriptionOrderId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Merchant order number containing this subscription product.",
+"type" : "string"
+            },
+            "subscriptionProductId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Merchant ID of a subscription product.",
+"type" : "string"
+            },
+            "subscriptionStartDate" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Start date of a subscription.",
+"type" : "string"
+            },
+            "subscriptionStatus" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Status of a subscription.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "Retrieves subscription data from a Subscription Billing Provider."
+    }
+    ,
+    "xml_ns0_cisSubscriptionItem" : {
+      "type" : "object",
+      "title" : "cisSubscriptionItem",
+      "allOf" : [
+        {
+          "properties" : {
+            "id" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "code" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "name" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscriptionPlan" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionPlan"
+            },
+            "subscriptionTerm" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisTermsOfService"
+            },
+            "vendorParameters" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_cisSubscriptionOrder" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionorder",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionOrder",
+      "allOf" : [
+        {
+          "properties" : {
+            "id" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Unique id (e.g order/shipment/return number).",
+"type" : "string"
+            },
+            "address" : {
+              "xml" : {
+                "name" : "addresses",
+                "wrapped" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "List of addresses.",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisAddress"
+}
+            },
+            "currency" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "3 letter ISO 4217 currency code.",
+"type" : "string"
+            },
+            "date" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Date used for records (e.g. order/shipping/return date).",
+"type" : "string"
+            },
+            "item" : {
+              "xml" : {
+                "name" : "items",
+                "wrapped" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "List of subscription items.",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisSubscriptionItem"
+}
+            },
+            "lineItem" : {
+              "xml" : {
+                "name" : "lineItems",
+                "wrapped" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "List of line items. intended for \"Buy now\" items in cart",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisLineItem"
+}
+            },
+            "merchantAccountId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "unique identifier for a specific account.",
+"type" : "string"
+            },
+            "vendorParameters" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            }
+          }
+        }
+      ],
+      "description" : "A subscription order containing a list of subscription items."
+    }
+    ,
+    "xml_ns0_cisSubscriptionOrderPostRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionOrderPostRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionOrderPostRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "currency" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "3 letter ISO 4217 currency code.",
+"type" : "string"
+            },
+            "merchantAccountId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Identifying attribute of the buyer.",
+"type" : "string"
+            },
+            "merchantPaymentMethodId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Identifying attribute of the payment method (if available).",
+"type" : "string"
+            },
+            "subscriptionOrder" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionOrder"
+            },
+            "vendorParameters" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            }
+          }
+        }
+      ],
+      "description" : "A subscription order request."
+    }
+    ,
+    "xml_ns0_cisSubscriptionPayNowRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionProcessPayNowRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionPayNowRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "amount" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The amount of the transaction.",
+"type" : "integer",
+"format" : "int64"
+            },
+            "currency" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "3 letter ISO 4217 currency code.",
+"type" : "string"
+            },
+            "lineItem" : {
+              "xml" : {
+                "name" : "lineItems",
+                "wrapped" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "List of line items.",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisLineItem"
+}
+            },
+            "merchantTransactionDescription" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Descriptive text for transaction.",
+"type" : "string"
+            },
+            "merchantTransactionId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Merchant ID of the transaction.",
+"type" : "string"
+            },
+            "paymentMethodId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "ID of the payment method.",
+"type" : "string"
+            },
+            "profileId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "ID of a payment profile.",
+"type" : "string"
+            },
+            "transactionMode" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Transaction mode (AUTH, CAPTURE or AUTHCAPTURE).",
+"type" : "string"
+            },
+            "vendorParameters" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            }
+          }
+        }
+      ],
+      "description" : "A payment request to for example authorize or capture an amount."
+    }
+    ,
+    "xml_ns0_cisSubscriptionPlan" : {
+      "type" : "object",
+      "title" : "cisSubscriptionPlan",
+      "allOf" : [
+        {
+          "properties" : {
+            "id" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "charge" : {
+              "xml" : {
+                "name" : "charges",
+                "wrapped" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisChargeEntry"
+}
+            },
+            "name" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "usageCharge" : {
+              "xml" : {
+                "name" : "usageCharges",
+                "wrapped" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisUsageCharge"
+}
+            },
+            "vendorParameters" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_cisSubscriptionProfileRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionProfileRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionProfileRequest",
+      "required" : ["emailAddress", "languagePreference", "profileId"],
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "company" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Company.",
+"type" : "string"
+            },
+            "currency" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "3 letter ISO 4217 currency code.",
+"type" : "string"
+            },
+            "customerName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Profile name.",
+"type" : "string"
+            },
+            "emailAddress" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "ID of a payment profile.",
+"type" : "string"
+            },
+            "emailPreference" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Email preference, either \"plaintext\", \"html\" or \"multipart\".",
+"type" : "string"
+            },
+            "languagePreference" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Language preference, ISO 639-1 two-letter language code, e.g. de,en,.. .",
+"type" : "string"
+            },
+            "profileId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "ID of a customer/account profile.",
+"type" : "string"
+            },
+            "shippingAddress" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisAddress"
+            }
+          }
+        }
+      ],
+      "description" : "Contains profile information."
+    }
+    ,
+    "xml_ns0_cisSubscriptionProfileResult" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionProfileResult",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionProfileResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionTransactionResult"
+        },
+        {
+          "properties" : {
+            "comments" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Comments about the creation.",
+"type" : "string"
+            },
+            "currency" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "3 letter ISO 4217 currency code. Default currency for this profile.",
+"type" : "string"
+            },
+            "customerAddress" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisAddress"
+            },
+            "paymentMethod" : {
+              "xml" : {
+                "name" : "paymentMethods",
+                "wrapped" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "List of payment methods.",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisPaymentMethod"
+}
+            },
+            "profileId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "ID of a payment profile.",
+"type" : "string"
+            },
+            "subscriptions" : {
+              "xml" : {
+                "name" : "subscriptions",
+                "wrapped" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Placeholder to contain list of subscriptions.",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisSubscriptionData"
+}
+            },
+            "validationResult" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionTransactionResult"
+            }
+          }
+        }
+      ],
+      "description" : "Retrieves customer profile info from a Subscription Billing Provider."
+    }
+    ,
+    "xml_ns0_cisSubscriptionReplacePaymentMethodRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionReplacePaymentMethodRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionReplacePaymentMethodRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "merchantPaymentMethodId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "identifying attribute of the payment method.",
+"type" : "string"
+            },
+            "merchantSubscriptionId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "identifying attribute of the subscription.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "A request to replace the payment method for an existing subscription with another existing payment method."
+    }
+    ,
+    "xml_ns0_cisSubscriptionRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionRequest",
+      "allOf" : [
+        {
+          "properties" : {
+            "vendorParameters" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            }
+          }
+        }
+      ],
+      "description" : "A payment request to for example authorize or capture an amount."
+    }
+    ,
+    "xml_ns0_cisSubscriptionSessionFinalizeRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionSessionFinalization",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionSessionFinalizeRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "authorizationRequestId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "the request id of the authorization to capture on.",
+"type" : "string"
+            },
+            "authorizationRequestToken" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "the authorization request token used.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "A request to finalize a transactional WebSession based on an issued token."
+    }
+    ,
+    "xml_ns0_cisSubscriptionSessionInitRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionSessionInitRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionSessionInitRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionRequest"
+        },
+        {
+          "properties" : {
+            "cancelReturnUrl" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "If the service cancels the transaction or discovers an error, the customer will be redirected to this URL.",
+"type" : "string"
+            },
+            "ipAddress" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The ipAddress of the client.",
+"type" : "string"
+            },
+            "merchantAccountId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Identifying attribute of the buyer.",
+"type" : "string"
+            },
+            "returnUrl" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "If the service approves the transaction, the customer will be redirected to this URL.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "A payment request to initiate payment session."
+    }
+    ,
+    "xml_ns0_cisSubscriptionTransactionResult" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionTransactionResult",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionTransactionResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisResult"
+        },
+        {
+          "properties" : {
+            "amount" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The amount / subscription price .",
+"type" : "integer",
+"format" : "int64"
+            },
+            "merchantProductId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The transaction verification key.",
+"type" : "string"
+            },
+            "sessionTransactionToken" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "The result of a payment transaction such as authorizing or capturing."
+    }
+    ,
+    "xml_ns0_cisSubscriptionUpdateRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionUpdateRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionUpdateRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_abstractCisSubscriptionUpdateRequest"
+        },
+        {
+          "properties" : {
+            "autoRenewal" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "contractDurationExtension" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int32"
+            },
+            "merchantPaymentMethodId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "The merchantPaymentMethodId.",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "Generic request type for subscription updates."
+    }
+    ,
+    "xml_ns0_cisSubscriptionUpgradeRequest" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionUpgradeRequest",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionUpgradeRequest",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionCreateRequest"
+        },
+        {
+          "properties" : {
+            "effectiveFrom" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Indicates when the upgrade will be effective.",
+"type" : "string"
+            },
+            "preview" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "Indicates whether it's preview upgrade call or real upgrade.",
+"type" : "boolean"
+            },
+            "settlement" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "sourceSubscriptionId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "Generic request type for subscription upgrades."
+    }
+    ,
+    "xml_ns0_cisSubscriptionUpgradeResult" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "subscriptionUpgradeResult",
+        "namespace" : ""
+      },
+      "title" : "cisSubscriptionUpgradeResult",
+      "allOf" : [
+        {
+          "$ref" : "#/definitions/xml_ns0_cisSubscriptionData"
+        },
+        {
+          "properties" : {
+            "futureBillings" : {
+              "xml" : {
+                "name" : "futureBillings",
+                "wrapped" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisSubscriptionBillingInfo"
+}
+            }
+          }
+        }
+      ],
+      "description" : "The result of a subscription upgrade call."
+    }
+    ,
+    "xml_ns0_cisTermsOfService" : {
+      "type" : "object",
+      "title" : "cisTermsOfService",
+      "allOf" : [
+        {
+          "properties" : {
+            "id" : {
+              "xml" : {
+                "attribute" : true,
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "autoRenewal" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "billingCycleDay" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int32"
+            },
+            "billingFrequency" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "billingPlanId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "billingPlanName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "cancellable" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "frequency" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "name" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "number" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int32"
+            },
+            "vendorParameters" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"$ref" : "#/definitions/xml_ns0_annotationHashMap"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_cisUsageCharge" : {
+      "type" : "object",
+      "title" : "cisUsageCharge",
+      "allOf" : [
+        {
+          "properties" : {
+            "name" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "tier" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_cisUsageChargeTier"
+}
+            },
+            "type" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "unitId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_cisUsageChargeTier" : {
+      "type" : "object",
+      "title" : "cisUsageChargeTier",
+      "allOf" : [
+        {
+          "properties" : {
+            "chargePrice" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int64"
+            },
+            "numberOfUnits" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int32"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+  },
+  "paths": {
+    "\/sub/cisSubscriptionMock/accounts/" : {
+      "post" : {
+        "tags" : [ "AccountController" ],
+        "summary" : "Creates new account.",
+        "description" : "Creates new account.\n\nExample URL: POST\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/accounts",
+        "operationId" : "createAccount",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisSubscriptionProfileRequest"
+            },
+            "description" : "create new account request"
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionProfileResult"
+            },
+            "description" : "the response with new account"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/accounts/{accountId}" : {
+      "get" : {
+        "tags" : [ "AccountController" ],
+        "summary" : "Returns an already existing account.",
+        "description" : "Returns an already existing account.\n\nExample URL: GET\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/accounts/1234567890",
+        "operationId" : "getAccount",
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "accountId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "id of the account to get"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionProfileResult"
+            },
+            "description" : "the response with account"
+          }
+        }
+      }
+      ,
+      "put" : {
+        "tags" : [ "AccountController" ],
+        "summary" : "Updates an already existing account.",
+        "description" : "Updates an already existing account.\n\nExample URL: PUT\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/accounts/1234567890",
+        "operationId" : "updateAccount",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "accountId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "id of the account to update"
+          },
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisSubscriptionProfileRequest"
+            },
+            "description" : "update account request"
+          }
+        ],
+        "responses" : {
+          "204" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionProfileResult"
+            },
+            "description" : "the response with updated account"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/billingactivitydetails/{billingActivityDetailId}" : {
+      "get" : {
+        "tags" : [ "BillingActivityDetailsController" ],
+        "summary" : "Returns specific billing activity detail.",
+        "description" : "Returns specific billing activity detail.\n\nExample URL: GET\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock\n/billingActivityDetails/535355500",
+        "operationId" : "getAccount2",
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "billingActivityDetailId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "billing activity detail id"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisFileStreamResult"
+            },
+            "description" : "the response with billing activity detail"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/hpfurl" : {
+      "head" : {
+        "tags" : [ "ExternalServicesController" ],
+        "summary" : "Returns Hosted Payment Framework (HPF) URL.",
+        "description" : "Returns Hosted Payment Framework (HPF) URL.\n\nExample URL: HEAD\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/hpfurl",
+        "operationId" : "getLocation",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "schema" : {
+"$ref" : "#/definitions/json_CisResult"
+            },
+            "example" : {
+  "clientRefId" : "...",
+  "vendorStatusCode" : "...",
+  "id" : "...",
+  "decision" : "ERROR",
+  "vendorId" : "...",
+  "href" : "...",
+  "vendorReasonCode" : "...",
+  "vendorResponses" : {
+    "entries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "map" : {
+      "property1" : "...",
+      "property2" : "..."
+    }
+  }
+},
+            "description" : "Hosted Payment Framework (HPF) URL"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/paymentmethods/{paymentMethodId}" : {
+      "put" : {
+        "tags" : [ "PaymentMethodController" ],
+        "summary" : "Updates an existing payment method.",
+        "description" : "Updates an existing payment method.\n\nExample URL: PUT\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock\n/paymentmethods/25562724555",
+        "operationId" : "updatePaymentMethod",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "paymentMethodId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "the id of payment method to update"
+          },
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisPaymentMethodUpdateRequest"
+            },
+            "description" : "update payment method request"
+          }
+        ],
+        "responses" : {
+          "204" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisResult"
+            },
+            "description" : "the response with the updated payment method"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/ping" : {
+      "head" : {
+        "tags" : [ "ExternalServicesController" ],
+        "summary" : "Tests connection with third party service using current credentials and properties.",
+        "description" : "Tests connection with third party service using current credentials and properties.\n\nExample URL: HEAD\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/ping",
+        "operationId" : "testConnection",
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisResult"
+            },
+            "description" : "the result of testing the connection"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/subscriptions/" : {
+      "post" : {
+        "tags" : [ "SubscriptionController" ],
+        "summary" : "Creates a new subscription.",
+        "description" : "Creates a new subscription.\n\nExample URL: POST\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/subscriptions",
+        "operationId" : "createSubscription",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisSubscriptionCreateRequest"
+            },
+            "description" : "create subscription request"
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionData"
+            },
+            "description" : "the response with new subscription data"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/subscriptions/{subscriptionId}" : {
+      "put" : {
+        "tags" : [ "SubscriptionController" ],
+        "summary" : "Updates an already existing subscription.",
+        "description" : "Updates an already existing subscription.\n\nExample URL: PUT\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/subscriptions/9997000011804610",
+        "operationId" : "updateSubscription",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "subscriptionId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "the id of the subscription"
+          },
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisSubscriptionUpdateRequest"
+            },
+            "description" : "update subscription request"
+          }
+        ],
+        "responses" : {
+          "204" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionData"
+            },
+            "description" : "the response with updated subscription data"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/subscriptions/{subscriptionId}/billingActivities" : {
+      "get" : {
+        "tags" : [ "SubscriptionController" ],
+        "summary" : "Returns the billing activities for the given subscription optionally filtered by date.",
+        "description" : "Returns the billing activities for the given subscription optionally filtered by date.\n\nExample URL: GET\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/subscriptions/9997000011804610\n/billingActivities",
+        "operationId" : "getBillingActivityList",
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "subscriptionId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "the id of the subscription"
+          },
+          {
+            "name" : "fromTimestamp",
+            "in" : "query",
+            "type" : "string",
+            "description" : "timestamp containing the 'from' date to filter by"
+          },
+          {
+            "name" : "toTimestamp",
+            "in" : "query",
+            "type" : "string",
+            "description" : "timestamp containing the 'to' date to filter by"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionBillingActivityList"
+            },
+            "description" : "the response with the list of billing activities"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/subscriptions/{subscriptionId}/cancel" : {
+      "put" : {
+        "tags" : [ "SubscriptionController" ],
+        "summary" : "Cancels the already existing subscription.",
+        "description" : "Cancels the already existing subscription.\n\nExample URL: PUT\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/subscriptions/9997000011804610\n/cancel?effectiveFrom=NOW",
+        "operationId" : "cancelSubscription",
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "subscriptionId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "the id of the subscription"
+          },
+          {
+            "name" : "effectiveFrom",
+            "in" : "query",
+            "type" : "string",
+            "description" : "when the cancellation should take effect"
+          }
+        ],
+        "responses" : {
+          "204" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionData"
+            },
+            "description" : "the response with updated subscription data"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/subscriptions/{subscriptionId}/changeState" : {
+      "put" : {
+        "tags" : [ "SubscriptionController" ],
+        "summary" : "Changes the state of an already existing subscription.",
+        "description" : "Changes the state of an already existing subscription.\n\nExample URL: PUT\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/subscriptions/9997000011804610\n/changeState",
+        "operationId" : "changeSubscriptionState",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "subscriptionId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "the id of the subscription"
+          },
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisSubscriptionChangeStateRequest"
+            },
+            "description" : "change subscription state request"
+          }
+        ],
+        "responses" : {
+          "204" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionData"
+            },
+            "description" : "the response with updated subscription data"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/subscriptions/{subscriptionId}/replacePaymentMethod" : {
+      "put" : {
+        "tags" : [ "SubscriptionController" ],
+        "summary" : "Replaces the payment method of an already existing subscription.",
+        "description" : "Replaces the payment method of an already existing subscription.\n\nExample URL: PUT\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/subscriptions/9997000011804610\n/replacePaymentMethod?merchantPaymentMethodId=9997000012761537&effectiveFrom=NOW",
+        "operationId" : "replacePaymentMethod",
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "subscriptionId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "the id of the subscription"
+          },
+          {
+            "name" : "effectiveFrom",
+            "in" : "query",
+            "type" : "string",
+            "description" : "when the replacement should take effect"
+          },
+          {
+            "name" : "merchantPaymentMethodId",
+            "in" : "query",
+            "type" : "string",
+            "description" : "the id of the new payment method for subscription"
+          }
+        ],
+        "responses" : {
+          "204" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionData"
+            },
+            "description" : "the response with updated subscription data"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/subscriptions/{subscriptionId}/upgrade" : {
+      "put" : {
+        "tags" : [ "SubscriptionController" ],
+        "summary" : "Upgrades the already existing subscription.",
+        "description" : "Upgrades the already existing subscription.\n\nExample URL: PUT\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/subscriptions/9997000011804610\n/upgrade",
+        "operationId" : "upgradeSubscription",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "subscriptionId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "the id of the subscription"
+          },
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisSubscriptionUpgradeRequest"
+            },
+            "description" : "subscription upgrade request"
+          }
+        ],
+        "responses" : {
+          "204" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionUpgradeResult"
+            },
+            "description" : "the response with the upgrade result"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/transactions/" : {
+      "post" : {
+        "tags" : [ "TransactionsController" ],
+        "summary" : "Authorizes and captures a one time transaction.",
+        "description" : "Authorizes and captures a one time transaction.\n\nExample URL: POST\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/transactions",
+        "operationId" : "processPayNow",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisSubscriptionPayNowRequest"
+            },
+            "description" : "the request for processing a one time transaction"
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionTransactionResult"
+            },
+            "description" : "the subscription transaction result with details of the AuthCapture"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/usages/" : {
+      "put" : {
+        "tags" : [ "UsageController" ],
+        "summary" : "Passes customer usage for a subscription.",
+        "description" : "Passes customer usage for a subscription.\n\nExample URL: PUT\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/usages",
+        "operationId" : "passCustomerUsage",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisCustomerUsageRequest"
+            },
+            "description" : "the customer usage request"
+          }
+        ],
+        "responses" : {
+          "204" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisCustomerUsageResult"
+            },
+            "description" : "the response with the customer usage result"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/websessions/" : {
+      "post" : {
+        "tags" : [ "WebSessionController" ],
+        "summary" : "Initializes a session with the third party billing provider.",
+        "description" : "Initializes a session with the third party billing provider.\n\nExample URL: POST\nhttps://localhost:8443/hybris-cis-mock-subscription-web/sub/cisSubscriptionMock/websessions",
+        "operationId" : "initializeSession",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisSubscriptionSessionInitRequest"
+            },
+            "description" : "init session request"
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionTransactionResult"
+            },
+            "description" : "the subscription transaction result with the transaction details"
+          }
+        }
+      }
+    }
+    ,
+    "\/sub/cisSubscriptionMock/websessions/{websessionId}" : {
+      "put" : {
+        "tags" : [ "WebSessionController" ],
+        "summary" : "Finalizes an already initialized session with the third party billing provider.",
+        "description" : "Finalizes an already initialized session with the third party billing provider.",
+        "operationId" : "finalizeSession",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "websessionId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "description" : "the id of the initialized web session"
+          },
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"$ref" : "#/definitions/json_CisSubscriptionSessionFinalizeRequest"
+            },
+            "description" : "finalize session request"
+          }
+        ],
+        "responses" : {
+          "204" : {
+            "schema" : {
+"$ref" : "#/definitions/xml_ns0_cisSubscriptionTransactionResult"
+            },
+            "description" : "the subscription transaction result with details of the finalization"
+          }
+        }
+      }
+    }
+  }
+}

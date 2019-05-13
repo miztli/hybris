@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="background_alert_critical">#000000</color>
+    <color name="background_alert_error">#F2FF2E22</color>
+    <color name="background_alert_success">#F257c100</color>
+    <color name="background_alert_warning">#F2ff6e00</color>
+    <color name="text_alert_critical">#ffffff</color>
+    <color name="text_alert_error">#ffffff</color>
+    <color name="text_alert_success">#ffffff</color>
+    <color name="text_alert_warning">#ffffff</color>
+
+    <!-- Tooltip -->
+    <color name="tooltip_background">#F215213A</color>
+</resources>

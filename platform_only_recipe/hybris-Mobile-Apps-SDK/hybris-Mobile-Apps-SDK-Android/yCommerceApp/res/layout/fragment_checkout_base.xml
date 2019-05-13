@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/checkout_scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_large">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_small">
+
+            <TextView
+                android:id="@+id/checkout_title"
+                style="@style/h1_title_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checkout" />
+        </LinearLayout>
+
+        <include layout="@layout/include_checkout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_medium">
+
+            <TextView
+                android:id="@+id/checkout_delivery_method_title"
+                style="@style/h3_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_medium"
+                android:text="@string/checkout_delivery_method_title" />
+
+            <Spinner
+                android:id="@+id/checkout_delivery_method_spinner"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spinner_height"
+                android:prompt="@string/checkout_delivery_method_spinner_dialog"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/checkout_terms_conditions_error_msg_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_small"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/checkout_terms_conditions_error_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checkout_terms_conditions_error_message"
+                android:textColor="@color/checkout_entries_validation_error" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/checkout_terms_conditions_layout"
+            style="@style/terms_conditions_validation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_medium">
+
+            <CheckBox
+                android:id="@+id/checkout_terms_conditions_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/checkout_agree_text" />
+
+            <TextView
+                android:id="@+id/checkout_terms_conditions_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="@string/checkout_terms_conditions"
+                android:textColor="@color/checkout_terms_conditions_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/checkout_placing_order_error_msg_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_small"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/checkout_placing_order_mandatory_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checkout_placing_order_mandatory_message"
+                android:textColor="@color/checkout_entries_validation_error" />
+
+            <TextView
+                android:id="@+id/checkout_placing_order_error_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checkout_placing_order_error_message"
+                android:textColor="@color/checkout_entries_validation_error" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_large"
+            android:paddingTop="@dimen/padding_large">
+
+            <Button
+                android:id="@+id/checkout_place_order_button"
+                style="@style/action_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/checkout_place_order_button_height"
+                android:gravity="center"
+                android:text="@string/checkout_place_order"
+                android:textColor="@color/action_button_text" />
+        </LinearLayout>
+
+        <!-- cart Summary -->
+
+        <include layout="@layout/include_cart_summary" />
+    </LinearLayout>
+
+</ScrollView>

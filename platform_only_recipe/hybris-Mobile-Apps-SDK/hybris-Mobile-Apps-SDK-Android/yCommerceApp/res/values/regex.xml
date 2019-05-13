@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Don't forget to double back slash (\\) the special regex characters like ?, *, ^, etc. -->
+    <!--<string name="regex_email">^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$</string>-->
+    <string name="regex_order_code_scan">^orders://([0-9]+)$</string>
+    <string name="regex_add_to_cart">^products://([a-zA-Z0-9-_]+)/addToCart(/[0-9]+)?$</string>
+    <string-array name="regex_products">
+        <!-- Basic number -->
+        <item>^([0-9]+)$</item>
+        <!-- Barcode -->
+        <item>^products://([0-9]+)$</item>
+        <!-- URLs -->
+        <item>^https?://[\\da-z\\.-]+\\.[a-z\\.]{2,6}[:0-9]*[/\\w\\.-]*/p/([0-9]+)\\??.*$</item>
+        <item>^[\\da-z\\.-]+\\.[a-z\\.]{2,6}[:0-9]*[/\\w\\.-]*/p/([0-9]+)\\??.*$</item>
+    </string-array>
+
+</resources>

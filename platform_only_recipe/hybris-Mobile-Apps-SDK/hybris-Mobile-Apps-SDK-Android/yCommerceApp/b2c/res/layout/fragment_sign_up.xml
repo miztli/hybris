@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/account_scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/sign_up_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_large">
+
+        <TextView
+            android:id="@+id/sign_up_title"
+            style="@style/h1_title_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/account_sign_up_title" />
+
+        <Spinner
+            android:id="@+id/sign_up_title_code"
+            style="@style/spinner_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spinner_height"
+            android:layout_marginBottom="@dimen/padding_medium"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:spinnerMode="dialog" />
+
+        <TextView
+            android:id="@+id/sign_up_title_code_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/account_sign_up_error_title_code"
+            android:textColor="@color/error_color"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/padding_medium"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/sign_up_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:layout_marginRight="@dimen/padding_medium"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/account_edittext"
+                    android:ems="10"
+                    android:hint="@string/account_profile_firstname_hint"
+                    android:imeOptions="actionDone"
+                    android:paddingLeft="@dimen/padding_medium"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/sign_up_first_name_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/padding_medium"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:text="@string/account_sign_up_error_first_name"
+                    android:textColor="@color/error_color"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/sign_up_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/account_edittext"
+                    android:ems="10"
+                    android:hint="@string/account_profile_lastname_hint"
+                    android:imeOptions="actionDone"
+                    android:paddingLeft="@dimen/padding_medium"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/sign_up_last_name_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:text="@string/account_sign_up_error_last_name"
+                    android:textColor="@color/error_color"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/sign_up_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/payment_number_edittext_height"
+            android:layout_marginBottom="@dimen/padding_medium"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:background="@drawable/account_edittext"
+            android:ems="10"
+            android:hint="@string/account_profile_email_hint"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="@dimen/padding_medium"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/sign_up_email_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/account_sign_up_error_email"
+            android:textColor="@color/error_color"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/sign_up_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/payment_number_edittext_height"
+            android:layout_marginBottom="@dimen/padding_medium"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:background="@drawable/account_edittext"
+            android:ems="10"
+            android:hint="@string/account_sign_up_password_hint"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:paddingLeft="@dimen/padding_medium"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/sign_up_password_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/account_sign_up_error_password"
+            android:textColor="@color/error_color"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/sign_up_submit"
+            style="@style/action_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/checkout_place_order_button_height"
+            android:layout_marginBottom="@dimen/padding_medium"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/account_sign_up_submit_button"
+            android:textColor="@color/action_button_text" />
+
+    </LinearLayout>
+</ScrollView>

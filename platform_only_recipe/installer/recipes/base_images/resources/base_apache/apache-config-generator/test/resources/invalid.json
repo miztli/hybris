@@ -1,0 +1,11 @@
+{
+    "webserver_apache_vhosts": [
+      {
+            "webserver_apache_domain": "localhost",
+            "webserver_apache_servername": "localhost",
+            "webserver_apache_allowed": [
+                "my-app"
+            ],
+            "force_https": "true"
+        }
+}

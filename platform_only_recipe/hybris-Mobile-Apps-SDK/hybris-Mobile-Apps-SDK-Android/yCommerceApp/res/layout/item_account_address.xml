@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/user_address_item"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_small">
+
+    <LinearLayout
+        android:id="@+id/user_default_address_image_checked_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.15"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/default_shipping_address_checked_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/checked" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/address_details_layout"
+        android:layout_width="0dp"
+        style="@style/layout_product_item"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.55"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/address_contact_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/address_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/account_address_set_default_text"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/user_address_button_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.30"
+        android:gravity="center"
+        android:padding="@dimen/padding_small">
+
+
+        <Button
+            android:id="@+id/address_set_default_button"
+            style="@style/second_button"
+            android:layout_width="@dimen/account_button_width"
+            android:layout_height="@dimen/account_button_height"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/account_address_set_default" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/address_delete_button_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.10"
+        android:gravity="right"
+        android:padding="@dimen/padding_small">
+
+
+        <Button
+            android:id="@+id/address_delete_button"
+            style="@style/second_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:background="@drawable/close_icon" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

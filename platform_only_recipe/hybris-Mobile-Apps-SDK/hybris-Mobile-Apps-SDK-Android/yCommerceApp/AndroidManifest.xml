@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hybris.mobile.app.commerce">
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- Sync Adapter -->
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
+    <!-- For HockeyApp -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:name="com.hybris.mobile.app.commerce.CommerceApplication"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_provider"
+        android:label="@string/app_name"
+        android:theme="@style/hybris_theme">
+
+        <!-- Google Maps Api key -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/googlemaps_api_key" />
+
+        <!-- Google Play Services -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- Main searchable activity -->
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value="com.hybris.mobile.app.commerce.activity.SearchCatalogActivity" />
+
+        <activity
+            android:name="com.hybris.mobile.app.commerce.activity.SplashScreenActivity"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.hybris.mobile.app.commerce.activity.SearchCatalogActivity"
+            android:exported="false"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable_products" />
+        </activity>
+
+        <activity android:name="com.hybris.mobile.app.commerce.activity.CatalogActivity" />
+        <activity android:name="com.hybris.mobile.app.commerce.activity.DashboardActivity" />
+        <activity
+            android:name=".activity.AccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.hybris.mobile.app.commerce.activity.OrderHistoryActivity"
+            android:exported="false"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable_orders" />
+        </activity>
+
+        <activity
+            android:name="com.hybris.mobile.app.commerce.activity.OrderDetailActivity"
+            android:exported="false"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="orders" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable_orders" />
+        </activity>
+        <activity android:name="com.hybris.mobile.app.commerce.activity.ProductDetailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="products" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.CheckoutActivity" />
+        <activity android:name="com.hybris.mobile.app.commerce.activity.OrderConfirmationActivity" />
+        <activity android:name="com.hybris.mobile.app.commerce.activity.SettingsActivity" />
+        <activity android:name="com.hybris.mobile.app.commerce.activity.UrlSettingsActivity" />
+        <activity android:name="com.hybris.mobile.app.commerce.activity.StoreLocatorActivity" />
+        <activity android:name="com.hybris.mobile.app.commerce.activity.StoreDetailsActivity" />
+        <activity
+            android:name="net.hockeyapp.android.UpdateActivity"
+            android:screenOrientation="sensorPortrait" />
+
+        <receiver android:name="com.hybris.mobile.app.commerce.broadcast.NetworkChangeBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- HockeyApp -->
+        <activity android:name="net.hockeyapp.android.FeedbackActivity" />
+
+        <!-- Content provider and sync adapter -->
+        <service android:name="com.hybris.mobile.lib.commerce.sync.CatalogAuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+
+            <meta-data
+                android:name="account_name"
+                android:value="@string/account_name" />
+
+            <meta-data
+                android:name="account_type"
+                android:value="@string/account_type" />
+        </service>
+
+        <provider
+            android:name="com.hybris.mobile.lib.commerce.provider.CatalogProvider"
+            android:authorities="@string/provider_authority"
+            android:exported="false"
+            android:syncable="true">
+
+            <meta-data
+                android:name="db_name"
+                android:value="@string/db_name" />
+
+            <meta-data
+                android:name="db_version"
+                android:value="@integer/db_version" />
+
+        </provider>
+    </application>
+
+</manifest>

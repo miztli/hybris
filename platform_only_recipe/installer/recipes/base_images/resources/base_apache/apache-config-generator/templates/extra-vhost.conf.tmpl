@@ -1,0 +1,102 @@
+# HTTP
+<% if(force_https == "true") {
+    out.print "<VirtualHost *:\${HTTP_PORT}>\n\
+    ServerName ${webserver_apache_servername}\n\
+    RewriteEngine on\n\
+    RewriteCond %{SERVER_PORT} !^\${HTTPS_PORT}\$\n\
+    RewriteRule ^/(.*) https://%{HTTP_HOST}/\$1 [NC,R=301,L]\n\
+</VirtualHost>"
+ } else {
+     out.print "<VirtualHost *:\${HTTP_PORT}>\n\
+     ServerName ${webserver_apache_servername}\n\
+     # Common settings\n\
+     ProxyPreserveHost on\n\
+     RewriteEngine On\n\
+     RewriteOptions inherit\n\
+     # Maintenance\n\
+     <Directory \"\${HTTPD_HOME}/conf.d/hybris.d/${webserver_apache_domain}/maintenance\">\n\
+        AllowOverride None\n\
+        # Allow open access:\n\
+        Require all granted\n\
+    </Directory>\n\
+    ErrorDocument 503 /maintenance/index.html\n\
+    ErrorDocument 403 /maintenance/index.html\n"
+
+     if(rewrite_rules_http) {
+        rewrite_rules_http.each { out.println "RewriteRule    \"${it.key}\"    \"${it.value}\"    [R=301,NC]"}
+     }
+     webserver_apache_allowed.each { out.println "\tProxyPass /${it} balancer://mycluster/ nocanon\nProxyPassReverse /${it} balancer://mycluster/" }
+     
+     if(webserver_apache_default_app) {
+         out.println "ProxyPassMatch ^/maintenance/ !\n\tProxyPass / balancer://mycluster/${webserver_apache_default_app} nocanon stickysession=JSESSIONID\nProxyPassReverse / balancer://mycluster/${webserver_apache_default_app}"
+     }
+
+     if(webserver_apache_authentication_credential) {
+         out.println "<Location />\n\
+             AuthType Basic\
+             AuthName ${webserver_apache}\
+             AuthUserFile ${webserver_apache_domain}/authentication-users\
+             Require valid-user\
+         </Location>\
+         <Location /maintenance>\
+             Require all granted\
+         </Location>"
+     }
+         
+     out.println "</VirtualHost>"
+ }
+%>
+
+
+# HTTPS
+
+<VirtualHost *:\${HTTPS_PORT}>
+    ServerName ${webserver_apache_servername}
+    DocumentRoot \${HTTPD_HOME}/conf.d/hybris.d/${webserver_apache_domain}
+    
+    # Common settings
+    ProxyPreserveHost on
+    RewriteEngine On
+    RewriteOptions inherit
+
+   	<Directory "\${HTTPD_HOME}/conf.d/hybris.d/${webserver_apache_domain}/maintenance">
+   	    AllowOverride None
+   	    # Allow open access:
+   	    Require all granted
+   	</Directory>
+
+   	ErrorDocument 503 /maintenance/index.html
+   	ErrorDocument 403 /maintenance/index.html
+    
+    
+    <%
+    if(webserver_apache_authentication_credential) {
+         out.println "<Location />\n\
+             AuthType Basic\n\
+             AuthName ${webserver_apache_domain}\n\
+             AuthUserFile \${HTTPD_HOME}/conf.d/hybris.d/${webserver_apache_domain}/authentication-users\n\
+             Require valid-user\n\
+         </Location>\n\
+         <Location /maintenance>\n\
+             Require all granted\n\
+         </Location>\n"
+    }
+     
+     if(rewrite_rules_ssl) {
+        rewrite_rules_ssl.each { out.println "RewriteRule    \"${it.key}\"    \"${it.value}\"    [R=301,NC]"}
+     }
+     
+    webserver_apache_allowed.each { out.println "\tProxyPass /${it} balancer://mycluster/${it} nocanon stickysession=JSESSIONID\nProxyPassReverse /${it} balancer://mycluster/${it}" }
+    
+    if(webserver_apache_default_app) {
+        out.println "ProxyPassMatch ^/maintenance/ !\n\tProxyPass / balancer://mycluster/${webserver_apache_default_app} nocanon stickysession=JSESSIONID\nProxyPassReverse / balancer://mycluster/${webserver_apache_default_app}"
+    }
+    %>
+    CustomLog logs/${webserver_apache_domain}-access.log common
+    ErrorLog  logs/${webserver_apache_domain}-error.log
+    
+    SSLEngine on
+    SSLCertificateFile "\${SSL_CONF_DIR}/${ssl_home}server.crt"
+    SSLCertificateKeyFile "\${SSL_CONF_DIR}/${ssl_home}server.key"
+
+</VirtualHost>

@@ -1,0 +1,71 @@
+#! /bin/bash
+
+set -e
+
+MODE=${1:-cloud}
+CONFIGSET=${2}
+ADDITIONAL_SOLR_OPTS=""
+CUSTOM_CONFIGSETS=/opt/customconfig/solr/configsets
+
+echo "CONFIGSET is: ${CONFIGSET}"
+# copy only if custom configurations are provided
+if [ -d "${CUSTOM_CONFIGSETS}" ]; then
+  if ! [ -z ${CONFIGSET} ]; then
+    SETS=${CONFIGSET}
+  else 
+    SETS=$(find ${CUSTOM_CONFIGSETS} -maxdepth 1 -mindepth 1 -type d -printf '%f\n')
+  fi
+  echo "Sets are: ${SETS}"
+  for set in ${SETS}; do
+    # expect custom configuration to be provided in a folder named the same as targeted configset
+    if [ -d "${solr_dir}/server/solr/configsets/${set}/conf" ]; then
+      if [ -d "${CUSTOM_CONFIGSETS}/${set}/conf" ]; then  # if config set was provided as parameter, there may be no custom config for it, we need to check if it exists
+
+        echo "Copying custom config for ${set}"
+        if [ -f "${CUSTOM_CONFIGSETS}/${set}/conf/elevate.xml" ]; then
+          cp -f "${CUSTOM_CONFIGSETS}/${set}/conf/elevate.xml" "${solr_dir}/server/solr/configsets/${set}/conf/"
+        fi
+
+        if [ -f "${CUSTOM_CONFIGSETS}/${set}/conf/protwords.xml" ]; then
+          cp -f "${CUSTOM_CONFIGSETS}/${set}/conf/protwords.xml" "${solr_dir}/server/solr/configsets/${set}/conf/"
+        fi
+
+        if [ -f "${CUSTOM_CONFIGSETS}/${set}/conf/schema.xml" ]; then
+          cp -f "${CUSTOM_CONFIGSETS}/${set}/conf/schema.xml" "${solr_dir}/server/solr/configsets/${set}/conf/"
+        fi
+
+        if [ -f "${CUSTOM_CONFIGSETS}/${set}/conf/stopwords.txt" ]; then
+          cp -f "${CUSTOM_CONFIGSETS}/${set}/conf/stopwords.txt" "${solr_dir}/server/solr/configsets/${set}/conf/"
+        fi
+
+        if [ -f "${CUSTOM_CONFIGSETS}/${set}/conf/synonyms.txt" ]; then
+          cp -f "${CUSTOM_CONFIGSETS}/${set}/conf/synonyms.txt" "${solr_dir}/server/solr/configsets/${set}/conf/"
+        fi
+
+        echo "Done copying"
+      else
+        echo "No customizations available for ${set}"
+      fi
+    # if customer provides customization for non-existing config set
+    else
+      echo "Provided custom configuration for ${set}, such config set does not exist!"
+      exit 1
+    fi
+  done
+fi
+
+# Copy configurations
+
+if [ ${MODE} == "cloud" ]; then
+  if ! [ -z ${CONFIGSET}]; then
+     ${solr_dir}/server/scripts/cloud-scripts/zkcli.sh -cmd upconfig -confdir ${solr_dir}/server/solr/configsets/${CONFIGSET}/conf -confname ${CONFIGSET} -z ${ZK_HOSTS}
+  else
+    for set in $(find ${solr_dir}/server/solr/configsets/ -maxdepth 1 -mindepth 1 -type d -printf '%f\n' ); do
+      ${solr_dir}/server/scripts/cloud-scripts/zkcli.sh -cmd upconfig -confdir ${solr_dir}/server/solr/configsets/${set}/conf -confname ${set} -z ${ZK_HOSTS}
+    done
+  fi
+  ${solr_dir}/server/scripts/cloud-scripts/zkcli.sh -zkhost ${ZK_HOSTS} -cmd putfile /solr.xml ${solr_dir}/server/solr/solr.xml
+  exec ${solr_dir}/bin/solr -cloud -force -f -p ${port} -s ${NODE_DIR} -z ${ZK_HOSTS} -h ${SOLR_HOST} ${ADDITIONAL_SOLR_OPTS}
+else
+  exec ${solr_dir}/bin/solr start -force -f -p ${port} ${ADDITIONAL_SOLR_OPTS}
+fi

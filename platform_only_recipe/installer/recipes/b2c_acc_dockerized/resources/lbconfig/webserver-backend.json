@@ -1,0 +1,16 @@
+{
+    "webserver_apache_vhosts": [
+      {
+            "webserver_apache_domain": "localhost",
+            "webserver_apache_servername": "localhost",
+            "webserver_apache_maintenancepage_content": "back-end is currently under maintenance. Please come back later!",
+            "webserver_apache_maintenancepage_title": "back-end is sorry",
+            "webserver_apache_allowed": [
+                "backoffice",
+                "hac"
+            ],
+            "webserver_apache_default_app": "backoffice",
+            "force_https": "true"
+        }
+    ]
+}

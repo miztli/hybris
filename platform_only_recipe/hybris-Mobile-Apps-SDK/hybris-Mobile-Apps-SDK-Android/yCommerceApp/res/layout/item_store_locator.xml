@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_large">
+
+    <TextView
+        android:id="@+id/store_list_position"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".05"
+        android:gravity="right"
+        android:textColor="@color/store_locator_title"
+        android:textStyle="bold"
+        style="@style/h4_title" />
+
+    <LinearLayout
+        android:id="@+id/store_list_block_description"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".35"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/store_list_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/store_locator_title"
+            android:textStyle="bold"
+            style="@style/h4_title" />
+
+        <TextView
+            android:id="@+id/store_list_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/store_list_tel"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".2"
+        android:drawableTop="@drawable/call_icon"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:textColor="@color/store_locator_title" />
+
+    <TextView
+        android:id="@+id/store_list_directions"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".2"
+        android:drawableTop="@drawable/directions_icon"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:text="@string/get_store_directions"
+        android:textColor="@color/store_locator_title" />
+
+    <TextView
+        android:id="@+id/store_list_distance"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".2"
+        android:gravity="center"
+        android:drawableRight="@drawable/forward_icon"
+        android:drawableEnd="@drawable/forward_icon" />
+
+</LinearLayout>

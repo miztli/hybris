@@ -1,0 +1,49 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="app_options"
+        android:title="@string/settings_backend_title">
+
+        <ListPreference
+            android:dialogTitle="@string/settings_backend_url_change_key_title"
+            android:entries="@array/backend_url_keys"
+            android:entryValues="@array/backend_url_keys"
+            android:icon="@null"
+            android:key="@string/preference_key_key_base_url"
+            android:title="@string/settings_backend_url_change_key_title" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/settings_backend_url_change_value_title"
+            android:icon="@null"
+            android:key="@string/preference_key_value_base_url"
+            android:title="@string/settings_backend_url_change_value_title" />
+
+        <ListPreference
+            android:dialogTitle="@string/settings_backend_catalog_change_key_title"
+            android:entries="@array/backend_catalog_keys"
+            android:entryValues="@array/backend_catalog_keys"
+            android:icon="@null"
+            android:key="@string/preference_key_key_catalog"
+            android:title="@string/settings_backend_catalog_change_key_title" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/settings_backend_catalog_store_change_key_title"
+            android:icon="@null"
+            android:key="@string/preference_key_value_catalog_store"
+            android:title="@string/settings_backend_catalog_store_change_key_title" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/settings_backend_catalog_id_change_key_title"
+            android:icon="@null"
+            android:key="@string/preference_key_value_catalog_id"
+            android:title="@string/settings_backend_catalog_id_change_key_title" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/settings_backend_catalog_main_category_id_change_key_title"
+            android:icon="@null"
+            android:key="@string/preference_key_value_catalog_main_category_id"
+            android:title="@string/settings_backend_catalog_main_category_id_change_key_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

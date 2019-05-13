@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General -->
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_extra_large">32dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="spinner_height">42dp</dimen>
+    <dimen name="edittext_height">40dp</dimen>
+    <dimen name="button_text_height_medium">20sp</dimen>
+    <dimen name="button_text_height_small">14sp</dimen>
+
+
+    <!-- Signin -->
+    <dimen name="signin_edittext_height">40dp</dimen>
+
+    <!-- Product list -->
+    <dimen name="products_search_header_nb_results">20sp</dimen>
+    <dimen name="products_search_header_searched">20sp</dimen>
+    <dimen name="products_search_header_did_you_mean">16sp</dimen>
+
+    <!-- Cart menu -->
+    <dimen name="cart_menu_price_margin_top">20dp</dimen>
+    <dimen name="cart_menu_price_margin_left_right">16dp</dimen>
+    <dimen name="cart_menu_products_header_margin_top">16dp</dimen>
+
+    <!-- Order Summary -->
+    <dimen name="order_summary_table_margin">3dp</dimen>
+
+    <!-- Cart Summary -->
+    <dimen name="cart_summary_table_margin">3dp</dimen>
+
+    <!-- Catalog menu -->
+    <dimen name="catalog_menu_item_text_size">18sp</dimen>
+    <dimen name="catalog_menu_item_margin">15dp</dimen>
+    <dimen name="catalog_menu_width">250dp</dimen>
+
+    <!-- code detail dimensions -->
+    <dimen name="product_detail_header_height">60dp</dimen>
+    <dimen name="product_detail_viewpager_height">330dp</dimen>
+    <dimen name="product_detail_quantity_editText_width">72dp</dimen>
+    <dimen name="product_detail_layout_margin_top">5dp</dimen>
+    <dimen name="product_detail_layout_margin_bottom">5dp</dimen>
+    <dimen name="product_detail_viewpager_indicator_size">32dp</dimen>
+    <dimen name="product_detail_button_height">60dp</dimen>
+    <dimen name="divider_small">1dp</dimen>
+    <dimen name="divider_medium">2dp</dimen>
+
+    <!-- checkout dimensions -->
+    <dimen name="checkout_place_order_button_height">60dp</dimen>
+    <dimen name="payment_number_edittext_height">40dp</dimen>
+
+    <!-- Item Catalog List Dimension -->
+    <dimen name="product_item_row_height">120dp</dimen>
+    <dimen name="product_item_row_height_expanded">240dp</dimen>
+    <dimen name="product_item_button_width">70dp</dimen>
+    <dimen name="product_item_button_height">100dp</dimen>
+    <dimen name="product_item_spinner_height_expanded">148dp</dimen>
+
+    <!-- Offline status top nav -->
+    <dimen name="offline_status_top_nav_height">50dp</dimen>
+
+    <!-- order detail dimensions -->
+    <dimen name="order_detail_header_height">60dp</dimen>
+
+    <!-- account dimensions -->
+    <dimen name="account_button_height">40dp</dimen>
+    <dimen name="account_button_width">120dp</dimen>
+</resources>
