@@ -16,3 +16,15 @@ To be able to take the SAP Commerce tutorials please click [here](https://help.s
     - Start tracking a new file: `git lfs track '*.extension'`
     - List tracked files: `git lfs track`
 
+### Installer Recipes
+
+Simplify the installation and setup of SAP Commerce for *development* purposes. Do not use the installer to run one recipe after another on the same SAP Commerce setup. The installer does not uninstall recipes, and does not restore your SAP Commerce file system to its original settings. To install another recipe, use the original SAP Commerce files and directories.
+
+Follow the next steps to Run a fresh SAP Commerce using a recipe:
+
+```
+cd installer; ./install.sh -r platform_only setup
+cd installer; ./install.sh -r platform_only initialize 
+cd hybris/bin/platform; ./hybrisserver.sh start
+```
+
