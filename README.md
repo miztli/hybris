@@ -15,3 +15,4 @@ To be able to take the SAP Commerce tutorials please click [here](https://help.s
   - Track large files:
     - Start tracking a new file: `git lfs track '*.extension'`
     - List tracked files: `git lfs track`
+
