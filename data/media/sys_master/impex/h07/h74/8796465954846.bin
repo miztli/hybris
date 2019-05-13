@@ -1,0 +1,51 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+# ImpEx for Promotions for Powertools Store
+
+# Language
+$lang=en
+$ruleImportProcessor=processor=de.hybris.platform.ruleengineservices.impex.impl.ConditionalImportProcessor,condition=de.hybris.platform.ruleengineservices.impex.impl.RuleImportCondition
+
+############################# PROMOTION RULES ##########################
+UPDATE PromotionSourceRule[$ruleImportProcessor];code[unique=true];name[lang=$lang];description[lang=$lang];status(code)[unique=true,default=UNPUBLISHED]
+;3_percent_off_orders_over_500_USD;3% off orders over $500;A percentage discount is applied to the cart when the order threshold value is reached;
+;750_USD_off_orders_over_10000_USD;$750 off order for spending over $10,000;A fixed discount is applied to the cart when the order threshold value is reached;
+;10_percent_off_on_Sanders;10% off on Sanders;A percentage discount is applied on every qualifying item from a list of products or categories;
+;5_percent_off_orders_for_Bronze_Loyalty_Club_members;5% off orders for Bronze Loyalty Club members;A percentage discount is applied to the cart for the specified customer group;
+;7_percent_off_orders_for_Silver_Loyalty_Club_members;7% off orders for Silver Loyalty Club members;A percentage discount is applied to the cart for the specified customer group;
+;10_percent_off_orders_for_Gold_Loyalty_Club_members;10% off orders for Gold Loyalty Club members;A percentage discount is applied to the cart for the specified customer group;
+;product_buy_2_power_drills_get_1_free;Buy 2 Power Drills Get 1 Free;Buy X units of a from a defined set of products, get Y units of same or another product free;
+;drill_screwdriver_sander_for_fixed_price;Buy a Black & Decker Cordless drill and screwdriver and sander for a great price $55!;Buy defined quantities and combinations of products in a bundle and get them at a fixed price;
+;product_price_threshold_fixed_discount;$50 discount on all products priced above $750;A fixed price discount is applied on products whose base price exceeds the specified threshold value;
+;coupon_code_percentage_discount;Get 10% discount on the cart using a coupon;A percentage discount is added to the cart when a valid coupon code is entered
+
+UPDATE PromotionSourceRule[$ruleImportProcessor];code[unique=true];messageFired[lang=$lang];status(code)[unique=true,default=UNPUBLISHED]
+;3_percent_off_orders_over_500_USD;"Buy over {0472c08a-3a9a-4696-aba1-9e044d540a49} get {3ae37229-4a94-4aba-821b-aaf640c19423}% discount on cart"
+;750_USD_off_orders_over_10000_USD;"Buy over {5b438fb1-6548-448f-acba-0ccff49021ef} get {368d4c9e-74db-4f12-a17c-a96282d5d7ac} discount on cart"
+;10_percent_off_on_Sanders;"{a1a5d598-c351-43a4-92bf-eb63d877496a}% off on products from categories {83e6ca48-3441-49e2-b3ff-eabb479e9966}"
+;5_percent_off_orders_for_Bronze_Loyalty_Club_members;"You qualify for {7a5bec37-9ab2-4452-beb4-6496f948fa83}% discount on cart"
+;7_percent_off_orders_for_Silver_Loyalty_Club_members;"You qualify for {7a5bec37-9ab2-4452-beb4-6496f948fa83}% discount on cart"
+;10_percent_off_orders_for_Gold_Loyalty_Club_members;"You qualify for {7a5bec37-9ab2-4452-beb4-6496f948fa83}% discount on cart"
+;product_buy_2_power_drills_get_1_free;"Buy products from categories {d1110cbc-1837-4b0b-9fd7-adfa4e9b7b23} get products from categories {d1110cbc-1837-4b0b-9fd7-adfa4e9b7b23} free"
+;drill_screwdriver_sander_for_fixed_price;"Get bundle containing products {b5a259e7-3ca9-4b90-8dec-8fec881c0c43}, products {52036986-3035-4cfc-bab9-98682bd4cc57} and products {df427ae1-7ce7-4120-b88b-c1d8ee24ed4e} for {750675bc-00f5-4bbb-b139-b184069bb6b5}"
+;product_price_threshold_fixed_discount;"Buy any product priced above {2052faba-2215-481e-9fe3-8abbdae94669} and get {069007c1-2528-4a1d-80ec-8e44977e86e8} on it"
+;coupon_code_percentage_discount;You have received {f48a0433-01a3-44c4-9c69-f67f872eca26}% discount on cart using the coupon code {e3288128-09d2-40ff-b3b5-66498c903e1ba}
+
+############################# COUPON SAMPLE DATA ##########################
+INSERT_UPDATE SingleCodeCoupon;couponId(id)[unique=true];name[lang=$lang]
+;SUMMER69;Coupon code for Summer Campaign
+;FALL16;Coupon code for Fall Campaign
+;CHRISTMAS16;Coupon code for Christmas Campaign
+;WINTER16;Coupon code for Winter Campaign
+
+INSERT_UPDATE MultiCodeCoupon;couponId(id)[unique=true];name[lang=$lang]
+;PROMO16;Coupon codes for email campaign

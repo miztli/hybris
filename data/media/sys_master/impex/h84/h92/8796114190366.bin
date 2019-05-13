@@ -1,0 +1,38 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=en
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];priority;allowsChildren;translatorId;translatorParameters;categories(id)
+;y_qualifying_coupons;800;false;ruleQualifyingCouponsConditionTranslator;;cart
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];priority;type;value;required[default=true];validators
+;y_qualifying_coupons;coupons;800;List(ItemType(AbstractCoupon));;false
+
+############################# CONDITON DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleConditionDefinitionRuleTypeMapping;definition(id)[unique=true];ruleType(code)[default=PromotionSourceRule][unique=true]
+;y_qualifying_coupons;
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];priority
+;coupon;1500
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];priority;translatorId;translatorParameters;categories(id)
+;y_given_coupon;1500;ruleExecutableActionTranslator;actionId->ruleGiveCouponAction;coupon;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];priority;type;value;required[default=true];validators
+;y_given_coupon;value;1000;ItemType(AbstractCoupon);
+
+############################# ACTION DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleActionDefinitionRuleTypeMapping;definition(id)[unique=true];ruleType(code)[default=PromotionSourceRule][unique=true]
+;y_given_coupon;

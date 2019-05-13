@@ -1,0 +1,50 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=en
+
+$jarResource=jar:de.hybris.platform.ruleengineservices.constants.RuleEngineServicesConstants&/ruleengineservices/images
+
+INSERT_UPDATE CatalogUnawareMedia;code[unique=true];mime;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true]
+;rule-condef-general-icon;image/jpeg;$jarResource/0133_promotion_templates.png
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];priority;icon(code)
+;general;1000;
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];priority;allowsChildren;translatorId;translatorParameters;categories(id)
+;y_group;1100;true;ruleGroupConditionTranslator;;general
+;y_container;1000;true;ruleContainerConditionTranslator;;general
+;y_rule_executed;1200;false;ruleActionConditionTranslator;;general
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];priority;type;value;required[default=true];validators
+;y_group;operator;1000;Enum(de.hybris.platform.ruleengineservices.definitions.conditions.RuleGroupOperator);"""AND""";;
+;y_container;id;1000;java.lang.String;;;ruleContainerIdParameterValidator
+;y_rule_executed;rule;1000;ItemType(AbstractRule);;;
+;y_rule_executed;allowed;1000;java.lang.Boolean;true;;
+
+INSERT_UPDATE RuleConditionDefinitionRuleTypeMapping;definition(id)[unique=true];ruleType(code)[unique=true]
+;y_container;SourceRule;
+;y_group;SourceRule;
+;y_rule_executed;SourceRule;
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];priority;icon(code)
+;general;1000
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];priority;;translatorId;translatorParameters;categories(id)
+;y_halt;1000;;ruleExecutableActionTranslator;actionId->ruleHaltAction;general
+
+INSERT_UPDATE RuleActionDefinitionRuleTypeMapping;definition(id)[unique=true];ruleType(code)[unique=true]
+;y_halt;SourceRule;
+

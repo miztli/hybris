@@ -1,0 +1,8 @@
+Dear Customer Service Agent Manager
+
+	The following customer support ticket ${ctx.ticketId} was created with the following message:
+
+	${ctx.text}
+
+	Thank you
+	Your Customer Service Team

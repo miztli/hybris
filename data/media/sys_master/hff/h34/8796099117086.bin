@@ -1,0 +1,9 @@
+Dear ${ctx.name}
+
+	A customer support ticket with the following reference number was created ${ctx.ticketId}.
+
+	Please quote this reference number in all emails or phone calls with us.
+
+	Thank you
+
+	Your Customer Service Team

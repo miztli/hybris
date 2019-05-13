@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=ru
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;Инициация сообщения для правила (пороговое значение общей суммы корзины);Отображение сообщения для правила в зависимости от выполнения условия правила;
+;y_trigger_message_parameterized_category;Инициация сообщения для правила (категория);Отображение сообщения для правила в зависимости от выполнения условия правила;
+;y_trigger_message_parameterized_product;Инициация сообщения для правила (продукт);Отображение сообщения для правила в зависимости от выполнения условия правила;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;Пороговое значение общей суммы корзины;Пороговое значение общей суммы корзины для управления
+;y_trigger_message_parameterized_category;catalog;Фильтрация выбора по каталогу;Выбранное значение каталога будет использовано для фильтрации в связанных полях
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;Количество;Необходимое количество продуктов из участвующей категории
+;y_trigger_message_parameterized_category;qualifying_categories;Категории;Участвующие категории
+;y_trigger_message_parameterized_product;catalog;Фильтрация выбора по каталогу;Выбранное значение каталога будет использовано для фильтрации в связанных полях
+;y_trigger_message_parameterized_product;qualifying_products_quantity;Количество;Необходимое количество участвующих продуктов
+;y_trigger_message_parameterized_product;qualifying_products;Продукт;Участвующие продукты
+

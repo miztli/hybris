@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=fr
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;Déclencher message de règle (seuil total du panier);Affiche un message pour la règle en fonction de la réalisation de la condition de règle;
+;y_trigger_message_parameterized_category;Déclencher message de règle (catégorie);Affiche un message pour la règle en fonction de la réalisation de la condition de règle;
+;y_trigger_message_parameterized_product;Déclencher message de règle (produit);Affiche un message pour la règle en fonction de la réalisation de la condition de règle;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;Seuil total du panier;Seuil total du panier à contrôler
+;y_trigger_message_parameterized_category;catalog;Filtrer la sélection par catalogue;La valeur de catalogue sélectionnée est utilisée à des fins de filtrage dans les zones associées.
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;Quantité;Quantité de produits nécessaires dans la catégorie concernée
+;y_trigger_message_parameterized_category;qualifying_categories;Catégories;Catégories concernées
+;y_trigger_message_parameterized_product;catalog;Filtrer la sélection par catalogue;La valeur de catalogue sélectionnée est utilisée à des fins de filtrage dans les zones associées.
+;y_trigger_message_parameterized_product;qualifying_products_quantity;Quantité;Quantité de produits concernés nécessaires
+;y_trigger_message_parameterized_product;qualifying_products;Produit;Produits concernés
+

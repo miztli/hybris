@@ -1,0 +1,36 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang = en
+$contentCatalog = powertoolsContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default = $contentCatalog]), CatalogVersion.version[default = Staged])[default = $contentCatalog:Staged]
+
+$defaultPromoGrp = powertoolsPromoGrp
+$defaultRuleStatus = UNPUBLISHED
+$promotionModuleName = "promotions-module"
+$promotionPreviewModuleName = "promotions-preview-module"
+
+INSERT_UPDATE PromotionSourceRule; code[unique = true]; name[lang = $lang]; excludeFromStorefrontDisplay[default = true]; messageFired[lang = $lang]; priority; stackable[default = false]; status(code)[default = $defaultRuleStatus]; website(identifier)[default = $defaultPromoGrp]; ruleGroup(code); conditions; actions
+"#% beforeEach:
+if(de.hybris.platform.personalizationpromotionssampledataaddon.util.CxAddOnPromotionSampleDataUtils.isPromotionSourceRuleUnmodifiable(line.get(new Integer(1)))){
+    line.clear();
+}";
+"#% afterEach: de.hybris.platform.core.Registry.getApplicationContext().getBean(""ruleEngineSystemSetup"").registerSourceRuleForDeployment(impex.getLastImportedItem(), new String[]{$promotionModuleName, $promotionPreviewModuleName});"
+; personalized_powertools_drills_lover_percentage_discount       ; Power drills product category percentage discount ; ; Buy 20 power drills get 5% discount. ; 80 ; true ; ; ; productPromotionRuleGroup ; "[{""definitionId"":""y_qualifying_categories"",""parameters"":{""quantity"":{""type"":""java.lang.Integer"",""value"":20},""categories_operator"":{""type"":""Enum(de.hybris.platform.ruledefinitions.CollectionOperator)"",""value"":""CONTAINS_ANY""},""excluded_categories"":{""type"":""List(ItemType(Category))""},""categories"":{""type"":""List(ItemType(Category))"",""value"":[""1360""]},""excluded_products"":{""type"":""List(ItemType(Product))"",""value"":[]},""operator"":{""type"":""Enum(de.hybris.platform.ruledefinitions.AmountOperator)"",""value"":""GREATER_THAN_OR_EQUAL""}},""children"":[]},{""definitionId"":""cx_aware_promotion"",""parameters"":{},""children"":[]}]" ; "[{""definitionId"":""y_order_percentage_discount"",""parameters"":{""value"":{""type"":""java.math.BigDecimal"",""value"":5}}}]"
+; personalized_powertools_screwdrivers_lover_percentage_discount ; Screwdrivers product category percentage discount ; ; Buy 20 screwdrivers get 5% discount. ; 90 ; true ; ; ; productPromotionRuleGroup ; "[{""definitionId"":""y_qualifying_categories"",""parameters"":{""quantity"":{""type"":""java.lang.Integer"",""value"":20},""categories_operator"":{""type"":""Enum(de.hybris.platform.ruledefinitions.CollectionOperator)"",""value"":""CONTAINS_ANY""},""excluded_categories"":{""type"":""List(ItemType(Category))""},""categories"":{""type"":""List(ItemType(Category))"",""value"":[""1593""]},""excluded_products"":{""type"":""List(ItemType(Product))"",""value"":[]},""operator"":{""type"":""Enum(de.hybris.platform.ruledefinitions.AmountOperator)"",""value"":""GREATER_THAN_OR_EQUAL""}},""children"":[]},{""definitionId"":""cx_aware_promotion"",""parameters"":{},""children"":[]}]" ; "[{""definitionId"":""y_order_percentage_discount"",""parameters"":{""value"":{""type"":""java.math.BigDecimal"",""value"":5}}}]"
+
+INSERT_UPDATE CxPromotionAction; code[unique = true]; promotionId[unique = true]; variation(code, $contentCV)[unique = true]; target; type(code); $contentCV[unique = true]
+"#% beforeEach: de.hybris.platform.personalizationsampledataaddon.util.CxAddOnSampleDataUtils.verifyIfCxActionExists(line, 1, impex, 5);"
+; promotionaction_drills_lover_percentage_discount ; personalized_powertools_drills_lover_percentage_discount       ; powerDrillsLover                        ; cxPromotionActionPerformable ; PLAIN ;
+; promotionaction_screwdrivers_percentage_discount ; personalized_powertools_screwdrivers_lover_percentage_discount ; screwdriversLover                       ; cxPromotionActionPerformable ; PLAIN ;
+; promotionaction_drills_lover_percentage_discount ; personalized_powertools_drills_lover_percentage_discount       ; PowerDrillsAndScrewdrivers20to39VipGold ; cxPromotionActionPerformable ; PLAIN ;
+; promotionaction_screwdrivers_percentage_discount ; personalized_powertools_screwdrivers_lover_percentage_discount ; PowerDrillsAndScrewdrivers20to39VipGold ; cxPromotionActionPerformable ; PLAIN ;
+

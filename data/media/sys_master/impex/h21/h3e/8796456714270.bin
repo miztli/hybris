@@ -1,0 +1,41 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Promotions for Powertools Store
+
+# Language
+$lang=zh
+
+#3% off orders over $500
+UPDATE OrderThresholdDiscountPercentagePromotion;enabled[default=true][unique=true];code[unique=true];messageCouldHaveFired[lang=$lang];
+;;3PercentDiscountOver500;满 500 美元立减 3%;;
+
+
+#Buy 2 Power Drills, Get 1 Free
+UPDATE AcceleratorProductBOGOFPromotion;enabled[default=true][unique=true];code[unique=true];messageCouldHaveFired[lang=$lang];messageFired[lang=$lang];
+;;B2GOFPowerDrills;电钻买二赠一;电钻买二赠一;;
+
+
+#Buy this great power tool package by Black & Decker for $255! Save $39!
+UPDATE ProductBundlePromotion;enabled[default=true][unique=true];code[unique=true];messageCouldHaveFired[lang=$lang];messageFired[lang=$lang];
+;;ProductBundlePowertoolsPackage;购买这款 Black & Decker（百得）电动工具包仅需支付 {2}！立即节省 39 美元！;您购买的这款功能强大的 Black & Decker（百得）电动工具包仅需支付 {1}，节省了 {3}！;;
+
+
+#10% off on Sanders
+UPDATE ProductPercentageDiscountPromotion;enabled[default=true][unique=true];code[unique=true];messageFired[lang=$lang];
+;;10DiscountSanders;砂磨机优惠 10%;;
+
+
+#Discount on the cart using a coupon (promotion voucher)
+UPDATE PromotionVoucher;voucherCode[unique=true];description[lang=$lang];
+;SUMMER69;为购物车获得 $10 折扣;
+;WINTER16;为购物车获得 10% 折扣;
+
+

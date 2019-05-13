@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=pt
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_qualifying_coupons;Código de cupom;Código de cupom do cupom {coupons} aplicado;
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_qualifying_coupons;coupons;Cupons aplicáveis;Cupons pré-configurados que podem ser utilizados para acionar esta promoção
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang];;
+;coupon;Cupom;;
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_given_coupon;Cupom gratuito;Cupom gratuito {value};
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_given_coupon;value;Código de cupom;O cupom gratuito que é dado como resultado desta promoção

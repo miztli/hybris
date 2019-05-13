@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=en
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;Cart
+;customer;Customer
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;Cart total;Cart total {operator} {value}
+;y_qualifying_products;Qualifying products;Cart {products_operator} products {products}
+;y_qualifying_categories;Qualifying categories;Cart {categories_operator} categories {categories}
+;y_target_customers;Target customers;Target {customer_groups_operator} customer groups {customer_groups} or customers {customers}
+;y_product_price;Product price threshold;Product price {operator} {value}
+;y_customer_support;Customer support;Assisted service session is active: {value}
+;y_qualifying_group_types;Qualifying Group Types;Cart entry group {operator} {groupTypes}
+;y_orders;Orders or carts;Orders or carts in {orders}
+;y_order_threshold_perfect_partner;Order Threshold Perfect Partner;Perfect partner product {product} in cart and cart total more than {cart_threshold} including discounted price {is_discounted_price_included}
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;Operator;Operator to compare the cart total value
+;y_cart_total;value;Cart total value;Map of currency and value of the cart total to be used
+;y_qualifying_products;operator;Operator;Operator to compare the quantity required for qualifying products
+;y_qualifying_products;quantity;Quantity per order entry;Quantity of qualifying products required (per order entry)
+;y_qualifying_products;products_operator;Product selection operator;Select ANY product or select ALL products from list of qualifying products
+;y_qualifying_products;products;Products;List of qualifying products
+;y_qualifying_products;catalog;Filter selection by catalog;Selected catalog value will be used for filtering purposes within the associated fields
+;y_qualifying_categories;operator;Operator;Operator to compare the quantity required for products in qualifying categories
+;y_qualifying_categories;quantity;Quantity per order entry;Quantity of products required from qualifying categories (per order entry)
+;y_qualifying_categories;categories_operator;Category selection operator;Select ANY category or select ALL categories from list of qualifying categories
+;y_qualifying_categories;categories;Categories;List of qualifying categories
+;y_qualifying_categories;excluded_categories;Excluded categories;List of sub-categories to be excluded from qualifying categories
+;y_qualifying_categories;excluded_products;Excluded products;List of products from qualifying categories to be excluded
+;y_qualifying_categories;catalog;Filter selection by catalog;Selected catalog value will be used for filtering purposes within the associated fields
+;y_target_customers;customer_groups_operator;Customer group selection operator;Customer should be part of ANY or ALL customer groups
+;y_target_customers;customer_groups;Customer groups;List of qualifying customer groups
+;y_target_customers;customers;Customers;List of qualifying customers
+;y_target_customers;excluded_customer_groups;Excluded customer groups;List of sub-groups that should be excluded from qualifying customer groups
+;y_target_customers;excluded_customers;Excluded customers;List of customers that should be excluded from qualifying customer groups
+;y_product_price;operator;Operator;Operator to compare the product value
+;y_product_price;value;Price threshold;Map of currency and threshold value of the products to be used to qualify for this promotion
+;y_customer_support;value;Assisted service session active;Enable the promotion based on if a customer support agent is assisting the customer on the storefront or not
+;y_qualifying_group_types;operator;Operator;Group type seletion operator
+;y_qualifying_group_types;groupTypes;Group types;List of qualifying group types
+;y_order_threshold_perfect_partner;catalog;Filter selection by catalog;Selected catalog value will be used for filtering purposes within the associated fields
+;y_order_threshold_perfect_partner;product;Perfect partner product;Perfect partner product offered at a discount
+;y_order_threshold_perfect_partner;cart_threshold;Cart total threshold value;The order total that must be reached to qualify for this promotion. Each currency has a different value, and all currencies which could qualify for this order must have a specified value.
+;y_order_threshold_perfect_partner;is_discounted_price_included;Include the discounted price when calculating the total;Include the discounted price of the partner product in the order total when comparing against the threshold value.
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;Cart discounts
+;product_discounts;Product discounts
+;partner_product_discounts;Partner product discounts
+;shipping;Shipping
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;Percentage discount on cart;Apply {value,number,percent*1} discount on the cart total;
+;y_order_fixed_discount;Fixed discount on cart;Apply {value} discount on the cart total;
+;y_order_entry_percentage_discount;Percentage discount on products;Apply {value,number,percent*1} discount on the qualifying products;
+;y_order_entry_fixed_discount;Fixed discount on products;Apply {value} discount on the qualifying products;
+;y_order_entry_fixed_price;Target fixed price on products;Apply target price {value} on the qualifying products;
+;y_target_bundle_price;Target bundle price;Apply target price {value} to the bundle;
+;y_free_gift;Free gift;Give {quantity} {product} product(s) for free;
+;y_partner_order_entry_percentage_discount;Percentage discount on partner products;Apply {value,number,percent*1} discount on the partner products;
+;y_partner_order_entry_fixed_discount;Fixed discount on partner products;Apply {value} discount on the partner products;
+;y_partner_order_entry_fixed_price;Target fixed price on partner products;Apply target price {value} on the partner products;
+;y_change_delivery_mode;Change delivery mode;Change delivery mode to {delivery_mode};
+;y_trigger_message;Trigger rule message;Display message for the rule;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;Percentage discount value;Percentage discount that will be applied on the cart total
+;y_order_fixed_discount;value;Absolute discount value;Map of currency and absolute discount value that will be applied on the cart total
+;y_order_entry_percentage_discount;value;Percentage discount value;Percentage discount that will be applied on the qualifying products
+;y_order_entry_fixed_discount;value;Absolute discount value;Map of currency and absolute discount value that will be applied on the qualifying products
+;y_order_entry_fixed_price;value;Target fixed price;Map of currency and target price value that will be applied on the qualifying products
+;y_target_bundle_price;value;Target bundle price;Map of currency and target price value that will be applied on the bundle
+;y_target_bundle_price;selection_strategy;Selection strategy;The strategy to be used to select products when multiple items in the cart qualify for the bundle
+;y_target_bundle_price;qualifying_containers;Bundle product quantities;Map of Container IDs and respective quantities that make up the required bundle
+;y_free_gift;product;Free product;The product that should be added to cart automatically and given away for free
+;y_free_gift;quantity;Quantity;The quantity of items to be given away for free
+;y_free_gift;catalog;Filter selection by catalog;Selected catalog value will be used for filtering purposes within the associated fields
+;y_free_gift;qualifying_containers;Qualifying product containers;Map of Container IDs and respective quantities that make up the qualifying products
+;y_partner_order_entry_percentage_discount;value;Percentage discount value;Percentage discount that will be applied on the partner products
+;y_partner_order_entry_percentage_discount;selection_strategy;Selection strategy;The strategy to be used to select products when multiple items in the cart qualify for the action
+;y_partner_order_entry_percentage_discount;qualifying_containers;Qualifying product containers;Map of Container IDs and respective quantities that make up the qualifying products
+;y_partner_order_entry_percentage_discount;target_containers;Target product containers;Map of Container IDs and respective quantities that make up the target partner products
+;y_partner_order_entry_fixed_discount;value;Absolute discount value;Map of currency and target price value that will be applied on the partner products
+;y_partner_order_entry_fixed_discount;selection_strategy;Selection strategy;The strategy to be used to select products when multiple items in the cart qualify for the action
+;y_partner_order_entry_fixed_discount;qualifying_containers;Qualifying product containers;Map of Container IDs and respective quantities that make up the qualifying products
+;y_partner_order_entry_fixed_discount;target_containers;Target product containers;Map of Container IDs and respective quantities that make up the target partner products
+;y_partner_order_entry_fixed_price;value;Target fixed price;Map of currency and target price value that will be applied on the partner products
+;y_partner_order_entry_fixed_price;selection_strategy;Selection strategy;The strategy to be used to select products when multiple items in the cart qualify for the action
+;y_partner_order_entry_fixed_price;qualifying_containers;Qualifying product containers;Map of Container IDs and respective quantities that make up the qualifying products
+;y_partner_order_entry_fixed_price;target_containers;Target product containers;Map of Container IDs and respective quantities that make up the target partner products
+;y_change_delivery_mode;delivery_mode;Delivery mode;The delivery mode to be applied on the cart as a result of the action

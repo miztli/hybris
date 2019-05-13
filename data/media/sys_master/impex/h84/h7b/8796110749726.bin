@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=en
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;Trigger rule message (cart total threshold);Display message for the rule depending on rule condition fulfillment;
+;y_trigger_message_parameterized_category;Trigger rule message (category);Display message for the rule depending on rule condition fulfillment;
+;y_trigger_message_parameterized_product;Trigger rule message (product);Display message for the rule depending on rule condition fulfillment;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;Cart total threshold;Cart total threshold to control
+;y_trigger_message_parameterized_category;catalog;Filter selection by catalog;Selected catalog value will be used for filtering purposes within the associated fields
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;Quantity;Quantity of products required from qualifying category
+;y_trigger_message_parameterized_category;qualifying_categories;Categories;Qualifying categories
+;y_trigger_message_parameterized_product;catalog;Filter selection by catalog;Selected catalog value will be used for filtering purposes within the associated fields
+;y_trigger_message_parameterized_product;qualifying_products_quantity;Quantity;Quantity of required qualifying products
+;y_trigger_message_parameterized_product;qualifying_products;Product;Qualifying products
+

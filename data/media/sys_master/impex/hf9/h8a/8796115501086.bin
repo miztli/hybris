@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=ko
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_qualifying_coupons;쿠폰 코드;적용된 {coupons} 쿠폰의 쿠폰 코드;
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_qualifying_coupons;coupons;적격 쿠폰;이 프로모션을 트리거하는 데 사용할 수 있는 사전 구성된 쿠폰
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang];;
+;coupon;쿠폰;;
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_given_coupon;무료 쿠폰;무료 쿠폰 {value};
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_given_coupon;value;쿠폰 코드;이 프로모션의 결과로 제공된 무료 쿠폰

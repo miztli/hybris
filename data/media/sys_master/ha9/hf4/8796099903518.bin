@@ -1,0 +1,11 @@
+Dear Customer Service Agent
+
+	The customer support ticket was changed with the following message:
+
+	${ctx.text}
+
+	Please quote your reference number ${ctx.ticketId} in all further emails or phone calls with us.
+
+	Thank you
+
+	Your Customer Service Team

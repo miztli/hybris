@@ -1,0 +1,21 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+insert_update NotNullConstraint;active[allownull=true];descriptor(enclosingType(code),qualifier);id[unique=true,allownull=true];message[lang=de];message[lang=en];qualifier;severity(code,itemtype(code));target;type(code)
+;true;SourceRule:code;sourceRuleCode;Code cannot be null or empty;Code cannot be null or empty;code;ERROR:Severity;de.hybris.platform.ruleengineservices.model.SourceRuleModel;SourceRule
+
+insert_update NotNullConstraint;active[allownull=true];descriptor(enclosingType(code),qualifier);id[unique=true,allownull=true];message[lang=de];message[lang=en];qualifier;severity(code,itemtype(code));target;type(code)
+;true;SourceRuleTemplate:code;sourceRuleTemplateCode;Code cannot be null or empty;Code cannot be null or empty;code;ERROR:Severity;de.hybris.platform.ruleengineservices.model.SourceRuleTemplateModel;SourceRuleTemplate
+
+insert_update ObjectPatternConstraint;active[allownull=true];descriptor(enclosingType(code),qualifier);id[unique=true,allownull=true];message[lang=en];qualifier;severity(code,itemtype(code));target;type(code);regexp;flags(code);
+;true;AbstractRule:code;ruleCodeLengthMinValue;"Value should be at least 2 characters long";code;ERROR:Severity;de.hybris.platform.ruleengineservices.model.AbstractRuleModel;AbstractRule;"(.*)([\S]{2,})(.*)";CASE_INSENSITIVE;
+;true;AbstractRuleTemplate:code;ruleTemplateCodeLengthMinValue;"Value should be at least 2 characters long";code;ERROR:Severity;de.hybris.platform.ruleengineservices.model.AbstractRuleTemplateModel;AbstractRuleTemplate;"(.*)([\S]{2,})(.*)";CASE_INSENSITIVE;
+;true;AbstractRuleEngineRule:code;ruleEngineRuleCodeLengthMinValue;"Value should be at least 2 characters long";code;ERROR:Severity;de.hybris.platform.ruleengine.model.AbstractRuleEngineRuleModel;AbstractRuleEngineRule;"(.*)([\S]{2,})(.*)";CASE_INSENSITIVE;

@@ -1,0 +1,42 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# Language
+$lang=en
+
+# B2BUnit
+UPDATE B2BUnit;uid[unique=true];locname[lang=$lang]
+ ;Custom Retail;Custom Retail
+ ;Pronto;Pronto
+ ;Pronto Goods;Pronto Goods
+ ;Pronto Services;Pronto Services
+ ;Rustic;Rustic
+ ;Rustic Retail;Rustic Retail
+ ;Rustic Services;Rustic Services
+ ;Services East;Services East
+ ;Services West;Services West
+
+UPDATE B2BCostCenter;code[unique=true];name[lang=$lang]
+ ;Custom Retail;Custom Retail
+ ;Pronto Goods;Pronto Goods;
+ ;Pronto Services;Pronto Services;
+ ;Rustic Global;Rustic Global
+ ;Rustic Retail;Retail
+ ;Services East;Services East
+ ;Services West;Services West
+
+UPDATE B2BBudget;code[unique=true];name[lang=$lang]
+ ;20K USD/MONTH;20K USD/MONTH;
+ ;30K USD/MONTH;30K USD/MONTH;
+ ;Monthly 2.5K USD;Monthly 2.5K USD
+ ;Monthly 20K USD;Monthly 20K USD
+ ;Monthly 4K USD;Monthly 4K USD
+ ;Monthly 50K USD;Monthly 50K USD
+ ;Weekly 2.5K USD;Weekly 2.5K USD

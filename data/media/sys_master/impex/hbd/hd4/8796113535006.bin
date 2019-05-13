@@ -1,0 +1,63 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+INSERT_UPDATE UserGroup;uid[unique=true];groups(uid)
+;marketingManagerGroup;
+;restrictedMarketingManagerGroup;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;marketingManagerGroup;;;;;;;;
+;;;;PromotionSourceRule;+;+;+;+;;
+;;;;PromotionSourceRuleTemplate;+;+;+;+;;
+;;;;PromotionGroup;+;+;+;+;;
+;;;;Voucher;+;+;+;+;;
+;;;;UserGroup;+;;;;;
+;;;;Employee;+;;;;;
+;;;;Customer;+;;;;;
+;;;;Product;+;;;;;
+;;;;Category;+;;;;;
+;;;;ClassificationAttributeUnit;+;;;
+;;;;variantType;+;;;;;
+;;;;Catalog;+;;;;;
+;;;;CatalogVersion;+;;;;;
+;;;;Currency;+;;;;;
+;;;;DeliveryMode;+;;;;;
+;;;;OrderEntrySelectionStrategy;+;;;;;
+;;;;ProductReference;+;;;;;
+;;;;AbstractOrder;+;;;;;
+;;;;AbstractOrderEntry;+;;;;;
+;;;;CustomerReview;+;;;;;
+;;;;RuleGroup;+;+;+;+;;
+;;;;RuleStatus;+;+;+;+;;
+;;;;Media;+;;;;;
+;;;;MediaContainer;+;;;;;
+;;;;MediaFormat;+;;;;;
+;;;;MediaFolder;+;;;;;
+;;;;Vendor;+;;;;;
+;;;;StockLevel;+;;;;;
+;;;;Tax;+;;;;;
+;;;;TaxRow;+;;;;;
+;;;;PriceRow;+;;;;;
+;;;;ProductFeature;+;;;;;
+;;;;Warehouse;+;;;;;
+;;;;ProductTaxCode;+;;;;;
+;;;;ProductOrderLimit;+;;;;;
+;;;;DroolsKIEModule;+;+;;;;
+;;;;RuleType;+;;;;;
+;;;;GroupType;+;;;;;
+;;;;Campaign;+;+;+;+;;
+$END_USERRIGHTS;;;;;;;;;
+
+INSERT_UPDATE SearchRestriction;code[unique=true];name[lang=en];restrictedType(code);principal(uid);active[default=true];generate[default=true];autocreate[default=true];query;
+;promotion_rule_type_visibility;"Restricts Drools KIE Module visibility to allowed role rule type only";RuleType;marketingManagerGroup;;;;"{item:code} = 'PROMOTION'"
+;promotion_drools_kie_module_visibility;"Restricts Drools KIE Module visibility to allowed role rule type only";DroolsKIEModule;marketingManagerGroup;;;;"{item:ruleType}  IN
+({{ select {rt:Pk} from {RuleType as rt} }})";

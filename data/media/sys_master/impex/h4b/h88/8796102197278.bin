@@ -1,0 +1,35 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=ja
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;一般
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_group;グループ;{operator};
+;y_container;コンテナ;{id};
+;y_rule_executed;ルールが実行されました;コード {rule} 実行が許可された {allowed} ルール;
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_group;operator;グループ演算子;OR/AND を使用してグループ内の条件を結合します
+;y_container;id;コンテナ ID;アクションで参照されるコンテナ ID を入力します
+;y_rule_executed;rule;アクションルール;このルールの実行を許可または禁止するアクションを入力します
+;y_rule_executed;allowed;アクションルールの実行を許可;アクションルールの実行を禁止
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;一般
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_halt;ルール実行の停止;次の任意のルール実行の停止;

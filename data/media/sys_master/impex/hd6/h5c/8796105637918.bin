@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=ko
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;장바구니
+;customer;고객
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;장바구니 총계;장바구니 총계 {operator} {value}
+;y_qualifying_products;적격 제품;장바구니 {products_operator} 제품 {products}
+;y_qualifying_categories;적격 범주;장바구니 {categories_operator} 범주 {categories}
+;y_target_customers;대상 고객;대상 {customer_groups_operator} 고객 그룹 {customer_groups} 또는 고객 {customers}
+;y_product_price;제품 가격 임계값;제품 가격 {operator} {value}
+;y_customer_support;고객 지원;지원 서비스 세션 활성: {value}
+;y_qualifying_group_types;적격 그룹 유형;장바구니 항목 그룹 {operator} {groupTypes}
+;y_orders;주문 또는 장바구니;{orders}의 주문 또는 장바구니
+;y_order_threshold_perfect_partner;주문 임계값 완전한 파트너;장바구니에 완전한 파트너 제품 {product} 존재, 장바구니 총계가 할인 가격 {is_discounted_price_included} 포함 {cart_threshold} 초과
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;연산자;장바구니 총액을 비교하기 위한 연산자
+;y_cart_total;value;장바구니 총액;사용할 장바구니 총계의 통화 및 금액의 맵
+;y_qualifying_products;operator;연산자;필요한 적격 제품 수량을 비교하기 위한 연산자
+;y_qualifying_products;quantity;주문 항목별 수량;필요한 적격 제품 수량(주문 항목별)
+;y_qualifying_products;products_operator;제품 선택 연산자;적격 제품 목록에서 임의(ANY) 제품 또는 모든(ALL) 제품 선택
+;y_qualifying_products;products;제품;적격 제품 목록
+;y_qualifying_products;catalog;카탈로그별 선택 필터링;선택된 카탈로그 값을 사용하여, 연결된 필드 내에서 필터링
+;y_qualifying_categories;operator;연산자;적격 범주에서 필요한 제품 수량을 비교하기 위한 연산자
+;y_qualifying_categories;quantity;주문 항목별 수량;적격 범주에서 필요한 제품 수량(주문 항목별)
+;y_qualifying_categories;categories_operator;범주 선택 연산자;적격 범주 목록에서 임의(ANY) 범주 또는 모든(ALL) 범주 선택
+;y_qualifying_categories;categories;범주;적격 범주 목록
+;y_qualifying_categories;excluded_categories;제외된 범주;적격 범주에서 제외할 하위 범주 목록
+;y_qualifying_categories;excluded_products;제외된 제품;적격 범주에서 제외할 제품 목록
+;y_qualifying_categories;catalog;카탈로그별 선택 필터링;선택된 카탈로그 값을 사용하여, 연결된 필드 내에서 필터링
+;y_target_customers;customer_groups_operator;고객 그룹 선택 연산자;고객이 임의(ANY) 또는 모든(ALL) 고객 그룹에 속해야 함
+;y_target_customers;customer_groups;고객 그룹;적격 고객 그룹 목록
+;y_target_customers;customers;고객;적격 고객 목록
+;y_target_customers;excluded_customer_groups;제외된 고객 그룹;적격 고객 그룹에서 제외할 하위 그룹 목록
+;y_target_customers;excluded_customers;제외된 고객;적격 고객 그룹에서 제외할 고객 목록
+;y_product_price;operator;연산자;제품 가격을 비교하기 위한 연산자
+;y_product_price;value;가격 임계값;이 프로모션의 적용 대상으로 사용할 제품의 통화 및 임계값의 맵
+;y_customer_support;value;지원 서비스 세션 활성;고객 지원 담당자가 상점에서 고객을 지원하는지 여부에 따라 프로모션 활성화
+;y_qualifying_group_types;operator;연산자;그룹 유형 선택 연산자
+;y_qualifying_group_types;groupTypes;그룹 유형;적격 그룹 유형 목록
+;y_order_threshold_perfect_partner;catalog;카탈로그별 선택 필터링;선택된 카탈로그 값을 사용하여, 연결된 필드 내에서 필터링
+;y_order_threshold_perfect_partner;product;완전한 파트너 제품;할인 제공되는 완전한 파트너 제품
+;y_order_threshold_perfect_partner;cart_threshold;장바구니 총계 임계값;이 프로모션 대상이 되려면 도달해야 하는 주문 합계입니다. 각 통화마다 값이 다르며 이 주문 대상이 될 수 있는 모든 통화는 값을 지정해야 합니다.
+;y_order_threshold_perfect_partner;is_discounted_price_included;합계를 계산할 때 할인된 가격을 포함;임계값과 비교할 때 전체 주문에서 파트너 제품의 할인된 가격을 포함합니다.
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;장바구니 할인
+;product_discounts;제품 할인
+;partner_product_discounts;파트너 제품 할인
+;shipping;배송
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;장바구니에 대한 비율 할인;장바구니 총계에 {value,number,percent*1} 할인 적용;
+;y_order_fixed_discount;장바구니에 대한 고정 할인;장바구니 총계에 {value} 할인 적용;
+;y_order_entry_percentage_discount;제품에 대한 비율 할인;적격 제품에 {value,number,percent*1} 할인 적용;
+;y_order_entry_fixed_discount;제품에 대한 고정 할인;적격 제품에 {value} 할인 적용;
+;y_order_entry_fixed_price;제품에 대한 대상 고정 가격;적격 제품에 대상 가격 {value} 적용;
+;y_target_bundle_price;대상 번들 가격;번들에 대상 가격 {value} 적용;
+;y_free_gift;무료 사은품;{product} 제품 {quantity}개 무료 증정;
+;y_partner_order_entry_percentage_discount;파트너 제품에 대한 비율 할인;파트너 제품에 {value,number,percent*1} 할인 적용;
+;y_partner_order_entry_fixed_discount;파트너 제품에 대한 고정 할인;파트너 제품에 {value} 할인 적용;
+;y_partner_order_entry_fixed_price;파트너 제품에 대한 대상 고정 가격;파트너 제품에 대상 가격 {value} 적용;
+;y_change_delivery_mode;배송 모드 변경;배송 모드를 {delivery_mode}(으)로 변경;
+;y_trigger_message;규칙 메시지 트리거;규칙 메시지 표시;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;비율 할인 값;장바구니 총계에 적용될 할인율
+;y_order_fixed_discount;value;절대 할인액;장바구니 총계에 적용될 통화 및 절대 할인액의 맵
+;y_order_entry_percentage_discount;value;비율 할인 값;적격 제품에 적용될 할인율
+;y_order_entry_fixed_discount;value;절대 할인액;적격 제품에 적용될 통화 및 절대 할인액의 맵
+;y_order_entry_fixed_price;value;대상 고정 가격;적격 제품에 적용될 통화 및 대상 가격 가치의 맵
+;y_target_bundle_price;value;대상 번들 가격;번들에 적용될 통화 및 대상 가격 가치의 맵
+;y_target_bundle_price;selection_strategy;선택 전략;장바구니의 여러 제품이 번들 조건을 충족할 때 제품을 선택하기 위한 전략
+;y_target_bundle_price;qualifying_containers;번들 제품 수량;필요한 번들을 구성하는 컨테이너 ID 및 해당 수량의 맵
+;y_free_gift;product;무료 제품;장바구니에 자동으로 추가되는 무료 증정 제품
+;y_free_gift;quantity;수량;무료 증정 품목 수량
+;y_free_gift;catalog;카탈로그별 선택 필터링;선택된 카탈로그 값을 사용하여, 연결된 필드 내에서 필터링
+;y_free_gift;qualifying_containers;적격 제품 컨테이너;적격 제품을 구성하는 컨테이너 ID 및 해당 수량의 맵
+;y_partner_order_entry_percentage_discount;value;비율 할인 값;파트너 제품에 적용될 할인율
+;y_partner_order_entry_percentage_discount;selection_strategy;선택 전략;장바구니의 여러 제품이 작업 조건을 충족할 때 제품을 선택하기 위한 전략
+;y_partner_order_entry_percentage_discount;qualifying_containers;적격 제품 컨테이너;적격 제품을 구성하는 컨테이너 ID 및 해당 수량의 맵
+;y_partner_order_entry_percentage_discount;target_containers;대상 제품 컨테이너;대상 파트너 제품을 구성하는 컨테이너 ID 및 해당 수량의 맵
+;y_partner_order_entry_fixed_discount;value;절대 할인액;파트너 제품에 적용될 통화 및 대상 가격 가치의 맵
+;y_partner_order_entry_fixed_discount;selection_strategy;선택 전략;장바구니의 여러 제품이 작업 조건을 충족할 때 제품을 선택하기 위한 전략
+;y_partner_order_entry_fixed_discount;qualifying_containers;적격 제품 컨테이너;적격 제품을 구성하는 컨테이너 ID 및 해당 수량의 맵
+;y_partner_order_entry_fixed_discount;target_containers;대상 제품 컨테이너;대상 파트너 제품을 구성하는 컨테이너 ID 및 해당 수량의 맵
+;y_partner_order_entry_fixed_price;value;대상 고정 가격;파트너 제품에 적용될 통화 및 대상 가격 가치의 맵
+;y_partner_order_entry_fixed_price;selection_strategy;선택 전략;장바구니의 여러 제품이 작업 조건을 충족할 때 제품을 선택하기 위한 전략
+;y_partner_order_entry_fixed_price;qualifying_containers;적격 제품 컨테이너;적격 제품을 구성하는 컨테이너 ID 및 해당 수량의 맵
+;y_partner_order_entry_fixed_price;target_containers;대상 제품 컨테이너;대상 파트너 제품을 구성하는 컨테이너 ID 및 해당 수량의 맵
+;y_change_delivery_mode;delivery_mode;배송 모드;작업 결과로 장바구니에 적용된 배송 모드

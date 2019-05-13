@@ -1,0 +1,35 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=id
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;Umum
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_group;Grup;{operator};
+;y_container;Kontener;{id};
+;y_rule_executed;Peraturan dijalankan;Peraturan dengan eksekusi kode {rule} diizinkan {allowed};
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_group;operator;Operator grup;Kombinasikan ketentuan dalam grup menggunakan ATAU/DAN
+;y_container;id;ID Kontener;Masukkan ID kontener yang akan dirujuk dalam tindakan
+;y_rule_executed;rule;Peraturan tindakan;Masukkan tindakan yang mengizinkan atau tidak mengizinkan peraturan ini dijalankan
+;y_rule_executed;allowed;Pelaksanaan peraturan tindakan diizinkan;Pelaksanaan peraturan tindakan diizinkan atau tidak
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;Umum
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_halt;Hentikan pelaksanaan peraturan ;Hentikan pelaksanaan peraturan berikut;

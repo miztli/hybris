@@ -1,0 +1,75 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Promotions for Powertools Store
+#% impex.setLocale( Locale.GERMAN ); 
+
+$defaultPromoGrp=powertoolsPromoGrp
+$favCustomers=favoriteCustomers
+$bigSpenders=bigSpenders
+$delvieryMode=std-gross
+$regulargroup=regulargroup
+
+$productCatalog=powertoolsProductCatalog
+$catalogVersion=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$productCatalog]),CatalogVersion.version[default=Online])[default=$productCatalog:Online]
+
+INSERT PromotionPriceRow;&tresholdId;Currency(isocode);price
+
+INSERT PromotionPriceRow;&priceId;Currency(isocode);price
+
+INSERT_UPDATE OrderThresholdDiscountPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true,unique=true];code[unique=true];title;description;messageFired[lang=en];messageFired[lang=de];messageFired[lang=ja];priority;thresholdTotals(&tresholdId);discountPrices(&priceId)
+
+INSERT_UPDATE PromotionUserRestriction;positive;promotion(code)[unique=true];users(uid)
+
+INSERT PromotionPriceRow;&tresholdId;Currency(isocode);price
+
+INSERT PromotionPriceRow;&priceId;Currency(isocode);price
+;40;USD;40
+
+INSERT PromotionPriceRow;&bundlePriceId;Currency(isocode);price
+;255;USD;255
+
+INSERT PromotionPriceRow;&thresholdPriceId;Currency(isocode);price
+;500;USD;500
+
+#3% off orders over $500
+INSERT_UPDATE OrderThresholdDiscountPercentagePromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;messageCouldHaveFired[lang=en];priority;thresholdTotals(&thresholdPriceId);percentageDiscount
+;;;3PercentDiscountOver500;3% off orders over $500;3% off orders over $500;3% off orders over $500;500;500;3
+
+#Buy 2 Power Drills, Get 1 Free
+INSERT_UPDATE AcceleratorProductBOGOFPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;messageCouldHaveFired[lang=en];messageFired[lang=en];priority;categories(code,$catalogVersion);qualifyingCount;freeCount
+;;;B2GOFPowerDrills;Buy 2 Power Drills, Get 1 Free;Buy 2 Power Drills, Get 1 Free;Buy 2 Power Drills, Get 1 Free;You get 1 Power Drill free for purchasing 2 Power Drills;900;1360;3;1
+
+#Buy this great power tool package by Black & Decker for $255! Save $39!
+INSERT_UPDATE ProductBundlePromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;messageCouldHaveFired[lang=en];messageFired[lang=en];priority;products(code,$catalogVersion);bundlePrices(&bundlePriceId)
+;;;ProductBundlePowertoolsPackage;Black & Decker package;Buy this great power tool package by Black & Decker for $255! Save $39!;Buy this great power tool package by Black & Decker for {2}! Save $39!;You saved {3} by buying this great power tool package by Black & Decker for {1}!;900;3794514,3881014,2116266;255
+
+#10% off on Sanders
+INSERT_UPDATE ProductPercentageDiscountPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;messageFired[lang=en];percentageDiscount;priority;categories(code,$catalogVersion)
+;;;10DiscountSanders;10% off on Sanders;10% off on Sanders;10% off on Sanders;10;900;1596
+
+INSERT_UPDATE ProductMultiBuyPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;priority;categories(code,$catalogVersion);qualifyingCount;bundlePrices(&priceId)
+
+INSERT_UPDATE AcceleratorProductBOGOFPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;priority;categories(code,$catalogVersion);qualifyingCount;freeCount
+
+INSERT PromotionPriceRow;&priceId;Currency(isocode);price
+
+INSERT_UPDATE ProductPerfectPartnerPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;priority;products(code,$catalogVersion);partnerProducts(code,$catalogVersion);partnerPrices(&priceId)
+
+INSERT PromotionPriceRow;&priceId;Currency(isocode);price
+
+INSERT_UPDATE ProductBundlePromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true,unique=true];code[unique=true];title;description;priority;products(code,$catalogVersion);bundlePrices(&priceId)
+
+
+# Vouchers (legacy)
+INSERT_UPDATE PromotionVoucher;code[unique=true];currency(isocode);description;freeShipping;priority;redemptionQuantityLimitPerUser;redemptionQuantityLimit;value;voucherCode
+;000;USD;Get $10 discount on the cart;false;25;10;100;10;SUMMER69
+;001;;Get 10% discount on the cart;false;25;10;100;10;WINTER16
+

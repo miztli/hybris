@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=id
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;Troli
+;customer;Pelanggan
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;Total troli;Total troli {operator} {value}
+;y_qualifying_products;Produk yang memenuhi syarat;Troli {products_operator} produk {products}
+;y_qualifying_categories;Kategori yang memenuhi syarat;Troli {categories_operator} kategori {categories}
+;y_target_customers;Pelanggan target;Target {customer_groups_operator} grup pelanggan {customer_groups} atau pelanggan {customers}
+;y_product_price;Ambang batas harga produk;Harga produk {operator} {value}
+;y_customer_support;Dukungan pelanggan;Sesi layanan yang dibantu sedang aktif: {value}
+;y_qualifying_group_types;Tipe Grup yang Memenuhi Syarat;Grup entri keranjang {operator} {groupTypes}
+;y_orders;Pemesanan atau keranjang;Pemesanan atau keranjang dalam {orders}
+;y_order_threshold_perfect_partner;Ambang Batas Order Rekanan Sempurna;Produk rekanan sempurna {product} dalam troli dan total troli lebih dari {cart_threshold} termasuk harga yang didiskon {is_discounted_price_included}
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;Operator;Operator untuk membandingkan nilai total troli
+;y_cart_total;value;Nilai total troli;Peta mata uang dan nilai total troli yang akan digunakan
+;y_qualifying_products;operator;Operator;Operator untuk membandingkan jumlah yang diperlukan untuk produk yang memenuhi syarat
+;y_qualifying_products;quantity;Jumlah per entri pemesanan;Jumlah produk memenuhi syarat yang diperlukan (per entri order)
+;y_qualifying_products;products_operator;Operator pemilihan produk;Pilih produk APA PUN atau pilih SEMUA produk dari daftar produk yang memenuhi syarat
+;y_qualifying_products;products;Produk;Daftar produk yang memenuhi syarat
+;y_qualifying_products;catalog;Pilihan filter berdasarkan katalog;Nilai katalog yang dipilih akan digunakan untuk tujuan pemfilteran dalam bidang terkait
+;y_qualifying_categories;operator;Operator;Operator untuk membandingkan jumlah yang diperlukan untuk produk dalam kategori yang memenuhi syarat
+;y_qualifying_categories;quantity;Jumlah per entri pemesanan;Jumlah produk yang diperlukan dari kategori yang memenuhi syarat (per entri order)
+;y_qualifying_categories;categories_operator;Operator pemilihan kategori;Pilih SETIAP kategori atau pilih SEMUA kategori dari daftar kategori yang memenuhi syarat
+;y_qualifying_categories;categories;Kategori;Daftar kategori yang memenuhi syarat
+;y_qualifying_categories;excluded_categories;Kategori yang dikecualikan;Daftar subkategori yang akan dikecualikan dari kategori yang memenuhi syarat
+;y_qualifying_categories;excluded_products;Produk yang dikecualikan;Daftar produk dari kategori yang memenuhi syarat yang akan dikecualikan
+;y_qualifying_categories;catalog;Pilihan filter berdasarkan katalog;Nilai katalog yang dipilih akan digunakan untuk tujuan pemfilteran dalam bidang terkait
+;y_target_customers;customer_groups_operator;Operator pemilihan grup pelanggan;Pelanggan harus merupakan bagian dari SETIAP atau SEMUA grup pelanggan
+;y_target_customers;customer_groups;Grup pelanggan;Daftar grup pelanggan yang memenuhi syarat
+;y_target_customers;customers;Pelanggan;Daftar pelanggan yang memenuhi syarat
+;y_target_customers;excluded_customer_groups;Grup pelanggan yang dikecualikan;Daftar subgrup yang harus dikecualikan dari grup pelanggan yang memenuhi syarat
+;y_target_customers;excluded_customers;Pelanggan yang dikecualikan;Daftar pelanggan yang harus dikecualikan dari grup pelanggan yang memenuhi syarat
+;y_product_price;operator;Operator;Operator untuk membandingkan nilai produk
+;y_product_price;value;Ambang batas harga;Peta nilai mata uang dan ambang batas produk yang akan digunakan untuk mengualifikasi promosi ini.
+;y_customer_support;value;Sesi layanan terbantu aktif;Mengaktifkan promosi berdasarkan jika agen dukungan pelanggan membantu pelanggan di etalase atau tidak
+;y_qualifying_group_types;operator;Operator;Operator pemilihan tipe grup
+;y_qualifying_group_types;groupTypes;Tipe grup;Daftar tipe grup yang memenuhi syarat
+;y_order_threshold_perfect_partner;catalog;Pilihan filter berdasarkan katalog;Nilai katalog yang dipilih akan digunakan untuk tujuan pemfilteran dalam bidang terkait
+;y_order_threshold_perfect_partner;product;Produk rekanan sempurna;Produk rekanan sempurna ditawarkan dengan harga diskon
+;y_order_threshold_perfect_partner;cart_threshold;Nilai ambang batas total troli;Total pemesanan yang harus dicapai agar memenuhi syarat promosi ini. Setiap mata uang memiliki nilai yang berbeda dan semua mata uang yang dapat memenuhi syarat pemesanan ini harus memiliki nilai tertentu.
+;y_order_threshold_perfect_partner;is_discounted_price_included;Termasuk harga yang didiskon saat menghitung total;Termasuk harga diskon produk rekanan dalam total pemesanan saat membandingkan terhadap nilai ambang batas.
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;Diskon keranjang
+;product_discounts;Diskon produk
+;partner_product_discounts;Diskon produk mitra
+;shipping;Pengiriman
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;Persentase diskon pada troli;Terapkan diskon {value,number,percent*1} pada total troli;
+;y_order_fixed_discount;Diskon tetap pada troli;Terapkan diskon {value} pada total troli;
+;y_order_entry_percentage_discount;Persentase diskon pada produk;Terapkan diskon {value,number,percent*1} pada produk yang memenuhi syarat;
+;y_order_entry_fixed_discount;Diskon tetap pada produk;Terapkan diskon {value} pada produk yang memenuhi syarat;
+;y_order_entry_fixed_price;Harga tetap target pada produk;Terapkan harga target  {value} pada produk yang memenuhi syarat;
+;y_target_bundle_price;Harga bundel target;Terapkan harga target {value} untuk bundel;
+;y_free_gift;Hadiah gratis;Berikan produk(-produk) {quantity} {product} secara gratis;
+;y_partner_order_entry_percentage_discount;Persentase diskon pada produk mitra;Terapkan diskon {value,number,percent*1} pada produk mitra;
+;y_partner_order_entry_fixed_discount;Diskon tetap pada produk mitra;Terapkan diskon {value} pada produk mitra;
+;y_partner_order_entry_fixed_price;Harga tetap target pada produk mitra;Terapkan harga target  {value} pada produk mitra;
+;y_change_delivery_mode;Ubah mode pengiriman;Ubah mode pengiriman menjadi {delivery_mode};
+;y_trigger_message;Pesan peraturan pemicu;Tampilkan pesan untuk peraturan;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;Persentase nilai diskon;Persentase diskon yang akan diterapkan pada total troli
+;y_order_fixed_discount;value;Nilai diskon mutlak;Peta nilai mata uang dan diskon mutlak yang akan diterapkan pada total troli
+;y_order_entry_percentage_discount;value;Persentase nilai diskon;Persentase diskon yang akan diterapkan pada produk yang memenuhi syarat
+;y_order_entry_fixed_discount;value;Nilai diskon mutlak;Peta nilai mata uang dan diskon mutlak yang akan diterapkan pada produk yang memenuhi syarat
+;y_order_entry_fixed_price;value;Harga tetap target;Peta nilai mata uang dan harga target yang akan diterapkan pada produk yang memenuhi syarat
+;y_target_bundle_price;value;Harga bundel target;Peta nilai mata uang dan harga target yang akan diterapkan pada bundel
+;y_target_bundle_price;selection_strategy;Strategi pemilihan;Strategi yang akan digunakan untuk memilih produk jika beberapa ite, dalam troli memenuhi syarat untuk bundel
+;y_target_bundle_price;qualifying_containers;Jumlah produk bundel;Peta ID Kontener dan jumlah masing-masing yang menyusun bundel yang diperlukan
+;y_free_gift;product;Produk gratis;Produk yang harus ditambahkan ke troli secara otomatis dan dibagikan secara gratis
+;y_free_gift;quantity;Jumlah;Jumlah atau item yang akan dibagikan secara gratis
+;y_free_gift;catalog;Pilihan filter berdasarkan katalog;Nilai katalog yang dipilih akan digunakan untuk tujuan pemfilteran dalam bidang terkait
+;y_free_gift;qualifying_containers;Kontainer produk yang memenuhi syarat;Peta ID Kontener dan jumlah masing-masing yang menyusun produk yang memenuhi syarat
+;y_partner_order_entry_percentage_discount;value;Persentase nilai diskon;Persentase diskon yang akan diterapkan pada produk mitra
+;y_partner_order_entry_percentage_discount;selection_strategy;Strategi pemilihan;Strategi yang akan digunakan untuk memilih produk jika beberapa ite, dalam troli memenuhi syarat untuk tindakan
+;y_partner_order_entry_percentage_discount;qualifying_containers;Kontener produk yang memenuhi syarat;Peta ID Kontener dan jumlah masing-masing yang menyusun produk yang memenuhi syarat
+;y_partner_order_entry_percentage_discount;target_containers;Kontener produk target;Peta ID Kontener dan jumlah masing-masing yang menyusun produk mitra target
+;y_partner_order_entry_fixed_discount;value;Nilai diskon mutlak;Peta nilai mata uang dan harga target yang akan diterapkan pada produk mitra
+;y_partner_order_entry_fixed_discount;selection_strategy;Strategi pemilihan;Strategi yang akan digunakan untuk memilih produk jika beberapa ite, dalam troli memenuhi syarat untuk tindakan
+;y_partner_order_entry_fixed_discount;qualifying_containers;Kontener produk yang memenuhi syarat;Peta ID Kontener dan jumlah masing-masing yang menyusun produk yang memenuhi syarat
+;y_partner_order_entry_fixed_discount;target_containers;Kontener produk target;Peta ID Kontener dan jumlah masing-masing yang menyusun produk mitra target
+;y_partner_order_entry_fixed_price;value;Harga tetap target;Peta nilai mata uang dan harga target yang akan diterapkan pada produk mitra
+;y_partner_order_entry_fixed_price;selection_strategy;Strategi pemilihan;Strategi yang akan digunakan untuk memilih produk jika beberapa ite, dalam troli memenuhi syarat untuk tindakan
+;y_partner_order_entry_fixed_price;qualifying_containers;Kontener produk yang memenuhi syarat;Peta ID Kontener dan jumlah masing-masing yang menyusun produk yang memenuhi syarat
+;y_partner_order_entry_fixed_price;target_containers;Kontener produk target;Peta ID Kontener dan jumlah masing-masing yang menyusun produk mitra target
+;y_change_delivery_mode;delivery_mode;Mode pengiriman;Mode pengiriman yang akan diterapkan pada troli sebagai hasil tindakan

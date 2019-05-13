@@ -1,0 +1,19 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+INSERT_UPDATE MaintenanceCleanupJob;code[unique=true];springId[unique=true]
+;rules -> Purging old serialized Kie Modules;kieModuleCleanupJob
+
+INSERT_UPDATE CronJob;code[unique=true];job(code)[default=kieModuleCleanupJob];sessionLanguage(isoCode)[default=en]
+;kieModuleCleanupJob
+
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+;kieModuleCleanupJob;0;0;4;-1;-1;-1;false;true;-1

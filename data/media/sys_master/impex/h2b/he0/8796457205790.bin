@@ -1,0 +1,51 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+$facetSearchConfigName=powertoolsIndex
+$contentCatalogName=powertoolsContentCatalog
+$indexedType=powertoolsProductType
+$productCatalog=powertoolsProductCatalog
+$productCatalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+#
+# Localization en
+#
+$lang=en
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedType];name[unique=true];displayName[lang=$lang]
+ ;;Colour of product, 1766;"Colour"
+
+# Redirect page URL (Must use INSERT_UPDATE here)
+INSERT_UPDATE SolrURIRedirect;url[unique=true];&redirectRefID
+;"/cart";$contentCatalogName-redirectRefID-cart
+;"http://www.hybris.com/multichannel-accelerator";$contentCatalogName-redirectRefID-accelerator
+
+# Synonyms (Must use INSERT_UPDATE here)
+INSERT_UPDATE SolrSynonymConfig;facetSearchConfig(name)[unique=true,default=$facetSearchConfigName];language(isocode)[unique=true,default=$lang];synonymFrom[unique=true];synonymTo
+ ;;;"bosch hammer";"PSB"
+ ;;;"battery";"coordless"
+
+# Category Redirect (Must use INSERT_UPDATE here)
+INSERT_UPDATE SolrCategoryRedirect;redirectItem(code,$productCatalogVersion)[unique=true];&redirectRefID
+;1360;$productCatalog-redirectRefID-drill
+;1595;$productCatalog-redirectRefID-grinder
+
+# Keyword Redirects (Must use INSERT_UPDATE here)
+INSERT_UPDATE SolrFacetSearchKeywordRedirect;facetSearchConfig(name)[unique=true,default=$facetSearchConfigName];language(isocode)[unique=true,default=$lang];keyword[unique=true];matchType(code)[unique=true];redirect(&redirectRefID);ignoreCase[default=true]
+
+# Keyword Redirects (Must use INSERT_UPDATE here)
+INSERT_UPDATE SolrFacetSearchKeywordRedirect;facetSearchConfig(name)[unique=true,default=$facetSearchConfigName];language(isocode)[unique=true,default=$lang];keyword[unique=true];matchType(code)[unique=true];redirect(&redirectRefID);ignoreCase[default=true]
+ ;;;"accelerator";EXACT;$contentCatalogName-redirectRefID-accelerator;
+ ;;;"hymacc";EXACT;$contentCatalogName-redirectRefID-accelerator;
+
+# Keyword Redirects (Must use INSERT_UPDATE here)
+INSERT_UPDATE SolrFacetSearchKeywordRedirect;facetSearchConfig(name)[unique=true,default=$facetSearchConfigName];language(isocode)[unique=true,default=$lang];keyword[unique=true];matchType(code)[unique=true];redirect(&redirectRefID);ignoreCase[default=true]
+ ;;;"basket";EXACT;$contentCatalogName-redirectRefID-cart;
+ ;;;"cart";EXACT;$contentCatalogName-redirectRefID-cart;

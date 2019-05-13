@@ -1,0 +1,21 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+# Import the Solr CronJob Trigger configuration for the Powertools Product Catalog
+#
+
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+
+# Run the full-powertoolsIndex-cronJob at 3:05 AM every day
+;full-powertoolsIndex-cronJob;0;5;3;-1;-1;-1;false;false;-1
+
+# Run the update-powertoolsIndex-cronJob every 1 minutes
+;update-powertoolsIndex-cronJob;0;1;-1;-1;-1;-1;true;false;-1

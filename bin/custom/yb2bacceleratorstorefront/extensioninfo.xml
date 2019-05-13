@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+
+	<extension abstractclassprefix="Generated" classprefix="Yb2bacceleratorstorefront" name="yb2bacceleratorstorefront" usemaven="false">		
+        <requires-extension name="personalizationsearchsamplesaddon"/>
+<requires-extension name="pcmbackofficesamplesaddon"/>
+<requires-extension name="adaptivesearchsamplesaddon"/>
+<requires-extension name="orderselfserviceaddon"/>
+<requires-extension name="customerticketingaddon"/>
+<requires-extension name="assistedservicestorefront"/>
+<requires-extension name="smarteditaddon"/>
+<requires-extension name="textfieldconfiguratortemplateaddon"/>
+<requires-extension name="promotionenginesamplesaddon"/>
+<requires-extension name="commerceorgsamplesaddon"/>
+<requires-extension name="commerceorgaddon"/>
+<requires-extension name="b2bacceleratoraddon"/>
+<requires-extension name="acceleratorstorefrontcommons"/>
+		<requires-extension name="yacceleratorfacades"/>
+
+		<webmodule jspcompile="false" webroot="/yb2bacceleratorstorefront"/>
+
+		<meta key="modulegen-name" value="accelerator"/>
+		
+
+	</extension>
+
+</extensioninfo>

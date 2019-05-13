@@ -1,0 +1,76 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+$contentCatalog=powertoolsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$addonExtensionName=textfieldconfiguratortemplateaddon
+
+# Create PageTemplates
+# These define the layout for pages
+# "FrontendTemplateName" is used to define the JSP that should be used to render the page for pages with multiple possible layouts.
+# "RestrictedPageTypes" is used to restrict templates to page types
+INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;frontendTemplateName;restrictedPageTypes(code);active[default=true]
+;;ProductTextfieldConfiguratorPageTemplate;Product Textfield Configurator Page Template;addon:/$addonExtensionName/pages/productTextfieldConfiguratorPage;ContentPage
+
+
+# Create ContentSlotNames
+# Each PageTemplate has a number of ContentSlotNames, with a list of valid components for the slot.
+# There are a standard set of slots and a number of specific slots for each template.
+# Standard slots are SiteLogo, HeaderLinks, MiniCart and NavigationBar (that all appear in the Header), and the Footer.
+
+#Product configurator page slots
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='ProductTextfieldConfiguratorPageTemplate'];validComponentTypes(code);compTypeGroup(code)
+;SiteLogo;;;logo
+;HeaderLinks;;;headerlinks
+;SearchBox;;;searchbox
+;MiniCart;;;minicart
+;NavigationBar;;;navigation
+;Section1;;;wide
+;Section2A;;;narrow
+;Section2B;;;wide
+;Section3;;;wide
+;Footer;;;footer
+;TopHeaderSlot;;;wide
+;BottomHeaderSlot;;;wide
+;PlaceholderContentSlot;;;
+
+
+# Create Content Slots
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true]
+;;SiteLogoSlot
+;;HomepageNavLinkSlot
+;;MiniCartSlot
+;;NavigationBarSlot
+;;FooterSlot
+;;HeaderLinksSlot
+;;SearchBoxSlot
+;;TopHeaderSlot
+;;BottomHeaderSlot
+;;PlaceholderContentSlot
+
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='ProductTextfieldConfiguratorPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+;;SiteLogo-textfieldConfigPage;SiteLogo;;SiteLogoSlot;true
+;;HomepageLink-textfieldConfigPage;HomepageNavLink;;HomepageNavLinkSlot;true
+;;NavigationBar-textfieldConfigPage;NavigationBar;;NavigationBarSlot;true
+;;MiniCart-textfieldConfigPage;MiniCart;;MiniCartSlot;true
+;;Footer-textfieldConfigPage;Footer;;FooterSlot;true
+;;HeaderLinks-textfieldConfigPage;HeaderLinks;;HeaderLinksSlot;true
+;;SearchBox-textfieldConfigPage;SearchBox;;SearchBoxSlot;true
+;;TopHeaderSlot-textfieldConfigPage;TopHeaderSlot;;TopHeaderSlot;true
+;;BottomHeaderSlot-textfieldConfigPage;BottomHeaderSlot;;BottomHeaderSlot;true
+;;PlaceholderContentSlot-textfieldConfigPage;PlaceholderContentSlot;;PlaceholderContentSlot;true
+
+
+# Create Content Pages
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false']
+;;product-textfield-configurator;Product Configurator;ProductDetailsPageTemplate;configureTEXTFIELD

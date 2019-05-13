@@ -1,0 +1,32 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+insert_update FutureConstraint;active[allownull=true];descriptor(enclosingType(code),qualifier);id[unique=true,allownull=true];message[lang=de];message[lang=en];qualifier;severity(code,itemtype(code));target;type(code)
+;true;AbstractCoupon:endDate;couponEndDate;End date cannot be in the past;End date cannot be in the past;endDate;ERROR:Severity;de.hybris.platform.couponservices.model.AbstractCouponModel;AbstractCoupon
+
+insert_update DynamicConstraint;active[allownull=true];id[unique=true,allownull=true];message[lang=en];language(code);expression;severity(code,itemtype(code));target;type(code);annotation
+;true;couponDateDiffConstraint;"End date must be after start date";BEANSHELL;"return getEndDate() == null || getStartDate() == null || getEndDate().after(getStartDate());";ERROR:Severity;de.hybris.platform.couponservices.model.AbstractCouponModel;AbstractCoupon;de.hybris.platform.validation.annotations.Dynamic
+
+insert_update MinConstraint;active[allownull=true];descriptor(enclosingType(code),qualifier);id[unique=true,allownull=true];message[lang=de];message[lang=en];qualifier;severity(code,itemtype(code));target;type(code);value
+;true;SingleCodeCoupon:maxRedemptionsPerCustomer;couponMaxRedemptionsPerCustomerMinValue;Value should be >=1;Value should be >=1;maxRedemptionsPerCustomer;ERROR:Severity;de.hybris.platform.couponservices.model.SingleCodeCouponModel;SingleCodeCoupon;1
+;true;SingleCodeCoupon:maxTotalRedemptions;couponMaxTotalRedemptionsMinValue;Value should be >=1;Value should be >=1;maxTotalRedemptions;ERROR:Severity;de.hybris.platform.couponservices.model.SingleCodeCouponModel;SingleCodeCoupon;1
+;true;CodeGenerationConfiguration:couponPartCount;codeGenerationConfigurationPartCountMinValue;Value must be >= 1;Value must be >= 1;couponPartCount;ERROR:Severity;de.hybris.platform.couponservices.model.CodeGenerationConfigurationModel;CodeGenerationConfiguration;1
+;true;CodeGenerationConfiguration:couponPartLength;codeGenerationConfigurationPartLengthMinValue;Value must be >= 1;Value must be >= 1;couponPartLength;ERROR:Severity;de.hybris.platform.couponservices.model.CodeGenerationConfigurationModel;CodeGenerationConfiguration;1
+
+insert_update PatternConstraint;active[allownull=true];descriptor(enclosingType(code),qualifier);id[unique=true,allownull=true];message[lang=de];message[lang=en];qualifier;severity(code,itemtype(code));target;type(code);regexp;flags(code)
+;true;MultiCodeCoupon:couponId;couponPrefixPattern;Only letters and numbers allowed, no special characters;Only letters and numbers allowed, no special characters;couponId;ERROR:Severity;de.hybris.platform.couponservices.model.MultiCodeCouponModel;MultiCodeCoupon;[A-Za-z0-9]+;CASE_INSENSITIVE;
+
+insert_update ObjectPatternConstraint;active[allownull=true];descriptor(enclosingType(code),qualifier);id[unique=true,allownull=true];message[lang=en];qualifier;severity(code,itemtype(code));target;type(code);regexp;flags(code);
+;true;CodeGenerationConfiguration:codeSeparator;codeGenerationConfigurationCodeSeparatorPattern;"Only one of the defined characters is allowed:  -_;|+*.  .";codeSeparator;ERROR:Severity;de.hybris.platform.couponservices.model.CodeGenerationConfigurationModel;CodeGenerationConfiguration;"[-_;\|\+\*\.]";CASE_INSENSITIVE;
+;true;AbstractCoupon:couponId;couponIdLengthMinValue;"Value should be at least 2 characters long";couponId;ERROR:Severity;de.hybris.platform.couponservices.model.AbstractCouponModel;AbstractCoupon;"(.*)([\S]{2,})(.*)";CASE_INSENSITIVE;
+
+INSERT_UPDATE NotEmptyConstraint;active[allownull=true];descriptor(enclosingType(code),qualifier);id[unique=true,allownull=true];message[lang=de];message[lang=en];qualifier;severity(code,itemtype(code));target;type(code)
+;true;AbstractCoupon:couponId;couponIdNotEmpty;Value cannot be null or empty;Value cannot be null or empty;couponId;ERROR:Severity;de.hybris.platform.couponservices.model.AbstractCouponModel;AbstractCoupon

@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=pl
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;Koszyk zakupów
+;customer;Klient
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;Suma koszyka zakupów;Suma koszyka zakupów {operator} {value}
+;y_qualifying_products;Kwalifikujące produkty;Produkty {products} koszyka zakupów {products_operator}
+;y_qualifying_categories;Kwalifikujące kategorie;Kategorie {categories} koszyka zakupów {categories_operator}
+;y_target_customers;Klienci docelowi;Grupy {customer_groups} klientów docelowych {customer_groups_operator} lub klienci {customers}
+;y_product_price;Wartość progowa ceny produktu;Cena produktu {operator} {value}
+;y_customer_support;Wsparcie klienta;Sesja ASM jest aktywna: {value}
+;y_qualifying_group_types;Kwalifikujące typy grupy;Grupa wpisów koszyka zakupów {operator} {groupTypes}
+;y_orders;Zamówienia lub koszyki zakupów;Zamówienia lub koszyki zakupów w {orders}
+;y_order_threshold_perfect_partner;Idealny partner dla wartości progowej zamówienia;Produkt idealnego partnera {product} w koszyku zakupów i suma koszyka zakupów większa niż {cart_threshold} z uwzględnieniem ceny rabatowej {is_discounted_price_included}
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;Operator;Operator do porównania wartości sumy koszyka zakupów
+;y_cart_total;value;Wartość sumy koszyka zakupów;Mapowanie waluty i wartości sumy koszyka zakupów do użycia
+;y_qualifying_products;operator;Operator;Operator do porównania ilości wymaganej dla kwalifikujących produktów
+;y_qualifying_products;quantity;Ilość na wpis zamówienia;Ilość wymaganych kwalifikujących produktów (na wpis zamówienia)
+;y_qualifying_products;products_operator;Operator wyboru produktów;Wybierz DOWOLNY produkt lub wybierz WSZYSTKIE produkty z listy kwalifikujących produktów
+;y_qualifying_products;products;Produkty;Lista kwalifikujących produktów
+;y_qualifying_products;catalog;Wybór filtra według katalogu;Wybrana wartość katalogu zostanie wykorzystana do celów filtrowania w ramach powiązanych pól.
+;y_qualifying_categories;operator;Operator;Operator do porównania ilości wymaganej dla produktów w kwalifikujących kategoriach
+;y_qualifying_categories;quantity;Ilość na wpis zamówienia;Ilość produktów wymaganych z kwalifikujących kategorii (na wpis zamówienia)
+;y_qualifying_categories;categories_operator;Operator wyboru kategorii;Wybierz DOWOLNĄ kategorię lub wybierz WSZYSTKIE kategorie z listy kwalifikujących produktów
+;y_qualifying_categories;categories;Kategorie;Lista kwalifikujących kategorii
+;y_qualifying_categories;excluded_categories;Wykluczone kategorie;Lista podkategorii do wykluczenia z kwalifikujących kategorii
+;y_qualifying_categories;excluded_products;Wykluczone produkty;Lista produktów z kwalifikujących kategorii do wykluczenia
+;y_qualifying_categories;catalog;Wybór filtra według katalogu;Wybrana wartość katalogu zostanie wykorzystana do celów filtrowania w ramach powiązanych pól.
+;y_target_customers;customer_groups_operator;Operator wyboru grupy klientów;Klient powinien być częścią DOWOLNEJ grupy klientów lub WSZYSTKICH grup klientów
+;y_target_customers;customer_groups;Grupy klientów;Lista kwalifikujących grup klientów
+;y_target_customers;customers;Klienci;Lista kwalifikujących klientów
+;y_target_customers;excluded_customer_groups;Wykluczone grupy klientów;Lista podgrup, które powinny zostać wykluczone z kwalifikujących grup klientów
+;y_target_customers;excluded_customers;Wykluczeni klienci;Lista klientów, którzy powinny zostać wykluczeni z kwalifikujących grup klientów
+;y_product_price;operator;Operator;Operator do porównania wartości produktu
+;y_product_price;value;Wartość progowa ceny;Mapowanie waluty i wartości progowej produktów do użycia do kwalifikacji dla tej promocji
+;y_customer_support;value;Sesja ASM aktywna;Aktywuj promocję w oparciu o to, czy członek zespołu wsparcia klienta pomaga klientowi w witrynie sklepu internetowego czy też nie.
+;y_qualifying_group_types;operator;Operator;Operator wyboru typu grupy
+;y_qualifying_group_types;groupTypes;Typy grup;Lista kwalifikujących typów grup
+;y_order_threshold_perfect_partner;catalog;Wybór filtra według katalogu;Wybrana wartość katalogu zostanie wykorzystana do celów filtrowania w ramach powiązanych pól.
+;y_order_threshold_perfect_partner;product;Produkt idealnego partnera;Produkt idealnego partnera oferowany w cenie z rabatem.
+;y_order_threshold_perfect_partner;cart_threshold;Wartość progowa sumy koszyka zakupów;Suma zamówienia, którą należy osiągnąć, aby zakwalifikować się do tej promocji. Każda waluta ma inną wartość i wszystkie waluty, które mogą zakwalifikować się do tego zamówienia, muszą mieć określoną wartość.
+;y_order_threshold_perfect_partner;is_discounted_price_included;Obliczając sumę, uwzględnij cenę z rabatem.;Porównując z wartością progową, uwzględnij w sumie zamówienia cenę rabatową partnerskiego produktu.
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;Rabaty koszyka zakupów
+;product_discounts;Rabaty na produkt
+;partner_product_discounts;Rabaty na produkt partnera
+;shipping;Wysyłka
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;Rabat procentowy na koszyk zakupów;Zastosuj rabat {value,number,percent*1} na sumę koszyka zakupów;
+;y_order_fixed_discount;Stały rabat na koszyk zakupów;Zastosuj rabat {value} na sumę koszyka zakupów;
+;y_order_entry_percentage_discount;Rabat procentowy na produkty;Zastosuj rabat {value,number,percent*1} na kwalifikujące produkty;
+;y_order_entry_fixed_discount;Stały rabat na produkty;Zastosuj rabat {value} na kwalifikujące produkty;
+;y_order_entry_fixed_price;Docelowa stała cena na produkty;Zastosuj cenę docelową {value} na kwalifikujące produkty;
+;y_target_bundle_price;Docelowa cena pakietu;Zastosuj docelową cenę {value} dla pakietu;
+;y_free_gift;Darmowy prezent;Przekazanie produktu (-ów) {quantity} {product} za darmo;
+;y_partner_order_entry_percentage_discount;Rabat procentowy na produkty partnera;Zastosuj rabat {value,number,percent*1} na produkty partnera;
+;y_partner_order_entry_fixed_discount;Stały rabat na produkty partnera;Zastosuj rabat {value} na produkty partnera;
+;y_partner_order_entry_fixed_price;Docelowa stała cena na produkty partnera;Zastosuj cenę docelową {value} na produkty partnera;
+;y_change_delivery_mode;Zmień tryb dostawy;Zmień tryb dostawy na {delivery_mode};
+;y_trigger_message;Uruchom komunikat dla reguły;Wyświetl komunikat dla reguły;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;Procentowa wartość rabatu;Rabat procentowy, który zostanie zastosowany na sumę koszyka zakupów
+;y_order_fixed_discount;value;Wartość rabatu bezwzględnego;Mapowanie waluty oraz wartości rabatu bezwzględnego, który zostanie zastosowany na sumę koszyka zakupów
+;y_order_entry_percentage_discount;value;Procentowa wartość rabatu;Rabat procentowy, który zostanie zastosowany na kwalifikujące produkty
+;y_order_entry_fixed_discount;value;Wartość rabatu bezwzględnego;Mapowanie waluty oraz wartości rabatu bezwzględnego, który zostanie zastosowany na kwalifikujące produkty
+;y_order_entry_fixed_price;value;Docelowa stała cena;Mapowanie waluty oraz wartości ceny docelowej, która zostanie zastosowana na kwalifikujące produkty
+;y_target_bundle_price;value;Docelowa cena pakietu;Mapowanie waluty oraz wartości ceny docelowej, która zostanie zastosowana na pakiet
+;y_target_bundle_price;selection_strategy;Strategia wyboru;Strategia do wykorzystania w przypadku wyboru produktów, gdy wiele pozycji w koszyku zakupów kwalifikuje się na pakiet
+;y_target_bundle_price;qualifying_containers;Ilość produkt w pakiecie;Mapowanie ID kontenera i odpowiednich ilości, które tworzą wymagany pakiet
+;y_free_gift;product;Produkt gratisowy;Produkt, który powinien zostać dodany do koszyka zakupów automatycznie i wydany za darmo
+;y_free_gift;quantity;Ilość;Ilość pozycji do wydania za darmo
+;y_free_gift;catalog;Wybór filtra według katalogu;Wybrana wartość katalogu zostanie wykorzystana do celów filtrowania w ramach powiązanych pól.
+;y_free_gift;qualifying_containers;Kontenery na kwalifikujące produkty;Mapowanie ID kontenera i odpowiednich ilości, które tworzą kwalifikujące produkty
+;y_partner_order_entry_percentage_discount;value;Procentowa wartość rabatu;Rabat procentowy, który zostanie zastosowany na produkty partnera
+;y_partner_order_entry_percentage_discount;selection_strategy;Strategia wyboru;Strategia do wykorzystania w przypadku wyboru produktów, gdy wiele pozycji w koszyku zakupów kwalifikuje się do podjęcia działania
+;y_partner_order_entry_percentage_discount;qualifying_containers;Kontenery na kwalifikujące produkty;Mapowanie ID kontenera i odpowiednich ilości, które tworzą kwalifikujące produkty
+;y_partner_order_entry_percentage_discount;target_containers;Kontenery na produkty docelowe;Mapowanie ID kontenera i odpowiednich ilości, które tworzą docelowe produkty partnera
+;y_partner_order_entry_fixed_discount;value;Wartość rabatu bezwzględnego;Mapowanie waluty oraz wartości ceny docelowej, która zostanie zastosowana na produkty partnera
+;y_partner_order_entry_fixed_discount;selection_strategy;Strategia wyboru;Strategia do wykorzystania w przypadku wyboru produktów, gdy wiele pozycji w koszyku zakupów kwalifikuje się do podjęcia działania
+;y_partner_order_entry_fixed_discount;qualifying_containers;Kontenery na kwalifikujące produkty;Mapowanie ID kontenera i odpowiednich ilości, które tworzą kwalifikujące produkty
+;y_partner_order_entry_fixed_discount;target_containers;Kontenery na produkty docelowe;Mapowanie ID kontenera i odpowiednich ilości, które tworzą docelowe produkty partnera
+;y_partner_order_entry_fixed_price;value;Docelowa stała cena;Mapowanie waluty oraz wartości ceny docelowej, która zostanie zastosowana na produkty partnera
+;y_partner_order_entry_fixed_price;selection_strategy;Strategia wyboru;Strategia do wykorzystania w przypadku wyboru produktów, gdy wiele pozycji w koszyku zakupów kwalifikuje się do podjęcia działania
+;y_partner_order_entry_fixed_price;qualifying_containers;Kontenery na kwalifikujące produkty;Mapowanie ID kontenera i odpowiednich ilości, które tworzą kwalifikujące produkty
+;y_partner_order_entry_fixed_price;target_containers;Kontenery na produkty docelowe;Mapowanie ID kontenera i odpowiednich ilości, które tworzą docelowe produkty partnera
+;y_change_delivery_mode;delivery_mode;Tryb dostawy;Tryb dostawy do zastosowania dla koszyka zakupów jako wynik działania

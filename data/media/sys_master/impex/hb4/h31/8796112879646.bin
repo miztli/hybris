@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=id
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;Pesan peraturan pemicu (ambang batas total troli);Menampilkan pesan untuk peraturan yang bergantung pada pemenuhan ketentuan peraturan;
+;y_trigger_message_parameterized_category;Pesan peraturan pemicu (kategori);Menampilkan pesan untuk peraturan yang bergantung pada pemenuhan ketentuan peraturan;
+;y_trigger_message_parameterized_product;Pesan peraturan pemicu (produk);Menampilkan pesan untuk peraturan yang bergantung pada pemenuhan ketentuan peraturan;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;Ambang batas total troli;Ambang batas total troli untuk dikontrol
+;y_trigger_message_parameterized_category;catalog;Filter pilihan berdasarkan katalog;Nilai katalog yang dipilih akan digunakan untuk tujuan pemfilteran dalam bidang terkait
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;Jumlah;Jumlah produk yang diperlukan dari kategori yang memenuhi syarat
+;y_trigger_message_parameterized_category;qualifying_categories;Kategori;Kategori yang memenuhi syarat
+;y_trigger_message_parameterized_product;catalog;Filter pilihan berdasarkan katalog;Nilai katalog yang dipilih akan digunakan untuk tujuan pemfilteran dalam bidang terkait
+;y_trigger_message_parameterized_product;qualifying_products_quantity;Jumlah;Jumlah produk yang memenuhi syarat yang diperlukan
+;y_trigger_message_parameterized_product;qualifying_products;Produk;Produk yang memenuhi syarat
+

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+#macro(escapeHtml $html)
+#if ($html)
+$html.toString().replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")#end
+#end
+#macro(escapeJson $json)
+#if ($json)
+$json.toString().replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")#end
+#end
+	<meta charset="UTF-8">
+	<link href="data:image/x-icon;base64,AAABAAIAEBAAAAEAIABoBAAAJgAAACAgAAABACAAqBAAAI4EAAAoAAAAEAAAACAAAAABACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8AE7j9MBO4/e8TuP3/E7j9/xO4/YD///8A////ABO4/YATuP3/E7j9/xO4/e8TuP0w////AP///wD///8A////ABO4/YATuP3/E7j9/xO4/f8TuP2A////AP///wATuP2AE7j9/xO4/f8TuP3/E7j9gP///wD///8A////AP///wATuP2/E7j9/xO4/b////8A////AP///wD///8A////AP///wATuP2/E7j9/xO4/b////8A////AP///wD///8AE7j9/xO4/f8TuP1w////AP///wATuP0QE7j9gBO4/YD///8AE7j9cBO4/f8TuP3/////AP///wD///8AE7j9IBO4/f8TuP3/E7j9QP///wD///8AE7j9jxO4/f8TuP2f////ABO4/UATuP3/E7j9/xO4/SD///8A////ABO4/UATuP3/E7j9/xO4/RD///8AE7j9IBO4/f8TuP3/E7j9IP///wATuP0QE7j9/xO4/f8TuP1A////AP///wATuP1AE7j9/xO4/f////8A////ABO4/Z8TuP3/E7j9/xO4/UD///8A////ABO4/f8TuP3/E7j9QP///wD///8AE7j9QBO4/f8TuP3/////ABO4/RATuP3vE7j9/xO4/f8TuP2v////AP///wATuP3/E7j9/xO4/UD///8A////ABO4/UATuP3/E7j9/xO4/RATuP1QE7j9/xO4/b8TuP3vE7j9/xO4/SATuP0gE7j9/xO4/f8TuP1A////AP///wATuP0gE7j9/xO4/f8TuP1AE7j9gBO4/f8TuP1gE7j9nxO4/f8TuP1wE7j9QBO4/f8TuP3/E7j9IP///wD///8A////ABO4/f8TuP3/E7j9cP///wD///8A////AP///wD///8A////ABO4/XATuP3/E7j9/////wD///8A////AP///wATuP2/E7j9/xO4/b////8A////AP///wD///8A////AP///wATuP2/E7j9/xO4/b////8A////AP///wD///8AE7j9gBO4/f8TuP3/E7j9/xO4/YD///8A////ABO4/YATuP3/E7j9/xO4/f8TuP2A////AP///wD///8A////ABO4/TATuP3vE7j9/xO4/f8TuP2A////AP///wATuP2AE7j9/xO4/f8TuP3vE7j9MP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//AADBgwAAwYMAAMfjAADGIwAAhiEAAIQhAACMMQAAiDEAAIABAACAAQAAx+MAAMfjAADBgwAAwYMAAP//AAAoAAAAIAAAAEAAAAABACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA////AP///wAAAAAAAAAAAACo9zAAqPfQAKj31gCo9+AAqPfgAKj35ACo9/AAqPfwAKj3aQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPdwAKj3/wCo9/8AqPf9AKj38ACo9/AAqPfvAKj34ACo9zgAAAAAAAAAAP///wD///8A////AAAAAAAAAAAAAKj3kQCo9/8AqPf/AKj3/wCo9/8AqPf/AKj3/wCo9/8AqPdwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo93AAqPf/AKj3/wCo9/8AqPf/AKj3/wCo9/8AqPf/AKj3mAAAAAAAAAAA////AP///wD///8AAAAAAACo9wIAqPfpAKj3/wCo9/8AqPf/AKj3/wCo9/8AqPf/AKj3/wCo93AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKj3cACo9/8AqPf/AKj3/wCo9/8AqPf/AKj3/wCo9/8AqPfuAKj3AwAAAAD///8A////AP///wAAAAAAAKj3NwCo9/8AqPf/AKj3/wCo9/8AqPf/AKj3/wCo9/AAqPfwAKj3aQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPdiAKj34ACo9+AAqPfjAKj38ACo9/oAqPf/AKj3/wCo9/8AqPc8AAAAAP///wD///8A////AAAAAAAAqPeAAKj3/wCo9/8AqPf/AKj3gQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKj3fQCo9/8AqPf/AKj3/wCo94QAAAAA////AP///wD///8AAAAAAACo98YAqPf/AKj3/wCo9/8AqPc7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPc2AKj3/wCo9/8AqPf/AKj3ywAAAAD///8A////AP///wAAqPcHAKj3+QCo9/8AqPf/AKj3+ACo9wUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo9wQAqPf2AKj3/wCo9/8AqPf8AKj3Cf///wD///8A////AACo9zYAqPf/AKj3/wCo9/8AqPfHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo98QAqPf/AKj3/wCo9/8AqPc7////AP///wD///8AAKj3YgCo9/8AqPf/AKj3/wCo95IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPdgAKj3oACo96AAqPebAKj3fgAAAAAAAAAAAAAAAAAAAAAAAAAAAKj3jgCo9/8AqPf/AKj3/wCo92X///8A////AP///wAAqPeMAKj3/wCo9/8AqPf/AKj3awAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKj3FwCo9/QAqPf/AKj3/wCo9/8AqPd1AAAAAAAAAAAAAAAAAAAAAAAAAAAAqPdoAKj3/wCo9/8AqPf/AKj3j////wD///8A////AACo97AAqPf/AKj3/wCo9/8AqPdGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPeVAKj3/wCo9/8AqPf/AKj35ACo9wkAAAAAAAAAAAAAAAAAAAAAAAAAAACo90MAqPf/AKj3/wCo9/8AqPey////AP///wD///8AAKj3yQCo9/8AqPf/AKj3/wCo9yMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKj3HgCo9/wAqPf/AKj3/wCo9/8AqPdjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKj3IQCo9/8AqPf/AKj3/wCo98r///8A////AP///wAAqPfkAKj3/wCo9/8AqPf/AKj3BwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPeWAKj3/wCo9/8AqPf/AKj31wCo9wQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPcGAKj3/wCo9/8AqPf/AKj35v///wD///8A////AACo9/AAqPf/AKj3/wCo9/UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKj3GQCo9/cAqPf/AKj3/wCo9/8AqPfOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPf0AKj3/wCo9/8AqPfw////AP///wD///8AAKj3/gCo9/8AqPf/AKj36AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPeIAKj3/wCo9/8AqPf/AKj3/wCo9/8AqPdEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo9+cAqPf/AKj3/wCo9/////8A////AP///wAAqPf/AKj3/wCo9/8AqPfgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKj3CgCo9+4AqPf/AKj3/wCo9/8AqPf/AKj3/wCo96cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKj34ACo9/8AqPf/AKj3/////wD///8A////AACo9/8AqPf/AKj3/wCo9+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPdmAKj3/wCo9/8AqPf/AKj3/wCo9/8AqPf/AKj39wCo9w8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqPfgAKj3/wCo9/8AqPf/////AP///wD///8AAKj3/gCo9/8AqPf/AKj36QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo98oAqPf/AKj3/wCo9/8AqPf+AKj3/wCo9/8AqPf/AKj3YwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo9+oAqPf/AKj3/wCo9/P///8A////AP///wAAqPfwAKj3/wCo9/8AqPf2AAAAAAAAAAAAAAAAAAAAAAAAAAAAqPcqAKj3/wCo9/8AqPf/AKj3/ACo94gAqPf/AKj3/wCo9/8AqPfBAAAAAAAA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" rel="icon" type="image/x-icon" />
+	<title>
+		#if ($ctx.reportName)
+			#escapeHtml($ctx.reportName)
+		#else
+			Report
+		#end
+	</title>
+	<script>
+		//<![CDATA[
+		var reports = 
+		#if ($ctx.reportsText)
+			#encodeJsonIS($ctx.reportsText, true)
+		#else
+			null
+		#end
+		;
+		//]]>
+	</script>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font-family: 'Open Sans', sans-serif;
+			background-color: #eaedf1;
+		}
+		main, header {
+			background-color: #fff;
+			padding: 15px;
+		}
+		.title,
+		.general-info {
+			padding: 5px 0 5px 5px;
+		}
+		.title {
+			margin-bottom: 10px;
+			margin-top: 12px;
+		}
+		.element {
+			margin: 0px 5px 0 5px;
+			border: 1px solid #d5d8dc;
+			box-sizing: border-box;
+			background-color: #fff;
+			color: #27394f;
+		}
+		.element .element {
+			margin-left: 40px;
+			margin-right: 0;
+			border-right: 0;
+			border-bottom: 0;
+		}
+		.element-name,
+		.element-value,
+		.empty-table,
+		.empty-object,
+		.null-element {
+			display: block;
+			border-top: 1px solid #d5d8dc;
+			padding: 8px 15px;
+			font-weight: 400;
+		}
+		.element-name {
+			font-weight: 700;
+			padding: 15px 15px;
+			cursor: default;
+		}
+		.element-name a {
+			display: inline-block;
+		}
+		.element-name a:after {
+			content: " : ";
+			display: inline-block;
+			font-style: normal;
+			margin: 0 5px;
+		}
+		.element-node:hover a {
+			text-decoration: underline;
+		}
+		.element-node a:after {
+			display: none;
+		}
+		.element-name:first-child,
+		.element-value:first-child,
+		.empty-table:first-child,
+		.empty-object:first-child,
+		.null-element:first-child {
+			border-top-width: 0;
+		}
+		.empty-table,
+		.empty-object,
+		.null-element {
+			color: #818ea2;
+			font-style: italic;
+		}
+		.boolean-element {
+			font-style: italic;
+		}
+		.element-name > .element-value,
+		.element-name > .empty-table,
+		.element-name > .empty-object,
+		.element-name > .null-element {
+			width: auto;
+			border-top-width: 0;
+			padding: 0px 2px;
+			display: inline-block;
+		}
+		.element-content {
+			height: auto;
+			overflow: hidden;
+		}
+		.element-node.collapsed + .element-content {
+			height: 0;
+		}
+		.element-node.expanded + .element-content {
+			height: auto;
+		}
+		.element-name:hover,
+		.element-name:hover + .element-content {
+			background-color: #e1f3ff;
+		}
+		.element-node:hover {
+			cursor: pointer;
+		}
+		.element-node:hover:before {
+			background-color: #fff;
+		}
+		.element-node:hover a {
+			color: #0486e0;
+		}
+		.expanded,
+		.collapsed {
+			cursor: pointer;
+			position: relative;
+		}
+		.expanded:before,
+		.collapsed:before {
+			width: 16px;
+			height: 16px;
+			display: inline-block;
+			text-align: center;
+			border: 1px solid #d5d8dc;
+			color: ;
+			margin-right: 8px;
+			line-height: 16px;
+		}
+		.collapsed ~ span {
+			display: none !important;
+		}
+		.collapsed:before {
+			content: "+";
+		}
+		.expanded:before {
+			content: "-";
+		}
+		footer {
+			padding: 8px 15px 5px;
+			text-align: center;
+			font-weight: 700;
+		}
+		footer a {
+			text-decoration: none;
+			color: black;
+			cursor: pointer;
+		}
+	</style>
+	<script>
+		//<![CDATA[
+		function toggle(source) {
+			if (source) {
+				var tabs = document.querySelectorAll('[aria-selected]');
+				for (i = 0; i < tabs.length; i++) {
+					tabs[i].setAttribute('aria-selected', 'false');
+				}
+				source.setAttribute('aria-selected', 'true');
+				if (source.classList.contains('collapsed')) {
+					source.classList.remove('collapsed');
+					source.classList.add('expanded');
+					source.setAttribute('aria-expanded', 'true');
+				} else {
+					source.classList.add('collapsed');
+					source.classList.remove('expanded');
+					source.setAttribute('aria-expanded', 'false');
+				}
+			}
+		}
+		function convertToHtml(elem, included) {
+			if (elem == null) {
+				return convertNullToHtml();
+			} else if (elem.constructor === Array) {
+				return convertArrayToHtml(elem);
+			} else if (typeof elem === 'object') {
+				return convertObjectToHtml(elem);
+			} else {
+				return convertValueToHtml(elem, included);
+			}
+		}
+		function convertNullToHtml() {
+			return '<div class="null-element"> null</div>';
+		}
+		function convertArrayToHtml(array) {
+			if (array.length > 0) {
+				var html = '';
+				for (var i = 0; i < array.length; i++) {
+					var obj = {};
+					obj[i] = array[i];
+					html += convertToHtml(obj);
+				}
+				return html;
+			}
+			return '<div class="empty-table"> [ ]</div>';
+		}
+		function convertObjectToHtml(object) {
+			if (Object.keys(object).length === 0) {
+				return '<div class="empty-object"> { }</div>';
+			}
+			var html = '<div class="element" role="tablist">';
+			for (var key in object) {
+				if (typeof object[key] === 'object' && object[key] !== null) {
+					html += '<div class="element-node element-name expanded" onClick="toggle(this);" role="tab"><a>' + key + '</a></div>';
+					html += '<div class="element-content" role="tabpanel">' + convertToHtml(object[key]) + '</div>';
+				}else{
+					html += '<div class="element-name"><a role="tabpanel">' + key + '</a>' + convertToHtml(object[key], true) + '</div>';
+				}
+			}
+			html += '</div>';
+			return html;
+		}
+		function convertValueToHtml(value, included) {
+			var html = '<div class="element-value ';
+			html += typeof value === 'boolean' ? ' boolean-element' : '';
+			html += '"';
+			html += included === true ? ' role="tabpanel"' : '';
+			html += '> ' + value + '</div>';
+			return html;
+		}
+		function init() {
+			var html = '';
+			if (reports == null) {
+				html += convertNullToHtml();
+			} else {
+				for (var i = 0; i < reports.length; ++i) {
+					html += convertToHtml(reports[i]);
+				}
+			}
+			document.getElementById('report').innerHTML = html;
+		}
+		//]]>
+	</script>
+</head>
+<body onload="init();">
+<header>
+	<h1 class="title">
+		#if ($ctx.reportName)
+			#escapeHtml($ctx.reportName)
+		#else
+			Report
+		#end
+	</h1>
+	<div class="general-info">
+		<div>
+			Generated: #escapeHtml($ctx.generatedTimestamp)
+		</div>
+		#if ($generatedFor)
+			<div>
+				Generated for: #escapeHtml($generatedFor)
+				#if ($generatedForPK)
+					[#escapeHtml($generatedForPK)]
+				#end
+			</div>
+		#end
+		#if ($ctx.generatedBy)
+			<div>
+				Generated by: #escapeHtml($ctx.generatedBy)
+				#if ($ctx.generatedByPK)
+					[#escapeHtml($ctx.generatedByPK)]
+				#end
+			</div>
+		#end
+		#if ($ctx.configName)
+			<div>
+				Used configuration: #escapeHtml($ctx.configName)
+			</div>
+		#end
+	</div>
+</header>
+<main id="report"></main>
+<footer>
+	<span class="copyright">
+		<a href="https://www.sap.com" target="_blank">SAP</a>
+	</span>
+</footer>
+</body>
+</html>

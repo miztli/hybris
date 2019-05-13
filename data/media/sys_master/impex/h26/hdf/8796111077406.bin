@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=es
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;Desencadenar mensaje de regla (valor umbral total del carro);Mostrar mensaje de regla según la integridad de la condición de regla;
+;y_trigger_message_parameterized_category;Desencadenar mensaje de regla (categoría);Mostrar mensaje de regla según la integridad de la condición de regla;
+;y_trigger_message_parameterized_product;Desencadenar mensaje de regla (producto);Mostrar mensaje de regla según la integridad de la condición de regla;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;Valor umbral total del carro;Valor umbral total del carro que se debe controlar
+;y_trigger_message_parameterized_category;catalog;Selección de filtros por catálogo;El valor de catálogo seleccionado se utilizará para filtrar dentro de los campos asociados.
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;Cantidad;Cantidad de productos requeridos de categoría sujeta a promoción
+;y_trigger_message_parameterized_category;qualifying_categories;Categorías;Categorías sujetas a promoción
+;y_trigger_message_parameterized_product;catalog;Selección de filtros por catálogo;El valor de catálogo seleccionado se utilizará para filtrar dentro de los campos asociados.
+;y_trigger_message_parameterized_product;qualifying_products_quantity;Cantidad;Cantidad de productos sujetos a promoción requeridos
+;y_trigger_message_parameterized_product;qualifying_products;Producto;Productos sujetos a promoción
+

@@ -1,0 +1,35 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=ru
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;Общее
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_group;Группа;{operator};
+;y_container;Контейнер;{id};
+;y_rule_executed;Правило выполнено;Выполнение правила с кодом {rule} разрешено {allowed};
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_group;operator;Оператор группы;Объединение условий в группе с помощью ИЛИ/И
+;y_container;id;Ид. контейнера;Ввод ид. контейнера для ссылки в действиях
+;y_rule_executed;rule;Правило действия;Введите действие, которое разрешает (не разрешает) выполнение этого правила
+;y_rule_executed;allowed;Выполнение правила действия разрешено;Указывает, разрешено ли выполнение правила действия
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;Общее
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_halt;Остановка выполнения правила;Остановка выполнения всех последующих правил;

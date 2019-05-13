@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=pl
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;Uruchom komunikat dla reguły (suma progowa koszyka zakupów);Wyświetl komunikat dla reguły w zależności od spełnienia warunku reguły;
+;y_trigger_message_parameterized_category;Uruchom komunikat dla reguły (kategoria);Wyświetl komunikat dla reguły w zależności od spełnienia warunku reguły;
+;y_trigger_message_parameterized_product;Uruchom komunikat dla reguły (produkt);Wyświetl komunikat dla reguły w zależności od spełnienia warunku reguły;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;Suma progowa koszyka zakupów;Suma progowa koszyka zakupów do kontroli
+;y_trigger_message_parameterized_category;catalog;Wybór filtra według katalogu;Wybrana wartość katalogu zostanie wykorzystana do celów filtrowania w ramach powiązanych pól.
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;Ilość;Ilość wymaganych produktów z kategorii kwalifikującej
+;y_trigger_message_parameterized_category;qualifying_categories;Kategorie;Kategorie kwalifikujące
+;y_trigger_message_parameterized_product;catalog;Wybór filtra według katalogu;Wybrana wartość katalogu zostanie wykorzystana do celów filtrowania w ramach powiązanych pól.
+;y_trigger_message_parameterized_product;qualifying_products_quantity;Ilość;Ilość wymaganych produktów kwalifikujących
+;y_trigger_message_parameterized_product;qualifying_products;Produkt;Kwalifikujące produkty
+

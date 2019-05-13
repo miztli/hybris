@@ -1,0 +1,24 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$defaultLanguage = en
+$storeUid = powertools
+$siteUid = powertools
+
+INSERT_UPDATE CxConfig; code[unique = true]; minAffinity; actionResultMaxRepeat; userChangedActions; ignoreRecalcForAnonymous[default = false]; anonymousUserDefaultActions; anonymousUserActions; anonymousUserMinRequestNumber; anonymousUserMinTime; anonymousUserIgnoreOtherActions
+; $siteUid ; 0.5 ; 1 ; RECALCULATE,ASYNC_PROCESS ; ; RECALCULATE ; ; 10 ; 60000 ; false
+
+#default ConfigurableUrlVoter configuration
+INSERT_UPDATE CxUrlVoterConfig; cxConfig(code)[unique = true]; code[unique = true]; urlRegexp; actions; userType(code)
+; $siteUid ; default ; .* ; LOAD ; REGISTERED
+
+INSERT_UPDATE BaseSite; uid[unique = true]; cxConfig(code);
+; $siteUid ; $siteUid ;

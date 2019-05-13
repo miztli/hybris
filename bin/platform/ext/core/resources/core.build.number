@@ -1,0 +1,9 @@
+#Ant properties
+#Thu Apr 04 16:23:44 CEST 2019
+builddate=20190404 1618
+description=core
+name=core
+releasedate=20181129 1417
+vendor=hybris
+version=1811.5
+version.api=1811

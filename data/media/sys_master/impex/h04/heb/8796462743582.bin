@@ -1,0 +1,46 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$contentCatalog=powertoolsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$addonExtensionName=assistedservicestorefront
+
+# CMS Assisted Service Component
+INSERT_UPDATE AssistedServiceComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;AssistedServiceComponent;Assisted Service Component;AssistedServiceComponent
+ 
+# CMS Assisted Service Sub-Components
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
+;;ASMLoginComponent;Assisted Service Agent Login Component;/WEB-INF/views/addons/$addonExtensionName/responsive/fragments/asmLoginComponent.jsp;ASMLoginComponent
+;;ASMEmulateUserComponent;Assisted Service Agent Emulate User Component;/WEB-INF/views/addons/$addonExtensionName/responsive/fragments/asmEmulateUserComponent.jsp;ASMEmulateUserComponent
+;;ASMBindComponent;Assisted Service Bind User/Cart Component;/WEB-INF/views/addons/$addonExtensionName/responsive/fragments/asmBindComponent.jsp;ASMBindComponent
+;;ASMHeaderComponent;Assisted Service Header Component;/WEB-INF/views/addons/$addonExtensionName/responsive/fragments/asmHeaderComponent.jsp;ASMHeaderComponent
+;;ASMFooterComponent;Assisted Service Footer Component;/WEB-INF/views/addons/$addonExtensionName/responsive/fragments/asmFooterComponent.jsp;ASMFooterComponent
+;;ASMCustomerListComponent;Assisted Service Customer List Component;/WEB-INF/views/addons/$addonExtensionName/responsive/fragments/asmCustomerListButtonComponent.jsp;ASMCustomerListComponent
+
+INSERT_UPDATE ASMDevicesUsedComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;ASMDevicesUsedComponent;Assisted Service Devices Used Component;ASMDevicesUsedComponent
+
+INSERT_UPDATE ASMFavoriteColorsComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;ASMFavoriteColorsComponent;Assisted Service Favorite Colors Component;ASMFavoriteColorsComponent
+
+# Content Slots
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];active;cmsComponents(&componentRef)[mode=append]
+;;TopHeaderSlot;true;AssistedServiceComponent
+
+INSERT_UPDATE AssistedServiceSessionRestriction;$contentCV[unique=true];uid[unique=true];name;&uid
+;;AssistedServiceSessionRestriction;ASM Session Restriction;AssistedServiceSessionRestriction
+
+INSERT_UPDATE CMSInverseRestriction;$contentCV[unique=true];name;originalRestriction(&uid);uid[unique=true];
+;;Assisted Service Session Reversed Restriction;AssistedServiceSessionRestriction;AssistedServiceSessionReversedRestriction;
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;restrictions(uid,$contentCV)
+;;AddMessageButtonComponent;Add Message Button Component;AddMessageButtonComponent;AssistedServiceSessionReversedRestriction

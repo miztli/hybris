@@ -1,0 +1,36 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#CATEGORIES
+
+# Macros / Replacement Parameter definitions
+$productCatalog=powertoolsProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=source(code, $catalogVersion)[unique=true]
+$categories=target(code, $catalogVersion)[unique=true]
+
+# Insert Categories
+INSERT_UPDATE Category                 ; code[unique=true] ; allowedPrincipals(uid)[default='customergroup'] ; $catalogVersion
+                                       ; 1800
+                                       ; 1801
+                                       ; 1802
+                                       ; 1803
+                                       ; 1804
+                                       ; 1805
+                                       ; 1806
+
+INSERT_UPDATE CategoryCategoryRelation ; $categories       ; $supercategories
+									            ; 1800	 		     ; 1	
+                                       ; 1801              ; 1800
+                                       ; 1802              ; 1800
+                                       ; 1803              ; 1801
+                                       ; 1804              ; 1801
+                                       ; 1805              ; 1802
+                                       ; 1806              ; 1802

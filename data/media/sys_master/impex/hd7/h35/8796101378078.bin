@@ -1,0 +1,35 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=de
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;Allgemein
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_group;Gruppe;{operator};
+;y_container;Container;{id};
+;y_rule_executed;Regel ausgeführt;Ausführung der Regel mit dem Code {rule} zulässig {allowed};
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_group;operator;Gruppenoperator;Bedingungen in der Gruppe mit ODER/UND kombinieren
+;y_container;id;Container-ID;ID des in Aktionen zu referenzierenden Containers
+;y_rule_executed;rule;Aktionsregel;Aktion eingeben, die es zulässt bzw. nicht zulässt, diese Regel auszuführen
+;y_rule_executed;allowed;Aktionsregelausführung zulässig;Aktionsregelausführung zulässig oder nicht zulässig
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;Allgemein
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_halt;Halt-Regelausführung;Halt-Ausführung der folgenden Regeln;

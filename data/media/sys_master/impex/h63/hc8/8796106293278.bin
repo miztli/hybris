@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=zh_TW
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;購物車
+;customer;客戶
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;購物車總計;購物車總計 {operator} {value}
+;y_qualifying_products;符合資格的產品;購物車 {products_operator} 產品 {products}
+;y_qualifying_categories;符合資格的種類;購物車 {categories_operator} 種類 {categories}
+;y_target_customers;目標客戶;目標 {customer_groups_operator} 客戶群組 {customer_groups} 或客戶 {customers}
+;y_product_price;產品價格門檻;產品價格 {operator} {value}
+;y_customer_support;客戶支援;援助服務工作階段啟用中：{value}
+;y_qualifying_group_types;符合資格的群組類型;購物車項目群組 {operator} {groupTypes}
+;y_orders;訂單或購物車;{Orders} 中的訂單或購物車
+;y_order_threshold_perfect_partner;訂單門檻完美夥伴;購物車中的完美夥伴產品 {product}，以及包含折扣價格 {is_discounted_price_included} 超過 {cart_threshold} 的購物車總計
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;運算子;比較購物車總值的運算子
+;y_cart_total;value;購物車總值;使用的幣別對映和購物車總值
+;y_qualifying_products;operator;運算子;比較符合資格產品所需數量的運算子
+;y_qualifying_products;quantity;各訂單輸入項的數量;符合資格產品的所需數量 (各訂單項目)
+;y_qualifying_products;products_operator;產品選擇運算子;選取任何產品或選取符合資格的產品清單中的所有產品
+;y_qualifying_products;products;產品;符合資格的產品清單
+;y_qualifying_products;catalog;按目錄篩選選擇;所選目錄值將用於來篩選相關欄位的用途
+;y_qualifying_categories;operator;運算子;比較符合資格種類產品所需數量的運算子
+;y_qualifying_categories;quantity;各訂單輸入項的數量;符合資格種類的產品所需數量 (各訂單項目)
+;y_qualifying_categories;categories_operator;種類選擇運算子;選取任何種類或選取符合資格的種類清單中的所有種類
+;y_qualifying_categories;categories;種類;符合資格的種類清單
+;y_qualifying_categories;excluded_categories;排除的種類;需從符合資格的種類中排除的子種類清單
+;y_qualifying_categories;excluded_products;排除的產品;需從符合資格種類中排除的產品清單
+;y_qualifying_categories;catalog;按目錄篩選選擇;所選目錄值將用於來篩選相關欄位的用途
+;y_target_customers;customer_groups_operator;客戶群組選擇運算子;客戶應為任何或所有客戶群組的一部份
+;y_target_customers;customer_groups;客戶群組;符合資格的客戶群組清單
+;y_target_customers;customers;客戶;符合資格的客戶清單
+;y_target_customers;excluded_customer_groups;排除的客戶群組;需從符合資格客戶群組中排除的子群組清單
+;y_target_customers;excluded_customers;排除的客戶;需從符合資格客戶群組中排除的客戶清單
+;y_product_price;operator;運算子;比較產品價值的運算子
+;y_product_price;value;價格門檻;用於符合此促銷的產品幣別對映和門檻值
+;y_customer_support;value;援助服務工作階段啟用中;根據客戶支援代理人是否在店面協助客戶使用促銷
+;y_qualifying_group_types;operator;運算子;群組類型選擇運算子
+;y_qualifying_group_types;groupTypes;群組類型;符合資格的群組類型清單
+;y_order_threshold_perfect_partner;catalog;按目錄篩選選擇;所選目錄值將用於來篩選相關欄位的用途
+;y_order_threshold_perfect_partner;product;完美夥伴產品;以折扣後價格提供的完美夥伴產品
+;y_order_threshold_perfect_partner;cart_threshold;購物車總計門檻值;符合此促銷必須達到的訂單總額。每種幣別都有不同的值，且符合此訂單的所有幣別都必須有指定值。
+;y_order_threshold_perfect_partner;is_discounted_price_included;計算總計時包含折扣後的價格;與門檻值比較時，在訂單總計中包含夥伴產品折扣後的價格。
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;購物車折扣
+;product_discounts;產品折扣
+;partner_product_discounts;夥伴產品折扣
+;shipping;出貨
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;購物車折扣百分比;在購物車總計中套用 {value,number,percent*1} 的折扣;
+;y_order_fixed_discount;購物車固定折扣;在購物車總計中套用 {value} 的折扣;
+;y_order_entry_percentage_discount;產品折扣百分比;在符合資格的產品中套用 {value,number,percent*1} 的折扣;
+;y_order_entry_fixed_discount;產品固定折扣;在符合資格的產品中套用 {value} 的折扣;
+;y_order_entry_fixed_price;產品目標固定價格;在符合資格的產品中套用目標價格 {value};
+;y_target_bundle_price;目標組合價格;在組合中套用目標價格 {value};
+;y_free_gift;贈品;免費贈送 {quantity} 件 {product} 產品;
+;y_partner_order_entry_percentage_discount;夥伴產品折扣百分比;在夥伴產品中套用 {value,number,percent*1} 的折扣;
+;y_partner_order_entry_fixed_discount;夥伴產品固定折扣;在夥伴產品中套用 {value} 的折扣;
+;y_partner_order_entry_fixed_price;夥伴產品固定目標價格;在夥伴產品中套用目標價格 {value};
+;y_change_delivery_mode;更改交貨模式;將交貨模式更改為 {delivery_mode};
+;y_trigger_message;驅動規則訊息;顯示規則訊息;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;折扣百分比值;將套用至購物車總計的折扣百分比
+;y_order_fixed_discount;value;折扣絕對值;將套用至購物車總計的幣別對映和折扣絕對值
+;y_order_entry_percentage_discount;value;折扣百分比值;將套用至符合資格產品的折扣百分比
+;y_order_entry_fixed_discount;value;折扣絕對值;將套用至符合資格產品的幣別對映和折扣絕對值
+;y_order_entry_fixed_price;value;目標固定價格;將套用至符合資格產品的幣別對映和折扣絕對值
+;y_target_bundle_price;value;目標組合價格;將套用至組合的幣別對映和目標價格值
+;y_target_bundle_price;selection_strategy;選取策略;購物車中的多個項目符合組合時使用的產品選取策略
+;y_target_bundle_price;qualifying_containers;組合產品數量;組成所需組合的容器 ID 對映和相應數量
+;y_free_gift;product;免費產品;自動新增至購物車並免費贈送的產品
+;y_free_gift;quantity;數量;免費贈送的項目數量
+;y_free_gift;catalog;按目錄篩選選擇;所選目錄值將用於來篩選相關欄位的用途
+;y_free_gift;qualifying_containers;符合資格的產品容器;組成符合資格產品的容器 ID 對映和相應數量
+;y_partner_order_entry_percentage_discount;value;百分比折扣值;將套用至夥伴產品的折扣百分比
+;y_partner_order_entry_percentage_discount;selection_strategy;選取策略;購物車中的多個項目符合動作時使用的產品選取策略
+;y_partner_order_entry_percentage_discount;qualifying_containers;符合資格的產品容器;組成符合資格產品的容器 ID 對映和相應數量
+;y_partner_order_entry_percentage_discount;target_containers;目標產品容器;組成目標夥伴產品的容器 ID 對映和相應數量
+;y_partner_order_entry_fixed_discount;value;折扣絕對值;將套用至夥伴產品的幣別對映和目標價格值
+;y_partner_order_entry_fixed_discount;selection_strategy;選取策略;購物車中的多個項目符合動作時使用的產品選取策略
+;y_partner_order_entry_fixed_discount;qualifying_containers;符合資格的產品容器;組成符合資格產品的容器 ID 對映和相應數量
+;y_partner_order_entry_fixed_discount;target_containers;目標產品容器;組成目標夥伴產品的容器 ID 對映和相應數量
+;y_partner_order_entry_fixed_price;value;目標固定價格;將套用至夥伴產品的幣別對映和目標價格值
+;y_partner_order_entry_fixed_price;selection_strategy;選取策略;購物車中的多個項目符合動作時使用的產品選取策略
+;y_partner_order_entry_fixed_price;qualifying_containers;符合資格的產品容器;組成符合資格產品的容器 ID 對映和相應數量
+;y_partner_order_entry_fixed_price;target_containers;目標產品容器;組成目標夥伴產品的容器 ID 對映和相應數量
+;y_change_delivery_mode;delivery_mode;交貨模式;套用至購物車的交貨模式，作為動作的結果

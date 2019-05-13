@@ -1,0 +1,35 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=hi
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;सामान्य
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_group;समूह;{ऑपरेटर};
+;y_container;कंटेनर;{id};
+;y_rule_executed;निष्पादित नियम;कोड {नियम} निष्पादन नियम अनुमत {अनुमत};
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_group;operator;समूह ऑपरेटर;या/और का उपयोग करके समूह में स्थितियां संयोजित करें
+;y_container;id;कंटेनर ID;कार्रवाई में संदर्भित करने हेतु कंटेनर की ID दर्ज करें
+;y_rule_executed;rule;कार्रवाई नियम;वह क्रिया या कार्रवाई दर्ज करें जो इस नियम को रन करना अनुमत करती या नहीं करती है
+;y_rule_executed;allowed;क्रिया नियम निष्पादन अनुमत;क्रिया नियम निष्पादन अनुमत या नहीं
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;सामान्य
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_halt;हाल्ट नियम निष्पादन;निम्नलिखित नियमों में से किसी एक का हाल्ट निष्पादन;

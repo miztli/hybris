@@ -1,0 +1,42 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# Associate customers (B2BUnits) with sales units
+INSERT_UPDATE PrincipalGroupRelation;source(uid)[unique=true];target(uid)[unique=true]
+;Pronto;Africa
+;Pronto Services;Nigeria
+;Pronto Goods;South Africa
+;Rustic;Canada
+;Rustic Retail;Montreal North
+;Rustic Services;Montreal South
+;Services East;Quebec
+;Services West;Quebec
+
+# Associate members of salesemployeegroup to the B2B Customer List search strategy
+INSERT_UPDATE CustomerList;uid[unique=true];locname[lang=en];implementationType;priority;members(uid);additionalColumnsKeys;searchBoxEnabled
+;b2bCustomerList;My Organization Customers;B2B;0;salesemployeegroup;UNIT;true
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;salesadmingroup;;;;;;;;
+;;;;B2BUnit;+;-;-;-;-
+ 
+UserGroup;salesmanagergroup;;;;;;;;
+;;;;B2BUnit;+;-;-;-;-
+
+UserGroup;salesemployeegroup;;;;;;;;
+;;;;B2BCustomer;+;-;-;-;-
+$END_USERRIGHTS;;;;;;;;;
+
+#
+# Overwrite the SearchRestriction of the the same name in /commerceorgsamplesaddon/import/common/user-groups.impex so that B2BUnits are taken into account
+#
+INSERT_UPDATE SearchRestriction;code[unique=true];name[lang=en];query;principal(UID);restrictedType(code);active;generate
+;salesemployeegroupQuotesOrgUnitRestriction;A sales employee can only see quotes linked to their sales units;EXISTS ({{ SELECT {cust:pk} FROM {B2BCustomer as cust JOIN PrincipalGroupRelation as rel1 ON {rel1:source} = {cust:pk} JOIN B2BUnit as b2bunit ON {b2bunit:pk} = {rel1:target} JOIN PrincipalGroupRelation as rel2 ON {rel2:source} = {b2bunit:pk} JOIN OrgUnit as salesunit ON {salesunit:pk} = {rel2:target} JOIN PrincipalGroupRelation as rel3 ON {rel3:target} = {salesunit:pk} JOIN Employee as empl ON {empl:pk} = {rel3:source}} WHERE {empl:pk} = (?session.user) AND {item:user} = {cust:pk} }});salesemployeegroup;Quote;true;true

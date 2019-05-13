@@ -1,0 +1,78 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+# Import CMS content for the Powertools site
+#
+
+$contentCatalog=powertoolsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Language
+$lang=ja
+
+
+# Content Pages
+    
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;account;"マイアカウント"
+;;add-edit-address;"住所を追加/編集"
+;;address-book;"アドレス帳"
+;;cartPage;"お買物カゴ"
+;;checkout-login;"チェックアウトに進む"
+;;faq;"FAQ"
+;;homepage;"ホームページ"
+;;importCSVSavedCartPage;"保存されたお買物カゴをインポート"
+;;login;"ログイン"
+;;multiStepCheckoutSummaryPage;"チェックアウト"
+;;my-quotes;"見積"
+;;my-replenishment-cancel-confirmation;"補充取消確認"
+;;my-replenishment-details;"補充注文詳細"
+;;my-replenishment-orders;"補充注文"
+;;notFound;"見つかりません"
+;;order;"注文の詳細"
+;;order-approval-dashboard;"注文承認ダッシュボードページ"
+;;order-approval-details;"注文承認詳細ページ"
+;;orderConfirmationPage;"注文確認"
+;;orderExpired;"注文期限切れページ"
+;;orders;"注文履歴"
+;;payment-details;"支払い方法"
+;;profile;"プロフィール"
+;;quickOrderPage;"簡易注文"
+;;quote-detail;"見積詳細"
+;;quoteEditPage;"見積編集"
+;;replenishmentConfirmationPage;"補充確認"
+;;saved-carts;"保存されたお買物カゴ"
+;;savedCartDetailsPage;"保存されたお買物カゴの詳細"
+;;search;"検索結果リストページ"
+;;searchAdvancedEmpty;"注文フォーム"
+;;searchEmpty;"結果なし"
+;;searchGrid;"検索結果グリッドページ"
+;;storefinderPage;"店舗検索"
+;;termsAndConditions;"諸条件"
+;;update-email;"電子メールの更新"
+;;update-profile;"プロフィールの更新"
+;;updatePassword;"忘れたパスワードの更新"
+
+    
+# Category Pages
+    
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;category;"デフォルトカテゴリページ"
+;;productGrid;"製品グリッド"
+;;productList;"製品一覧"
+
+    
+# Product Pages
+    
+UPDATE ProductPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;productDetails;"製品詳細"
+
+    

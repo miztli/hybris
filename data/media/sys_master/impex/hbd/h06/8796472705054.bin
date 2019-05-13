@@ -1,0 +1,305 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+INSERT_UPDATE Domain;code[unique=true]
+;backofficeDomain
+
+###### VALIDATION AND DATA QUALITY ######
+# Following two constraints groups are also created in backoffice/resources/impex/projectdataValidation.impex
+# due to initialization limitation of the addons which are not respecting the required extensions
+INSERT_UPDATE ConstraintGroup ; id[unique = true]                ; dedicatedTypes(code) ; interfaceName                                                                 
+                              ; defaultBackofficeValidationGroup ; Item                 ; de.hybris.platform.validation.groupinterfaces.DefaultBackofficeValidationGroup
+                              ; emptyValidationGroup             ; Item                 ; de.hybris.platform.validation.groupinterfaces.EmptyValidationGroup            
+
+# PRODUCT DATA QUALITY:       
+$solrValueRanges = solrValueRanges(name);                                  
+$solrValueRangeSet = solrValueRangeSet(name);                                  
+$backofficeSFCName = Solr Config for Backoffice;                                  
+$solrIndexedTypes = solrIndexedTypes(identifier);                                  
+$solrServerConfig = solrServerConfig(name);                                  
+$solrIndexConfig = solrIndexConfig(name);                                  
+$typeCode = type(code)[default = 'Product'];                                  
+$target = target[allownull = true, default = 'de.hybris.platform.core.model.product.ProductModel'];                                  
+$active = active[allownull = true, default = true];                                  
+$solrIndexedType = solrIndexedType(identifier)[unique = true, default = 'BackofficeProduct'];                                  
+
+INSERT_UPDATE SolrIndexedType ; identifier[unique=true] ; type(code)
+                              ; BackofficeProduct       ; Product   
+
+INSERT_UPDATE SolrValueRangeSet ; name[unique = true]         ; type   ; $solrValueRanges                       ;  
+                                ; backofficeDataQualityRanges ; double ; 0-19%,20-39%,40-59%,60-79%,80-99%,100% ;  
+
+INSERT_UPDATE SolrValueRange ; name[unique=true] ; from   ; to     ; $solrValueRangeSet          ;  
+                             ; 0-19%             ; 0.0    ; 0.1999 ; backofficeDataQualityRanges ;  
+                             ; 20-39%            ; 0.1999 ; 0.3999 ; backofficeDataQualityRanges ;  
+                             ; 40-59%            ; 0.3999 ; 0.5999 ; backofficeDataQualityRanges ;  
+                             ; 60-79%            ; 0.5999 ; 0.7999 ; backofficeDataQualityRanges ;  
+                             ; 80-99%            ; 0.7999 ; 0.9999 ; backofficeDataQualityRanges ;  
+                             ; 100%              ; 0.9999 ; 1.0001 ; backofficeDataQualityRanges ;  
+
+INSERT_UPDATE CoverageConstraintGroup ; id[unique=true]                     ; dedicatedTypes(code) ; interfaceName                                                                      ; coverageDomainID                    ;  
+                                      ; pcmCoreAttributesCoverageGroup      ; Product              ; de.hybris.platform.validation.groupinterfaces.PcmCoreAttributesCoverageGroup       ; pcmCoreAttributesCoverageGroup      ;  
+                                      ; pcmMarketingAttributesCoverageGroup ; Product              ; de.hybris.platform.validation.groupinterfaces.MarketingCoreAttributesCoverageGroup ; pcmMarketingAttributesCoverageGroup ;  
+                                      
+INSERT_UPDATE SolrIndexedProperty ; name[unique=true]                   ; $solrIndexedType[unique=true] ; type(code) ; facet[default=true] ; localized[default=false] ; currency[default=false] ; multiValue[default=false] ; rangeSet(name)              ; fieldValueProvider                ; includeInResponse[default=false] ; facetType(code)[unique=true,default='MultiSelectOr'] ; priority ;  
+                                  ; pcmCoreAttributesCoverageGroup      ;                               ; double     ;                     ;                          ;                         ;                           ; backofficeDataQualityRanges ; coreDataQualityValueResolver      ;                                  ;                                                      ; 400      ;  
+                                  ; pcmMarketingAttributesCoverageGroup ;                               ; double     ;                     ;                          ;                         ;                           ; backofficeDataQualityRanges ; marketingDataQualityValueResolver ;                                  ;                                                      ; 300      ;  
+
+
+INSERT_UPDATE HybrisEnumValueCodeConstraint; active[allownull = true, default = true]; id[unique = true]; severity(code, itemtype(code)); message[lang = en]; target[allownull = true]; type(code); value; constraintGroups(id); qualifier;
+; ; ProductApprovedHybrisEnumValueCodeConstraint ; ERROR:Severity ; The attribute value for "Approval" should be "approved". ; de.hybris.platform.core.model.product.ProductModel ; Product; approved ; pcmCoreAttributesCoverageGroup ; approvalStatus;
+
+INSERT_UPDATE NotNullConstraint ; id[unique=true]                           ; constraintGroups(id)[mode=append]   ; severity(code,itemtype(code)) ; $active ; $target ; $typeCode ; qualifier         ; descriptor(enclosingType(code),qualifier) ; languages(isocode)[allownull=true]              ;  
+                                ; ProductNameNotNullConstraint              ; pcmCoreAttributesCoverageGroup      ; ERROR:Severity                ;         ;         ;           ; name              ; Product:name                              ;                                                 ;  
+                                ; ProductUnitNotNullConstraint              ; pcmCoreAttributesCoverageGroup      ; WARN:Severity                 ;         ;         ;           ; unit              ; Product:unit                              ;                                                 ;  
+                                ; ProductSupercategoriesNotNullConstraint   ; pcmCoreAttributesCoverageGroup      ; INFO:Severity                 ;         ;         ;           ; supercategories   ; Product:supercategories                   ;                                                 ;  
+                                ; ProductEurope1PricesNotNullConstraint     ; pcmCoreAttributesCoverageGroup      ; WARN:Severity                 ;         ;         ;           ; europe1Prices     ; Product:europe1Prices                     ;                                                 ;  
+                                ; ProductPriceQuantityNotNullConstraint     ; pcmCoreAttributesCoverageGroup      ; WARN:Severity                 ;         ;         ;           ; priceQuantity     ; Product:priceQuantity                     ;                                                 ;  
+                                ; ProductManufacturerNameNotNullConstraint  ; pcmCoreAttributesCoverageGroup      ; WARN:Severity                 ;         ;         ;           ; manufacturerName  ; Product:manufacturerName                  ;                                                 ;  
+                                ; ProductDeliveryTimeNotNullConstraint      ; pcmCoreAttributesCoverageGroup      ; WARN:Severity                 ;         ;         ;           ; deliveryTime      ; Product:deliveryTime                      ;                                                 ;  
+                                ; ProductThumbnailNotNullConstraint         ; pcmMarketingAttributesCoverageGroup ; WARN:Severity                 ;         ;         ;           ; thumbnail         ; Product:thumbnail                         ;                                                 ;  
+                                ; ProductPictureNotNullConstraint           ; pcmMarketingAttributesCoverageGroup ; ERROR:Severity                ;         ;         ;           ; picture           ; Product:picture                           ;                                                 ;  
+                                ; ProductGalleryImagesNotNullConstraint     ; pcmMarketingAttributesCoverageGroup ; WARN:Severity                 ;         ;         ;           ; galleryImages     ; Product:galleryImages                     ;                                                 ;  
+                                ; ProductProductReferencesNotNullConstraint ; pcmMarketingAttributesCoverageGroup ; INFO:Severity                 ;         ;         ;           ; productReferences ; Product:productReferences                 ;                                                 ;  
+                                ; ProductDescriptionNotNullConstraint       ; pcmMarketingAttributesCoverageGroup ; ERROR:Severity                ;         ;         ;           ; description       ; Product:description                       ;                                                 ;  
+                                ; ProductNameNotNullForAllLocalesConstraint ; pcmMarketingAttributesCoverageGroup ; WARN:Severity                 ;         ;         ;           ; name              ; Product:name                              ; en,de,es,es_CO,fr,it,ja,ko,pt,ru,zh,zh_TW,hi,id ;  
+
+
+INSERT_UPDATE SizeConstraint ; id[unique=true]                      ; constraintGroups(id)[mode=append]   ; severity(code,itemtype(code)) ; $active ; $target ; $typeCode ; qualifier         ; descriptor(enclosingType(code),qualifier) ; min ; max        ;  
+                             ; ProductEanSizeConstraint             ; pcmCoreAttributesCoverageGroup      ; ERROR:Severity                ;         ;         ;           ; ean               ; Product:ean                               ; 8   ; 13         ;  
+                             ; ProductEurope1PricesSizeConstraint   ; pcmCoreAttributesCoverageGroup      ; WARN:Severity                 ;         ;         ;           ; europe1Prices     ; Product:europe1Prices                     ; 1   ; 2147483647 ;  
+                             ; ProductSupercategoriesSizeConstraint ; pcmCoreAttributesCoverageGroup      ; INFO:Severity                 ;         ;         ;           ; supercategories   ; Product:supercategories                   ; 1   ; 2147483647 ;  
+                             ; ProductGalleryImagesSizeConstraint   ; pcmMarketingAttributesCoverageGroup ; WARN:Severity                 ;         ;         ;           ; galleryImages     ; Product:galleryImages                     ; 1   ; 2147483647 ;  
+                             ; ProductReferencesSizeConstraint      ; pcmMarketingAttributesCoverageGroup ; INFO:Severity                 ;         ;         ;           ; productReferences ; Product:productReferences                 ; 1   ; 2147483647 ;  
+
+INSERT_UPDATE NotEmptyConstraint ; id[unique=true]                      ; constraintGroups(id)[mode=append] ; severity(code,itemtype(code)) ; $active ; $target ; $typeCode ; qualifier   ; descriptor(enclosingType(code),qualifier) ;  
+                                 ; ProductCodeNotEmptyConstraint        ; pcmCoreAttributesCoverageGroup    ; ERROR:Severity                ;         ;         ;           ; code        ; Product:code                              ;  
+                                 ; ProductDescriptionNotEmptyConstraint ; pcmCoreAttributesCoverageGroup    ; WARN:Severity                 ;         ;         ;           ; description ; Product:description                       ;  
+                                 ; ProductEanNotEmptyConstraint         ; pcmCoreAttributesCoverageGroup    ; WARN:Severity                 ;         ;         ;           ; ean         ; Product:ean                               ;  
+
+INSERT_UPDATE EnumCodeConstraint ; id[unique=true]           ; constraintGroups(id)[mode=append] ; severity(code,itemtype(code)) ; $active ; $target ; $typeCode ; qualifier      ; descriptor(enclosingType(code),qualifier) ; code     ;  
+                                 ; ProductApprovedConstraint ; pcmCoreAttributesCoverageGroup    ; ERROR:Severity                ;         ;         ;           ; approvalStatus ; Product:approvalStatus                    ; approved ;  
+
+
+# ^PRODUCT DATA QUALITY          
+
+#simple fields                   
+INSERT_UPDATE SolrIndexedProperty ; name[unique = true]         ; $solrIndexedType ; type(code) ; localized[default = false] ; currency[default = false] ; multiValue[default = false] ; includeInResponse[default = false] ; useForSpellChecking[default = false] ;  
+                                  ; minOrderQuantity            ;                  ; int        ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; maxOrderQuantity            ;                  ; int        ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; priceQuantity               ;                  ; int        ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; manufacturerAID             ;                  ; text       ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; numberContentUnits          ;                  ; double     ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; manufacturerTypeDescription ;                  ; text       ; true                       ;                           ;                             ;                                    ;                                      ;  
+                                  ; supplierAlternativeAID      ;                  ; text       ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; erpGroupBuyer               ;                  ; text       ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; erpGroupSupplier            ;                  ; text       ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; order                       ;                  ; int        ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; orderQuantityInterval       ;                  ; int        ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; xmlcontent                  ;                  ; text       ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; startLineNumber             ;                  ; int        ;                            ;                           ;                             ;                                    ;                                      ;  
+                                  ; endLineNumber               ;                  ; int        ;                            ;                           ;                             ;                                    ;                                      ;  
+
+#references                       
+INSERT_UPDATE SolrIndexedProperty ; name[unique = true] ; $solrIndexedType ; type(code) ; localized[default = false] ; fieldValueProvider          ; includeInResponse[default = false] ; valueProviderParameter ;  
+                                  ; contentUnitPk       ;                  ; long       ;                            ; itemModelPKValueResolver    ;                                    ; contentUnit            ;  
+                                  ; contentUnit         ;                  ; string     ; true                       ; itemModelLabelValueResolver ;                                    ; contentUnit            ;  
+
+###### WORKFLOWS ######           
+INSERT_UPDATE Component ; code[unique=true]   ; name                 ; domain(code)[unique=true] ; readPermitted(uid)[mode=append, lang=en]                 ; writePermitted(uid)[mode=append, lang=en]                ; createPermitted(uid)[mode=append, lang=en]               ; removePermitted(uid)[mode=append, lang=en]
+                        ; collaborationCenter ; Collaboration Center ; backofficeDomain          ; backofficeworkflowusergroup,backofficeworkflowadmingroup ; backofficeworkflowusergroup,backofficeworkflowadmingroup ; backofficeworkflowusergroup,backofficeworkflowadmingroup ; backofficeworkflowadmingroup              
+
+# Workflow Sample Data - Workflow A (A_ProductCreation)
+
+INSERT_UPDATE WorkflowTemplate ; code[unique=true] ; name[lang=de]     ; name[lang=en]    ; owner(uid) ; description[lang=en]                                                                                                            ; description[lang=de]                                                                                                                    ; visibleForPrincipals(uid) ;                                                         ;  ;  
+                               ; A_ProductCreation ; Neuanlage Produkt ; Product Creation ; admin      ; "This workflow is for Product creation. There are several steps involved which include: Purchase and Marketing Base information ; Approval through the involved departments and roles, translations to different languages and finally approval through marketing again." ;                           ; backofficeworkflowadmingroup,wfl_productManagementGroup ;  ;  ;  
+                               ;                   ;                   ;                  ;            ;                                                                                                                                 ;                                                                                                                                         ;                           ;                                                         ;  ;  ;  
+INSERT_UPDATE WorkflowActionTemplate ; code[unique=true]                        ; name[lang=de]                          ; name[lang=en]                       ; description[lang=de] ; description[lang=en] ; principalAssigned(uid)     ; workflow(code)[unique=true] ; sendEmail ; emailAddress ; rendererTemplate(code) ; actionType(code)
+                                     ; A001_Base_information_Purchase           ; Basisinformationen Einkauf             ; Base information Purchase           ;                      ;                      ; wfl_PurchaseGroup          ; A_ProductCreation           ; false     ;              ;                        ; start           
+                                     ; A002_Base_information_Marketing          ; Basisinformationen Marketing           ; Base information Marketing          ;                      ;                      ; wfl_marketingGroup         ; A_ProductCreation           ; false     ;              ;                        ; start           
+                                     ; A003_Approval_through_Product_Management ; Freigabe PM                            ; Approval through Product Management ;                      ;                      ; wfl_productManagementGroup ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A005_Detailed_information_Purchase       ; Detailinformationen Einkauf            ; Detailed information Purchase       ;                      ;                      ; wfl_PurchaseGroup          ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A006_Detailed_information_PM             ; Detailinformationen PM                 ; Detailed information PM             ;                      ;                      ; wfl_productManagementGroup ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A007_Create_Editorial_Content            ; Produktredaktion                       ; Create Editorial Content            ;                      ;                      ; wfl_marketingGroup_EN      ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A008_Assign_assets_to_product            ; Zuweisung von Assets                   ; Assign assets to product            ;                      ;                      ; wfl_marketingGroup_EN      ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A009_Create_description_for_assets       ; Beschreibung von Assets                ; Create description for assets       ;                      ;                      ; wfl_marketingGroup_EN      ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A010_Approval_through_Product_Management ; Freigabe PM                            ; Approval through Product Management ;                      ;                      ; wfl_productManagementGroup ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A012_Approval_through_Product_Marketing  ; Freigabe Marketing                     ; Approval through Product Marketing  ;                      ;                      ; wfl_marketingGroup         ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A013_Translation_to_german               ; Übersetzung Deutsch                    ; Translation to german               ;                      ;                      ; wfl_translatorGroup_DE     ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A014_Translation_Approval_german         ; Übersetzungs-Freigabe Deutsch          ; Translation Approval german         ;                      ;                      ; wfl_marketingGroup_DE      ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A017_Translation_to_spanish              ; Übersetzung Spanisch                   ; Translation to spanish              ;                      ;                      ; wfl_translatorGroup_ES     ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A018_Translation_Approval_spanish        ; Übersetzung-Freigabe Spanisch          ; Translation Approval spanish        ;                      ;                      ; wfl_marketingGroup_ES      ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A021_Translation_to_swedish              ; Übersetzung Schwedisch                 ; Translation to swedish              ;                      ;                      ; wfl_translatorGroup_SWE    ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A022_Translation_Approval_swedish        ; Übersetzung-Freigabe Schwedisch        ; Translation Approval swedish        ;                      ;                      ; wfl_marketingGroup_SWE     ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A025_Translation_to_german-swiss         ; Übersetzung Schweizer-Deutsch          ; Translation to german-swiss         ;                      ;                      ; wfl_translatorGroup_GSW    ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A026_Translation_to_french               ; Übersetzung Französisch                ; Translation to french               ;                      ;                      ; wfl_translatorGroup_FR     ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A027_Translation_to_italian              ; Übersetzung Italienisch                ; Translation to italian              ;                      ;                      ; wfl_translatorGroup_IT     ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A028_Approval_german-swiss               ; Übersetzung-Freigabe Schweizer-Deutsch ; Translation Approval german-swiss   ;                      ;                      ; wfl_marketingGroup_GSW     ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A029_Approval_french                     ; Übersetzung-Freigabe Französisch       ; Translation Approval french         ;                      ;                      ; wfl_marketingGroup_FR      ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A030_Approval_italian                    ; Übersetzung-Freigabe Italienisch       ; Translation Approval italian        ;                      ;                      ; wfl_marketingGroup_IT      ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A031_Market_Approval_Germany             ; Freigabe deutscher Markt               ; Approval german market              ;                      ;                      ; wfl_marketingGroup_DE      ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A032_Market_Approval_Spain               ; Freigabe Spanischer Markt              ; Approval spanish market             ;                      ;                      ; wfl_marketingGroup_ES      ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A033_Market_Approval_Sweden              ; Freigabe Schwedischer Markt            ; Approval swedish market             ;                      ;                      ; wfl_marketingGroup_SWE     ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A034_Market_Approval_Switzerland         ; Freigabe Schweizer Markt               ; Approval swiss market               ;                      ;                      ; wfl_marketingGroup_GSW     ; A_ProductCreation           ; false     ;              ;                        ; normal          
+                                     ; A037_Approval_All_Markets                ; Freigabe alle Märkte                   ; Approval all Markets                ;                      ;                      ; wfl_marketingGroup         ; A_ProductCreation           ; false     ;              ;                        ; end             
+                                     ;                                          ;                                        ;                                     ;                      ;                      ;                            ;                             ;           ;              ;                        ;                 
+                                     ;                                          ;                                        ;                                     ;                      ;                      ;                            ;                             ;           ;              ;                        ;                 
+INSERT_UPDATE WorkflowDecisionTemplate ; code[unique=true] ; name[lang=de]                           ; name[lang=en]                       ; actionTemplate(code)                     ; description[allownull=true] ;  ;  ;  ;  ;  ;  
+                                       ; AA001             ; Fertig!                                 ; Done!                               ; A001_Base_information_Purchase           ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA002             ; Fertig!                                 ; Done!                               ; A002_Base_information_Marketing          ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA003             ; Zurück an Einkauf                       ; Back to Purchase                    ; A003_Approval_through_Product_Management ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA004             ; Zurück an Marketing                     ; Back to Marketing                   ; A003_Approval_through_Product_Management ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA005             ; Freigabe                                ; Approval                            ; A003_Approval_through_Product_Management ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA006             ; Fertig!                                 ; Done!                               ; A005_Detailed_information_Purchase       ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA007             ; Fertig!                                 ; Done!                               ; A006_Detailed_information_PM             ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA008             ; Fertig!                                 ; Done!                               ; A007_Create_Editorial_Content            ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA009             ; Fertig!                                 ; Done!                               ; A008_Assign_assets_to_product            ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA010             ; Fertig!                                 ; Done!                               ; A009_Create_description_for_assets       ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA011             ; Zurück an Einkauf                       ; Back to Purchase                    ; A010_Approval_through_Product_Management ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA012             ; Zurück an Marketing (Redaktion)         ; Back to Marketing (Editoral)        ; A010_Approval_through_Product_Management ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA013             ; Zurück an Marketing (Assetzuweisung)    ; Back to Marketing (assign assets)   ; A010_Approval_through_Product_Management ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA014             ; Zurück an Marketing (Assetbeschreibung) ; Back to Marketing (describe assets) ; A010_Approval_through_Product_Management ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA015             ; Freigabe                                ; Approval                            ; A010_Approval_through_Product_Management ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA017             ; Zurück an Produkt Management            ; Back to Product Management          ; A012_Approval_through_Product_Marketing  ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA021             ; Freigabe                                ; Approval                            ; A012_Approval_through_Product_Marketing  ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA022             ; Fertig!                                 ; Done!                               ; A013_Translation_to_german               ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA023             ; Keine Freigabe                          ; No Approval                         ; A014_Translation_Approval_german         ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA024             ; Freigabe                                ; Approval                            ; A014_Translation_Approval_german         ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA025             ; Fertig!                                 ; Done!                               ; A017_Translation_to_spanish              ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA026             ; Keine Freigabe                          ; No Approval                         ; A018_Translation_Approval_spanish        ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA027             ; Freigabe                                ; Approval                            ; A018_Translation_Approval_spanish        ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA028             ; Fertig!                                 ; Done!                               ; A021_Translation_to_swedish              ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA029             ; Keine Freigabe                          ; No Approval                         ; A022_Translation_Approval_swedish        ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA030             ; Freigabe                                ; Approval                            ; A022_Translation_Approval_swedish        ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA031             ; Fertig!                                 ; Done!                               ; A025_Translation_to_german-swiss         ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA032             ; Fertig!                                 ; Done!                               ; A026_Translation_to_french               ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA033             ; Fertig!                                 ; Done!                               ; A027_Translation_to_italian              ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA034             ; Keine Freigabe                          ; No Approval                         ; A028_Approval_german-swiss               ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA035             ; Freigabe                                ; Approval                            ; A028_Approval_german-swiss               ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA036             ; Keine Freigabe                          ; No Approval                         ; A029_Approval_french                     ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA037             ; Freigabe                                ; Approval                            ; A029_Approval_french                     ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA038             ; Keine Freigabe                          ; No Approval                         ; A030_Approval_italian                    ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA039             ; Freigabe                                ; Approval                            ; A030_Approval_italian                    ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA040             ; Freigabe                                ; Approval                            ; A031_Market_Approval_Germany             ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA041             ; Freigabe                                ; Approval                            ; A032_Market_Approval_Spain               ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA042             ; Freigabe                                ; Approval                            ; A033_Market_Approval_Sweden              ;                             ;  ;  ;  ;  ;  ;  
+                                       ; AA043             ; Freigabe                                ; Approval                            ; A034_Market_Approval_Switzerland         ;                             ;  ;  ;  ;  ;  ;  
+                                       ;                   ;                                         ;                                     ;                                          ;                             ;  ;  ;  ;  ;  ;  
+                                       ;                   ;                                         ;                                     ;                                          ;                             ;  ;  ;  ;  ;  ;  
+# new Workflow Model;;;;;;;;;;;        
+insert_update WorkflowActionTemplateLinkTemplateRelation ; source(code)[unique=true] ; target(code)[unique=true]                ; andConnectionTemplate ; qualifier                                  ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA001                     ; A003_Approval_through_Product_Management ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA002                     ; A003_Approval_through_Product_Management ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA003                     ; A001_Base_information_Purchase           ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA004                     ; A002_Base_information_Marketing          ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA005                     ; A005_Detailed_information_Purchase       ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA005                     ; A006_Detailed_information_PM             ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA005                     ; A007_Create_Editorial_Content            ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA005                     ; A008_Assign_assets_to_product            ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA005                     ; A009_Create_description_for_assets       ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA006                     ; A010_Approval_through_Product_Management ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA007                     ; A010_Approval_through_Product_Management ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA008                     ; A010_Approval_through_Product_Management ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA009                     ; A010_Approval_through_Product_Management ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA010                     ; A010_Approval_through_Product_Management ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA011                     ; A005_Detailed_information_Purchase       ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA012                     ; A007_Create_Editorial_Content            ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA013                     ; A008_Assign_assets_to_product            ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA014                     ; A009_Create_description_for_assets       ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA015                     ; A012_Approval_through_Product_Marketing  ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA017                     ; A010_Approval_through_Product_Management ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA021                     ; A013_Translation_to_german               ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA021                     ; A017_Translation_to_spanish              ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA021                     ; A021_Translation_to_swedish              ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA021                     ; A025_Translation_to_german-swiss         ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA021                     ; A026_Translation_to_french               ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA021                     ; A027_Translation_to_italian              ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA022                     ; A014_Translation_Approval_german         ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA023                     ; A013_Translation_to_german               ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA024                     ; A031_Market_Approval_Germany             ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA025                     ; A018_Translation_Approval_spanish        ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA026                     ; A017_Translation_to_spanish              ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA027                     ; A032_Market_Approval_Spain               ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA028                     ; A022_Translation_Approval_swedish        ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA029                     ; A021_Translation_to_swedish              ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA030                     ; A033_Market_Approval_Sweden              ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA031                     ; A028_Approval_german-swiss               ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA032                     ; A029_Approval_french                     ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA033                     ; A030_Approval_italian                    ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA034                     ; A025_Translation_to_german-swiss         ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA035                     ; A034_Market_Approval_Switzerland         ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA036                     ; A026_Translation_to_french               ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA037                     ; A034_Market_Approval_Switzerland         ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA038                     ; A027_Translation_to_italian              ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA039                     ; A034_Market_Approval_Switzerland         ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA040                     ; A037_Approval_All_Markets                ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA041                     ; A037_Approval_All_Markets                ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA042                     ; A037_Approval_All_Markets                ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; AA043                     ; A037_Approval_All_Markets                ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+
+
+# Workflow Sample Data - Workflow B (B_ProductApproval). 
+
+INSERT_UPDATE WorkflowTemplate ; code[unique=true] ; name[lang=de]    ; name[lang=en]    ; owner(uid) ; description[lang=en]                                                                                                                                                                                                       ; description[lang=de] ; activationscript                                                                                              ; visibleForPrincipals(uid) ;  ;  ;  
+                               ; B_ProductApproval ; Produkt Freigabe ; Product Approval ; admin      ; "This workflow approves products by the marketing group after being reviewed by product marketing and purchase. It will also be automatically started when a product is created or saved and its approval status is check" ;                      ; "// this script will create a new workflow when a product is created or saved and its approval status is check
+(                              
+ // create new item            
+ (action.equals(""create"") && 
+
+ // initialValues must be set  
+ initialValues != null &&      
+
+ // approvalStatus must be set 
+ initialValues.get(""approvalstatus"") != null &&
+
+ // approvalStatus must be set to ""check""
+ initialValues.get(""approvalstatus"").getCode().equals(""check"")
+) ||                           
+
+// save item                   
+(action.equals(""save"") &&    
+
+// currentValues must be set   
+currentValues != null &&       
+
+// approvalStatus must be set  
+currentValues.get(""approvalstatus"") != null &&
+
+// approvalStatus must be set to ""check""
+currentValues.get(""approvalstatus"").getCode().equals(""check""))) &&
+
+// created or saved item is a product
+typeService.isAssignableFrom(""Product"", itemType.getCode())"                                                                                                                                                                                                                                                                                                                                                                                                            ; backofficeworkflowadmingroup,wfl_productManagementGroup;  ;  ;  
+                               ;                   ;                  ;                  ;            ;                                                                                                                                                                                                                            ;                      ;                                                                                                               ;                           ;  ;  ;  
+INSERT_UPDATE WorkflowActionTemplate ; code[unique=true]                        ; name[lang=de]       ; name[lang=en]                       ; description[lang=de] ; description[lang=en] ; principalAssigned(uid)     ; workflow(code)[unique=true] ; sendEmail ; emailAddress ; rendererTemplate(code) ; actionType(code)
+                                     ; B001_Approval_through_Product_Management ; Freigabe PM         ; Approval through Product Management ;                      ;                      ; wfl_productManagementGroup ; B_ProductApproval           ; false     ;              ;                        ; start           
+                                     ; B002_Approval_through_Purchase           ; Freigabe Einkauf    ; Approval through Purchase           ;                      ;                      ; wfl_PurchaseGroup          ; B_ProductApproval           ; false     ;              ;                        ; start           
+                                     ; B003_Approval_through_Product_Marketing  ; Freigabe Marketing  ; Approval through Product Marketing  ;                      ;                      ; wfl_marketingGroup_EN      ; B_ProductApproval           ; false     ;              ;                        ; normal          
+                                     ; B004_Approval_Product                    ; Produkt freigegeben ; Product approved                    ;                      ;                      ; wfl_marketingGroup         ; B_ProductApproval           ; false     ;              ;                        ; end             
+                                     ;                                          ;                     ;                                     ;                      ;                      ;                            ;                             ;           ;              ;                        ;                 
+                                     ;                                          ;                     ;                                     ;                      ;                      ;                            ;                             ;           ;              ;                        ;                 
+INSERT_UPDATE WorkflowDecisionTemplate ; code[unique=true] ; name[lang=de]     ; name[lang=en]              ; actionTemplate(code)                     ; description[allownull=true] ;  ;  ;  ;  ;  ;  
+                                       ; BB001             ; Fertig!           ; Done!                      ; B001_Approval_through_Product_Management ;                             ;  ;  ;  ;  ;  ;  
+                                       ; BB002             ; Fertig!           ; Done!                      ; B002_Approval_through_Purchase           ;                             ;  ;  ;  ;  ;  ;  
+                                       ; BB003             ; Zurück an PM      ; Back to product Management ; B003_Approval_through_Product_Marketing  ;                             ;  ;  ;  ;  ;  ;  
+                                       ; BB004             ; Zurück an Einkauf ; Back to Purchase           ; B003_Approval_through_Product_Marketing  ;                             ;  ;  ;  ;  ;  ;  
+                                       ; BB005             ; Freigabe          ; Approval                   ; B003_Approval_through_Product_Marketing  ;                             ;  ;  ;  ;  ;  ;  
+                                       ;                   ;                   ;                            ;                                          ;                             ;  ;  ;  ;  ;  ;  
+                                       ;                   ;                   ;                            ;                                          ;                             ;  ;  ;  ;  ;  ;  
+                                       ;                   ;                   ;                            ;                                          ;                             ;  ;  ;  ;  ;  ;  
+# new Workflow Model;;;;;;;;;;;        
+insert_update WorkflowActionTemplateLinkTemplateRelation ; source(code)[unique=true] ; target(code)[unique=true]                ; andConnectionTemplate ; qualifier                                  ;  ;  ;  ;  ;  ;  ;  
+                                                         ; BB001                     ; B003_Approval_through_Product_Marketing  ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; BB002                     ; B003_Approval_through_Product_Marketing  ; true                  ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; BB003                     ; B001_Approval_through_Product_Management ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; BB004                     ; B002_Approval_through_Purchase           ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+                                                         ; BB005                     ; B004_Approval_Product                    ; false                 ; WorkflowActionTemplateLinkTemplateRelation ;  ;  ;  ;  ;  ;  ;  
+

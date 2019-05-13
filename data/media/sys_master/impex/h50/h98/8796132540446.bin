@@ -1,0 +1,78 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+# Import CMS content for the Powertools site
+#
+
+$contentCatalog=powertoolsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Language
+$lang=de
+
+
+# Content Pages
+    
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;account;"Mein Konto"
+;;add-edit-address;"Adresse hinzufügen/bearbeiten"
+;;address-book;"Adressbuch"
+;;cartPage;"Ihr Warenkorb"
+;;checkout-login;"Zur Kasse gehen"
+;;faq;"Häufig gestellte Fragen"
+;;homepage;"Startseite"
+;;importCSVSavedCartPage;"Gespeicherten Warenkorb importieren"
+;;login;"Anmelden"
+;;multiStepCheckoutSummaryPage;"Bezahlen"
+;;my-quotes;"Angebote"
+;;my-replenishment-cancel-confirmation;"Bestätigung der Nachbestellungsstornierung"
+;;my-replenishment-details;"Nachbestelldetails"
+;;my-replenishment-orders;"Nachbestellungen"
+;;notFound;"Nicht gefunden"
+;;order;"Bestellungsdetails"
+;;order-approval-dashboard;"Seite ""Bestellgenehmigungsdashboard"""
+;;order-approval-details;"Seite ""Bestellgenehmigungsdetails"""
+;;orderConfirmationPage;"Bestellbestätigung"
+;;orderExpired;"Seite ""Bestellung abgelaufen"""
+;;orders;"Bestellverlauf"
+;;payment-details;"Zahlungsdetails"
+;;profile;"Profil"
+;;quickOrderPage;"Schnellbestellung"
+;;quote-detail;"Details zu meinen Angeboten"
+;;quoteEditPage;"Angebotsbearbeitung"
+;;replenishmentConfirmationPage;"Nachbestellungsbestätigung"
+;;saved-carts;"Gespeicherte Warenkörbe"
+;;savedCartDetailsPage;"Details des gespeicherten Warenkorbs"
+;;search;"Seite ""Suchergebnisliste"""
+;;searchAdvancedEmpty;"Bestellformulare"
+;;searchEmpty;"Keine Ergebnisse"
+;;searchGrid;"Seite ""Suchergebnisraster"""
+;;storefinderPage;"Standortsuche"
+;;termsAndConditions;"Allgemeine Geschäftsbedingungen"
+;;update-email;"E-Mail aktualisieren"
+;;update-profile;"Profil aktualisieren"
+;;updatePassword;"Vergessenes Kennwort erneuern"
+
+    
+# Category Pages
+    
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;category;"Seite ""Standardkategorie"""
+;;productGrid;"Produktraster"
+;;productList;"Produktliste"
+
+    
+# Product Pages
+    
+UPDATE ProductPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;productDetails;"Produktdetails"
+
+    

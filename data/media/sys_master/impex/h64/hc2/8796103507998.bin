@@ -1,0 +1,35 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=cs
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;Všeobecně
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_group;Skupina;{operator};
+;y_container;Kontejner;{id};
+;y_rule_executed;Pravidlo provedeno;Pravidlo s kódem {rule} provedení povoleno {allowed};
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_group;operator;Operátor skupiny;Zkombinujte podmínky ve skupině pomocí NEBO/A.
+;y_container;id;ID kontejneru;Zadejte ID kontejneru, na který se bude odkazovat při akcích.
+;y_rule_executed;rule;Akce pro pravidlo;Zadejte akci, která povolí nebo nepovolí provedení tohoto pravidla.
+;y_rule_executed;allowed;Akce pro povolit provedení pravidla;Akce pro povolit nebo nepovolit provedení pravidla
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;Všeobecně
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_halt;Zastavení provedení pravidla;Zastaví provedení všech následujících pravidel;

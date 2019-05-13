@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=es
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;Carro
+;customer;Cliente
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;Total de carro;Total de carro {operator} {value}
+;y_qualifying_products;Productos sujetos a promoción;Productos {products} del carro {products_operator}
+;y_qualifying_categories;Categorías sujetas a promoción;Categorías {categories} de carro {categories_operator}
+;y_target_customers;Clientes destino;Grupos de clientes {customer_groups} o clientes {customers} destino {customer_groups_operator}
+;y_product_price;Valor umbral de precio de producto;Precio de producto {operator} {value}
+;y_customer_support;Asistencia al cliente;La sesión de servicio asistida está activa: {value}
+;y_qualifying_group_types;Tipos de grupo de calificación;Grupo de entradas de carro {operator} {groupTypes}
+;y_orders;Pedidos o carros;Pedidos o carros en {orders}
+;y_order_threshold_perfect_partner;Asociado perfecto para umbral de pedido;Producto de asociado perfecto {product} en el carro y total de carro mayor que {cart_threshold} incluido el precio con descuento {is_discounted_price_included}
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;Operador;Operador para comparar el valor total del carro
+;y_cart_total;value;Valor total del carro;Mapa de moneda y valor del total del carro que se utilizará
+;y_qualifying_products;operator;Operador;Operador para comparar la cantidad requerida para productos sujetos a promoción
+;y_qualifying_products;quantity;Cantidad por entrada de pedido;Cantidad de productos de sujetos a promoción requeridos (por entrada de pedido)
+;y_qualifying_products;products_operator;Operador de selección de productos;Seleccione CUALQUIER producto o seleccione TODOS los productos de la lista de productos sujetos a promoción
+;y_qualifying_products;products;Productos;Lista de productos sujetos a promoción
+;y_qualifying_products;catalog;Selección de filtros por catálogo;El valor de catálogo seleccionado se utilizará para filtrar dentro de los campos asociados.
+;y_qualifying_categories;operator;Operador;Operador para comparar la cantidad requerida para productos en categorías sujetas a promoción
+;y_qualifying_categories;quantity;Cantidad por entrada de pedido;Cantidad de productos requeridos de categorías sujetas a promoción (por entrada de pedido)
+;y_qualifying_categories;categories_operator;Operador de selección de categoría;Seleccione CUALQUIER categoría o seleccione TODAS las categorías de la lista de categorías sujetas a promoción
+;y_qualifying_categories;categories;Categorías;Lista de categorías sujetas a promoción
+;y_qualifying_categories;excluded_categories;Categorías excluidas;Lista de subcategorías que se deben excluir de las categorías sujetas a promoción
+;y_qualifying_categories;excluded_products;Productos excluidos;Lista de productos de categorías de sujetas a promoción que se deben excluir
+;y_qualifying_categories;catalog;Selección de filtros por catálogo;El valor de catálogo seleccionado se utilizará para filtrar dentro de los campos asociados.
+;y_target_customers;customer_groups_operator;Operador de selección de grupo de clientes;El cliente debe ser parte de CUALQUIER grupo de clientes o de TODOS
+;y_target_customers;customer_groups;Grupos de clientes;Lista de grupos de clientes sujetos a promoción
+;y_target_customers;customers;Clientes;Lista de clientes sujetos a promoción
+;y_target_customers;excluded_customer_groups;Grupos de clientes excluidos;Lista de subgrupos que se deben excluir de grupos de clientes sujetos a promoción
+;y_target_customers;excluded_customers;Clientes excluidos;Lista de clientes que se deben excluir de grupos de clientes sujetos a promoción
+;y_product_price;operator;Operador;Operador para comparar el valor del producto
+;y_product_price;value;Valor umbral del precio;Mapa de moneda y valor umbral de los productos que se deben utilizar para calificar a esta promoción
+;y_customer_support;value;Sesión de servicio asistida activa;Habilite la promoción basada en si un agente de asistencia al cliente está asistiendo al cliente en la tienda online o no
+;y_qualifying_group_types;operator;Operador;Operador de selección del tipo de grupo
+;y_qualifying_group_types;groupTypes;Tipos de grupo;Lista de tipos de grupo de calificación
+;y_order_threshold_perfect_partner;catalog;Selección de filtros por catálogo;El valor de catálogo seleccionado se utilizará para filtrar dentro de los campos asociados.
+;y_order_threshold_perfect_partner;product;Producto de asociado perfecto;Producto de asociado perfecto ofrecido con descuento.
+;y_order_threshold_perfect_partner;cart_threshold;Valor umbral total del carro;Debe alcanzarse el total del pedido para optar a esta promoción. Cada divisa tiene un valor diferente, y todas las divisas que podrían optar a la promoción para este pedido deben tener especificado un valor.
+;y_order_threshold_perfect_partner;is_discounted_price_included;Incluir el precio con descuento al calcular el total;Incluya el precio con descuento del producto asociado en el total del pedido al compararlo con el valor umbral.
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;Descuentos del carro
+;product_discounts;Descuentos del producto
+;partner_product_discounts;Descuentos del producto del socio
+;shipping;Envío
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;Descuento porcentual sobre el carro;Aplicar descuento {value,number,percent*1} en el total del carro;
+;y_order_fixed_discount;Descuento fijo sobre el carro;Aplicar descuento {value} en el total del carro;
+;y_order_entry_percentage_discount;Descuento porcentual sobre el producto;Aplicar descuento {value,number,percent*1} en productos sujetos a la promoción;
+;y_order_entry_fixed_discount;Descuento fijo sobre el producto;Aplicar descuento {value} en productos sujetos a la promoción;
+;y_order_entry_fixed_price;Precio fijo destino en productos;Aplicar precio destino {value} en productos de calificación;
+;y_target_bundle_price;Precio del paquete destino;Aplicar precio destino {value} al paquete;
+;y_free_gift;Regalo gratuito;Indicar producto(s) {quantity} {product} gratuitos;
+;y_partner_order_entry_percentage_discount;Descuento porcentual sobre productos del socio;Aplicar descuento {value,number,percent*1} en productos del socio;
+;y_partner_order_entry_fixed_discount;Descuento fijo sobre productos del socio;Aplicar descuento {value} en productos del socio;
+;y_partner_order_entry_fixed_price;Precio fijo destino en productos del socio;Aplicar precio destino {value} en productos del socio;
+;y_change_delivery_mode;Cambiar modo de entrega;Cambiar modo de entrega a {delivery_mode};
+;y_trigger_message;Desencadenar mensaje de regla;Mostrar mensaje de regla;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;Valor de descuento porcentual;Descuento porcentual que se aplicará al total del carro
+;y_order_fixed_discount;value;Valor de descuento absoluto;Mapa de valor de descuento absoluto y moneda que se aplicará al total del carro
+;y_order_entry_percentage_discount;value;Valor de descuento porcentual;Descuento porcentual que se aplicará a los productos sujetos a promoción
+;y_order_entry_fixed_discount;value;Valor de descuento absoluto;Mapa de valor de descuento absoluto y moneda que se aplicará a los productos sujetos a promoción
+;y_order_entry_fixed_price;value;Precio fijo destino;Mapa de valor de precio destino y moneda que se aplicará a los productos sujetos a promoción
+;y_target_bundle_price;value;Precio del paquete destino;Mapa de valor de precio destino y moneda que se aplicará al paquete
+;y_target_bundle_price;selection_strategy;Estrategia de selección;La estrategia que se utilizará para seleccionar productos si varios artículos en el carro califican para el paquete
+;y_target_bundle_price;qualifying_containers;Cantidades de producto del paquete;Mapa de IDs de contenedor y cantidades correspondientes que componen el paquete requerido
+;y_free_gift;product;Producto gratuito;El producto que se debe añadir al carro automáticamente y se otorga gratis
+;y_free_gift;quantity;Cantidad;La cantidad de artículos que se deben otorgan gratis
+;y_free_gift;catalog;Selección de filtros por catálogo;El valor de catálogo seleccionado se utilizará para filtrar dentro de los campos asociados.
+;y_free_gift;qualifying_containers;Contenedores de productos sujetos a calificación;Mapa de IDs de contenedor y cantidades correspondientes que componen los productos sujetos a promoción
+;y_partner_order_entry_percentage_discount;value;Valor de descuento porcentual;Descuento porcentual que se aplicará a los productos del socio
+;y_partner_order_entry_percentage_discount;selection_strategy;Estrategia de selección;La estrategia que se utilizará para seleccionar productos si varios artículos en el carro califican para la acción
+;y_partner_order_entry_percentage_discount;qualifying_containers;Contenedores de productos sujetos a calificación;Mapa de IDs de contenedor y cantidades correspondientes que componen los productos sujetos a promoción
+;y_partner_order_entry_percentage_discount;target_containers;Contenedores de producto destino;Mapa de IDs de contenedor y cantidades correspondientes que componen los productos de socio destino
+;y_partner_order_entry_fixed_discount;value;Valor de descuento absoluto;Mapa de valor de precio destino y moneda que se aplicará a los productos de socio
+;y_partner_order_entry_fixed_discount;selection_strategy;Estrategia de selección;La estrategia que se utilizará para seleccionar productos si varios artículos en el carro califican para la acción
+;y_partner_order_entry_fixed_discount;qualifying_containers;Contenedores de productos sujetos a calificación;Mapa de IDs de contenedor y cantidades correspondientes que componen los productos sujetos a promoción
+;y_partner_order_entry_fixed_discount;target_containers;Contenedores de producto destino;Mapa de IDs de contenedor y cantidades correspondientes que componen los productos de socio destino
+;y_partner_order_entry_fixed_price;value;Precio fijo destino;Mapa de valor de precio destino y moneda que se aplicará a los productos de socio
+;y_partner_order_entry_fixed_price;selection_strategy;Estrategia de selección;La estrategia que se utilizará para seleccionar productos si varios artículos en el carro califican para la acción
+;y_partner_order_entry_fixed_price;qualifying_containers;Contenedores de productos sujetos a calificación;Mapa de IDs de contenedor y cantidades correspondientes que componen los productos sujetos a promoción
+;y_partner_order_entry_fixed_price;target_containers;Contenedores de producto destino;Mapa de IDs de contenedor y cantidades correspondientes que componen los productos de socio destino
+;y_change_delivery_mode;delivery_mode;Modo de entrega;El modo de entrega que se debe aplicar al carro como resultado de la acción

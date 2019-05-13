@@ -1,0 +1,111 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=en
+
+UPDATE GenericItem[processor=de.hybris.platform.ruleengineservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+$catalogVersionName=$config-ruleengineservices.mapper.value.catalogversionname
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang];priority
+;cart;Cart;1200
+;customer;Customer;1100
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];priority;allowsChildren;translatorId;translatorParameters;categories(id)
+;y_cart_total;1200;false;ruleCartTotalConditionTranslator;;cart;
+;y_qualifying_products;1100;false;ruleQualifyingProductsConditionTranslator;;cart;
+;y_qualifying_categories;1000;false;qualifyingCategoriesConditionTranslator;;cart;
+;y_target_customers;1000;false;ruleTargetCustomersConditionTranslator;;customer;
+;y_product_price;900;false;ruleProductPriceConditionTranslator;;cart;
+;y_customer_support;1000;false;ruleCustomerSupportConditionTranslator;;customer;
+;y_qualifying_group_types;800;false;ruleEntryGroupTypeConditionTranslator;;cart;
+;y_order_threshold_perfect_partner;700;false;ruleOrderThresholdPerfectPartnerConditionTranslator;;cart;
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];priority;type;value;required[default=true];validators;filters;defaultEditor
+;y_cart_total;operator;1100;Enum(de.hybris.platform.ruledefinitions.AmountOperator);"""GREATER_THAN_OR_EQUAL""";;;
+;y_cart_total;value;1000;Map(ItemType(Currency),java.math.BigDecimal);;;rulePositiveNumberParameterValidator;
+;y_qualifying_products;operator;1300;Enum(de.hybris.platform.ruledefinitions.AmountOperator);"""GREATER_THAN_OR_EQUAL""";;;
+;y_qualifying_products;quantity;1200;java.lang.Integer;1;;rulePositiveNumberParameterValidator;
+;y_qualifying_products;products_operator;1100;Enum(de.hybris.platform.ruledefinitions.CollectionOperator);"""CONTAINS_ANY""";;;
+;y_qualifying_products;products;1000;List(ItemType(Product));;false;;catalogVersion->catalog#catalogVersions.^[#this.version == '$catalogVersionName']
+;y_qualifying_products;catalog;1000;ItemType(Catalog);;false;;
+;y_qualifying_categories;operator;1500;Enum(de.hybris.platform.ruledefinitions.AmountOperator);"""GREATER_THAN_OR_EQUAL""";;;
+;y_qualifying_categories;quantity;1400;java.lang.Integer;1;;rulePositiveNumberParameterValidator;
+;y_qualifying_categories;categories_operator;1300;Enum(de.hybris.platform.ruledefinitions.CollectionOperator);"""CONTAINS_ANY""";;;
+;y_qualifying_categories;catalog;1250;ItemType(Catalog);;false;;
+;y_qualifying_categories;categories;1200;List(ItemType(Category));;false;;catalogVersion->catalog#catalogVersions.^[#this.version == '$catalogVersionName']
+;y_qualifying_categories;excluded_categories;1100;List(ItemType(Category));;false;;catalogVersion->catalog#catalogVersions.^[#this.version == '$catalogVersionName']
+;y_qualifying_categories;excluded_products;1000;List(ItemType(Product));;false;;catalogVersion->catalog#catalogVersions.^[#this.version == '$catalogVersionName']
+;y_target_customers;customer_groups_operator;1400;Enum(de.hybris.platform.ruledefinitions.CollectionOperator);"""CONTAINS_ANY""";;;
+;y_target_customers;customer_groups;1300;List(ItemType(UserGroup));;false;;
+;y_target_customers;customers;1200;List(ItemType(Customer));;false;;
+;y_target_customers;excluded_customer_groups;1100;List(ItemType(UserGroup));;false;;
+;y_target_customers;excluded_customers;1000;List(ItemType(Customer));;false;;
+;y_product_price;operator;1100;Enum(de.hybris.platform.ruledefinitions.AmountOperator);"""GREATER_THAN_OR_EQUAL""";;;
+;y_product_price;value;1000;Map(ItemType(Currency),java.math.BigDecimal);;;;
+;y_customer_support;value;1000;java.lang.Boolean;true;;;;com.hybris.cockpitng.editor.defaultboolean;
+;y_qualifying_group_types;operator;1100;Enum(de.hybris.platform.ruledefinitions.MembershipOperator);"""NOT_IN""";;;
+;y_qualifying_group_types;groupTypes;1000;List(ItemType(GroupType));;;;
+;y_order_threshold_perfect_partner;catalog;1300;ItemType(Catalog);;false;;;;
+;y_order_threshold_perfect_partner;product;1200;ItemType(Product);;;;catalogVersion->catalog#catalogVersions.^[#this.version == '$catalogVersionName']
+;y_order_threshold_perfect_partner;cart_threshold;1100;Map(ItemType(Currency),java.math.BigDecimal);;;rulePositiveNumberParameterValidator;;;
+;y_order_threshold_perfect_partner;is_discounted_price_included;1000;java.lang.Boolean;false;;;;;
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];priority
+;cart_discounts;1400
+;product_discounts;1300
+;partner_product_discounts;1200
+;shipping;1100
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];priority;;translatorId;translatorParameters;categories(id)
+;y_order_percentage_discount;1100;;ruleExecutableActionTranslator;actionId->ruleOrderPercentageDiscountAction;cart_discounts
+;y_order_fixed_discount;1000;;ruleExecutableActionTranslator;actionId->ruleOrderFixedDiscountAction;cart_discounts
+;y_order_entry_percentage_discount;1400;;ruleExecutableActionTranslator;actionId->ruleOrderEntryPercentageDiscountAction;product_discounts
+;y_order_entry_fixed_discount;1300;;ruleExecutableActionTranslator;actionId->ruleOrderEntryFixedDiscountAction;product_discounts
+;y_order_entry_fixed_price;1200;;ruleExecutableActionTranslator;actionId->ruleOrderEntryFixedPriceAction;product_discounts
+;y_target_bundle_price;1100;;ruleExecutableActionTranslator;actionId->ruleTargetBundlePriceAction;product_discounts
+;y_free_gift;1000;;ruleExecutableActionTranslator;actionId->ruleFreeGiftAction;product_discounts
+;y_partner_order_entry_percentage_discount;1200;;ruleExecutableActionTranslator;actionId->rulePartnerOrderEntryPercentageDiscountAction;partner_product_discounts
+;y_partner_order_entry_fixed_discount;1100;;ruleExecutableActionTranslator;actionId->rulePartnerOrderEntryFixedDiscountAction;partner_product_discounts
+;y_partner_order_entry_fixed_price;1000;;ruleExecutableActionTranslator;actionId->rulePartnerOrderEntryFixedPriceAction;partner_product_discounts
+;y_change_delivery_mode;1000;;ruleExecutableActionTranslator;actionId->ruleChangeDeliveryModeAction;shipping
+;y_trigger_message;1000;;ruleExecutableActionTranslator;actionId->ruleTriggerMessageAction;general
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];priority;type;value;required[default=true];validators;filters
+;y_order_percentage_discount;value;1000;java.math.BigDecimal;;;rulePercentageParameterValidator;
+;y_order_fixed_discount;value;1000;Map(ItemType(Currency),java.math.BigDecimal);;;;
+;y_order_entry_percentage_discount;value;1000;java.math.BigDecimal;;;rulePercentageParameterValidator;
+;y_order_entry_fixed_discount;value;1000;Map(ItemType(Currency),java.math.BigDecimal);;;;
+;y_order_entry_fixed_price;value;1000;Map(ItemType(Currency),java.math.BigDecimal);;;;
+;y_target_bundle_price;value;1200;Map(ItemType(Currency),java.math.BigDecimal);;;;
+;y_target_bundle_price;selection_strategy;1100;Enum(de.hybris.platform.ruleengineservices.enums.OrderEntrySelectionStrategy);"""DEFAULT""";;;
+;y_target_bundle_price;qualifying_containers;1000;Map(java.lang.String,java.lang.Integer);;;ruleContainersParameterValidator;
+;y_free_gift;product;1100;ItemType(Product);;;;catalogVersion->catalog#catalogVersions.^[#this.version == '$catalogVersionName']
+;y_free_gift;quantity;1000;java.lang.Integer;1;;rulePositiveNumberParameterValidator;
+;y_free_gift;qualifying_containers;1100;Map(java.lang.String,java.lang.Integer);;false;ruleContainersParameterValidator;
+;y_free_gift;catalog;1200;ItemType(Catalog);;false;;
+;y_partner_order_entry_percentage_discount;value;1300;java.math.BigDecimal;;;rulePercentageParameterValidator;
+;y_partner_order_entry_percentage_discount;selection_strategy;1200;Enum(de.hybris.platform.ruleengineservices.enums.OrderEntrySelectionStrategy);"""CHEAPEST""";;;
+;y_partner_order_entry_percentage_discount;qualifying_containers;1100;Map(java.lang.String,java.lang.Integer);;;ruleContainersParameterValidator;
+;y_partner_order_entry_percentage_discount;target_containers;1000;Map(java.lang.String,java.lang.Integer);;;ruleContainersParameterValidator;
+;y_partner_order_entry_fixed_discount;value;1300;Map(ItemType(Currency),java.math.BigDecimal);;;;
+;y_partner_order_entry_fixed_discount;selection_strategy;1200;Enum(de.hybris.platform.ruleengineservices.enums.OrderEntrySelectionStrategy);"""CHEAPEST""";;;
+;y_partner_order_entry_fixed_discount;qualifying_containers;1100;Map(java.lang.String,java.lang.Integer);;;ruleContainersParameterValidator;
+;y_partner_order_entry_fixed_discount;target_containers;1000;Map(java.lang.String,java.lang.Integer);;;ruleContainersParameterValidator;
+;y_partner_order_entry_fixed_price;value;1300;Map(ItemType(Currency),java.math.BigDecimal);;;;
+;y_partner_order_entry_fixed_price;selection_strategy;1200;Enum(de.hybris.platform.ruleengineservices.enums.OrderEntrySelectionStrategy);"""CHEAPEST""";;;
+;y_partner_order_entry_fixed_price;qualifying_containers;1100;Map(java.lang.String,java.lang.Integer);;false;ruleContainersParameterValidator;
+;y_partner_order_entry_fixed_price;target_containers;1000;Map(java.lang.String,java.lang.Integer);;;ruleContainersParameterValidator;
+;y_change_delivery_mode;delivery_mode;1000;ItemType(DeliveryMode);;;;
+

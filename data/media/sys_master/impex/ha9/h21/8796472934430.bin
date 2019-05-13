@@ -1,0 +1,37 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+
+$lang=en;
+$solrIndexedType=solrIndexedType(identifier)[unique=true,default='BackofficeProduct'];
+$typeCode=type(code)[default='Product'];
+$active=active[allownull=true,default=true];
+
+UPDATE SolrIndexedProperty;name[unique=true];$solrIndexedType;backofficeDisplayName[lang=$lang];
+;pcmCoreAttributesCoverageGroup;;Core attributes;
+;pcmMarketingAttributesCoverageGroup;;Marketing attributes;
+
+INSERT_UPDATE NotNullConstraint;id[unique=true];$typeCode;$active;message[lang=$lang];
+;ProductNameNotNullForAllLocalesConstraint;;;The attribute "name" should contain values for all languages.;
+
+INSERT_UPDATE SizeConstraint;id[unique=true];$typeCode;$active;message[lang=$lang];
+;ProductEurope1PricesSizeConstraint;;;The attribute "europe1Prices" must contain at least 1 element.;
+;ProductSupercategoriesSizeConstraint;;;The attribute "supercategories" must contain at least 1 element.;
+;ProductGalleryImagesSizeConstraint;;;The attribute "galleryImages" must contain at least 1 element.;
+;ProductReferencesSizeConstraint;;;The attribute "productReferences" must contain at least 1 element.;
+
+INSERT_UPDATE NotEmptyConstraint;id[unique=true];$typeCode;$active;message[lang=$lang];
+;ProductCodeNotEmptyConstraint;;;The attribute "code" must not be empty.;
+;ProductDescriptionNotEmptyConstraint;;;The attribute "description" should not be empty.;
+;ProductEanNotEmptyConstraint;;;The Attribute "EAN" should not be empty.;
+
+INSERT_UPDATE EnumCodeConstraint;id[unique=true];$typeCode;$active;message[lang=$lang];
+;ProductApprovedConstraint;;;The attribute value for "Approval" should be "approved".;
