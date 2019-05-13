@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ~ [y] hybris Platform ~ ~ Copyright (c) 2000-2016 SAP SE ~ All rights 
+	reserved. ~ ~ This software is the confidential and proprietary information 
+	of SAP ~ Hybris ("Confidential Information"). You shall not disclose such 
+	~ Confidential Information and shall use it only in accordance with the ~ 
+	terms of the license agreement you entered into with SAP Hybris. -->
+<!-- ATTENTION: This is just an example file. You have to edit it according 
+	to your needs. -->
+
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="items.xsd">
+
+  <!-- Hybris123SnippetStart concerttours-items.xml_enum -->
+  <enumtypes>  
+      <enumtype code="ConcertType" autocreate="true" generate="true" dynamic="false">
+          <value code="openair" />
+          <value code="indoor" />
+      </enumtype>
+   
+      <enumtype code="MusicType" autocreate="true" generate="true" dynamic="true">
+      </enumtype>
+  </enumtypes>  
+  <!-- Hybris123SnippetEnd -->
+
+	<!-- Hybris123SnippetStart concerttours-items.xml_relations -->      
+	<relations>
+	    <relation code="Product2RockBand" autocreate="true" generate="false" localized="false">
+	        <sourceElement qualifier="tours" type="Product" collectiontype="set" cardinality="many" ordered="false">
+	            <modifiers read="true" write="true" search="true" optional="true" />
+	        </sourceElement>
+	        <targetElement qualifier="band" type="Band" cardinality="one">
+	            <modifiers read="true" write="true" search="true" optional="true" />
+	         </targetElement>
+	    </relation>
+	    <relation code="Band2MusicType" autocreate="true" generate="false" localized="false">
+	        <deployment table="Band2MusicType" typecode="30269" />
+	        <sourceElement qualifier="bands" type="Band" collectiontype="set" cardinality="many" ordered="false">
+	            <modifiers read="true" write="true" search="true" optional="true" />
+	        </sourceElement>
+	        <targetElement qualifier="types" type="MusicType" cardinality="many">
+	            <modifiers read="true" write="true" search="true" optional="true" />
+	        </targetElement>
+	    </relation>
+	</relations>
+	<!-- Hybris123SnippetEnd -->
+      
+	<itemtypes>
+	
+			<itemtype generate="true" code="Concert" extends="VariantProduct" autocreate="true">
+		    <attributes>
+		        <attribute qualifier="venue" type="java.lang.String">
+		            <description>venue of concert</description>
+		            <persistence type="property" />
+		        </attribute>
+		        <attribute qualifier="date" type="java.util.Date">
+		             <description>date of concert</description>
+		            <persistence type="property" />
+		        </attribute>
+		        <attribute qualifier="concertType" type="ConcertType">
+		            <description>type of concert (indoors or open air)</description>
+		            <persistence type="property" />
+		        </attribute>
+		        
+	<!-- Hybris123SnippetStart concerttours-items.xml_dynamicattributes -->      
+		         <attribute qualifier="daysUntil" type="java.lang.Long">
+       		 		<persistence type="dynamic" attributeHandler="concertDaysUntilAttributeHandler" />
+        			<modifiers read="true" write="false" />
+				</attribute>
+ 	<!-- Hybris123SnippetEnd -->
+ 
+ 
+		     </attributes>
+		 </itemtype>
+		 
+		<itemtype generate="true" code="Product" autocreate="false">
+			<attributes>
+	  <!-- Hybris123SnippetStart concerttours-items.xml_localizeHashtag -->
+				<attribute qualifier="hashtag" type="localized:java.lang.String">
+					<description>hashtag of concert tour for social media</description>
+					<persistence type="property" />
+				</attribute>
+      <!-- Hybris123SnippetEnd -->
+			</attributes>
+		</itemtype>
+
+		<itemtype generate="true" code="Band" autocreate="true">
+		    <deployment table="Bands" typecode="30268" />
+		    <attributes>
+		        <attribute qualifier="code" type="java.lang.String">
+		            <description>short unique code of band</description>
+		            <persistence type="property" />
+		        </attribute>
+<!-- Hybris123SnippetStart concerttours-items.xml_validation -->
+<attribute qualifier="name" type="java.lang.String">
+        <description>name of band</description>
+        <persistence type="property" />
+        <modifiers optional="false" unique="true" />
+</attribute>
+          <!-- Hybris123SnippetEnd -->
+    
+  <!-- Hybris123SnippetStart concerttours-items.xml_localizeHistory -->
+		        <attribute qualifier="history" type="localized:java.lang.String">
+		            <description>history of band</description>
+		            <persistence type="property" />
+		        </attribute>
+      <!-- Hybris123SnippetEnd -->
+		        <attribute qualifier="albumSales" type="java.lang.Long">
+		            <description>official global album sales</description>
+		            <persistence type="property" />
+		        </attribute>
+		    </attributes>
+		</itemtype>
+   
+   
+    <!-- Hybris123SnippetStart concerttours-items.xml_News -->
+   <itemtype generate="true" code="News" autocreate="true">
+    <deployment table="News" typecode="30270" />
+    <attributes>
+        <attribute qualifier="date" type="java.util.Date">
+            <description>date of news item</description>
+            <persistence type="property" />
+        </attribute>
+        <attribute qualifier="headline" type="java.lang.String">
+            <description>short headline for the news item</description>
+            <persistence type="property" />
+        </attribute>
+        <attribute qualifier="content" type="java.lang.String">
+            <description>fuller description of the news item</description>
+            <persistence type="property" />
+        </attribute>
+    </attributes>    
+</itemtype>
+   <!-- Hybris123SnippetEnd -->
+
+	</itemtypes>
+
+</items>

@@ -1,0 +1,70 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.events;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.bootstrap.annotations.IntegrationTest;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.ServicelayerTest;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.exceptions.ModelSavingException;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.model.ModelService;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.search.FlexibleSearchService;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">javax.annotation.Resource;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Assert;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Before;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Test;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.BandModel;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.NewsModel;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#646464">@IntegrationTest</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">BandAlbumSalesEventListenerIntegrationTest&nbsp;</font><font color="#404040"><b>extends&nbsp;</b></font><font color="#000000">ServicelayerTest</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Resource</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">FlexibleSearchService&nbsp;flexibleSearchService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Resource</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">ModelService&nbsp;modelService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_CODE&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;101-JAZ&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_NAME&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Tight&nbsp;Notes&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_HISTORY&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;New&nbsp;contemporary,&nbsp;7-piece&nbsp;Jaz&nbsp;unit&nbsp;from&nbsp;London,&nbsp;formed&nbsp;in&nbsp;2015&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">Long&nbsp;MANY_ALBUMS_SOLD&nbsp;=&nbsp;Long.valueOf</font><font color="#000000">(</font><font color="#990000">1000000L</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Before</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setUp</font><font color="#000000">()&nbsp;</font><font color="#404040"><b>throws&nbsp;</b></font><font color="#000000">Exception</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">createCoreData</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">createDefaultCatalog</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Test</font><font color="#000000">(</font><font color="#000000">expected&nbsp;=&nbsp;ModelSavingException.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">testValidationInterceptor</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">BandModel&nbsp;band&nbsp;=&nbsp;modelService.create</font><font color="#000000">(</font><font color="#000000">BandModel.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">band.setCode</font><font color="#000000">(</font><font color="#000000">BAND_CODE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">band.setAlbumSales</font><font color="#000000">(</font><font color="#000000">Long.valueOf</font><font color="#000000">(</font><font color="#000000">-</font><font color="#990000">10L</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">modelService.save</font><font color="#000000">(</font><font color="#000000">band</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Test</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">testEventSending</font><font color="#000000">()&nbsp;</font><font color="#404040"><b>throws&nbsp;</b></font><font color="#000000">Exception</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">BandModel&nbsp;band&nbsp;=&nbsp;modelService.create</font><font color="#000000">(</font><font color="#000000">BandModel.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">band.setCode</font><font color="#000000">(</font><font color="#000000">BAND_CODE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">band.setName</font><font color="#000000">(</font><font color="#000000">BAND_NAME</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">band.setHistory</font><font color="#000000">(</font><font color="#000000">BAND_HISTORY</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">band.setAlbumSales</font><font color="#000000">(</font><font color="#000000">MANY_ALBUMS_SOLD</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">modelService.save</font><font color="#000000">(</font><font color="#000000">band</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">NewsModel&nbsp;news&nbsp;=&nbsp;findLastNews</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">Assert.assertTrue</font><font color="#000000">(</font><font color="#2a00ff">&#34;Unexpected&nbsp;news:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;news.getHeadline</font><font color="#000000">()</font><font color="#000000">,&nbsp;news.getHeadline</font><font color="#000000">()</font><font color="#000000">.contains</font><font color="#000000">(</font><font color="#000000">BAND_NAME</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">NewsModel&nbsp;findLastNews</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">StringBuilder&nbsp;builder&nbsp;=&nbsp;</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">StringBuilder</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">builder.append</font><font color="#000000">(</font><font color="#2a00ff">&#34;SELECT&nbsp;{n:&#34;</font><font color="#000000">)</font><font color="#000000">.append</font><font color="#000000">(</font><font color="#000000">NewsModel.PK</font><font color="#000000">)</font><font color="#000000">.append</font><font color="#000000">(</font><font color="#2a00ff">&#34;}&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">builder.append</font><font color="#000000">(</font><font color="#2a00ff">&#34;FROM&nbsp;{&#34;</font><font color="#000000">)</font><font color="#000000">.append</font><font color="#000000">(</font><font color="#000000">NewsModel._TYPECODE</font><font color="#000000">)</font><font color="#000000">.append</font><font color="#000000">(</font><font color="#2a00ff">&#34;&nbsp;AS&nbsp;n}&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">builder.append</font><font color="#000000">(</font><font color="#2a00ff">&#34;ORDER&nbsp;BY&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">.append</font><font color="#000000">(</font><font color="#2a00ff">&#34;{n:&#34;</font><font color="#000000">)</font><font color="#000000">.append</font><font color="#000000">(</font><font color="#000000">NewsModel.CREATIONTIME</font><font color="#000000">)</font><font color="#000000">.append</font><font color="#000000">(</font><font color="#2a00ff">&#34;}&nbsp;DESC&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">List&lt;NewsModel&gt;&nbsp;list&nbsp;=&nbsp;flexibleSearchService.&lt;NewsModel&gt;&nbsp;search</font><font color="#000000">(</font><font color="#000000">builder.toString</font><font color="#000000">())</font><font color="#000000">.getResult</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">list.isEmpty</font><font color="#000000">())</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;null</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>else</b></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">list.get</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.events.BandAlbumSalesEventListenerIntegrationTest</span></span>

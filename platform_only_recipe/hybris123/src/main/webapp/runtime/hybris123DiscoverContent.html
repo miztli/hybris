@@ -1,0 +1,149 @@
+<html lang="en-us">
+ <head> 
+  <!--
+  © 2017 SAP SE or an SAP affiliate company.  All rights reserved.
+  Please see http://www.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.
+--> 
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <link rel="stylesheet" type="text/css" media="screen, projection" href="themes/sap-light/css/style.css"> 
+  <link rel="stylesheet" type="text/css" href="style/mystyle.css"> 
+  <script type="text/javascript" src="scripts/jquery.min.js"></script> 
+  <script type="text/javascript" src="scripts/hybris123head.js"></script> 
+  <script>
+	$(document).ready(function() {
+		checkSetup();
+		swapSegments();
+		setTimeout( function(){ 
+			   showTrailHome(); 
+			   setFFCommands();
+			   setUpCopyPasteLogic();     
+			}, 2000 );          
+	});
+  </script> 
+ </head> 
+ <body class="en-us sap-light centered navigation-default"> 
+  <div id="onlyifsetupok"> 
+   <div class="placeholder">   
+    <div class="topichead"> 
+     <table> 
+      <tbody> 
+       <tr> 
+        <td class="y123A" id="title1"><h1 class="title topictitle1"><span class="ph">Accelerator</span> </h1></td> 
+        <td class="titlearrows"><a href="#title0">▲</a> <a href="#title2" '>▼</a></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+    <div class="body conbody"> 
+     <p class="shortdesc"><span class="ph">SAP Commerce Accelerator</span> is quick to install and run. You can set it up using just a few commands to get the big picture of what <span class="ph">SAP Commerce</span> offers, before you start to explore and extend <span class="ph">SAP Commerce</span> functionality in later steps. </p> 
+     <p class="p">The <span class="ph"><span class="ph filepath">HYBRISCOMM1811P_X-XXXXXXXX.zip</span></span> contains all the files you need to install and run <span class="ph">SAP Commerce</span> out-of-the-box. An installer program, found in the ZIP, creates and runs various flavors of <span class="ph">SAP Commerce</span>, one of which is the <span class="ph">B2B Accelerator</span>, which you will explore in this first part. <span class="ph">SAP Commerce Accelerator</span> is a ready-to-use web implementation template that enables you to jumpstart your implementation and easily build and maintain a feature-rich omni-channel commerce solution. After installing <span class="ph">Accelerator</span>, you can start to explore both the <span class="ph">Accelerator</span> storefront and <span class="ph">SAP Commerce</span> backend console. This will give you a good idea of what <span class="ph">SAP Commerce</span> offers, before you dive deeper, in later sections. </p> 
+    </div> 
+    <div class="relinfo"> 
+     <div class="relinfotitle ">
+       Related Information 
+     </div> 
+     <div> 
+      <a target="_blank" class="link" href="https://help.hybris.com/1811/hcd/8adca7a186691014bd31f1d2d96624f5.html" title="SAP Commerce Accelerator is a ready-to-use web implementation template that enables you to jumpstart your implementation and easily build and maintain a feature-rich and flexible commerce solution.">Accelerators</a> 
+     </div> 
+    </div> 
+    <table id="anchorrow1"> 
+     <tbody> 
+      <tr id="row1"> 
+       <td id="row1"> 
+        <div class="topic task nested1" aria-labelledby="ariaid-title2" lang="en-US" id="loio2b78186cb0034805b50693bca84c3e8f"> 
+         <br> 
+         <table width="100%"> 
+          <tbody> 
+           <tr> 
+            <td class="fill"></td> 
+            <td class="y123B" nowrap><h2>Install, Build, and Run Accelerator</h2></td> 
+            <td id="copiersrow1"></td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <div class="body taskbody"> 
+          <p class="shortdesc">Install, build, and run <span class="ph">Accelerator</span> so that you can explore the storefront and <span class="ph">Backoffice Administration Cockpit</span>. </p> 
+          <div class="section prereq p"> 
+           <div class="tasklabel"> 
+            <h3 class="sectiontitle tasklabel">Prerequisites</h3> 
+           </div> 
+           <p class="p">Confirm that the following acceptance test fails.</p> 
+           <div style="margin-bottom: 0;"> 
+            <a href="javascript:runATest(&quot;com.hybris.hybris123.Hybris123Tests_testAcceleratorQuickDiveIsOk&quot;)"><h3 class="sectiontitle tasklabel" style="margin-top: 10px;">Acceptance Test <u>►</u></h3></a> 
+           </div> 
+           <acceptance-test id="com.hybris.hybris123.Hybris123Tests_testAcceleratorQuickDiveIsOk"></acceptance-test> 
+           <p class="p">To run the test, execute this command:</p> 
+           <div style="margin-bottom: 0;" class="os"> 
+            <img class="xnix" src="../images/../images/apple.png" height="16"> 
+            <q style="fail" class="xnix" cite="cd $HYBRIS_HOME_DIR/hybris123; mvn test -Dtest=com.hybris.hybris123.runtime.tests.Hybris123Tests#testAcceleratorQuickDiveIsOk test"></q> 
+           </div> 
+           <div style="margin-bottom: 0;" class="os"> 
+            <img class="windows" src="../images/../images/windows.png" height="16"> 
+            <q style="fail" class="windows" cite="cd %HYBRIS_HOME_DIR%\hybris123 &amp; mvn test -Dtest=com.hybris.hybris123.runtime.tests.Hybris123Tests#testAcceleratorQuickDiveIsOk test"></q> 
+           </div> 
+          </div> 
+          <section class="section procedure"> 
+           <span id="steps" class="anchor"></span> 
+           <div class="ol steps tasklabel"> 
+            <h3 class="sectiontitle tasklabel">Procedure</h3> 
+           </div> 
+           <ol class="ol steps"> 
+            <li class="li step stepexpand"> <span class="ph cmd">Navigate to <span class="ph filepath">&lt;HYBRIS_HOME_DIR&gt;</span><span class="ph filepath">/installer</span> and install, build, and run <span class="ph">SAP Commerce</span> with the <span class="ph">B2B Accelerator</span> recipe.</span> 
+             <div class="itemgroup info"> 
+              <p class="p">Once startup is complete, you should see <samp class="ph systemoutput">Server startup in xxxxxx ms</samp> in the console output. This may take a while. </p> 
+             </div> 
+             <div class="itemgroup stepxmp"> 
+              <div style="margin-bottom: 0;" class="os multicmd"> 
+               <img class="xnix" src="../images/../images/apple.png" height="16"> 
+              </div> 
+              <q style="pass" class="xnix" cite="cd $HYBRIS_HOME_DIR/installer; ./install.sh -r b2b_acc setup"></q> 
+              <q style="pass" class="xnix" cite="./install.sh -r b2b_acc initialize"></q> 
+              <q style="pass" class="xnix" cite="./install.sh -r b2b_acc start"></q> 
+              <div style="margin-bottom: 0;" class="os"> 
+               <img class="windows" src="../images/../images/windows.png" height="16"> 
+               <q style="pass" class="windows" cite="cd %HYBRIS_HOME_DIR%\installer &amp; install.bat -r b2b_acc setup &amp; install.bat -r b2b_acc initialize &amp; install.bat -r b2b_acc start"></q> 
+              </div> 
+             </div> </li> 
+            <li class="li step stepexpand"> <span class="ph cmd">Wait for the server to start and then access the storefront at curl9002<span class="ph filepath">/yb2bacceleratorstorefront/?site=powertools&amp;clear=true</span></span> 
+             <div class="itemgroup info"> 
+              <p class="p">This may take a while.</p> 
+             </div> </li> 
+            <li class="li step stepexpand"> <span class="ph cmd">Open <span class="ph">Backoffice</span> at curl9002 where you can configure your storefront settings.</span> </li> 
+            <li class="li step stepexpand"> <span class="ph cmd">Run the acceptance test 
+              <this-test id="com.hybris.hybris123.Hybris123Tests_testAcceleratorQuickDiveIsOk"></this-test> and confirm that it now passes.</span> 
+             <div class="itemgroup stepxmp"> 
+              <div style="margin-bottom: 0;" class="os"> 
+               <img class="xnix" src="../images/../images/apple.png" height="16"> 
+               <q style="pass" class="xnix" cite="cd $HYBRIS_HOME_DIR/hybris123; mvn -Dtest=com.hybris.hybris123.runtime.tests.Hybris123Tests#testAcceleratorQuickDiveIsOk test"></q> 
+              </div> 
+              <div style="margin-bottom: 0;" class="os"> 
+               <img class="windows" src="../images/../images/windows.png" height="16"> 
+               <q style="pass" class="windows" cite="cd %HYBRIS_HOME_DIR%\hybris123 &amp; mvn -Dtest=com.hybris.hybris123.runtime.tests.Hybris123Tests#testAcceleratorQuickDiveIsOk test"></q> 
+              </div> 
+             </div> </li> 
+           </ol> 
+          </section> 
+          <div class="section result" id="loio2b78186cb0034805b50693bca84c3e8f__result_mxt_wk4_4bb"> 
+           <span id="results" class="anchor"></span> 
+           <div class="tasklabel"> 
+            <h3 class="sectiontitle tasklabel">Results</h3> 
+           </div>Congratulations! You have completed the tour. You now know how to use an installer recipe to create an 
+           <span class="ph">SAP Commerce Accelerator</span> storefront, which you can manage through 
+           <span class="ph">Backoffice</span>. 
+          </div> 
+          <div class="section postreq"> 
+           <div class="tasklabel"> 
+            <h3 class="sectiontitle tasklabel">Next Steps</h3> 
+           </div> 
+           <span class="ph">If you are going through multiple guided tours, delete any unzipped <span class="ph">SAP Commerce</span> folders and restart your computer between tours to be sure that there are no <span class="ph">SAP Commerce</span> threads still running. Then perform the steps in <a class="xref" href="https://help.hybris.com/1811/hcd/3f274d777fea4b589579c15630d44f99.html" title="Before you start a SAP Commerce 123 tour, you need to carry out a few preparatory steps.">Before You Start</a> and start your next tour.</span> 
+          </div> 
+         </div> 
+        </div></td> 
+      </tr> 
+     </tbody> 
+    </table>  
+   </div> 
+  </div> 
+  <script type="text/javascript" src="scripts/hybris123tail.js"></script>  
+ </body>
+</html>

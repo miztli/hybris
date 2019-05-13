@@ -1,0 +1,7 @@
+# Hybris123SnippetStart groovycronjobdaily
+
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];cronExpression
+#% afterEach: impex.getLastImportedItem().setActivationTime(new Date());
+; clearoldconcertsCronJob; 0 59 23 * * ?
+
+# Hybris123SnippetEnd

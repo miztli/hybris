@@ -1,0 +1,23 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.service;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.BandModel;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#404040"><b>public&nbsp;interface&nbsp;</b></font><font color="#000000">BandService</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Gets&nbsp;all&nbsp;bands&nbsp;in&nbsp;the&nbsp;system.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">all&nbsp;bands&nbsp;in&nbsp;the&nbsp;system</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">List&lt;BandModel&gt;&nbsp;getBands</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Gets&nbsp;the&nbsp;band&nbsp;for&nbsp;the&nbsp;given&nbsp;code.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@throws&nbsp;</font><font color="#3f5fbf">de.hybris.platform.servicelayer.exceptions.AmbiguousIdentifierException</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;case&nbsp;more&nbsp;then&nbsp;one&nbsp;band&nbsp;is&nbsp;found&nbsp;for&nbsp;the&nbsp;given&nbsp;code</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@throws&nbsp;</font><font color="#3f5fbf">de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;case&nbsp;no&nbsp;band&nbsp;for&nbsp;the&nbsp;given&nbsp;code&nbsp;can&nbsp;be&nbsp;found</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">BandModel&nbsp;getBandForCode</font><font color="#000000">(</font><font color="#000000">String&nbsp;code</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.service.BandService</span></span>

@@ -1,0 +1,13 @@
+<p class=isa_info ><code>
+<font color="#000000">#&nbsp;Define&nbsp;the&nbsp;ScriptingJob</font><br />
+<font color="#000000">INSERT_UPDATE&nbsp;ScriptingJob;&nbsp;code</font><font color="#000000">[</font><font color="#000000">unique=&nbsp;</font><font color="#404040"><b>true&nbsp;</b></font><font color="#000000">]</font><font color="#000000">;scriptURI</font><br />
+<font color="#000000">;clearoldconcertsJob;model:</font><font color="#3f7f5f">//clearoldconcerts</font><br />
+<font color="#ffffff"></font><br />
+<font color="#000000">#&nbsp;Define&nbsp;the&nbsp;CronJob</font><br />
+<font color="#000000">INSERT_UPDATE&nbsp;CronJob;&nbsp;code</font><font color="#000000">[</font><font color="#000000">unique=&nbsp;</font><font color="#404040"><b>true&nbsp;</b></font><font color="#000000">]</font><font color="#000000">;job</font><font color="#000000">(</font><font color="#000000">code</font><font color="#000000">)</font><font color="#000000">;sessionLanguage</font><font color="#000000">(</font><font color="#000000">isocode</font><font color="#000000">)</font><br />
+<font color="#000000">;clearoldconcertsCronJob;clearoldconcertsJob;en</font><br />
+<font color="#ffffff"></font><br />
+<font color="#000000">#&nbsp;Define&nbsp;the&nbsp;trigger</font><br />
+<font color="#000000">INSERT_UPDATE&nbsp;Trigger;cronjob</font><font color="#000000">(</font><font color="#000000">code</font><font color="#000000">)[</font><font color="#000000">unique=</font><font color="#404040"><b>true</b></font><font color="#000000">]</font><font color="#000000">;cronExpression</font><br />
+<font color="#000000">#%&nbsp;afterEach:&nbsp;impex.getLastImportedItem</font><font color="#000000">()</font><font color="#000000">.setActivationTime</font><font color="#000000">(</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">Date</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#000000">;&nbsp;clearoldconcertsCronJob;&nbsp;</font><font color="#990000">0</font><font color="#000000">/</font><font color="#990000">10&nbsp;</font><font color="#000000">*&nbsp;*&nbsp;*&nbsp;*&nbsp;?</font></code><span class="codenote">Source: groovycronjobtrigger</span></span>

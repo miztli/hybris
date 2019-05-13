@@ -1,0 +1,25 @@
+<p class=isa_info ><code>
+<font color="#000000">&lt;%</font><font color="#646464">@taglib&nbsp;</font><font color="#000000">prefix=</font><font color="#2a00ff">&#34;c&#34;&nbsp;</font><font color="#000000">uri=</font><font color="#2a00ff">&#34;http://java.sun.com/jsp/jstl/core&#34;</font><font color="#000000">%&gt;</font><br />
+<font color="#000000">&lt;!doctype&nbsp;html&gt;</font><br />
+<font color="#000000">&lt;html&gt;</font><br />
+<font color="#000000">&lt;title&gt;Band&nbsp;Details&lt;/title&gt;</font><br />
+<font color="#000000">&lt;body&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;h1&gt;Band&nbsp;Details&lt;/h1&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Band&nbsp;Details&nbsp;</font><font color="#404040"><b>for&nbsp;</b></font><font color="#000000">$</font><font color="#000000">{</font><font color="#000000">band.name</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;p&gt;&lt;img&nbsp;src=</font><font color="#2a00ff">&#34;${band.imageURL}&#34;</font><font color="#000000">/&gt;&lt;/p&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;p&gt;$</font><font color="#000000">{</font><font color="#000000">band.description</font><font color="#000000">}</font><font color="#000000">&lt;/p&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;p&gt;Music&nbsp;type:&lt;/p&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;ul&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;c:forEach&nbsp;var=</font><font color="#2a00ff">&#34;genre&#34;&nbsp;</font><font color="#000000">items=</font><font color="#2a00ff">&#34;${band.genres}&#34;</font><font color="#000000">&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;li&gt;$</font><font color="#000000">{</font><font color="#000000">genre</font><font color="#000000">}</font><font color="#000000">&lt;/li&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;/c:forEach&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;/ul&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;p&gt;Tour&nbsp;History:&lt;/p&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;ul&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;c:forEach&nbsp;var=</font><font color="#2a00ff">&#34;tour&#34;&nbsp;</font><font color="#000000">items=</font><font color="#2a00ff">&#34;${band.tours}&#34;</font><font color="#000000">&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;li&gt;&lt;a&nbsp;href=</font><font color="#2a00ff">&#34;../tours/${tour.id}&#34;</font><font color="#000000">&gt;$</font><font color="#000000">{</font><font color="#000000">tour.tourName</font><font color="#000000">}</font><font color="#000000">&lt;/a&gt;</font><font color="#000000">(</font><font color="#000000">number&nbsp;of&nbsp;concerts:&nbsp;$</font><font color="#000000">{</font><font color="#000000">tour.numberOfConcerts</font><font color="#000000">})</font><font color="#000000">&lt;/li&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;/c:forEach&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;/ul&gt;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">&lt;a&nbsp;href=</font><font color="#2a00ff">&#34;../bands&#34;</font><font color="#000000">&gt;Back&nbsp;to&nbsp;Band&nbsp;List&lt;/a&gt;</font><br />
+<font color="#000000">&lt;/body&gt;</font><br />
+<font color="#000000">&lt;/html&gt;</font></code><span class="codenote">Source: BandDetailsWithMedia.jsp</span></span>

@@ -1,0 +1,9 @@
+<!-- Hybris123SnippetStart localextensionsexample.xml -->
+<hybrisconfig xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../bin/platform/resources/schemas/extensions.xsd'>
+  <extensions>
+    <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
+    <!-- Your new extension -->
+    <extension dir="../custom/concerttours"/>     
+  </extensions>
+</hybrisconfig>
+<!-- Hybris123SnippetEnd -->

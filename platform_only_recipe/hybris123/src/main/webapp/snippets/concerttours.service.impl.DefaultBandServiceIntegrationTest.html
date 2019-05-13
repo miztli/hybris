@@ -1,0 +1,90 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.service.impl;</font><br />
+<font color="#404040"><b>import&nbsp;static&nbsp;</b></font><font color="#000000">org.junit.Assert.assertEquals;</font><br />
+<font color="#404040"><b>import&nbsp;static&nbsp;</b></font><font color="#000000">org.junit.Assert.assertNotNull;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.bootstrap.annotations.IntegrationTest;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.core.model.product.ProductModel;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.jalo.CoreBasicDataCreator;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.ServicelayerTest;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.model.ModelService;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.variants.model.VariantProductModel;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Collection;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Collections;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Set;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">javax.annotation.Resource;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Assert;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Before;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Test;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.BandModel;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.service.BandService;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#646464">@IntegrationTest</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">DefaultBandServiceIntegrationTest&nbsp;</font><font color="#404040"><b>extends&nbsp;</b></font><font color="#000000">ServicelayerTest</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Resource</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">BandService&nbsp;bandService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Resource</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">ModelService&nbsp;modelService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Test&nbsp;band&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">BandModel&nbsp;bandModel;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Name&nbsp;of&nbsp;test&nbsp;band.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_CODE&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;101-JAZ&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Name&nbsp;of&nbsp;test&nbsp;band.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_NAME&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Tight&nbsp;Notes&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;History&nbsp;of&nbsp;test&nbsp;band.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_HISTORY&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;New&nbsp;contemporary,&nbsp;7-piece&nbsp;Jaz&nbsp;unit&nbsp;from&nbsp;London,&nbsp;formed&nbsp;in&nbsp;2015&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Before</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setUp</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;instance&nbsp;of&nbsp;a&nbsp;BandModel&nbsp;will&nbsp;be&nbsp;used&nbsp;by&nbsp;the&nbsp;tests</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModel&nbsp;=&nbsp;modelService.create</font><font color="#000000">(</font><font color="#000000">BandModel.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModel.setCode</font><font color="#000000">(</font><font color="#000000">BAND_CODE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModel.setName</font><font color="#000000">(</font><font color="#000000">BAND_NAME</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModel.setAlbumSales</font><font color="#000000">(</font><font color="#404040"><b>null</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModel.setHistory</font><font color="#000000">(</font><font color="#000000">BAND_HISTORY</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Test</font><font color="#000000">(</font><font color="#000000">expected&nbsp;=&nbsp;UnknownIdentifierException.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">testFailBehavior</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandService.getBandForCode</font><font color="#000000">(</font><font color="#000000">BAND_CODE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;This&nbsp;test&nbsp;tests&nbsp;and&nbsp;demonstrates&nbsp;that&nbsp;the&nbsp;Service's&nbsp;getAllBand&nbsp;method&nbsp;calls&nbsp;the&nbsp;DAOs'&nbsp;getAllBand&nbsp;method&nbsp;and</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;returns&nbsp;the&nbsp;data&nbsp;it&nbsp;receives&nbsp;from&nbsp;it.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Test</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">testBandService</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">List&lt;BandModel&gt;&nbsp;bandModels&nbsp;=&nbsp;bandService.getBands</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">size&nbsp;=&nbsp;bandModels.size</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">modelService.save</font><font color="#000000">(</font><font color="#000000">bandModel</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModels&nbsp;=&nbsp;bandService.getBands</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertEquals</font><font color="#000000">(</font><font color="#000000">size&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;bandModels.size</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertEquals</font><font color="#000000">(</font><font color="#2a00ff">&#34;Unexpected&nbsp;band&nbsp;found&#34;</font><font color="#000000">,&nbsp;bandModel,&nbsp;bandModels.get</font><font color="#000000">(</font><font color="#000000">bandModels.size</font><font color="#000000">()&nbsp;</font><font color="#000000">-&nbsp;</font><font color="#990000">1</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">BandModel&nbsp;persistedBandModel&nbsp;=&nbsp;bandService.getBandForCode</font><font color="#000000">(</font><font color="#000000">BAND_CODE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertNotNull</font><font color="#000000">(</font><font color="#2a00ff">&#34;No&nbsp;band&nbsp;found&#34;</font><font color="#000000">,&nbsp;persistedBandModel</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertEquals</font><font color="#000000">(</font><font color="#2a00ff">&#34;Different&nbsp;band&nbsp;found&#34;</font><font color="#000000">,&nbsp;bandModel,&nbsp;persistedBandModel</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;This&nbsp;test&nbsp;tests&nbsp;and&nbsp;demonstrates&nbsp;that&nbsp;the&nbsp;Service's&nbsp;getAllBand&nbsp;method&nbsp;calls&nbsp;the&nbsp;DAOs'&nbsp;getAllBand&nbsp;method&nbsp;and</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;returns&nbsp;the&nbsp;data&nbsp;it&nbsp;receives&nbsp;from&nbsp;it.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Test</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">testBandServiceTours</font><font color="#000000">()&nbsp;</font><font color="#404040"><b>throws&nbsp;</b></font><font color="#000000">Exception</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">createCoreData</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">importCsv</font><font color="#000000">(</font><font color="#2a00ff">&#34;/impex/concerttours-bands.impex&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;utf-8&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">importCsv</font><font color="#000000">(</font><font color="#2a00ff">&#34;/impex/concerttours-yBandTour.impex&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;utf-8&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">BandModel&nbsp;band&nbsp;=&nbsp;bandService.getBandForCode</font><font color="#000000">(</font><font color="#2a00ff">&#34;A001&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertNotNull</font><font color="#000000">(</font><font color="#2a00ff">&#34;No&nbsp;band&nbsp;found&#34;</font><font color="#000000">,&nbsp;band</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">Set&lt;ProductModel&gt;&nbsp;tours&nbsp;=&nbsp;band.getTours</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertNotNull</font><font color="#000000">(</font><font color="#2a00ff">&#34;No&nbsp;tour&nbsp;found&#34;</font><font color="#000000">,&nbsp;tours</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Assert.assertEquals</font><font color="#000000">(</font><font color="#2a00ff">&#34;not&nbsp;found&nbsp;one&nbsp;tour&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;tours.size</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">Object</font><font color="#000000">[]&nbsp;</font><font color="#000000">objects&nbsp;=&nbsp;</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">Object</font><font color="#000000">[</font><font color="#990000">5</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">Collection&lt;VariantProductModel&gt;&nbsp;concerts&nbsp;=&nbsp;</font><font color="#000000">((</font><font color="#000000">ProductModel</font><font color="#000000">)&nbsp;</font><font color="#000000">tours.toArray</font><font color="#000000">(</font><font color="#000000">objects</font><font color="#000000">)[</font><font color="#990000">0</font><font color="#000000">])</font><font color="#000000">.getVariants</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertNotNull</font><font color="#000000">(</font><font color="#2a00ff">&#34;No&nbsp;tour&nbsp;found&#34;</font><font color="#000000">,&nbsp;tours</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Assert.assertEquals</font><font color="#000000">(</font><font color="#2a00ff">&#34;not&nbsp;found&nbsp;one&nbsp;tour&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">6</font><font color="#000000">,&nbsp;concerts.size</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.service.impl.DefaultBandServiceIntegrationTest</span></span>

@@ -1,0 +1,21 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.constraints;</font><br />
+<font color="#404040"><b>import&nbsp;static&nbsp;</b></font><font color="#000000">java.lang.annotation.ElementType.FIELD;</font><br />
+<font color="#404040"><b>import&nbsp;static&nbsp;</b></font><font color="#000000">java.lang.annotation.RetentionPolicy.RUNTIME;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.lang.annotation.Documented;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.lang.annotation.Retention;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.lang.annotation.Target;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">javax.validation.Constraint;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">javax.validation.Payload;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#646464">@Target</font><font color="#000000">(</font><br />
+<font color="#000000">{&nbsp;</font><font color="#000000">FIELD&nbsp;</font><font color="#000000">})</font><br />
+<font color="#646464">@Retention</font><font color="#000000">(</font><font color="#000000">RUNTIME</font><font color="#000000">)</font><br />
+<font color="#646464">@Constraint</font><font color="#000000">(</font><font color="#000000">validatedBy&nbsp;=&nbsp;NotLoremIpsumValidator.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><br />
+<font color="#646464">@Documented</font><br />
+<font color="#404040"><b>public&nbsp;@interface&nbsp;</b></font><font color="#000000">NotLoremIpsum</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;message</font><font color="#000000">()&nbsp;</font><font color="#404040"><b>default&nbsp;</b></font><font color="#2a00ff">&#34;{concerttours.constraints.NotLoremIpsum.message}&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Class&lt;?&gt;</font><font color="#000000">[]&nbsp;</font><font color="#000000">groups</font><font color="#000000">()&nbsp;</font><font color="#404040"><b>default&nbsp;</b></font><font color="#000000">{}</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Class&lt;?&nbsp;</font><font color="#404040"><b>extends&nbsp;</b></font><font color="#000000">Payload&gt;</font><font color="#000000">[]&nbsp;</font><font color="#000000">payload</font><font color="#000000">()&nbsp;</font><font color="#404040"><b>default&nbsp;</b></font><font color="#000000">{}</font><font color="#000000">;</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.constraints.NotLoremIpsum</span></span>

@@ -1,0 +1,43 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.jobs;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.bootstrap.annotations.IntegrationTest;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.cronjob.enums.CronJobResult;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.ServicelayerTransactionalTest;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.cronjob.PerformResult;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.model.ModelService;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Date;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">javax.annotation.Resource;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Assert;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Test;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.NewsModel;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#646464">@IntegrationTest</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">SendNewsJobIntegrationTest&nbsp;</font><font color="#404040"><b>extends&nbsp;</b></font><font color="#000000">ServicelayerTransactionalTest</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Resource</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">ModelService&nbsp;modelService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Resource</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">SendNewsJob&nbsp;sendNewsJob;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Test</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">testNoNewsItems</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">PerformResult&nbsp;result&nbsp;=&nbsp;sendNewsJob.perform</font><font color="#000000">(</font><font color="#404040"><b>null</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Assert.assertEquals</font><font color="#000000">(</font><font color="#2a00ff">&#34;Job&nbsp;did&nbsp;not&nbsp;perform&nbsp;correctly&#34;</font><font color="#000000">,&nbsp;CronJobResult.SUCCESS,&nbsp;result.getResult</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Test</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">testSendingNews</font><font color="#000000">()&nbsp;</font><font color="#404040"><b>throws&nbsp;</b></font><font color="#000000">Exception</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">NewsModel&nbsp;news1&nbsp;=&nbsp;modelService.create</font><font color="#000000">(</font><font color="#000000">NewsModel.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">news1.setHeadline</font><font color="#000000">(</font><font color="#2a00ff">&#34;test&nbsp;headline&nbsp;1&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">news1.setContent</font><font color="#000000">(</font><font color="#2a00ff">&#34;test&nbsp;content&nbsp;1&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">news1.setDate</font><font color="#000000">(</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">Date</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">NewsModel&nbsp;news2&nbsp;=&nbsp;modelService.create</font><font color="#000000">(</font><font color="#000000">NewsModel.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">news2.setHeadline</font><font color="#000000">(</font><font color="#2a00ff">&#34;test&nbsp;headline&nbsp;2&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">news2.setContent</font><font color="#000000">(</font><font color="#2a00ff">&#34;test&nbsp;content&nbsp;2&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">news2.setDate</font><font color="#000000">(</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">Date</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">modelService.saveAll</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">PerformResult&nbsp;result&nbsp;=&nbsp;sendNewsJob.perform</font><font color="#000000">(</font><font color="#404040"><b>null</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Assert.assertEquals</font><font color="#000000">(</font><font color="#2a00ff">&#34;Job&nbsp;did&nbsp;not&nbsp;perform&nbsp;correctly&#34;</font><font color="#000000">,&nbsp;CronJobResult.SUCCESS,&nbsp;result.getResult</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.jobs.SendNewsJobIntegrationTest</span></span>

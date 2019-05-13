@@ -1,0 +1,45 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.service.impl;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.exceptions.AmbiguousIdentifierException;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.beans.factory.annotation.Required;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.daos.BandDAO;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.BandModel;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.service.BandService;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">DefaultBandService&nbsp;</font><font color="#404040"><b>implements&nbsp;</b></font><font color="#000000">BandService</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">BandDAO&nbsp;bandDAO;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Gets&nbsp;all&nbsp;bands&nbsp;by&nbsp;delegating&nbsp;to&nbsp;</font><font color="#3f3fbf">{@link&nbsp;BandDAO#findBands()}</font><font color="#3f5fbf">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#000000">List&lt;BandModel&gt;&nbsp;getBands</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">bandDAO.findBands</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Gets&nbsp;all&nbsp;bands&nbsp;for&nbsp;given&nbsp;code&nbsp;by&nbsp;delegating&nbsp;to&nbsp;</font><font color="#3f3fbf">{@link&nbsp;BandDAO#findBandsByCode(String)}&nbsp;</font><font color="#3f5fbf">and&nbsp;then&nbsp;assuring</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;uniqueness&nbsp;of&nbsp;result.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#000000">BandModel&nbsp;getBandForCode</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;code</font><font color="#000000">)&nbsp;</font><font color="#404040"><b>throws&nbsp;</b></font><font color="#000000">AmbiguousIdentifierException,&nbsp;UnknownIdentifierException</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">List&lt;BandModel&gt;&nbsp;result&nbsp;=&nbsp;bandDAO.findBandsByCode</font><font color="#000000">(</font><font color="#000000">code</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">result.isEmpty</font><font color="#000000">())</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>throw&nbsp;new&nbsp;</b></font><font color="#000000">UnknownIdentifierException</font><font color="#000000">(</font><font color="#2a00ff">&#34;Band&nbsp;with&nbsp;code&nbsp;'&#34;&nbsp;</font><font color="#000000">+&nbsp;code&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;'&nbsp;not&nbsp;found!&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>else&nbsp;if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">result.size</font><font color="#000000">()&nbsp;</font><font color="#000000">&gt;&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>throw&nbsp;new&nbsp;</b></font><font color="#000000">AmbiguousIdentifierException</font><font color="#000000">(</font><font color="#2a00ff">&#34;Band&nbsp;code&nbsp;'&#34;&nbsp;</font><font color="#000000">+&nbsp;code&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;'&nbsp;is&nbsp;not&nbsp;unique,&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;result.size</font><font color="#000000">()&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;bands&nbsp;found!&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">result.get</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Required</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setBandDAO</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">BandDAO&nbsp;bandDAO</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>this</b></font><font color="#000000">.bandDAO&nbsp;=&nbsp;bandDAO;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.service.impl.DefaultBandService</span></span>

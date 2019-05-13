@@ -1,0 +1,22 @@
+// Hybris123SnippetStart cronjobscript
+import de.hybris.platform.cronjob.enums.*
+import de.hybris.platform.servicelayer.cronjob.PerformResult
+import de.hybris.platform.servicelayer.search.*
+import de.hybris.platform.servicelayer.model.*
+import de.hybris.platform.catalog.enums.ArticleApprovalStatus 
+import concerttours.model.ConcertModel
+  
+searchService = spring.getBean("flexibleSearchService")
+modelService = spring.getBean("modelService")
+query = new FlexibleSearchQuery("Select {pk} from {Concert}");
+searchService.search(query).getResult().each {
+  if (it.daysUntil < 1) 
+  { 
+    it.approvalStatus = ArticleApprovalStatus.CHECK
+  }
+  modelService.saveAll()
+}
+  
+new PerformResult(CronJobResult.SUCCESS, CronJobStatus.FINISHED)To
+
+// Hybris123SnippetEnd

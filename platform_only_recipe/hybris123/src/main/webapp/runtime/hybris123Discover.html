@@ -1,0 +1,89 @@
+<html>
+<!--
+  © 2017 SAP SE or an SAP affiliate company.  All rights reserved.
+  Please see http://www.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.
+-->
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+  <head>
+    <script src="scripts/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="themes/sap-light/css/style.css">
+    <link rel="stylesheet" type="text/css" href="style/mystyle.css"> 
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>    
+    <script type="text/javascript" src="scripts/hybris123head.js"></script> 
+    <script type="text/javascript" src="scripts/hybris123logic.js"></script> 
+    <title>Commerce 123</title>
+    <link rel="icon" type="image/x-icon"  href="../images/logo_only.ico">
+  </head>
+<body ng-app="myApp" ng-controller="myCtrl" onload="submitForms()" >
+<div id="toprow">
+	<div id="title-row">
+		<h1 id="pagetitle">Commerce 123</h1>
+		<h2 id="pagesub">a personalized, interactive, test-driven, SAP Commerce tutorial</h2>
+		<div id="logobox"></div>
+	</div>
+	<div id="setup">
+		<div id="form">
+			<h2>Personalize your setup before you begin ...</h2>
+			<label>Operating System: </label>
+			<select name="os" ng-model="OS">
+			<option value="Mac">Mac (or Linux)</option>
+			<option value="Windows">Windows</option>
+			</select>
+			<label>Path to your Commerce 123 Directory: </label>
+			
+			<input  ng-model="ziphome" size=50 type="text" name="ziphome" placeholder="Hybris123 Directory"/>  
+			<input id="personal" type="submit" class="button" value="Personalize" ng-click="callSubmitForms()">
+		</div>
+		<div id="usefullinks">
+			<h2>Useful Links</h2>
+			<ul>
+			<li><a target="_blank" href="../index.html">Commerce 123 Start Page</a></li>
+			<li><a target="_blank" href="https://help.hybris.com/">SAP Customer Experience Help</a></li>
+			<li><a target="_blank" href="https://experts.hybris.com/index.html">SAP Customer Experience Experts</a></li>		
+			</ul>
+		</div>
+	       	<div style="display:none" width="50%" id="form">
+				Status/Tip:
+				<form  width=100% height=100%>
+					<textarea rows="4" cols="150"  id=statuspanel name=statuspanel  >{{currentStatus}}</textarea>
+				</form>
+				<div id=statuspanel name=statuspanel ></div>
+	    	</div>
+	    </div>
+	    <div id="toolbox" class="button">Close Toolbox</div>
+	    </div>
+		 	<table data-ng-init="initFromUrl()" width=100% >
+		 	<tr style="display:none"><td colspan=3 >Commerce 123 Setup: 		 			 	
+			 	<form style="display:none" name=form1 id=form1 action="http://localhost:8080/runtime/hybris123DiscoverContent.html" method="get" target="frame1">
+					 <input type="text" name="os" ng-model="OS"  >			
+					 <input type="text" name="zipname" ng-model="zipname" >
+					 <input type="text" name="ignoreOS" ng-model="ignoreOS" >
+					 <input type="text" name="trailhome" ng-model="trailhome"  >
+					 <input type="text" name="email" ng-model="email"  >
+				</form>		
+				
+				<form name=form0 id=form0 action="http://localhost:8080/runtime/hybris123DiscoverIndex.html" method="get" target="frame0">
+					 <input type="text" name="os" ng-model="OS" >			
+					 <input type="text" name="zipname" ng-model="zipname" >
+					 <input type="text" name="ignoreOS" ng-model="ignoreOS" >
+					 <input type="text" name="trailhome" ng-model="trailhome" >
+					 <input type="text" name="email" ng-model="email"  >
+				</form>		
+								
+			</td></tr>	
+	</table>
+<div id="content">
+	<table height=100% >
+	 	<tr valign=top width=100% >
+	 		<td valign=top width=20% nowrap>
+	 			<iframe nowrap name=frame0 id=frame0 frameBorder="0" height=100% width=100% src="empty.html"></iframe>
+	 		</td>
+	 		<td valign=top width=80%>
+	 			<iframe name=frame1 id=frame1 frameBorder="0" height=100% width=100% src="empty.html"></iframe>	
+	 		</td>
+	 	</tr>
+	 </table>
+</div>
+	</body>
+</html>

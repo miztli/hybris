@@ -1,0 +1,29 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.attributehandlers;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.model.attribute.AbstractDynamicAttributeHandler;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.time.Duration;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.time.ZoneId;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.time.ZonedDateTime;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.stereotype.Component;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.ConcertModel;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#646464">@Component</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">ConcertDaysUntilAttributeHandler&nbsp;</font><font color="#404040"><b>extends&nbsp;</b></font><font color="#000000">AbstractDynamicAttributeHandler&lt;Long,&nbsp;ConcertModel&gt;</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#000000">Long&nbsp;get</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">ConcertModel&nbsp;model</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">model.getDate</font><font color="#000000">()&nbsp;</font><font color="#000000">==&nbsp;</font><font color="#404040"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;null</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">ZonedDateTime&nbsp;concertDate&nbsp;=&nbsp;model.getDate</font><font color="#000000">()</font><font color="#000000">.toInstant</font><font color="#000000">()</font><font color="#000000">.atZone</font><font color="#000000">(</font><font color="#000000">ZoneId.systemDefault</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">ZonedDateTime&nbsp;now&nbsp;=&nbsp;ZonedDateTime.now</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">concertDate.isBefore</font><font color="#000000">(</font><font color="#000000">now</font><font color="#000000">))</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">Long.valueOf</font><font color="#000000">(</font><font color="#990000">0L</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">Duration&nbsp;duration&nbsp;=&nbsp;Duration.between</font><font color="#000000">(</font><font color="#000000">now,&nbsp;concertDate</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">Long.valueOf</font><font color="#000000">(</font><font color="#000000">duration.toDays</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.attributehandlers.ConcertDaysUntilAttributeHandler</span></span>

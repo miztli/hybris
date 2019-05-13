@@ -1,0 +1,89 @@
+<p class=isa_info ><code>
+<font color="#3f7f5f">/*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;[y]&nbsp;hybris&nbsp;Platform</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Copyright&nbsp;(c)&nbsp;2000-2017&nbsp;SAP&nbsp;SE</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;All&nbsp;rights&nbsp;reserved.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;This&nbsp;software&nbsp;is&nbsp;the&nbsp;confidential&nbsp;and&nbsp;proprietary&nbsp;information&nbsp;of&nbsp;SAP</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Hybris&nbsp;(&#34;Confidential&nbsp;Information&#34;).&nbsp;You&nbsp;shall&nbsp;not&nbsp;disclose&nbsp;such</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Confidential&nbsp;Information&nbsp;and&nbsp;shall&nbsp;use&nbsp;it&nbsp;only&nbsp;in&nbsp;accordance&nbsp;with&nbsp;the</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;terms&nbsp;of&nbsp;the&nbsp;license&nbsp;agreement&nbsp;you&nbsp;entered&nbsp;into&nbsp;with&nbsp;SAP&nbsp;Hybris.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*/</font><br />
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.service.impl;</font><br />
+<font color="#404040"><b>import&nbsp;static&nbsp;</b></font><font color="#000000">org.junit.Assert.assertEquals;</font><br />
+<font color="#404040"><b>import&nbsp;static&nbsp;</b></font><font color="#000000">org.mockito.Mockito.mock;</font><br />
+<font color="#404040"><b>import&nbsp;static&nbsp;</b></font><font color="#000000">org.mockito.Mockito.when;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.bootstrap.annotations.UnitTest;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Arrays;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Collections;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Before;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Test;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.daos.BandDAO;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.BandModel;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;This&nbsp;test&nbsp;file&nbsp;tests&nbsp;and&nbsp;demonstrates&nbsp;the&nbsp;behavior&nbsp;of&nbsp;the&nbsp;BandService's&nbsp;methods&nbsp;getAllBand,&nbsp;getBand&nbsp;and&nbsp;saveBand.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;We&nbsp;already&nbsp;have&nbsp;a&nbsp;separate&nbsp;file&nbsp;for&nbsp;testing&nbsp;the&nbsp;Band&nbsp;DAO,&nbsp;and&nbsp;we&nbsp;do&nbsp;not&nbsp;want&nbsp;this&nbsp;test&nbsp;to&nbsp;implicitly&nbsp;test&nbsp;that&nbsp;in</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;addition&nbsp;to&nbsp;the&nbsp;BandService.&nbsp;This&nbsp;test&nbsp;therefore&nbsp;mocks&nbsp;out&nbsp;the&nbsp;Band&nbsp;DAO&nbsp;leaving&nbsp;us&nbsp;to&nbsp;test&nbsp;the&nbsp;Service&nbsp;in&nbsp;isolation,</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;whose&nbsp;behavior&nbsp;should&nbsp;be&nbsp;simply&nbsp;to&nbsp;wraps&nbsp;calls&nbsp;to&nbsp;the&nbsp;DAO:&nbsp;forward&nbsp;calls&nbsp;to&nbsp;it,&nbsp;and&nbsp;passing&nbsp;on&nbsp;the&nbsp;results&nbsp;it</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;receives&nbsp;from&nbsp;it.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#646464">@UnitTest</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">DefaultBandServiceUnitTest</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">DefaultBandService&nbsp;bandService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">BandDAO&nbsp;bandDAO;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">BandModel&nbsp;bandModel;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Name&nbsp;of&nbsp;test&nbsp;band.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_CODE&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Ch00X&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;Name&nbsp;of&nbsp;test&nbsp;band.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_NAME&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Singers&nbsp;All&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**&nbsp;History&nbsp;of&nbsp;test&nbsp;band.&nbsp;*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_HISTORY&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Medieval&nbsp;choir&nbsp;formed&nbsp;in&nbsp;2001,&nbsp;based&nbsp;in&nbsp;Munich&nbsp;famous&nbsp;for&nbsp;authentic&nbsp;monastic&nbsp;chants&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Before</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setUp</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;We&nbsp;will&nbsp;be&nbsp;testing&nbsp;BandServiceImpl&nbsp;-&nbsp;an&nbsp;implementation&nbsp;of&nbsp;BandService</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandService&nbsp;=&nbsp;</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">DefaultBandService</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;So&nbsp;as&nbsp;not&nbsp;to&nbsp;implicitly&nbsp;also&nbsp;test&nbsp;the&nbsp;DAO,&nbsp;we&nbsp;will&nbsp;mock&nbsp;out&nbsp;the&nbsp;DAO&nbsp;using&nbsp;Mockito</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandDAO&nbsp;=&nbsp;mock</font><font color="#000000">(</font><font color="#000000">BandDAO.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;and&nbsp;inject&nbsp;this&nbsp;mocked&nbsp;DAO&nbsp;into&nbsp;the&nbsp;BandService</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandService.setBandDAO</font><font color="#000000">(</font><font color="#000000">bandDAO</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;instance&nbsp;of&nbsp;a&nbsp;BandModel&nbsp;will&nbsp;be&nbsp;used&nbsp;by&nbsp;the&nbsp;tests</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModel&nbsp;=&nbsp;</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">BandModel</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModel.setCode</font><font color="#000000">(</font><font color="#000000">BAND_CODE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModel.setName</font><font color="#000000">(</font><font color="#000000">BAND_NAME</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModel.setAlbumSales</font><font color="#000000">(</font><font color="#404040"><b>null</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">bandModel.setHistory</font><font color="#000000">(</font><font color="#000000">BAND_HISTORY</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;This&nbsp;test&nbsp;tests&nbsp;and&nbsp;demonstrates&nbsp;that&nbsp;the&nbsp;Service's&nbsp;getAllBands&nbsp;method&nbsp;calls&nbsp;the&nbsp;DAOs'&nbsp;getBands&nbsp;method&nbsp;and&nbsp;returns</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;the&nbsp;data&nbsp;it&nbsp;receives&nbsp;from&nbsp;it.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Test</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">testGetAllBands</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;We&nbsp;construct&nbsp;the&nbsp;data&nbsp;we&nbsp;would&nbsp;like&nbsp;the&nbsp;mocked&nbsp;out&nbsp;DAO&nbsp;to&nbsp;return&nbsp;when&nbsp;called</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">List&lt;BandModel&gt;&nbsp;bandModels&nbsp;=&nbsp;Arrays.asList</font><font color="#000000">(</font><font color="#000000">bandModel</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//Use&nbsp;Mockito&nbsp;and&nbsp;compare&nbsp;results</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">when</font><font color="#000000">(</font><font color="#000000">bandDAO.findBands</font><font color="#000000">())</font><font color="#000000">.thenReturn</font><font color="#000000">(</font><font color="#000000">bandModels</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Now&nbsp;we&nbsp;make&nbsp;the&nbsp;call&nbsp;to&nbsp;BandService's&nbsp;getBands()&nbsp;which&nbsp;we&nbsp;expect&nbsp;to&nbsp;call&nbsp;the&nbsp;DAOs'&nbsp;findBands()&nbsp;method</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">List&lt;BandModel&gt;&nbsp;result&nbsp;=&nbsp;bandService.getBands</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;We&nbsp;then&nbsp;verify&nbsp;that&nbsp;the&nbsp;results&nbsp;returned&nbsp;from&nbsp;the&nbsp;service&nbsp;match&nbsp;those&nbsp;returned&nbsp;by&nbsp;the&nbsp;mocked-out&nbsp;DAO</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertEquals</font><font color="#000000">(</font><font color="#2a00ff">&#34;We&nbsp;should&nbsp;find&nbsp;one&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;result.size</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertEquals</font><font color="#000000">(</font><font color="#2a00ff">&#34;And&nbsp;should&nbsp;equals&nbsp;what&nbsp;the&nbsp;mock&nbsp;returned&#34;</font><font color="#000000">,&nbsp;bandModel,&nbsp;result.get</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Test</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">testGetBand</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Tell&nbsp;Mockito&nbsp;we&nbsp;expect&nbsp;a&nbsp;call&nbsp;to&nbsp;the&nbsp;DAO's&nbsp;getBand(),&nbsp;and,&nbsp;if&nbsp;it&nbsp;occurs,&nbsp;Mockito&nbsp;should&nbsp;return&nbsp;BandModel&nbsp;instance</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">when</font><font color="#000000">(</font><font color="#000000">bandDAO.findBandsByCode</font><font color="#000000">(</font><font color="#000000">BAND_CODE</font><font color="#000000">))</font><font color="#000000">.thenReturn</font><font color="#000000">(</font><font color="#000000">Collections.singletonList</font><font color="#000000">(</font><font color="#000000">bandModel</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;We&nbsp;make&nbsp;the&nbsp;call&nbsp;to&nbsp;the&nbsp;Service's&nbsp;getBandForCode()&nbsp;which&nbsp;we&nbsp;expect&nbsp;to&nbsp;call&nbsp;the&nbsp;DAO's&nbsp;findBandsByCode()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">BandModel&nbsp;result&nbsp;=&nbsp;bandService.getBandForCode</font><font color="#000000">(</font><font color="#000000">BAND_CODE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;We&nbsp;then&nbsp;verify&nbsp;that&nbsp;the&nbsp;result&nbsp;returned&nbsp;from&nbsp;the&nbsp;Service&nbsp;is&nbsp;the&nbsp;same&nbsp;as&nbsp;that&nbsp;returned&nbsp;from&nbsp;the&nbsp;DAO</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">assertEquals</font><font color="#000000">(</font><font color="#2a00ff">&#34;Band&nbsp;should&nbsp;equals()&nbsp;what&nbsp;the&nbsp;mock&nbsp;returned&#34;</font><font color="#000000">,&nbsp;bandModel,&nbsp;result</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.service.impl.DefaultBandServiceUnitTest</span></span>

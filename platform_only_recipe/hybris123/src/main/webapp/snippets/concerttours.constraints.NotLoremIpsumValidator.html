@@ -1,0 +1,18 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.constraints;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">javax.validation.ConstraintValidator;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">javax.validation.ConstraintValidatorContext;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">NotLoremIpsumValidator&nbsp;</font><font color="#404040"><b>implements&nbsp;</b></font><font color="#000000">ConstraintValidator&lt;NotLoremIpsum,&nbsp;String&gt;</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">initialize</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">NotLoremIpsum&nbsp;constraintAnnotation</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;empty</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">isValid</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;value,&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">ConstraintValidatorContext&nbsp;context</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">value&nbsp;==&nbsp;</font><font color="#404040"><b>null&nbsp;</b></font><font color="#000000">||&nbsp;value.isEmpty</font><font color="#000000">()&nbsp;</font><font color="#000000">||&nbsp;!value.toLowerCase</font><font color="#000000">()</font><font color="#000000">.startsWith</font><font color="#000000">(</font><font color="#2a00ff">&#34;lorem&nbsp;ipsum&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.constraints.NotLoremIpsumValidator</span></span>

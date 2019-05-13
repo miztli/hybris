@@ -1,0 +1,35 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.events;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.event.impl.AbstractEventListener;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.model.ModelService;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Date;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.NewsModel;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">BandAlbumSalesEventListener&nbsp;</font><font color="#404040"><b>extends&nbsp;</b></font><font color="#000000">AbstractEventListener&lt;BandAlbumSalesEvent&gt;</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_SALES_HEADLINE&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;%s&nbsp;album&nbsp;sales&nbsp;exceed&nbsp;50000&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BAND_SALES_CONTENT&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;%s&nbsp;album&nbsp;sales&nbsp;reported&nbsp;as&nbsp;%d&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">ModelService&nbsp;modelService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#000000">ModelService&nbsp;getModelService</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">modelService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setModelService</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">ModelService&nbsp;modelService</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>this</b></font><font color="#000000">.modelService&nbsp;=&nbsp;modelService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>protected&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">onEvent</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">BandAlbumSalesEvent&nbsp;event</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">event&nbsp;!=&nbsp;</font><font color="#404040"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;headline&nbsp;=&nbsp;String.format</font><font color="#000000">(</font><font color="#000000">BAND_SALES_HEADLINE,&nbsp;event.getName</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;content&nbsp;=&nbsp;String.format</font><font color="#000000">(</font><font color="#000000">BAND_SALES_CONTENT,&nbsp;event.getName</font><font color="#000000">()</font><font color="#000000">,&nbsp;event.getSales</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">NewsModel&nbsp;news&nbsp;=&nbsp;modelService.create</font><font color="#000000">(</font><font color="#000000">NewsModel.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">news.setDate</font><font color="#000000">(</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">Date</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">news.setHeadline</font><font color="#000000">(</font><font color="#000000">headline</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">news.setContent</font><font color="#000000">(</font><font color="#000000">content</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">modelService.save</font><font color="#000000">(</font><font color="#000000">news</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.events.BandAlbumSalesEventListener</span></span>

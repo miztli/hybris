@@ -1,0 +1,40 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.controller;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.catalog.CatalogVersionService;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.io.UnsupportedEncodingException;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.net.URLDecoder;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.beans.factory.annotation.Autowired;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.stereotype.Controller;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.ui.Model;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.web.bind.annotation.PathVariable;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.web.bind.annotation.RequestMapping;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.data.TourData;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.facades.TourFacade;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#646464">@Controller</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">TourController</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;CATALOG_ID&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;concertoursProductCatalog&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;CATALOG_VERSION_NAME&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Online&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">CatalogVersionService&nbsp;catalogVersionService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">TourFacade&nbsp;tourFacade;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@RequestMapping</font><font color="#000000">(</font><font color="#000000">value&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;/tours/{tourId}&#34;</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#000000">String&nbsp;showTourDetails</font><font color="#000000">(</font><font color="#646464">@PathVariable&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;tourId,&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">Model&nbsp;model</font><font color="#000000">)&nbsp;</font><font color="#404040"><b>throws&nbsp;</b></font><font color="#000000">UnsupportedEncodingException</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">catalogVersionService.setSessionCatalogVersion</font><font color="#000000">(</font><font color="#000000">CATALOG_ID,&nbsp;CATALOG_VERSION_NAME</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;decodedTourId&nbsp;=&nbsp;URLDecoder.decode</font><font color="#000000">(</font><font color="#000000">tourId,&nbsp;</font><font color="#2a00ff">&#34;UTF-8&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">TourData&nbsp;tour&nbsp;=&nbsp;tourFacade.getTourDetails</font><font color="#000000">(</font><font color="#000000">decodedTourId</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">model.addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;tour&#34;</font><font color="#000000">,&nbsp;tour</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#2a00ff">&#34;TourDetails&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Autowired</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setCatalogVersionService</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">CatalogVersionService&nbsp;catalogVersionServiceService</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>this</b></font><font color="#000000">.catalogVersionService&nbsp;=&nbsp;catalogVersionServiceService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Autowired</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setFacade</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">TourFacade&nbsp;facade</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>this</b></font><font color="#000000">.tourFacade&nbsp;=&nbsp;facade;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.daos.TourController</span></span>

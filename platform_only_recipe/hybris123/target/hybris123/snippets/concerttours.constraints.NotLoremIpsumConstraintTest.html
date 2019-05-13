@@ -1,0 +1,45 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.constraints;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.bootstrap.annotations.IntegrationTest;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.ServicelayerTransactionalTest;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.model.ModelService;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.validation.exceptions.HybrisConstraintViolation;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.validation.services.ValidationService;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Set;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">javax.annotation.Resource;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Assert;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Before;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.junit.Test;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.BandModel;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.NotLoremIpsumConstraintModel;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#646464">@IntegrationTest</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">NotLoremIpsumConstraintTest&nbsp;</font><font color="#404040"><b>extends&nbsp;</b></font><font color="#000000">ServicelayerTransactionalTest</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Resource</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">ModelService&nbsp;modelService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Resource</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">ValidationService&nbsp;validationService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Before</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setup</font><font color="#000000">()&nbsp;</font><font color="#404040"><b>throws&nbsp;</b></font><font color="#000000">Exception</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">createCoreData</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">importCsv</font><font color="#000000">(</font><font color="#2a00ff">&#34;/impex/essentialdata-constraints.impex&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;UTF-8&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">validationService.reloadValidationEngine</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Test</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">testLoremIpsumConstraint</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">BandModel&nbsp;band&nbsp;=&nbsp;modelService.create</font><font color="#000000">(</font><font color="#000000">BandModel.</font><font color="#404040"><b>class</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">band.setCode</font><font color="#000000">(</font><font color="#2a00ff">&#34;LoremIpsumTest1&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">band.setName</font><font color="#000000">(</font><font color="#2a00ff">&#34;LoremIpsumBand&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">band.setHistory</font><font color="#000000">(</font><font color="#2a00ff">&#34;Lorem&nbsp;Ipsum&nbsp;is&nbsp;here&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">Set&lt;HybrisConstraintViolation&gt;&nbsp;violations&nbsp;=&nbsp;validationService.validate</font><font color="#000000">(</font><font color="#000000">band</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Assert.assertTrue</font><font color="#000000">(</font><font color="#2a00ff">&#34;The&nbsp;violation&nbsp;set&nbsp;sould&nbsp;not&nbsp;be&nbsp;null&nbsp;or&nbsp;empty&#34;</font><font color="#000000">,&nbsp;violations&nbsp;!=&nbsp;</font><font color="#404040"><b>null&nbsp;</b></font><font color="#000000">&amp;&amp;&nbsp;violations.size</font><font color="#000000">()&nbsp;</font><font color="#000000">&gt;&nbsp;</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Assert.assertEquals</font><font color="#000000">(</font><font color="#2a00ff">&#34;There&nbsp;should&nbsp;be&nbsp;one&nbsp;constraint&nbsp;violations&#34;</font><font color="#000000">,&nbsp;</font><font color="#990000">1</font><font color="#000000">,&nbsp;violations.size</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">HybrisConstraintViolation&nbsp;hybrisConstraintViolation&nbsp;:&nbsp;violations</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Assert.assertEquals</font><font color="#000000">(</font><font color="#000000">NotLoremIpsumConstraintModel.class,&nbsp;hybrisConstraintViolation.getConstraintModel</font><font color="#000000">()</font><font color="#000000">.getClass</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.constraints.NotLoremIpsumConstraintTest</span></span>

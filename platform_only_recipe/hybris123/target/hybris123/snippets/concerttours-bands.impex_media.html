@@ -1,0 +1,46 @@
+<p class=isa_info ><code>
+<font color="#000000">#&nbsp;ImpEx&nbsp;</font><font color="#404040"><b>for&nbsp;</b></font><font color="#000000">Importing&nbsp;Bands&nbsp;into&nbsp;Little&nbsp;Concert&nbsp;Tours&nbsp;Store</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#000000">#&nbsp;Macros&nbsp;/&nbsp;Replacement&nbsp;Parameter&nbsp;definitions</font><br />
+<font color="#000000">$productCatalog=concertoursProductCatalog</font><br />
+<font color="#000000">$catalogVersion=catalogversion</font><font color="#000000">(</font><font color="#000000">catalog</font><font color="#000000">(</font><font color="#000000">id</font><font color="#000000">[</font><font color="#404040"><b>default</b></font><font color="#000000">=$productCatalog</font><font color="#000000">])</font><font color="#000000">,version</font><font color="#000000">[</font><font color="#404040"><b>default</b></font><font color="#000000">=</font><font color="#ff6100">'On</font><font color="#000000">line</font><font color="#ff6100">'])</font><font color="#000000">[</font><font color="#000000">unique=true,default=$productCatalog:Online</font><font color="#000000">]</font><br />
+<font color="#000000">$medias=medias</font><font color="#000000">(</font><font color="#000000">code,&nbsp;$catalogVersion</font><font color="#000000">)</font><br />
+<font color="#000000">$siteResource=jar:concerttours.constants.ConcerttoursConstants&amp;/concerttours/bandimages</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#000000">#&nbsp;Product&nbsp;catalog</font><br />
+<font color="#000000">INSERT_UPDATE&nbsp;Catalog;id</font><font color="#000000">[</font><font color="#000000">unique=</font><font color="#404040"><b>true</b></font><font color="#000000">]</font><br />
+<font color="#000000">;$productCatalog</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#000000">#&nbsp;Product&nbsp;catalog&nbsp;version</font><br />
+<font color="#000000">INSERT_UPDATE&nbsp;CatalogVersion;catalog</font><font color="#000000">(</font><font color="#000000">id</font><font color="#000000">)[</font><font color="#000000">unique=</font><font color="#404040"><b>true</b></font><font color="#000000">]</font><font color="#000000">;version</font><font color="#000000">[</font><font color="#000000">unique=</font><font color="#404040"><b>true</b></font><font color="#000000">]</font><font color="#000000">;active;languages</font><font color="#000000">(</font><font color="#000000">isoCode</font><font color="#000000">)</font><font color="#000000">;readPrincipals</font><font color="#000000">(</font><font color="#000000">uid</font><font color="#000000">)</font><br />
+<font color="#000000">;$productCatalog;Online;</font><font color="#404040"><b>true</b></font><font color="#000000">;en;employeegroup</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#000000">INSERT_UPDATE&nbsp;Media;mediaFormat</font><font color="#000000">(</font><font color="#000000">qualifier</font><font color="#000000">)</font><font color="#000000">;code</font><font color="#000000">[</font><font color="#000000">unique=</font><font color="#404040"><b>true</b></font><font color="#000000">]</font><font color="#000000">;</font><font color="#646464">@media</font><font color="#000000">[</font><font color="#000000">translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator</font><font color="#000000">]</font><font color="#000000">;mime</font><font color="#000000">[</font><font color="#404040"><b>default</b></font><font color="#000000">=</font><font color="#ff6100">'im</font><font color="#000000">age/jpeg</font><font color="#ff6100">'];</font><font color="#000000">$catalogVersion</font><br />
+<font color="#000000">;bandList;rockSmall.jpg;$siteResource/rockSmall.jpg;;</font><br />
+<font color="#000000">;bandDetail;rockBig.jpg;$siteResource/rockBig.jpg;;</font><br />
+<font color="#000000">;bandList;danceSmall.jpg;$siteResource/danceSmall.jpg;;</font><br />
+<font color="#000000">;bandDetail;danceBig.jpg;$siteResource/danceBig.jpg;;</font><br />
+<font color="#000000">;bandList;jazzSmall.jpg;$siteResource/jazzSmall.jpg;;</font><br />
+<font color="#000000">;bandDetail;jazzBig.jpg;$siteResource/jazzBig.jpg;;</font><br />
+<font color="#000000">;bandList;bigbandSmall.jpg;$siteResource/bigbandSmall.jpg;;</font><br />
+<font color="#000000">;bandDetail;bigbandBig.jpg;$siteResource/bigbandBig.jpg;;</font><br />
+<font color="#000000">;bandList;omphaSmall.jpg;$siteResource/omphaSmall.jpg;;</font><br />
+<font color="#000000">;bandDetail;omphaBig.jpg;$siteResource/omphaBig.jpg;;</font><br />
+<font color="#000000">;bandList;orchestraSmall.jpg;$siteResource/orchestraSmall.jpg;;</font><br />
+<font color="#000000">;bandDetail;orchestraBig.jpg;$siteResource/orchestraBig.jpg;;</font><br />
+<font color="#000000">INSERT_UPDATE&nbsp;MediaContainer;qualifier</font><font color="#000000">[</font><font color="#000000">unique=</font><font color="#404040"><b>true</b></font><font color="#000000">]</font><font color="#000000">;$medias;$catalogVersion</font><br />
+<font color="#000000">;yRockImage;rockSmall.jpg,rockBig.jpg;</font><br />
+<font color="#000000">;yBandImage;danceSmall.jpg,danceBig.jpg;</font><br />
+<font color="#000000">;yJazzImage;jazzSmall.jpg,jazzBig.jpg;</font><br />
+<font color="#000000">;BannedImage;bigbandSmall.jpg,bigbandBig.jpg;</font><br />
+<font color="#000000">;SirkenImage;omphaSmall.jpg,omphaBig.jpg;</font><br />
+<font color="#000000">;TheChoirImage;orchestraSmall.jpg,orchestraBig.jpg;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#000000">INSERT_UPDATE&nbsp;Band;code</font><font color="#000000">[</font><font color="#000000">unique=</font><font color="#404040"><b>true</b></font><font color="#000000">]</font><font color="#000000">;name;albumSales;image</font><font color="#000000">(</font><font color="#000000">qualifier</font><font color="#000000">)</font><br />
+<font color="#000000">;A001;yRock;</font><font color="#990000">1000000</font><font color="#000000">;yRockImage</font><br />
+<font color="#000000">;A006;yBand;;yBandImage</font><br />
+<font color="#000000">;A003;yJazz;</font><font color="#990000">7</font><font color="#000000">;yJazzImage</font><br />
+<font color="#000000">;A004;Banned;</font><font color="#990000">427</font><font color="#000000">;BannedImage</font><br />
+<font color="#000000">;A002;Sirken;</font><font color="#990000">2000</font><font color="#000000">;SirkenImage</font><br />
+<font color="#000000">;A005;The&nbsp;Choir;</font><font color="#990000">49000</font><font color="#000000">;TheChoirImage</font><br />
+<font color="#000000">;A007;The&nbsp;Quiet;</font><font color="#990000">1200</font><font color="#000000">;;</font></code><span class="codenote">Source: concerttours-bands.impex_media</span></span>

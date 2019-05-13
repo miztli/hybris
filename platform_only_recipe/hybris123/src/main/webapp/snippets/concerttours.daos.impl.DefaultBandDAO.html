@@ -1,0 +1,53 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.daos.impl;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.search.FlexibleSearchQuery;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.search.FlexibleSearchService;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.beans.factory.annotation.Autowired;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.stereotype.Component;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.daos.BandDAO;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.BandModel;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#646464">@Component</font><font color="#000000">(</font><font color="#000000">value&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;bandDAO&#34;</font><font color="#000000">)</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">DefaultBandDAO&nbsp;</font><font color="#404040"><b>implements&nbsp;</b></font><font color="#000000">BandDAO</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Use&nbsp;SAP&nbsp;Commerce&nbsp;FlexibleSearchService&nbsp;for&nbsp;running&nbsp;queries&nbsp;against&nbsp;the&nbsp;database</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Autowired</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">FlexibleSearchService&nbsp;flexibleSearchService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Finds&nbsp;all&nbsp;Bands&nbsp;by&nbsp;performing&nbsp;a&nbsp;FlexibleSearch&nbsp;using&nbsp;the&nbsp;</font><font color="#3f3fbf">{@link&nbsp;FlexibleSearchService}</font><font color="#3f5fbf">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#000000">List&lt;BandModel&gt;&nbsp;findBands</font><font color="#000000">()</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Build&nbsp;a&nbsp;query&nbsp;for&nbsp;the&nbsp;flexible&nbsp;search.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;queryString&nbsp;=&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;SELECT&nbsp;{p:&#34;&nbsp;</font><font color="#000000">+&nbsp;BandModel.PK&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;}&nbsp;&#34;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;FROM&nbsp;{&#34;&nbsp;</font><font color="#000000">+&nbsp;BandModel._TYPECODE&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;AS&nbsp;p}&nbsp;&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">FlexibleSearchQuery&nbsp;query&nbsp;=&nbsp;</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">FlexibleSearchQuery</font><font color="#000000">(</font><font color="#000000">queryString</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Note&nbsp;that&nbsp;we&nbsp;could&nbsp;specify&nbsp;paginating&nbsp;logic&nbsp;by&nbsp;providing&nbsp;a&nbsp;start&nbsp;and&nbsp;count&nbsp;variable&nbsp;(commented&nbsp;out&nbsp;below)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;This&nbsp;can&nbsp;provide&nbsp;a&nbsp;safeguard&nbsp;against&nbsp;returning&nbsp;very&nbsp;large&nbsp;amounts&nbsp;of&nbsp;data,&nbsp;or&nbsp;hogging&nbsp;the&nbsp;database&nbsp;when&nbsp;there&nbsp;are</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;for&nbsp;example&nbsp;millions&nbsp;of&nbsp;items&nbsp;being&nbsp;returned.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;As&nbsp;we&nbsp;know&nbsp;that&nbsp;there&nbsp;are&nbsp;only&nbsp;a&nbsp;few&nbsp;persisted&nbsp;bands&nbsp;in&nbsp;this&nbsp;use&nbsp;case&nbsp;we&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;provide&nbsp;this.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//query.setStart(start);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//query.setCount(count);</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Return&nbsp;the&nbsp;list&nbsp;of&nbsp;BandModels.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">flexibleSearchService.&lt;BandModel&gt;&nbsp;search</font><font color="#000000">(</font><font color="#000000">query</font><font color="#000000">)</font><font color="#000000">.getResult</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Finds&nbsp;all&nbsp;Bands&nbsp;by&nbsp;given&nbsp;code&nbsp;by&nbsp;performing&nbsp;a&nbsp;FlexibleSearch&nbsp;using&nbsp;the&nbsp;</font><font color="#3f3fbf">{@link&nbsp;FlexibleSearchService}</font><font color="#3f5fbf">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#000000">List&lt;BandModel&gt;&nbsp;findBandsByCode</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;code</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;queryString&nbsp;=&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;SELECT&nbsp;{p:&#34;&nbsp;</font><font color="#000000">+&nbsp;BandModel.PK&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;}&#34;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;FROM&nbsp;{&#34;&nbsp;</font><font color="#000000">+&nbsp;BandModel._TYPECODE&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;AS&nbsp;p}&nbsp;&#34;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;WHERE&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;{p:&#34;&nbsp;</font><font color="#000000">+&nbsp;BandModel.CODE&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;}=?code&nbsp;&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">FlexibleSearchQuery&nbsp;query&nbsp;=&nbsp;</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">FlexibleSearchQuery</font><font color="#000000">(</font><font color="#000000">queryString</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">query.addQueryParameter</font><font color="#000000">(</font><font color="#2a00ff">&#34;code&#34;</font><font color="#000000">,&nbsp;code</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">flexibleSearchService.&lt;BandModel&gt;&nbsp;search</font><font color="#000000">(</font><font color="#000000">query</font><font color="#000000">)</font><font color="#000000">.getResult</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.daos.impl.DefaultBandDAO</span></span>

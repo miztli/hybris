@@ -1,0 +1,25 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.daos;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.BandModel;</font><br />
+<font color="#ffffff">&nbsp;</font><br />
+<font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;An&nbsp;interface&nbsp;for&nbsp;the&nbsp;Band&nbsp;DAO&nbsp;including&nbsp;various&nbsp;operations&nbsp;for&nbsp;retrieving&nbsp;persisted&nbsp;Band&nbsp;model&nbsp;objects</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#404040"><b>public&nbsp;interface&nbsp;</b></font><font color="#000000">BandDAO</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Return&nbsp;a&nbsp;list&nbsp;of&nbsp;band&nbsp;models&nbsp;that&nbsp;are&nbsp;currently&nbsp;persisted.&nbsp;If&nbsp;none&nbsp;are&nbsp;found&nbsp;an&nbsp;empty&nbsp;list&nbsp;is&nbsp;returned.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">all&nbsp;the&nbsp;bands&nbsp;in&nbsp;the&nbsp;system</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">List&lt;BandModel&gt;&nbsp;findBands</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Finds&nbsp;all&nbsp;bands&nbsp;with&nbsp;given&nbsp;code.&nbsp;If&nbsp;none&nbsp;is&nbsp;found,&nbsp;an&nbsp;empty&nbsp;list&nbsp;will&nbsp;be&nbsp;returned.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">code</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;code&nbsp;to&nbsp;search&nbsp;for&nbsp;bands</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">All&nbsp;bands&nbsp;with&nbsp;the&nbsp;given&nbsp;code.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">List&lt;BandModel&gt;&nbsp;findBandsByCode</font><font color="#000000">(</font><font color="#000000">String&nbsp;code</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.daos.BandDAO</span></span>

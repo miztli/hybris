@@ -1,0 +1,46 @@
+<p class=isa_info ><code>
+<font color="#404040"><b>package&nbsp;</b></font><font color="#000000">concerttours.daos.impl;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.search.FlexibleSearchQuery;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">de.hybris.platform.servicelayer.search.FlexibleSearchService;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.text.SimpleDateFormat;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Calendar;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Collections;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.Date;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.beans.factory.annotation.Autowired;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">org.springframework.stereotype.Component;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.daos.NewsDAO;</font><br />
+<font color="#404040"><b>import&nbsp;</b></font><font color="#000000">concerttours.model.NewsModel;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#646464">@Component</font><font color="#000000">(</font><font color="#000000">value&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;newsDAO&#34;</font><font color="#000000">)</font><br />
+<font color="#404040"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">DefaultNewsDAO&nbsp;</font><font color="#404040"><b>implements&nbsp;</b></font><font color="#000000">NewsDAO</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;SQL_DATE_FORMAT&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;yyyy-MM-dd&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Autowired</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">FlexibleSearchService&nbsp;flexibleSearchService;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>public&nbsp;</b></font><font color="#000000">List&lt;NewsModel&gt;&nbsp;getNewsOfTheDay</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">Date&nbsp;date</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">date&nbsp;==&nbsp;</font><font color="#404040"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">Collections.emptyList</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;theDay&nbsp;=&nbsp;</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">SimpleDateFormat</font><font color="#000000">(</font><font color="#000000">SQL_DATE_FORMAT</font><font color="#000000">)</font><font color="#000000">.format</font><font color="#000000">(</font><font color="#000000">date</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;theNextDay&nbsp;=&nbsp;</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">SimpleDateFormat</font><font color="#000000">(</font><font color="#000000">SQL_DATE_FORMAT</font><font color="#000000">)</font><font color="#000000">.format</font><font color="#000000">(</font><font color="#000000">oneDayAfter</font><font color="#000000">(</font><font color="#000000">date</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">String&nbsp;queryString&nbsp;=&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;SELECT&nbsp;{p:&#34;&nbsp;</font><font color="#000000">+&nbsp;NewsModel.PK&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;}&nbsp;&#34;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;FROM&nbsp;{&#34;&nbsp;</font><font color="#000000">+&nbsp;NewsModel._TYPECODE&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;AS&nbsp;p}&nbsp;&#34;&nbsp;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;WHERE&nbsp;{date}&nbsp;&gt;=&nbsp;DATE&nbsp;\'&#34;&nbsp;</font><font color="#000000">+&nbsp;theDay&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;\'&nbsp;&#34;</font><font color="#3f7f5f">//</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;AND&nbsp;{date}&nbsp;&lt;=&nbsp;DATE&nbsp;\'&#34;&nbsp;</font><font color="#000000">+&nbsp;theNextDay&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;\'&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">FlexibleSearchQuery&nbsp;query&nbsp;=&nbsp;</font><font color="#404040"><b>new&nbsp;</b></font><font color="#000000">FlexibleSearchQuery</font><font color="#000000">(</font><font color="#000000">queryString</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">flexibleSearchService.&lt;NewsModel&gt;&nbsp;search</font><font color="#000000">(</font><font color="#000000">query</font><font color="#000000">)</font><font color="#000000">.getResult</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>private&nbsp;</b></font><font color="#000000">Date&nbsp;oneDayAfter</font><font color="#000000">(</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">Date&nbsp;date</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>final&nbsp;</b></font><font color="#000000">Calendar&nbsp;cal&nbsp;=&nbsp;Calendar.getInstance</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cal.setTime</font><font color="#000000">(</font><font color="#000000">date</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cal.add</font><font color="#000000">(</font><font color="#000000">Calendar.DATE,&nbsp;</font><font color="#990000">1</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#404040"><b>return&nbsp;</b></font><font color="#000000">cal.getTime</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code><span class="codenote">Source: concerttours.daos.impl.DefaultNewsDAO</span></span>

@@ -1,0 +1,190 @@
+<!--
+ * © 2017,© 2018 SAP SE or an SAP affiliate company.
+ * All rights reserved.
+ * Please see http://www.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.
+ * This sample code is provided for the purpose of these guided tours only and is not intended to be used in a production environment.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hybris.hybris123</groupId>
+	<artifactId>hybris123</artifactId>
+	<version>1.1</version>
+	<name>hybris123</name>
+	<packaging>war</packaging>
+
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.1.RELEASE</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+	            <exclusion>
+	                <groupId>org.slf4j</groupId>
+	                <artifactId>log4j-over-slf4j</artifactId>
+	            </exclusion>
+        	</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.11.3</version>
+		</dependency>
+
+		<dependency> <!-- GPL License http://www.gnu.org/licenses/gpl.html -->
+			<groupId>de.java2html</groupId>
+			<artifactId>java2html</artifactId>
+			<version>5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.2</version>
+		</dependency>
+
+ 		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.14.0</version>
+		</dependency>
+		
+	  	<dependency>
+	        <groupId>com.google.guava</groupId>
+	        <artifactId>guava</artifactId>
+	        <version>27.0-jre</version>
+	    </dependency>
+
+ 
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.8.1</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-api</artifactId>
+		    <version>2.11.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.11.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>javax.servlet.jsp</groupId>
+		    <artifactId>javax.servlet.jsp-api</artifactId>
+		    <version>2.3.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.9.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-core</artifactId>
+		    <version>1.10.19</version>
+		    <scope>test</scope>
+		</dependency>
+	</dependencies>
+	<properties>
+		<java.version>1.8</java.version>
+		<!--Dependency Versions-->
+        <selenium.version>3.14.0</selenium.version>
+        <!--Plugin Versions-->
+        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+	</properties>
+	
+ <profiles>
+        <profile>
+            <id>selenium-tests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
+                        </configuration>
+                        <version>${maven-compiler-plugin.version}</version>
+                    </plugin>
+					
+                    <plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<configuration>
+							<packagingExcludes>WEB-INF/classes/com/hybris/hybris123/contentpreparation/**</packagingExcludes>
+						</configuration>
+					</plugin>
+		
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
+							<testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
+							<useSystemClassLoader>false</useSystemClassLoader>
+							<classpathDependencyExcludes>
+								<classpathDependencyExclude>org.hibernate:hibernate-validator</classpathDependencyExclude>
+							</classpathDependencyExcludes>
+						</configuration>
+					</plugin>
+					<plugin>
+			            <groupId>org.codehaus.mojo</groupId>
+			            <artifactId>exec-maven-plugin</artifactId>
+			            <version>1.2.1</version>
+			            <configuration>
+			                <mainClass>com.hybris.hybris123.Application</mainClass>
+			            </configuration>
+			        </plugin>
+			        <plugin>
+				        <groupId>org.apache.maven.plugins</groupId>
+				        <artifactId>maven-war-plugin</artifactId>
+				        <configuration>
+				          <packagingExcludes>WEB-INF/lib/hibernate-validator-5.3.5.Final.jar</packagingExcludes>
+				        </configuration>
+				      </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+	</build>
+
+</project>

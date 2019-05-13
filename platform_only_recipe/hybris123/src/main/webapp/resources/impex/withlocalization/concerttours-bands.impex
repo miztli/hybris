@@ -1,0 +1,14 @@
+# Hybris123SnippetStart concerttours-bands.impex_withlocalization
+
+# ImpEx for Importing Bands into Little Concert Tours Store
+  
+INSERT_UPDATE Band;code[unique=true];name;albumSales
+;A001;yRock;1000000
+;A006;yBand;
+;A003;yJazz;7
+;A004;Banned;427
+;A002;Sirken;2000
+;A005;The Choir;49000
+;A007;The Quiet;1200
+
+# Hybris123SnippetEnd

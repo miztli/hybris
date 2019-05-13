@@ -1,0 +1,14 @@
+# Hybris123SnippetStart concerttours-bands-en.impex_withlocalization
+
+# ImpEx for Importing Bands' English content into Little Concert Tours Store
+ $lang=en
+ 
+INSERT_UPDATE Band;code[unique=true];history[lang=$lang]
+;A001;Occasional tribute rock band comprising senior managers from a leading commerce software vendor
+;A006;Dutch tribute rock band formed in 2013 playing classic rock tunes from the sixties, seventies and eighties
+;A003;Experimental Jazz group from London playing many musical notes together in unexpected combinations and sequences
+;A004;Rejuvenated Polish boy band from the 1990s - this genre of pop music at its most dubious best
+;A002;A cappella singing group based in Munich; an uplifting blend of traditional and contemporaneous songs
+;A005;Enthusiastic, noisy gospel choir singing traditional gospel songs from the deep south
+;A007;English choral society specialising in beautifully arranged, soothing melodies and songs
+# Hybris123SnippetEnd
