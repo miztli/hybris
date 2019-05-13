@@ -30,8 +30,19 @@ cd hybris/bin/platform; ./hybrisserver.sh start
 ```
 
 ### Extensions
+
 An extension is an encapsulated piece of SAP Commerce functionality, that can contain business logic, type definitions, a web application, and back-office configuration functionality. Depending on your business needs, your solution will have a varying number of extensions, all wired into the core SAP Commerce platform via the Spring dependency injection model.
 
 SAP Commerce ships with a number of extension templates, and an ant-based tool (called extgen) for generating new extensions based upon these templates. In this and subsequent sections, you extend SAP Commerce by adding and developing your own custom extension.
+
+### The localextensions.xml file
+
+The localextensions.xml file contains the list of extensions your specific SAP Commerce configuration includes at compile- and run-time.
+
+When you first build SAP Commerce, the localextensions.xml file lists only the essential extensions. As you decide which extensions you need or want to use, add them to this file. In this procedure, you notify SAP Commerce of the new concerttours extension by adding it to the localextensions.xml file.
+
+### Data models
+
+The data model underlying SAP Commerce is defined in XML files. New data types for extensions, called item types, are defined in <extension-name>-items.xml files.
 
 

@@ -183,6 +183,15 @@
 				</JarScanner>
 			</Context>
 
+			<!-- 'concerttours' extension's context for tenant 'master' -->
+			<Context path="/concerttours" docBase="/Users/miztlimelgoza/workspace/personal/hybris_tutorial/platform_only_recipe/hybris/bin/custom/concerttours/web/webroot" >
+				<Manager pathname="" />
+				<Loader platformHome="/Users/miztlimelgoza/workspace/personal/hybris_tutorial/platform_only_recipe/hybris/bin/platform" className="de.hybris.tomcat.HybrisWebappLoader" deployName="default" />
+				<JarScanner >
+					<JarScanFilter defaultTldScan="true" defaultPluggabilityScan="true" />
+				</JarScanner>
+			</Context>
+
 
       </Host>
 
