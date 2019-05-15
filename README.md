@@ -48,3 +48,16 @@ The data model underlying SAP Commerce is defined in XML files. New data types f
 SAP Commerce refers to data types as itemtypes, each defined in an itemtype XML element. You define a new item type by adding a new itemType element to the<extension-name>-items.xml file. Similarly, SAP Commerce refers to a one-to-many and many-to-many relationship between itemtypes as a relation, and you define new relations by adding a relation XML element to the <extension-name>-items.xml file.
 
 At build time and database-initialization time, the platform combines all the XML declarations from the extensions being used, and generates Java classes and a database schema.
+
+### Database design
+
+SAP Commerce stores data in a RDBMS and several third-party databases are supported.
+
+When you define a new data model, you must specify how that model is to be persisted in the database. Specifically, whether each new item type should be persisted in its own database table or in a parent table. When you define new item types, you can include a deployment XML attribute to specify the name of a new table specific to that type. If you do not include the deployment XML attribute in a new item type, SAP Commerce persists that item in the table used by the parent of the new type. This si genarally what we want, because it makes it easy to retrieve al set of items and no database table joins are required.
+
+In contrast, if an item is not extending another item and the deployment XML clause is not defined, items will be stored in the table specified by the root item type called GenericItem. All types extend GenericItem unless specified otherwise. This is almost certainly not what you want, so when you are not specifically extending another item type, you should always include a deployment clause.
+
+To open the default hsql DatabaseManager to visualize your tables, run under `/hybris`:
+`java -cp ./bin/platform/lib/dbdriver/hsqldb*.jar org.hsqldb.util.DatabaseManager --url jdbc:hsqldb:file:./data/hsqldb/mydb &`
+
+To close de DatabaseManager, type: `pkill -f "DatabaseManager"`

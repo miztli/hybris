@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="907b8770-3aed-45f3-bbc5-b08625a0c810" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gensrc/concerttours/constants/GeneratedConcerttoursConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/gensrc/concerttours/constants/GeneratedConcerttoursConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gensrc/concerttours/jalo/ConcerttoursManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/gensrc/concerttours/jalo/ConcerttoursManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/concerttours-items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/concerttours-items.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../platform/tomcat/bin/hybrisPlatform.java.status" beforeDir="false" afterPath="$PROJECT_DIR$/../../platform/tomcat/bin/hybrisPlatform.java.status" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../platform/tomcat/bin/hybrisPlatform.status" beforeDir="false" afterPath="$PROJECT_DIR$/../../platform/tomcat/bin/hybrisPlatform.status" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hsqldb/mydb.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hsqldb/mydb.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hsqldb/mydb.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../data/hsqldb/mydb.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../hybris123/target/surefire-reports/TEST-com.hybris.hybris123.runtime.tests.Hybris123Tests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../hybris123/target/surefire-reports/TEST-com.hybris.hybris123.runtime.tests.Hybris123Tests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../hybris123/target/surefire-reports/com.hybris.hybris123.runtime.tests.Hybris123Tests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../hybris123/target/surefire-reports/com.hybris.hybris123.runtime.tests.Hybris123Tests.txt" afterDir="false" />
-    </list>
+    <list default="true" id="907b8770-3aed-45f3-bbc5-b08625a0c810" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/eclipsebin/notused/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/concerttours-items.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="119" column="28" lean-forward="true" selection-start-line="119" selection-start-column="28" selection-end-line="119" selection-end-column="28" />
+            <state relative-caret-position="13">
+              <caret line="39" column="40" lean-forward="true" selection-start-line="39" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -98,6 +86,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -126,15 +115,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557868311109</updated>
-      <workItem from="1557868317239" duration="3295000" />
+      <workItem from="1557868317239" duration="3881000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3295000" />
+    <option name="totallyTimeSpent" value="3881000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="947" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
@@ -200,8 +190,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/concerttours-items.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="119" column="28" lean-forward="true" selection-start-line="119" selection-start-column="28" selection-end-line="119" selection-end-column="28" />
+        <state relative-caret-position="13">
+          <caret line="39" column="40" lean-forward="true" selection-start-line="39" selection-end-line="40" />
         </state>
       </provider>
     </entry>

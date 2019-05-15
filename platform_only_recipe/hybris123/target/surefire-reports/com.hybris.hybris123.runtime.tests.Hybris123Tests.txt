@@ -1,4 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: com.hybris.hybris123.runtime.tests.Hybris123Tests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.232 s - in com.hybris.hybris123.runtime.tests.Hybris123Tests
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.009 s <<< FAILURE! - in com.hybris.hybris123.runtime.tests.Hybris123Tests
+testDatabaseSetup(com.hybris.hybris123.runtime.tests.Hybris123Tests)  Time elapsed: 0.937 s  <<< FAILURE!
+java.lang.AssertionError: Could not find the table BANDS
+	at com.hybris.hybris123.runtime.tests.Hybris123Tests.assertTrue(Hybris123Tests.java:585)
+	at com.hybris.hybris123.runtime.tests.Hybris123Tests.testDatabaseSetup(Hybris123Tests.java:170)
+
