@@ -131,4 +131,10 @@ These other services, strategy objects and data access objects are also defined 
 
 Integration tests are essential for demonstrating that your new functionality works as expected. They notify you when you break existing behavior, and can therefore help reduce bugs.
 
+### Unit tests
 
+You can simulate dependencies to execute unit tests that run independently of the SAP Commerce platform.
+
+An integration test demonstrates that you have successfully achieved the expected behavior of classes that implement the BandService interface. However it is not truly testing the expected functionality of your particular DefaultBandService class. To do that you should mock up the dependencies, the BandDAO in this case, using Mockito in a new unit test class called DefaultBandServiceUnitTest. As this simulates a real DAO, the test requires no access to the SAP Commerce persistence layer, and therefore does not need to extend ServicelayerTransactionalTest. Instead it is a simple POJO and will run very quickly.
+
+You will test that the expected calls are made from the BandService to the BandDAO interface. No implementation of the BandDAO is needed when simulating the BandDAO interface.
