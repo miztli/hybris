@@ -113,3 +113,16 @@ The naming convention for these two data types is as follows:
 essentialdata-*.impex
 projectdata-*.impex
 In each case, the * can be any name you choose, but it is convential to use your project name or data type.
+
+### The service layer
+
+When implementing new business logic, you separate the business code into java classes called services. Each service implements a specific, well-defined requirement.
+
+Services form part of the ServiceLayer. This layer is a logical tier between the client and persistence layer. Each service has its own java interface that lists the public methods that can be called by clients and other services.
+
+A service may contain all required business logic, but more commonly will delegate to one or more of the following:
+
+Other services providing part of the behavior required
+Strategy objects that provide swappable behavior for different requirements, e.g. different cart calculation algorithms
+Data access objects that handle locating and retrieving data items from the database
+These other services, strategy objects and data access objects are also defined as Spring beans, with respective interfaces and implementations.
