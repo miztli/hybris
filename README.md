@@ -89,3 +89,17 @@ Contains data that is optional your extension, such as sample data. Project data
 If there are multiple files found that fit the naming convention, SAP Commerce loads and processes them in an unspecified order. If the order is important, one simple solution is to create a single file meeting the naming convention. You then use the ImpEx include feature to include the content from the other files in the required order, and rename the included files so they no longer fit the naming convention.
 
 In this example, the ImpEx files are deliberately designed to separate all the content for each tour into a separate file, and use INSERT_UPDATE commands. Therefore, if there are many tours and concerts to import, then the order in which the files are processed is not important.
+
+### Essential and Project Data by Code
+
+You can hook into the system initialization and update process to load project data during platform initialization.
+
+After some consideration, you decide that band data is not really essential data and should be loaded as project data. Essential data is reserved for data that the system cannot work without. For this reason, move your band data out of essential data and set it up as project data instead. While the results are not exciting, all your code still works if there are no bands stored in the database.
+
+As your project data may grow significantly and become more complex, you can take the sophisticated approach of hooking into the initialization and update process.
+
+Your simple Java class uses the ImpEx service layer API to explicitly load your two ImpEx files. The main work is done in the impexImport method. You set up an ImportConfig object with various import options, including the name of the file you want to import. You then supply it as a parameter to the importData call. The system checks the resulting ImportResult for errors.
+
+The code also demonstrates the logging facilities that are built in to the platform.
+
+
