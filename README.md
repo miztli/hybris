@@ -45,4 +45,6 @@ When you first build SAP Commerce, the localextensions.xml file lists only the e
 
 The data model underlying SAP Commerce is defined in XML files. New data types for extensions, called item types, are defined in <extension-name>-items.xml files.
 
+SAP Commerce refers to data types as itemtypes, each defined in an itemtype XML element. You define a new item type by adding a new itemType element to the<extension-name>-items.xml file. Similarly, SAP Commerce refers to a one-to-many and many-to-many relationship between itemtypes as a relation, and you define new relations by adding a relation XML element to the <extension-name>-items.xml file.
 
+At build time and database-initialization time, the platform combines all the XML declarations from the extensions being used, and generates Java classes and a database schema.
