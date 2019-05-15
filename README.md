@@ -126,3 +126,9 @@ Other services providing part of the behavior required
 Strategy objects that provide swappable behavior for different requirements, e.g. different cart calculation algorithms
 Data access objects that handle locating and retrieving data items from the database
 These other services, strategy objects and data access objects are also defined as Spring beans, with respective interfaces and implementations.
+
+### Integration tests
+
+Integration tests are essential for demonstrating that your new functionality works as expected. They notify you when you break existing behavior, and can therefore help reduce bugs.
+
+

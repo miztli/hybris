@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: com.hybris.hybris123.runtime.tests.Hybris123Tests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.223 s - in com.hybris.hybris123.runtime.tests.Hybris123Tests
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.239 s <<< FAILURE! - in com.hybris.hybris123.runtime.tests.Hybris123Tests
+testServiceLayerIntegrationTest(com.hybris.hybris123.runtime.tests.Hybris123Tests)  Time elapsed: 0.164 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.hybris.hybris123.runtime.tests.Hybris123Tests.fail(Hybris123Tests.java:596)
+	at com.hybris.hybris123.runtime.tests.Hybris123Tests.fail(Hybris123Tests.java:606)
+	at com.hybris.hybris123.runtime.tests.Hybris123Tests.testServiceLayerIntegrationTest(Hybris123Tests.java:424)
+
