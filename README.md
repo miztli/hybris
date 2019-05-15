@@ -69,3 +69,23 @@ SAP Commerce ships with a powerful text-based import and export functionality ca
 ImpEx files are essentially comma-separated files (CSVs) that allow for compact, human-readable, import and export of data to and from SAP Commerce. They can be manually executed through the SAP Commerce Administration Console, or automatically executed every time you initialize the system by saving the ImpEx file according to a simple convention, and in a specific location.
 
 The SAP Commerce Administration Console provides an interface, in the Impex Import tab of the Console, through which you can manually import small amounts of ImpEx data.
+
+### Essential and Project Data by Convention
+
+You can prepare ImpEx files containing essential and project data that the system imports on initialization. This functionality follows the Convention over Configuration principle (CoC).
+
+Using ImpEx to import data through the SAP Commerce Administration Console (Administration Console) is useful for adhoc imports, but not for repeatedly loading large amounts of ImpEx content every time you initialize or update the database. To automatically load this data, you can place your ImpEx in text files in the /resources/impex directory of your extension. A naming convention then ensures that SAP Commerce automatically loads them as part of the initialization or update process.
+
+Impex files fall into two categories: those describing essential data, and those describing project or product data.
+
+*Essential data ImpEx file*
+
+Contains fundamental reference data that is required by your extension. Essential data is always imported when you initialize the platform with your extension. Essential data ImpEx files have names in the form essentialdata*.impex.
+
+*Project data ImpEx file*
+
+Contains data that is optional your extension, such as sample data. Project data is included only when you check the project data checkbox for your extension in the Administration Console during initialization. Project data ImpEx files have names in the form projectdata*.impex.
+
+If there are multiple files found that fit the naming convention, SAP Commerce loads and processes them in an unspecified order. If the order is important, one simple solution is to create a single file meeting the naming convention. You then use the ImpEx include feature to include the content from the other files in the required order, and rename the included files so they no longer fit the naming convention.
+
+In this example, the ImpEx files are deliberately designed to separate all the content for each tour into a separate file, and use INSERT_UPDATE commands. Therefore, if there are many tours and concerts to import, then the order in which the files are processed is not important.
