@@ -100,4 +100,15 @@
     <bean id = "defaultBandService" class = "concerttours.service.impl.DefaultBandService" >
         <property name = "bandDAO" ref = "bandDAO" />
     </bean>
+
+    <!-- Declare facades-->
+    <alias name = "defaultBandFacade" alias = "bandFacade" />
+    <bean id = "defaultBandFacade" class ="concerttours.facades.impl.DefaultBandFacade" >
+        <property name = "bandService" ref = "bandService" />
+    </bean>
+
+    <alias name = "defaultTourFacade" alias = "tourFacade" />
+    <bean id = "defaultTourFacade" class ="concerttours.facades.impl.DefaultTourFacade" >
+        <property name = "productService" ref = "productService" />
+    </bean>
 </beans>

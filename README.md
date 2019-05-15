@@ -138,3 +138,17 @@ You can simulate dependencies to execute unit tests that run independently of th
 An integration test demonstrates that you have successfully achieved the expected behavior of classes that implement the BandService interface. However it is not truly testing the expected functionality of your particular DefaultBandService class. To do that you should mock up the dependencies, the BandDAO in this case, using Mockito in a new unit test class called DefaultBandServiceUnitTest. As this simulates a real DAO, the test requires no access to the SAP Commerce persistence layer, and therefore does not need to extend ServicelayerTransactionalTest. Instead it is a simple POJO and will run very quickly.
 
 You will test that the expected calls are made from the BandService to the BandDAO interface. No implementation of the BandDAO is needed when simulating the BandDAO interface.
+
+### The facade layer
+
+A facade is an abstraction layer that provides a simplified interface to the underlying implementation.
+
+In previous sections, you saw that SAP Commerce generates Java model classes that represent the different types of item that are stored in the database. These model classes are what you pass as arguments to the different Java services in the SAP Commerce service layer. Nevertheless, there are occasions when the model classes become unwieldy:
+
+  - When you need a simpler or more convenient format for some of the data to display in JSPs
+  - When you need a serializable set of objects to send to another system
+  - When you want to prevent client code from modifying attributes in a model class object directly
+
+In these cases, you need a simpler representation of the data in the model classes. This representation is the purpose of the Data Transfer Object. In addition, if there is a common sequence of method calls that a client must make against a service object, it makes sense to combine the sequence into one call. You make these simplified calls with a facade object.
+
+Facade classes help simplify the calls made to your service classes. They use simpler plain old java objects (POJOs) as argument and result objects, instead of SAP Commerce model classes. In this step, you create a new BandFacade class.
