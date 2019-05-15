@@ -61,3 +61,11 @@ To open the default hsql DatabaseManager to visualize your tables, run under `/h
 `java -cp ./bin/platform/lib/dbdriver/hsqldb*.jar org.hsqldb.util.DatabaseManager --url jdbc:hsqldb:file:./data/hsqldb/mydb &`
 
 To close de DatabaseManager, type: `pkill -f "DatabaseManager"`
+
+### ImpEx
+
+SAP Commerce ships with a powerful text-based import and export functionality called ImpEx.
+
+ImpEx files are essentially comma-separated files (CSVs) that allow for compact, human-readable, import and export of data to and from SAP Commerce. They can be manually executed through the SAP Commerce Administration Console, or automatically executed every time you initialize the system by saving the ImpEx file according to a simple convention, and in a specific location.
+
+The SAP Commerce Administration Console provides an interface, in the Impex Import tab of the Console, through which you can manually import small amounts of ImpEx data.

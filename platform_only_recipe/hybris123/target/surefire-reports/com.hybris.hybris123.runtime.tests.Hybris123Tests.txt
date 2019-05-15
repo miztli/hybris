@@ -1,9 +1,34 @@
 -------------------------------------------------------------------------------
 Test set: com.hybris.hybris123.runtime.tests.Hybris123Tests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.009 s <<< FAILURE! - in com.hybris.hybris123.runtime.tests.Hybris123Tests
-testDatabaseSetup(com.hybris.hybris123.runtime.tests.Hybris123Tests)  Time elapsed: 0.937 s  <<< FAILURE!
-java.lang.AssertionError: Could not find the table BANDS
-	at com.hybris.hybris123.runtime.tests.Hybris123Tests.assertTrue(Hybris123Tests.java:585)
-	at com.hybris.hybris123.runtime.tests.Hybris123Tests.testDatabaseSetup(Hybris123Tests.java:170)
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.374 s <<< FAILURE! - in com.hybris.hybris123.runtime.tests.Hybris123Tests
+testManualImpex(com.hybris.hybris123.runtime.tests.Hybris123Tests)  Time elapsed: 2.302 s  <<< FAILURE!
+java.lang.AssertionError: 
+Connect Exception: session not created: This version of ChromeDriver only supports Chrome version 75
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'miztlis-MacBook-Pro.local', ip: 'fe80:0:0:0:7c:57b2:f17f:b0aa%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.4', java.version: '1.8.0_211'
+Driver info: driver.version: ChromeDriver
+remote stacktrace: 0   chromedriver                        0x000000010b2858e9 chromedriver + 3594473
+1   chromedriver                        0x000000010b215543 chromedriver + 3134787
+2   chromedriver                        0x000000010afc129f chromedriver + 692895
+3   chromedriver                        0x000000010af2f72b chromedriver + 96043
+4   chromedriver                        0x000000010af2b7d8 chromedriver + 79832
+5   chromedriver                        0x000000010af576db chromedriver + 259803
+6   chromedriver                        0x000000010af54d13 chromedriver + 249107
+7   chromedriver                        0x000000010af3178a chromedriver + 104330
+8   chromedriver                        0x000000010af327d5 chromedriver + 108501
+9   chromedriver                        0x000000010b244555 chromedriver + 3327317
+10  chromedriver                        0x000000010b24fe60 chromedriver + 3374688
+11  chromedriver                        0x000000010b24fbf8 chromedriver + 3374072
+12  chromedriver                        0x000000010b223d39 chromedriver + 3194169
+13  chromedriver                        0x000000010b2506d8 chromedriver + 3376856
+14  chromedriver                        0x000000010b237f27 chromedriver + 3276583
+15  chromedriver                        0x000000010b26d064 chromedriver + 3493988
+16  chromedriver                        0x000000010b28b617 chromedriver + 3618327
+17  libsystem_pthread.dylib             0x00007fff7d8e32eb _pthread_body + 126
+18  libsystem_pthread.dylib             0x00007fff7d8e6249 _pthread_start + 66
+19  libsystem_pthread.dylib             0x00007fff7d8e240d thread_start + 13
+
+	at com.hybris.hybris123.runtime.tests.Hybris123Tests.fail(Hybris123Tests.java:596)
+	at com.hybris.hybris123.runtime.tests.Hybris123Tests.testManualImpex(Hybris123Tests.java:398)
 
