@@ -1,0 +1,14 @@
+# ImpEx for Importing Music Type Enum values into Little Concert Tours Store
+INSERT_UPDATE MusicType;code[unique=true]
+;rock
+;jazz
+;classical
+;pop
+;gospel
+;choral
+;sixties
+;seventies
+;eighties
+;nineties
+;maleVocals
+;femaleVocals

@@ -1,0 +1,9 @@
+# ImpEx for Importing Bands music type assignments
+INSERT_UPDATE Band;code[unique=true];types(code)
+;A001;rock,eighties
+;A006;rock,sixties,seventies,eighties,maleVocals
+;A003;jazz,femaleVocals
+;A004;nineties,maleVocals,pop
+;A002;choral,pop
+;A005;gospel
+;A007;choral,classical

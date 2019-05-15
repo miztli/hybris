@@ -102,4 +102,14 @@ Your simple Java class uses the ImpEx service layer API to explicitly load your 
 
 The code also demonstrates the logging facilities that are built in to the platform.
 
+### Essential and Project Data by Convention and Code
 
+SAP Commerce looks for and loads data from ImpEx files that follow a specific naming convention. This behaviour supports the convention over configuration software design paradigm.
+
+Any ImpEx files that follow the SAP Commerce naming convention are automatically loaded whenever you initialize the system. You can use this to set up essential data that your extension needs to run. You can also optionally provide some initial data such as sample data, or initial values in a categories table for example, that the system also loads for convenience. The latter data type is known as project data.
+
+The naming convention for these two data types is as follows:
+
+essentialdata-*.impex
+projectdata-*.impex
+In each case, the * can be any name you choose, but it is convential to use your project name or data type.
