@@ -152,3 +152,17 @@ In previous sections, you saw that SAP Commerce generates Java model classes tha
 In these cases, you need a simpler representation of the data in the model classes. This representation is the purpose of the Data Transfer Object. In addition, if there is a common sequence of method calls that a client must make against a service object, it makes sense to combine the sequence into one call. You make these simplified calls with a facade object.
 
 Facade classes help simplify the calls made to your service classes. They use simpler plain old java objects (POJOs) as argument and result objects, instead of SAP Commerce model classes. In this step, you create a new BandFacade class.
+
+### The front end
+
+Once you have a model and business logic in place, you can develop a suitable front-end web application. When building your front end, use the Spring MVC framework to separate the model, the view, and the controller parts.
+
+SAP Commerce provides a range of Accelerator storefronts. The Accelerators give you basic building blocks that you can use for developing sophisticated and responsive storefronts within specific commerce domains. But to illustrate the basics of how stores are constructed, you focus here on two aspects.
+
+**The Controller Class**
+  - The interface between the user action and the underlying model.
+
+**JSP Pages**
+  - Dynamic web pages for presenting data to the end user.
+
+You have previously created the model aspect of your MVC architecture, now you create the view, the JSP pages, and the controller, the controller class.
