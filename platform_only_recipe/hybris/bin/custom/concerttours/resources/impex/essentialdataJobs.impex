@@ -6,3 +6,16 @@ INSERT_UPDATE CronJob; code[unique=true];job(code);singleExecutable;sessionLangu
 INSERT_UPDATE Trigger;cronjob(code)[unique=true];cronExpression
 #% afterEach: impex.getLastImportedItem().setActivationTime(new Date());
 ; sendNewsCronJob; 0/10 * * * * ?
+
+# Define the ScriptingJob
+INSERT_UPDATE ScriptingJob; code[unique= true ];scriptURI
+;clearoldconcertsJob;model://clearoldconcerts
+
+# Define the CronJob
+INSERT_UPDATE CronJob; code[unique= true ];job(code);sessionLanguage(isocode)
+;clearoldconcertsCronJob;clearoldconcertsJob;en
+
+# Define the trigger
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];cronExpression
+#% afterEach: impex.getLastImportedItem().setActivationTime(new Date());
+; clearoldconcertsCronJob; 0/10 * * * * ?

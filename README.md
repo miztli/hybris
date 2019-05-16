@@ -241,3 +241,7 @@ Once a ServicelayerJob item is created, you can create a cron job to wrap the Se
 A cron expression is a string comprised of 6 or 7 fields separated by white space. Fields can contain any of the allowed values, along with various combinations of allowed special characters for that field.
 
 The first cron job you create for your extension runs on a daily basis, and sends out summaries of new items by email to a specific email address or distribution list. Then you create a second cron job using a scripting language instead of a Java class. Using a scripting language, you can add cron jobs to a system without having to rebuild and redeploy it.
+
+### Groovy
+
+You can use the Groovy scripting language to write jobs for execution.
