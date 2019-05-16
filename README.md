@@ -229,3 +229,15 @@ You may want to perform an inventory every Sunday at midnight, for example, or n
 The first step in implementing a cron job is to place your business logic in a class that extends AbstractJobPerformable. You then develop a new, simple service to provide access to the news items, and encapsulate that business logic in a job class. The steps are similar to those you took to create the band service, and serve to reinforce this pattern.
 
 The SAP Commerce platform ships with a useful email utility class, MailUtils, that simplifies the sending of e-mails with commons mail API. You make use of the MailUtils class to create an e-mail message object populated with values from the local.properties file in your config directory.
+
+## Triggers
+
+With your business logic successfully factored into a job class, you can trigger its execution with the use of a cron job.
+
+A cron job consists of the job class containing the business logic, and a trigger to start the job at regular intervals. The first step in setting up a new cron job is to notify SAP Commerce of your new class by creating your essential data. During the creation of essential data, a ServicelayerJob item is created for every Spring definition that has a class implementing the JobPerformable interface. The code attribute of each of the new job item is set to the name of the relevant Spring bean.
+
+Once a ServicelayerJob item is created, you can create a cron job to wrap the ServicelayerJob, and define a trigger to that starts it.
+
+A cron expression is a string comprised of 6 or 7 fields separated by white space. Fields can contain any of the allowed values, along with various combinations of allowed special characters for that field.
+
+The first cron job you create for your extension runs on a daily basis, and sends out summaries of new items by email to a specific email address or distribution list. Then you create a second cron job using a scripting language instead of a Java class. Using a scripting language, you can add cron jobs to a system without having to rebuild and redeploy it.
