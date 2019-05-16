@@ -114,4 +114,9 @@
 
     <!-- Declare dynamic attribute handlers-->
     <bean id="concertDaysUntilAttributeHandler" class="concerttours.attributehandlers.ConcertDaysUntilAttributeHandler"/>
+
+    <!-- Add listeners -->
+    <bean id="concerttourEventListener" class="concerttours.events.NewBandEventListener" parent="abstractEventListener">
+	  <property name="modelService" ref="modelService" />
+    </bean>
 </beans>

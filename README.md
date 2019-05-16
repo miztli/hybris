@@ -191,3 +191,13 @@ The implementation of this new dynamic attribute has some key features:
 Update the relevant parts of your extension to use the new dynamic attribute.
 
 After introducing new item attributes, you want to apply them. In this case, you want to display the days left until a concert value in the tour details page. To do so, you need to update your TourFacade, TourDetails.jsp page, and the ConcertSummaryData class so that the calculated value of the dynamic attribute Concerts.daysLeft appears in the front end.
+
+### Events and listeners
+
+The Event System is a framework provided by the ServiceLayer that allows you to send and receive events within SAP Commerce.
+
+You can set up components of your extension to publish events that are then received by registered listeners. Listeners are objects that are notified of events and perform business logic depending on the event that occured. Events can be published either locally or across a cluster of nodes. You can register new listeners as Spring beans in your Spring configuration XML file.
+
+The platform defines and publishes events for a number of predefined types of event. These include the AfterItemCreationEvent type, items of which are published after any new data item is saved to the database. To process these AfterItemCreationEvent events, you provide a listener class and register it with the event framework.
+
+For your concerttours extension, you want to generate items of news that you can potentially send out to registered subscribers through various channels. You want to create a new News item whenever a new band is signed. In your listener class, you override the onEvent method to specify the code you want to execute when this event occurs. In this case, you are checking to see if the new item is a band. If it is, you ask the platform model service to create and save a new news item.
