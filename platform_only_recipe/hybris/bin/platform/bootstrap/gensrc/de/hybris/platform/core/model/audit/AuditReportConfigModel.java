@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at May 16, 2019 3:34:16 PM                     ---
+ * --- Generated at May 16, 2019 4:37:40 PM                     ---
  * ----------------------------------------------------------------
  *  
  * [y] hybris Platform
@@ -13,9 +13,12 @@
  */
 package de.hybris.platform.core.model.audit;
 
+import de.hybris.bootstrap.annotations.Accessor;
+import de.hybris.platform.auditreport.model.AuditReportDataModel;
 import de.hybris.platform.core.model.AbstractDynamicContentModel;
 import de.hybris.platform.core.model.ItemModel;
 import de.hybris.platform.servicelayer.model.ItemModelContext;
+import java.util.Collection;
 
 /**
  * Generated model class for type AuditReportConfig first defined at extension core.
@@ -25,6 +28,12 @@ public class AuditReportConfigModel extends AbstractDynamicContentModel
 {
 	/**<i>Generated model type code constant.</i>*/
 	public static final String _TYPECODE = "AuditReportConfig";
+	
+	/**<i>Generated relation code constant for relation <code>AuditReportData2AuditReportConfigRelation</code> defining source attribute <code>auditReportData</code> in extension <code>auditreportservices</code>.</i>*/
+	public static final String _AUDITREPORTDATA2AUDITREPORTCONFIGRELATION = "AuditReportData2AuditReportConfigRelation";
+	
+	/** <i>Generated constant</i> - Attribute key of <code>AuditReportConfig.auditReportData</code> attribute defined at extension <code>auditreportservices</code>. */
+	public static final String AUDITREPORTDATA = "auditReportData";
 	
 	
 	/**
@@ -74,5 +83,27 @@ public class AuditReportConfigModel extends AbstractDynamicContentModel
 		setOwner(_owner);
 	}
 	
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>AuditReportConfig.auditReportData</code> attribute defined at extension <code>auditreportservices</code>. 
+	 * Consider using FlexibleSearchService::searchRelation for pagination support of large result sets.
+	 * @return the auditReportData
+	 */
+	@Accessor(qualifier = "auditReportData", type = Accessor.Type.GETTER)
+	public Collection<AuditReportDataModel> getAuditReportData()
+	{
+		return getPersistenceContext().getPropertyValue(AUDITREPORTDATA);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of <code>AuditReportConfig.auditReportData</code> attribute defined at extension <code>auditreportservices</code>. 
+	 *  
+	 * @param value the auditReportData
+	 */
+	@Accessor(qualifier = "auditReportData", type = Accessor.Type.SETTER)
+	public void setAuditReportData(final Collection<AuditReportDataModel> value)
+	{
+		getPersistenceContext().setPropertyValue(AUDITREPORTDATA, value);
+	}
 	
 }

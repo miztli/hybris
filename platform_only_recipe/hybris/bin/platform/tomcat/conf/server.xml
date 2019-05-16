@@ -183,6 +183,24 @@
 				</JarScanner>
 			</Context>
 
+			<!-- 'backoffice' extension's context for tenant 'master' -->
+			<Context path="/backoffice" docBase="/Users/miztlimelgoza/workspace/personal/hybris_tutorial/platform_only_recipe/hybris/bin/ext-backoffice/backoffice/web/webroot" >
+				<Manager pathname="" />
+				<Loader platformHome="/Users/miztlimelgoza/workspace/personal/hybris_tutorial/platform_only_recipe/hybris/bin/platform" className="de.hybris.tomcat.HybrisWebappLoader" deployName="default" />
+				<JarScanner >
+					<JarScanFilter defaultTldScan="false" tldScan="${tomcat.util.scan.StandardJarScanFilter.jarsToScan},taglibs-standard-impl*.jar,spring-security-taglibs-*.jar,spring-webmvc*.jar" defaultPluggabilityScan="false" pluggabilityScan="${tomcat.util.scan.StandardJarScanFilter.jarsToScan},taglibs-standard-impl*.jar,spring-security-taglibs-*.jar,spring-webmvc*.jar,webfragment*.jar" />
+				</JarScanner>
+			</Context>
+
+			<!-- 'yempty' extension's context for tenant 'master' -->
+			<Context path="/yempty" docBase="/Users/miztlimelgoza/workspace/personal/hybris_tutorial/platform_only_recipe/hybris/bin/ext-template/yempty/web/webroot" >
+				<Manager pathname="" />
+				<Loader platformHome="/Users/miztlimelgoza/workspace/personal/hybris_tutorial/platform_only_recipe/hybris/bin/platform" className="de.hybris.tomcat.HybrisWebappLoader" deployName="default" />
+				<JarScanner >
+					<JarScanFilter defaultTldScan="true" defaultPluggabilityScan="true" />
+				</JarScanner>
+			</Context>
+
 			<!-- 'concerttours' extension's context for tenant 'master' -->
 			<Context path="/concerttours" docBase="/Users/miztlimelgoza/workspace/personal/hybris_tutorial/platform_only_recipe/hybris/bin/custom/concerttours/web/webroot" >
 				<Manager pathname="" />

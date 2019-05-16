@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at May 16, 2019 3:34:16 PM                     ---
+ * --- Generated at May 16, 2019 4:37:40 PM                     ---
  * ----------------------------------------------------------------
  *  
  * [y] hybris Platform
@@ -94,6 +94,9 @@ public class PrincipalModel extends ItemModel
 	
 	/** <i>Generated constant</i> - Attribute key of <code>Principal.watchedComments</code> attribute defined at extension <code>comments</code>. */
 	public static final String WATCHEDCOMMENTS = "watchedComments";
+	
+	/** <i>Generated constant</i> - Attribute key of <code>Principal.backOfficeLoginDisabled</code> attribute defined at extension <code>backoffice</code>. */
+	public static final String BACKOFFICELOGINDISABLED = "backOfficeLoginDisabled";
 	
 	
 	/**
@@ -195,6 +198,16 @@ public class PrincipalModel extends ItemModel
 	public Collection<SearchRestrictionModel> getAllSearchRestrictions()
 	{
 		return getPersistenceContext().getDynamicValue(this,ALLSEARCHRESTRICTIONS);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Principal.backOfficeLoginDisabled</code> attribute defined at extension <code>backoffice</code>. 
+	 * @return the backOfficeLoginDisabled
+	 */
+	@Accessor(qualifier = "backOfficeLoginDisabled", type = Accessor.Type.GETTER)
+	public Boolean getBackOfficeLoginDisabled()
+	{
+		return getPersistenceContext().getPropertyValue(BACKOFFICELOGINDISABLED);
 	}
 	
 	/**
@@ -345,6 +358,17 @@ public class PrincipalModel extends ItemModel
 	public List<CatalogVersionModel> getWritableCatalogVersions()
 	{
 		return getPersistenceContext().getPropertyValue(WRITABLECATALOGVERSIONS);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of <code>Principal.backOfficeLoginDisabled</code> attribute defined at extension <code>backoffice</code>. 
+	 *  
+	 * @param value the backOfficeLoginDisabled
+	 */
+	@Accessor(qualifier = "backOfficeLoginDisabled", type = Accessor.Type.SETTER)
+	public void setBackOfficeLoginDisabled(final Boolean value)
+	{
+		getPersistenceContext().setPropertyValue(BACKOFFICELOGINDISABLED, value);
 	}
 	
 	/**

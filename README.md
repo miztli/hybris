@@ -245,3 +245,11 @@ The first cron job you create for your extension runs on a daily basis, and send
 ### Groovy
 
 You can use the Groovy scripting language to write jobs for execution.
+
+### Backoffice Administration Cockpit
+
+Backoffice Administration Cockpit is a user-friendly, browser-based, user interface for viewing, creating, and manipulating data within SAP Commerce.
+
+Backoffice Administration Cockpit consists of widgets, each with a specific function. This allows you to manage a range of different data types. The primary data used by SAP Commerce is available in the Administration perspective. You can select individual categories from the explorer tree, a menu listing in the left hand side of the main window. From here, you can view, list, enter, and edit catalog and product data, user data including roles and permissions, price settings, internationalization, or basic system configuration data.
+
+For the concerttours extension, Backoffice Administration Cockpit is useful for viewing and editing band and tour data in a user-friendly way.
