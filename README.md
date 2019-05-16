@@ -166,3 +166,22 @@ SAP Commerce provides a range of Accelerator storefronts. The Accelerators give 
   - Dynamic web pages for presenting data to the end user.
 
 You have previously created the model aspect of your MVC architecture, now you create the view, the JSP pages, and the controller, the controller class.
+
+### Dynamic attributes
+
+Dynamic attributes enable you to add attributes to your model, and to create custom logic for them, without touching the model class itself. They provide a way to generate new data, and access it without calling a separate service to do so. Dynamic attributes are transient data that is not persisted to the database.
+
+All the attributes you have defined so far for your Band items are simply stored and retrieved without any extra business logic involved. You use the getter and setter methods of the corresponding Java model class to access and modify them. However, you can also dynamically compute values for an item and expose those values through the getter and setter methods. There are many reasons you may wish to do so:
+
+  - You may want to expose a value in a different set of units. For example, you may need to represent a point on a map as both polar and cartesian coordinates, a time in both 12 hour and 24 hour form, or a relative and absolute version of a directory path or URL.
+  - You may want to calculate a value from several attributes of an item. For example, you may want to calculate the distance between two attributes that hold a location, add the values of a number of attributes together such as price, tax, and discount in an order item to provide a subtotal, or determine the age of a person from a date of birth attribute and the current date.
+
+To provide the custom logic for a dynamic attribute of an item type, you need to provide read and write logic depending upon the requirements for that attribute. You cannot add that logic directly to the model classes because they are already generated, and anything you add would be overwritten and lost the next time you rebuilt the system. Instead, write a plain Java class that implements the DynamicAttributeHandler interface. This interface makes use of Java generics so that the actual class reflects both the attribute value type ( in this case java.lang.Long ) and the model class it works upon (in this case Concert). You then declare this handler class as a Spring bean.
+
+For this trail you create a new attribute called Concerts.daysLeft that exposes the dynamically calculated number of days left before a concert is due to be held. This value can then be used for displaying a countdown to the concert date on a web page, for example.
+
+The implementation of this new dynamic attribute has some key features:
+
+  - The persistence type is set to dynamic
+  - The persistence attributeHandler points to a bean that must handle the DynamicAttributeHandler interface
+  - The write attribute is set to false, and therefore the attribute is read-only
