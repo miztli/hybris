@@ -101,6 +101,11 @@
         <property name = "bandDAO" ref = "bandDAO" />
     </bean>
 
+    <alias name="defaultNewsService" alias="newsService" />
+    <bean id="defaultNewsService" class="concerttours.service.impl.DefaultNewsService">
+        <property name="newsDAO" ref="newsDAO" />
+    </bean>
+
     <!-- Declare facades-->
     <alias name = "defaultBandFacade" alias = "bandFacade" />
     <bean id = "defaultBandFacade" class ="concerttours.facades.impl.DefaultBandFacade" >
@@ -126,5 +131,10 @@
      </bean>
      <bean id="bandAlbumSalesEventListener" class="concerttours.events.BandAlbumSalesEventListener" parent="abstractEventListener" >
 	  <property name="modelService" ref="modelService" />
+     </bean>
+
+     <!-- Define jobs -->
+     <bean id="sendNewsJob" class="concerttours.jobs.SendNewsJob" parent="abstractJobPerformable">
+         <property name="newsService" ref="newsService" />
      </bean>
 </beans>

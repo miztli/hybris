@@ -220,4 +220,12 @@ The main thread waits until all events are processed. For example, a band is not
 A slow listener can cause the system to throw a timeout exception.
 In such circumstances, it is preferable to process events on a separate thread. In addition, when SAP Commerce is deployed on a cluster in a production environment, a system administrator may want event processing to occur on particular nodes. You can achieve both of these things by enabling cluster-aware events.
 
+### Cron jobs
 
+SAP Commerce provides a means to set up regular tasks. With these tasks, or cron jobs, you can repeatedly perform complex business logic at particular times and intervals.
+
+You may want to perform an inventory every Sunday at midnight, for example, or notify the web administrator of the peak loads on the servers every hour. You can achieve this through a combination of dedicated classes for the business logic, and the embedded cron job management functionality of SAP Commerce.
+
+The first step in implementing a cron job is to place your business logic in a class that extends AbstractJobPerformable. You then develop a new, simple service to provide access to the news items, and encapsulate that business logic in a job class. The steps are similar to those you took to create the band service, and serve to reinforce this pattern.
+
+The SAP Commerce platform ships with a useful email utility class, MailUtils, that simplifies the sending of e-mails with commons mail API. You make use of the MailUtils class to create an e-mail message object populated with values from the local.properties file in your config directory.

@@ -38,7 +38,7 @@ public class BandAlbumSalesEventListenerIntegrationTest extends ServicelayerTest
    modelService.save(band);
     }
     
-    @Test
+    //@Test
     public void testEventSending() throws Exception
     {
    final BandModel band = modelService.create(BandModel.class);

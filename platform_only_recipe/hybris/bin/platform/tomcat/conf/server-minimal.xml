@@ -35,8 +35,8 @@
 		<!-- <Resource 	name="mail/Session" auth="Container"
 		        		type="javax.mail.Session"
 		        		mail.transport.protocol="smtp" 
-		        		mail.smtp.host="${mail.smtp.server}"
-		        		mail.smtp.from="test@hybris.de"
+		        		mail.smtp.host="smtp.gmail.com"
+		        		mail.smtp.from="concerttours-no-reply@hybris.de"
 		        		description="Global E-Mail Resource"
 		    		/>-->
     
