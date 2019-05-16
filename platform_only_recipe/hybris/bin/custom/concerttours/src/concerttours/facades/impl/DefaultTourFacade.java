@@ -26,7 +26,8 @@ public class DefaultTourFacade implements TourFacade
         {
             return null;
         }
-        // Create a list of ConcertSummaryData from the matches
+       
+   // Create a list of ConcertSummaryData from the matches
         final List<ConcertSummaryData> concerts = new ArrayList<>();
         if (product.getVariants() != null)
         {
@@ -40,10 +41,12 @@ public class DefaultTourFacade implements TourFacade
                     summary.setDate(concert.getDate());
                     summary.setVenue(concert.getVenue());
                     summary.setType(concert.getConcertType() == ConcertType.OPENAIR ? "Outdoors" : "Indoors");
+                    summary.setCountDown(concert.getDaysUntil());
                     concerts.add(summary);
                 }
             }
         }
+        
         // Now we can create the TourData transfer object
         final TourData tourData = new TourData();
         tourData.setId(product.getCode());
@@ -56,5 +59,5 @@ public class DefaultTourFacade implements TourFacade
     public void setProductService(final ProductService productService)
     {
         this.productService = productService;
-    }
+    }    
 }

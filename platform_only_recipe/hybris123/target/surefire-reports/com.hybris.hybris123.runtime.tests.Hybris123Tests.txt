@@ -1,4 +1,34 @@
 -------------------------------------------------------------------------------
 Test set: com.hybris.hybris123.runtime.tests.Hybris123Tests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.234 s - in com.hybris.hybris123.runtime.tests.Hybris123Tests
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.668 s <<< FAILURE! - in com.hybris.hybris123.runtime.tests.Hybris123Tests
+testDynamicAttributeView(com.hybris.hybris123.runtime.tests.Hybris123Tests)  Time elapsed: 1.589 s  <<< FAILURE!
+java.lang.AssertionError: 
+Connect Exception: session not created: This version of ChromeDriver only supports Chrome version 75
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'miztlis-MacBook-Pro.local', ip: 'fe80:0:0:0:7c:57b2:f17f:b0aa%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.4', java.version: '1.8.0_211'
+Driver info: driver.version: ChromeDriver
+remote stacktrace: 0   chromedriver                        0x0000000104bfd8e9 chromedriver + 3594473
+1   chromedriver                        0x0000000104b8d543 chromedriver + 3134787
+2   chromedriver                        0x000000010493929f chromedriver + 692895
+3   chromedriver                        0x00000001048a772b chromedriver + 96043
+4   chromedriver                        0x00000001048a37d8 chromedriver + 79832
+5   chromedriver                        0x00000001048cf6db chromedriver + 259803
+6   chromedriver                        0x00000001048ccd13 chromedriver + 249107
+7   chromedriver                        0x00000001048a978a chromedriver + 104330
+8   chromedriver                        0x00000001048aa7d5 chromedriver + 108501
+9   chromedriver                        0x0000000104bbc555 chromedriver + 3327317
+10  chromedriver                        0x0000000104bc7e60 chromedriver + 3374688
+11  chromedriver                        0x0000000104bc7bf8 chromedriver + 3374072
+12  chromedriver                        0x0000000104b9bd39 chromedriver + 3194169
+13  chromedriver                        0x0000000104bc86d8 chromedriver + 3376856
+14  chromedriver                        0x0000000104baff27 chromedriver + 3276583
+15  chromedriver                        0x0000000104be5064 chromedriver + 3493988
+16  chromedriver                        0x0000000104c03617 chromedriver + 3618327
+17  libsystem_pthread.dylib             0x00007fff7d8e32eb _pthread_body + 126
+18  libsystem_pthread.dylib             0x00007fff7d8e6249 _pthread_start + 66
+19  libsystem_pthread.dylib             0x00007fff7d8e240d thread_start + 13
+
+	at com.hybris.hybris123.runtime.tests.Hybris123Tests.fail(Hybris123Tests.java:596)
+	at com.hybris.hybris123.runtime.tests.Hybris123Tests.testDynamicAttributeView(Hybris123Tests.java:288)
+

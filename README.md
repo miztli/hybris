@@ -185,3 +185,9 @@ The implementation of this new dynamic attribute has some key features:
   - The persistence type is set to dynamic
   - The persistence attributeHandler points to a bean that must handle the DynamicAttributeHandler interface
   - The write attribute is set to false, and therefore the attribute is read-only
+
+### Web page update
+
+Update the relevant parts of your extension to use the new dynamic attribute.
+
+After introducing new item attributes, you want to apply them. In this case, you want to display the days left until a concert value in the tour details page. To do so, you need to update your TourFacade, TourDetails.jsp page, and the ConcertSummaryData class so that the calculated value of the dynamic attribute Concerts.daysLeft appears in the front end.

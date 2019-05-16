@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="907b8770-3aed-45f3-bbc5-b08625a0c810" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gensrc/concerttours/constants/GeneratedConcerttoursConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/gensrc/concerttours/constants/GeneratedConcerttoursConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gensrc/concerttours/jalo/Band.java" beforeDir="false" afterPath="$PROJECT_DIR$/gensrc/concerttours/jalo/Band.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gensrc/concerttours/jalo/Concert.java" beforeDir="false" afterPath="$PROJECT_DIR$/gensrc/concerttours/jalo/Concert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gensrc/concerttours/jalo/ConcerttoursManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/gensrc/concerttours/jalo/ConcerttoursManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/concerttours-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/concerttours-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/impex/.projectdata-yBandTour.impex.swp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/impex/essentialdata-bands.impex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/impex/projectdata-yBandTour.impex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../platform/tomcat/bin/hybrisPlatform.java.status" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../platform/tomcat/bin/hybrisPlatform.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../../platform/tomcat/bin/hybrisPlatform.pid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../platform/tomcat/bin/hybrisPlatform.status" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hsqldb/mydb.backup" beforeDir="false" afterPath="$PROJECT_DIR$/../../../data/hsqldb/mydb.backup" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hsqldb/mydb.data" beforeDir="false" afterPath="$PROJECT_DIR$/../../../data/hsqldb/mydb.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hsqldb/mydb.lck" beforeDir="false" afterPath="$PROJECT_DIR$/../../../data/hsqldb/mydb.lck" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hsqldb/mydb.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../data/hsqldb/mydb.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hsqldb/mydb.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../data/hsqldb/mydb.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hsqldb/mydb.script" beforeDir="false" afterPath="$PROJECT_DIR$/../../../data/hsqldb/mydb.script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hybristomcat.java.id" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hybristomcat.java.pid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../data/hybristomcat.lock" beforeDir="false" />
-    </list>
+    <list default="true" id="907b8770-3aed-45f3-bbc5-b08625a0c810" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/eclipsebin/notused/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,26 +15,7 @@
     <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/concerttours-items.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="80" column="36" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/concerttours/setup/ConcerttoursCustomSetup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="33" column="54" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
@@ -78,11 +37,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="34" />
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="y" value="23" />
-    <option name="width" value="1654" />
-    <option name="height" value="944" />
+    <option name="width" value="1680" />
+    <option name="height" value="947" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -153,16 +111,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557868311109</updated>
-      <workItem from="1557868317239" duration="4562000" />
+      <workItem from="1557868317239" duration="4841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4562000" />
+    <option name="totallyTimeSpent" value="4841000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="947" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1680" height="947" extended-state="1" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
@@ -226,17 +183,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/concerttours-items.xml">
+    <entry file="file://$PROJECT_DIR$/src/concerttours/setup/ConcerttoursCustomSetup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="80" column="36" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
+        <state relative-caret-position="210">
+          <caret line="27" column="18" lean-forward="true" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/concerttours/setup/ConcerttoursCustomSetup.java">
+    <entry file="file://$PROJECT_DIR$/resources/concerttours-items.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="33" column="54" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="54" />
+        <state relative-caret-position="1275">
+          <caret line="85" column="36" selection-start-line="85" selection-start-column="36" selection-end-line="85" selection-end-column="36" />
         </state>
       </provider>
     </entry>
