@@ -111,4 +111,7 @@
     <bean id = "defaultTourFacade" class ="concerttours.facades.impl.DefaultTourFacade" >
         <property name = "productService" ref = "productService" />
     </bean>
+
+    <!-- Declare dynamic attribute handlers-->
+    <bean id="concertDaysUntilAttributeHandler" class="concerttours.attributehandlers.ConcertDaysUntilAttributeHandler"/>
 </beans>
