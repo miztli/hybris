@@ -1,7 +1,8 @@
 package concerttours.events;
+import de.hybris.platform.servicelayer.event.ClusterAwareEvent;
 import de.hybris.platform.servicelayer.event.events.AbstractEvent;
  
-public class BandAlbumSalesEvent extends AbstractEvent
+public class BandAlbumSalesEvent extends AbstractEvent implements ClusterAwareEvent
 {
     private final String code;
     private final String name;
@@ -29,5 +30,10 @@ public class BandAlbumSalesEvent extends AbstractEvent
     public String toString()
     {
         return this.name;
+    }
+    @Override
+    public boolean publish(final int sourceNodeId, final int targetNodeId)
+    {
+        return (sourceNodeId == targetNodeId);
     }
 }

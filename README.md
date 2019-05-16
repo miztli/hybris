@@ -209,3 +209,15 @@ Interceptors intercept model object lifecycle transitions and, depending on the 
 Model classes represent SAP Commerce items. Each model contains all item attributes from all extensions, which unifies access to the data for an item.
 
 An interceptor addresses a particular step in the life cycle of a model. When the life cycle reaches a certain step, you can activate a corresponding interceptor. An interceptor can modify the model, raise an exception to interrupt the current step, or publish an event if the model matches certain criteria. For example, you could check that an attribute contains certain values before saving the model.
+
+### Cluster-aware events
+
+SAP Commerce supports cluster-aware events. Cluster-aware events enable the processing of events in separate threads, or on particular nodes of a cluster.
+
+By default, SAP Commerce processes all events synchronously. But synchronous messaging has some disadvantages:
+
+The main thread waits until all events are processed. For example, a band is not saved until a corresponding news item is created.
+A slow listener can cause the system to throw a timeout exception.
+In such circumstances, it is preferable to process events on a separate thread. In addition, when SAP Commerce is deployed on a cluster in a production environment, a system administrator may want event processing to occur on particular nodes. You can achieve both of these things by enabling cluster-aware events.
+
+
