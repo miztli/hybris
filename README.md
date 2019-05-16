@@ -201,3 +201,11 @@ You can set up components of your extension to publish events that are then rece
 The platform defines and publishes events for a number of predefined types of event. These include the AfterItemCreationEvent type, items of which are published after any new data item is saved to the database. To process these AfterItemCreationEvent events, you provide a listener class and register it with the event framework.
 
 For your concerttours extension, you want to generate items of news that you can potentially send out to registered subscribers through various channels. You want to create a new News item whenever a new band is signed. In your listener class, you override the onEvent method to specify the code you want to execute when this event occurs. In this case, you are checking to see if the new item is a band. If it is, you ask the platform model service to create and save a new news item.
+
+### Custom events and interceptors
+
+Interceptors intercept model object lifecycle transitions and, depending on the conditions of that transition, may publish an event when they do so.
+
+Model classes represent SAP Commerce items. Each model contains all item attributes from all extensions, which unifies access to the data for an item.
+
+An interceptor addresses a particular step in the life cycle of a model. When the life cycle reaches a certain step, you can activate a corresponding interceptor. An interceptor can modify the model, raise an exception to interrupt the current step, or publish an event if the model matches certain criteria. For example, you could check that an attribute contains certain values before saving the model.

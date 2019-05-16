@@ -115,8 +115,16 @@
     <!-- Declare dynamic attribute handlers-->
     <bean id="concertDaysUntilAttributeHandler" class="concerttours.attributehandlers.ConcertDaysUntilAttributeHandler"/>
 
-    <!-- Add listeners -->
+    <!-- Add listeners and interceptors -->
     <bean id="concerttourEventListener" class="concerttours.events.NewBandEventListener" parent="abstractEventListener">
 	  <property name="modelService" ref="modelService" />
     </bean>
+    <bean id="bandAlbumSalesInterceptor" class="concerttours.interceptors.BandAlbumSalesInterceptor" />
+    <bean id="BandInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+	  <property name="interceptor" ref="bandAlbumSalesInterceptor" />
+	  <property name="typeCode" value="Band" />
+     </bean>
+     <bean id="bandAlbumSalesEventListener" class="concerttours.events.BandAlbumSalesEventListener" parent="abstractEventListener" >
+	  <property name="modelService" ref="modelService" />
+     </bean>
 </beans>
