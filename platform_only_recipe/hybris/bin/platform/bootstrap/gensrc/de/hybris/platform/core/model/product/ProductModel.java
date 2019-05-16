@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at May 16, 2019 4:37:40 PM                     ---
+ * --- Generated at May 16, 2019 5:25:56 PM                     ---
  * ----------------------------------------------------------------
  *  
  * [y] hybris Platform
@@ -549,7 +549,18 @@ public class ProductModel extends ItemModel
 	@Accessor(qualifier = "hashtag", type = Accessor.Type.GETTER)
 	public String getHashtag()
 	{
-		return getPersistenceContext().getPropertyValue(HASHTAG);
+		return getHashtag(null);
+	}
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.hashtag</code> attribute defined at extension <code>concerttours</code>. 
+	 * @param loc the value localization key 
+	 * @return the hashtag - hashtag of concert tour for social media
+	 * @throws IllegalArgumentException if localization key cannot be mapped to data language
+	 */
+	@Accessor(qualifier = "hashtag", type = Accessor.Type.GETTER)
+	public String getHashtag(final Locale loc)
+	{
+		return getPersistenceContext().getLocalizedValue(HASHTAG, loc);
 	}
 	
 	/**
@@ -1232,7 +1243,19 @@ public class ProductModel extends ItemModel
 	@Accessor(qualifier = "hashtag", type = Accessor.Type.SETTER)
 	public void setHashtag(final String value)
 	{
-		getPersistenceContext().setPropertyValue(HASHTAG, value);
+		setHashtag(value,null);
+	}
+	/**
+	 * <i>Generated method</i> - Setter of <code>Product.hashtag</code> attribute defined at extension <code>concerttours</code>. 
+	 *  
+	 * @param value the hashtag - hashtag of concert tour for social media
+	 * @param loc the value localization key 
+	 * @throws IllegalArgumentException if localization key cannot be mapped to data language
+	 */
+	@Accessor(qualifier = "hashtag", type = Accessor.Type.SETTER)
+	public void setHashtag(final String value, final Locale loc)
+	{
+		getPersistenceContext().setLocalizedValue(HASHTAG, loc, value);
 	}
 	
 	/**

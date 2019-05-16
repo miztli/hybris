@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at May 16, 2019 4:37:40 PM                     ---
+ * --- Generated at May 16, 2019 5:25:56 PM                     ---
  * ----------------------------------------------------------------
  */
 package concerttours.model;
@@ -12,6 +12,7 @@ import de.hybris.platform.core.model.ItemModel;
 import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.servicelayer.model.ItemModelContext;
 import java.util.Collection;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -102,7 +103,18 @@ public class BandModel extends ItemModel
 	@Accessor(qualifier = "history", type = Accessor.Type.GETTER)
 	public String getHistory()
 	{
-		return getPersistenceContext().getPropertyValue(HISTORY);
+		return getHistory(null);
+	}
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Band.history</code> attribute defined at extension <code>concerttours</code>. 
+	 * @param loc the value localization key 
+	 * @return the history - history of band
+	 * @throws IllegalArgumentException if localization key cannot be mapped to data language
+	 */
+	@Accessor(qualifier = "history", type = Accessor.Type.GETTER)
+	public String getHistory(final Locale loc)
+	{
+		return getPersistenceContext().getLocalizedValue(HISTORY, loc);
 	}
 	
 	/**
@@ -167,7 +179,19 @@ public class BandModel extends ItemModel
 	@Accessor(qualifier = "history", type = Accessor.Type.SETTER)
 	public void setHistory(final String value)
 	{
-		getPersistenceContext().setPropertyValue(HISTORY, value);
+		setHistory(value,null);
+	}
+	/**
+	 * <i>Generated method</i> - Setter of <code>Band.history</code> attribute defined at extension <code>concerttours</code>. 
+	 *  
+	 * @param value the history - history of band
+	 * @param loc the value localization key 
+	 * @throws IllegalArgumentException if localization key cannot be mapped to data language
+	 */
+	@Accessor(qualifier = "history", type = Accessor.Type.SETTER)
+	public void setHistory(final String value, final Locale loc)
+	{
+		getPersistenceContext().setLocalizedValue(HISTORY, loc, value);
 	}
 	
 	/**
