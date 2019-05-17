@@ -305,4 +305,30 @@ For validation to work, you define constraints. In the procedure that follows yo
 
 You can create and define validation constraints in the SAP Commerce Backoffice Administration Cockpit.
 
+You can define validation constraints in ImpEx files, making it easy to reload constraints after initializing the database.
 
+Validation constraints are persisted to the database. If you frequently reinitialize the database during the development and testing phase of your project, there is a danger that you could erase any stored constraints. To ease the effort of restoring validation constraints, it is a good idea to define and load them using ImpEx files.
+
+### Validation Constraints in ImpEx
+
+You can define validation constraints in ImpEx files, making it easy to reload constraints after initializing the database.
+
+Validation constraints are persisted to the database. If you frequently reinitialize the database during the development and testing phase of your project, there is a danger that you could erase any stored constraints. To ease the effort of restoring validation constraints, it is a good idea to define and load them using ImpEx files.
+
+### Custom validation constraints
+
+Although the validation framework provides all constraints from the JSR 303 specification, sometimes you need other constraint types that are specific to your project.
+
+In our case, too often a band's history is set to a piece of placeholder text instead of the meaningful, genuine background of the band. Create a constraint that prevents this occurrence by looking for text that is missing, or starts with "lorem ipsum".
+
+The new constraint type extends AttributeConstraint because you are validating the values of attributes, not of the type as a whole. If you want to create constraints that apply to the whole of an item, extend TypeConstraint instead. The only attribute holds a reference to the Java annotation class that defines our constraint as a Java annotation.
+
+The @Constraint annotation specifies a NotLoremIpsumValidator class that provides the actual logic for checking the constraint. The constraint checks that if the value is not null or empty, and that it does not start with the phrase lorem ipsum. Of course, you can get more sophisticated but this good enough for the purposes of the exercise.
+
+Note that you can see the other mapping properties for the built-in constraint types in the file ext/validation/project.properties in the platform project.
+
+### Integration Test for the Custom Constraint
+
+Become familiar with how to use the SAP Commerce validation service in code.
+
+Write a test that checks whether the constraint is working as expected. Use ImpEx to load the constraint into the database, and then the validation service to load it from the database into the validation engine.

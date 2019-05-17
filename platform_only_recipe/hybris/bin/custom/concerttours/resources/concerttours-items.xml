@@ -127,6 +127,21 @@
 				 <persistence type="property" />
 			     </attribute>
 			 </attributes>    
+		 </itemtype>
+
+		<!-- Constraint item types-->
+		<itemtype code="NotLoremIpsumConstraint" extends="AttributeConstraint"
+		    autocreate="true" generate="true">
+		    <description>Custom constraint which checks for Lorem Ipsum text.</description>
+		    <attributes>
+			<attribute qualifier="annotation" type="java.lang.Class"
+			    redeclare="true">
+			    <modifiers write="false" initial="true" optional="false" />
+			    <defaultvalue>
+				concerttours.constraints.NotLoremIpsum.class
+			    </defaultvalue>
+			</attribute>
+		    </attributes>
 		</itemtype>
 <!--
 		<itemtype generate="true"
@@ -144,7 +159,7 @@
 
 				<attribute qualifier="myExampleBooleanField" type="java.lang.Boolean">
 					<description>Example Initial Boolean Field</description>
-               <persistence type="property"/>
+				       <persistence type="property"/>
 				</attribute>
 
 				<attribute qualifier="media" type="Media">

@@ -1,9 +1,9 @@
-
+# ImpEx for Importing Bands music type assignments
 INSERT_UPDATE Band;code[unique=true];types(code)
-Band,8796093085244,,,column 2: cannot resolve value 'rock,eighties' for attribute 'types';<ignore>A001;rock,eighties
-Band,8796093118012,,,column 2: cannot resolve value 'rock,sixties,seventies,eighties,maleVocals' for attribute 'types';<ignore>A006;rock,sixties,seventies,eighties,maleVocals
-Band,8796093150780,,,column 2: cannot resolve value 'jazz,femaleVocals' for attribute 'types';<ignore>A003;jazz,femaleVocals
-Band,8796093183548,,,column 2: cannot resolve value 'nineties,maleVocals,pop' for attribute 'types';<ignore>A004;nineties,maleVocals,pop
-Band,8796093216316,,,column 2: cannot resolve value 'choral,pop' for attribute 'types';<ignore>A002;choral,pop
-Band,8796093249084,,,column 2: cannot resolve value 'gospel' for attribute 'types';<ignore>A005;gospel
-Band,8796093281852,,,column 2: cannot resolve value 'choral,classical' for attribute 'types';<ignore>A007;choral,classical
+;A001;rock,eighties
+;A006;rock,sixties,seventies,eighties,maleVocals
+;A003;jazz,femaleVocals
+;A004;nineties,maleVocals,pop
+;A002;choral,pop
+;A005;gospel
+;A007;choral,classical
