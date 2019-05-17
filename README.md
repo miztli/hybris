@@ -256,4 +256,53 @@ For the concerttours extension, Backoffice Administration Cockpit is useful for 
 
 ### Localization
 
+Localization is intended to adapt SAP Commerce to multiple languages.
+
+Localization is built into SAP Commerce Platform from the ground up, not bolted-on as an after thought. As a result, you can declare attributes and relations of item types as localized in an extension's *-items.xml file, and the system automatically provides for multiple values for different locales. Even the type system names themselves can be localized so that when item type and attribute names appear in user interfaces, they can be in the user's chosen language.
+
+When the SAP build system encounters the localized keyword, instead of a single valued attribute, it creates a map of values keyed by language for that attribute, and generates an equivalent construct in the database.
+
+Impex has a built-in syntax for specifying values for localized values, and it is often more manageable to separate content across impex files by language. While it is not necessary to use separate files for language-specific content, it usually makes it much easier to understand and manage. Particularly, it makes adding and removing the content for a specific language easier.
+
+In the hybris123 integration tests, you used the model service to create new instances of bands, concerts, and others. The model service handles the provision of a locale to use when working with localized attributes. Unfortunately, when it comes to unit tests you don't have the context provided by the model service. As a result, when you call the usual getter or setter of a localized attribute, the model object doesn't know which language to map the value to. If you are only accessing localized attributes in your test code, you can fix this problem by using a getter and setter that specifies the locale that you want used as an extra parameter.
+
+If the simple accessors are being called in the code that you are testing, there is no way to provide a LocaleProvider for them to use. As a result, you can no longer test that code in a unit test. You have to fall back to using integration tests.
+
+If for example you replace the calls to getHistory() and setHistory() in the test DefaultBandFacadeUnitTest methods with getHistory(Locale.ENGLISH) and setHistory(BAND_HISTORY, Locale.ENGLISH), that test will still fail because the code that you are testing in the actual DefaultBandFacade class calls the simple getHistory() accessor.
+
+The only way you can make this test pass is to have the code you are testing check if you are running outside the SAP Commerce Server context and modify its behaviour to cope with that. That makes no sense, so unfortunately you have to stop using this unit test and rely on the slower integration test instead.
+
+### Localization in Backoffice Administration Cockpit
+
+You can define localized values for item type attributes directly in the Backoffice Administration Cockpit.
+
+### Validation
+
+The SAP Commerce data validation framework ensures clean, correct, and useful data. The validation framework is based on the Java validation specification, JSR 303. It offers an easy and extensible way to validate data before it is passed on to the persistence layer.
+
+The data validation framework has several goals:
+
+  - To offer a framework for defining data validation constraints in easy and intuitive way
+  - To validate data before it is saved
+  - To notify about any validation violations should they occur
+
+Validation logic may be triggered in the following ways:
+
+  - Implicitly with the ValidationInterceptor that hooks into calls to the save method in a model
+  - Explicitly by manually calling the validate method of the ValidationService, and passing in a SAP Commerce model or POJO to be validated
+
+When validation violations are found, they are presented to the caller for a resolution. The validation framework does not extend to performing client side validation. Validation happens on the server side only.
+
+The main components of data validation constraints are:
+
+  - ValidationService: Manages validation constraints, and validates data
+  - Backoffice Administration Cockpit: Provides a front-end for managing instantiated validation constraint types
+  - Cockpit integration: Provides users with validation feedback in cockpits
+
+For validation to work, you define constraints. In the procedure that follows you define validation constraints in the Items.xml file, but there are more ways to define constraints. You can use an ImpEx file, which allows you to automate the process and quickly add more constraints. ImpEx is an ideal way to work between multiple platforms. You can also define constraints in Backoffice Administration Cockpit. In this way, you can update validation constraints manually and at runtime.
+
+### Validation constraints in backoffice
+
+You can create and define validation constraints in the SAP Commerce Backoffice Administration Cockpit.
+
 
