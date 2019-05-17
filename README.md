@@ -332,3 +332,13 @@ Note that you can see the other mapping properties for the built-in constraint t
 Become familiar with how to use the SAP Commerce validation service in code.
 
 Write a test that checks whether the constraint is working as expected. Use ImpEx to load the constraint into the database, and then the validation service to load it from the database into the validation engine.
+
+### Properties files
+
+SAP Commerce relies on two essential configuration files: project.properties and local.properties. Project properties are the SAP Commerce defaults, while local properties is where you may define your own configuration for your extension.
+
+You can set values in different properties files. Each file has a different priority and its values can override the values of another file with lower priority. The order of priority from hight to low is:
+
+  - The local.properties file is a working copy of the project.properties file, located in the <HYBRIS_CONFIG_DIR> directory. It allows you to override default settings from the project.properties file. Use the local.properties file to set values for configuration properties that you need to configure for your project.
+  - The extension-specific project.properties file is located in the <HYBRIS_BIN_DIR>/<EXTENSION_DIR>. It defines the values used for the extension.
+  - The global project.properties file is located in the <HYBRIS_BIN_DIR>/platform directory, and provides factory default settings. It is not recommended to edit this file.
