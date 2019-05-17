@@ -106,6 +106,10 @@
 					<description>official global album sales</description>
 					<persistence type="property" />
 				</attribute>
+				<attribute qualifier="image" type="MediaContainer">
+				    <description>picture of band in different formats</description>
+				    <persistence type="property" />
+				</attribute>
 			</attributes>
 		</itemtype>
 		<!-- Hybris123SnippetEnd -->

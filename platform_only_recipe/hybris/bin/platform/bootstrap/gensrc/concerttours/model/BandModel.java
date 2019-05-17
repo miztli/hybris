@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at May 17, 2019 3:23:33 PM                     ---
+ * --- Generated at May 17, 2019 5:35:17 PM                     ---
  * ----------------------------------------------------------------
  */
 package concerttours.model;
@@ -9,6 +9,7 @@ package concerttours.model;
 import concerttours.enums.MusicType;
 import de.hybris.bootstrap.annotations.Accessor;
 import de.hybris.platform.core.model.ItemModel;
+import de.hybris.platform.core.model.media.MediaContainerModel;
 import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.servicelayer.model.ItemModelContext;
 import java.util.Collection;
@@ -38,6 +39,9 @@ public class BandModel extends ItemModel
 	
 	/** <i>Generated constant</i> - Attribute key of <code>Band.albumSales</code> attribute defined at extension <code>concerttours</code>. */
 	public static final String ALBUMSALES = "albumSales";
+	
+	/** <i>Generated constant</i> - Attribute key of <code>Band.image</code> attribute defined at extension <code>concerttours</code>. */
+	public static final String IMAGE = "image";
 	
 	/** <i>Generated constant</i> - Attribute key of <code>Band.tours</code> attribute defined at extension <code>concerttours</code>. */
 	public static final String TOURS = "tours";
@@ -118,6 +122,16 @@ public class BandModel extends ItemModel
 	}
 	
 	/**
+	 * <i>Generated method</i> - Getter of the <code>Band.image</code> attribute defined at extension <code>concerttours</code>. 
+	 * @return the image - picture of band in different formats
+	 */
+	@Accessor(qualifier = "image", type = Accessor.Type.GETTER)
+	public MediaContainerModel getImage()
+	{
+		return getPersistenceContext().getPropertyValue(IMAGE);
+	}
+	
+	/**
 	 * <i>Generated method</i> - Getter of the <code>Band.name</code> attribute defined at extension <code>concerttours</code>. 
 	 * @return the name - name of band
 	 */
@@ -192,6 +206,17 @@ public class BandModel extends ItemModel
 	public void setHistory(final String value, final Locale loc)
 	{
 		getPersistenceContext().setLocalizedValue(HISTORY, loc, value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of <code>Band.image</code> attribute defined at extension <code>concerttours</code>. 
+	 *  
+	 * @param value the image - picture of band in different formats
+	 */
+	@Accessor(qualifier = "image", type = Accessor.Type.SETTER)
+	public void setImage(final MediaContainerModel value)
+	{
+		getPersistenceContext().setPropertyValue(IMAGE, value);
 	}
 	
 	/**

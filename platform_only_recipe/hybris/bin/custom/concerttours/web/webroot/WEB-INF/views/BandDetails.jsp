@@ -1,19 +1,24 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!doctype html>
 <html>
-<title>Tour Details</title>
+<title>Band Details</title>
 <body>
-    <h1>Tour Details</h1>
-    Tour Details for ${tour.tourName}
-    <p>${tour.description}</p>
-    <p>Schedule:</p>
-    <table>
-        <tr><th>Venue</th><th></th><th>Date</th></tr>
-        <c:forEach var="concert" items="${tour.concerts}">
-            <tr><td>${concert.venue}</td><td>${concert.type}</td><td><fmt:formatDate pattern="dd MMM yyyy" value="${concert.date}" /></td></tr>
+    <h1>Band Details</h1>
+    Band Details for ${band.name}
+    <p><img src="${band.imageURL}"/></p>
+    <p>${band.description}</p>
+    <p>Music type:</p>
+    <ul>
+        <c:forEach var="genre" items="${band.genres}">
+            <li>${genre}</li>
         </c:forEach>
-    </table>
+    </ul>
+    <p>Tour History:</p>
+    <ul>
+        <c:forEach var="tour" items="${band.tours}">
+            <li><a href="../tours/${tour.id}">${tour.tourName}</a>(number of concerts: ${tour.numberOfConcerts})</li>
+        </c:forEach>
+    </ul>
     <a href="../bands">Back to Band List</a>
 </body>
 </html>

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN!
- * --- Generated at May 17, 2019 3:23:34 PM
+ * --- Generated at May 17, 2019 5:35:18 PM
  * ----------------------------------------------------------------
  *
  * [y] hybris Platform
@@ -52,6 +52,10 @@ public  class BandData  implements Serializable
 	/** <i>Generated property</i> for <code>BandData.tours</code> property defined at extension <code>concerttours</code>. */
 		
 	private List<TourSummaryData> tours;
+
+	/** <i>Generated property</i> for <code>BandData.imageURL</code> property defined at extension <code>concerttours</code>. */
+		
+	private String imageURL;
 	
 	public BandData()
 	{
@@ -140,6 +144,20 @@ public  class BandData  implements Serializable
 	public List<TourSummaryData> getTours() 
 	{
 		return tours;
+	}
+	
+		
+	
+	public void setImageURL(final String imageURL)
+	{
+		this.imageURL = imageURL;
+	}
+
+		
+	
+	public String getImageURL() 
+	{
+		return imageURL;
 	}
 	
 

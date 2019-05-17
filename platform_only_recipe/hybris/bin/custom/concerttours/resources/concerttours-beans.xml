@@ -80,6 +80,7 @@
         <property name = "albumsSold" type = "Long" />
         <property name = "genres" type="java.util.List&lt;String&gt;"/>
         <property name = "tours" type="java.util.List&lt;concerttours.data.TourSummaryData&gt;"/>
+	<property name="imageURL" type="String" />
      </bean>
      <bean class = "concerttours.data.ConcertSummaryData">
         <description >Data object for a concert summary</description>

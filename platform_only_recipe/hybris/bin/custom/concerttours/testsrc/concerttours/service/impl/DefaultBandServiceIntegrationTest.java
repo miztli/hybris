@@ -71,19 +71,20 @@ public class DefaultBandServiceIntegrationTest extends ServicelayerTest
      * returns the data it receives from it.
      */
     @Test
-    public void testBandServiceTours() throws Exception
-    {
-        createCoreData();
-        importCsv("/impex/concerttours-bands.impex", "utf-8");
-        importCsv("/impex/concerttours-yBandTour.impex", "utf-8");
-        final BandModel band = bandService.getBandForCode("A001");
-        assertNotNull("No band found", band);
-        final Set<ProductModel> tours = band.getTours();
-        assertNotNull("No tour found", tours);
-        Assert.assertEquals("not found one tour", 1, tours.size());
-        final Object[] objects = new Object[5];
-        final Collection<VariantProductModel> concerts = ((ProductModel) tours.toArray(objects)[0]).getVariants();
-        assertNotNull("No tour found", tours);
-        Assert.assertEquals("not found one tour", 6, concerts.size());
-    }
+	public void testBandServiceTours() throws Exception
+	{
+	    createCoreData();
+	    importCsv("/impex/essentialdata-mediaformats.impex", "UTF-8");
+	    importCsv("/impex/concerttours-bands.impex", "utf-8");
+	    importCsv("/impex/concerttours-yBandTour.impex", "utf-8");
+	    final BandModel band = bandService.getBandForCode("A001");
+	    assertNotNull("No band found", band);
+	    final Set<ProductModel> tours = band.getTours();
+	    assertNotNull("No tour found", tours);
+	    Assert.assertEquals("not found one tour", 1, tours.size());
+	    final Object[] objects = new Object[5];
+	    final Collection<VariantProductModel> concerts = ((ProductModel) tours.toArray(objects)[0]).getVariants();
+	    assertNotNull("No tour found", tours);
+	    Assert.assertEquals("not found one tour", 6, concerts.size());
+	}
 }
