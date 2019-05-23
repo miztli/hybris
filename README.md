@@ -49,6 +49,11 @@ SAP Commerce refers to data types as itemtypes, each defined in an itemtype XML 
 
 At build time and database-initialization time, the platform combines all the XML declarations from the extensions being used, and generates Java classes and a database schema.
 
+**items.xml files**
+
+__<itemtype>__
+  - autocreate (true/false): Lets SAP Commerce create a new database entry for this type at initialization/update process. 
+
 ### Database design
 
 SAP Commerce stores data in a RDBMS and several third-party databases are supported.
