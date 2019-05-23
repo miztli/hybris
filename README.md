@@ -51,7 +51,7 @@ At build time and database-initialization time, the platform combines all the XM
 
 **items.xml files**
 
-__\<itemtype\>__
+_\<itemtype\>_
   - autocreate (true/false): Lets SAP Commerce create a new database entry for this type at initialization/update process. 
 
 ### Database design
