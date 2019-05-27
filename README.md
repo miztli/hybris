@@ -35,11 +35,28 @@ An extension is an encapsulated piece of SAP Commerce functionality, that can co
 
 SAP Commerce ships with a number of extension templates, and an ant-based tool (called extgen) for generating new extensions based upon these templates. In this and subsequent sections, you extend SAP Commerce by adding and developing your own custom extension.
 
+To build a new extension: 
+
+  - navigate to {HYBRIS_DIR}/bin/platform. Then type `ant extgen` and complete the information as required.
+  - add the new extension to the `localextensions.xml` and comment out all the others.
+  - run command `ant clean all`
+
 ### The localextensions.xml file
 
 The localextensions.xml file contains the list of extensions your specific SAP Commerce configuration includes at compile- and run-time.
 
 When you first build SAP Commerce, the localextensions.xml file lists only the essential extensions. As you decide which extensions you need or want to use, add them to this file. In this procedure, you notify SAP Commerce of the new concerttours extension by adding it to the localextensions.xml file.
+
+### Require other extensions
+
+An extension is configured by the extensioninfo.xml file.
+
+It defines the following:
+
+  - A list of extensions required for current extension. If the required extension does not exist in your installation, then the build of SAP Commerce fails.
+  - A list of available extension modules with their configuration:
+    - core extension module
+    - web extension module: Among other things, you can define webroot of the Web application.
 
 ### Data models
 
@@ -53,6 +70,9 @@ At build time and database-initialization time, the platform combines all the XM
 
 _\<itemtype\>_
   - autocreate (true/false): Lets SAP Commerce create a new database entry for this type at initialization/update process. 
+  - generate (true/false): Results in Java class files being generated for this type
+
+  * _NOTE:_ After updating an ItemType, update the system with: `ant updatesystem`
 
 ### Database design
 
