@@ -1,0 +1,53 @@
+FROM ${base_image}
+
+ENV HTTPD_MOD_PATH=${httpd_mod_home} \
+    HTTPD_HOME=${httpd_home}
+    
+COPY ./resources/mod_cluster-1.3.5.Final.tar.gz /tmp/mod_cluster.tgz
+
+RUN yum -y install httpd-${httpd_version} mod_ssl unzip && \
+    set -x \
+      && buildDeps=" \
+           ca-certificates \
+           gcc \
+           make \
+           autoconf \
+           httpd-devel \
+         " \
+      && yum install -y $buildDeps \
+      && yum clean all \
+      && cd /tmp \
+      && modDir="$(tar -tf mod_cluster.tgz | head -1)" \
+      && tar -xzvf mod_cluster.tgz "$modDir"native \
+      && cd "$modDir"native \
+      && for mod in advertise mod_manager mod_proxy_cluster mod_cluster_slotmem; do \
+           cd "$mod"; \
+           sh buildconf; \
+           ./configure --with-apxs=/usr/bin/apxs; \
+           make || exit 1; \
+           cp *.so "$HTTPD_MOD_PATH"; \
+           cd ..; \
+         done \
+      && cd /tmp \
+      && rm -rf mod_cluster.tgz "$modDir" /etc/httpd/conf.modules.d/00-proxy.conf /etc/httpd/conf.d/welcome.conf \
+      && yum history -y undo last
+
+RUN curl -sSL ${groovy_source_url} -o /usr/local/groovy.zip \
+    && cd /usr/local/ \ 
+    && unzip groovy.zip \
+    && rm groovy.zip
+    
+ENV HTTP_PORT=${http_port} HTTPS_PORT=${https_port} MOD_CLUSTER_ADDRESS_GROUP=${mod_cluster_address_group} MOD_CLUSTER_ADDRESS_PORT=${mod_cluster_address_port} SSL_CONF_DIR=/etc/httpd/conf/ssl GROOVY_HOME=/usr/local/groovy-${groovy_version}/ PATH=$PATH:/usr/local/groovy-${groovy_version}/bin
+
+# Add mod cluster configuration
+COPY mod_proxy_config/mod-cluster.conf /etc/httpd/conf.modules.d/
+COPY mod_proxy_config/proxy-cluster.conf /etc/httpd/conf.d/
+COPY mod_proxy_config/httpd.conf /etc/httpd/conf/
+
+# Add startup configuration
+COPY startup.sh /opt/startup/
+ADD apache-config-generator/ /opt/startup/apache-config-generator
+
+RUN chmod +x /opt/startup/startup.sh
+
+ENTRYPOINT ["/opt/startup/startup.sh"]

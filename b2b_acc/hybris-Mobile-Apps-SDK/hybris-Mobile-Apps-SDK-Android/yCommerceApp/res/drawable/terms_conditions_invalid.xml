@@ -1,0 +1,11 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="16dp"
+    android:shape="rectangle">
+
+    <stroke
+        android:width="2dip"
+        android:color="@color/checkout_entries_validation_error" />
+
+    <solid android:color="@color/product_detail_expandable_background" />
+
+</shape>

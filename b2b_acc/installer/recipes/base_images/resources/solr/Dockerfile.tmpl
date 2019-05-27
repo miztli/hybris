@@ -1,0 +1,14 @@
+FROM ${baseImage}
+
+RUN mkdir -p ${solr_dir}
+COPY ./server ${solr_dir}
+
+RUN chmod +x ${solr_dir}/bin/solr ${solr_dir}/server/scripts/cloud-scripts/zkcli.sh
+COPY start.sh ${solr_dir}
+RUN chmod +x ${solr_dir}/start.sh
+
+ENV SOLR_HOME=${solr_dir}/server/solr
+
+EXPOSE $port
+
+ENTRYPOINT ["${solr_dir}/start.sh"]

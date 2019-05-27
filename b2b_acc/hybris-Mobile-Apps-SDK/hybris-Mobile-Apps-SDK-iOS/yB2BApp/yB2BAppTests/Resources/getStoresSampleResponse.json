@@ -1,0 +1,215 @@
+{
+    "boundEastLongitude": 0,
+    "boundNorthLatitude": 0,
+    "boundSouthLatitude": 0,
+    "boundWestLongitude": 0,
+    "pagination": {
+        "currentPage": 0,
+        "pageSize": 20,
+        "sort": "asc",
+        "totalPages": 1,
+        "totalResults": 9
+    },
+    "sourceLatitude": 0,
+    "sourceLongitude": 0,
+    "stores": [
+        {
+            "address": {
+                "country": {
+                    "isocode": "US"
+                },
+                "formattedAddress": "6TH AVE, 5401, Washington, Tacoma, 98406",
+                "id": "8796093743127",
+                "line1": "6TH AVE",
+                "line2": "5401",
+                "postalCode": "98406",
+                "region": {
+                    "isocode": "US-WA"
+                },
+                "town": "Tacoma"
+            },
+            "displayName": "Hybris Powertools Tacoma",
+            "geoPoint": {
+                "latitude": 40.7127,
+                "longitude": 74.0059
+            },
+            "name": "Hybris Powertools Tacoma"
+        },
+        {
+            "address": {
+                "country": {
+                    "isocode": "US"
+                },
+                "formattedAddress": "E MAIN STREET, 1196, California, El Cajon, 92021",
+                "id": "8796093710359",
+                "line1": "E MAIN STREET",
+                "line2": "1196",
+                "postalCode": "92021",
+                "region": {
+                    "isocode": "US-CA"
+                },
+                "town": "El Cajon"
+            },
+            "displayName": "Hybris Powertools El Cajon",
+            "geoPoint": {
+                "latitude": 40.7127,
+                "longitude": 74.0059
+            },
+            "name": "Hybris Powertools El Cajon"
+        },
+        {
+            "address": {
+                "country": {
+                    "isocode": "US"
+                },
+                "formattedAddress": "East 56th Place, 9909, Oklahoma, Tulsa, 74146",
+                "id": "8796093513751",
+                "line1": "East 56th Place",
+                "line2": "9909",
+                "postalCode": "74146",
+                "region": {
+                    "isocode": "US-OK"
+                },
+                "town": "Tulsa"
+            },
+            "displayName": "Hybris Powertools Tulsa2",
+            "geoPoint": {
+                "latitude": 40.7127,
+                "longitude": 74.0059
+            },
+            "name": "Hybris Powertools Tulsa2"
+        },
+        {
+            "address": {
+                "country": {
+                    "isocode": "US"
+                },
+                "formattedAddress": "East 57th Place, 9909, Oklahoma, Tulsa, 74146",
+                "id": "8796093546519",
+                "line1": "East 57th Place",
+                "line2": "9909",
+                "postalCode": "74146",
+                "region": {
+                    "isocode": "US-OK"
+                },
+                "town": "Tulsa"
+            },
+            "displayName": "Hybris Powertools Tulsa3",
+            "geoPoint": {
+                "latitude": 40.7127,
+                "longitude": 74.0059
+            },
+            "name": "Hybris Powertools Tulsa3"
+        },
+        {
+            "address": {
+                "country": {
+                    "isocode": "US"
+                },
+                "formattedAddress": "East 58th Place, 9909, Oklahoma, Tulsa, 74146",
+                "id": "8796093579287",
+                "line1": "East 58th Place",
+                "line2": "9909",
+                "postalCode": "74146",
+                "region": {
+                    "isocode": "US-OK"
+                },
+                "town": "Tulsa"
+            },
+            "displayName": "Hybris Powertools Tulsa4",
+            "geoPoint": {
+                "latitude": 40.7127,
+                "longitude": 74.0059
+            },
+            "name": "Hybris Powertools Tulsa4"
+        },
+        {
+            "address": {
+                "country": {
+                    "isocode": "US"
+                },
+                "formattedAddress": "East 59th Place, 9909, Oklahoma, Tulsa, 74146",
+                "id": "8796093612055",
+                "line1": "East 59th Place",
+                "line2": "9909",
+                "postalCode": "74146",
+                "region": {
+                    "isocode": "US-OK"
+                },
+                "town": "Tulsa"
+            },
+            "displayName": "Hybris Powertools Tulsa5",
+            "geoPoint": {
+                "latitude": 40.7127,
+                "longitude": 74.0059
+            },
+            "name": "Hybris Powertools Tulsa5"
+        },
+        {
+            "address": {
+                "country": {
+                    "isocode": "US"
+                },
+                "formattedAddress": "East Hanna, 601, Indiana, Indianapolis, 46227",
+                "id": "8796093644823",
+                "line1": "East Hanna",
+                "line2": "601",
+                "postalCode": "46227",
+                "region": {
+                    "isocode": "US-IN"
+                },
+                "town": "Indianapolis"
+            },
+            "displayName": "Hybris Powertools Indianapolis",
+            "geoPoint": {
+                "latitude": 40.7127,
+                "longitude": 74.0059
+            },
+            "name": "Hybris Powertools Indianapolis"
+        },
+        {
+            "address": {
+                "country": {
+                    "isocode": "US"
+                },
+                "formattedAddress": "Adamo Drive, 9212, Florida, Tampa, 33619",
+                "id": "8796093677591",
+                "line1": "Adamo Drive",
+                "line2": "9212",
+                "postalCode": "33619",
+                "region": {
+                    "isocode": "US-FL"
+                },
+                "town": "Tampa"
+            },
+            "displayName": "Hybris Powertools Tampa",
+            "geoPoint": {
+                "latitude": 40.7127,
+                "longitude": 74.0059
+            },
+            "name": "Hybris Powertools Tampa"
+        },
+        {
+            "address": {
+                "country": {
+                    "isocode": "US"
+                },
+                "formattedAddress": "East 55th Place, 9909, Oklahoma, Tulsa, 74146",
+                "id": "8796093480983",
+                "line1": "East 55th Place",
+                "line2": "9909",
+                "postalCode": "74146",
+                "region": {
+                    "isocode": "US-OK"
+                },
+                "town": "Tulsa"
+            },
+            "displayName": "Hybris Powertools Tulsa1",
+            "geoPoint": {
+                "latitude": 40.7127,
+                "longitude": 74.0059
+            },
+            "name": "Hybris Powertools Tulsa1"
+        }
+    ]
+}

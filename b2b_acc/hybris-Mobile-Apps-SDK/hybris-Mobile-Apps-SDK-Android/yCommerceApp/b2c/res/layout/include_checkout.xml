@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/checkout_scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_small">
+
+        <TextView
+            android:id="@+id/checkout_payment_title"
+            style="@style/h2_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_small"
+            android:text="@string/checkout_payment_title" />
+
+        <Spinner
+            android:id="@+id/checkout_account_payment_spinner"
+            style="@style/spinner_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spinner_height"
+            android:spinnerMode="dialog" />
+
+
+            <TextView
+                android:id="@+id/checkout_add_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/account_button_height"
+                style="@style/second_button"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:layout_margin="@dimen/margin_medium"
+                android:padding="@dimen/padding_medium"
+                android:text="@string/payment_add_new" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_medium"
+        android:paddingTop="@dimen/padding_medium">
+
+        <TextView
+            android:id="@+id/checkout_delivery_detail_title"
+            style="@style/h2_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_medium"
+            android:paddingTop="@dimen/padding_medium"
+            android:text="@string/checkout_delivery_details_title" />
+
+        <TextView
+            android:id="@+id/checkout_delivery_address_title"
+            style="@style/h3_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/checkout_delivery_address_title" />
+
+        <Spinner
+            android:id="@+id/checkout_delivery_address_spinner"
+            style="@style/spinner_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spinner_height"
+            android:prompt="@string/checkout_delivery_address_spinner_dialog"
+            android:spinnerMode="dialog" />
+    </LinearLayout>
+
+</LinearLayout>

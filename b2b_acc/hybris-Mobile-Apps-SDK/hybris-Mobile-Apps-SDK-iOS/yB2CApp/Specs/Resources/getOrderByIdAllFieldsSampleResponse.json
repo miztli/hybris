@@ -1,0 +1,292 @@
+{
+    "type": "orderWsDTO",
+    "appliedProductPromotions": [
+        {
+            "consumedEntries": [
+                {
+                    "adjustedUnitPrice": 0,
+                    "code": "",
+                    "orderEntryNumber": 1,
+                    "quantity": 1
+                },
+                {
+                    "adjustedUnitPrice": 149,
+                    "code": "",
+                    "orderEntryNumber": 2,
+                    "quantity": 2
+                }
+            ],
+            "description": "You get 1 Power Drill free for purchasing 2 Power Drills",
+            "promotion": {
+                "code": "B2GOFPowerDrills",
+                "promotionType": "AcceleratorProductBOGOFPromotion"
+            }
+        }
+    ],
+    "calculated": true,
+    "code": "00006476",
+    "deliveryAddress": {
+        "country": {
+            "isocode": "US"
+        },
+        "firstName": "Akiro",
+        "formattedAddress": "999 South Wacker Drive, Chicago, 60606",
+        "id": "8796153151511",
+        "lastName": "Nakamura",
+        "line1": "999 South Wacker Drive",
+        "postalCode": "60606",
+        "town": "Chicago"
+    },
+    "deliveryCost": {
+        "currencyIso": "USD",
+        "formattedValue": "$9.99",
+        "priceType": "BUY",
+        "value": 9.99
+    },
+    "deliveryItemsQuantity": 4,
+    "deliveryMode": {
+        "code": "standard-net",
+        "deliveryCost": {
+            "currencyIso": "USD",
+            "formattedValue": "$9.99",
+            "priceType": "BUY",
+            "value": 9.99
+        },
+        "description": "3-5 business days",
+        "name": "Standard Delivery Mode"
+    },
+    "deliveryOrderGroups": [
+        {
+            "entries": [
+                {
+                    "entryNumber": 0,
+                    "product": {
+                        "availableForPickup": false,
+                        "code": "3755213",
+                        "name": "PSR 7.2 LI",
+                        "purchasable": true,
+                        "stock": {
+                            "stockLevel": 398
+                        },
+                        "url": "/Open-Catalogue/Tools/Screwdrivers/PSR-7-2-LI/p/3755213"
+                    },
+                    "quantity": 1,
+                    "totalPrice": {
+                        "currencyIso": "USD",
+                        "value": 67
+                    }
+                },
+                {
+                    "entryNumber": 1,
+                    "product": {
+                        "availableForPickup": false,
+                        "code": "3755212",
+                        "name": "PSR 14.4-2",
+                        "purchasable": true,
+                        "stock": {
+                            "stockLevel": 382
+                        },
+                        "url": "/Open-Catalogue/Tools/Power-Drills/PSR-14-4-2/p/3755212"
+                    },
+                    "quantity": 1,
+                    "totalPrice": {
+                        "currencyIso": "USD",
+                        "value": 0
+                    }
+                },
+                {
+                    "entryNumber": 2,
+                    "product": {
+                        "availableForPickup": false,
+                        "code": "3756505",
+                        "name": "PSR 14.4 LI-2",
+                        "purchasable": true,
+                        "stock": {
+                            "stockLevel": 187
+                        },
+                        "url": "/Open-Catalogue/Tools/Power-Drills/PSR-14-4-LI-2/p/3756505"
+                    },
+                    "quantity": 2,
+                    "totalPrice": {
+                        "currencyIso": "USD",
+                        "value": 298
+                    }
+                }
+            ],
+            "totalPriceWithTax": {
+                "currencyIso": "USD",
+                "formattedValue": "$365.00",
+                "priceType": "BUY",
+                "value": 365
+            }
+        }
+    ],
+    "entries": [
+        {
+            "entryNumber": 1,
+            "product": {
+                "availableForPickup": false,
+                "code": "3755212",
+                "name": "PSR 14.4-2",
+                "purchasable": true,
+                "stock": {
+                    "stockLevel": 382
+                },
+                "url": "/Open-Catalogue/Tools/Power-Drills/PSR-14-4-2/p/3755212"
+            },
+            "quantity": 1,
+            "totalPrice": {
+                "currencyIso": "USD",
+                "value": 0
+            }
+        },
+        {
+            "entryNumber": 2,
+            "product": {
+                "availableForPickup": false,
+                "code": "3756505",
+                "name": "PSR 14.4 LI-2",
+                "purchasable": true,
+                "stock": {
+                    "stockLevel": 187
+                },
+                "url": "/Open-Catalogue/Tools/Power-Drills/PSR-14-4-LI-2/p/3756505"
+            },
+            "quantity": 2,
+            "totalPrice": {
+                "currencyIso": "USD",
+                "value": 298
+            }
+        },
+        {
+            "entryNumber": 0,
+            "product": {
+                "availableForPickup": false,
+                "code": "3755213",
+                "name": "PSR 7.2 LI",
+                "purchasable": true,
+                "stock": {
+                    "stockLevel": 398
+                },
+                "url": "/Open-Catalogue/Tools/Screwdrivers/PSR-7-2-LI/p/3755213"
+            },
+            "quantity": 1,
+            "totalPrice": {
+                "currencyIso": "USD",
+                "value": 67
+            }
+        }
+    ],
+    "guid": "9ad671deb080eca340c71ddac11eb2ef83cbb580",
+    "net": true,
+    "orderDiscounts": {
+        "currencyIso": "USD",
+        "formattedValue": "$0.00",
+        "priceType": "BUY",
+        "value": 0
+    },
+    "pickupItemsQuantity": 0,
+    "productDiscounts": {
+        "currencyIso": "USD",
+        "formattedValue": "$105.00",
+        "priceType": "BUY",
+        "value": 105
+    },
+    "site": "powertools",
+    "store": "powertools",
+    "subTotal": {
+        "currencyIso": "USD",
+        "formattedValue": "$365.00",
+        "priceType": "BUY",
+        "value": 365
+    },
+    "totalDiscounts": {
+        "currencyIso": "USD",
+        "formattedValue": "$105.00",
+        "priceType": "BUY",
+        "value": 105
+    },
+    "totalItems": 3,
+    "totalPrice": {
+        "currencyIso": "USD",
+        "formattedValue": "$374.99",
+        "priceType": "BUY",
+        "value": 374.99
+    },
+    "totalPriceWithTax": {
+        "currencyIso": "USD",
+        "formattedValue": "$374.99",
+        "priceType": "BUY",
+        "value": 374.99
+    },
+    "totalTax": {
+        "currencyIso": "USD",
+        "formattedValue": "$0.00",
+        "priceType": "BUY",
+        "value": 0
+    },
+    "user": {
+        "name": "Alpha User",
+        "uid": "denis.lutz@hybris.com"
+    },
+    "created": "2014-09-03T14:46:10-0400",
+    "guestCustomer": false,
+    "status": "PENDING_APPROVAL",
+    "statusDisplay": "pending.approval",
+    "unconsignedEntries": [
+        {
+            "entryNumber": 0,
+            "product": {
+                "availableForPickup": false,
+                "code": "3755213",
+                "name": "PSR 7.2 LI",
+                "purchasable": true,
+                "stock": {
+                    "stockLevel": 398
+                },
+                "url": "/Open-Catalogue/Tools/Screwdrivers/PSR-7-2-LI/p/3755213"
+            },
+            "quantity": 1,
+            "totalPrice": {
+                "currencyIso": "USD",
+                "value": 67
+            }
+        },
+        {
+            "entryNumber": 1,
+            "product": {
+                "availableForPickup": false,
+                "code": "3755212",
+                "name": "PSR 14.4-2",
+                "purchasable": true,
+                "stock": {
+                    "stockLevel": 382
+                },
+                "url": "/Open-Catalogue/Tools/Power-Drills/PSR-14-4-2/p/3755212"
+            },
+            "quantity": 1,
+            "totalPrice": {
+                "currencyIso": "USD",
+                "value": 0
+            }
+        },
+        {
+            "entryNumber": 2,
+            "product": {
+                "availableForPickup": false,
+                "code": "3756505",
+                "name": "PSR 14.4 LI-2",
+                "purchasable": true,
+                "stock": {
+                    "stockLevel": 187
+                },
+                "url": "/Open-Catalogue/Tools/Power-Drills/PSR-14-4-LI-2/p/3756505"
+            },
+            "quantity": 2,
+            "totalPrice": {
+                "currencyIso": "USD",
+                "value": 298
+            }
+        }
+    ]
+}

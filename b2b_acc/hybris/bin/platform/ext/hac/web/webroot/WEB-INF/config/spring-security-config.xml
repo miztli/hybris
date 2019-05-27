@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+			 xmlns:beans="http://www.springframework.org/schema/beans"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xsi:schemaLocation="http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+
+
+	<!--<http pattern="/login.jsp" security="none"/>-->
+	<http pattern="/500.jsp" security="none" />
+	<http pattern="/404.jsp" security="none" />
+	<http pattern="/favicon.ico" security="none" />
+	<http pattern="/static/**" security="none" />
+	<http pattern="/initlog/log" security="none" />
+    <http pattern="/monitoring/healthcheck" security="none" />
+
+	<global-method-security secured-annotations="enabled"/>
+
+	<beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+
+    <http access-decision-manager-ref="accessDecisionManager" use-expressions="false" pattern="/monitoring/suspendresume/status">
+        <session-management session-authentication-strategy-ref="fixation"/>
+        <intercept-url pattern="/monitoring/suspendresume/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_SUSPENDRESUME" requires-channel="https"/>
+        <http-basic />
+        <csrf request-matcher-ref="csrfSecurityRequestMatcher" disabled="true"/>
+        <headers>
+            <frame-options disabled="true"/>
+        </headers>
+        <port-mappings>
+            <port-mapping http="#{configurationService.configuration.getProperty('tomcat.http.port')}"
+                          https="#{configurationService.configuration.getProperty('tomcat.ssl.port')}"/>
+            <port-mapping http="80" https="443"/>
+        </port-mappings>
+    </http>
+
+    <http access-decision-manager-ref="accessDecisionManager" use-expressions="false" pattern="/monitoring/suspendresume/suspend">
+        <session-management session-authentication-strategy-ref="fixation"/>
+        <intercept-url pattern="/monitoring/suspendresume/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_SUSPENDRESUME" requires-channel="https"/>
+        <http-basic />
+        <csrf request-matcher-ref="csrfSecurityRequestMatcher" disabled="true"/>
+        <headers>
+            <frame-options disabled="true"/>
+        </headers>
+        <port-mappings>
+            <port-mapping http="#{configurationService.configuration.getProperty('tomcat.http.port')}"
+                          https="#{configurationService.configuration.getProperty('tomcat.ssl.port')}"/>
+            <port-mapping http="80" https="443"/>
+        </port-mappings>
+    </http>
+
+	<http access-decision-manager-ref="accessDecisionManager" use-expressions="true" pattern="/monitoring/suspendresume/halt">
+		<http-basic/>
+		<csrf request-matcher-ref="csrfSecurityRequestMatcher" disabled="true"/>
+		<intercept-url pattern="/monitoring/suspendresume/**" access="hasAnyRole('ANONYMOUS', 'ADMINGROUP', 'HAC_MONITORING_SUSPENDRESUME')
+			and (hasIpAddress('127.0.0.1') or hasIpAddress('0:0:0:0:0:0:0:1'))" requires-channel="https"/>
+		<port-mappings>
+			<port-mapping http="#{configurationService.configuration.getProperty('tomcat.http.port')}"
+						  https="#{configurationService.configuration.getProperty('tomcat.ssl.port')}"/>
+			<port-mapping http="80" https="443"/>
+		</port-mappings>
+	</http>
+
+    <http access-decision-manager-ref="accessDecisionManager" use-expressions="false" pattern="/monitoring/suspendresume/resume">
+        <session-management session-authentication-strategy-ref="fixation"/>
+        <intercept-url pattern="/monitoring/suspendresume/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_SUSPENDRESUME" requires-channel="https"/>
+        <http-basic />
+        <csrf request-matcher-ref="csrfSecurityRequestMatcher" disabled="true"/>
+        <headers>
+            <frame-options disabled="true"/>
+        </headers>
+        <port-mappings>
+            <port-mapping http="#{configurationService.configuration.getProperty('tomcat.http.port')}"
+                          https="#{configurationService.configuration.getProperty('tomcat.ssl.port')}"/>
+            <port-mapping http="80" https="443"/>
+        </port-mappings>
+    </http>
+
+	<http access-decision-manager-ref="accessDecisionManager" use-expressions="false">
+		<session-management session-authentication-strategy-ref="fixation"/>
+		<intercept-url pattern="/login.jsp" access="PERMIT_ALL" requires-channel="https"/>
+		<intercept-url pattern="/tenants/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_TENANTS" requires-channel="https"/>
+		<intercept-url pattern="/platform/config/?*edited/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_CONFIGURATION" requires-channel="https"/>
+		<intercept-url pattern="/platform/config/valuechanged/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_CONFIGURATION" requires-channel="https"/>
+		<intercept-url pattern="/platform/config?*/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_CONFIGURATION" requires-channel="https"/>
+		<intercept-url pattern="/platform/config/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_CONFIGURATION, ROLE_HAC_PLATFORM_CONFIGURATION_LIMITED" requires-channel="https"/>
+		<intercept-url pattern="/platform/system/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_SYSTEM" requires-channel="https"/>
+		<intercept-url pattern="/platform/log4j/changelevel/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_LOGGING" requires-channel="https"/>
+		<intercept-url pattern="/platform/log4j/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_LOGGING, ROLE_HAC_PLATFORM_LOGGING_LIMITED" requires-channel="https"/>
+		<intercept-url pattern="/platform/extensions/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_EXTENSIONS" requires-channel="https"/>
+		<intercept-url pattern="/platform/init/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_INITIALIZATION, HYBRIS_NOT_INITIALIZED" requires-channel="https"/>
+		<intercept-url pattern="/platform/update/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_UPDATE" requires-channel="https"/>
+		<intercept-url pattern="/platform/dryrun/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_SQLSCRIPTS, HYBRIS_NOT_INITIALIZED" requires-channel="https"/>
+		<intercept-url pattern="/platform/jars/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_CLASSPATHANALYZER" requires-channel="https"/>
+		<intercept-url pattern="/platform/jars_howto/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_CLASSPATHANALYZER" requires-channel="https"/>
+		<intercept-url pattern="/platform/license/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_LICENSE" requires-channel="https"/>
+		<intercept-url pattern="/platform/support/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_SUPPORT" requires-channel="https"/>
+		<intercept-url pattern="/platform/pkanalyzer/**" access="ROLE_ADMINGROUP, ROLE_HAC_PLATFORM_PKANALYZER" requires-channel="https"/>
+
+		<intercept-url pattern="/maintain/cleanup/**/remove" access="ROLE_ADMINGROUP, ROLE_HAC_MAINTENANCE_CLEANUP" requires-channel="https"/>
+		<intercept-url pattern="/maintain/cleanup/**" access="ROLE_ADMINGROUP, ROLE_HAC_MAINTENANCE_CLEANUP, ROLE_ADMINGROUP, ROLE_HAC_MAINTENANCE_CLEANUP_LIMITED" requires-channel="https"/>
+		<intercept-url pattern="/maintain/keys/generate/**" access="ROLE_ADMINGROUP, ROLE_HAC_MAINTENANCE_ENCRYPTIONKEYS" requires-channel="https"/>
+		<intercept-url pattern="/maintain/keys/migration/migrate/**" access="ROLE_ADMINGROUP, ROLE_HAC_MAINTENANCE_ENCRYPTIONKEYS" requires-channel="https"/>
+		<intercept-url pattern="/maintain/keys/creditcards/encrypt/**" access="ROLE_ADMINGROUP, ROLE_HAC_MAINTENANCE_ENCRYPTIONKEYS" requires-channel="https"/>
+		<intercept-url pattern="/maintain/keys/**" access="ROLE_ADMINGROUP, ROLE_HAC_MAINTENANCE_ENCRYPTIONKEYS, ROLE_HAC_MAINTENANCE_ENCRYPTIONKEYS_LIMITED" requires-channel="https"/>
+		<intercept-url pattern="/maintain/deployments/**" access="ROLE_ADMINGROUP, ROLE_HAC_MAINTENANCE_DEPLOYMENT" requires-channel="https"/>
+
+		<intercept-url pattern="/monitoring/cache/**/clear" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_CACHE" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/cache/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_CACHE, ROLE_HAC_MONITORING_CACHE_LIMITED" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/cluster/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_CLUSTER" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/database/logs/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_DATABASE" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/database/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_DATABASE, ROLE_HAC_MONITORING_DATABASE_LIMITED" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/cronjobs/abort/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_CRONJOBS" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/cronjobs/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_CRONJOBS, ROLE_HAC_MONITORING_CRONJOBS_LIMITED" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/jmx/toggle/*/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_JMX" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/jmx/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_JMX, ROLE_HAC_MONITORING_JMX_LIMITED" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/memory/gc/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_MEMORY" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/memory/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_MEMORY, ROLE_HAC_MONITORING_MEMORY_LIMITED" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/threaddump/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_THREADDUMP" requires-channel="https"/>
+		<intercept-url pattern="/monitoring/performance/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_PERFORMANCE" requires-channel="https"/>
+        <intercept-url pattern="/monitoring/suspendresume/**" access="ROLE_ADMINGROUP, ROLE_HAC_MONITORING_SUSPENDRESUME" requires-channel="https"/>
+
+		<intercept-url pattern="/console/scripting/**" access="ROLE_ADMINGROUP, ROLE_HAC_CONSOLE_SCRIPTINGLANGUAGES" requires-channel="https"/>
+		<intercept-url pattern="/console/flexsearch/**" access="ROLE_ADMINGROUP, ROLE_HAC_CONSOLE_FLEXIBLESEARCH" requires-channel="https"/>
+		<intercept-url pattern="/console/impex/import/**" access="ROLE_ADMINGROUP, ROLE_HAC_CONSOLE_IMPEXIMPORT" requires-channel="https"/>
+		<intercept-url pattern="/console/impex/export/**" access="ROLE_ADMINGROUP, ROLE_HAC_CONSOLE_IMPEXEXPORT" requires-channel="https"/>
+		<intercept-url pattern="/console/ldap/**" access="ROLE_ADMINGROUP, ROLE_HAC_CONSOLE_LDAP" requires-channel="https"/>
+		<intercept-url pattern="/console/ldap_na/**" access="ROLE_ADMINGROUP, ROLE_HAC_CONSOLE_LDAP" requires-channel="https"/>
+		<intercept-url pattern="/**" access="HYBRIS_NOT_INITIALIZED,ROLE_ADMINGROUP,ROLE_HAC_PLATFORM_TENANTS,ROLE_HAC_PLATFORM_CONFIGURATION,
+		ROLE_HAC_PLATFORM_SYSTEM,ROLE_HAC_PLATFORM_LOGGING,ROLE_HAC_PLATFORM_EXTENSIONS,ROLE_HAC_PLATFORM_INITIALIZATION, ROLE_HAC_PLATFORM_UPDATE,
+		ROLE_HAC_PLATFORM_SQLSCRIPTS,ROLE_HAC_PLATFORM_CLASSPATHANALYZER,ROLE_HAC_PLATFORM_LICENSE,ROLE_HAC_PLATFORM_SUPPORT,ROLE_HAC_PLATFORM_PKANALYZER,
+		ROLE_HAC_MAINTENANCE_CLEANUP,ROLE_HAC_MAINTENANCE_ENCRYPTIONKEYS,ROLE_HAC_MAINTENANCE_DEPLOYMENT,ROLE_HAC_MONITORING_CACHE,ROLE_HAC_MONITORING_CLUSTER,
+		ROLE_HAC_MONITORING_DATABASE,ROLE_HAC_MONITORING_CRONJOBS,ROLE_HAC_MONITORING_JMX,ROLE_HAC_MONITORING_MEMORY,ROLE_HAC_MONITORING_THREADDUMP,
+        ROLE_HAC_MONITORING_PERFORMANCE,ROLE_HAC_CONSOLE_SCRIPTING,ROLE_HAC_CONSOLE_FLEXIBLESEARCH,ROLE_HAC_CONSOLE_IMPEXIMPORT,
+        ROLE_HAC_CONSOLE_IMPEXEXPORT,ROLE_HAC_CONSOLE_LDAP,ROLE_HAC_PLATFORM_CONFIGURATION_LIMITED,ROLE_HAC_PLATFORM_LOGGING_LIMITED,ROLE_HAC_MAINTENANCE_CLEANUP_LIMITED,
+        ROLE_HAC_MAINTENANCE_ENCRYPTIONKEYS_LIMITED,ROLE_HAC_MONITORING_CACHE_LIMITED,ROLE_HAC_MONITORING_DATABASE_LIMITED,ROLE_HAC_MONITORING_CRONJOBS_LIMITED,
+        ROLE_HAC_MONITORING_JMX_LIMITED,ROLE_HAC_MONITORING_MEMORY_LIMITED,ROLE_HAC_MONITORING_SUSPENDRESUME" requires-channel="https"/>
+        <http-basic />
+		<form-login
+				always-use-default-target="false"
+				login-page="/login.jsp"
+				authentication-failure-url="/login.jsp?login_error=1"
+				username-parameter="j_username"
+				password-parameter="j_password"
+				login-processing-url="/j_spring_security_check"
+		/>
+		<remember-me services-ref="rememberMeServices" key="adminweb"/>
+		<logout logout-url="/j_spring_security_logout" logout-success-url="/login.jsp"/>
+		<csrf request-matcher-ref="csrfSecurityRequestMatcher" />
+		<headers>
+			<frame-options disabled="true"/>
+		</headers>
+		<port-mappings>
+			<port-mapping http="#{configurationService.configuration.getProperty('tomcat.http.port')}"
+						  https="#{configurationService.configuration.getProperty('tomcat.ssl.port')}"/>
+			<port-mapping http="80" https="443"/>
+		</port-mappings>
+	</http>
+
+	<beans:bean id="fixation" class="de.hybris.platform.servicelayer.security.spring.HybrisSessionFixationProtectionStrategy">
+		<!-- be strict: do migrate any old http session attribute -->
+		<beans:property name="migrateSessionAttributes" value="false"/>
+	</beans:bean>
+
+	<beans:bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+		<beans:constructor-arg>
+			<beans:list>
+				<beans:bean id="permitAllVoter" class="de.hybris.platform.spring.security.voter.PermitAllVoter" />
+				<beans:bean id="notInitializedVoter" class="de.hybris.platform.spring.security.voter.HybrisNotInitializedVoter" />
+				<beans:bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter" />
+				<beans:bean id="authenticatedVoter" class="org.springframework.security.access.vote.AuthenticatedVoter" />
+				<beans:bean id="webExpressionVoter" class="org.springframework.security.web.access.expression.WebExpressionVoter" />
+			</beans:list>
+		</beans:constructor-arg>
+	</beans:bean>
+
+	<beans:bean id="rememberMeServices" class="de.hybris.platform.spring.security.CoreRememberMeService">
+		<beans:property name="key" value="adminweb" />
+		<beans:property name="cookieName" value="LoginToken" />
+		<!-- avoiding hard reference to tenant-scoped 'coreUserDetailsService' -->
+		<beans:lookup-method name="lookupUserDetailsService" bean="coreUserDetailsService" />
+	</beans:bean>
+
+	<authentication-manager>
+		<authentication-provider ref="coreAuthenticationProvider"/>
+	</authentication-manager>
+
+	<beans:bean id="coreAuthenticationProvider" class="de.hybris.platform.spring.security.CoreAuthenticationProvider">
+		<beans:property name="preAuthenticationChecks" ref="corePreAuthenticationChecks" />
+		<beans:property name="userDetailsService" ref="coreUserDetailsService" />
+	</beans:bean>
+
+	<beans:bean id="corePreAuthenticationChecks" class="de.hybris.platform.spring.security.RejectUserPreAuthenticationChecks">
+		<beans:property name="allowedUserGroups">
+			<beans:list>
+				<beans:value>Admingroup</beans:value>
+				<beans:value>hac_platform_tenants</beans:value>
+				<beans:value>hac_platform_configuration</beans:value>
+				<beans:value>hac_platform_configuration_limited</beans:value>
+				<beans:value>hac_platform_system</beans:value>
+				<beans:value>hac_platform_logging</beans:value>
+				<beans:value>hac_platform_logging_limited</beans:value>
+				<beans:value>hac_platform_extensions</beans:value>
+				<beans:value>hac_platform_initialization</beans:value>
+				<beans:value>hac_platform_update</beans:value>
+				<beans:value>hac_platform_sqlscripts</beans:value>
+				<beans:value>hac_platform_license</beans:value>
+				<beans:value>hac_platform_support</beans:value>
+				<beans:value>hac_platform_pkanalyzer</beans:value>
+				<beans:value>hac_platform_classpathanalyzer</beans:value>
+				<beans:value>hac_maintenance_cleanup</beans:value>
+				<beans:value>hac_maintenance_cleanup_limited</beans:value>
+				<beans:value>hac_maintenance_encryptionkeys</beans:value>
+				<beans:value>hac_maintenance_encryptionkeys_limited</beans:value>
+				<beans:value>hac_maintenance_deployment</beans:value>
+				<beans:value>hac_monitoring_cache</beans:value>
+				<beans:value>hac_monitoring_cache_limited</beans:value>
+				<beans:value>hac_monitoring_cluster</beans:value>
+				<beans:value>hac_monitoring_database</beans:value>
+				<beans:value>hac_monitoring_database_limited</beans:value>
+				<beans:value>hac_monitoring_cronjobs</beans:value>
+				<beans:value>hac_monitoring_cronjobs_limited</beans:value>
+				<beans:value>hac_monitoring_jmx</beans:value>
+				<beans:value>hac_monitoring_jmx_limited</beans:value>
+				<beans:value>hac_monitoring_memory</beans:value>
+				<beans:value>hac_monitoring_memory_limited</beans:value>
+				<beans:value>hac_monitoring_threaddump</beans:value>
+				<beans:value>hac_monitoring_performance</beans:value>
+				<beans:value>hac_monitoring_suspendresume</beans:value>
+				<beans:value>hac_console_scriptinglanguages</beans:value>
+				<beans:value>hac_console_flexiblesearch</beans:value>
+				<beans:value>hac_console_impeximport</beans:value>
+				<beans:value>hac_console_impexexport</beans:value>
+				<beans:value>hac_console_ldap</beans:value>
+			</beans:list>
+		</beans:property>
+		<beans:property name="allowedUserTypes">
+			<beans:list>
+				<beans:value>Employee</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+
+	<beans:bean id="coreUserDetailsService" class="de.hybris.platform.spring.security.CoreUserDetailsService" />
+	<beans:bean id="csrfSecurityRequestMatcher" class="de.hybris.platform.hac.request.CsrfSecurityRequestMatcher" />
+
+</beans:beans>

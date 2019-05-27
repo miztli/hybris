@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ViewPager Indicator is disable to avoid being click but colored -->
+    <item android:drawable="@drawable/viewpager_indicator_selected" android:state_enabled="false" />
+    <!-- ViewPager Indicator is enabled to allow being click but not colored -->
+    <item android:drawable="@drawable/viewpager_indicator_default" android:state_enabled="true" />
+    <!-- ViewPager Indicator is enabled to allow being click but not colored -->
+    <item android:drawable="@drawable/viewpager_indicator_default" android:state_selected="true" />
+    <!-- ViewPager Indicator  colored -->
+    <item android:drawable="@drawable/viewpager_indicator_selected" />
+
+</selector>

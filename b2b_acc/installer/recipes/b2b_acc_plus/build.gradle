@@ -1,0 +1,159 @@
+def config = {
+    localProperties {
+        property 'recaptcha.publickey', ''
+        property 'recaptcha.privatekey', ''
+        property 'googleApiKey', ''
+        property 'website.powertools.http', 'http://powertools.local:9001/yb2bacceleratorstorefront'
+        property 'website.powertools.https', 'https://powertools.local:9002/yb2bacceleratorstorefront'
+        property 'apiregistryservices.events.exporting', 'false'
+    }
+
+    extensions {
+        extName 'adaptivesearchsolr'
+        extName 'adaptivesearchbackoffice'
+        extName 'adaptivesearchsamplesaddon'
+        extName 'adaptivesearchwebservices'
+        extName 'b2bcommercebackoffice'
+        extName 'solrfacetsearchbackoffice'
+
+        extName 'yacceleratorbackoffice'
+        extName 'yacceleratorinitialdata'
+        extName 'yacceleratorfulfilmentprocess'
+        extName 'ycommercewebservices'
+        extName 'orderselfserviceaddon'
+
+        extName 'powertoolsstore'
+        extName 'solrserver'
+
+        extName 'acceleratorwebservicesaddon'
+        extName 'b2bacceleratoraddon'
+        extName 'commerceorgsamplesaddon'
+        extName 'b2bpunchoutaddon'
+        extName 'secureportaladdon'
+        extName 'savedorderformsoccaddon'
+        extName 'b2boccaddon'
+        extName 'accountsummaryaddon'
+        extName 'assistedservicestorefront'
+        extName 'assistedservicewebservices'
+        extName 'captchaaddon'
+
+        extName 'customerticketingaddon'
+        extName 'customersupportbackoffice'
+
+        extName 'rulebuilderbackoffice'
+        extName 'couponbackoffice'
+        extName 'droolsruleengineservices'
+        extName 'couponfacades'
+        extName 'couponservices'
+        extName 'promotionenginesamplesaddon'
+
+        extName 'textfieldconfiguratortemplatebackoffice'
+        extName 'textfieldconfiguratortemplateaddon'
+
+        extName 'cmswebservices'
+        extName 'smarteditwebservices'
+        extName 'permissionswebservices'
+        extName 'smarteditaddon'
+        extName 'cmssmartedit'
+        extName 'cmsbackoffice'
+        extName 'previewwebservices'
+        extName 'cmssmarteditwebservices'
+        extName 'cmsoccaddon'
+
+        extName 'previewpersonalizationweb'
+        extName 'personalizationcmsweb'
+        extName 'personalizationsmartedit'
+        extName 'personalizationpromotionssmartedit'
+        extName 'personalizationsampledataaddon'
+        extName 'personalizationpromotionssampledataaddon'
+        extName 'personalizationpromotions'
+        extName 'personalizationpromotionsweb'
+        extName 'personalizationservicesbackoffice'
+        extName 'personalizationpromotionsbackoffice'
+        extName 'personalizationcmsbackoffice'
+        extName 'personalizationsearchbackoffice'
+        extName 'personalizationsearchsmartedit'
+        extName 'personalizationsearchweb'
+        extName 'personalizationsearchsamplesaddon'
+
+        extName 'consignmenttrackingaddon'
+        extName 'consignmenttrackingmock'
+        extName 'consignmenttrackingbackoffice'
+
+        extName 'pcmbackofficesamplesaddon'
+
+        extName 'configurablebundleaddon'
+
+        extName 'consignmenttrackingoccaddon'
+
+        /* integration-apis */
+        extName 'outboundservices'
+        extName 'odata2webservices'
+        extName 'odata2webservicesfeaturetests'
+
+        extName 'kymaintegrationbackoffice'
+        extName 'kymaintegrationsampledata'
+    }
+}
+
+def addExtgen = {
+    println "Adding empty extgen.properties for yb2bacceleratorstorefront."
+    def customFolder = new File("${project.rootDir}/../hybris/bin/custom")
+    def targetFile = new File("${project.rootDir}/../hybris/bin/custom/yb2bacceleratorstorefront/extgen.properties")
+    if (customFolder.exists() && !targetFile.exists()) {
+        targetFile.write "# Empty extgen for compliance with ExtensionRequirementsTest"
+        println "Finished adding extgen.properties for yb2bacceleratorstorefront."
+    } else {
+        println "Unable to add extgen.properties for yb2bacceleratorstorefront."
+    }
+}
+
+task setup {
+    doLast {
+        apply plugin: 'installer-platform-plugin'
+        apply plugin: 'installer-addon-plugin'
+        def pl = platform(config)
+        pl.setup()
+
+        pl.executeAntTarget 'extgen -Dhybris.target=extgen -Dinput.template=yacceleratorstorefront -Dinput.name=yb2bacceleratorstorefront -Dinput.package=de.hybris.platform.yb2bacceleratorstorefront'
+
+        pl.extensions {
+            extName 'yb2bacceleratorstorefront'
+        }
+        pl.setup()
+
+        pl.project.addons {
+            names "b2bacceleratoraddon,commerceorgaddon,commerceorgsamplesaddon,b2bpunchoutaddon,secureportaladdon,accountsummaryaddon,assistedservicestorefront,captchaaddon," +
+                    "customerticketingaddon,promotionenginesamplesaddon,textfieldconfiguratortemplateaddon,orderselfserviceaddon,smarteditaddon,adaptivesearchsamplesaddon,consignmenttrackingaddon,configurablebundleaddon,pcmbackofficesamplesaddon,personalizationsearchsamplesaddon"
+            template "yacceleratorstorefront"
+            storeFronts "yb2bacceleratorstorefront"
+            platform pl
+        }
+
+        pl.project.addons {
+            names "acceleratorwebservicesaddon,b2boccaddon,savedorderformsoccaddon,consignmenttrackingoccaddon,cmsoccaddon"
+            template "ycommercewebservices"
+            storeFronts "ycommercewebservices"
+            platform pl
+        }
+
+        addExtgen()
+    }
+}
+
+task initialize {
+    doLast {
+        apply plugin: 'installer-platform-plugin'
+        def pl = platform(config)
+        pl.build()
+        pl.initialize()
+    }
+}
+
+task start {
+    doLast {
+        apply plugin: 'installer-platform-plugin'
+        def pl = platform(config)
+        pl.start()
+    }
+}

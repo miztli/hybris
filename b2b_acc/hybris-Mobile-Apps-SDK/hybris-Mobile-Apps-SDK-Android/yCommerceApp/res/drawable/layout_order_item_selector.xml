@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Layout Pressed -->
+    <item android:drawable="@drawable/layout_order_item_pressed" android:state_pressed="true" />
+    <!-- Layout Pressed -->
+    <item android:drawable="@drawable/layout_order_item_pressed" android:state_focused="true" />
+    <!-- Layout Default  -->
+    <item android:drawable="@drawable/layout_order_item_default" />
+
+</selector>

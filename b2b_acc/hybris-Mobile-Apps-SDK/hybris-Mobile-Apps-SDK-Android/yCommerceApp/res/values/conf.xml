@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="account_name">hybris</string>
+    <string name="account_type">hybris</string>
+
+    <integer name="pagesize">20</integer>
+
+    <string name="default_qty">1</string>
+
+    <integer name="default_store_locator_radius">10000</integer>
+
+    <integer name="grid_portrait_nb_items">3</integer>
+    <integer name="grid_landscape_nb_items">5</integer>
+
+    <string name="intent_action_resume">com.hybris.mobile.intent.action.resume</string>
+
+    <bool name="animationOnLoginPage">false</bool>
+
+    <string name="preference_key_key_base_url">preference_key_key_base_url</string>
+    <string name="preference_key_value_base_url">preference_key_value_base_url</string>
+
+    <string name="preference_key_key_catalog">preference_key_key_catalog</string>
+    <!--<string name="preference_key_value_catalog">preference_key_value_catalog</string>-->
+
+    <!--<string name="preference_key_key_catalog_store">preference_key_key_catalog_store</string>-->
+    <string name="preference_key_value_catalog_store">preference_key_value_catalog_store</string>
+
+    <!--<string name="preference_key_key_catalog_id">preference_key_key_catalog_id</string>-->
+    <string name="preference_key_value_catalog_id">preference_key_value_catalog_id</string>
+
+    <!--<string name="preference_key_key_catalog_main_category_id">preference_key_key_catalog_main_category_id</string>-->
+    <string name="preference_key_value_catalog_main_category_id">preference_key_value_catalog_main_category_id</string>
+
+</resources>

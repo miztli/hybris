@@ -1,0 +1,150 @@
+apply plugin: 'installer-platform-plugin'
+apply plugin: 'installer-platform-containerization-plugin'
+apply plugin: 'installer-datahub-plugin'
+
+
+def sourcePlatform = platform {
+    localProperties {
+        property 'persistence.legacy.mode', 'false'
+        property 'y2ysync.datahub.url', 'https://datahub:9793/datahub-webapp/v1/y2ysync/v60'
+        property 'datahubadapter.datahuboutbound.url', 'https://datahub:9793/datahub-webapp/v1'
+        property 'y2ysync.home.url', 'https://sourceplatform:8081'
+        property 'solrserver.instances.default.autostart', 'false'
+        property 'solr.config.Default.urls', 'http://sourcesolr:8983/solr'
+        property 'solr.config.Default.mode', 'standalone'
+        property 'solr.server.mode', 'standalone'
+    }
+
+    extensions {
+        extName 'y2ysyncbackoffice'
+		extName 'yacceleratorinitialdata'
+		extName 'y2ysyncdemoelectronics'
+		extName 'datahubbackoffice'
+    }
+
+    dbSetup {
+        dbType 'hsqldb'
+        dbUrl 'jdbc:hsqldb:hsql://sourcehsql:9090/hybris;hsqldb.tx=MVCC'
+        dbUser 'hybris'
+        dbPassword 'hybris'
+    }
+
+    clusterSettings {
+        enableAutodiscovery()
+        udpMulticast()
+    }
+}
+
+def targetPlatform = platform {
+    localProperties {
+        property 'persistence.legacy.mode', 'false'
+        property 'solrserver.instances.default.autostart', 'false'
+        property 'solr.config.Default.urls', 'http://targetsolr:8983/solr'
+        property 'solr.config.Default.mode', 'standalone'
+        property 'solr.server.mode', 'standalone'
+    }
+
+    extensions {
+        extName 'y2ysyncbackoffice'
+		extName 'yacceleratorinitialdata'
+		extName 'electronicsstore'
+		extName 'datahubadapter'
+    }
+
+    dbSetup {
+        dbType 'hsqldb'
+        dbUrl 'jdbc:hsqldb:hsql://targethsql:9091/hybris;hsqldb.tx=MVCC'
+        dbUser 'hybris'
+        dbPassword 'hybris'
+    }
+
+    clusterSettings {
+        enableAutodiscovery()
+        udpMulticast()
+    }
+}
+
+def datahubCfg = {
+    resources {
+        propertyFile 'local', {
+            property 'datahub.extension.exportURL', 'https://targetplatform:8088/datahubadapter/'
+            property 'datahub.extension.userName', 'admin'
+            property 'datahub.extension.password', 'nimda'
+            property 'datahub.security.basic.admin.user', 'admin'
+            property 'datahub.security.basic.admin.password', 'nimda'
+            property 'datahub.encryption.key.path', 'encryption-key.txt'
+            property 'datahub.server.url', 'https://datahub:9793/datahub-webapp/v1'
+            property 'datahub.core.export.service.oauth.port', '8088'
+        }
+        resource 'encryption-key.txt', content: "8fae27b02e4e64dfb79f18947743b6f9"
+    }
+
+    extensionDir "${suiteHome}/hybris/bin/ext-integration/datahub/extensions/y2ysync-datahub-ext"
+    extension 'y2ysync-datahub-ext'
+    webappDir "${suiteHome}/hybris/bin/ext-integration/datahub/web-app"
+}
+
+
+def dpl = deployment('y2ySync') {
+
+	dataHubImage('datahub-webapp') {
+		basedOn datahubCfg
+		tomcatContext {
+			containerDir '/opt/datahub'
+			libDir 'jars'
+			resourcesDir 'config'
+			docBase 'webapps/datahub-webapp.war'
+		}
+
+		deployTo(docker) {
+			ports {
+				http 8080
+				ssl 9793
+			}
+		}
+	}
+
+    platformImage('sourcePlatform') {
+        basedOn sourcePlatform
+
+        templatesProperties {
+            property 'httpConnectorEnabled', 'true'            
+        }
+
+        adminAspect()
+    }
+
+    platformImage('targetPlatform') {
+        basedOn targetPlatform
+
+        templatesProperties {
+            property 'httpConnectorEnabled', 'true'            
+        }
+
+        adminAspect()
+    }
+
+    hsqlImage('sourceHsql') {
+        properties {
+            property 'port', '9090'
+        }
+    }
+
+    hsqlImage('targetHsql') {
+        properties {
+            property 'port', '9091'
+        }
+    }
+}
+
+task createImagesStructure {
+    doLast {
+        dpl.createImagesStructure()
+    }
+}
+
+task buildImages {
+    doLast {
+        dpl.buildImages()
+    }
+}

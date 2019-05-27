@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/order_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/order_detail_header_height"
+        android:background="@drawable/order_detail_shadow"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_order_detail_top" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/order_detail_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/order_background"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_medium">
+
+        <!-- section 1 -->
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15"
+            android:padding="@dimen/padding_medium">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/order_detail_title"
+                    style="@style/h1_title_blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="start"
+                    android:text="@string/order_detail_title" />
+
+                <TextView
+                    android:id="@+id/order_detail_number_text"
+                    style="@style/h2_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="end"
+                    android:text="@string/order_detail_number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/order_detail_date_placed_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:gravity="end"
+                    android:text="@string/order_detail_date_placed" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+                <TextView
+                    android:id="@+id/order_detail_status_text"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.5"
+                    android:gravity="end"
+                    android:text="@string/order_detail_status" />
+            </TableRow>
+        </TableLayout>
+
+        <!-- order delivery Summary -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_medium"
+            android:layout_weight="0.15">
+
+            <include layout="@layout/include_delivery_summary" />
+        </LinearLayout>
+
+        <!-- order confirmation Summary -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25">
+
+            <include layout="@layout/include_order_summary" />
+        </LinearLayout>
+
+        <!-- section 3 -->
+
+        <LinearLayout
+            android:id="@+id/order_products_list_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.50"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/padding_medium">
+
+            <!-- List of producs ordered -->
+
+            <ListView
+                android:id="@+id/order_products_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:divider="@color/order_background"
+                android:choiceMode="none"
+                android:dividerHeight="6dp">
+
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- No order found view -->
+
+    <LinearLayout
+        android:id="@+id/order_detail_not_found"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/products_background_no_product_found"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/order_detail_not_found_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/order_detail_not_found"
+            android:src="@drawable/icon_search_grey" />
+
+        <TextView
+            android:id="@+id/order_detail_not_found_text"
+            style="@style/h2_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/order_detail_not_found"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>

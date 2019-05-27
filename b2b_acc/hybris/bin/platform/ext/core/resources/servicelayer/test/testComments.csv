@@ -1,0 +1,24 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+
+INSERT_UPDATE Domain;code[unique=true];name;
+;testDomain;Test Domain;
+;testDomain2;Test Domain;
+
+INSERT_UPDATE Component;code[unique=true];name;domain(code);readPermitted(uid);writePermitted(uid);createPermitted(uid);removePermitted(uid);
+;testComponent;Test;testDomain;employeegroup;employeegroup;employeegroup;employeegroup;
+;testComponent2;Test;testDomain2;employeegroup;employeegroup;employeegroup;employeegroup;
+
+INSERT_UPDATE CommentType;code[unique=true];name;domain(code)[unique=true];
+;testCommentType;Test comment type;testDomain;
+;testCommentType2;Test comment type 2;testDomain;
+

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="signin_text_button">SIGN IN</string>
+    <string name="signin_email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="product_img_description">Product Image</string>
+    <string name="login_img_description">b2b app login</string>
+    <string name="splash_img_description">hybris logo</string>
+
+    <!-- General -->
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="error_title">Error</string>
+    <string name="unknown">Unknown</string>
+
+    <!-- Offline -->
+    <string name="offline_status_top_nav">Offline - some features not available. Last Sync: %1$s</string>
+
+    <!-- Products list -->
+    <string name="products_not_found_search_request">Your search %1$s did not match any products. Try searching again or browse
+        the categories.
+    </string>
+    <string name="products_not_found">No products found</string>
+    <string name="products_search_header_searched">Searched:</string>
+    <string name="products_search_header_did_you_mean">Did you mean:</string>
+    <string name="products_search_header_nb_results">%1$s Results</string>
+    <string name="product_item_name">Product Name</string>
+    <string name="product_item_low_stock">Low Stock</string>
+    <string name="product_item_stock">in stock</string>
+    <string name="product_item_image_expanded">Product Image Expanded</string>
+
+    <!-- Cart -->
+    <string name="cart_menu_continue_shopping">Continue Shopping</string>
+    <string name="cart_menu_checkout">CHECKOUT</string>
+    <string name="cart_menu_shopping_cart_title">Shopping Cart</string>
+    <string name="cart_menu_shopping_cart_id">CART ID: %1$s</string>
+    <string name="cart_menu_empty">Your cart is empty</string>
+    <string name="cart_menu_products_header_items">ITEMS</string>
+    <string name="cart_menu_products_header_quantity">QTY</string>
+    <string name="cart_menu_products_header_total">TOTAL</string>
+    <string name="cart_menu_products_header_swipe_hint">Swipe over item to remove from cart</string>
+    <string name="cart_menu_delete_item_confirmation_title">Are you sure you would like to remove this item from your cart?
+    </string>
+    <string name="cart_menu_delete_item_cancel_button">Cancel</string>
+    <string name="cart_menu_delete_item_remove_button">DELETE</string>
+    <string name="error_merging_cart">Error merging the guest cart</string>
+
+    <!-- Cart actions -->
+    <string name="cart_delete_item_confirm_message">Item successfully removed</string>
+    <string name="cart_update_item_confirm_message">Item successfully updated</string>
+
+    <!-- Catalog Content -->
+    <string name="catalog_content_breadcrumb">\u003C\u0020</string>
+    <string name="catalog_content_header_view_type">view type</string>
+    <string name="catalog_content_header_line_view">Line View</string>
+    <string name="catalog_content_header_list_view">List View</string>
+    <string name="catalog_content_header_grid_view">Grid View</string>
+
+    <!-- Main menu (Drawer) Items -->
+    <string name="main_menu_item_dashboard">Dashboard</string>
+    <string name="main_menu_item_orders">Orders</string>
+    <string name="main_menu_item_catalog">Catalog</string>
+    <string name="main_menu_item_account">Account</string>
+    <string name="main_menu_item_store_locator">Store Locator</string>
+    <string name="main_menu_item_login">Login</string>
+    <string name="main_menu_item_logout">Logout</string>
+    <string name="main_menu_open">Open navigation drawer</string>
+    <string name="main_menu_close">Close navigation drawer</string>
+    <string name="search_product_hint">Search products</string>
+    <string name="search_order_hint">Search orders</string>
+
+
+    <!-- Product Details -->
+    <string name="product_detail_order_form">order form</string>
+    <string name="product_detail_exit">quit code page</string>
+    <string name="product_detail_volume_pricing">
+        <u>Volume Pricing</u>
+    </string>
+        <string name="product_detail_reviews">
+        <u>(%1$s)Reviews</u>
+    </string>
+    <string name="product_detail_in_stock">in stock</string>
+    <string name="product_detail_volume_price">Price</string>
+    <string name="product_detail_volume_qty">QTY</string>
+    <string name="product_detail_add_to_cart">ADD TO CART</string>
+    <string name="product_detail_expandable_delivery">DELIVERY</string>
+    <string name="product_detail_expandable_prod_detail">PRODUCT DETAILS</string>
+    <string name="choose_variant">Choose a %1$s</string>
+    <string name="product_detail_review_title">Reviews</string>
+
+
+    <!-- Checkout -->
+    <string name="checkout">Checkout</string>
+    <string name="checkout_place_order">PLACE ORDER</string>
+    <string name="checkout_terms_conditions">
+        <u>terms and conditions</u>
+    </string>
+    <string name="checkout_agree_text">I have read and agree to the\u0020</string>
+    <string name="checkout_delivery_address_title">DELIVERY ADDRESS</string>
+    <string name="checkout_delivery_method_title">DELIVERY METHOD</string>
+    <string name="checkout_delivery_method_spinner_dialog">Choose a Delivery Method</string>
+    <string name="checkout_delivery_address_spinner_dialog">Choose a Delivery Address</string>
+        <string name="checkout_payment_number_button_description">For payment by credit card, please visit the
+        <b>%1$s</b>
+    </string>
+    <string name="checkout_terms_conditions_error_message">Please read/accept our terms and conditions before submitting your
+        order.
+    </string>
+    <string name="checkout_placing_order_error_message">Please correct the errors above before placing your order.</string>
+    <string name="checkout_placing_order_mandatory_message">Mandatory fields*</string>
+
+    <!-- Order Summary -->
+    <string name="order_summary_title">ORDER SUMMARY</string>
+    <string name="order_summary_items">%1$s items</string>
+    <string name="order_summary_subtotal">Subtotal</string>
+    <string name="order_summary_savings">Savings</string>
+    <string name="order_summary_tax">Tax</string>
+    <string name="order_summary_shipping">Shipping</string>
+    <string name="order_summary_total">Order Total</string>
+    <string name="order_summary_no_taxes">*No taxes are included in the total</string>
+
+    <!-- Cart Summary -->
+    <string name="cart_summary_title">ORDER SUMMARY</string>
+    <string name="cart_summary_items">%1$s items</string>
+    <string name="cart_summary_subtotal">Subtotal</string>
+    <string name="cart_summary_savings">Savings</string>
+    <string name="cart_summary_tax">Tax</string>
+    <string name="cart_summary_shipping">Shipping</string>
+    <string name="cart_summary_total">Order Total</string>
+
+    <!-- Order Confirmation -->
+    <string name="order_confirmation_thank">THANK YOU FOR YOUR ORDER</string>
+    <string name="order_confirmation_img">Ordered items image</string>
+    <string name="order_confirmation_number">Your order number is
+        <b>%1$s</b>
+    </string>
+    <string name="order_confirmation_detail">A copy of your order details has been sent to %1$s</string>
+    <string name="order_confirmation_delivery_address_title">Delivery Address</string>
+    <string name="order_confirmation_delivery_method_title">Delivery Method</string>
+    <string name="order_confirmation_qty">QTY %1$s</string>
+
+    <!-- Menu items -->
+    <string name="menu_search">Search</string>
+    <string name="menu_cart">Cart</string>
+    <string name="menu_feedback">Feedback</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_scanner">Scanner</string>
+    <string name="menu_add">Add</string>
+
+    <!-- Order History -->
+    <string name="order_history_title">Order History</string>
+    <string name="order_history_number">ORDER NUMBER</string>
+    <string name="order_history_date_placed">DATE PLACED</string>
+    <string name="order_history_status">STATUS</string>
+    <string name="order_history_total">TOTAL</string>
+
+    <!-- Order Detail -->
+    <string name="order_detail_title">Order Detail</string>
+    <string name="order_detail_number">Order\u0023\u003A\u0020<b>%1$s</b></string>
+    <string name="order_detail_date_placed"><b>Date Placed\u003A\u0020</b>%1$s</string>
+    <string name="order_detail_status"><b>Status\u003A\u0020</b>%1$s</string>
+    <string name="order_detail_delivery_address_title">Delivery Address</string>
+    <string name="order_detail_delivery_method_title">Delivery Method</string>
+    <string name="order_detail_qty">QTY %1$s</string>
+    <string name="order_detail_exit">quit order detail page</string>
+    <string name="order_detail_orders">Orders</string>
+    <string name="order_detail_not_found">No order found</string>
+
+    <!-- Stores -->
+    <string name="get_store_directions">Get Directions</string>
+    <string name="stores_nb_results">Results: %1$s STORE(S) FOUND</string>
+    <string name="stores_hours_operations">Hours of operation</string>
+    <string name="stores_hours_monday">Monday</string>
+    <string name="stores_hours_tuesday">Tuesday</string>
+    <string name="stores_hours_wednesday">Wednesday</string>
+    <string name="stores_hours_thursday">Thursday</string>
+    <string name="stores_hours_friday">Friday</string>
+    <string name="stores_hours_saturday">Saturday</string>
+    <string name="stores_hours_sunday">Sunday</string>
+    <string name="stores_hours_details">%1$s to %2$s</string>
+    <string name="stores_hours_closed">Closed</string>
+
+    <!-- Settings -->
+    <string name="settings_sync_title">Catalog Sync</string>
+    <string name="settings_sync_status_title">Sync status</string>
+    <string name="settings_sync_status">Enable or disable the catalog synchronization</string>
+    <string name="settings_sync_button">SYNC CATALOG</string>
+
+    <!-- Url settings -->
+    <string name="settings_backend_title">Backend</string>
+    <string name="settings_backend_url_change_key_title">Pre-defined Server</string>
+    <string name="settings_backend_url_change_value_title">URL</string>
+    <string name="settings_backend_catalog_change_key_title">Pre-defined Catalog</string>
+    <string name="settings_backend_catalog_store_change_key_title">Store</string>
+    <string name="settings_backend_catalog_id_change_key_title">Catalog id</string>
+    <string name="settings_backend_catalog_main_category_id_change_key_title">Catalog main category Id</string>
+
+    <!-- Account -->
+    <string name="account_title">Your Account</string>
+    <string name="account_email">\u0020(%1$s)</string>
+    <string name="account_profile_title">1.\u0020PROFILE</string>
+    <string name="account_delivery_details_title">3.\u0020DELIVERY DETAILS</string>
+    <string name="account_payment_details_title">3.\u0020PAYMENT DETAILS</string>
+    <string name="account_address_title">DELIVERY ADDRESSES</string>
+    <string name="account_address_book_title">4.\u0020ADDRESS BOOK</string>
+    <string name="account_cost_center_title">COST CENTER</string>
+    <string name="account_credit_card_title">DEFAULT CREDIT CARD</string>
+    <string name="account_language_title">2.\u0020LANGUAGE</string>
+    <string name="account_profile_firstname_hint">FIRST NAME</string>
+    <string name="account_profile_lastname_hint">LAST/SURNAME</string>
+    <string name="account_profile_email_hint">EMAIL</string>
+    <string name="account_password_update"><u>UPDATE ACCOUNT PASSWORD</u></string>
+    <string name="account_cost_center_spinner_dialog">Choose a Cost Center</string>
+    <string name="account_title_spinner_dialog">Choose a Title</string>
+    <string name="account_address_set_default">Set As Default</string>
+    <string name="account_credit_card_spinner_dialog">Choose a Credit Card</string>
+    <string name="account_edit_address">Edit</string>
+    <string name="account_language_spinner_dialog">Choose a Language</string>
+    <string name="account_user_default_address_updated_message">Default Address Successfully Updated</string>
+    <string name="account_user_profile_updated_message">Profile Successfully Updated</string>
+    <string name="account_login_tab_title">Login</string>
+    <string name="account_login_title">Login</string>
+    <string name="account_sign_up_tab_title">Sign up</string>
+    <string name="account_sign_up_title">Sign up</string>
+    <string name="account_sign_up_submit_button">Sign up</string>
+    <string name="account_sign_up_password_hint">PASSWORD</string>
+    <string name="account_sign_up_error_title_code">You must provide a title code</string>
+    <string name="account_sign_up_error_first_name">You must provide your first name</string>
+    <string name="account_sign_up_error_last_name">You must provide your last name</string>
+    <string name="account_sign_up_error_email">You must provide your email</string>
+    <string name="account_sign_up_error_password">You must provide your password</string>
+    <string name="account_payment_details_updated_message">Default Payment Successfully Updated</string>
+    <string name="account_default_shipping_address_title">DEFAULT SHIPPING ADDRESS</string>
+    <string name="account_default_billing_address_title">DEFAULT BILLING ADDRESS</string>
+    <string name="account_shipping_address_empty">Empty</string>
+
+    <!-- Barcode scanning -->
+    <string name="error_barcode_no_product_found">There is no product with code "%1$s" matching this value in the system.</string>
+    <string name="error_barcode_no_order_found">There is no order with code "%1$s" matching this value in the system.</string>
+
+
+    <!-- Address Book -->
+    <string name="address_book_title">Manage Address Book</string>
+    <string name="address_book_title_edit">Edit Address</string>
+    <string name="address_book_title_new">Add New Address</string>
+    <string name="address_dialog_line1">Address Line 1</string>
+    <string name="address_required">All Fields are required</string>
+    <string name="address_dialog_line2">Address Line 2</string>
+    <string name="address_dialog_city">CITY</string>
+    <string name="address_dialog_postal_code">ZIP/POSTAL CODE</string>
+    <string name="address_dialog_state">STATE/PROVINCE</string>
+    <string name="address_dialog_save">SAVE</string>
+    <string name="address_dialog_add">ADD</string>
+    <string name="address_dialog_new">NEW</string>
+    <string name="address_dialog_done">DONE</string>
+    <string name="address_updated_message">Address Successfully Updated</string>
+    <string name="address_new_message">New Address Successfully Created</string>
+    <string name="account_error_missing_fields_message">Error has occurred</string>
+    <string name="address_delete_message">Delete this address?</string>
+    <string name="address_delete_success_message">Address Successfully Deleted</string>
+    <string name="address_cancel">Cancel</string>
+
+    <!-- Payments -->
+    <string name="payment_title">Manage Payments</string>
+    <string name="payment_set_default">Set As Default</string>
+    <string name="payment_default_updated_message">Default Payment Successfully Updated</string>
+    <string name="payment_delete_message">Delete this payment?</string>
+    <string name="payment_delete_success_message">Payment Successfully Deleted</string>
+    <string name="payment_edit_title">Edit Payment</string>
+    <string name="payment_updated_message">Payment Successfully Updated</string>
+
+
+</resources>

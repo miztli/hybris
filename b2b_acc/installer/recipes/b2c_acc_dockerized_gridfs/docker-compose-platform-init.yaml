@@ -1,0 +1,82 @@
+# B2C Accelerator with GridFS Compose
+
+version: '2'
+
+services:
+
+  hsql:
+    image: b2cacc_grid_fs_hsql
+    volumes:
+      - ./state/hsql:/opt/hsqldb/data
+
+  solr:
+    image: ybase_solr
+    command: default
+    volumes:
+      - ./state/solr:/opt/solr/server/solr/cores
+
+  mongo:
+    image: b2cacc_grid_fs_mongodb
+    environment:
+      REPL_SET: rs0
+    ports:
+      - "27017"
+
+  mongo_no_repl_set:
+    image: b2cacc_grid_fs_mongodb
+    ports:
+      - "27017"
+
+  platform_admin_init:
+    image: b2cacc_grid_fs_platform
+    command: admin initialize
+    depends_on:
+      - hsql
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+
+  zookeeper1:
+    image: ybase_zookeeper
+    environment:
+      MYID: 1
+
+  zookeeper2:
+    image: ybase_zookeeper
+    environment:
+      MYID: 2
+
+  zookeeper3:
+    image: ybase_zookeeper
+    environment:
+      MYID: 3
+
+  solrc1:
+    image: ybase_solr
+    command: cloud
+    environment:
+      NODE_DIR: /opt/solr/server/
+      ZK_HOSTS: "zookeeper1:2181,zookeeper2:2181,zookeeper3:2181"
+      SOLR_HOST: solrc1
+    depends_on:
+      - zookeeper1
+      - zookeeper2
+      - zookeeper3
+    volumes:
+      - ./state/solr/nodes/1/cores:/opt/solr/server/cores
+    ports:
+      - "8984:8983"
+
+  solrc2:
+    image: ybase_solr
+    command: cloud
+    environment:
+      NODE_DIR: /opt/solr/server/
+      ZK_HOSTS: "zookeeper1:2181,zookeeper2:2181,zookeeper3:2181"
+      SOLR_HOST: solrc2
+    depends_on:
+      - solrc1
+    volumes:
+      - ./state/solr/nodes/2/cores:/opt/solr/server/cores
+      - solrc2_log:/opt/solr/server/logs
+    ports:
+      - "8985:8983"

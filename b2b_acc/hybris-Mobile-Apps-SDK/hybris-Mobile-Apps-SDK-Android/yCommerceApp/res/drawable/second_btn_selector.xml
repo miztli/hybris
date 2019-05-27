@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Button Focused -->
+    <item android:drawable="@drawable/second_btn_disabled" android:state_enabled="false" />
+    <!-- Button Focused Pressed -->
+    <item android:drawable="@drawable/second_btn_pressed" android:state_pressed="true" />
+    <!-- Button Pressed -->
+    <item android:drawable="@drawable/second_btn_pressed" android:state_focused="true" />
+    <!-- Button Default Image -->
+    <item android:drawable="@drawable/second_btn_default" />
+
+</selector>

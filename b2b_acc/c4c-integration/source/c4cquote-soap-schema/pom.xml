@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<parent>
+		<groupId>com.hybris.datahub.c4c</groupId>
+		<artifactId>c4c-integration</artifactId>
+		<relativePath>../</relativePath>
+		<version>18.11.0-RC10</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>c4cquote-soap-schema</artifactId>
+	<groupId>com.sap.datahub</groupId>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>${org.apache.cxf.version}</version>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+						<configuration>
+							<sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/resources/META-INF/wsdl/CustomerOrderReplicationIn.wsdl</wsdl>
+									<extraargs>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/A1S/Global=com.sap.datahub.c4c.adapter.schema.com.sap.xi.a1s.global</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/BASIS/Global=com.sap.datahub.c4c.adapter.schema.com.sap.xi.basis.global</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/SAPGlobal20/Global=com.sap.datahub.c4c.adapter.schema.com.sap.xi.sapglobal20.global</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/AP/Common/Global=com.sap.datahub.c4c.adapter.schema.com.sap.xi.ap.common.global</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/AP/Common/GDT=com.sap.datahub.c4c.adapter.schema.com.sap.xi.ap.common.gdt</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/Common/DataTypes=com.sap.datahub.c4c.adapter.schema.com.sap.xi.common.datatypes</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/AP/FO/Activity/Global=com.sap.datahub.c4c.adapter.schema.com.sap.xi.ap.fo.activity</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/AP/CRM/Global=com.sap.datahub.c4c.adapter.schema.com.sap.xi.ap.crm.global</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://xiTest.com/xi/test=com.sap.datahub.c4c.adapter.schema.com.xitest.xi.test</extraarg>
+									</extraargs>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+					</execution>
+					<execution>
+						<id>generate-sources-approval-notification</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+						<configuration>
+							<sourceRoot>${project.build.directory}/generated/cxf/notification</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/resources/META-INF/wsdl/CustomerQuoteProcessingUpdati1.wsdl</wsdl>
+									<extraargs>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/BASIS/Global=com.sap.datahub.c4c.adapter.schema.notification.com.sap.xi.basis.global</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/SAPGlobal20/Global=com.sap.datahub.c4c.adapter.schema.notification.com.sap.xi.sapglobal20.global</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/AP/Common/Global=com.sap.datahub.c4c.adapter.schema.notification.com.sap.xi.ap.common.global</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/AP/Common/GDT=com.sap.datahub.c4c.adapter.schema.notification.com.sap.xi.ap.common.gdt</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/Common/DataTypes=com.sap.datahub.c4c.adapter.schema.notification.com.sap.xi.common.datatypes</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://sap.com/xi/AP/CRM/Global=com.sap.datahub.c4c.adapter.schema.notification.com.sap.xi.ap.crm.global</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>http://xiTest.com/xi/test=com.sap.datahub.c4c.adapter.schema.notification.com.xitest.xi.test</extraarg>
+									</extraargs>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<excludes>
+						<exclude>**/com/sap/xi/a1s/global/Service.class</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

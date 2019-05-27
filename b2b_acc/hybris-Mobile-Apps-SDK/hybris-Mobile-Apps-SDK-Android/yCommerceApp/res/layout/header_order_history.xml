@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/order_history_header"
+    style="@style/layout_order_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cart_menu_background"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/order_number_header"
+        style="@style/h4_title_white"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.25"
+        android:background="@color/order_history_header"
+        android:gravity="center"
+        android:text="@string/order_history_number" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/product_detail_divider" />
+
+    <TextView
+        android:id="@+id/order_date_placed_header"
+        style="@style/h4_title_white"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.30"
+        android:background="@color/order_history_header"
+        android:gravity="center"
+        android:text="@string/order_history_date_placed" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/product_detail_divider" />
+
+    <TextView
+        android:id="@+id/order_status_header"
+        style="@style/h4_title_white"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.30"
+        android:background="@color/order_history_header"
+        android:gravity="center"
+        android:text="@string/order_history_status" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/product_detail_divider" />
+
+    <TextView
+        android:id="@+id/order_total_header"
+        style="@style/h4_title_white"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.15"
+        android:background="@color/order_history_header"
+        android:gravity="center"
+        android:text="@string/order_history_total" />
+
+</LinearLayout>

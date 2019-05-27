@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/splashscreen_background"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/hybrisLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/splash_img_description"
+        android:src="@drawable/y_logo" />
+
+    <ImageView
+        android:id="@+id/b2bAppLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/hybrisLogo"
+        android:layout_alignStart="@+id/hybrisLogo"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/splash_img_description"
+        android:src="@drawable/app_logo" />
+
+</RelativeLayout>

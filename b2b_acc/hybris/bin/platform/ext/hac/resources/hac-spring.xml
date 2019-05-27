@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- System tray notifier -->
+    <bean id="systemTrayNotifierFactory" class="de.hybris.bootstrap.osnotify.impl.SystemTrayNotifierFactory"/>
+    <bean id="systemTrayNotifier" factory-bean="systemTrayNotifierFactory" factory-method="createNotifier">
+        <constructor-arg value="#{new java.io.File(systemProperties['HYBRIS_BIN_DIR'] + '/platform')}"/>
+    </bean>
+
+
+    <bean id="customTabProvidersRegistry" class="de.hybris.platform.hac.custom.CustomTabProvidersRegistry"/>
+
+    <bean id="hybrisHacConfiguration" class="de.hybris.platform.hac.custom.JsonHacConfiguration">
+        <property name="resource" value="classpath:defaultHacConfiguration.json"/>
+    </bean>
+
+    <!-- Performance stuff -->
+    <bean id="configGetDatabasePerformanceTest" class="de.hybris.platform.hac.performance.impl.ConfigGetDatabase"
+          scope="prototype"/>
+    <bean id="configGetOraclePerformanceTest" class="de.hybris.platform.hac.performance.impl.ConfigGetOracle"
+          scope="prototype"/>
+    <bean id="configGetParameterPerformanceTest" class="de.hybris.platform.hac.performance.impl.ConfigGetParameter"
+          scope="prototype"/>
+    <bean id="configGetStringPerformanceTest" class="de.hybris.platform.hac.performance.impl.ConfigGetString"
+          scope="prototype"/>
+    <bean id="jaloFlexibleSearchWithCachePerformanceTest"
+          class="de.hybris.platform.hac.performance.impl.JaloFlexibleSearchWithCache" scope="prototype"/>
+    <bean id="jaloFlexibleSearchWithoutCachePerformanceTest"
+          class="de.hybris.platform.hac.performance.impl.JaloFlexiblSearchWithoutCache" scope="prototype"/>
+    <bean id="jaloGetNonExistingPropertyPerformanceTest"
+          class="de.hybris.platform.hac.performance.impl.JaloGetNonExistingProperty" scope="prototype"/>
+    <bean id="jaloGetPkPerformanceTest" class="de.hybris.platform.hac.performance.impl.JaloGetPk" scope="prototype"/>
+    <bean id="jaloItemSetNonExistingPropertyPerformanceTest"
+          class="de.hybris.platform.hac.performance.impl.JaloItemSetNonExistingProperty" scope="prototype"/>
+    <bean id="jaloTenTimesSetNonExistingPropertyPerformanceTest"
+          class="de.hybris.platform.hac.performance.impl.JaloTenTimesSetNonExistingProperty" scope="prototype"/>
+    <bean id="jaloTenTimesSetNonExistingPropertyInTxPerformanceTest"
+          class="de.hybris.platform.hac.performance.impl.JaloTenTimesSetNonExistingPropertyInTx" scope="prototype"/>
+    <bean id="modelGetPkPerformanceTest" class="de.hybris.platform.hac.performance.impl.ModelGetPk" scope="prototype">
+        <property name="modelService" ref="modelService"/>
+    </bean>
+    <bean id="registryGetDataSourcePerformanceTest"
+          class="de.hybris.platform.hac.performance.impl.RegistryGetDataSource" scope="prototype"/>
+    <bean id="slFlexibleSearchPerformanceTest" class="de.hybris.platform.hac.performance.impl.SlFlexibleSearch"
+          scope="prototype">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+
+    <!-- Facades -->
+
+    <bean id="hacCacheFacade" class="de.hybris.platform.hac.facade.HacCacheFacade">
+        <property name="cacheConfiguration" ref="cacheConfiguration"/>
+    </bean>
+
+    <bean id="hacClusterFacade" class="de.hybris.platform.hac.facade.HacClusterFacade"/>
+
+    <bean id="hacCronJobFacade" class="de.hybris.platform.hac.facade.HacCronJobFacade">
+        <property name="cronJobHistoryService" ref="cronJobHistoryService"/>
+        <property name="cronJobService" ref="cronJobService"/>
+    </bean>
+
+    <bean id="hacDatabaseFacade" class="de.hybris.platform.hac.facade.HacDatabaseFacade">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="hacDryRunFacade" class="de.hybris.platform.hac.facade.HacDryRunFacade">
+        <property name="notifier" ref="systemTrayNotifier"/>
+    </bean>
+
+    <bean id="scriptingLanguagesExecutor"
+          class="de.hybris.platform.hac.scripting.impl.DefaultScriptingLanguageExecutor">
+        <property name="scriptingLanguagesService" ref="scriptingLanguagesService"/>
+    </bean>
+
+    <bean id="hacDynamicLanguagesFacade" class="de.hybris.platform.hac.facade.HacDynamicLanguagesFacade">
+        <property name="scriptEnginesRegistry" ref="scriptEnginesRegistry"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="executor" ref="scriptingLanguagesExecutor"/>
+        <property name="repository" ref="databaseScriptsRepository"/>
+    </bean>
+
+    <bean id="hacExtensionsFacade" class="de.hybris.platform.hac.facade.HacExtensionsFacade"/>
+
+    <bean id="hacFlexibleSearchFacade" class="de.hybris.platform.hac.facade.HacFlexibleSearchFacade">
+        <property name="i18nService" ref="i18NService"/>
+        <property name="userService" ref="userService"/>
+        <property name="sessionService" ref="sessionService"/>
+        <property name="catalogVersionService" ref="catalogVersionService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="hacImpexFacade" class="de.hybris.platform.hac.facade.HacImpexFacade">
+        <property name="importService" ref="importService"/>
+        <property name="exportService" ref="exportService"/>
+        <property name="mediaService" ref="mediaService"/>
+    </bean>
+
+    <bean id="hacInitUpdateFacade" class="de.hybris.platform.hac.facade.HacInitUpdateFacade">
+        <property name="notifier" ref="systemTrayNotifier"/>
+    </bean>
+
+    <bean id="hacLog4JFacade" class="de.hybris.platform.hac.facade.HacLog4JFacade"/>
+
+    <bean id="defaultCardPaymentInfoDao" class="de.hybris.platform.hac.dao.impl.DefaultCardPaymentInfoDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="hacMaintenanceFacade" class="de.hybris.platform.hac.facade.HacMaintenanceFacade">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+        <property name="typeService" ref="typeService"/>
+        <property name="formatFactory" ref="formatFactory"/>
+        <property name="creditCardDao" ref="defaultCardPaymentInfoDao"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="creditCardNumberHelper" ref="creditCardNumberHelper"/>
+    </bean>
+
+    <bean id="hacMonitoringFacade" class="de.hybris.platform.hac.facade.HacMonitoringFacade"/>
+
+    <bean id="hacPerformanceTestsFacade" class="de.hybris.platform.hac.facade.HacPerformanceTestsFacade">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="hacPkAnalyzerFacade" class="de.hybris.platform.hac.facade.HacPkAnalyzerFacade"/>
+
+    <bean id="hacTenantsFacade" class="de.hybris.platform.hac.facade.HacTenantsFacade">
+        <property name="tenantService" ref="tenantService"/>
+    </bean>
+
+    <bean id="hacMemoryFacade" class="de.hybris.platform.hac.facade.HacMemoryFacade"/>
+
+    <bean id="hacHealthCheckFacade" class="de.hybris.platform.hac.facade.HacHealthCheckFacade">
+        <property name="healthCheckRegistry" ref="healthCheckRegistry"/>
+        <property name="metricRegistry" ref="metricRegistry"/>
+    </bean>
+
+    <bean id="hacJmxFacade" class="de.hybris.platform.hac.facade.HacJmxFacade">
+        <property name="mbeanRegisterUtility" ref="mbeanRegisterUtility"/>
+    </bean>
+
+    <bean id="threadDumpCollector" class="de.hybris.platform.hac.facade.ThreadDumpCollector"/>
+    <bean id="threadMonitor" class="de.hybris.platform.hac.facade.ThreadMonitor"/>
+</beans>

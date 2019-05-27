@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Triangle button code item default -->
+    <item android:drawable="@drawable/triangle_button_product_item_default" android:state_enabled="true" />
+
+    <!-- Triangle button code item disable -->
+    <item android:drawable="@drawable/triangle_button_product_item_disabled" android:state_enabled="false" />
+
+    <!-- Triangle button code item pressed -->
+    <item android:drawable="@drawable/triangle_button_product_item_pressed" android:state_focused="true" />
+
+    <!-- Triangle button code item pressed -->
+    <item android:drawable="@drawable/triangle_button_product_item_pressed" android:state_pressed="true" />
+
+</selector>

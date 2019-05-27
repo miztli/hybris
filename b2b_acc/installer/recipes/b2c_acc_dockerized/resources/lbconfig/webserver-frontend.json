@@ -1,0 +1,64 @@
+{
+    "webserver_apache_vhosts": [
+      {
+            "webserver_apache_domain": "localhost",
+            "webserver_apache_servername": "localhost",
+            "webserver_apache_maintenancepage_content": "yacceleratorstorefront is currently under maintenance. Please come back later!",
+            "webserver_apache_maintenancepage_title": "yacceleratorstorefront is sorry",
+            "webserver_apache_allowed": [
+                "yacceleratorstorefront"
+            ],
+            "webserver_apache_default_app": "yacceleratorstorefront?site=electronics",
+            "force_https": "true",
+            "rewrite_rules_ssl": 
+            {
+                "/test":    "/yacceleratorstorefront/electronics/en/"
+            }
+        },
+        {
+                "webserver_apache_domain": "electronics.localhost",
+                "webserver_apache_servername": "electronics.localhost",
+                "webserver_apache_maintenancepage_content": "yacceleratorstorefront electronics is currently under maintenance. Please come back later!",
+                "webserver_apache_maintenancepage_title": "yacceleratorstorefront electronics is sorry",
+                "webserver_apache_allowed": [
+                    "yacceleratorstorefront"
+                ],
+                "webserver_apache_default_app": "yacceleratorstorefront",
+                "force_https": "true",
+                "rewrite_rules_ssl": 
+                {
+                    "/test":    "/yacceleratorstorefront/electronics/en/"
+                }
+            },
+        {
+                "webserver_apache_domain": "apparel-uk.localhost",
+                "webserver_apache_servername": "apparel-uk.localhost",
+                "webserver_apache_maintenancepage_content": "yacceleratorstorefront apparel-uk is currently under maintenance. Please come back later!",
+                "webserver_apache_maintenancepage_title": "yacceleratorstorefront apparel-uk is sorry",
+                "webserver_apache_allowed": [
+                    "yacceleratorstorefront"
+                ],
+                "webserver_apache_default_app": "yacceleratorstorefront",
+                "force_https": "true",
+                "rewrite_rules_ssl": 
+                {
+                    "/test":    "/yacceleratorstorefront/apparel-uk/en/"
+                }
+            },
+            {
+                    "webserver_apache_domain": "apparel-de.localhost",
+                    "webserver_apache_servername": "apparel-de.localhost",
+                    "webserver_apache_maintenancepage_content": "yacceleratorstorefront apparel-de is currently under maintenance. Please come back later!",
+                    "webserver_apache_maintenancepage_title": "yacceleratorstorefront apparel-de is sorry",
+                    "webserver_apache_allowed": [
+                        "yacceleratorstorefront"
+                    ],
+                    "webserver_apache_default_app": "yacceleratorstorefront",
+                    "force_https": "true",
+                    "rewrite_rules_ssl": 
+                    {
+                        "/test":    "/yacceleratorstorefront/apparel-de/de/"
+                    }
+                }
+    ]
+}

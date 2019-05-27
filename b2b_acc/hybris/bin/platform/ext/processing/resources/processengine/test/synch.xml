@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<process xmlns="http://www.hybris.de/xsd/processdefinition" start="start" name="synchTestProces">
+    
+	<scriptAction id="start">
+		<script type='groovy'> de.hybris.platform.processengine.synchronus.SynchProcessEngineIntegrationTest.getContext().action('start'); return 'OK';</script>
+		<transition name="OK" to="secondStep"/>
+	</scriptAction>
+	
+	<scriptAction id="secondStep" canJoinPreviousNode="true">
+		<script type='groovy'> de.hybris.platform.processengine.synchronus.SynchProcessEngineIntegrationTest.getContext().action('secondStep'); return 'OK';</script>
+		<transition name="OK" to="thirdStep"/>
+	</scriptAction>
+
+	<scriptAction id="thirdStep" >
+		<script type='groovy'> de.hybris.platform.processengine.synchronus.SynchProcessEngineIntegrationTest.getContext().action('thirdStep'); return 'OK';</script>
+		<transition name="OK" to="fourthStep"/>
+	</scriptAction>
+	
+	<scriptAction id="fourthStep" canJoinPreviousNode="true">
+		<script type='groovy'> de.hybris.platform.processengine.synchronus.SynchProcessEngineIntegrationTest.getContext().action('fourthStep'); return 'OK';</script>
+		<transition name="OK" to="fifthStep"/>
+	</scriptAction>
+	
+	
+	<scriptAction id="fifthStep" canJoinPreviousNode="true">
+		<script type='groovy'> de.hybris.platform.processengine.synchronus.SynchProcessEngineIntegrationTest.getContext().action('fifthStep'); return 'OK';</script>
+		<transition name="OK" to="sixthStep"/>
+	</scriptAction>
+	
+	<scriptAction id="sixthStep" canJoinPreviousNode="false">
+		<script type='groovy'> de.hybris.platform.processengine.synchronus.SynchProcessEngineIntegrationTest.getContext().action('sixthStep'); return 'OK';</script>
+		<transition name="OK" to="success"/>
+	</scriptAction>
+	
+	<end id="success" state="SUCCEEDED">Everything was fine</end>
+</process>

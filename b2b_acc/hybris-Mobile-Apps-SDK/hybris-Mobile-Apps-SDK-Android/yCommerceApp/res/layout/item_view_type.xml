@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_type_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="8dp"
+    android:drawableLeft="@drawable/ic_subnav_line_blue"
+    android:drawableStart="@drawable/ic_subnav_line_blue"
+    android:gravity="center"
+    android:padding="3dp"
+    android:text="@string/catalog_content_header_line_view">
+
+</TextView>

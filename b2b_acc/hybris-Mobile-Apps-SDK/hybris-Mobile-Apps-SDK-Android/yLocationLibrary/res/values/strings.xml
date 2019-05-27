@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hybris_map_enable_location_services">Enable location services.</string>
+    <string name="hybris_map_location_services_not_enabled_title_dialog">Location services disabled</string>
+    <string name="hybris_map_location_services_not_enabled_msg_dialog">This application needs access to your location. Please turn on Location Services.</string>
+    <string name="hybris_map_location_services_not_enabled_msg_button_enable">Enable</string>
+    <string name="hybris_map_location_services_not_enabled_msg_button_cancel">Cancel</string>
+</resources>

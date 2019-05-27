@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="url_backend">https://10.0.2.2:9002</string>
+    <string name="link_storefront">http://10.0.2.2:9001/yb2bacceleratorstorefront/?site=powertools
+    </string>
+    <string name="provider_authority">com.hybris.mobile.b2c.provider.local</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<process xmlns="http://www.hybris.de/xsd/processdefinition" start="start" name="synchLogs">
+    
+	<scriptAction id="start">
+		<script type='groovy'>return 'OK';</script>
+		<transition name="OK" to="secondStep"/>
+	</scriptAction>
+	
+	<scriptAction id="secondStep" canJoinPreviousNode="true">
+		<script type='groovy'>return 'OK';</script>
+		<transition name="OK" to="success"/>
+	</scriptAction>
+
+	<end id="success" state="SUCCEEDED">Everything was fine</end>
+</process>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<profile>
+	<name>EC-hybris-Groovy</name>
+	<language>grvy</language>
+	<rules>
+		<rule>
+			<repositoryKey>grvy</repositoryKey>
+			<key>org.codenarc.rule.convention.ConfusingTernaryRule</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>grvy</repositoryKey>
+			<key>org.codenarc.rule.convention.InvertedIfElseRule</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>grvy</repositoryKey>
+			<key>org.codenarc.rule.imports.DuplicateImportRule</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>grvy</repositoryKey>
+			<key>org.codenarc.rule.imports.ImportFromSamePackageRule</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>grvy</repositoryKey>
+			<key>org.codenarc.rule.imports.UnnecessaryGroovyImportRule</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>grvy</repositoryKey>
+			<key>org.codenarc.rule.imports.UnusedImportRule</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+	</rules>
+</profile>

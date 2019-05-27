@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Sync settings -->
+    <string name="sync_notification_title">Catalog syncing</string>
+    <string name="sync_notification_description">Sync is in progress&#8230;</string>
+    <integer name="sync_timeout_in_min">15</integer>
+    <string name="sync_url_backend_metadata_name">url_backend</string>
+    <string name="sync_url_path_catalog_metadata_name">url_path_catalog</string>
+    <string name="sync_url_path_catalog_id_metadata_name">url_path_catalog_id</string>
+    <string name="sync_url_path_catalog_version_id_metadata_name">url_path_catalog_version_id</string>
+    <string name="sync_id_category_main">id_category_main</string>
+    <string name="sync_ssl_helper">ssl_helper</string>
+    <string name="sync_account_name">account_name</string>
+    <string name="sync_account_type">account_type</string>
+    <string name="sync_db_name">db_name</string>
+    <string name="sync_db_version">db_version</string>
+    <string name="sync_default_authority">com.hybris.mobile.lib.commerce.provider</string>
+    <string name="sync_default_db_name">hybris_mobile_commerce</string>
+    <integer name="sync_default_db_version">1</integer>
+
+    <!-- Misc -->
+    <string name="payment_type_account_name">ACCOUNT</string>
+    <string name="intent_action_logout">com.hybris.mobile.intent.action.logout</string>
+    <string name="intent_action_update_cache">com.hybris.mobile.intent.action.updateCache</string>
+
+    <!-- Webservice path configuration -->
+    <string name="path_token">/authorizationserver/oauth/token</string>
+    <string name="path_webservice">/rest/v2/</string>
+
+    <!-- Webservice calls -->
+    <string name="path_card_types">/cardtypes</string>
+    <string name="path_catalogs">/catalogs</string>
+    <string name="path_catalog">/catalogs/%1$s</string>
+    <string name="path_catalog_version">/catalogs/%1$s/%2$s</string>
+    <string name="path_catalog_category">/catalogs/%1$s/%2$s/categories/%3$s</string>
+    <string name="path_currencies">/currencies</string>
+    <string name="path_customers_groups">/customergroups</string>
+    <string name="path_customers_group">/customergroups/%1$s</string>
+    <string name="path_customers_group_members">/customergroups/%1$s/members</string>
+    <string name="path_customers_group_members_user">/customergroups/%1$s/members/%2$s</string>
+    <string name="path_delivery_countries">/deliverycountries</string>
+    <string name="path_export_products">/export/products</string>
+    <string name="path_feeds_orders">/feeds/orders/statusfeed</string>
+    <string name="path_forgotten_password_tokens">/forgottenpasswordtokens</string>
+    <string name="path_languages">/languages</string>
+    <string name="path_products_express_update">/products/expressupdate</string>
+    <string name="path_products">/products/search?fields=FULL</string>
+    <string name="path_products_suggestions">/products/suggestions</string>
+    <string name="path_product">/products/%1$s?fields=FULL</string>
+    <string name="path_product_references">/products/%1$s/references</string>
+    <string name="path_product_reviews">/products/%1$s/reviews</string>
+    <string name="path_product_stock">/products/%1$s/stock</string>
+    <string name="path_product_store_stock">/products/%1$s/stock/%2$s</string>
+    <string name="path_promotions">/promotions</string>
+    <string name="path_promotion">/promotions/%1$s</string>
+    <string name="path_stores">/stores?fields=FULL</string>
+    <string name="path_store">/stores/%1$s?fields=FULL</string>
+    <string name="path_titles">/titles</string>
+    <string name="path_users">/users/</string>
+    <string name="path_user">/users/%1$s</string>
+    <string name="path_user_addresses">/users/%1$s/addresses?fields=FULL</string>
+    <string name="path_user_address">/users/%1$s/addresses/%2$s?fields=FULL</string>
+    <string name="path_carts">/users/%1$s/carts</string>
+    <string name="path_cart">/users/%1$s/carts/%2$s?fields=FULL</string>
+    <string name="path_cart_delivery_address">/users/%1$s/carts/%2$s/addresses/delivery</string>
+    <string name="path_cart_clone">/users/%1$s/carts/%2$s/clonesavedcart</string>
+    <string name="path_cart_delivery_mode">/users/%1$s/carts/%2$s/deliverymode</string>
+    <string name="path_cart_delivery_modes">/users/%1$s/carts/%2$s/deliverymodes</string>
+    <string name="path_cart_email">/users/%1$s/carts/%2$s/email</string>
+    <string name="path_cart_entries">/users/%1$s/carts/%2$s/entries</string>
+    <string name="path_cart_entry">/users/%1$s/carts/%2$s/entries/%3$s</string>
+    <string name="path_cart_flag_deletion">/users/%1$s/carts/%2$s/flagForDeletion</string>
+    <string name="path_cart_payment">/users/%1$s/carts/%2$s/paymentdetails</string>
+    <string name="path_cart_promotions">/users/%1$s/carts/%2$s/promotions</string>
+    <string name="path_cart_promotion">/users/%1$s/carts/%2$s/promotions/%3$s</string>
+    <string name="path_cart_restore_saved_cart">/users/%1$s/carts/%2$s/restoresavedcart</string>
+    <string name="path_cart_save">/users/%1$s/carts/%2$s/save</string>
+    <string name="path_cart_saved_cart">/users/%1$s/carts/%2$s/savedcart</string>
+    <string name="path_cart_vouchers">/users/%1$s/carts/%2$s/vouchers</string>
+    <string name="path_cart_voucher">/users/%1$s/carts/%2$s/vouchers/%3$s</string>
+    <string name="path_user_customer_groups">/users/%1$s/customergroups</string>
+    <string name="path_user_login">/users/%1$s/login</string>
+    <string name="path_orders">/users/%1$s/orders</string>
+    <string name="path_order">/users/%1$s/orders/%2$s?fields=FULL</string>
+    <string name="path_user_password">/users/%1$s/password</string>
+    <string name="path_user_payments">/users/%1$s/paymentdetails</string>
+    <string name="path_user_payment">/users/%1$s/paymentdetails/%2$s</string>
+    <string name="path_voucher">/vouchers/%1$s</string>
+
+</resources>

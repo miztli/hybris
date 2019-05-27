@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="161dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start">
+
+    <!-- The navigation drawer -->
+
+    <ListView
+        android:id="@+id/main_menu_list_elements"
+        android:layout_width="161dp"
+        android:layout_height="match_parent"
+        android:background="#1B2733"
+        android:choiceMode="singleChoice"
+        android:divider="@color/drawer_divider"
+        android:dividerHeight="1dp" />
+
+
+    <RelativeLayout
+        android:id="@+id/main_menu_login"
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/activatedBackgroundIndicator"
+        android:clickable="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/lastDrawerItemTopIconLogin"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/logoutDrawerItemLabelLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lastDrawerItemTopIconLogin"
+            android:layout_centerHorizontal="true"
+            android:text="@string/main_menu_item_login"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/logoutDrawerItemImgLogin"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignTop="@+id/logoutDrawerItemLabelLogin"
+            android:layout_toLeftOf="@+id/logoutDrawerItemLabelLogin"
+            android:layout_toStartOf="@+id/logoutDrawerItemLabelLogin"
+            android:contentDescription="@null"
+            android:src="@drawable/icon_login"
+            android:layout_marginRight="4dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_menu_logout"
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/activatedBackgroundIndicator"
+        android:clickable="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/lastDrawerItemTopIcon"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/logoutDrawerItemLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lastDrawerItemTopIcon"
+            android:layout_centerHorizontal="true"
+            android:text="@string/main_menu_item_logout"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/logoutDrawerItemImg"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignTop="@+id/logoutDrawerItemLabel"
+            android:layout_toLeftOf="@+id/logoutDrawerItemLabel"
+            android:layout_toStartOf="@+id/logoutDrawerItemLabel"
+            android:contentDescription="@null"
+            android:src="@android:drawable/ic_lock_power_off" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

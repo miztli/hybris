@@ -1,0 +1,64 @@
+{
+    "entry": {
+        "entryNumber": 1,
+        "product": {
+            "availableForPickup": false,
+            "categories": [
+                {
+                    "code": "1593",
+                    "url": "/Open-Catalogue/Tools/Screwdrivers/c/1593"
+                },
+                {
+                    "code": "brand_169",
+                    "url": "/Brands/Hitachi/c/brand_169"
+                }
+            ],
+            "code": "3921095",
+            "images": [
+                {
+                    "altText": "W6VA4 6mm Screwdriver",
+                    "format": "zoom",
+                    "imageType": "PRIMARY",
+                    "url": "/medias/?context=bWFzdGVyfGltYWdlc3wzMDQ4MHxpbWFnZS9qcGVnfGltYWdlcy9oYTYvaDUzLzg3OTYxODI4MzkzMjYuanBnfGI1NzM3MWQ3MDNiM2JmOTg0NjhhYzJmZWQ4NzUxYmFiNTYzYjE2NjlhMzc3YmQ0OWNjMGI1MWIzZGEyMmYzMGY"
+                },
+                {
+                    "altText": "W6VA4 6mm Screwdriver",
+                    "format": "product",
+                    "imageType": "PRIMARY",
+                    "url": "/medias/?context=bWFzdGVyfGltYWdlc3wxMjU3OHxpbWFnZS9qcGVnfGltYWdlcy9oMmYvaGU2Lzg3OTYyMTAxMDIzMDIuanBnfGY3YjViYjVkYjM2MDI4MDVhOWM5N2Q0MWU1YTlkZTg3YTRiN2RlNGUzM2E3ZGVlMDIxMmQwNDlhN2I2ZTdkNWE"
+                },
+                {
+                    "altText": "W6VA4 6mm Screwdriver",
+                    "format": "thumbnail",
+                    "imageType": "PRIMARY",
+                    "url": "/medias/?context=bWFzdGVyfGltYWdlc3wzMzM5fGltYWdlL2pwZWd8aW1hZ2VzL2hkYS9oMGIvODc5NjIzNzM2NTI3OC5qcGd8MGE3ODMyZTk0NjAyZTFlNDI1YzViZDBjODRhOWJmOGRiZGFjZDZhOTQ5MWFiZDM4OTIxNzc0M2JmM2EzZjliMw"
+                },
+                {
+                    "altText": "W6VA4 6mm Screwdriver",
+                    "format": "cartIcon",
+                    "imageType": "PRIMARY",
+                    "url": "/medias/?context=bWFzdGVyfGltYWdlc3wyNDg1fGltYWdlL2pwZWd8aW1hZ2VzL2gzZi9oM2MvODc5NjI2NDYyODI1NC5qcGd8NTA2NWQwYmFkMjIyNzQ4OWY1ZTgzNGUxMWQwNGQwZTY3OGYyNzE0OGQ4YmRlMTlkMTcwZWUwMmZmODlhYzdjOQ"
+                }
+            ],
+            "manufacturer": "Hitachi",
+            "name": "W6VA4 6mm Screwdriver",
+            "purchasable": true,
+            "stock": {
+                "stockLevel": 300,
+                "stockLevelStatus": "inStock"
+            },
+            "url": "/Open-Catalogue/Tools/Screwdrivers/W6VA4-6mm-Screwdriver/p/3921095"
+        },
+        "quantity": 300,
+        "totalPrice": {
+            "currencyIso": "USD",
+            "formattedValue": "$36,000.00",
+            "priceType": "BUY",
+            "value": 36000
+        }
+    },
+    "quantity": 300,
+    "quantityAdded": 295,
+    "statusCode": "lowStock",
+    "statusMessage": "A lower quantity of this product has been added to your cart due to insufficient stock."
+}

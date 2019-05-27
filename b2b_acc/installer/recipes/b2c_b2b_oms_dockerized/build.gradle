@@ -1,0 +1,88 @@
+apply plugin: 'installer-platform-plugin'
+apply plugin: 'installer-platform-containerization-plugin'
+
+def pl = platform {
+    localProperties {
+        property 'persistence.legacy.mode', 'false'
+        property 'solrserver.instances.default.autostart', 'false'
+
+        property 'log4j2.logger.solrfacetsearch.name', 'de.hybris.platform.solrfacetsearch'
+        property 'log4j2.logger.solrfacetsearch.level', 'off'
+
+        property 'log4j2.logger.servicelayerjob.name', 'de.hybris.platform.servicelayer.internal.jalo.ServicelayerJob'
+        property 'log4j2.logger.servicelayerjob.level', 'off'
+        property 'apiregistryservices.events.exporting', 'false'
+    }
+
+    dbSetup {
+        dbType 'hsqldb'
+        dbUrl 'jdbc:hsqldb:hsql://hsql:9090/hybris;hsqldb.tx=MVCC'
+        dbUser 'hybris'
+        dbPassword 'hybris'
+    }
+
+    extensions {
+        extName 'b2bordermanagementwebservices'
+        extName 'ordermanagementaddon'
+
+        extName 'warehousingwebservices'
+        extName 'warehousingbackoffice'
+
+        extName 'yacceleratorordermanagement'
+
+        extName 'yacceleratorinitialdata'
+        extName 'yacceleratorfacades'
+        extName 'b2bacceleratoraddon'
+
+        extName 'powertoolsstore'
+        extName 'customersupportbackoffice'
+        extName 'consignmenttrackingbackoffice'
+
+        /* integration-apis */
+        extName 'outboundservices'
+        extName 'odata2webservices'
+        extName 'odata2webservicesfeaturetests'
+
+        extName 'kymaintegrationbackoffice'
+        extName 'kymaintegrationsampledata'
+
+    }
+}
+
+def dpl = deployment('b2c_b2b_oms_dockerized') {
+
+    hsqlImage('hsql') {
+        properties {
+            property 'port', '9090'
+        }
+    }
+
+    platformImage('platform') {
+        basedOn pl
+
+        aspect('webservices') {
+            enabledWebApps 'hac', 'warehousingwebservices', 'ordermanagementwebservices', 'backoffice'
+        }
+
+        adminAspect()
+    }
+}
+
+task setup {
+    doLast {
+        pl.setup()
+    }
+}
+
+task build(dependsOn: setup) {
+    doLast {
+        pl.build()
+    }
+}
+
+task createImagesStructure(dependsOn: build) {
+    doLast {
+        dpl.createImagesStructure()
+        dpl.writeDockerBuildScript()
+    }
+}

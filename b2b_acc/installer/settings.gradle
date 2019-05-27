@@ -1,0 +1,5 @@
+rootProject.name = 'installer'
+
+if (gradle.startParameter.projectDir) {
+    include "recipes:${gradle.startParameter.projectDir.name}"
+}

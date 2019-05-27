@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Spinner is valide -->
+    <item android:state_enabled="true">
+        <layer-list>
+            <item>
+                <shape>
+                    <solid android:color="@android:color/white" />
+
+                    <stroke android:width="1dip" android:color="#B3B3B3" />
+
+                    <padding android:bottom="@dimen/padding_small" android:left="@dimen/padding_small" android:right="@dimen/padding_small" android:top="@dimen/padding_small" />
+                </shape>
+            </item>
+            <item>
+                <bitmap android:gravity="right|center_vertical" android:src="@drawable/spinner_arrow_dark" />
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- Spinner is invalide -->
+    <item android:state_enabled="false">
+        <layer-list>
+            <item>
+                <shape>
+                    <solid android:color="@android:color/white" />
+
+                    <stroke android:width="2dip" android:color="@color/checkout_entries_validation_error" />
+
+                    <padding android:bottom="@dimen/padding_small" android:left="@dimen/padding_small" android:right="@dimen/padding_small" android:top="@dimen/padding_small" />
+                </shape>
+            </item>
+            <item>
+                <bitmap android:gravity="right|center_vertical" android:src="@drawable/spinner_arrow_dark" />
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- Spinner default -->
+    <item>
+        <layer-list>
+            <item>
+                <shape>
+                    <solid android:color="@android:color/white" />
+
+                    <stroke android:width="1dip" android:color="#B3B3B3" />
+
+                    <padding android:bottom="@dimen/padding_small" android:left="@dimen/padding_small" android:right="@dimen/padding_small" android:top="@dimen/padding_small" />
+                </shape>
+            </item>
+            <item>
+                <bitmap android:gravity="right|center_vertical" android:src="@drawable/spinner_arrow_dark" />
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

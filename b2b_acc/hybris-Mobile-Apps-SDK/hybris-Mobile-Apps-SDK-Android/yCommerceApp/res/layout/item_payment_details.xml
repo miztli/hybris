@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/payment_details_item"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_small">
+
+    <LinearLayout
+        android:id="@+id/payment_details_image_checked_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.05"
+        android:gravity="center"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/default_payment_details_checked_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/checked" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/payment_details_layout"
+        android:layout_width="0dp"
+        style="@style/layout_product_item"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.65"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/payment_cardholder_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="payment_cardholder_name"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_large"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/card_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/account_address_set_default_text"
+                    android:gravity="left"
+                    android:layout_gravity="left"
+                    android:text="card_details"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/billing_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_gravity="left"
+                    android:textColor="@color/account_address_set_default_text"
+                    android:text="billing_address"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/payment_details_button_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.30"
+        android:gravity="center"
+        android:padding="@dimen/padding_small">
+
+
+        <Button
+            android:id="@+id/payment_details_set_default_button"
+            style="@style/second_button"
+            android:layout_width="@dimen/account_button_width"
+            android:layout_height="@dimen/account_button_height"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/payment_set_default" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/payment_delete_button_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.10"
+        android:gravity="right"
+        android:padding="@dimen/padding_small">
+
+
+        <Button
+            android:id="@+id/payment_delete_button"
+            style="@style/second_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:background="@drawable/close_icon" />
+
+    </LinearLayout>
+
+</LinearLayout>

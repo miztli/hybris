@@ -1,0 +1,144 @@
+# B2C Accelerator Compose
+
+version: '2'
+
+services:
+
+  hsql:
+    image: b2cacc_deployment_hsql
+    volumes:
+      - ./state/hsql:/opt/hsqldb/data
+
+  solr:
+    image: ybase_solr
+    command: default
+    volumes:
+      - ./state/solr:/opt/solr/server/solr/cores
+
+  platform_hac:
+    image: b2cacc_deployment_platform
+    command: hac
+    environment:
+      JVM_ROUTE: dynamic
+      MOD_CLUSTER_ADDRESS_GROUP: 224.0.1.105
+      MOD_CLUSTER_ADDRESS_PORT: 23365
+    depends_on:
+      - hsql
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./state/media:/opt/hybris/data/media
+      - platform_hac_log:/var/log/hybris/catalina
+    ports:
+      - "9111:8088"
+
+  platformbackoffice1:
+    image: b2cacc_deployment_platform
+    command: backoffice
+    environment:
+      JVM_ROUTE: dynamic
+      MOD_CLUSTER_ADDRESS_GROUP: 224.0.1.105
+      MOD_CLUSTER_ADDRESS_PORT: 23365
+    depends_on:
+      - hsql
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./state/media:/opt/hybris/data/media
+      - platformbackoffice1_log:/var/log/hybris/catalina
+
+  platformbackoffice2:
+    image: b2cacc_deployment_platform
+    command: backoffice
+    environment:
+      JVM_ROUTE: dynamic
+      MOD_CLUSTER_ADDRESS_GROUP: 224.0.1.105
+      MOD_CLUSTER_ADDRESS_PORT: 23365
+    depends_on:
+      - hsql
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./state/media:/opt/hybris/data/media
+      - platformbackoffice2_log:/var/log/hybris/catalina
+
+  platformacceleratorstorefront1:
+    image: b2cacc_deployment_platform
+    command: accstorefront
+    environment:
+      JVM_ROUTE: dynamic
+      MOD_CLUSTER_ADDRESS_GROUP: 224.0.1.105
+      MOD_CLUSTER_ADDRESS_PORT: 23364
+    depends_on:
+      - hsql
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./state/media:/opt/hybris/data/media
+      - platformacceleratorstorefront1_log:/var/log/hybris/catalina
+
+  platformacceleratorstorefront2:
+    image: b2cacc_deployment_platform
+    command: accstorefront
+    environment:
+      JVM_ROUTE: dynamic
+      MOD_CLUSTER_ADDRESS_GROUP: 224.0.1.105
+      MOD_CLUSTER_ADDRESS_PORT: 23364
+    depends_on:
+      - hsql
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./state/media:/opt/hybris/data/media
+      - platformacceleratorstorefront2_log:/var/log/hybris/catalina
+
+  platform_background_processing:
+    image: b2cacc_deployment_platform
+    command: backgroundProcessing
+    depends_on:
+      - hsql
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./state/media:/opt/hybris/data/media
+
+  load_balancer_frontend:
+    image: ybase_load_balancer
+    environment:
+      MOD_CLUSTER_ADDRESS_GROUP: 224.0.1.105
+      MOD_CLUSTER_ADDRESS_PORT: 23364
+    depends_on:
+      - platformacceleratorstorefront1
+      - platformacceleratorstorefront2
+    volumes:
+      - ./resources/secrets:/etc/httpd/conf/ssl
+      - ./resources/lbconfig/webserver-frontend.json:/opt/startup/webserver.json
+    ports:
+      - "80:80"
+      - "443:443"
+
+  load_balancer_backend:
+    image: ybase_load_balancer
+    environment:
+      MOD_CLUSTER_ADDRESS_GROUP: 224.0.1.105
+      MOD_CLUSTER_ADDRESS_PORT: 23365
+    depends_on:
+      - platformbackoffice1
+      - platformbackoffice2
+    volumes:
+      - ./resources/secrets:/etc/httpd/conf/ssl
+      - ./resources/lbconfig/webserver-backend.json:/opt/startup/webserver.json
+    ports:
+      - "81:80"
+      - "444:443"
+
+volumes:
+
+  platform_hac_log:
+    driver: local
+
+  platformbackoffice1_log:
+    driver: local
+
+  platformbackoffice2_log:
+    driver: local
+
+  platformacceleratorstorefront1_log:
+    driver: local
+
+  platformacceleratorstorefront2_log:
+    driver: local

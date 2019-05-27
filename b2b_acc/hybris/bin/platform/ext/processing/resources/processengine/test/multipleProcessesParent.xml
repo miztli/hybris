@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<process xmlns="http://www.hybris.de/xsd/processdefinition" start="start" name="multipleProcessesParent">
+
+	<scriptAction id="start">
+		<script type='groovy'>return 'OK';</script>
+		<transition name="OK" to="wait"/>
+	</scriptAction>
+
+	<wait id='wait' prependProcessCode='true' then='failed'>
+		<case event='ActionEvent'>
+			<choice id='cancelParentProcess' then='cancelProcess'/>
+			<choice id='childProcessEnded' then='success'/>
+		</case>
+	</wait>
+
+	<scriptAction id="cancelProcess">
+		<script type='groovy'>de.hybris.platform.processengine.MultipleProcessesWithCycleTest.cancelChildProcess();
+			return 'OK';</script>
+		<transition name="OK" to="sleep1000"/>
+	</scriptAction>
+
+
+	<scriptAction id="sleep1000">
+		<script type='groovy'>de.hybris.platform.processengine.MultipleProcessesWithCycleTest.sleep1000();
+			return 'OK';</script>
+		<transition name="OK" to="wait"/>
+	</scriptAction>
+
+	<end id="success" state="SUCCEEDED">Everything was fine</end>
+	<end id="failed" state="FAILED">Everything was fine</end>
+</process>

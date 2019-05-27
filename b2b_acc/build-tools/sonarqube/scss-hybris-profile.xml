@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<profile>
+	<name>EC-hybris-SCSS</name>
+	<language>scss</language>
+	<rules>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>S1134</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>S1135</key>
+			<priority>MAJOR</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>S2260</key>
+			<priority>BLOCKER</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>branch-same-implementation</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>charset-first</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>deprecated-unescaped-multiline-string</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>font-family-not-ending-with-generic-font-family</key>
+			<priority>CRITICAL</priority>
+			<parameters>
+				<parameter>
+					<key>Exclusions</key>
+					<value>(?i)^(FontAwesome|Glyphicons Halflings|Ionicons|Genericons)$</value>
+				</parameter>
+			</parameters>
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>if-elseif-same-condition</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>important-position</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>known-properties</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>quoted-generic-font-family-names</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>unknown-at-rules</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>unknown-pseudo</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>unknown-type-selector</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+		<rule>
+			<repositoryKey>scss</repositoryKey>
+			<key>validate-property-value</key>
+			<priority>CRITICAL</priority>
+			<parameters />
+		</rule>
+	</rules>
+</profile>

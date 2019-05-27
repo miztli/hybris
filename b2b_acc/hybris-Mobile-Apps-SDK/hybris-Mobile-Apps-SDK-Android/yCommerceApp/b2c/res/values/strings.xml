@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="checkout_payment_title">1. PAYMENT</string>
+    <string name="checkout_delivery_details_title">2. DELIVERY ADDRESS</string>
+
+    <!-- Payment -->
+    <string name="payment_add_new">Add a New Payment</string>
+    <string name="create_payment_title">Create payment</string>
+    <string name="payment_expiry_date_month_hint">MM</string>
+    <string name="payment_expiry_date_year_hint">YYYY</string>
+    <string name="payment_expiry_date">Expiry date:</string>
+    <string name="payment_credit_card_number_hint">CARD NUMBER</string>
+    <string name="payment_issue_number">Card Verification Value:</string>
+    <string name="payment_issue_number_hint">CVV</string>
+    <string name="payment_holder_name_hint">HOLDER NAME</string>
+    <string name="payment_submit">Create payment</string>
+    <string name="payment_default">Set as default payment:</string>
+    <string name="payment_saved">Save payment:</string>
+    <string name="payment_billing_address">Billing address:</string>
+    <string name="payment_add_billing_address">Add a new address</string>
+
+
+</resources>

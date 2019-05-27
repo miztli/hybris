@@ -1,0 +1,169 @@
+import org.gradle.internal.logging.LoggingOutputInternal
+import org.gradle.internal.logging.text.StyledTextOutput
+import org.gradle.internal.logging.text.StyledTextOutputFactory
+
+import java.nio.file.Paths
+
+project.ext.installerHome = project.projectDir
+project.ext.installerWorkDir = Paths.get(project.installerHome as String, 'work').toAbsolutePath().toString()
+project.ext.customConfigDir = Paths.get(project.installerHome as String, 'customconfig').toAbsolutePath().toString()
+project.ext.suiteHome = getSuiteHome()
+
+private String getSuiteHome() {
+    def suiteReadme = Paths.get(project.projectDir as String, '..', 'README')
+    suiteReadme.toFile().exists() ? suiteReadme.getParent().toAbsolutePath().normalize().toString() : null
+}
+
+project.subprojects.each { subProject ->
+    subProject.buildscript.dependencies {
+        delegate.classpath(fileTree(dir: "${rootProject.projectDir}/libs", include: '*.jar'))
+    }
+}
+
+subprojects {
+
+    repositories {
+        flatDir {
+            dirs "${rootProject.projectDir}/libs"
+        }
+    }
+
+    buildscript {
+        repositories {
+            flatDir {
+                dirs "${rootProject.projectDir}/libs"
+            }
+        }
+    }
+}
+
+if (project.hasProperty('logToFile')) {
+    def tstamp = new Date().format('yyyy-MM-dd_HH-mm-ss')
+    def buildLog = new File("${rootProject.rootDir}/logs/${tstamp}_build.log")
+
+    gradle.services.get(LoggingOutputInternal).addStandardOutputListener(new StandardOutputListener() {
+        void onOutput(CharSequence output) {
+            buildLog << output
+        }
+    })
+
+    gradle.services.get(LoggingOutputInternal).addStandardErrorListener(new StandardOutputListener() {
+        void onOutput(CharSequence output) {
+            buildLog << output
+        }
+    })
+}
+
+subprojects {
+    afterEvaluate { subProject ->
+        def setupTask = createTaskInSubProject subProject, 'setup', 'Setups platform (writes configuration into local.properties, localextensions.xml)'
+        def buildSystemTask = createTaskInSubProject subProject, 'buildSystem', 'Builds platform'
+        def initializeTask = createTaskInSubProject subProject, 'initialize', 'Initializes platform fully'
+        def initializeJunitTask = createTaskInSubProject subProject, 'initializeJunit', 'Initializes platform JUnitTenant'
+        def startTask = createTaskInSubProject subProject, 'start', 'Starts platform interactively'
+        def startInBackgroundTask = createTaskInSubProject subProject, 'startInBackground', 'Starts platform in background'
+        def stopInBackgroundTask = createTaskInSubProject subProject, 'stopInBackground', 'Stops platform in background'
+        def testJunitTask = createTaskInSubProject subProject, 'testJunit', 'Runs JUnit tests'
+        def testInitializeTask = createTaskInSubProject subProject, 'testInitialize', 'Runs initialization tests'
+        def testServerTask = createTaskInSubProject subProject, 'testServer', 'Runs JUnit tests'
+        def createImageStructureTask = createTaskInSubProject subProject, 'createImagesStructure', 'Creates images structure'
+
+        def buildDockerImagesTask = createTaskInSubProject subProject, 'buildImages', 'Builds docker images'
+        buildDockerImagesTask.dependsOn = [createImageStructureTask]
+
+        def pushDockerImagesTask = createTaskInSubProject subProject, 'pushImages', 'Pushes docker images'
+        pushDockerImagesTask.dependsOn = [buildDockerImagesTask]
+
+        buildSystemTask.mustRunAfter setupTask
+        initializeTask.mustRunAfter buildSystemTask
+        initializeJunitTask.mustRunAfter buildSystemTask
+        startTask.mustRunAfter initializeTask
+        startInBackgroundTask.mustRunAfter initializeTask
+        stopInBackgroundTask.mustRunAfter testServerTask
+
+        testJunitTask.mustRunAfter initializeJunitTask
+        testInitializeTask.mustRunAfter initializeTask
+        testServerTask.mustRunAfter startInBackgroundTask
+
+        def performTask = createTaskInSubProject subProject, 'perform', 'Performs setup, build, initialize and start - in this order'
+        performTask.dependsOn = [setupTask, buildSystemTask, initializeTask, startTask]
+
+        def performTestJunitTask = createTaskInSubProject subProject, 'performTestJunit', 'Performs setup, buildSystem, initializeJunit, testJunit - in this order'
+        performTestJunitTask.dependsOn = [setupTask, buildSystemTask, initializeJunitTask, testJunitTask]
+
+        def performTestInitializeTask = createTaskInSubProject subProject, 'performTestInitialize', 'Performs setup, buildSystem, initialize, testInitialize - in this order'
+        performTestInitializeTask.dependsOn = [setupTask, buildSystemTask, initializeTask, testInitializeTask]
+
+        def performTestServerTask = createTaskInSubProject subProject, 'performTestServer', 'Performs setup, buildSystem, initialize, startInBackground, testServer - in this order'
+        performTestServerTask.dependsOn = [setupTask, buildSystemTask, initializeTask, startInBackgroundTask, testServerTask, stopInBackgroundTask]
+    }
+}
+
+Task createTaskInSubProject(subProject, String name, String description) {
+    def taskNames = subProject.tasks*.name
+
+    if (!taskNames.contains(name)) {
+        Task task = subProject.task(name)
+        task.description = description
+    }
+
+    subProject.tasks.getByPath(name)
+}
+
+task printVersion {
+    doLast {
+        println "installer version -- ${new File("${rootProject.rootDir}${File.separator}version").text}"
+        println "installer plugins:"
+        println "======================================"
+        def confFile = new File("${rootProject.rootDir}${File.separator}plugins.conf")
+        confFile.eachLine { line ->
+            if (!line.startsWith('// **** ')) {
+                println line.substring(line.indexOf(":") + 1)
+            }
+        }
+    }
+}
+
+task listRecipes {
+    doLast {
+        def out = services.get(StyledTextOutputFactory).create('logger')
+        out.withStyle(StyledTextOutput.Style.Header).println 'Available recipes:'
+        println ''
+
+        file("${rootProject.rootDir}/recipes").listFiles().each { printRecipeDescription(it) }
+    }
+}
+
+task printRecipeDescription {
+    doLast {
+        def recipeName = project.getProperties().get('recipeName')
+
+        if (!recipeName) {
+            println "Recipe name is required"
+            return
+        }
+
+        def recipeDir = new File("${rootProject.rootDir}/recipes/${recipeName}")
+
+        if (!recipeDir.exists()) {
+            println "Recipe \"${recipeName}\" not found"
+            return
+        }
+
+        printRecipeDescription(recipeDir)
+    }
+}
+
+void printRecipeDescription(recipeDir) {
+    def out = services.get(StyledTextOutputFactory).create('logger')
+
+    out.withStyle(StyledTextOutput.Style.Identifier).println "Recipe \"${recipeDir.name}\""
+    out.withStyle(StyledTextOutput.Style.Info).println 'Description:'
+    out.withStyle(StyledTextOutput.Style.Info).println '============'
+    File readmeFile = new File("${rootProject.rootDir}/recipes/${recipeDir.name}/readme.txt")
+    if (readmeFile.exists()) {
+        println readmeFile.text
+    } else {
+        out.withStyle(StyledTextOutput.Style.Failure).println '    Missing description.'
+    }
+}

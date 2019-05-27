@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="checkout_payment_hint">P.O. NUMBER (OPTIONAL)</string>
+    <string name="checkout_payment_title">1. PAYMENT TYPE</string>
+    <string name="checkout_cost_center_title">2. COST CENTER</string>
+    <string name="checkout_delivery_details_title">3. DELIVERY DETAILS</string>
+    <string name="checkout_cost_center_spinner_dialog">Choose a Cost Center</string>
+
+</resources>

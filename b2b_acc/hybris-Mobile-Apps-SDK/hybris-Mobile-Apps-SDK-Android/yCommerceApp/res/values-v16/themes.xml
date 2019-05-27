@@ -1,0 +1,23 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="hybris_theme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:buttonStyle">@style/main_button</item>
+        <item name="android:actionBarStyle">@style/actionbar_style</item>
+        <item name="android:icon">@drawable/app_logo</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/listitem_background</item>
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+    </style>
+
+    <style name="actionbar_style" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/action_bar_bg</item>
+    </style>
+
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+</resources>

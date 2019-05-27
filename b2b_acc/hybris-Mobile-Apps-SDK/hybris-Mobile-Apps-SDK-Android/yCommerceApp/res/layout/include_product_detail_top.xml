@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/product_detail_bar"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/product_detail_exit"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight=".10"
+        android:background="@color/product_detail_bar"
+        android:contentDescription="@string/product_detail_exit"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="@dimen/padding_large"
+        android:src="@drawable/close_icon" />
+
+    <TextView
+        android:id="@+id/product_detail_name"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight=".80"
+        android:background="@color/product_detail_bar"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="@dimen/padding_small"
+        android:textSize="17sp" />
+
+    <!-- TODO : Set to gone not use for the moment -->
+    <View
+        android:layout_width="@dimen/divider_small"
+        android:layout_height="match_parent"
+        android:background="@color/product_detail_divider"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/product_detail_order_form"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight=".10"
+        android:background="@color/product_detail_bar"
+        android:contentDescription="@string/product_detail_order_form"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="@dimen/padding_large"
+        android:src="@drawable/order_form_icon"
+        android:visibility="gone" />
+
+</LinearLayout>

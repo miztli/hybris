@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="path_cost_center">/costcenters</string>
+    <string name="path_cart_cost_center">/users/%1$s/carts/%2$s/costcenter</string>
+    <string name="path_cart_payment_type">/users/%1$s/carts/%2$s/paymenttype</string>
+    <string name="path_products">/categories/%1$s/products</string>
+
+</resources>

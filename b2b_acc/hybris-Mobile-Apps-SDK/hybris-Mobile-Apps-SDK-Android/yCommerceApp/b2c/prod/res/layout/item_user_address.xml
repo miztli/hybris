@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/user_address_item"
+              style="@style/layout_account_user_address_item"
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              android:padding="@dimen/padding_small"
+              android:orientation="horizontal">
+
+    <LinearLayout
+            android:id="@+id/user_address_item_clickable_layout"
+            style="@style/layout_product_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+        <LinearLayout
+                android:id="@+id/user_default_address_image_checked_layout"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.15"
+                android:gravity="center">
+
+            <ImageView
+                    android:id="@+id/user_default_address_image_checked"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:visibility="invisible"
+                    android:background="@drawable/checked"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/user_address_layout"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.85"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+
+            <TextView
+                    android:id="@+id/user_contact_fullname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anou Chanthavon"/>
+
+            <TextView
+                    android:id="@+id/user_contact_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="36d de Rene-Levesque Blvd. West, 6th Floor, Montreal, H3A 3L4"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

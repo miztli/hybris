@@ -1,0 +1,159 @@
+apply plugin: 'com.android.application'
+
+project.archivesBaseName = "yCommerceApp";
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 22
+    }
+
+    flavorDimensions "vertical", "server"
+
+    // Flavors
+    productFlavors {
+
+        b2b {
+            dimension "vertical"
+        }
+
+        b2c {
+            dimension "vertical"
+        }
+
+        prod {
+            dimension "server"
+        }
+        dev {
+            dimension "server"
+        }
+        local {
+            dimension "server"
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        def flavorString = variant.getVariantData().getVariantConfiguration().getFlavorName()
+        def mergedFlavour = variant.getVariantData().getVariantConfiguration().getMergedFlavor();
+
+        //B2B generated apk
+        if (flavorString.equalsIgnoreCase("b2bProd")) {
+            mergedFlavour.setApplicationId("com.hybris.mobile.app.commerce.b2b.prod")
+        }
+        if (flavorString.equalsIgnoreCase("b2bDev")) {
+            mergedFlavour.setApplicationId("com.hybris.mobile.app.commerce.b2b.dev")
+        }
+        if (flavorString.equalsIgnoreCase("b2bLocal")) {
+            mergedFlavour.setApplicationId("com.hybris.mobile.app.commerce.b2b.local")
+        }
+
+        //B2C generated apk
+        if (flavorString.equalsIgnoreCase("b2cProd")) {
+            mergedFlavour.setApplicationId("com.hybris.mobile.app.commerce.b2c.prod")
+        }
+        if (flavorString.equalsIgnoreCase("b2cDev")) {
+            mergedFlavour.setApplicationId("com.hybris.mobile.app.commerce.b2c.dev")
+        }
+        if (flavorString.equalsIgnoreCase("b2cLocal")) {
+            mergedFlavour.setApplicationId("com.hybris.mobile.app.commerce.b2c.local")
+        }
+
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+
+        // B2B flavor
+        b2b {
+            manifest.srcFile 'b2b/AndroidManifest.xml'
+            java.srcDirs = ['b2b/src']
+            resources.srcDirs = ['b2b/src']
+            aidl.srcDirs = ['b2b/src']
+            renderscript.srcDirs = ['b2b/src']
+            res.srcDirs = ['b2b/res']
+        }
+
+        b2bProd {
+            res.srcDirs = ['b2b/prod/res']
+        }
+
+        b2bDev {
+            res.srcDirs = ['b2b/dev/res']
+        }
+
+        b2bLocal {
+            res.srcDirs = ['b2b/local/res']
+        }
+
+        // B2C flavor
+        b2c {
+            manifest.srcFile 'b2c/AndroidManifest.xml'
+            java.srcDirs = ['b2c/src']
+            resources.srcDirs = ['b2c/src']
+            aidl.srcDirs = ['b2c/src']
+            renderscript.srcDirs = ['b2c/src']
+            res.srcDirs = ['b2c/res']
+        }
+
+        b2cProd {
+            res.srcDirs = ['b2c/prod/res']
+        }
+
+        b2cDev {
+            res.srcDirs = ['b2c/dev/res']
+        }
+
+        b2cLocal {
+            res.srcDirs = ['b2c/local/res']
+        }
+        // End-flavors
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
+}
+
+dependencies {
+    compile 'net.hockeyapp.android:HockeySDK:3.5.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:support-v13:23.4.0'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'com.sothree.slidinguppanel:library:3.3.0'
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    compile project(':yUILibrary')
+    compile project(':yLocationLibrary')
+    compile project(':yScannerLibrary')
+    b2bCompile project(':yB2BLibrary')
+    b2bProdCompile project(':yB2BLibrary')
+    b2bDevCompile project(':yB2BLibrary')
+    b2bLocalCompile project(':yB2BLibrary')
+    b2cCompile project(':yB2CLibrary')
+    b2cProdCompile project(':yB2CLibrary')
+    b2cDevCompile project(':yB2CLibrary')
+    b2cLocalCompile project(':yB2CLibrary')
+}
+
+

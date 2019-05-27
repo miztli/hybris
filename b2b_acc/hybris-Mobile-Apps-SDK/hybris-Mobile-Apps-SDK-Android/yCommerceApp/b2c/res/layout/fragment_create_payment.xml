@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/account_scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@android:color/white"
+    android:fillViewport="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/payment_loading"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/payment_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_large"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/payment_title"
+                style="@style/h1_title_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+
+            <Spinner
+                android:id="@+id/payment_credit_card_type"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spinner_height"
+                android:layout_marginBottom="@dimen/padding_medium"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:spinnerMode="dialog" />
+
+            <EditText
+                android:id="@+id/payment_credit_card_number"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/payment_number_edittext_height"
+                android:layout_marginBottom="@dimen/padding_medium"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:background="@drawable/account_edittext"
+                android:ems="10"
+                android:hint="@string/payment_credit_card_number_hint"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:paddingLeft="@dimen/padding_medium"
+                android:singleLine="true"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/payment_holder_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/payment_number_edittext_height"
+                android:layout_marginBottom="@dimen/padding_medium"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:background="@drawable/account_edittext"
+                android:ems="10"
+                android:hint="@string/payment_holder_name_hint"
+                android:imeOptions="actionDone"
+                android:inputType="textPersonName"
+                android:paddingLeft="@dimen/padding_medium"
+                android:singleLine="true"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/padding_medium"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:id="@+id/payment_expiry_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="@dimen/padding_medium"
+                    android:gravity="center_vertical"
+                    android:text="@string/payment_expiry_date" />
+
+                <EditText
+                    android:id="@+id/payment_expiry_date_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:layout_marginRight="@dimen/padding_medium"
+                    android:layout_toLeftOf="@+id/payment_expiry_date_year"
+                    android:background="@drawable/account_edittext"
+                    android:ems="10"
+                    android:hint="@string/payment_expiry_date_month_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:paddingLeft="@dimen/padding_medium"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/payment_expiry_date_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/account_edittext"
+                    android:ems="10"
+                    android:hint="@string/payment_expiry_date_year_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:paddingLeft="@dimen/padding_medium"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/padding_medium"
+                android:layout_marginTop="@dimen/padding_medium">
+
+                <TextView
+                    android:id="@+id/payment_issue_number_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="@dimen/padding_medium"
+                    android:gravity="center_vertical"
+                    android:text="@string/payment_issue_number" />
+
+                <EditText
+                    android:id="@+id/payment_issue_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/payment_number_edittext_height"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/account_edittext"
+                    android:ems="10"
+                    android:hint="@string/payment_issue_number_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/padding_medium"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/payment_saved_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/padding_medium"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:visibility="gone"> <!--TODO : to update once OCC use it-->
+
+                <TextView
+                    android:id="@+id/payment_saved_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="@dimen/padding_medium"
+                    android:gravity="center_vertical"
+                    android:text="@string/payment_saved" />
+
+                <CheckBox
+                    android:id="@+id/payment_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/payment_default_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/padding_medium"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:visibility="gone"> <!--TODO : to update once OCC use it-->
+
+
+                <TextView
+                    android:id="@+id/payment_default_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="@dimen/padding_medium"
+                    android:gravity="center_vertical"
+                    android:text="@string/payment_default" />
+
+                <CheckBox
+                    android:id="@+id/payment_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/payment_address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/payment_number_edittext_height"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:text="@string/payment_billing_address" />
+
+            <LinearLayout
+                android:id="@+id/payment_address_block"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Spinner
+                    android:id="@+id/payment_address"
+                    style="@style/spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spinner_height"
+                    android:spinnerMode="dialog" />
+
+
+                <TextView
+                    android:id="@+id/payment_add_new_address"
+                    style="@style/second_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/account_button_height"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:padding="@dimen/padding_medium"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:text="@string/payment_add_billing_address" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/payment_new_address_block"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_large"
+                android:paddingTop="@dimen/padding_large">
+
+                <Button
+                    android:id="@+id/payment_submit"
+                    style="@style/action_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/checkout_place_order_button_height"
+                    android:layout_marginBottom="@dimen/padding_medium"
+                    android:layout_marginTop="@dimen/padding_medium"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:text="@string/address_dialog_done"
+                    android:textColor="@color/action_button_text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+</ScrollView>

@@ -1,0 +1,40 @@
+version: '2'
+services:
+  sourcesolr:
+    image: ybase_solr
+    command: default
+  targetsolr:
+    image: ybase_solr
+    command: default
+  sourcehsql:
+    image: y2y_sync_source_hsql
+    volumes:
+      - ./state/source_hsql:/opt/hsqldb/data
+  targethsql:
+    image: y2y_sync_target_hsql
+    volumes:
+      - ./state/target_hsql:/opt/hsqldb/data
+  source_platform_init:
+    image: y2y_sync_source_platform
+    command: admin initialize importImpex -Dresource=/opt/hybris/bin/platform/resources/init/sourceSystemExtraData.impex
+    environment:
+      - WAIT_FOR=sourcehsql:9090 sourcesolr:8983
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./resources/init/:/opt/hybris/bin/platform/resources/init
+      - ./state/source_media:/opt/hybris/data/media
+    depends_on:
+      - sourcehsql
+      - sourcesolr
+  target_platform_init:
+    image: y2y_sync_target_platform
+    command: admin initialize -DconfigFile=/opt/hybris/bin/platform/resources/init/targetSystemInitConfig.json importImpex -Dresource=/opt/hybris/bin/platform/resources/init/targetSystemExtraData.impex
+    environment:
+      - WAIT_FOR=targethsql:9091 targetsolr:8983
+    volumes:
+      - ./resources/secrets/:/etc/ssl/certs/hybris
+      - ./resources/init/:/opt/hybris/bin/platform/resources/init
+      - ./state/target_media:/opt/hybris/data/media
+    depends_on:
+      - targethsql
+      - targetsolr

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <import resource="spring-security-config.xml"/>
+
+    <bean id="headerLocaleResolver" class="de.hybris.platform.hac.localeresolver.HeaderLocaleResolver">
+        <property name="langPackIsoCodes" value="${lang.packs}"/>
+    </bean>
+
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver">
+        <property name="defaultLocale" value="en"/>
+        <property name="supportedLocales" value="#{headerLocaleResolver.supportedLanguages}"/>
+    </bean>
+
+    <!--  hybris filter stack -->
+    <bean id="hacRedirectFilter" class="de.hybris.platform.servicelayer.web.RedirectWhenSystemIsNotInitializedFilter">
+        <constructor-arg>
+            <value>/platform/init</value>
+        </constructor-arg>
+        <property name="urlPaths">
+            <list>
+                <value>platform/dryrun</value>
+                <value>login</value>
+                <value>static</value>
+                <value>bamboo</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="springHacFilterChain" class="de.hybris.platform.servicelayer.web.BackOfficeFilterChain">
+        <constructor-arg>
+            <list>
+                <ref bean="hybrisSpringSessionFilter"/>
+                <ref bean="log4jFilter"/>
+                <ref bean="hacRedirectFilter"/>
+                <ref bean="hacResourcesGuardFilter"/>
+                <ref bean="sessionFilter"/>
+                <ref bean="hacDataSourceSwitchingFilter"/>
+                <ref bean="hacSecureMediaFilter"/>
+            </list>
+        </constructor-arg>
+        <property name="excludedUrlPaths">
+            <list>
+                <value>initlog/log</value>
+                <value>static</value>
+                <value>favicon.ico</value>
+            </list>
+        </property>
+        <property name="preFilter" ref="suspendResumeFilter"/>
+    </bean>
+
+    <bean id="suspendResumeFacade" class="de.hybris.platform.hac.facade.impl.SuspendResumeFacade">
+        <property name="service" ref="suspendResumeService"/>
+    </bean>
+
+    <bean id="suspendResumeFilter" class="de.hybris.platform.hac.filter.SuspendResumeFilter">
+        <property name="suspendResumeFacade" ref="suspendResumeFacade"/>
+    </bean>
+
+    <bean id="hacResourcesGuardFilter" class="de.hybris.platform.servicelayer.web.ResourcesGuardFilter">
+        <property name="resourcesGuardService" ref="resourcesGuardService"/>
+        <property name="extensionName" value="hac" />
+        <property name="reditectTo" value="/404.jsp" />
+    </bean>
+
+    <alias alias="sessionCloseStrategy" name="hacSessionCloseStrategy"/>
+    <bean id="hacSessionCloseStrategy" class="de.hybris.platform.hac.session.HacSessionCloseStrategy"/>
+
+    <bean id="hacDataSourceSwitchingFilter" class="de.hybris.platform.servicelayer.web.DataSourceSwitchingFilter"/>
+
+    <bean id="hacSecureMediaFilter" class="de.hybris.platform.servicelayer.web.SecureMediaFilter">
+        <property name="mediaPermissionService" ref="mediaPermissionService"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="userService" ref="userService"/>
+        <property name="mediaService" ref="mediaService"/>
+    </bean>
+
+</beans>

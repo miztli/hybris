@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <application>
+
+        <activity
+            android:name="com.hybris.mobile.app.commerce.activity.LoginActivity"
+           />
+
+        <service
+            android:name="com.hybris.mobile.lib.commerce.sync.CommerceCatalogSyncService"
+            android:exported="true"
+            android:process=":sync">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="url_backend"
+                android:value="@string/url_backend" />
+
+            <meta-data
+                android:name="url_path_catalog"
+                android:value="@string/url_path_catalog" />
+
+            <meta-data
+                android:name="url_path_catalog_id"
+                android:value="@string/url_path_catalog_id" />
+
+            <meta-data
+                android:name="url_path_catalog_version_id"
+                android:value="@string/url_path_catalog_version_id" />
+
+            <meta-data
+                android:name="id_category_main"
+                android:value="@string/id_category_main" />
+
+            <meta-data
+                android:name="ssl_helper"
+                android:value="com.hybris.mobile.app.commerce.helper.SSLHelperSyncService" />
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+
+    </application>
+
+</manifest>

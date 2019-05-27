@@ -1,0 +1,163 @@
+{
+    "type": "categoryHierarchyWsDTO",
+    "id": "1",
+    "name": "Open Catalogue",
+    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1",
+    "currentPage": 0,
+    "numberOfPages": 13,
+    "pageSize": 20,
+    "subcategories": [
+        {
+            "id": "106",
+            "name": "Components",
+            "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/106",
+            "subcategories": [
+                {
+                    "id": "830",
+                    "name": "Cables For Computers And Peripherals",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/830",
+                    "subcategories": [
+                        {
+                            "id": "953",
+                            "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/953"
+                        },
+                        {
+                            "id": "1505",
+                            "name": "Cable Crimpers/Cutters/Strippers",
+                            "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1505"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "1355",
+            "name": "Tools",
+            "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1355",
+            "subcategories": [
+                {
+                    "id": "1354",
+                    "name": "Hand Saws",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1354"
+                },
+                {
+                    "id": "1356",
+                    "name": "Hammers",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1356"
+                },
+                {
+                    "id": "1358",
+                    "name": "Measuring & Layout Tools",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1358"
+                },
+                {
+                    "id": "1359",
+                    "name": "Tongs",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1359"
+                },
+                {
+                    "id": "1360",
+                    "name": "Power Drills",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1360"
+                },
+                {
+                    "id": "1386",
+                    "name": "Tag Guns",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1386"
+                },
+                {
+                    "id": "1593",
+                    "name": "Screwdrivers",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1593"
+                },
+                {
+                    "id": "1595",
+                    "name": "Angle Grinders",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1595"
+                },
+                {
+                    "id": "1596",
+                    "name": "Sanders",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1596"
+                },
+                {
+                    "id": "1597",
+                    "name": "Punches Or Nail Sets",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1597"
+                },
+                {
+                    "id": "1598",
+                    "name": "Stripping Tools",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1598"
+                },
+                {
+                    "id": "1631",
+                    "name": "Circular Saws",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1631"
+                },
+                {
+                    "id": "1641",
+                    "name": "Nut Drivers",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1641"
+                },
+                {
+                    "id": "1710",
+                    "name": "Jigsaws",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1710"
+                },
+                {
+                    "id": "1711",
+                    "name": "Rotary Hammers",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1711"
+                },
+                {
+                    "id": "1731",
+                    "name": "Universal Cutters",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1731"
+                }
+            ]
+        },
+        {
+            "id": "1800",
+            "name": "Safety",
+            "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1800",
+            "subcategories": [
+                {
+                    "id": "1801",
+                    "name": "Apparel",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1801",
+                    "subcategories": [
+                        {
+                            "id": "1803",
+                            "name": "Men's",
+                            "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1803"
+                        },
+                        {
+                            "id": "1804",
+                            "name": "Women's",
+                            "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1804"
+                        }
+                    ]
+                },
+                {
+                    "id": "1802",
+                    "name": "Footwear",
+                    "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1802",
+                    "subcategories": [
+                        {
+                            "id": "1805",
+                            "name": "Men's",
+                            "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1805"
+                        },
+                        {
+                            "id": "1806",
+                            "name": "Women's",
+                            "url": "/powertools/catalogs/powertoolsProductCatalog/Online/categories/1806"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "totalNumber": 252
+}

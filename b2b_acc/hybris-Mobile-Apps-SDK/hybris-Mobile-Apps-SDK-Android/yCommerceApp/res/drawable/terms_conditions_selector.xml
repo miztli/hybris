@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- terms and conditons is invalide -->
+    <item android:drawable="@drawable/terms_conditions_invalid" android:state_enabled="false" />
+    <!-- terms and conditons is valide -->
+    <item android:drawable="@drawable/terms_conditions_valid" android:state_enabled="true" />
+    <!-- terms and conditons is valide by default -->
+    <item android:drawable="@drawable/terms_conditions_valid" />
+
+</selector>

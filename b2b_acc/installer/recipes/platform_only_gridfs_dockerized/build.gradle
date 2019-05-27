@@ -1,0 +1,63 @@
+apply plugin: 'installer-platform-plugin'
+apply plugin: 'installer-platform-containerization-plugin'
+
+def pl = platform {
+    extensions {
+        extName 'gridfsstorage'
+    }
+
+    localProperties {
+        property 'persistence.legacy.mode', 'false'
+    }
+
+    dbSetup {
+        dbType 'hsqldb'
+        dbUrl 'jdbc:hsqldb:hsql://hsql:9090/hybris;hsqldb.tx=MVCC'
+        dbUser 'hybris'
+        dbPassword 'hybris'
+    }
+
+    mediaStorageSettings {
+        disableLocalFileCache()
+
+    	gridFsStorageStrategy {
+    		defaultStorageStrategy()
+    		host 'mongo_master'
+    		userName 'hybris'
+    		password 'hybris123'
+    	}
+    }    
+}
+
+def dpl = deployment('platformOnGridFS') {
+
+    hsqlImage('hsql') {
+        properties {
+            property 'port', '9090'
+        }
+    }
+
+    mongoImage('mongodb')
+
+    platformImage('platform') {
+        basedOn pl
+
+        aspect('hac') {
+            enabledWebApps 'hac', 'mediaweb'
+        }
+
+        adminAspect()
+    }
+}
+
+task createImagesStructure {
+    doLast {
+        dpl.createImagesStructure()
+    }
+}
+
+task buildImages {
+    doLast {
+        dpl.buildImages()
+    }
+}

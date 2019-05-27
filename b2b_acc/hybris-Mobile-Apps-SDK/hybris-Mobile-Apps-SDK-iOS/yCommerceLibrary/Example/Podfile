@@ -1,0 +1,17 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+#target 'yCommerceLibrary', :exclusive => true do
+target 'yCommerceLibrary' do
+  pod 'AFNetworking', '2.5.1'
+  pod 'libextobjc', '~> 0.4'
+  pod 'PromiseKit', '~>1.7.6'
+  pod 'PromiseKit-AFNetworking', '0.1.6'
+  pod 'OMGHTTPURLRQ', '3.2'
+  pod 'yCommerceLibrary', :path => '../'
+end
+
+#target 'Specs', :exclusive => true do
+target 'Specs' do
+  pod 'Specta', '~>1.0'
+  pod 'Expecta', '~>1.0'
+end

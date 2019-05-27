@@ -1,0 +1,131 @@
+{
+   "address" : {
+      "country" : {
+         "isocode" : "US",
+         "name" : "United States"
+      },
+      "formattedAddress" : "6TH AVE, 5401, Washington, Tacoma, 98406",
+      "id" : "8796093743127",
+      "line1" : "6TH AVE",
+      "line2" : "5401",
+      "phone" : "(253) 777-5555",
+      "postalCode" : "98406",
+      "region" : {
+         "countryIso" : "US",
+         "isocode" : "US-WA",
+         "isocodeShort" : "WA",
+         "name" : "Washington"
+      },
+      "shippingAddress" : false,
+      "town" : "Tacoma",
+      "visibleInAddressBook" : true
+   },
+   "displayName" : "Hybris Powertools Tacoma",
+   "geoPoint" : {
+      "latitude" : 40.7127,
+      "longitude" : 74.0059
+   },
+   "name" : "Hybris Powertools Tacoma",
+   "openingHours" : {
+      "code" : "washington-standard-hours",
+      "weekDayOpeningList" : [ {
+         "closingTime" : {
+            "formattedHour" : "6:00 PM",
+            "hour" : 6,
+            "minute" : 0
+         },
+         "openingTime" : {
+            "formattedHour" : "7:00 PM",
+            "hour" : 7,
+            "minute" : 0
+         },
+         "closed" : false,
+         "weekDay" : "Sun"
+      }, {
+         "closingTime" : {
+            "formattedHour" : "9:00 PM",
+            "hour" : 9,
+            "minute" : 0
+         },
+         "openingTime" : {
+            "formattedHour" : "8:00 AM",
+            "hour" : 8,
+            "minute" : 0
+         },
+         "closed" : false,
+         "weekDay" : "Mon"
+      }, {
+         "closingTime" : {
+            "formattedHour" : "9:00 PM",
+            "hour" : 9,
+            "minute" : 0
+         },
+         "openingTime" : {
+            "formattedHour" : "8:00 AM",
+            "hour" : 8,
+            "minute" : 0
+         },
+         "closed" : false,
+         "weekDay" : "Tue"
+      }, {
+         "closingTime" : {
+            "formattedHour" : "9:00 PM",
+            "hour" : 9,
+            "minute" : 0
+         },
+         "openingTime" : {
+            "formattedHour" : "8:00 AM",
+            "hour" : 8,
+            "minute" : 0
+         },
+         "closed" : false,
+         "weekDay" : "Wed"
+      }, {
+         "closingTime" : {
+            "formattedHour" : "9:00 PM",
+            "hour" : 9,
+            "minute" : 0
+         },
+         "openingTime" : {
+            "formattedHour" : "8:00 AM",
+            "hour" : 8,
+            "minute" : 0
+         },
+         "closed" : false,
+         "weekDay" : "Thu"
+      }, {
+         "closingTime" : {
+            "formattedHour" : "9:00 PM",
+            "hour" : 9,
+            "minute" : 0
+         },
+         "openingTime" : {
+            "formattedHour" : "8:00 AM",
+            "hour" : 8,
+            "minute" : 0
+         },
+         "closed" : false,
+         "weekDay" : "Fri"
+      }, {
+         "closingTime" : {
+            "formattedHour" : "9:00 PM",
+            "hour" : 9,
+            "minute" : 0
+         },
+         "openingTime" : {
+            "formattedHour" : "8:00 AM",
+            "hour" : 8,
+            "minute" : 0
+         },
+         "closed" : false,
+         "weekDay" : "Sat"
+      } ]
+   },
+   "storeImages" : [ {
+      "format" : "store",
+      "url" : "/medias/?context=bWFzdGVyfGltYWdlc3w0MDAxNHxpbWFnZS9qcGVnfGltYWdlcy9oZTEvaDk4Lzg3OTY0MjMxMjcwNzAuanBnfDk5ZGZiNzUxMzRhZGJhNjc1ZjQ0NTRhOGNkMGExZjY3Y2Q3ZDgzNDQ2YmY2MWRhMGY3ZjNjOTgzMGYwNDljOWI"
+   }, {
+      "format" : "cartIcon",
+      "url" : "/medias/?context=bWFzdGVyfGltYWdlc3wzMDg0fGltYWdlL2pwZWd8aW1hZ2VzL2g0NS9oODAvODc5NjQyMzM1NjQ0Ni5qcGd8ZGNmZjdmMTViZmU2NjQyNzNjN2M5NDVjMTFkOThlZmZlMTQ1MDhmZTNkNzEwNGU2YzY1OWI1ZGMyYmI0NDg2NQ"
+   } ]
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hybrisconfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="resources/schemas/extensions.xsd">
+	<extensions>
+		<!--
+				All extensions located in ${HYBRIS_BIN_DIR}/platform/ext are automatically loaded.
+				More information about how to configure available extensions can be found here : https://wiki.hybris.com/x/nZVzC
+		-->
+
+		<path dir="${HYBRIS_BIN_DIR}" />
+
+
+										
+		<!-- ext-platform-optional -->
+
+												
+		<!-- <extension name="adminapi" />-->
+
+												
+		<!-- <extension name="amazoncloud" />-->
+
+												
+		<!-- <extension name="azurecloud" />-->
+
+												
+		<!-- <extension name="deltadetection" />-->
+
+												
+		<!-- <extension name="y2ysync" />-->
+
+												
+		<!-- <extension name="embeddedserver" />-->
+
+												
+		<!-- <extension name="tomcatembeddedserver" />-->
+
+												
+		<!-- <extension name="gridfsstorage" />-->
+
+												
+		<!-- <extension name="groovynature" />-->
+
+												
+		<!-- <extension name="ldap" />-->
+
+												
+		<!-- <extension name="mediaconversion" />-->
+
+												
+		<!-- <extension name="springintegrationlibs" />-->
+
+												
+		<!-- <extension name="virtualjdbc" />-->
+
+												
+		<!-- <extension name="y2ysyncdemoelectronics" />-->
+
+												
+		<!-- <extension name="patches" />-->
+
+												
+		<!-- <extension name="patchesdemo" />-->
+
+										
+		<!-- ext-integration -->
+
+												
+		<!-- <extension name="samlsinglesignon" />-->
+
+										
+		<!-- ext-template -->
+
+												
+		<!-- <extension name="yhacext" />-->
+
+												
+		<!-- <extension name="yempty" />-->
+
+												
+		<!-- <extension name="yvoid" />-->
+
+
+	</extensions>
+</hybrisconfig>

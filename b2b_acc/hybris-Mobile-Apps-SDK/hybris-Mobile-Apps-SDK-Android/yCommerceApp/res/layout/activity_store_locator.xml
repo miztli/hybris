@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_menu_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Cart menu drawer -->
+
+    <com.hybris.mobile.lib.ui.layout.DrawerPushLayout
+        android:id="@+id/cart_menu_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:sothree="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/sliding_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            sothree:umanoFadeColor="@android:color/transparent"
+            sothree:umanoOverlay="true"
+            sothree:umanoPanelHeight="350dp"
+            sothree:umanoShadowHeight="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="335dp">
+
+                <fragment
+                    android:id="@+id/store_locator_map"
+                    android:name="com.hybris.mobile.lib.location.map.fragment.MapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:id="@+id/store_locator_list_nb_results"
+                            style="@style/h3_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@color/store_locator_nb_results_background"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="15dp"
+                            android:text="@null"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/handle_anchor" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white">
+
+                    <fragment
+                        android:id="@+id/store_locator_list"
+                        android:name="com.hybris.mobile.app.commerce.fragment.StoreListFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp" />
+                </FrameLayout>
+            </LinearLayout>
+
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+        <include layout="@layout/include_cart_drawer" />
+    </com.hybris.mobile.lib.ui.layout.DrawerPushLayout>
+
+    <!-- Main menu drawer -->
+
+    <include layout="@layout/include_main_menu_drawer" />
+
+</android.support.v4.widget.DrawerLayout>
