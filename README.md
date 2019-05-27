@@ -29,6 +29,9 @@ cd installer; ./install.sh -r platform_only initialize
 cd hybris/bin/platform; ./hybrisserver.sh start
 ```
 
+The setup phase creates temporary directories.
+The initialize phase, generates the database schema and the type system, and imports any mandatory system data.
+
 ### Extensions
 
 An extension is an encapsulated piece of SAP Commerce functionality, that can contain business logic, type definitions, a web application, and back-office configuration functionality. Depending on your business needs, your solution will have a varying number of extensions, all wired into the core SAP Commerce platform via the Spring dependency injection model.

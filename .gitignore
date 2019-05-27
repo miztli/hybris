@@ -27,3 +27,11 @@ platform_only_recipe/hybris/bin/ext-webservices
 
 b2b_acc/hybris/bin/ext*
 
+# vim
+*.swp
+
+# IDE
+
+.idea
+b2b_acc/hybris/config/hybris4intellij.properties
+idea-module-files/
