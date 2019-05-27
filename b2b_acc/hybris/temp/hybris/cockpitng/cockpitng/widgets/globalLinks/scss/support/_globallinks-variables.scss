@@ -1,0 +1,43 @@
+/*================================
+    Global Links Variables
+================================*/
+// Relevant Changes applied to the Global Links Variables
+
+@import "cockpitng-globals.scss";
+
+$globallinks__default--bp-xs: 380px;
+$globallinks__default--bp-s: 680px;
+$globallinks__default--bp-m: 1020px;
+
+$globallinks__popup--padding: 4px 0;
+$globallinks__popup--max-height: calc(100vh - #{nth($globallinks__popup--padding,1) * 2});
+$globallinks__popup--bg-color: $white;
+$globallinks__popup--border-radius: 4px;
+$globallinks__popup--box-shadow: 0px 2px 5px 0px rgba($black, 0.1);
+$globallinks__popup-container--width: 40%;
+$globallinks__popup-container-bp-xs--width: 80%;
+$globallinks__popup-container-bp-s--width: 60%;
+$globallinks__popup-container--max-width: 540px;
+$globallinks__popup-container--padding: 10px;
+$globallinks__popup-item--margin: 15px;
+$globallinks__popup-item--border-radius: 8px;
+$globallinks__popup-item--width: calc(33% - #{$globallinks__popup-item--margin * 2});
+$globallinks__popup-item-bp-s--width: calc(50% - #{$globallinks__popup-item--margin * 2});
+$globallinks__popup-item--bg-color: $navigation__popup--bg-color;
+$globallinks__popup-item-hover--bg-color: $navigation__popup-hover--bg-color;
+$globallinks__popup-item-selected--bg-color: $navigation__popup-selected--bg-color;
+$globallinks__popup-item--transition: background-color 0.5s ease;
+
+$globallinks__default--border-color: rgba($white, 0.1);
+$globallinks__popup-item--border-color: $globallinks__default--border-color;
+$globallinks__popup-item--border: $boxes--border__thin solid $globallinks__popup-item--border-color;
+$globallinks__default--box-shadow: 1px 1px 0px 0px $globallinks__default--border-color;
+
+$globallinks__navigation-icon--height: 30px;
+$globallinks__navigation-icon--padding: 0px 5px;
+$globallinks__navigation-icon--margin: 20px auto 15px;
+$globallinks__navigation-btn--height: 28px;
+$globallinks__navigation-label--padding: 0 5px 20px 5px;
+$globallinks__navigation-label--color: #32363a;
+$globallinks__navigation-label--text-align: center;
+$globallinks__navigation-label--line-height: 18px;

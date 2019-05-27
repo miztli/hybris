@@ -1,0 +1,72 @@
+/*================================
+    Generic Charts
+================================*/
+// Defined Styling & Variables for Generic Charts
+
+
+@import "cockpitng-globals.scss";
+
+$genericchart__draggable-slot--border-color: $grey__light--300;
+$genericchart__highcharts--box-shadow: 0 1px 2px rgba($grey__default--1100, 0.58);
+$genericchart__highcharts--font-family: $font-family-opensans;
+$genericchart__highcharts-info--bckg-color: rgba($blue__greyish--400, 0.2);
+$genericchart__highcharts-graph--bckg-color: $white;
+$genericchart__highcharts-graph--padding: 10px;
+$genericchart__highcharts-graph--width: 100%;
+$genericchart__highcharts-graph--min-height: 85px;
+$genericchart__info-value--color: $black__blueish--100;
+$genericchart__info-value--font-size: ceil(($font-size__base * 2.4)); // ~34px;
+$genericchart__info-value--font-weight: $font-weight-bold;
+$genericchart__info-label--color: $black__blueish--100;
+$genericchart__info-label--font-size: $font-size__semi-base;
+$genericchart__legend-wrapper--bckg-color: $blue__light--300;
+
+.yw-generic-chart{
+   box-shadow: $genericchart__highcharts--box-shadow;
+
+   &-container{
+      width: 100%;
+      height: 100%;
+      display: table;
+      table-layout: fixed;
+
+      .highcharts-container{
+         background-color: $genericchart__highcharts-graph--bckg-color;
+
+         .highcharts-title{
+            font-family: $genericchart__highcharts--font-family;
+         }
+      }
+   }
+
+   &-infoContainer{
+      width: $genericchart__highcharts-graph--width;
+      min-height: $genericchart__highcharts-graph--min-height;
+      display: table;
+      padding: $genericchart__highcharts-graph--padding;
+      text-align: center;
+      background-color: $genericchart__highcharts-info--bckg-color;
+
+      &-wrapper {
+         display: table-row;
+      }
+   }
+
+   &-info{
+      &-wrapper {
+         display: table-cell;
+      }
+
+      &-value {
+         display: block;
+         font-size: $genericchart__info-value--font-size;
+         font-weight: $genericchart__info-value--font-weight ;
+         color: $genericchart__info-value--color;
+      }
+
+      &-label {
+         font-size: $genericchart__info-label--font-size;
+         color: $genericchart__info-label--color;
+      }
+   }
+}

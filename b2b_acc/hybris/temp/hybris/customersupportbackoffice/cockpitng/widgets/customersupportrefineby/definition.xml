@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+                   id="de.hybris.platform.customersupportbackoffice.widgets.customersupportrefineby">
+    <name>customersupport.refineby</name>
+    <description>Customer Support Refine By Widget displays the list of available filters for a given type</description>
+    <defaultTitle>Customer Support Refine By</defaultTitle>
+    <author>hybris</author>
+    <version>0.1</version>
+
+    <sockets>
+        <input id="nodeSelected" type="com.hybris.backoffice.navigation.NavigationNode"/>
+        <input id="inputContext" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchInitContext"/>
+        <output id="outputContext" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchInitContext"/>
+    </sockets>
+
+    <controller class="de.hybris.platform.omsbackoffice.widgets.customersupportrefineby.CustomerSupportRefineByController"/>
+    <keywords>
+        <keyword>OMS</keyword>
+    </keywords>
+    <settings>
+        <setting key="customersupportRefineByConfigCtx" default-value="customersupportbackoffice-refine-by" type="java.lang.String"/>
+    </settings>
+</widget-definition>

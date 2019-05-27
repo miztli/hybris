@@ -1,0 +1,11 @@
+/*================================
+    UserRoleChooser Popup (Systembar)
+================================*/
+// Relevant Changes applied to the User Role Chooser Popup
+
+
+.yw-roleChooser {
+	&-empty-list-state {
+		display: none;
+	}
+}

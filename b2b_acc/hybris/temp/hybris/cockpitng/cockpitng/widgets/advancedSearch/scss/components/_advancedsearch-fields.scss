@@ -1,0 +1,129 @@
+/*================================
+    Advanced Search - Fields
+================================*/
+// Styling of Fields contained in the Advanced-Search Contents (Size, Bahaviour, Validation)
+
+
+@import "../support/_advancedsearch-variables.scss";
+
+.yw-search-btn {
+    float: right;
+}
+
+.yw-advancedsearch {
+
+    .ye-com_hybris_cockpitng_editor{
+        &_defaultinteger,
+        &_defaulttext,
+        &_defaultdecimal {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+
+    /* LOCALISED VALUE */
+    &-editor .yw-advancedsearch-local {
+        display: table-cell;
+        width: $advancedsearch__local--width;
+        min-width: $advancedsearch__local--min-width;
+        vertical-align: top;
+        
+        &-editor {
+            box-sizing: border-box;
+            display: table-cell;
+            padding-left: $advancedsearch__attributes-grid-item--space-x;
+            width: 100%;
+            vertical-align: top;
+        }
+    }
+
+    &-add-btn.z-button,
+    &-delete-btn.z-button {
+        height: $advancedsearch__default-button--size;
+        width: $advancedsearch__default-button--size;
+        background-color: transparent !important;
+        
+        &:active {
+            box-shadow: none;
+        }
+    }
+    &-add-btn.z-button {
+        position:absolute;
+        right: 0;
+        
+        &:after{
+            width: $advancedsearch__action-btn--size;
+            height: $advancedsearch__action-btn--size;
+            margin-top: -(floor($advancedsearch__action-btn--size/2));
+            margin-left: -(floor($advancedsearch__action-btn--size/2));
+            background: transparent no-repeat top center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            content: "";
+            background-image: url("images/icon_action_add_sprite_15.png");
+        }
+        &:hover:after {
+            background-position: center (-1 * $advancedsearch__action-btn--size);
+        }
+        &:active:after {
+            background-position: center (-2 * $advancedsearch__action-btn--size);
+        }
+        &:disabled, &[disabled]{
+            &:after {
+                background-position: center (-3 * $advancedsearch__action-btn--size);
+            }
+        }
+    }
+    &-delete-btn.z-button {
+        float: right;
+    }
+    .yw-loceditor {
+        &-caption {
+            padding: 0;
+            
+            .y-icon-loceditor {
+                margin-top: 4px;
+            }
+
+            /* TEMPORARY FIX FOR CAPTION BUG - REMOVE AFTER FIX */
+            &-spacer {
+                display: none;
+            }
+        }
+        &-caption,
+        &-row {
+            padding-bottom: 0;
+        }
+        .ye-default-reference-editor-bandbox {
+            width: 90%;
+        }
+    }
+}
+
+.ye-as-lang-selector {
+    &.z-combobox {
+        border-spacing: 0;
+    }
+/*
+    .z-combobox-input, .z-comboitem-text {
+        text-transform: uppercase;
+    }
+*/
+}
+
+//read-only-styling of type-Selector
+// general, should be with the defaults
+/*
+.yw-global-typeSelector .z-bandbox-readonly {
+    background: none repeat scroll 0 0 #FFFFFF !important;
+    border-color: #B7BDC8 !important;
+    border-right: medium none #B7BDC8 !important;
+    color: #000000 !important;
+}
+*/
+
+.yw-buttons-container,
+.yw-textsearch-searchbox {
+    vertical-align: top;
+}

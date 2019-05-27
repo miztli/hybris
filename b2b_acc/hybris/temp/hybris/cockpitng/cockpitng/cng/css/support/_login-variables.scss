@@ -1,0 +1,60 @@
+@import "cockpitng-globals.scss";
+
+$login__grid--padding-top: 150px;
+$login__grid--bg: url("images/logo_transparent.png") no-repeat transparent center top;
+$login__input-box--margin-bottom: $container-spacing-default__third;
+$login__input-box--padding: 4px 6px;
+
+$login__input-box--border-color: $white;
+$login__input-box--focus-border-color: $white;
+
+$login__input-box--focus-bg-color: $blue__default--200;
+$login__input-box--focus-color: $white;
+$login__input-box--color: $white;
+$login__input-box--border-width: $boxes--border__thin;
+$login__input-box--border: $login__input-box--border-width solid $login__input-box--border-color;
+$login__input-box-focus--border: $login__input-box--border-width solid $login__input-box--focus-border-color;
+$login__input-box--width: 227px;
+$login__input-box--font-size: $font-size__base;
+
+$login__radio-checked--box-shadow: 0 0 3px 0px rgba(255, 255, 255, 0.5);
+$login__radio--width: $login__input-box--width;
+
+$login__editor-box--bg-color: false;
+
+$login__input-box--bg-color: $blue__default;
+
+@if $login__editor-box--bg-color {
+  $login__input-box--bg-color: $login__editor-box--bg-color;
+}
+$login__select-box--bg-color: $login__input-box--bg-color;
+
+$login__select-box--bg: url(images/selectbox_arrow.png) no-repeat center right $login__select-box--bg-color;
+$login__select-box--height: $editor-defaults__inline-box--height;
+
+$login__z-window--bg: transparent !important;
+$login__body--bg-color: $loginPages__body-default--bg-color;
+
+$login__grid-label--color: $white;
+$login__grid-label--width: 176px;
+$login__grid-label--line-height: $editor-defaults__inline-box--height;
+$login__grid-label--margin-bottom: 5px;
+$login__grid-label--font-size: $font-size__base;
+
+$login__grid-form--margin: 0 0 20px;
+
+$login__grid-spinner--width: $login__input-box--width;
+$login__grid-spinner-input-box--width: $login__grid-spinner--width - 19px;
+$login__grid-spinner-button--bg-color: $white;
+$login__grid-spinner-button--hover-bg-color: $blue__light--100;
+
+$login__error-notification-box--bg-color: $validation__error--color;
+$login__error-notification-box--padding-def: $container-spacing-default__third;
+$login__error-notification-box-icon--bg-position: $login__error-notification-box--padding-def center;
+$login__error-notification-box-icon--size: 16px;
+$login__error-notification-box-icon--margin-right: $container-spacing-default__third;
+$login__error-notification-box--margin: 0 0 $container-spacing-default__base;
+$login__error-notification-box--padding: ($login__error-notification-box--padding-def) ($login__error-notification-box--padding-def) ($login__error-notification-box--padding-def - $login__grid-label--margin-bottom) ($login__error-notification-box--padding-def + $login__error-notification-box-icon--size + $login__error-notification-box-icon--margin-right);
+$login__error-notification-box--bg: url("images/icon_status_error_white.png") no-repeat scroll $login__error-notification-box-icon--bg-position $login__error-notification-box--bg-color;
+
+$login__submit-button--margin-top: $font-size__medium;

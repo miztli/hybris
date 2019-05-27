@@ -1,0 +1,7 @@
+@import "cockpitng-globals.scss";
+
+.ye-decorated-editor.z-div::after {
+	content: ' ';
+	display: block;
+	clear: both;
+}

@@ -1,0 +1,61 @@
+/*================================ 
+    z-Calendar 
+================================*/
+// Defines Basic Calendar Component (coloring, spacing)
+
+.z-calendar {
+    border: none;
+    .z-calendar-header {
+        background: $editor-defaults__component--bg-color;
+        color: $editor-defaults__box--text-color;
+        
+        &:hover {
+            background:  $editor-defaults__component--bg-color;
+        }
+        .z-calendar-title {
+            .z-calendar-text {
+                color: $editor-defaults__box--text-color;
+                font-size: $editor-defaults__label-field--line-height;
+            }
+        }
+        .z-calendar-icon {
+            color: $editor-defaults__icon--color;
+            i {
+                color: inherit;    
+            }
+            &.z-calendar-left, 
+            &.z-calendar-right{
+                border: none;
+            }
+        }
+    }
+    .z-calendar-body{
+        min-height: 232px; //z-timebox doesn't jump on month/year scroll
+        
+        &.z-calendar-year, 
+        &.z-calendar-month{
+            min-height: 144px;
+        }
+        .z-calendar-outside {
+            color: $editor-defaults__input-box-disabled--bg-color;
+        }
+        th{
+            background: none;
+            text-transform: uppercase;
+            font-size: $editor-defaults__box-headlines-font-size;
+            color: $editor-defaults__headline--color;
+            height: 42px;
+        }
+        .z-calendar-cell{
+            border: none;
+            &:hover {
+                background: $editor-defaults__box--hover-bg-color;
+                color: $editor-defaults__box--focus-color;
+            }
+            &.z-calendar-selected {
+                color: $editor-defaults__box--focus-color;
+            }
+        }
+    }
+}
+

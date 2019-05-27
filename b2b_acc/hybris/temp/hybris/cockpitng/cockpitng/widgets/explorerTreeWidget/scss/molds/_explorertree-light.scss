@@ -1,0 +1,57 @@
+/*================================
+    Explorer Tree Mold - Light
+================================*/
+@import "../support/_explorerTree-mixins.scss";
+
+.yw-explorerTree {
+    &-widget.yw-widget-mold-light {
+        &,
+        .cng-adminmode & {
+            background: $explorertree-light__default--bg-color;
+        }
+    }
+
+    .yw-widget-mold-light & {
+        @include _rowStateColor("z-treerow", $explorertree-light__row--color);
+        @include _rowStateColor("z-treerow:hover", $explorertree-light__row--hover-color);
+
+        .yw-caption-label {
+            color: $explorertree-light__default-label--color;
+        }
+
+        .z-treerow {
+            background-color: $explorertree-light__row--bg-color;
+
+            &.yw-opened + .yw-navigationnode-first {
+                box-shadow: $explorertree-light__row-first--box-shadow;
+            }
+        }
+
+        .yw-navigationNode {
+            &-level1 {
+                background-color: $explorertree-light__row-l1--bg-color;
+            }
+            &-level2 {
+                background: $explorertree-light__row-l2--bg-color;
+            }
+            &-level3 {
+                background: $explorertree-light__row-l3--bg-color;
+            }
+        }
+    }
+
+    .yw-widget-mold-light &-filterDiv {
+        input.yw-filter-textbox {
+            @include _filter-textbox-colors ($explorertree-light__filter-input--color,
+                $explorertree-light__filter-input--border-color,
+                $explorertree-light__filter-input--bg-color,
+                $explorertree-light__filter-input-focus--color,
+                $explorertree-light__filter-input-focus--border-color,
+                $explorertree-light__filter-input-focus--bg-color);
+            @include _placeholder-text-color ( rgba($explorertree-light__filter-input-placeholder--color, .5) );
+        }
+    }
+}
+
+@import "_explorertree-light__extendsplitlayout-tmp.scss";
+@import "_explorertree-light__extendsplitlayout-catalogselector-tmp.scss";

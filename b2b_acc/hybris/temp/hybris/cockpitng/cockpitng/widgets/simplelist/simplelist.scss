@@ -1,0 +1,84 @@
+@import "simplelist-variables.scss";
+
+.yw-simplelist {
+
+	&-listbox {
+		height: $simplelist__listbox--height;
+	}
+
+	&-gridcontainer {
+		width: $simplelist__gridcontainer--width;
+		background: $simplelist__gridcontainer--background;
+		overflow: auto;
+
+		.yw-simplelist-griditem {
+			height: $simplelist__griditem--height;
+		    margin: $simplelist__griditem--margin;
+		    width: $simplelist__griditem--width;
+		    padding: $simplelist__griditem--padding;
+		    max-width: $simplelist__griditem--max-width;
+		    min-width: $simplelist__griditem--min-width;
+			border: $simplelist__griditem--border;
+			float: left;
+			cursor: pointer;
+			background: $simplelist__griditem--background;
+			box-shadow: $simplelist__griditem--shadow;
+			overflow: hidden;
+		}
+
+		.z-button {
+    		margin: $simplelist__grid-zbutton--margin;
+    		float: left;
+		}
+	}
+
+	&-griditem {
+		position: relative;
+
+		.yw-simplelist-imgcontainer {
+			float: none;
+		    width: $simplelist__grid-imgcontainer--width;
+			margin: $simplelist__grid-imgcontainer--margin;
+		}
+	}
+
+	&-imgcontainer {
+ 		float: left;
+    	margin-left: $simplelist__imgcontainer--margin-left;
+    	margin-right: $simplelist__imgcontainer--margin-right;
+
+    	img {
+			border: $simplelist__imgcontainer-img--border;
+			max-width: $simplelist__imgcontainer-img--max-width;
+		}
+	}
+
+	&-labelcontainer {
+		margin-left: $simplelist__labelcontainer--margin-left;
+	}
+
+	&-label {
+		width: $simplelist__label--width;
+		padding: $simplelist__label--padding;
+
+		.z-label {
+			font-family: $simplelist__label-zlabel--font-family;
+			font-size: $simplelist__label-zlabel--font-size;
+			font-weight: $simplelist__label-zlabel--font-weight;
+			overflow-wrap: break-word;
+		}
+	}
+}
+
+.yw-fallBackImg {
+	background: url("images/imageNotAvailable.png");
+	width: $simplelist__fallbackimg--width;
+}
+
+body.ie,
+body.edge {
+
+	.yw-simplelist-label .z-label {
+		word-break: break-all;
+	}
+}

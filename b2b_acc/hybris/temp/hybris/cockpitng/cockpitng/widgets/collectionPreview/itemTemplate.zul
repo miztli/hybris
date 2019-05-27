@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:h="http://www.w3.org/1999/xhtml" 
+		xmlns:zk="http://www.zkoss.org/2005/zk"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd ">
+
+	<div if="${not empty arg.entryImgURL}" sclass="yw-collection-prev-imgcontainer">
+		<div if="${!arg.entryImgFallback}">
+			<image src="${arg.entryImgURL}"/>
+		</div>
+	</div>
+	<div sclass="yw-collection-prev-labelcontainer">
+		<div sclass="yw-collection-prev-label">
+			<label value="${arg.entryName}"/>
+		</div>
+		<div sclass="yw-collection-prev-descr">
+			<label value="${arg.entryDescr}"/>
+		</div>
+	</div>
+</zk>

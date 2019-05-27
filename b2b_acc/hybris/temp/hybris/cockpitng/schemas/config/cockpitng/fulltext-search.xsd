@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0"
+           targetNamespace="http://www.hybris.com/cockpitng/config/fulltextsearch"
+           xmlns="http://www.hybris.com/cockpitng/config/fulltextsearch"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:common="http://www.hybris.com/cockpitng/config/common">
+
+	<xs:import namespace="http://www.hybris.com/cockpitng/config/common" schemaLocation="common-config.xsd"/>
+
+	<xs:element name="fulltext-search">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="field-list" type="FieldListType" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="preferred-search-strategy" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="operator" type="OperatorType" default="AND" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="FieldListType">
+		<xs:sequence>
+			<xs:element name="field" type="FieldType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="FieldType">
+		<xs:complexContent>
+			<xs:extension base="common:positioned">
+				<xs:sequence>
+					<xs:element name="editor-parameter" type="Parameter" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="name" type="xs:string" use="required"/>
+				<xs:attribute name="displayName" type="xs:string"/>
+				<xs:attribute name="selected" type="xs:boolean" default="false"/>
+				<xs:attribute name="label" type="xs:string"/>
+				<xs:attribute name="editor" type="xs:string"/>
+				<xs:attribute name="merge-mode" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Parameter">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="OperatorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AND" />
+			<xs:enumeration value="OR" />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,198 @@
+html, body {
+  height: auto;
+  min-height: 100%; }
+
+body {
+  padding: 0;
+  background: #0486e0; }
+  body.gecko .login_grid select option {
+    height: 40px;
+    padding-top: 9px;
+    display: block; }
+    body.gecko .login_grid select option:hover, body.gecko .login_grid select option:focus, body.gecko .login_grid select option:active, body.gecko .login_grid select option:checked {
+      box-shadow: inset 40px 40px rgba(255, 255, 255, 0.5); }
+
+.z-page,
+.z-window-embedded,
+.z-window-content {
+  background: transparent !important;
+  border: none; }
+
+.z-window-content > div {
+  overflow: auto; }
+
+.clearfix {
+  *zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    display: table;
+    content: "";
+    line-height: 0; }
+  .clearfix:after {
+    clear: both; }
+
+.login_grid {
+  margin: 10% auto 20px;
+  padding-top: 150px;
+  width: 400px; }
+  @media (max-width: 350px) {
+    .login_grid {
+      width: auto;
+      padding-left: 10px; } }
+  @media (min-width: 351px) and (max-width: 400px) {
+    .login_grid {
+      width: auto;
+      padding-left: 20px; } }
+  .login_grid .z-grid {
+    border: none; }
+  .login_grid form {
+    margin: 0 0 20px; }
+  .login_grid label,
+  .login_grid .z-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 40px;
+    min-height: 40px;
+    padding-right: 10px;
+    color: #ffffff;
+    width: 176px; }
+    @media (max-width: 350px) {
+      .login_grid label,
+      .login_grid .z-label {
+        width: auto;
+        min-width: 95px; } }
+    @media (min-width: 351px) and (max-width: 400px) {
+      .login_grid label,
+      .login_grid .z-label {
+        width: auto;
+        min-width: 110px; } }
+    .login_grid label.z-radio-content,
+    .login_grid .z-label.z-radio-content {
+      display: inline-block;
+      width: auto; }
+  .login_grid .wrong_credentials_cnt .z-label {
+    width: auto; }
+  .login_grid .z-checkbox-content {
+    margin: 3px 0 0 0; }
+  .login_grid input[type="text"],
+  .login_grid input[type="password"] {
+    width: 227px;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    display: inline-block;
+    padding: 4px 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border-radius: 0;
+    transition: border linear .3s;
+    box-sizing: border-box;
+    background: #0486e0; }
+  .login_grid select {
+    width: 227px;
+    height: 40px;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    display: inline-block;
+    padding: 4px 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border-radius: 0;
+    transition: border .3s;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    background: url(images/selectbox_arrow.png) no-repeat center right #0486e0; }
+    .login_grid select::-ms-expand {
+      display: none; }
+  .login_grid input:focus,
+  .login_grid input:-webkit-autofill,
+  .login_grid select:focus {
+    color: #ffffff !important;
+    border: 1px solid #ffffff;
+    background-color: #31b9ff; }
+  .login_grid button[type="submit"] {
+    margin-top: 16px; }
+    @media (min-width: 401px) {
+      .login_grid button[type="submit"] {
+        float: right; } }
+    @media (max-width: 400px) {
+      .login_grid button[type="submit"] {
+        display: block;
+        margin-left: auto;
+        margin-right: auto; } }
+  .login_grid .z-spinner,
+  .login_grid .z-doublespinner {
+    background: none;
+    width: 227px; }
+  .login_grid .z-spinner-button,
+  .login_grid .z-doublespinner-button {
+    background: #ffffff;
+    height: 26px; }
+  .login_grid .z-spinner > input[type="text"],
+  .login_grid .z-spinner > input[type="password"],
+  .login_grid .z-doublespinner > input[type="text"],
+  .login_grid .z-doublespinner > input[type="password"] {
+    width: 208px; }
+  .login_grid .z-spinner .z-spinner-button:hover {
+    background-color: #d5eeff; }
+  .login_grid .z-spinner .z-spinner-button-lower,
+  .login_grid .z-doublespinner .z-doublespinner-button-lower,
+  .login_grid .z-spinner .z-spinner-button:hover .z-spinner-button-lower,
+  .login_grid .z-doublespinner .z-doublespinner-button:hover .z-doublespinner-button-lower {
+    margin-top: 7px; }
+
+.login-wrapper {
+  padding-top: 150px;
+  margin-top: 10%;
+  background: url("images/logo_transparent.png") no-repeat transparent center top; }
+  .login-wrapper .login_grid {
+    padding-top: 0;
+    margin-top: 0; }
+
+.login-checkbox {
+  margin: 15px 0 10px 0;
+  display: block; }
+  .login-checkbox label,
+  .login-checkbox input {
+    float: left; }
+  .login-checkbox input {
+    margin-right: 10px; }
+
+.z-radiogroup {
+  line-height: 40px; }
+  .z-radiogroup > .z-hlayout {
+    margin-bottom: 5px;
+    padding-left: 2px;
+    white-space: inherit;
+    width: 227px; }
+  .z-radiogroup input:checked + .z-radio-content:before {
+    box-shadow: 0 0 3px 0px rgba(255, 255, 255, 0.5); }
+  .z-radiogroup .z-radio {
+    display: inline-block; }
+    .z-radiogroup .z-radio-content {
+      line-height: 24px;
+      min-height: auto;
+      padding-top: 3px; }
+      .safari .z-radiogroup .z-radio-content {
+        padding-top: 9px; }
+
+.top_area .compRowCnt {
+  width: 8em;
+  margin-bottom: 8px; }
+.top_area .compRowCnt + td > .compRowCnt,
+.top_area .z-hbox-separator + td > .compRowCnt {
+  width: auto; }
+
+.wrong_credentials_cnt {
+  background: url("images/icon_status_error_white.png") no-repeat scroll 10px center #ff3b30;
+  margin: 0 0 30px;
+  padding: 10px 10px 5px 36px; }
+
+.singlesignon_login_cell {
+  text-align: center;
+  vertical-align: middle;
+  height: 100px; }
+  .singlesignon_login_cell a {
+    color: white; }

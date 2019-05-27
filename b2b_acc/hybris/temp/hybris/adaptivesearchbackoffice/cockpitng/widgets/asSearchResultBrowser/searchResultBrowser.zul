@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?component name="actionsmenu" extends="div" class="de.hybris.platform.adaptivesearchbackoffice.components.ActionsMenu"?>
+
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd">
+
+	<template name="resultContent">
+		<hlayout>
+			<div width="80px">
+				<image src="~${result.document.fields['img-65Wx65H']}" visible="${not empty result.document.fields['img-65Wx65H']}">
+					<custom-attributes ytestid="documentImage" />
+				</image>
+			</div>
+			<vlayout sclass="yas-result-article-details">
+                <html sclass="yas-result-title" content="@load(vm.sanitizeHtml(result.document.fields['name']))">
+                    <custom-attributes ytestid="documentName" />
+                </html>
+				<html sclass="yas-result-description" content="@load(vm.sanitizeHtml(result.document.fields['summary']))">
+					<custom-attributes ytestid="documentDescription" />
+				</html>
+				<html sclass="yas-result-price" content="@load(vm.formatCurrency(result.document.fields['priceValue']))">
+					<custom-attributes ytestid="documentPrice" />
+				</html>
+			</vlayout>
+		</hlayout>
+	</template>
+
+	<div sclass="y-toolbar yas-navigation">
+		<div sclass="yas-pagination" visible="@bind(vm.resultCount gt 0)">
+			<paging activePage="@bind(vm.activePage)" totalSize="@bind(vm.resultCount)" pageSize="@bind(vm.pageSize)"
+				onPaging="@command('changePage', activePage=event.pageable.activePage, pageSize=event.pageable.pageSize)" />
+		</div>
+		<div sclass="yas-result-count">
+			<label value="@load(vm.format(labels.searchResultBrowser.resultsCount, vm.resultCount))" />
+		</div>
+		<div sclass="yas-selectors">
+			<div sclass="yas-page-size-selector">
+				<label value="${labels.searchResultBrowser.pageSize}" />
+				<combobox model="@load(vm.pageSizes)" readonly="true" disabled="@bind(vm.resultCount eq 0)"
+					onSelect="@command('changePage', activePage=0, pageSize=event.reference.value)">
+					<template name="model">
+						<comboitem label="${each}" value="${each}" />
+					</template>
+				</combobox>
+			</div>
+			<div sclass="yas-sort-selector">
+				<label value="${labels.searchResultBrowser.sort}" />
+				<combobox model="@load(vm.sorts)" readonly="true" disabled="@bind(empty vm.sorts)"
+					onSelect="@command('changeSort', sort=event.reference.value)">
+					<template name="model">
+						<comboitem label="${each.name}" value="${each.code}" />
+					</template>
+				</combobox>
+			</div>
+		</div>
+	</div>
+
+	<if test="@bind(not empty vm.promotedItems)">
+		<div sclass="yas-results yas-promoted-results">
+			<div sclass="yas-results-header">
+				<label value="@load(labels.searchResultBrowser.promotedItems)" />
+			</div>
+			<div sclass="yas-results-body">
+				<forEach items="@bind(vm.promotedItems)" var="result">
+					<div draggable="${result.fromSearchConfiguration ? 'promotedItem' : 'false'}" droppable="${result.fromSearchConfiguration ? 'promotedItem' : 'false'}"
+						onDrop="@command('dropPromotedItem', draggedResult=event.dragged.attributes.result, targetResult=event.target.attributes.result)"
+						sclass="@load(result.styleClass)">
+						<custom-attributes result="@load(result)" />
+						<div sclass="yas-result-inner">
+							<div sclass="yas-info">
+								<div sclass="yas-info-icon" />
+							</div>
+							<div sclass="yas-content">
+								<apply template="resultContent" />
+							</div>
+							
+							<if test="@bind(vm.resultActionsEnabled)">
+								<actionsmenu inputValue="${result}" config="as-promoted-results-actions" >
+									<custom-attributes viewModel="${vm}" />
+								</actionsmenu>
+							</if>
+						</div>
+					</div>
+				</forEach>
+			</div>
+		</div>
+	</if>
+
+	<if test="@bind(not empty vm.defaultResults)">
+		<div sclass="yas-results yas-default-results">
+			<div sclass="yas-results-header">
+				<label value="@load(labels.searchResultBrowser.defaultResults)" />
+			</div>
+			<div sclass="yas-results-body">
+				<forEach items="@bind(vm.defaultResults)" var="result">
+					<div sclass="@load(result.styleClass)">
+						<div sclass="yas-result-inner">
+							<div sclass="yas-info">
+								<div sclass="yas-info-icon" visible="${result.promoted}"/> 
+								<if test="@bind(result.score ne null)">
+									<label value="@load(c:formatNumber(result.score, '0.00'))" tooltiptext="@load(c:formatNumber(result.score, ''))" sclass="yas-info-score" />
+								</if>
+							</div>
+							<div sclass="yas-content">
+								<apply template="resultContent" />
+							</div>
+
+							<if test="@bind(vm.resultActionsEnabled)">
+								<actionsmenu inputValue="${result}" config="as-default-results-actions" >
+									<custom-attributes viewModel="${vm}" />								
+								</actionsmenu>
+							</if>
+						</div>
+					</div>
+				</forEach>
+			</div>
+		</div>
+	</if>
+</widget>

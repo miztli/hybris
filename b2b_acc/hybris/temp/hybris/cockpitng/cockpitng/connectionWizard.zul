@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd">
+
+    <window title="Choose sockets to connect" border="none" closable="true" width="850px" height="500px"
+            top="100px" apply="${connectionWindowComposer}">
+        <custom-attributes ytestid="connectionWindowComposer"/>
+        <borderlayout sclass="widgetConnWizardSimpleContainer widgetConnWizardContainer">
+            <west size="50%" autoscroll="true" sclass="widgetConnWizardWest">
+                <div>
+                    <hlayout>
+                        <label sclass="widgetConnWizardLabelInfo" value="Source:"/>
+                        <label id="sourceLabel" sclass="widgetConnWizardLabel"/>
+                    </hlayout>
+                    <listbox id="sourceOutputs" height="100%" sclass="widgetConnWizardLB">
+                        <listhead/>
+                    </listbox>
+                </div>
+            </west>
+            <east size="50%" autoscroll="true">
+                <div>
+                    <hlayout>
+                        <label sclass="widgetConnWizardLabelInfo" value="Target:"/>
+                        <label id="targetLabel" sclass="widgetConnWizardLabel"/>
+                    </hlayout>
+                    <listbox id="targetInputs" height="100%" sclass="widgetConnWizardLB">
+                        <listhead/>
+                    </listbox>
+                </div>
+            </east>
+            <south height="35%" autoscroll="true" sclass="widgetConnWizardSouth">
+                <listbox id="connections" height="100%" sclass="widgetConnWizardLB">
+                    <listhead visible="true">
+                        <listheader hflex="1" label="Source"/>
+                        <listheader hflex="1" label="out socket"/>
+                        <listheader hflex="1" label="Target"/>
+                        <listheader hflex="1" label="in socket"/>
+                        <listheader hflex="1"/>
+                    </listhead>
+                </listbox>
+            </south>
+        </borderlayout>
+    </window>
+</zk>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+                   id="com.hybris.cockpitng.dashboard">
+    <name>Dashboard</name>
+    <description>Dashboard Layout</description>
+    <defaultTitle>Dashboard</defaultTitle>
+    <author>hybris</author>
+    <version>0.1</version>
+
+    <sockets>
+        <input id="refresh" type="java.lang.Object"/>
+        <output id="refresh" type="java.lang.Object"/>
+        <forward input="refresh" output="refresh" />
+    </sockets>
+
+    <view src="dashboard.zul"/>
+    <controller
+            class="com.hybris.cockpitng.widgets.controller.DashboardWidgetController"/>
+
+    <settings>
+        <setting key="actionSlotComponentId" default-value="dashboard-actions" type="String"/>
+        <setting key="dashboardConfigContext" default-value="dashboard" type="String"/>
+    </settings>
+
+    <keywords>
+        <keyword>Layout</keyword>
+    </keywords>
+</widget-definition>

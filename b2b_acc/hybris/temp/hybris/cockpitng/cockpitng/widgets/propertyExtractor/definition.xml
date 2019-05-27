@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						 xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+						 id="com.hybris.cockpitng.widgets.common.propextractor">
+	<name>Property Extractor Widget</name>
+	<description>Applies expression as specified in the setting 'expression' on the input object and sends the result to the output.</description>
+	<defaultTitle>Property Extractor Widget</defaultTitle>
+	<author>hybris</author>
+	<version>1.0</version>
+
+	<sockets>
+		<input id="genericInput" type="java.lang.Object"/>
+		<output id="genericOutput" type="&lt;T&gt;"/>
+	</sockets>
+
+	<view src="none"/>
+	<controller class="com.hybris.cockpitng.widgets.common.propextractor.PropertyExtractorController"/>
+
+	<keywords>
+		<keyword>Adapters</keyword>
+	</keywords>
+
+	<settings>
+		<setting key="expression" default-value=""/>
+	</settings>
+</widget-definition>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<editor-definition id="com.hybris.cockpitng.editor.defaultdate"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/editor-definition.xsd">
+
+    <name>Default Date Editor</name>
+    <description>Default Date Editor</description>
+    <author>hybris</author>
+    <version>0.1</version>
+
+    <type>java.util.Date</type>
+    <editorClassName>com.hybris.cockpitng.editor.defaultdate.DefaultDateEditor</editorClassName>
+    <settings>
+        <setting key="timeZoneReadOnly" type="java.lang.Boolean" default-value="true"/>
+        <setting key="selectedTimeZone" type="java.lang.String" />
+        <setting key="displayedTimeZones" type="java.lang.String" default-value="GMT-12,GMT+0,GMT+12"/>
+    </settings>
+</editor-definition>

@@ -1,0 +1,141 @@
+.y-editor-area-attributes-cnt {
+    .z-groupbox-content {
+        .z-hbox {
+            tr td > table {
+                width: 100%;
+                table-layout: fixed;
+            }
+            .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell {
+                width: 100% !important;
+                padding-right: $editor-area__fluid-mode-default-element--padding-right;
+                &:only-child{
+                    display: block;
+                }
+            }
+            .z-hbox-separator {
+                display: none;
+            }
+        }
+    }
+    .ye-com_hybris_cockpitng_editor_defaultdate {
+        &, table {
+            width: 100% !important;
+            padding-right: 0% !important;
+        }
+    }
+    .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox {
+        .z-groupbox-content .z-hbox {
+            display: table;
+            width: 100% !important;
+            max-width: $editor-area__fluid-mode-default-container--max-width;
+        }
+        > .z-groupbox-content {
+            overflow: auto;
+            > .z-hbox > tbody > tr {
+                display: inline;
+                > table {
+                    max-width: 100%;
+                    width: auto !important;
+                }
+            }
+        }
+    }
+    &-min,
+    &-max,
+    &-avg {
+        .z-groupbox-content {
+            .z-hbox {
+                .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-ed-editor,
+                .yw-editor-area-main-content .ye-default-reference-editor,
+                .ye-default-reference-editor-selected-listbox,
+                .ye-default-reference-editor-selected-listbox > .z-listbox-body {
+                    width: 100% !important;
+                }
+            }
+            .ye-default-reference-editor {
+                width: 100% !important;
+            }
+        }
+    }
+    &-min {
+        .z-groupbox-content {
+            .z-hbox,
+            table,
+            table tbody,
+            table tr,
+            table td {
+                width: 100%;
+            }
+            .z-hbox {
+                .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell {
+                    display: block;
+                    width: 100% !important;
+                    float: left;
+                }
+                .z-hbox-separator {
+                    display: none;
+                }
+            }
+            .z-hbox,
+            table {
+                table-layout: fixed;
+            }
+        }
+    }
+    &-avg {
+        .z-groupbox-content {
+            .z-hbox,
+            table {
+                width: 100%;
+                table-layout: fixed;
+            }
+            .z-hbox {
+
+                .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell {
+                    width: 50% !important;
+
+                    &:only-child {
+                        display: inline-table;
+                        padding-right: 1em;
+                    }
+                }  
+            }
+        }
+        .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox td.z-hbox-separator {
+            width: 2em;
+        }
+    }
+    &-max {
+        .z-groupbox-content .z-hbox,
+        &.z-groupbox-content table {
+            width: 50%;
+            float: left;
+        }
+        .z-groupbox-content {
+            .z-hbox {
+                tr td > table {
+                    width: 100%;
+                    table-layout: fixed;
+                }
+                .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell {
+                    width: 48% !important;
+                    padding-right: 2%;
+
+                    &:only-child{
+                        display: block;
+                        padding-right: 0;
+                    }
+                }
+                .z-hbox-separator {
+                    display: none;
+                }
+            }
+        }
+        .ye-com_hybris_cockpitng_editor_defaultdate {
+            &, table {
+                width: 100% !important;
+                padding-right: 0% !important;
+            }
+        }
+    }
+}

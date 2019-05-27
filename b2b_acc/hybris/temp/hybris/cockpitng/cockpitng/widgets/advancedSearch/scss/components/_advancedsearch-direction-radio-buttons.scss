@@ -1,0 +1,67 @@
+/*================================
+    Advanced Search - Asc/Desc-Readio-Buttons
+================================*/
+// Styling of Fields contained in the Advanced-Search Contents (Size, Bahaviour, Validation)
+
+
+.yw-advancedsearch {
+    &-asc,
+    &-desc {
+        line-height: $advancedsearch__sortorder-button--line-height;
+        height: $advancedsearch__sortorder-button--height;
+
+        > input {
+            display: none;
+            
+            &[type=radio] + label:before {
+                border-radius: $advancedsearch__sortorder-radio--border-radius;
+                border-width: $advancedsearch__sortorder-radio--border-width;
+                width: $advancedsearch__sortorder-radio--size;
+                height: $advancedsearch__sortorder-radio--size;
+                margin-right: $advancedsearch__sortorder-radio--margin-right;
+                background-color: $advancedsearch__sortorder-radio--bg-color;
+            }
+        }
+        > label {
+            cursor: pointer;
+            position: relative;
+            padding-left: $advancedsearch__sortorder-radio--margin-right;
+            margin-right: $advancedsearch__sortorder-label--margin-right; 
+            &:before {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                font: normal normal normal $advancedsearch__sortorder-icon--font-size FontAwesome;
+                text-align: center;
+                width: $advancedsearch__sortorder-radio--size;
+                left: 0;
+                border: $advancedsearch__sortorder-radio--border-width solid $advancedsearch__sortorder-radio--color;
+                color: $advancedsearch__sortorder-radio--color;
+            }
+        }
+        > input[type=radio]:checked + label:before {
+            border-color: $advancedsearch__sortorder-radio-selected--color;
+            color: $advancedsearch__sortorder-radio-selected--color; 
+        }
+    }
+    &-asc {
+        > label:before {
+            content: $advancedsearch__sortorder-asc-icon--content;
+            line-height: $advancedsearch__sortorder-asc-icon--line-height;
+            top: $advancedsearch__sortorder-asc-radio--top;
+        }
+    }
+    &-desc  {
+        > label:before {
+            content: $advancedsearch__sortorder-desc-icon--content;
+            line-height: $advancedsearch__sortorder-desc-icon--line-height;
+            top: $advancedsearch__sortorder-desc-radio--top;
+        }
+    }
+    &-sortorder-div {
+        .z-radio {
+            display: block;
+            min-height: $_advancedsearch__sortorder-radio--min-height;
+        }
+    }
+}

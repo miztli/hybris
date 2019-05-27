@@ -1,0 +1,71 @@
+@charset "UTF-8";
+/*================================
+    Refine By Widget
+================================*/
+.yw-refineby {
+  height: 100%;
+  background: #ffffff;
+  color: #151c22;
+  overflow: auto; }
+  .yw-refineby .yw-main-container {
+    padding: 15px; }
+  .yw-refineby .yw-info-container {
+    font-style: italic; }
+  .yw-refineby .yw-facet-container {
+    margin-left: 15px; }
+  .yw-refineby .yw-facet-slot {
+    margin-bottom: 10px; }
+  .yw-refineby .yw-facet-name {
+    display: block;
+    font-weight: bold;
+    padding: 10px 0; }
+  .yw-refineby .yw-toggle-facets {
+    display: block;
+    margin: 10px 0 20px;
+    color: #0486e0; }
+    .yw-refineby .yw-toggle-facets:hover {
+      cursor: pointer;
+      color: #0486e0; }
+
+.yw-refineby .yw-colour-facet-box {
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 8px 8px 0;
+  background-color: #ffffff;
+  border: 1px inset rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  position: relative;
+  display: inline-block; }
+  .yw-refineby .yw-colour-facet-box-selected {
+    border-color: #000000; }
+    .yw-refineby .yw-colour-facet-box-selected:after {
+      color: #ffffff;
+      content: "";
+      text-shadow: 0px 0px 2px #000000;
+      line-height: 20px;
+      font-family: "FontAwesome", sans-serif;
+      font-size: 14px;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block; }
+
+/*================================
+    Refine By Checkboxes
+================================*/
+.yw-refineby .z-checkbox {
+  display: block;
+  padding-left: 20px; }
+  .yw-refineby .z-checkbox label {
+    vertical-align: top; }
+    .yw-refineby .z-checkbox label:before {
+      width: 14px;
+      height: 14px;
+      margin-top: 2px;
+      top: 0;
+      line-height: inherit; }
+  .yw-refineby .z-checkbox input:checked + label:before {
+    background-size: 14px; }

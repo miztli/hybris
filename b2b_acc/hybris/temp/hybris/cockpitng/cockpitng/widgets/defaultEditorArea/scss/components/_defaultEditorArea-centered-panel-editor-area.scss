@@ -1,0 +1,206 @@
+.yw-centered-panel-editor-area {    
+    .yw-editorarea-tabbox-tabpanels-tabpanel {
+        padding: 0;
+
+        &-groupbox {
+            padding: 0 $editor-area-centered__groupbox--padding-x;
+        
+            > .z-groupbox-content {
+                padding: $editor-area-centered__groupbox-content--padding;
+            }
+        }
+    }
+    .yw-editor-area-main-content {
+        background-color: transparent;
+
+        .yw-editorarea-tabbox-tabpanels-tabpanel .z-groupbox-header {
+            border-width: 0;
+
+            .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-caption {
+                &.z-caption {
+                    padding: $editor-area-centered__groupbox-header--padding;
+                    background: transparent;
+
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        bottom: -$editor-area-centered__groupbox-header--border-width;
+                        border-bottom: $editor-area-centered__groupbox-header--border-bottom;
+                        height: $editor-area-centered__groupbox-header--border-width;
+                        display: block;
+                        left: -$editor-area-centered__groupbox--padding-x;
+                        right: -$editor-area-centered__groupbox--padding-x;
+                        width: auto;
+                    }
+                }
+                .yw-expandCollapse.z-button {
+                    top: nth($editor-area-centered__groupbox-header--padding, 1);
+                }
+            }
+        }
+        .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-essential + .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox .z-groupbox-header {
+            border-top-width: 0;
+        }
+    }
+
+    .yw-editor-area-main-content .yw-editorarea-tabbox, 
+    .cng-adminmode .yw-editor-area-main-content .yw-editorarea-tabbox {
+         > .yw-editorarea-tabbox-tabs {
+            height: $editor-area-centered__tabbox-tabs--height;
+
+            + .z-tabbox-content-wrapper {
+                top: $editor-area-centered__tabbox-tabs--height;
+            }
+         }
+    }
+    .z-tabbox-accordion > .z-tabpanels .z-tabs-content, 
+    .z-tabbox-top > .z-tabs .z-tabs-content {
+        border-bottom-width: $editor-area-centered__toolbar--border-bottom-width;
+    }    
+    .yw-editorarea-tabbox {
+        &-tabs{
+            background-color: $editor-area-centered__tabbox--bg-color;
+            box-shadow: none;
+            
+            &-tab {
+                .z-tab-text {
+                    border-bottom-width: $editor-area-centered__tabbox-tab-text--border-bottom-width;
+                }
+                .z-caption-content {
+                    margin-bottom: $editor-area-centered__tabbox-tab-caption--margin-bottom;
+                    margin-top: $editor-area-centered__tabbox-tab-caption--margin-top;
+                }
+            }
+        }
+        &-tabpanels {
+            box-sizing: border-box;
+            
+            &-tabpanel-groupbox {
+                background: transparent;
+            }
+        }
+        .z-tabbox-content {
+            max-width: $editor-area-centered__tabbox-content--max-width;
+            margin: $editor-area-centered__tabbox-content--margin;
+            box-shadow: $editor-area-centered__tabbox-content--box-shadow;
+            padding: 0;
+            text-align: left;
+            height: auto;
+
+            &-wrapper {
+                padding: $editor-area-centered__tabbox-content-wrapper--padding;
+                background-color: transparent;
+                text-align: center;
+                overflow: auto;
+
+                @media screen and(max-width: $editor-area-centered__tabbox-content-wrapper--full-width-bp) {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }            
+        }
+
+        &.yw-static-section-active {
+            .yw-editorarea-tabbox-tabpanels {
+                width: $editor-area-centered__tabbox-tabpanles-static-active--width;
+                border-right: $editor-area-centered__tabbox-active-sidebar-contents--border-right;
+            }
+            .z-tabbox-static-section {
+                width: $editor-area-centered__tabbox-static-section--width;
+            }
+        }
+        .z-tabbox-left-scroll,
+        .z-tabbox-right-scroll {
+            height: $editor-area-centered__tabbox-scroll--height;
+            background-color: $editor-area-centered__tabbox--bg-color;
+            margin-right: $editor-area-centered__tabbox-scroll--margin-x;
+            margin-left: $editor-area-centered__tabbox-scroll--margin-x;
+            border-bottom-width: $editor-area-centered__toolbar--border-bottom-width;
+            border-bottom-style: solid;
+        }
+        .z-tabbox-right-scroll .z-icon-chevron-right, 
+        .z-tabbox-left-scroll .z-icon-chevron-left {
+            margin: $editor-area-centered__tabbox-scroll-icon--margin;
+            height: $editor-area-centered__tabbox-scroll-icon--height;
+            line-height: $editor-area-centered__tabbox-scroll-icon--height;
+            padding-top: 0;
+        }
+    }
+    .cng-adminmode .yw-editor-area-main-content, 
+    .yw-editor-area-main-content {
+        .yw-editorarea-tabbox > .yw-editorarea-tabbox-tabs + .z-tabbox-content {
+            top: $editor-area-centered__tabbox-content--top;
+        }
+    }
+    .yw-editorarea-actioncontainer {
+        background-color: $editor-area-centered__actioncontainer--bg-color;
+        padding: 0;
+
+        .y-toolbar {
+            position: relative;
+            padding: 0;
+            border-top-width: 0;
+            border-bottom-width: 0;
+            line-height: 0;
+
+            &:after {
+                border-bottom: $editor-area-centered__toolbar--border-bottom-width solid transparent;
+                border-bottom-color: inherit;
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+            
+            .z-button {
+                height: $editor-area-centered__actioncontainer-text-button--height;
+            }
+            .yw-listview-actionSlot {
+                height: $editor-area-centered__actioncontainer-text-button--height;
+
+                > .cng-action-group {
+                    height: 100%;
+                }
+            }
+            .yw-listview-actionSlot,
+            .widget_cnt {
+                &:empty{
+                    display: none;
+                }
+            }
+            &-leftslot {
+                margin-left: $editor-area-centered__toolbar-side-action-container--margin-x;
+            }
+            &-rightslot {
+                margin-right: $editor-area-centered__toolbar-side-action-container--margin-x;
+            }   
+        }
+        .y-toolbar .yw-listview-actionSlot > .cng-action-group,
+        .cng-action-group .z-hbox {
+             table td {
+                vertical-align: middle;
+            }
+        }
+        .cng-action-group {
+            .cng-action {
+                margin-right: $editor-area-centered__toolbar-action--margin-right; 
+            }
+        }
+    }
+    .ye-editorarea-bottom-bar {
+        height: $editor-area-centered__toolbar-bottom--height;
+        
+        > .yw-editor-area-nested-toolbar-widget:empty {
+            display: none;
+        }
+        .ye-cancel-container, 
+        .ye-save-container {
+            .z-button {
+                height: $editor-area-centered__toolbar-bottom-button--height;
+                padding-top: $editor-area-centered__toolbar-bottom-button--padding-y;
+                padding-bottom: $editor-area-centered__toolbar-bottom-button--padding-y;
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+/*================================
+    Explorer Tree - toolbar
+================================*/
+@import "../support/_explorerTree-variables.scss";
+
+.yw-explorerTree {
+  &-toolbar {
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+      border-bottom: $explorerTree__toolbar--border-bottom;
+    }
+    .z-paging-button,
+    .yw-itemSelectorButton,
+    .cng-action-enabled .cng-action-icon {
+        box-shadow: inset 0 0 0 $explorerTree__toolbar-action-selected-icon--border-width rgba( $explorerTree__toolbar-action-selected-icon--border-color, 0);
+        &:hover, &:focus {
+            box-shadow: inset 0 0 0 $explorerTree__toolbar-action-selected-icon--border-width  $explorerTree__toolbar-action-selected-icon--border-color;
+        }
+    }
+  }
+
+  &-right-holder {
+    display: inline-block;
+    float: right;
+  }
+
+  &-actions {
+    display: inline-block;
+    padding: $explorerTree__toolbar-actions--padding;
+    vertical-align: top;
+
+    .cng-action {
+      .cng-action-icon:hover {
+        background-color: transparent;
+      }
+    }
+  }
+  
+  &-widget-slot {
+    display: inline-block;
+    height: auto;
+  }
+}

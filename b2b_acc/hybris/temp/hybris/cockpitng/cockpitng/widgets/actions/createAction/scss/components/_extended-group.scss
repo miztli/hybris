@@ -1,0 +1,44 @@
+/*================================
+    Extended Group 
+================================*/
+// Styling of the Extended Group 
+
+@import "../support/_create-variables.scss";
+
+.ya-extended-group-cnt {
+    text-align: left;
+    position: relative;
+    img {
+        z-index: $create__toolbar-action-extended-group-image--z-index;
+        display: inline-block;
+        float: none;
+        position: absolute;
+    }
+    a.ya-create-type-selector-button.z-toolbarbutton {
+        width: $create__toolbar-action-extended-group-create-type-button--width;
+        display: inline-block;
+        float: none;
+        text-align: right;
+        box-shadow: none;
+        
+        &:hover {
+            box-shadow: $create__create-new-action-hover--box-shadow;
+        }
+    }
+    &.ya-cng-extended-action-container-hover {
+        background-color: $create__create-new-button--hover-bg-color;
+        cursor: pointer;
+
+        a.ya-create-type-selector-button.z-toolbarbutton {
+            &,
+            &:hover {
+                box-shadow: $create__create-new-action-hover--box-shadow;
+                background-color: transparent;
+                
+                .z-toolbarbutton-content {
+                   background-position: $create__toolbar-action-group-item-create-type-button-hover-content--bg-position;
+                }
+            }
+        }
+    }
+}

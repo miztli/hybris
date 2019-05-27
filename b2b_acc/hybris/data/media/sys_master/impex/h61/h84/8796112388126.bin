@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=zh
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;触发规则消息(购物车总阈值);根据规则条件履行情况显示规则的消息;
+;y_trigger_message_parameterized_category;触发规则消息(类别);根据规则条件履行情况显示规则的消息;
+;y_trigger_message_parameterized_product;触发规则消息(产品);根据规则条件履行情况显示规则的消息;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;购物车总阈值;要控制的购物车总阈值
+;y_trigger_message_parameterized_category;catalog;按目录筛选选择;选择的目录值将用于关联字段内的筛选
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;数量;合格类别的所需产品数量
+;y_trigger_message_parameterized_category;qualifying_categories;类别;符合条件的类别
+;y_trigger_message_parameterized_product;catalog;按目录筛选选择;选择的目录值将用于关联字段内的筛选
+;y_trigger_message_parameterized_product;qualifying_products_quantity;数量;所需合格产品的数量
+;y_trigger_message_parameterized_product;qualifying_products;产品;符合条件的产品
+

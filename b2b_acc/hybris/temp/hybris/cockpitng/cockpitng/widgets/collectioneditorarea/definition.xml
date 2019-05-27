@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+				   id="com.hybris.cockpitng.backoffice.collectionEditorArea">
+	<name>Collection Editor Area</name>
+	<description>Editor area for collections</description>
+	<defaultTitle>Editor Area</defaultTitle>
+	<author>hybris</author>
+	<version>1.0</version>
+
+	<view src="collectionEditorArea.zul"/>
+	<controller class="com.hybris.backoffice.widgets.collectioneditorarea.CollectionEditorAreaController"/>
+
+	<sockets>
+		<input id="inputData" type="com.hybris.cockpitng.data.TypeAwareSelectionContext"/>
+		<input id="currentObject" type="java.lang.Object"/>
+		<input id="modifiedObject" type="java.lang.Object"/>
+		<output id="pageable" type="com.hybris.cockpitng.search.data.pageable.Pageable"/>
+		<output id="singleObjectSaved" type="java.lang.Boolean"/>
+		<output id="selectedObject" type="java.lang.Object"/>
+
+	</sockets>
+
+	<keywords>
+		<keyword>Data Manipulation</keyword>
+	</keywords>
+
+	<settings>
+		<setting key="pageSize" default-value="10" type="java.lang.Integer"/>
+		<setting key="navigationOn" default-value="false" type="java.lang.Boolean"/>
+	</settings>
+
+</widget-definition>

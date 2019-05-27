@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+                   id="com.hybris.cockpitng.refineby">
+    <name>Refine By</name>
+    <description>Refine By Widget displays the list of available facets for full-text search</description>
+    <defaultTitle>Refine By</defaultTitle>
+    <author>hybris</author>
+    <version>0.1</version>
+
+    <sockets>
+        <input id="fullTextSearchData" type="com.hybris.cockpitng.search.data.FullTextSearchData"/>
+        <input id="reset" type="java.lang.Object"/>
+        <output id="searchData" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchData"/>
+    </sockets>
+
+    <controller class="com.hybris.backoffice.widgets.refineby.RefineByController"/>
+    <keywords>
+        <keyword>Search</keyword>
+    </keywords>
+    <settings>
+        <setting key="defaultFacetRendererBeanId" default-value="standardFacetRenderer" type="java.lang.String"/>
+        <setting key="maxInlineFacets" default-value="3" type="java.lang.Integer"/>
+        <setting key="refineByConfigCtx" default-value="refine-by" type="java.lang.String" />
+    </settings>
+</widget-definition>

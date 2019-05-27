@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver" ?>
+<?page title="authority group selector" ?>
+
+<!--
+
+    [y] hybris Platform
+    Copyright (c) 2018 SAP SE or an SAP affiliate company.
+    All rights reserved.
+
+    This software is the confidential and proprietary information of SAP
+    ("Confidential Information"). You shall not disclose such Confidential
+    Information and shall use it only in accordance with the terms of the
+    license agreement you entered into with SAP.
+
+ -->
+
+<widget xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+	height="100%">
+
+	<vlayout sclass="y-sessioncontext-container">
+		<div id="headerContainer" sclass="header-container">
+			<label id="headerLabel" value="${labels.sessionContext.name}" />
+		</div>
+		<div class="y-sessioncontext-content">
+			<div>
+				<tablelayout columns="2" class="y-session-content-padding-box">
+					<tablechildren>
+						<image id="userImage" src="${wr}/imgs/customer_icon.png" class="y-session-context-img" />
+					</tablechildren>
+					<tablechildren class="y-session-context-label-container">
+						<label id="customerLabel" value="${labels.sessionContext.customer.label.value}" class="y-session-context-label-key" />
+						<label id="customerPlaceholder" value="${labels.sessionContext.label.placeholder}" class="y-session-context-label-value" />
+						<a id="userAnchor" class="y-session-context-label-value y-session-context-label-value" />
+					</tablechildren>
+				</tablelayout>
+			</div>
+
+			<separator />
+
+			<div>
+				<tablelayout columns="2" class="y-session-content-padding-box">
+					<tablechildren>
+						<image id="ticketImage" src="${wr}/imgs/ticket_icon.png" class="y-session-context-img" />
+					</tablechildren>
+					<tablechildren class="y-session-context-label-container">
+						<label id="ticketLabel" value="${labels.sessionContext.ticket.label.value}" class="y-session-context-label-key" />
+						<label id="ticketPlaceholder" value="${labels.sessionContext.label.placeholder}" class="y-session-context-label-value" />
+						<a id="ticketAnchor" class="y-session-context-label-value y-session-context-label-value" />
+					</tablechildren>
+				</tablelayout>
+			</div>
+
+			<separator />
+
+			<div>
+				<tablelayout columns="2" class="y-session-content-padding-box">
+					<tablechildren>
+						<image id="orderImage" src="${wr}/imgs/order_icon.png" class="y-session-context-img" />
+					</tablechildren>
+					<tablechildren class="y-session-context-label-container">
+						<label id="orderLabel" value="${labels.sessionContext.order.label.value}" class="y-session-context-label-key" />
+						<label id="orderPlaceholder" value="${labels.sessionContext.label.placeholder}" class="y-session-context-label-value" />
+						<a id="orderAnchor" class="y-session-context-label-value y-session-context-label-value" />
+					</tablechildren>
+				</tablelayout>
+			</div>
+
+
+			<separator />
+			<div class="y-session-content-padding-box">
+				<button id="callContextBtn" label="${labels.sessionContext.call.button.start}" width="100%" visible="false" />
+			</div>
+
+			<div class="y-session-context-session-data">
+				<div id="sessionTimerDiv" visible="false" class="y-session-context-duration">
+					<stopwatch id="stopWatch" />
+				</div>
+				<!-- is that used at all ? -->
+				<!--div class="y-session-context-duration" style="display:none;">
+					<label id="timerLabel" value="00 mins : 00 sec" visible="false" />
+				</div!-->
+				<div class="y-session-context-end-session">
+					<button id="endSessionBtn" label="${labels.sessionContext.session.end}" visible="false" />
+				</div>
+				<div class="z-clear"></div>
+			</div>
+
+			<div class="y-session-context-asm-container">
+				<label class="y-session-context-asm" value="${labels.sessionContext.asm.label.value}" />
+
+				<tablelayout columns="2">
+					<tablechildren class="y-session-context-combobox">
+						<combobox id="availableSites" model="${model}" readonly="true">
+							<template name="model">
+								<comboitem label="${each.name}" />
+							</template>
+						</combobox>
+					</tablechildren>
+					<tablechildren>
+						<button id="asmBtn" class="y-session-context-asm-icon" image="${wr}/imgs/asm_ico.png" />
+					</tablechildren>
+				</tablelayout>
+			</div>
+		</div>
+	</vlayout>
+</widget>

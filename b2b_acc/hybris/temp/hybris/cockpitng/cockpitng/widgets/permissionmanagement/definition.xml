@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						 xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+						 id="com.hybris.backoffice.widgets.permissionmanagement">
+	<name>Permission Management Engine</name>
+	<description>Encapsulates the logic for permission management</description>
+	<version>1.0</version>
+
+	<sockets>
+		<input id="inputObject" type="java.lang.Object"/>
+		<input id="permissionInfo" type="com.hybris.cockpitng.dataaccess.facades.permissions.PermissionInfo"/>
+		<input id="createPermission" type="java.lang.Object"/>
+		<input id="removePermissions" type="com.hybris.cockpitng.dataaccess.facades.permissions.PermissionInfo" multiplicity="List"/>
+		<input id="typeOrPrincipalFilter" type="java.lang.String" />
+		<input id="fieldFilter" type="java.lang.String" />
+		<output id="typePermissionInfos" type="com.hybris.cockpitng.search.data.pageable.Pageable"/>
+		<output id="principalPermissionInfos" type="com.hybris.cockpitng.search.data.pageable.Pageable"/>
+		<output id="fieldPermissionInfos" type="com.hybris.cockpitng.search.data.pageable.Pageable"/>
+		<output id="permissionInfoType" type="java.lang.String"/>
+	</sockets>
+
+	<controller class="com.hybris.backoffice.widgets.permissionmanagement.PermissionManagementController"/>
+	<view src="none" />
+	<keywords>
+		<keyword>Permissions</keyword>
+	</keywords>
+
+	<settings>
+		<setting key="type_typeCode" default-value="" type="String"/>
+		<setting key="principal_typeCode" default-value="" type="String"/>
+		<setting key="type_id_accessor" default-value="" type="String"/>
+		<setting key="principal_id_accessor" default-value="" type="String"/>
+		<setting key="pageSize" default-value="20" type="Integer"/>
+	</settings>
+
+</widget-definition>

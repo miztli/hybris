@@ -1,0 +1,120 @@
+@import "_defaultEditorArea-variables.scss";
+
+//    Mixins
+//================================
+
+@mixin _colored-background-border ($color, $bg-color) {
+    background: $bg-color;
+    border: $editor-area__input-field--border-width solid $color;
+    color: $color;
+}
+
+@mixin _colored-background-border-secific ($color, $bg-color, $border-top:0, $border-right:0, $border-bottom:0, $border-left:0) {
+    background: $bg-color;
+    border-style: solid;
+    border-color: $color;
+    border-width: $border-top $border-right $border-bottom $border-left;
+}
+
+@mixin _text-selection-part ($selected-bg-color, $selected-color){
+    background-color: $selected-bg-color;
+
+    @if $selected-color != "default" {
+        color: $selected-color;
+    }
+}
+
+@mixin _text-selection ($bg-color:"default", $color:"default") {
+    //$selection-bg-color: $bg-color;
+    
+    &::selection {
+        @include _text-selection-part($bg-color, $color);
+    }
+    &::-moz-selection {
+        @include _text-selection-part($bg-color, $color);
+    }
+}
+
+@mixin _addValidationTypeDefaults ($type, $color, $bg-color, $bg-position-x-amount:false, $default-bg-icon-size: 16px) {
+    $default-bg-position-x-amount: 0;
+    $img-size-correction: $default-bg-icon-size * -1;
+    @if $bg-position-x-amount {
+        $default-bg-position-x-amount : $bg-position-x-amount;
+    }
+    $selected-bg-position-y-amount: 4;
+
+     /* #{$type}: Coloring */
+    .ye-validation-#{$type} {
+        // Radio-Box-Coloring
+        input[type="radio"]:checked ~ .z-radio-content {
+            color: $color;
+        }
+
+        .ye-instant-editor-label-editable {
+            color: $color;
+            font-weight: $font-weight-bold;
+        }
+
+        // Input-Field Coloring Loc-Editor
+        input.z-textbox,
+        .yw-loceditor-row input.z-textbox,
+        .z-longbox, .z-intbox, .z-decimalbox, .z-doublebox,
+        .ye-com_hybris_cockpitng_editor_defaultenum .z-combobox-input,
+        .ye-com_hybris_cockpitng_editor_defaultenum a,
+        .ye-com_hybris_cockpitng_editor_defaultdate .z-datebox-input,
+        .ye-com_hybris_cockpitng_editor_defaultdate a,
+        .ye-com_hybris_cockpitng_editor_defaultdate a:hover,
+        .ye-com_hybris_cockpitng_editor_defaultdate .z-datebox-input:focus + .z-datebox-button,
+        .ye-com_hybris_cockpitng_editor_defaulttime .z-timebox-input,
+        .ye-com_hybris_cockpitng_editor_defaulttime .z-timebox-button {
+            @include _colored-background-border ($color, $bg-color);
+        }
+        &.yw-loceditor-row, &.yw-loceditor-row > .z-label,
+        .z-combobox-input:focus + .z-combobox-button,
+        .z-bandbox-input:focus + .z-bandbox-button{
+            border-color: $color;
+        }
+        .yw-loceditor-dynamic-content {
+            .ye-validation-#{$type} {
+                @include _colored-background-border ($color, $bg-color);
+            }
+        }
+    }
+    .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell, 
+    .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-ed-editor {
+        .ye-validation-#{$type} {
+            .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox .z-listbox-emptybody td{
+                @include _colored-background-border-secific($color, $bg-color, 0, 1px);
+                border-width: 0;
+                color: $color;
+            }
+        }
+    }
+    
+    /* #{$type}: Icon Positioning */
+    .z-listitem-selected .ye-validation-#{$type} {
+        .z-listcell-content:before {
+            background-position: ($default-bg-position-x-amount * $img-size-correction) ($selected-bg-position-y-amount * $img-size-correction);
+        }
+    }
+
+    @if $bg-position-x-amount {
+        .ye-validation-#{$type} {
+            > .yw-loceditor .yw-loceditor-fixed-open .z-label:after {
+                background-position: ($bg-position-x-amount * $img-size-correction) 0;
+            }
+        }
+        .ye-validation-results-popup .ye-validation-#{$type} {
+            .z-listcell-content:before {
+                background-position: ($bg-position-x-amount * $img-size-correction) 0;
+            }
+        }
+        .yw-editorarea-label-container, .yw-loceditor-fixed-open, .yw-loceditor-fixed-closed {
+            .ye-validation-#{$type} {
+                .yw-loceditor-caption .z-label:after {
+                    background-position: ($bg-position-x-amount * $img-size-correction) 0;
+                }
+            }
+        }
+    }
+}

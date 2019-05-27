@@ -1,0 +1,91 @@
+@import "support/_flexiblelayout-mixins.scss";
+
+@include _flex_layout_sidebar_responsive (xl, $flexlayout__media-query-xl--min-width);
+@include _flex_layout_sidebar_responsive (l, $flexlayout__media-query-l--min-width);
+@include _flex_layout_sidebar_responsive (m, $flexlayout__media-query-m--min-width);
+@include _flex_layout_sidebar_responsive (s, $flexlayout__media-query-xs--min-width);
+
+@media (max-width: $flexlayout__media-query-s--min-width - 1px) {
+    .yw-flexlayout-sidebar {
+        z-index: $flexlayout__sidebar--bp-s--z-index;
+
+        //prevent width adjustment when opened
+        &-opened,
+        &-opened#{&}-collapsed {
+            &:not(.yw-flexlayout-responsive-breakpoint-s) {
+                > .yw-flexlayout-contents {
+                    width: 100%;
+                }
+            }
+        }
+
+        //show sidebar header
+        &-header {
+            display: block;
+        }
+    }
+}
+
+@media (max-width: $flexlayout__media-query-xs--min-width) {
+    .yw-flexlayout-sidebar {
+
+        &-right > & {
+            transform: $flexlayout__sidebar--transform-right;
+        }
+
+        &-left > & {
+            transform: $flexlayout__sidebar--transform-left;
+        }
+
+        //show dim-screen
+        &-opened {
+            > .yw-flexlayout-contents > .yw-flexlayout-contents-dimmer {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: $flexlayout__contents-dimmer--bg-color;
+                z-index: $flexlayout__contents-dimmer--z-index;
+            }
+            &.yw-flexlayout-sidebar-overlap > .yw-flexlayout-contents > .yw-flexlayout-contents-dimmer {
+                display: none;
+            }
+        }
+
+        //prevent width adjustment when opened for s resolution
+        &-opened,
+        &-opened#{&}-collapsed {
+            &.yw-flexlayout-responsive-breakpoint-s {
+                > .yw-flexlayout-contents {
+                    width: 100%;
+                }
+            }
+        }
+
+        &-opened#{&}-collapsed > & {
+            width: $flexlayout__sidebar--width;
+        }
+    }
+}
+
+@media (min-width: $flexlayout__media-query-xs--min-width + 1px) {
+    .yw-flexlayout-sidebar {
+        //sidebar collapsed
+        &-right#{&}-collapsed > & {
+            transform: $flexlayout__sidebar-collapsed--transform-right;
+        }
+
+        &-left#{&}-collapsed > & {
+            transform: $flexlayout__sidebar-collapsed--transform-left;
+        }
+
+        //sidebar overlap
+        &-hover-overlap > & {
+            &:hover {
+                //width: $flexlayout__sidebar-overlap--width;
+                z-index: $flexlayout__sidebar-overlap--z-index;
+            }
+        }
+    }
+}

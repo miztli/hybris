@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://www.zeroturnaround.com">
+  <classpath>
+    <dir name="/opt/bambooagent/xml-data/temporary-repositories/maintenance/hybris/bin/ext-backoffice/basecommercebackoffice/backoffice/classes" />
+  </classpath>
+</application>

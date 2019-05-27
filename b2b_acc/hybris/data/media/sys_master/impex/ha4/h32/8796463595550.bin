@@ -1,0 +1,20 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$contentCatalog=powertoolsContentCatalog
+$syncJob=sync $contentCatalog:Staged->Online
+
+INSERT_UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];readPrincipals(uid)[mode=append];writePrincipals(uid)[mode=append]
+;powertoolsContentCatalog;Staged;;cmsmanagergroup,powertools-cmsmanagergroup,cmseditorgroup,cmspublishergroup
+;powertoolsContentCatalog;Online;cmsmanagergroup,powertools-cmsmanagergroup,cmseditorgroup,cmspublishergroup;;
+
+INSERT_UPDATE CatalogVersionSyncJob; code[unique=true]; syncPrincipals(uid)[mode=append]; syncPrincipalsOnly;
+;$syncJob;cmsmanagergroup,cmspublishergroup,powertools-cmsmanagergroup;true

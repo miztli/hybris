@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0"
+			  targetNamespace="http://www.hybris.com/cockpitng/config/availableLocales"
+			  xmlns:al="http://www.hybris.com/cockpitng/config/availableLocales"
+			  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="cockpit-locales">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="cockpit-locale" type="al:cockpit-locale" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="cockpit-locale">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="locale" type="xs:string" use="required"/>
+		<xs:attribute name="enabled" type="xs:boolean" use="required"/>
+		<xs:attribute name="default" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+
+</xs:schema>

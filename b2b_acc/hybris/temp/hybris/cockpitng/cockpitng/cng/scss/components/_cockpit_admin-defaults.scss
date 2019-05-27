@@ -1,0 +1,1214 @@
+@import "../support/_cockpit_admin-mixins.scss";
+
+.cng-adminmode {
+    display: inline-block;
+
+    .baseWidgetTab > .z-tabbox > .z-tabs {
+        top: -76px;
+    }
+    .baseWidgetTab.widget_cnt,
+    .baseWidgetTab > .z-tabbox {
+        overflow: visible;
+    }
+    > .z-window-embedded.z-window-noborder  {
+        > .mainWidgetSlot {
+            position: absolute;
+            top: $admin-defaults__main-widget--top;
+            bottom: 0;
+            left: $admin-defaults__main-widget--space-x;
+            right: $admin-defaults__main-widget--space-x;
+            height: auto !important;
+        }
+
+        > .mainWidgetSlot.no_stubs,
+        > .mainWidgetSlot.stubs_presented {
+            height: 100% !important;
+        }
+
+    }
+    .z-tabpanel-content > .widget_cnt {
+        margin-top: 0;
+        border: none;
+
+        > .widget_body {
+            top: 5px;
+            z-index: 0;
+        }
+    }
+    .widget_cnt > .z-tabbox {
+        position: absolute;
+        bottom: 0;
+        top: 25px;
+        left: 0;
+        right: 0;
+        height: auto !important;
+    }
+    .widgetTemplate {
+        > div {
+            opacity: 0.8;
+        }
+
+        > .singleWidget {
+            opacity: 0.8;
+        }
+    }
+    .widgetTabTemplate {
+        opacity: 0.8;
+    }
+    .widgetTemplate.widget_body,
+    .widgetTabTemplate  {
+        border: 2px dotted #A1D4F3;
+    }
+    /* Toolbar */
+    .widget_toolbar {
+        display: block;
+
+        .toolbarComponent {
+            position: absolute;
+            top: 1px;
+            right: 5px;
+
+            > div {
+                visibility: hidden;
+            }
+        }
+        &:hover .toolbarComponent > div,
+        .toolbarComponent > .connectBtn,
+        .toolbarComponent > .templateBtn_activated {
+            visibility: visible;
+        }
+    }
+    .widget_body > .widget_toolbar {
+        left: $admin-defaults__widget-toolbar--space-x;
+        right: $admin-defaults__widget-toolbar--space-x;
+        width: auto;
+    }
+    /* Body / Panel */
+    .widget_cnt {
+    //    border: 2px dotted #354156;
+        background: $admin-defaults__widget-container--bg-color;
+        border-left: $admin-defaults__widget-container--border;
+        border-right: $admin-defaults__widget-container--border;
+        border-bottom: $admin-defaults__widget-container--border;
+        position: absolute;
+        height: auto !important;
+        top: $admin-defaults__widget-panel--top;
+        left: $admin-defaults__widget-container--space-x;
+        right: $admin-defaults__widget-container--space-x;
+        bottom: $admin-defaults__widget-container--space-y;
+        overflow: auto;
+        min-height: 50px;
+
+        &.widget_children {
+            width: auto !important;
+        }
+    }
+
+    .widget_body {
+        min-height: $admin-defaults__widget-body--margin-top;
+        overflow: visible;
+        top: $admin-defaults__widget-body--top;
+        bottom: $admin-defaults__widget-body--bottom;
+        left: $admin-defaults__widget-body--space-x;
+        right: $admin-defaults__widget-body--space-x;
+        overflow: visible;
+        position: absolute;
+        height: auto !important;
+        width: auto !important;
+        background: $admin-defaults__widget-body--bg-color;
+    }
+
+    .z-portalchildren-content .widgetPanel:first-child {
+        margin-top: 25px;
+    }
+    .widgetPanel {
+        margin-top: $admin-defaults__widget-panel--margin-top;
+
+        .z-panel-header {
+            visibility: hidden;
+        }
+        &.z-panel-collapsed .z-panel-header {
+            visibility: visible;
+        }
+        &:hover .z-panel-header {
+            visibility: visible;
+        }
+        > .z-panel-body > .z-panelchildren > .widget_cnt {
+            &, > .widget_body  {
+                margin: 0 !important;
+                top: 0;
+                left: 0;
+                position: relative;
+            }
+        }
+    }
+    .z-panelchildren > .widget_cnt {
+        position: relative;
+        border: none;
+    }
+    .defaultPortalWidget .widgetPanel {
+        margin: 0 $admin-defaults__widget-container--space-x 2px;
+    }
+    .singleWidget {
+        top: 0;
+    }
+    .widget_toolbar.singleWidget {
+        left: 0;
+        right: 0;
+        background: url("images/widget_header_background.png") repeat-x scroll 0 0 #B0D7FF;
+        border-left: 1px solid #7F8594;
+        border-right: 1px solid #7F8594;
+    }
+    .createWidgetBtn, .symbolicCheck {
+        display: block;
+    }
+    .widgetPlaceholder .singleWidget {
+        top: 0;
+    }
+    &.z-window-embedded .z-window-content > .mainWidgetSlot {
+        top: 60px !important;
+
+    }
+}
+
+.cng-chooseSlot {
+    &-btn-cnt {
+        padding: 5px;
+        background: #EEE;
+        border-top: 1px solid #BBB
+    }
+    &-listbox {
+        margin: 5px;
+    }
+}
+
+.cng-connectionsVisible {
+    .cng-adminmode .widget_toolbar .toolbarComponent,
+    .cng-addChildWidgetSymbolic {
+        display: none;
+    }
+    .mainWidgetSlot {
+        opacity: 0.7;
+    }
+    .cng-adminmode-symbolic.cng-adminmode .stubContainerButton,
+    .z-button.stub_toggle_btn{
+        visibility: hidden;
+    }
+}
+
+.createWidgetBtn, 
+.symbolicCheck {
+    display: none;
+    // top: 2px;
+    // left: 8px;
+}
+
+.symbolicCheck .z-checkbox-content,
+.cng_admin_outset, 
+.cng_admin_roleselectorlabel {
+    color: $white;
+}
+
+.cng_admin_roleselectorlabel {
+    display: block;
+    float: left;
+    margin-top: 14px;
+}
+
+.ycon {
+    width: $admin-defaults__toolbar-button--size;
+    height: $admin-defaults__toolbar-button--size;
+    background: url("images/headline_icon.svg") no-repeat center;
+    cursor: pointer;
+    margin-left: $admin-defaults__toolbar-button--margin-left;
+    
+    &-container{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+
+        &:before {
+            content: "";
+            display: block;
+            border-left: $admin-defaults__mainToolbar-separator--border-left;
+            height: $admin-defaults__toolbar-delimiter--height;
+        }
+    }
+    .mainToolbar & {
+        border-radius: $admin-defaults__toolbar-button--border-radius;
+        margin-right: 0;
+        overflow: hidden;
+        position: relative;
+            
+        &-container span[style*="display: none"] + .ycon,
+        &:hover, &:focus, &:active {
+            background-color: $admin-defaults__toolbar-button-hover--bg-color;
+        }
+    }
+    &-menupopup {
+        &.yw-pointer-menupopup {
+            background-color: transparent;
+            border: none;
+
+            .z-menupopup-content {
+                border-radius: $admin-defaults__popup-menu-content--border-radius;
+                padding: $admin-defaults__popup-menu-content--padding;
+                background-color: $admin-defaults__popup-menu-content--bg-color;
+                box-shadow: $admin-defaults__popup-menu-content--box-shadow;
+
+                a.z-menuitem-content {
+                    &,
+                    &:hover {
+                        color: $admin-defaults__popup-menu-item--color;
+                    }
+                }
+            }
+            .z-menuseparator {
+                border-color: $admin-defaults__popup-menu-separator--border-color;
+                margin: $admin-defaults__popup-menu-separator--margin;
+                min-height: $admin-defaults__popup-menu-separator--min-height;
+                height: auto;
+                background-color: transparent;
+            }
+            .z-menuitem {
+                border-top-width: 0;
+                box-sizing: border-box;
+            }
+        }
+        &.yw-pointer-menupopup-top-right {
+            padding-top: $admin-defaults__popup-menu--padding-top;
+
+            &:before,
+            &:after {
+                right: $admin-defaults__popup-menu-pointer--right;
+                margin-top: $admin-defaults__popup-menu-pointer--margin-top;
+            }
+        }
+    }
+}
+
+.connectorTitle {
+    font-weight: bold;
+    margin-top: 4px;
+    display: block;
+}
+
+.widgetCell .z-panel-header {
+    margin: 2px;
+    padding: 5px;
+    border: 1px solid #bbb;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    -moz-border-radius:5px;
+}
+
+.cng-advancedInfo {
+    margin-top: 20px;
+
+    &-row {
+        margin-top: 7px;
+        .z-label {
+            margin-left: 10px;
+            display: block;
+
+            &:first-child {
+                margin-left: 3px;
+                color: #888;
+            }
+        }
+    }
+}
+
+.widgetCell .widgetName .code {
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-right: 0;
+    color: #333;
+}
+
+.chooseWidgetLabel {
+    line-height: 27px;
+    margin-left: 5px;
+}
+
+.widgetPlaceholder {
+    min-height: 80px;
+    border: 1px dotted #A1D4F3;
+    margin: 30px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    position: relative;
+    width: 200px;
+    left: 220px;
+    background: #516483;
+    border-radius:5px;
+}
+
+.barDiv {
+    .z-label {
+        display: none;
+        color:  #A1D4F3;
+        bottom: 5px;
+        left: 4px;
+        position: absolute;
+    }
+    .showSlotIDs & .z-label {
+        background: none repeat scroll 0 0 #222222;
+        border: 1px solid;
+        display: inline;
+        padding: 2px;
+    }
+    .widgetPlaceholder & {
+        position:absolute;
+        height: 2px;
+        width: 60px;
+        right: 200px;
+        background:  #A1D4F3;
+        top: 50%;
+        text-align: center;
+        z-index: 1000;
+    }
+}
+
+.mainToolbar {
+    position: fixed;
+    top: $admin-defaults__mainToolbar--space-y;
+    padding-left: $admin-defaults__mainToolbar--space-x;
+    padding-right: $admin-defaults__mainToolbar--space-x;
+    left: 0;
+    right: 0;
+    display: none;
+    height: $admin-defaults__mainToolbar--height;
+    min-height: $admin-defaults__mainToolbar--min-height;
+    z-index: 1000;
+    @include _addBarHeaderBackground();
+
+    &_inner {
+        position: relative;
+        float: right;
+        margin-bottom: $admin-defaults__mainToolbar-inner--margin-bottom;
+    }
+    &TopCover {
+        position: absolute;
+        width: 100%;
+        top: $admin-defaults__mainToolbar-topCover--top;
+        left: $admin-defaults__mainToolbar-topCover--left;
+        right: $admin-defaults__mainToolbar-topCover--right;
+        height: $admin-defaults__mainToolbar-topCover--height;
+        background: $admin-defaults__mainToolbar-topCover--bg-color;
+    }
+    &_table td {
+        border-left: $admin-defaults__mainToolbar-td-element--border-width solid $admin-defaults__mainToolbar-td-element--border-color;
+
+        &.z-hbox-separator {
+            border-left: $admin-defaults__mainToolbar-separator--border-left;
+            border-right: $admin-defaults__mainToolbar-separator--border-right;
+            width: $admin-defaults__mainToolbar-separator--width;
+        }
+        &:first-child {
+            border-left-width: 0;
+        }
+    }
+
+    &_table {
+        &.z-div {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        &.z-hbox {
+            table {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                > tbody {
+                    display: block;
+                    > tr {
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-align: center;
+                        -ms-flex-align: center;
+                        align-items: center;
+
+                        > td {
+                            display: block;
+                            border-left: none;
+
+                            &.z-hbox-separator {
+                                min-height: $admin-defaults__toolbar-delimiter--height;
+                                border-left: $admin-defaults__mainToolbar-separator--border-left;
+                            }
+                            > .z-div,
+                            > .z-span,
+                            > .z-button,
+                            > .z-checkbox {
+                                &:first-child{
+                                    margin-top: 0;
+                                }
+                            }
+                            > .z-checkbox {
+                                min-height: $admin-defaults__toolbar-checkbox--min-height;
+                            }
+                        }
+                    }
+                }
+                .roleselector {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    padding: $admin-defaults__toolbar-roleselector--padding;
+                    margin-right: $admin-defaults__toolbar-roleselector--margin-right;
+                    
+                    .z-combobox,
+                    .z-label {
+                         margin-top: 0;
+                    }
+                    > .z-label {
+                        margin-right: $admin-defaults__toolbar-roleselector-label--margin-right;
+                    }
+                    .z-combobox {
+                        margin-left: 0;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                        .edge & {
+                            display: flex;
+                            min-width: $admin-defaults__toolbar-roleselector-combobox--min-width;
+
+                            &-input {
+                                flex: 1 1 auto;
+                                min-width: 0;
+                                width: 100%;
+                                display: block;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                border-right-width: 0;
+                                max-width: calc(100% - #{$admin-defaults__toolbar-roleselector-combobox-btn--min-width});
+                                text-overflow: ellipsis;
+                            }
+                            &-button {
+                                flex: 0;
+                                display: block;
+                                padding: $admin-defaults__toolbar-roleselector-combobox-btn--padding;
+                                min-width: $admin-defaults__toolbar-roleselector-combobox-btn--min-width;
+                                min-height: $admin-defaults__toolbar-roleselector-combobox-btn--min-height;
+                                border-left-width: 0;
+                            }
+                        }
+                    }
+
+                }
+                .roleselector,
+                .rolepreview {
+                    margin-top: 0;
+                    margin-right: $admin-defaults__toolbar-roleselector--margin-right;
+                    min-width: $admin-defaults__toolbar-roleselector--min-width;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+                .rolepreview {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+
+                    > * {
+                        -webkit-box-flex: auto;
+                        -ms-flex: auto;
+                        flex: auto;
+                    }
+                }
+            }
+        }
+        &-cell {
+            &.z-div {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center; 
+            }
+        }
+    }
+    .cng-adminmode & {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+        .mainToolbar_inner {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+        }
+        .mainToolbar_table {
+            float: right;
+            max-width: 100%;
+        }
+        .yw-logoContainer {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            margin-right: $admin-defaults__mainToolbar-logo--margin-right;
+        }
+    }
+}
+
+.cng-connectionsToolbar {
+    clear: both;
+    padding: $admin-defaults__toolbar-connections-default--padding;
+    @include _addBarHeaderBackground();
+    
+    .z-toolbarbutton {
+        &:hover .z-toolbarbutton-content {
+            color: black;
+        }
+        &-content {
+            color: white;
+        }
+    }
+    .mainToolbar & {
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: 0;
+        padding-bottom: 0;
+        right: 0;
+        background: transparent;
+        position: absolute;
+        bottom: 0;
+        transform: translate3d(0, 100%, 0);
+        max-width: 100%;
+
+        > .z-hlayout {
+            @include _addBarHeaderBackground();
+            padding: $admin-defaults__toolbar-connections--padding;
+            
+            @media (min-width: $admin-defaults__toolbar--bp-s){
+                margin-right: $admin-defaults__toolbar-connections-bp-s--margin-right;
+
+                > .z-hlayout-inner {
+                    margin-right: $admin-defaults__toolbar-connections-box-bp-s--margin-right;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+            @media (max-width: $admin-defaults__toolbar--bp-xs){
+                padding: $admin-defaults__toolbar-connections-bp-xs--padding;
+            }
+        }
+    }
+}
+
+.mainToolbar label,
+.widgetClipboard .z-caption-content {
+    font-size: $admin-defaults__mainToolbar-label--font-size;
+    color: $admin-defaults__mainToolbar-label--color;
+    padding: 0px;
+}
+
+.widget {
+    &_label {
+        color: #354156;
+        margin: $admin-defaults__main-widget-label--margin;
+        display: block;
+        cursor: pointer;
+        
+        &.z-drag-ghost {
+            display: block;
+            background: #516483;
+            opacity: 0.8;
+            padding: 5px;
+        }
+    }
+    &_toolbar {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        display: none;
+        z-index: 1000;
+        right: 0;
+        height: 23px;
+        background: url("images/slot_header_background.jpg") repeat-x scroll 0 0 transparent;
+        border-left: 1px solid #4a5c7d;
+        border-right: 1px solid #4a5c7d;
+        
+        &.z-drag:hover {
+            background: #ccc;
+        }
+    }
+}
+
+.widgetSlot_label {
+    color: #E0E0E0;
+    margin: $admin-defaults__main-widget-label--margin;
+    display: block;
+}
+
+.connectionPopupWindowCnt {
+    position: absolute;
+    top: 25px;
+}
+.connectionAnchor {
+    width: 15px;
+    height: 25px;
+    position: relative;
+}
+.connectionBar {
+    background: pink;
+    
+    &:hover, 
+    &:hover &,
+    .connectionContainer:hover & {
+        top: -2px;
+        background: #0059B8;
+    }
+    .connectionContainer > &:hover,
+    .connectionContainer:hover > & {
+        border-top: 2px solid #0059B8;
+        border-bottom: 2px solid #0059B8;
+        top: -3px;
+    }
+    &:hover,
+    .connectionContainer:hover & {
+        .connectionBar {
+            border: none;
+            border-left: 2px solid #0059B8;
+            border-right: 2px solid #0059B8;
+        }
+        .rightAligned {
+            left: -3px !important;
+        }
+        .endPoint,
+        .endPoint2 {
+            background: #0059B8;
+        }
+    }
+    .endPoint,
+    .endPoint2 {
+        position: absolute;
+        background: pink;
+        width: 7px;
+        height: 7px;
+    }
+    .endPoint {
+        left: 0;
+    }
+    .endPoint2 {
+        left: -4px;
+    }
+    .endPoint.bottomAligned,
+    .endPoint2.topAligned {
+        border-bottom-right-radius: 150px;
+        border-top-left-radius: 150px;
+    }
+    .endPoint.topAligned,
+    .endPoint2.bottomAligned {
+        border-bottom-left-radius: 150px;
+        border-top-right-radius: 150px;
+    }
+    .bottomAligned {
+        bottom: 0;
+    }
+    .topAligned {
+        top: 0;
+    }
+}
+.connectionContainer {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    top: 5px;
+    border: 5px solid pink;
+    background: pink;
+    left: 3px;
+    border-radius: 5px;
+
+    &:hover {
+        border: 7px solid #0059B8;
+        background: #0059B8;
+        top: 4px;
+        left: 1px;
+    }
+    > .connectionBar {
+        top: -1px;
+    }
+}
+
+.leftAligned.zeroHeight {
+    @include _addAlignedZeroHeightEndPoints (-7px, -3px);
+}
+
+.rightAligned.zeroHeight {
+    @include _addAlignedZeroHeightEndPoints (-3px, -7px);
+}
+.connectionLabel {
+    display: none;
+    position: absolute;
+    left: 30px;
+    bottom: 5px;
+    color: #4099F8;
+    border: 1px solid #0059B8;
+    background: #222;
+    padding: 3px;
+    white-space: nowrap;
+
+    &.vertical {
+        left: 4px;
+        top: 40%;
+        bottom: auto;
+    }
+    .connectionBar:hover &,
+    .connectionContainer:hover & {
+        display: block;
+    }
+}
+
+.connectionPopup {
+    overflow:visible;
+
+    .z-window-overlapped.z-window-noborder .z-window-content{
+        background: transparent;
+        overflow: visible;
+    }
+    .z-popup-cl,
+    .z-popup-cr,
+    .z-popup-cm {
+        background: none;
+    }
+}
+
+.toolbarComp {
+
+    &.z-combobox {
+        display: inline-table;
+        max-width: 130px;
+        width: auto;
+    }
+    &.cng-widget-clipboard {
+        position: relative;
+
+        .cng-widget-clipboard-dropdown {
+            height: auto !important;
+            max-height: $admin-defaults__toolbar-clipboard-dropdown--max-height;
+            background: $admin-defaults__toolbar-clipboard-dropdown--bg-color;
+        }
+    }
+    .mainToolbar &.z-combobox {
+        margin-top: 5px;
+    }
+    .mainToolbar_table & {
+        margin-right: 6px;
+        margin-left: 6px;
+    }
+}
+
+.invisibleWidgetChildren {
+    .invisibleChildrenVisible > & {
+        z-index: 1;
+    }
+    .cng-adminmode & {
+        display: block;
+        position: relative;
+        margin: 40px 5px 5px 5px;
+        height: 150px;
+    }
+    .cng-adminmode.cng-adminmode-symbolic & {
+        display: none;
+    }
+    > .widget_cnt {
+        > .widget_toolbar {
+            background: yellow;
+            border: none;
+        }
+        > div > .widget_cnt > .widget_body > .widget_toolbar {
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        &.widget_children {
+            border: 2px dotted yellow;
+            top: 0;
+        }
+    }
+    .z-label {
+        color: #4B5366;
+    }
+}
+
+.cng-adminmode .widget_children_list > .widget_cnt {
+    position: relative;
+    margin: 5px;
+    left: 0;
+}
+.widget_children_list > .widget_cnt > .widget_body {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: relative;
+}
+.invisibleChildrenVisible > .widget_body {
+    top: 200px;
+}
+
+/* connWizard*/
+
+.widgetConnWizardLabel {
+    font-weight: bold;
+    display: block;
+    padding: 3px;
+}
+.widgetConnWizardLabelInfo {
+    display: block;
+    padding: 10px 0 10px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #043263;
+}
+.widgetConnWizardRemoveBtnContainer {
+     text-align: center;
+}
+.z-listbox.widgetConnWizardLB {
+    border: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.widgetConnWizardSouth {
+    border-top: 1px solid #bbb;
+}
+.widgetConnWizardWest {
+    border-right: 1px solid #bbb;
+}
+.widgetConnWizardListCnt {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.widgetConnWizardTree span.z-tree-line{
+    float: left;
+}
+
+.widgetConnWizardContainer {
+    .z-listcell-content > .z-panel-header,
+    .z-treecell-content > .z-panel-header{
+        background: none;
+        border: none;
+    }
+    tr.z-listitem-selected{
+        background: #085abc;
+
+        &:hover{
+            background: #094388;
+        }
+    }
+    
+    .z-treerow-selected .z-panel-header,
+    .z-treerow-selected .z-panel-header .widgetName > .z-label ,
+    .z-listitem-selected .z-panel-header,
+    .z-listitem-selected .z-panel-header .widgetName > .z-label ,
+    .z-listitem-selected:hover .z-panel-header{
+        color: #fff;
+    }
+    tr.z-listitem:hover > td.z-listcell,
+    tr.z-listitem > td.z-listcell{
+        border-left: none;
+        border-right: none;
+    }
+    .z-panel-header{
+        color: #555555;
+    }
+    tr.z-listgroup {
+        background: #6f7c91;
+
+        td.z-listgroup-inner{
+            border: 1px solid #6f7c91;
+        }
+    }
+    
+    td.z-listgroup-inner div.z-listcell-content{
+        color: #fff;
+    }
+    div.z-listbox-header tr.z-listhead{
+        background: #6f7c91;
+    }
+    div.z-tree-body {
+        td.z-treecell {
+            border-bottom: 1px solid #D3D9DF;
+        }
+        tr:last-child td.z-treecell{
+            border: none;
+        }
+    }
+    tr.z-treerow:hover {
+        background: #e8e8e8;
+    }
+    span.z-tree-root-open,
+    span.z-tree-tee-open,
+    span.z-tree-last-open,
+    span.z-tree-root-close,
+    span.z-tree-tee-close,
+    span.z-tree-last-close{
+        background-image: url(images/icon_arrows_toggle_sprite.png);
+    }
+}
+
+.typeLabelComponent {
+    margin-left: 5px;
+}
+
+.widgetClipboard {
+    overflow: visible;
+    border: none;
+
+    &.z-drag:hover {
+        border: 1px solid yellow;
+        top: -1px;
+        left: -1px;
+        position: relative;
+    }
+    &.z-groupbox-3d .z-groupbox-header {
+        background: none repeat scroll 0 0 transparent;
+        border: medium none;
+        padding: $admin-defaults__toolbar-clipboard-label--padding;
+        position: relative;
+        min-height: $admin-defaults__toolbar-clipboard-header--min-height;
+        &,
+        .z-caption,
+        .z-caption-content{
+            line-height: $admin-defaults__toolbar-clipboard-label--line-height;
+            font-weight: normal;
+        }
+        .z-caption {
+            min-height: $admin-defaults__toolbar-clipboard-label--min-height;
+            display: block;
+            width: auto;
+            max-width: 100%;
+        }
+        &:before {
+            content: "";
+            width: $admin-defaults__toolbar-clipboard-icon--size;
+            height: $admin-defaults__toolbar-clipboard-icon--size;
+            background: url("images/icon_clipboard.svg") no-repeat center;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate3d(0, -50%, 0);
+        }
+    }
+    > .z-groupbox-content {
+        height: auto;
+        position: absolute;
+        left: -8px;
+        width: 180px;
+        border: 0 none !important;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.75);
+
+        > .z-div {
+            border: 0 none !important;
+        }
+    }
+    .clipboardEntry {
+        cursor: pointer;
+        margin: 0;
+        position: relative;
+        border-bottom: 1px solid #dadee4 !important;
+        color: #6f7d90;
+        padding: 10px;
+        background-color: #FFFFFF;
+
+        .z-label {
+            display: block;
+        }
+    }
+}
+.settingsContent {
+    overflow-y: auto;
+    width: 100%;
+    height: 350px;
+    min-width: 300px;
+    //check if this shouln't rather be
+    //.z-textbox, .stringSetting
+    .z-textbox .settingsContent .stringSetting {
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .integerSetting .z-spinner-input,
+    .doubleSetting .z-doublespinner-input{
+        width:110px;
+    }
+}
+
+.settingsBottomCnt {
+    text-align: right;
+    padding: 3px;
+}
+
+.settingsRow {
+/*    border-bottom: 1px solid #eee; */
+    .z-label {
+        max-width: 130px;
+        display: block;
+    }
+}
+
+.z-window-modal.z-window-content, .z-window-highlighted.z-window-content, .z-window-overlapped.z-window-content {
+    padding: 0;
+}
+
+.widgetFallbackImg {
+    background: url("images/favicon_default.gif");
+    width: 34px;
+    height: 34px;
+
+    div {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+div.z-listbox-body {
+    .y-iconcell {
+        width: 22px;
+    }
+    .y-removeBtn {
+        width: 30px;
+    }
+    .y-iconcell {
+        padding: 0 0 0 7px;
+    }
+}
+.y-removeBtn .z-toolbarbutton-content {
+    height: 12px;
+}
+//check if possible to shorten to .roleIndicatorOverlay
+div.roleIndicatorOverlay {
+    border-radius: 1px;
+    box-shadow: 0px 0px 5px #000000;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    background: #303e58;
+    z-index: 9000;
+    opacity: 0.7;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+
+.roleIndicatorOverlay td {
+    vertical-align: middle;
+
+    &.z-hbox-separator{
+        background-color: #455269;
+        width: 1px;
+        border-left: 1px solid #263246;
+    }
+}
+
+.rolepreview,
+.roleselector{
+    float: left;
+    padding: 1px 0 0;
+}
+
+.rolepreview,
+.symbolicCheck{
+    padding-right: 10px;
+}
+
+.cng_admin_outset_outer{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+
+/* zk7-revised */
+.cng_admin_slider.z-slider-horizontal{
+    height: $admin-defaults__toolbar-slider--height;
+    margin-top: $admin-defaults__toolbar-slider--margin-top;
+    padding: 0px;
+
+    .mainToolbar & {
+        .z-slider-center {
+            height: $admin-defaults__toolbar-slider-center--height;
+            border-radius: $admin-defaults__toolbar-slider-center--border-radius;
+            position: relative;
+            background: transparent;
+            &:before {
+                content: "";
+                z-index: -1;
+                position: absolute;
+                left: $admin-defaults__toolbar-slider-center--left;
+                right: 0;
+                height: $admin-defaults__toolbar-slider-center--height;
+                background-color: $admin-defaults__toolbar-slider-center--bg-color;
+                border-radius: $admin-defaults__toolbar-slider-center--border-radius;
+            }
+        }
+        .z-slider-button {
+            height: $admin-defaults__toolbar-slider-button--size;
+            width: $admin-defaults__toolbar-slider-button--size;
+            border-radius: $admin-defaults__toolbar-slider-button--border-radius;
+            background-color: $admin-defaults__toolbar-slider-button--bg-color;
+        }
+        .z-slider-area {
+            height: $admin-defaults__toolbar-slider-area--height;
+            border-radius: $admin-defaults__toolbar-slider-area--border-radius;
+            background-color: $admin-defaults__toolbar-slider-area--bg-color;
+        }
+    }
+}
+.enablePreviewImg {
+    background: url("images/icon_func_admin_rolepreview_default.png");
+    width: 18px;
+    height: 12px;
+    display: inline-block;
+
+    .mainToolbar & {
+        background: url("images/icon_func_admin_rolepreview_default.svg") no-repeat center;
+        width: 16px;
+        height: 12px;
+    }
+}
+.stopImpersonationPreview {
+    background: url("images/icon_func_admin_rolepreview_disable.png");
+    width: 37px;
+    height: 26px;
+}
+.roleIndicatorLabel {
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: normal;
+}
+.roleindicatorComp {
+    margin: 10px 10px 10px 10px;
+}
+.widgetName .inOutLabel.z-label {
+    float: right;
+    margin-right: 5px;
+    font-size: .8em;
+}
+.widgetConnWizardLB .z-listbox-body, .widgetConnWizardLB .z-listbox-body > table {
+    width: 100% !important;
+}

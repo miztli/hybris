@@ -1,0 +1,15 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+INSERT_UPDATE AsSearchProfileActivationSet ; indexType[unique=true] ; catalogVersion(catalog(id),version)[unique=true]
+                                           ; powertoolsProductType  ; powertoolsProductCatalog:Staged                 
+
+INSERT_UPDATE AsCategoryAwareSearchProfile ; code[unique=true] ; name[lang=en]                         ; indexType[unique=true] ; catalogVersion(catalog(id),version)[unique=true] ; activationSet(catalogVersion(catalog(id),version),indexType) ; activationSetPOS
+                                           ; defaultPowertools ; Default Search Profile for powertools ; powertoolsProductType  ; powertoolsProductCatalog:Staged                  ; powertoolsProductCatalog:Staged:powertoolsProductType        ; 0               

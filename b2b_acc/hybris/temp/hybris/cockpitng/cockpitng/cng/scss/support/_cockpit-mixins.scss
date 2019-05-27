@@ -1,0 +1,148 @@
+@import "_cockpit-variables.scss";
+
+//    Mixins
+//================================
+
+@mixin _colored-background-border ($color, $bg-color) {
+    background: $bg-color;
+    border: $editor-defaults__input-field--border-width solid $color;
+}
+
+@mixin _text-selection-part ($selected-bg-color, $selected-color){
+    @if $selected-bg-color {
+        background-color: $selected-bg-color;
+    }
+    @if $selected-color != "default" {
+        color: $selected-color;
+    }
+}
+
+@mixin _text-selection ($bg-color:"default", $color:"default") {
+    &::selection {
+        @include _text-selection-part($bg-color, $color);
+    }
+    &::-moz-selection {
+        @include _text-selection-part($bg-color, $color);
+    }
+}
+
+@mixin _opacity ($opacity) {
+    $opacity-ie: $opacity * 100;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity-ie})";
+    filter: alpha(opacity=$opacity-ie);
+    -moz-opacity: $opacity;
+    -khtml-opacity: $opacity;
+    opacity: $opacity;
+}
+
+@mixin _bg-shadow-coloring ($bg-color, $percentage:10%, $shadow:false) {
+    background-color: $bg-color;
+    @if $shadow {
+        box-shadow: $shadow;
+    } @else {
+        box-shadow: 0 2px 0 darken($bg-color, $percentage);
+    }
+}
+
+@mixin _prefixed ($type, $value) {
+    -webkit-#{$type}: $value;
+    -moz-#{$type}: $value;
+    -ms-#{$type}: $value;
+    #{$type}: $value;
+}
+
+@mixin _no-user-select () {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin _add-error-notification-box-side-directional-pointers ($direction:left, 
+    $color-inner: $notification-box-defaults__box--bg-color, 
+    $color-outer: $notification-box-defaults__box--border-color, 
+    $pointer-size: $notification-box-defaults__side-pointer--size, $pointer-border-width: $notification-box-defaults__box--border-width){
+    $border-direction: right;
+    @if $direction != left {
+        $border-direction: left;
+        $direction: right;
+    }
+    &-#{$direction} {
+        #{$direction}: 0 !important;
+        
+        &:before {
+            border-#{$border-direction}-color: $color-inner;
+            #{$direction}: -$pointer-size;
+        }
+        &:after {
+            border-#{$border-direction}-color: $color-outer;
+            #{$direction}: -($pointer-size + 2 * $pointer-border-width);
+        }
+    }
+}
+
+@mixin _add-primary-button-styles (){
+    color: $navigation-defaults__button-primary--color;
+    background-color: $navigation-defaults__button-primary--bg-color;
+
+    &:hover {
+        background-color: $navigation-defaults__button-primary--hover-bg-color;
+    }
+    &:focus {
+        background-color: $navigation-defaults__button-primary--focus-bg-color;
+    }
+    &:active {
+        color: $navigation-defaults__button-primary--active-color;
+        background-color: $navigation-defaults__button-primary--active-bg-color;
+        box-shadow: inset $editor-defaults__button--active-box-shadow-size $editor-defaults__button-primary--active-box-shadow-color;
+    }
+}
+
+@mixin _add-secondary-button-styles (){
+    color: $navigation-defaults__button-secondary--color;
+    background-color: $navigation-defaults__button-secondary--bg-color;
+
+    &:hover {
+        background-color: $navigation-defaults__button-secondary--hover-bg-color;
+    }
+    &:focus {
+        background-color: $navigation-defaults__button-secondary--focus-bg-color;
+    }
+    &:active {
+        color: $navigation-defaults__button-secondary--active-color;
+        background-color: $navigation-defaults__button-secondary--active-bg-color;
+    }
+}
+
+@mixin _validation-icon ($margin: 0){
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin: $margin;
+    background: url("images/icon_validation_sprite.png") no-repeat;
+}
+
+@mixin _pointingPopupDefaults ($z-index:false) {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border: $navigation-popup__pointer-menu-pointer-default--border-size solid transparent;
+    @if $z-index {
+        z-index: $z-index;
+    }
+}
+
+@mixin _add-modified-button-bg-position($bg-position-value, $modifier){
+    &#{$modifier} {
+        &,
+        &:hover,
+        &:focus,
+        &[disabled],
+        &[disabled]:hover {
+            background-position: $bg-position-value;
+        }
+    }
+}

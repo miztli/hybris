@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+	id="com.hybris.cockpitng.borderlayout">
+	<name>Border Layout</name>
+	<description>Border layout widget with north, south, west, east and center layout regions</description>
+	<defaultTitle>Border Layout</defaultTitle>
+	<author>hybris</author>
+	<version>0.1</version>
+
+	<sockets>
+		<input id="closeNorth" />
+		<input id="openNorth" />
+
+		<input id="closeWest" />
+		<input id="openWest" />
+
+		<input id="closeEast" />
+		<input id="openEast" />
+
+		<input id="closeSouth" />
+		<input id="openSouth" />
+
+		<output id="resized" type="java.util.Map"/>
+
+	</sockets>
+
+	<view src="borderlayout.zul" />
+	<controller
+		class="com.hybris.cockpitng.widgets.controller.BorderLayoutWidgetController" />
+
+	<settings>
+	    <setting key="opaqueBG" default-value="true" />
+
+		<setting key="westBorder" default-value="none" />
+		<setting key="centerBorder" default-value="none" />
+		<setting key="southBorder" default-value="none" />
+		<setting key="northBorder" default-value="none" />
+		<setting key="eastBorder" default-value="none" />
+		<setting key="border" default-value="none" />
+
+		<setting key="eastWidth" default-value="25%" />
+		<setting key="westWidth" default-value="300px" />
+
+		<setting key="northDisabled" type="java.lang.Boolean"
+			default-value="true" />
+		<setting key="southDisabled" type="java.lang.Boolean"
+			default-value="true" />
+		<setting key="westDisabled" type="java.lang.Boolean"
+			default-value="false" />
+		<setting key="eastDisabled" type="java.lang.Boolean"
+			default-value="false" />
+
+		<setting key="northClosed" type="java.lang.Boolean"
+					default-value="false" />
+		<setting key="southClosed" type="java.lang.Boolean"
+					default-value="false" />
+		<setting key="westClosed" type="java.lang.Boolean"
+					default-value="false" />
+		<setting key="eastClosed" type="java.lang.Boolean"
+					default-value="false" />
+
+		<setting key="northHeight" default-value="50px" />
+		<setting key="southHeight" default-value="50px" />
+
+		<setting key="northCollapsible" type="java.lang.Boolean" default-value="true" />
+		<setting key="southCollapsible" type="java.lang.Boolean" default-value="true" />
+		<setting key="eastCollapsible" type="java.lang.Boolean" default-value="true" />
+		<setting key="westCollapsible" type="java.lang.Boolean" default-value="true" />
+
+        <setting key="northSplittable" type="java.lang.Boolean" default-value="true" />
+        <setting key="southSplittable" type="java.lang.Boolean" default-value="true" />
+        <setting key="eastSplittable" type="java.lang.Boolean" default-value="true" />
+        <setting key="westSplittable" type="java.lang.Boolean" default-value="true" />
+
+		<setting key="broadcastHorizontalResize" type="java.lang.Boolean" default-value="true" />
+		<setting key="autoCloseWest" type="java.lang.Boolean" default-value="false" />
+		<setting key="widgetMold" type="ENUM(light,dark)" default-value="dark"/>
+	</settings>
+
+	<keywords>
+		<keyword>Layout</keyword>
+	</keywords>
+</widget-definition>

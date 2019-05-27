@@ -1,0 +1,34 @@
+@import "../support/_refineby-variables.scss";
+
+.yw-refineby {
+    .yw-colour-facet-box {
+        width: $refineby__colour-facet-box--width;
+        height: $refineby__colour-facet-box--height;
+        text-align: $refineby__colour-facet-box--text-align;
+        cursor: pointer;
+        margin: $refineby__colour-facet-box--margin;
+        background-color: $refineby__colour-facet-box--bg-color;
+        border: $refineby__colour-facet-box--border;
+        border-radius: $refineby__colour-facet-box--border-radius;
+        position: relative;
+        display: inline-block;
+        
+        &-selected {
+            border-color: $refineby__colour-facet-box-selected--border-color;
+
+            &:after {
+                color: $refineby__colour-facet-box-selected--color;
+                content: $refineby__colour-facet-box-selected--content;
+                text-shadow: $refineby__colour-facet-box-selected--text-shadow;
+                line-height: $refineby__colour-facet-box-selected--line-height;
+                font-family: $refineby__colour-facet-box-selected--font;
+                font-size: $refineby__colour-facet-box-selected--font-size;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        }
+    }
+}

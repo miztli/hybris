@@ -1,0 +1,41 @@
+@import "cockpitng-globals.scss";
+
+.yw-textsearch-single{
+	padding: 0 10px;
+    height: $editor-defaults__inline-box--height + 2px;
+    display: inline-table;
+
+    .yw-textsearch {
+        &-searchbox{
+            background-position: 3px 50%;
+            background-repeat: no-repeat;
+            display: inline-block;
+            font-size: $font-size__base;
+            line-height: $font-size__medium;
+            font-weight: 200;
+            padding-left: 5px;
+            float: left;
+            height: $editor-defaults__inline-box--height;
+            padding: 0 5px;
+            margin: 0;
+        }
+        .yw-buttons-container {
+            display: inline-block;
+            margin:0;
+            height: $editor-defaults__inline-box--height;
+        }
+    }
+    button.z-button {
+        margin-left: 0px;
+    }
+}
+
+body.safari {
+    .yw-textsearch-single{
+        .yw-textsearch {
+            &-searchbox{
+                height: $editor-defaults__inline-box--height - 2px;
+            }
+        }
+    }
+}

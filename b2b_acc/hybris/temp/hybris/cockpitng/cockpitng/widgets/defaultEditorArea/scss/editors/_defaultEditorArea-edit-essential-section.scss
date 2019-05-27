@@ -1,0 +1,69 @@
+/*================================
+    Editor-Area: Editing Essentials
+================================*/
+// Editor-related Essentials
+
+
+/* Spacer */
+.yw-loceditor-caption-spacer {
+    width: 100%;
+    height: $editor-area__loceditor-caption-spacer-height;
+}
+
+/* ESSENTIAL SECTION */
+.yw-editor-area {
+    &-main-content {
+        .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox {
+            &-essential {
+                .z-groupbox-header {
+                    border-top: none;
+                }
+                + .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox .z-groupbox-header {
+                    border-top: $editor-area__tabpanel-essentials-delimit-horizontal--border-width solid $editor-area__tabpanel-delimit-horizontal--border-color;
+                }
+            }
+            &-caption-essential {
+                .z-caption-content {
+                    font-weight: $editor-area__tabpanel-essentials-header-caption--font-weight;
+                }
+                &.z-caption {
+                    padding-top: $editor-area__tabpanel-essentials-header-caption--padding-top;
+                }
+            }
+        }
+    }
+    &-view-mode.z-combobox  {
+        display: inline-table;
+        max-width: $editor-area__tabpanel-groupbox-view-mode-combobox--max-width;
+    }
+    &-fluid .z-hbox {
+        float:left;
+        padding-left: $editor-area__tabpanel-groupbox-fluid-hbox--padding-left;
+    }
+}
+
+.yw-editorarea {
+    &-tabbox-tabpanels-tabpanel-groupbox-attrcell-label-mandatory-attribute {
+        font-weight: bold;
+    }
+    &-navi-container .widget_cnt {
+        float: left;
+    }
+}
+
+.yw-editorarea-navi-container, 
+.ye-cancel-container,
+.ye-save-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.yw-editorarea-empty, 
+.yw-collectionbrowser-empty {
+    font-size: $editor-area__defautl-content-empty--font-size;
+    color: $editor-area__defautl-content-empty--color;
+    font-style: $editor-area__defautl-content-empty--font-style;
+    padding: $editor-area__defautl-content-empty--padding;
+    text-align: center;
+    display:block;
+}

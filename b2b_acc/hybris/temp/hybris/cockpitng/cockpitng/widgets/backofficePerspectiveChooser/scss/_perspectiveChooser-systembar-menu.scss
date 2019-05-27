@@ -1,0 +1,160 @@
+/*================================
+    PerspectiveChooser Menu (Systembar)
+================================*/
+// Relevant Changes applied to the Perspective Chooser Menu
+
+
+@import "../../systemBarWidget/scss/support/_systembar-variables.scss";
+
+.yw-perspective-breadcrumb {
+  cursor: pointer;
+  float: left;
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  padding: $systembar__perspective-breadcrumb--padding;
+  margin-right: $systembar__perspective-breadcrumb--margin-right;
+  border-radius: $systembar__toolbar-button--border-radius;
+
+  .z-hlayout-inner + .z-hlayout-inner & {
+    border-left: $systembar__perspective-item--border;
+  }
+  .z-caption {
+    width: $systembar__perspective-caption--width;
+    display: inline-block;
+  }
+  .z-caption,
+  .z-icon-caret-down {
+    color: $systembar__perspective-breadcrumb-item--color;
+  }
+  &.yw-perspective-breadcrumb-expanded {
+    background: transparent;
+  }
+  .z-caption-content {
+    line-height: $systembar__perspective-breadcrumb-content--line-height;
+    font-size: $systembar__perspective-breadcrumb-content--font-size;
+    font-weight: $systembar__perspective-breadcrumb-content--font-weight;
+    padding: $systembar__perspective-breadcrumb-content--padding;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .z-caption-image {
+    margin-right: $systembar__perspective-item-image--margin-right;
+  }
+  .z-menu-icon {
+    display: inline-block;
+    position: $systembar__perspective-item-icon--position;
+    font-size: $systembar__perspective-item-icon--font-size;
+    line-height: $systembar__perspective-item-icon--line-height;
+    margin-left: $systembar__perspective-item-icon--margin-left;
+    color: $systembar__perspective-item-icon--color;
+    vertical-align: top;
+    &:before {
+      content: $systembar__perspective-item-icon--content;
+    }
+  }
+
+  @media (max-width: $systembar__default--bp-xs) {
+    .z-caption-content {
+      text-overflow: $systembar__perspective-breadcrumb-content-bp-s--text-overflow;
+      overflow: $systembar__perspective-breadcrumb-content-bp-s--overflow;
+      white-space: $systembar__perspective-breadcrumb-content-bp-s--white-space;
+      max-width: $systembar__perspective-breadcrumb-content-bp-xs--max-width;
+    }
+    .z-caption-image {
+      display: $systembar__perspective-item-image-bp-xs--display;
+    }
+    .z-menu-icon {
+      margin-left: $systembar__perspective-item-icon-bp-s--margin-left;
+    }
+  }
+}
+
+.yw-perspective-menu .z-menubar-horizontal {
+  background-color: transparent;
+
+  .yw-domain-node {
+    display: table-cell;
+    margin-right: 0;
+    margin-left: $systembar__perspective-menu-domain-node--margin-left;
+    
+    &:first-child {
+      margin-left: 0;
+    }
+    .z-menuitem-content {
+      background-color: $systembar__container--bg-color;
+      height: $systembar__container--height;
+      min-width: $systembar__container--height;
+      z-index: initial;
+      display: table-cell;
+      vertical-align: middle;
+      line-height: initial;
+      margin: auto 0;
+      text-align: center;
+      table-layout: fixed;
+      padding: 0;
+    }
+    .z-menuitem-content:hover,
+    &.yw-selectednode .z-menuitem-content {
+      background-color: $systembar__container-hover--bg-color;
+    }
+    .z-menuitem-text {
+      vertical-align: middle;
+    }
+    .z-menuitem-text:empty {
+      display: none;
+    }
+    .z-menuitem-image {
+      top: auto;
+    }
+  }
+}
+.yw-systemBarContainer_flexible {
+  .yw-perspectiveChooser {
+    flex: auto;
+    max-width: 100%;
+    overflow: hidden;
+
+    > .widget_body {
+      width: 100%;
+      overflow: hidden;
+      text-overflow: $systembar-flexible__perspective-breadcrumb-content--text-overflow;
+    }
+    .z-caption-content {
+      display: flex;
+      overflow: hidden;
+      text-overflow: $systembar-flexible__perspective-breadcrumb-content--text-overflow;
+
+      .z-caption-label {
+        flex: 1 1 auto;
+        overflow: hidden;
+        text-overflow: $systembar-flexible__perspective-breadcrumb-content--text-overflow;
+        display: inline-block;
+      }
+    }
+    .z-caption {
+      max-width: $systembar-flexible__perspective-breadcrumb-caption--max-width;
+      .ie & {
+        max-width: 100%;
+      }
+    }
+  }
+  .yw-perspective-menu > .z-hlayout-inner {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  @media (min-width: #{$systembar__default--bp-xs + 1px}) and (max-width: $systembar__default--bp-s){ 
+    .yw-perspective-breadcrumb {
+      .z-caption-content {
+          max-width: $systembar__perspective-breadcrumb-content-bp-s--max-width;
+      }
+      .z-caption-image {
+          display: none;
+      }
+    }
+  }
+  .yw-perspective-breadcrumb .z-caption-label {
+    min-width: $systembar-flexible__perspective-breadcrumg-caption-label--min-width;
+  }
+}

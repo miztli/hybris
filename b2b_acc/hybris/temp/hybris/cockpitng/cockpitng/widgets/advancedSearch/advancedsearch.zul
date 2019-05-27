@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		sclass="yw-advancedsearch">
+	<div id="nonCollapsibleCaptionContainer" sclass="yw-caption-container yw-noncollapsible-caption" visible="false"/>
+	<div id="topContainer" height="100%">
+		<radiogroup id="sortControlCnt" visible="false"/>
+		<div sclass="yw-active-attributes-grid-container">
+			<grid id="attributesGrid"  sclass="yw-active-attributes-grid" width="auto">
+				<columns sclass="yw-active-header">
+					<column label="${labels.attribute}" width="220px"/>
+					<column label="${labels.comparator}" width="160px"/>
+					<column label="${labels.fvalue}" width="320px"/>
+					<column id="sortOrderColumn" label="${labels.sort.order}" width="80px"/>
+					<column/>
+				</columns>
+				<rows sclass="yw-active-rows"/>
+			</grid>
+		</div>
+		<div id="facetContainer" sclass="yw-facet-container" visible="false"/>
+		<widgetslot slotID="nestedWidget" id="nestedWidget" vflex="1" width="100%" sclass="yw-nested-widget"/>
+	</div>
+</widget>

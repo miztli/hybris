@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=hi
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;कार्ट
+;customer;ग्राहक
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;कार्ट का कुल;कार्ट का कुल {परिचालक} {मूल्य}
+;y_qualifying_products;योग्य उत्पाद;कार्ट {products_operator} उत्पाद {उत्पाद}
+;y_qualifying_categories;योग्य श्रेणियां;कार्ट {categories_operator} श्रेणियां {श्रेणियां}
+;y_target_customers;लक्षित ग्राहक;लक्ष्य {customer_groups_operator} ग्राहक समूह {customer_groups} या ग्राहक {ग्राहक}
+;y_product_price;उत्पाद मूल्य थ्रेशोल्ड;उत्पाद मूल्य {ऑपरेटर} {मान}
+;y_customer_support;ग्राहक सहायता;सहायक सेवा सत्र सक्रिय है. {मान}
+;y_qualifying_group_types;योग्य समूह प्रकार;कार्ट प्रवेश समूह {ऑपरेटर} {समूह प्रकार}
+;y_orders;ऑर्डर या चार्ट;ऑर्डर या {ऑर्डर} में चार्ट
+;y_order_threshold_perfect_partner;ऑर्डर सीमा सटीक साझेदार;सटीक साझेदार उत्पाद {product} कार्ट में है और कार्ट में छूट प्राप्त मूल्य {is_discounted_price_included} के साथ कुल {cart_threshold} से अधिक शामिल है
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;ऑपरेटर;कार्ट के कुल मूल्य की तुलना करने हेतु ऑपरेटर
+;y_cart_total;value;कार्ट का कुल मूल्य;उपयोग किए जाने हेतु मुद्रा का मैप और कार्ट का कुल मूल्य
+;y_qualifying_products;operator;ऑपरेटर;योग्य उत्पादों हेतु आवश्यक मात्रा की तुलना करने हेतु ऑपरेटर
+;y_qualifying_products;quantity;प्रति ऑर्डर प्रविष्टि मात्रा;आवश्यक योग्य उत्पादों की मात्रा (प्रति ऑर्डर प्रविष्टि)
+;y_qualifying_products;products_operator;उत्पाद चयन ऑपरेटर;योग्य उत्पादों की सूची से कोई भी उत्पाद या सभी उत्पादों का चयन करें
+;y_qualifying_products;products;उत्पाद;योग्य उत्पादों की सूची
+;y_qualifying_products;catalog;कैटलॉग द्वारा फ़िल्टर का चयन करें;चयनित कैटलॉग मान संबद्ध फ़ील्ड के भीतर फॉल्टरिंग उद्देश्यों के लिए उपयोग किया जाएगा
+;y_qualifying_categories;operator;ऑपरेटर;योग्य श्रेणियों में उत्पादों के लिए आवश्यक मात्रा की तुलना करने हेतु ऑपरेटर
+;y_qualifying_categories;quantity;प्रति ऑर्डर प्रविष्टि मात्रा;योग्य श्रेणियों से आवश्यक उत्पादों की मात्रा (प्रति ऑर्डर प्रविष्टि)
+;y_qualifying_categories;categories_operator;कैटलॉग चयन ऑपरेटर;योग्य श्रेणियों की सूची से किसी एक श्रेणी या सभी श्रेणियों का चयन करें
+;y_qualifying_categories;categories;श्रेणियां;योग्य श्रेणियों की सूची
+;y_qualifying_categories;excluded_categories;अपवर्जित श्रेणियां;योग्य श्रेणियों से अपवर्जित किए जाने हेतु उप-श्रेणियों की सूची
+;y_qualifying_categories;excluded_products;अपवर्जित उत्पाद;अपवर्जित किए जाने हेतु योग्य श्रेणियों से उत्पादों की सूची
+;y_qualifying_categories;catalog;कैटलॉग द्वारा फ़िल्टर का चयन करें;चयनित कैटलॉग मान संबद्ध फ़ील्ड के भीतर फॉल्टरिंग उद्देश्यों के लिए उपयोग किया जाएगा
+;y_target_customers;customer_groups_operator;ग्राहक समूह चयन ऑपरेटर;ग्राहक को किसी एक या सभी ग्राहक समूहों का भाग होना चाहिए
+;y_target_customers;customer_groups;ग्राहक समूह;योग्य ग्राहक समूहों की सूची
+;y_target_customers;customers;ग्राहक;योग्य ग्राहकों की सूची
+;y_target_customers;excluded_customer_groups;अपवर्जित ग्राहक समूह;उप-समूहों की सूची जिन्हें योग्य ग्राहक समूहों से अपवर्जित किया जाना चाहिए
+;y_target_customers;excluded_customers;अपवर्जित ग्राहक;उन ग्राहकों की सूची जिन्हें योग्य ग्राहक समूहों से अपवर्जित किया जाना चाहिए
+;y_product_price;operator;ऑपरेटर;उत्पाद मूल्य की तुलना करने हेतु ऑपरेटर
+;y_product_price;value;मूल्य थ्रेशोल्ड;इस प्रचार के लिए योग्य होने हेतु उपयोग करने के लिए उत्पादों का थ्रेशोल्ड मूल्य और मुद्रा मैप
+;y_customer_support;value;सहायता सेवा सत्र सक्रिय;यदि कोई ग्राहक सहायता एजेंट स्टोरफ्रंट पर या उसके बिना भई ग्राहक की सहायता करता है तो उसके आधार पर प्रचार सक्षम करें
+;y_qualifying_group_types;operator;ऑपरेटर;समूह प्रकार चयन ऑपरेटर
+;y_qualifying_group_types;groupTypes;समूह प्रकार;योग्य समूह प्रकारों की सूची
+;y_order_threshold_perfect_partner;catalog;कैटलॉग द्वारा फ़िल्टर का चयन करें;चयनित कैटलॉग मान संबद्ध फ़ील्ड के भीतर फॉल्टरिंग उद्देश्यों के लिए उपयोग किया जाएगा
+;y_order_threshold_perfect_partner;product;सटीक साझेदार उत्पाद;सटीक साझेदार उत्पाद छूट के साथ उपलब्ध है
+;y_order_threshold_perfect_partner;cart_threshold;कार्ट कुल थ्रेशोल्ड मान;इस प्रचार के लिए योग्य होने हेतु आवश्यक कुल ऑर्डर लागत. प्रत्येक मुद्रा का मान भिन्न होता है, तथा इस ऑर्डर हेतु योग्य होने के लिए मुद्राओं का मान उल्लेखित होना आवश्यक है.
+;y_order_threshold_perfect_partner;is_discounted_price_included;कुल राशि की गणना करते समय छूट वाली कीमतें सम्मिलित करें;सीमा मूल्य से तुलना करते समय कुल ऑर्डर लागत में साझेदार उत्पाद के छूट मूल्य को सम्मिलित करें.
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;कार्ट छूट
+;product_discounts;उत्पाद छूट
+;partner_product_discounts;भागीदार उत्पाद छूट
+;shipping;भेजा जा रहा है
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;कार्ट पर छूट प्रतिशत;कुल कार्ट {मूल्य,संख्या,प्रतिशत*1} पर छूट लागू करें;
+;y_order_fixed_discount;कार्ट पर नियत छूट;कुल कार्ट {मूल्य} पर छूट लागू करें;
+;y_order_entry_percentage_discount;उत्पादों पर छूट प्रतिशत;योग्य उत्पादों पर {मूल्य,संख्या, प्रतिशत*1} छूट लागू करें;
+;y_order_entry_fixed_discount;उत्पागों पर नियत छूट;योग्य उत्पादों पर {मूल्य} छूट लागू करें;
+;y_order_entry_fixed_price;उत्पादों पर लक्षित नियत मूल्य;योग्य उत्पादों पर लक्ष्य मूल्य (मूल्य) लागू करें;
+;y_target_bundle_price;लक्ष्य बंडल मूल्य;बंडल पर लक्ष्य मूल्य {मूल्य} लागू करें;
+;y_free_gift;निःशुल्क गिफ़्ट;निःशुल्क {मात्रा} {उत्पाद} उत्पाद दें;
+;y_partner_order_entry_percentage_discount;भागीदार उत्पादों पर छूट प्रतिशत;भागीदार उत्पादों पर {मूल्य,संख्या,प्रतिशत*1} छूट लागू करें;
+;y_partner_order_entry_fixed_discount;भागीदार उत्पादों पर नियत छूट;भागीदार उत्पादों पर {मूल्य} छूट लागू करें;
+;y_partner_order_entry_fixed_price;भागीदार उत्पादों पर लक्षित नियत मूल्य;भागीदार उत्पादों पर लक्षित मूल्य {मूल्य} लागू करें;
+;y_change_delivery_mode;वितरण मोड बदलें;वितरण मोड को {delivery_mode} में बदलें;
+;y_trigger_message;ट्रिगर नियम संदेश;नियम हेतु संदेश प्रदर्शित करें;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;छूट प्रतिशत मूल्य;कार्ट कुल पर लागू किया जाने वाला छूट प्रतिशत
+;y_order_fixed_discount;value;निरपेक्ष छूट मूल्य;कार्ट कुल पर लागू की जाने वाली निरपेक्ष छूट और मैप मुद्रा
+;y_order_entry_percentage_discount;value;छूट प्रतिशत मूल्य;योग्य उत्पादों पर लागू किया जाने वाला छूट प्रतिशत
+;y_order_entry_fixed_discount;value;निरपेक्ष छूट मूल्य;योग्य उत्पादों पर लागू किया जाने वाला निरपेक्ष छूट मूल्य और मैप मुद्रा
+;y_order_entry_fixed_price;value;लक्षित नियत मूल्य;योग्य उत्पादों पर लागू किया जाने वाला लक्षित मूल्य और मैप मुद्रा
+;y_target_bundle_price;value;लक्ष्य बंडल मूल्य;बंडल पर लागू किया जाने वाला लक्षित मूल्य और मैप मुद्रा
+;y_target_bundle_price;selection_strategy;चयन कार्यनीति;कार्ट में बंडल हेतु एकाधिक आइटम योग्य होने पर उत्पादों का चयन करने के लिए उपयोग की जाने वाली कार्यनीति
+;y_target_bundle_price;qualifying_containers;बंडल उत्पाद मात्राएं;कंटेनर IDs और उनसे संबंधित मात्राओं का मैप जो आवश्यक बंडल का निर्माण करता है
+;y_free_gift;product;निःशुल्क उत्पाद;वह उत्पाद जिसे स्वचालित रूप से कार्ट में जोड़ा जाना चाहिए और निःशुल्क दिया जाना चाहिए
+;y_free_gift;quantity;मात्रा;निःशुल्क दिए जाने वाले आइटम्स की संख्या
+;y_free_gift;catalog;कैटलॉग द्वारा फ़िल्टर का चयन करें;चयनित कैटलॉग मान संबद्ध फ़ील्ड के भीतर फॉल्टरिंग उद्देश्यों के लिए उपयोग किया जाएगा
+;y_free_gift;qualifying_containers;योग्य उत्पाद कंटेनर;कंटेनर IDs और उनसे संबंधित मात्राओं का मैप जो योग्य उत्पादों का निर्माण करता है
+;y_partner_order_entry_percentage_discount;value;छूट प्रतिशत मूल्य;भागीदार उत्पादों पर लागू किया जाने वाला छूट प्रतिशत
+;y_partner_order_entry_percentage_discount;selection_strategy;चयन कार्यनीति;कार्ट में कार्रवाई हेतु एकाधिक आइटम योग्य होने पर उत्पादों का चयन करने के लिए उपयोग की जाने वाली कार्यनीति
+;y_partner_order_entry_percentage_discount;qualifying_containers;योग्य उत्पाद कंटेनर;कंटेनर IDs और उनसे संबंधित मात्राओं का मैप जो योग्य उत्पादों का निर्माण करता है
+;y_partner_order_entry_percentage_discount;target_containers;लक्षित उत्पाद कंटेनर;कंटेनर IDs और उनसे संबंधित मात्राओं का मैप जो लक्षित भागीदार उत्पादों का निर्माण करता है
+;y_partner_order_entry_fixed_discount;value;निरपेक्ष छूट मूल्य;भागीदार उत्पादों पर लागू किया जाने वाला लक्षित मूल्य और मैप मुद्रा
+;y_partner_order_entry_fixed_discount;selection_strategy;चयन कार्यनीति;कार्ट में कार्रवाई हेतु एकाधिक आइटम योग्य होने पर उत्पादों का चयन करने के लिए उपयोग की जाने वाली कार्यनीति
+;y_partner_order_entry_fixed_discount;qualifying_containers;योग्य उत्पाद कंटेनर;कंटेनर IDs और उनसे संबंधित मात्राओं का मैप जो योग्य उत्पादों का निर्माण करता है
+;y_partner_order_entry_fixed_discount;target_containers;लक्षित उत्पाद कंटेनर;कंटेनर IDs और उनसे संबंधित मात्राओं का मैप जो लक्षित भागीदार उत्पादों का निर्माण करता है
+;y_partner_order_entry_fixed_price;value;लक्षित नियत मूल्य;भागीदार उत्पादों पर लागू किया जाने वाला लक्षित मूल्य और मैप मुद्रा
+;y_partner_order_entry_fixed_price;selection_strategy;चयन कार्यनीति;कार्ट में कार्रवाई हेतु एकाधिक आइटम योग्य होने पर उत्पादों का चयन करने के लिए उपयोग की जाने वाली कार्यनीति
+;y_partner_order_entry_fixed_price;qualifying_containers;योग्य उत्पाद कंटेनर;कंटेनर IDs और उनसे संबंधित मात्राओं का मैप जो योग्य उत्पादों का निर्माण करता है
+;y_partner_order_entry_fixed_price;target_containers;लक्षित उत्पाद कंटेनर;कंटेनर IDs और उनसे संबंधित मात्राओं का मैप जो लक्षित भागीदार उत्पादों का निर्माण करता है
+;y_change_delivery_mode;delivery_mode;वितरण मोड;कार्रवाई के परिणामस्वरूप कार्ट पर लागू किया जाने वाला वितरण मोड

@@ -1,0 +1,38 @@
+/*================================
+    Advanced Search - Screensize Adjustments
+================================*/
+// Styling of defaults on the advanced-search component.
+
+
+@import "../support/_advancedsearch-variables.scss";
+
+@media screen and (max-width: 800px) {
+    .yw-textsearch {
+        &.yw-toggle-open .yw-buttons-container{
+            float: right;
+            margin-right: 5%;
+            margin-bottom: 5px;
+        }
+        .yw-global-typeSelector.z-bandbox {
+            max-width: 100%;
+            width: 100%;
+            margin-right: 5px;
+        }
+    }
+    .yw-advancedsearch-header-container .yw-global-typeSelector-container.yw-advancedsearch-header-container {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .yw-textsearch{
+        &-searchbox {
+        max-width: 95%;
+        margin-bottom: 5px;
+        }
+
+        .yw-buttons-container {
+        float: left;
+        }
+    }
+}

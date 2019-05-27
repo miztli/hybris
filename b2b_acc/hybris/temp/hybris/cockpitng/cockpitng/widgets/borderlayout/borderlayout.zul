@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		  xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		  sclass="yw-borderlayout"
+		  width="100%" height="100%"
+		>
+	<!--onClientInfo attribute is required to trigger a layout adjustment-->
+	<borderlayout sclass="opaque${widgetSettings.opaqueBG} yw-borderlayout-bl" >
+		<north id="north" height="${widgetSettings.northHeight}" collapsible="${widgetSettings.northCollapsible}"
+				 splittable="${widgetSettings.northSplittable}" sclass="noBG" border="${widgetSettings.northBorder}"
+				 unless="${widgetSettings.northDisabled == 'true'}" open="${widgetSettings.northClosed == 'false'}">
+			<widgetslot slotID="headerSlot"/>
+		</north>
+
+		<west id="west" width="${widgetSettings.westWidth}" collapsible="${widgetSettings.westCollapsible}"
+				splittable="${widgetSettings.westSplittable}" sclass="noBG yw-layoutregion" border="${widgetSettings.westBorder}"
+				unless="${widgetSettings.westDisabled == 'true'}" open="${widgetSettings.westClosed == 'false'}">
+			<widgetslot slotID="leftSlot"/>
+		</west>
+
+		<center sclass="noBG yw-layoutregion" border="${widgetSettings.centerBorder}" margins="0, 0, 0, 0">
+			<widgetslot slotID="centerSlot"/>
+		</center>
+
+		<east id="east" collapsible="${widgetSettings.eastCollapsible}" splittable="${widgetSettings.eastSplittable}"
+				width="${widgetSettings.eastWidth}" sclass="noBG yw-layoutregion" border="${widgetSettings.eastBorder}"
+				unless="${widgetSettings.eastDisabled == 'true'}" open="${widgetSettings.eastClosed == 'false'}">
+			<widgetslot slotID="rightSlot"/>
+		</east>
+
+		<south id="south" height="${widgetSettings.southHeight}" collapsible="${widgetSettings.southCollapsible}"
+				 splittable="${widgetSettings.southSplittable}" sclass="noBG yw-layoutregion" border="${widgetSettings.southBorder}"
+				 unless="${widgetSettings.southDisabled == 'true'}" open="${widgetSettings.southClosed == 'false'}">
+			<widgetslot slotID="bottomSlot"/>
+		</south>
+	</borderlayout>
+</widget>

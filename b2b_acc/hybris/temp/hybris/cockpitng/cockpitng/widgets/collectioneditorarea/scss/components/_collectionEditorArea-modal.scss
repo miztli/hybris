@@ -1,0 +1,19 @@
+.yw-modal-collectionEditorAreaGroup {
+	min-width: 400px;
+	
+	@media screen and (max-width: 400px){
+		min-width: 90%;
+	}
+    .yw-listview-actioncontainer {
+        padding-top: $collection-editor-area-modal__listview-actioncontainer--padding-top;
+    }
+
+    .yw-com_hybris_cockpitng_backoffice_collectionEditorArea  {
+        border-top: 1px solid $collection-editor-area-modal__collectionEditorArea--border-color;
+    }
+
+    .yw-collection-preview-east {
+        border-left: 1px solid $collection-editor-area-modal__collection-preview-east--border-color;
+    }
+
+}

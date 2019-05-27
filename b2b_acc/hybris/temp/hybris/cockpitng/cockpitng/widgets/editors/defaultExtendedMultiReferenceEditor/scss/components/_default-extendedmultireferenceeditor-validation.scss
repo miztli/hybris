@@ -1,0 +1,51 @@
+//_default-extendedmultireferenceeditor-validation
+
+@mixin _addValidationTypeInExtededMultiReferenceEditor ($type, $color, $bg-color) {
+    .z-listitem.ye-validation-#{$type} {
+        .z-listcell {
+            background-color: $bg-color;
+            &.ye-editable-property {
+                input {
+                    background: $editor-area__component--bg-color;
+                    border-color: $editor-area__box--border-color;
+                    color: $editor-area__box--text-color !important;
+                }
+            }
+        }
+        &:hover {
+            .z-listcell {
+                background-color: $bg-color;
+            }
+        }
+        td.ye-row-status-edited {
+            border-left-color: $color !important;
+        }
+    }
+    .z-listcell.ye-validation-#{$type} {
+        color: $color;
+        .z-listcell-content {
+            &,
+            .z-label, 
+            .yw-listview-cell-label {
+                color: inherit;
+            }
+        }
+    }
+}
+
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor {
+    @include _addValidationTypeInExtededMultiReferenceEditor (error, $validation__error--color, $validation__error--bg-color);
+    @include _addValidationTypeInExtededMultiReferenceEditor (warn, $validation__warn--color, $validation__warn--bg-color);
+    @include _addValidationTypeInExtededMultiReferenceEditor (info, $validation__info--color, $validation__info--bg-color);
+
+    .z-listitem.ye-validation-none {
+        .z-listcell {
+            background-color: $editor-area__component--bg-color;
+        }
+    }
+    .z-listcell.ye-validation-none {
+        .z-listcell-content {
+            color: $editor-area__box--text-color !important;
+        }
+    }
+}

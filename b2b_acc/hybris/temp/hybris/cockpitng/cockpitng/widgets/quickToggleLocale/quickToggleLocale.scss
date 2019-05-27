@@ -1,0 +1,21 @@
+/*================================
+    QuickLocaleToggle Popup (Systembar)
+================================*/
+// Relevant Changes applied to the Quick Locale Toggle Popup
+
+
+@import "../systemBarWidget/scss/support/_systembar-variables.scss";
+
+.yw-quickToggleLocale {
+    &-cl {
+        width: 100%;
+        padding: $systembar-popup__list-cell--padding;
+        border-top: $systembar-popup__list-cell--border-top;
+
+        &-value,
+        &-label {
+            display: inline-block;
+            padding: $systembar-popup__list-cell-content--padding;
+        }
+    }
+}

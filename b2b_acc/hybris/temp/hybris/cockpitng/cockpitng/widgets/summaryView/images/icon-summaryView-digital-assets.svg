@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/Image</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/Image" fill="#8592A2">
+            <path d="M4.5,6 C5.328,6 6,5.328 6,4.5 C6,3.672 5.328,3 4.5,3 C3.672,3 3,3.672 3,4.5 C3,5.328 3.672,6 4.5,6 L4.5,6 Z M14,13 C14,13.552 13.552,14 13,14 L3,14 C2.448,14 2,13.552 2,13 L2,3 C2,2.448 2.448,2 3,2 L13,2 C13.552,2 14,2.448 14,3 L14,13 Z M13,0 L3,0 C1.343,0 0,1.343 0,3 L0,13 C0,14.657 1.343,16 3,16 L13,16 C14.657,16 16,14.657 16,13 L16,3 C16,1.343 14.657,0 13,0 L13,0 Z M6.469,11.031 C5.726,11.031 4.562,8.094 4,9.281 C3.766,9.775 3.376,10.828 3,11.671 L3,12 C3,12.552 3.448,13 4,13 L12,13 C12.552,13 13,12.552 13,12 L13,11.534 C12.434,10.261 11.703,8.154 11,7.344 C9.562,5.687 7.844,11.031 6.469,11.031 L6.469,11.031 Z" id="Fill-1"></path>
+        </g>
+    </g>
+</svg>

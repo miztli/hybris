@@ -1,0 +1,7 @@
+Dear Customer Service Agent
+
+	The following customer support ticket was assigned to you: ${ctx.ticketId}
+
+	Thank you
+
+	Your Customer Service Team

@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=zh
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;购物车
+;customer;客户
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;购物车总计;购物车总计 {operator} {value}
+;y_qualifying_products;符合条件的产品;购物车 {products_operator} 产品 {products}
+;y_qualifying_categories;符合条件的类别;购物车 {categories_operator} 类别 {categories}
+;y_target_customers;目标客户;目标 {customer_groups_operator} 客户组 {customer_groups} 或客户 {customers}
+;y_product_price;产品价格阈值;产品价格 {operator} {value}
+;y_customer_support;客户支持;帮助服务会话已激活: {value}
+;y_qualifying_group_types;符合条件的组类型;购物车条目组 {operator} {groupTypes}
+;y_orders;订单或购物车;{orders} 的订单或购物车
+;y_order_threshold_perfect_partner;订单阈值完美搭配;购物车中的完美搭配产品 {product}，购物车总计大于 {cart_threshold}，包含折后价格 {is_discounted_price_included}
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;运算符;比较购物车总值的运算符
+;y_cart_total;value;购物车总值;货币和将使用的购物车总计值的映射
+;y_qualifying_products;operator;运算符;比较符合条件产品所需数量的运算符
+;y_qualifying_products;quantity;每个订单条目的数量;所需符合条件产品的数量(每个订单条目)
+;y_qualifying_products;products_operator;产品选择运算符;从符合条件产品的列表中选择任意产品或选择全部产品
+;y_qualifying_products;products;产品;符合条件产品的列表
+;y_qualifying_products;catalog;按目录筛选选择;选择的目录值将用于关联字段内的筛选
+;y_qualifying_categories;operator;运算符;比较符合条件类别中产品所需数量的运算符
+;y_qualifying_categories;quantity;每个订单条目的数量;符合条件类别所需的产品数量(每个订单条目)
+;y_qualifying_categories;categories_operator;类别选择运算符;从符合条件类别的列表中选择任意类别或选择全部类别
+;y_qualifying_categories;categories;类别;符合条件类别的列表
+;y_qualifying_categories;excluded_categories;排除的类别;排除在符合条件类别之外的子类别列表
+;y_qualifying_categories;excluded_products;排除的产品;排除在符合条件类别之外的产品列表
+;y_qualifying_categories;catalog;按目录筛选选择;选择的目录值将用于关联字段内的筛选
+;y_target_customers;customer_groups_operator;客户组选择运算符;客户应成为任意或全部客户组的一部分
+;y_target_customers;customer_groups;客户组;符合条件客户组的列表
+;y_target_customers;customers;客户;符合条件客户的列表
+;y_target_customers;excluded_customer_groups;排除的客户组;应从符合条件客户组中排除的子组列表
+;y_target_customers;excluded_customers;排除的客户;应从符合条件客户组中排除的客户列表
+;y_product_price;operator;运算符;比较产品值的运算符
+;y_product_price;value;价格阈值;要用于取得此促销资格的货币和产品阈值的映射
+;y_customer_support;value;帮助服务会话已激活;根据客户支持代理是否在店面中帮助客户来决定是否启用促销
+;y_qualifying_group_types;operator;运算符;组类型选择运算符
+;y_qualifying_group_types;groupTypes;组类型;符合条件组类型的列表
+;y_order_threshold_perfect_partner;catalog;按目录筛选选择;选择的目录值将用于关联字段内的筛选
+;y_order_threshold_perfect_partner;product;完美搭配产品;以折扣价提供的完美搭配产品
+;y_order_threshold_perfect_partner;cart_threshold;购物车总计阈值;符合此促销必须达到的订单总额。每种货币都有不同的值，且符合此订单的所有货币都必须具有指定值。
+;y_order_threshold_perfect_partner;is_discounted_price_included;计算总价时包含折后价格;在与阈值金额比较时，包含订单总计中搭配产品的折后价格。
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;购物车折扣
+;product_discounts;产品折扣
+;partner_product_discounts;搭配产品折扣
+;shipping;发货
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;针对购物车的百分比折扣;针对购物车总计使用 {value,number,percent*1} 折扣;
+;y_order_fixed_discount;针对购物车的固定折扣;对购物车总计使用 {value} 折扣;
+;y_order_entry_percentage_discount;针对产品的百分比折扣;针对符合条件的产品使用 {value,number,percent*1} 折扣;
+;y_order_entry_fixed_discount;针对产品的固定折扣;针对符合条件的产品使用 {value} 折扣;
+;y_order_entry_fixed_price;产品的目标定价;针对符合条件的产品使用目标价格 {value};
+;y_target_bundle_price;目标捆绑价格;向捆绑应用目标价格 {value};
+;y_free_gift;免费礼品;免费提供 {quantity} 个 {product} 产品;
+;y_partner_order_entry_percentage_discount;针对搭配产品的百分比折扣;针对搭配产品使用 {value,number,percent*1} 折扣;
+;y_partner_order_entry_fixed_discount;针对搭配产品的固定折扣;针对搭配产品使用 {value} 折扣;
+;y_partner_order_entry_fixed_price;搭配产品的目标定价;针对搭配产品使用目标价格 {value};
+;y_change_delivery_mode;更改送货方式;将送货方式更改为 {delivery_mode};
+;y_trigger_message;触发规则消息;显示规则的消息;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;百分比折扣值;将应用于购物车总计的百分比折扣
+;y_order_fixed_discount;value;绝对折扣值;将应用于购物车总计的货币和绝对折扣值的映射
+;y_order_entry_percentage_discount;value;百分比折扣值;将应用于符合条件产品的百分比折扣
+;y_order_entry_fixed_discount;value;绝对折扣值;将应用于符合条件产品的货币和绝对折扣值的映射
+;y_order_entry_fixed_price;value;目标定价;将应用于符合条件产品的货币和目标价格值的映射
+;y_target_bundle_price;value;目标捆绑价格;将应用于捆绑的货币和目标价格值的映射
+;y_target_bundle_price;selection_strategy;选择策略;当购物车中的多个项目符合捆绑条件时，用于选择产品的策略
+;y_target_bundle_price;qualifying_containers;捆绑产品数量;容器 ID 和组成所需捆绑的相应数量的映射
+;y_free_gift;product;免费产品;应自动添加到购物车并免费赠送的产品
+;y_free_gift;quantity;数量;将免费赠送的项目数量
+;y_free_gift;catalog;按目录筛选选择;选择的目录值将用于关联字段内的筛选
+;y_free_gift;qualifying_containers;符合条件的产品容器;容器 ID 和组成符合条件产品的相应数量的映射
+;y_partner_order_entry_percentage_discount;value;百分比折扣值;将应用于搭配产品的百分比折扣
+;y_partner_order_entry_percentage_discount;selection_strategy;选择策略;当购物车中的多个项目符合操作条件时，用于选择产品的策略
+;y_partner_order_entry_percentage_discount;qualifying_containers;符合条件的产品容器;容器 ID 和组成符合条件产品的相应数量的映射
+;y_partner_order_entry_percentage_discount;target_containers;目标产品容器;容器 ID 和组成目标搭配产品的相应数量的映射
+;y_partner_order_entry_fixed_discount;value;绝对折扣值;将应用于搭配产品的货币和目标价格值的映射
+;y_partner_order_entry_fixed_discount;selection_strategy;选择策略;当购物车中的多个项目符合操作条件时，用于选择产品的策略
+;y_partner_order_entry_fixed_discount;qualifying_containers;符合条件的产品容器;容器 ID 和组成符合条件产品的相应数量的映射
+;y_partner_order_entry_fixed_discount;target_containers;目标产品容器;容器 ID 和组成目标搭配产品的相应数量的映射
+;y_partner_order_entry_fixed_price;value;目标定价;将应用于搭配产品的货币和目标价格值的映射
+;y_partner_order_entry_fixed_price;selection_strategy;选择策略;当购物车中的多个项目符合操作条件时，用于选择产品的策略
+;y_partner_order_entry_fixed_price;qualifying_containers;符合条件的产品容器;容器 ID 和组成符合条件产品的相应数量的映射
+;y_partner_order_entry_fixed_price;target_containers;目标产品容器;容器 ID 和组成目标搭配产品的相应数量的映射
+;y_change_delivery_mode;delivery_mode;送货方式;操作导致在购物车上使用的送货方式

@@ -1,0 +1,73 @@
+<widget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.zkoss.org/2005/zul">
+
+       <tabbox id="tb" width="100%" mold="accordion">
+           <tabs>
+               <tab id="generalTab" label="General info" />
+               <tab label="Languages" />
+               <tab label="Permissions" />
+               <tab label="Root categories" />
+               <tab label="Type instances" />
+               <tab label="All-in-one textual summary" />
+           </tabs>
+           <tabpanels>
+               <tabpanel>
+                 <grid id="gridGeneral">
+                      <columns>
+                          <column hflex="1" label="Catalog" align="left" />
+                          <column hflex="1" label="Version" align="left" />
+                          <column hflex="1" label="Active" align="left" />
+                      </columns>
+                      <rows>
+                        <row>
+                            <label id="catalogLabel"/>
+                            <label id="versionLabel"/>
+                            <label id="activeLabel"/>
+                        </row>
+                       </rows>
+                  </grid>
+               </tabpanel>
+               <tabpanel>
+                   <grid id="gridLanguages" mold="paging" pageSize="4">
+                      <columns>
+                          <column hflex="1" label="Name" align="left" />
+                      </columns>
+                      <rows>
+                      </rows>
+                  </grid>
+               </tabpanel>
+               <tabpanel>
+                   <grid id="gridPermissions" mold="paging" pageSize="4">
+                     <columns>
+                         <column hflex="1" label="Type" align="left" />
+                         <column hflex="1" label="User" align="left" />
+                     </columns>
+                     <rows>
+                     </rows>
+                 </grid>
+               </tabpanel>
+               <tabpanel>
+                  <grid id="gridCategories" mold="paging" pageSize="4">
+                    <columns>
+                        <column hflex="1" label="Name" align="left" />
+                    </columns>
+                    <rows>
+                    </rows>
+                </grid>
+              </tabpanel>
+              <tabpanel>
+                 <grid id="gridTypeAmounts" mold="paging" pageSize="4">
+                   <columns>
+                       <column hflex="2" label="Type" align="left" />
+                       <column hflex="1" label="Amount" align="left" />
+                   </columns>
+                   <rows>
+                   </rows>
+               </grid>
+             </tabpanel>
+             <tabpanel>
+                <textbox id="report" multiline="true" width="98%" style="margin:0px" rows="10"/>
+             </tabpanel>
+           </tabpanels>
+       </tabbox>
+
+</widget>

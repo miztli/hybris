@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+                   id="com.hybris.cockpitng.backoffice.defaultEditorArea">
+    <name>Editor Area</name>
+    <description>Editor Area</description>
+    <defaultTitle>Editor Area</defaultTitle>
+    <author>hybris</author>
+    <version>1.0</version>
+
+    <view src="defaultEditorArea.zul"/>
+    <controller class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaController"/>
+
+    <sockets>
+        <input id="resize" type="java.lang.Object"/>
+        <input id="reset" type="java.lang.Object"/>
+        <input id="inputObject" type="java.lang.Object"/>
+        <input id="focus" type="com.hybris.cockpitng.widgets.baseeditorarea.FocusRequest"/>
+        <output id="objectSaved" type="java.lang.Object"/>
+        <output id="widgetTitle" type="java.lang.String"/>
+    </sockets>
+
+    <keywords>
+        <keyword>Data Manipulation</keyword>
+    </keywords>
+
+    <settings>
+        <setting key="editorAreaConfigCtx" default-value="editor-area" type="String"/>
+        <setting key="actionSlotComponentId" default-value="editorareaactions" type="String"/>
+        <setting key="bottomToolbar" default-value="false" type="Boolean"/>
+        <setting key="initViewMode" type="String" default-value="fluid"/>
+        <setting key="fluidViewCode" type="String" default-value="fluid"/>
+        <setting key="viewModeBtnVisible" type="Boolean" default-value="false"/>
+        <setting key="toolbarDisabled" type="Boolean" default-value="false"/>
+        <setting key="enableEmbededTitle" type="Boolean" default-value="false"/>
+        <setting key="accordionMold" type="Boolean" default-value="false"/>
+        <setting key="essentialsInOverviewTab" type="Boolean" default-value="false"/>
+        <setting key="toolbarButtonsPosition" type="ENUM(top,bottom)" default-value="top"/>
+    </settings>
+</widget-definition>

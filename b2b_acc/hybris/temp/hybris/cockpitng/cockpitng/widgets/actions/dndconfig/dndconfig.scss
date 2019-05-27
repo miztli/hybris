@@ -1,0 +1,50 @@
+@import "cockpitng-globals.scss";
+
+.yw-dnd-config {
+    &-popup {
+        width: 260px;
+        margin-top: 7px;
+        padding: $container-spacing-default__third;
+        overflow: visible;
+
+        &:after,
+        &:before {
+            width: 0;
+            height: 0;
+            content: '';
+            position: absolute;
+            top: -14px;
+        }
+
+        &:before {
+            right: 5px;
+            border: 8px solid transparent;
+            border-width: 7px 10px;
+            border-bottom-color: $grey__default--1000;
+            opacity: 0.7;
+        }
+
+        &:after {
+            right: 6px;
+            border: 9px solid transparent;
+            border-width: 7px 9px;
+            border-bottom-color: $white;
+        }
+    }
+
+    &-main-info.z-label {
+        display: block;
+        font-size: $font-size__medium;
+        font-weight: $font-weight-bold;
+        padding-bottom: $container-spacing-default__third;
+    }
+
+    &-additional-info.z-label {
+        display: block;
+        font-size: $font-size__small;
+        color: $blue__greyish--400;
+        padding-top: $container-spacing-default__semi-third;
+        margin-top: $container-spacing-default__semi-third;
+        border-top: 1px solid $grey__light--100;
+    }
+}

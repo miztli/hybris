@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+	id="com.hybris.cockpitng.extendedsplitlayout">
+	<name>Extended Split Layout</name>
+	<description>Extended Split layout</description>
+	<defaultTitle>Extended Split Layout</defaultTitle>
+	<author>SAP hybris</author>
+	<version>1.0</version>
+
+	<sockets>
+		<input id="chooseLayout" type="java.lang.String" />
+		<input id="parentLayout" type="java.lang.String" />
+		<output id="selectedLayout" type="java.lang.String" />
+	</sockets>
+
+	<view src="extendedsplitlayout.zul" />
+	<controller class="com.hybris.cockpitng.widgets.extendedsplitlayout.ExtendedSplitLayoutWidgetController" />
+
+	<settings>
+		<setting key="defaultLayout" type="java.lang.String" default-value="triple"/>
+		<setting key="showToolbar" type="java.lang.Boolean" default-value="false"/>
+		<setting key="actionsConfigCtx" type="java.lang.String" default-value="extended-split-layout-actions"/>
+	</settings>
+
+	<keywords>
+		<keyword>Layout</keyword>
+	</keywords>
+</widget-definition>

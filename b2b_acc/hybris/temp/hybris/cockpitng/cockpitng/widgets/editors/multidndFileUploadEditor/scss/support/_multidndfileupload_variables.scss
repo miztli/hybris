@@ -1,0 +1,11 @@
+@import 'cockpitng-globals.scss';
+
+$multidndfileupload__preview-list--margin-bottom: 5px;
+$multidndfileupload__preview-list-item--height: $editor-defaults__inline-box--height;
+$multidndfileupload__preview-list-item--padding-left: $container-spacing-default__third;
+$multidndfileupload__preview-list-item--padding-right: $multidndfileupload__preview-list-item--padding-left + $editor-defaults__inline-box-delete-btn--size;
+$multidndfileupload__preview-image--border: $boxes--border__thin solid $grey__light--1000;
+$multidndfileupload__preview-image--margin-right: $container-spacing-default__third;
+$multidndfileupload__preview-image--size: 20px;
+$multidndfileupload__preview-file-name--max-width: calc(100% - #{$multidndfileupload__preview-image--margin-right + $multidndfileupload__preview-image--size});
+$multidndfileupload__preview-delete-btn--right: floor(($multidndfileupload__preview-list-item--height - $editor-defaults__inline-box-delete-btn--size)/2);

@@ -1,0 +1,58 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$regulargroup=regulargroup
+$customergroup=customergroup
+
+$defaultPassword=12341234
+
+# Create Customer Group
+INSERT_UPDATE Usergroup;uid[unique=true];groups(uid)[mode=append];;
+;$regulargroup;customergroup;;
+;basecmsmanagergroup;;
+;cxusergroup;cxreadonlygroup,previewmanagergroup,basecmsmanagergroup
+
+INSERT_UPDATE Employee;UID[unique=true];password[default=$defaultPassword];backOfficeLoginDisabled;groups(uid)[mode=append];description;name
+;cxmanager;;false;cxmanagergroup,cmsmanagergroup;Personalization Manager;Personalization Manager
+;cxuser;;false;cxusergroup;Personalization Read Only User;Personalization Read Only User
+
+UPDATE Employee;UID[unique=true];groups(uid)[mode=append];
+;cmsmanager;cmsmanagergroup,cxmanagergroup;
+
+
+
+INSERT_UPDATE CxSegment;code[unique=true];
+;VIPGold;
+;VIPSilver;
+;VIPBronze;
+;Women;
+;Men;
+;20-29;
+;30-39;
+;40-49;
+;50-59;
+;60-69;
+;70-79;
+;80-89;
+;90-99;
+
+INSERT_UPDATE Customer;uid[unique=true];groups(uid);password[default=$defaultPassword];name;&userref;
+;vipgold@hybris.com;customergroup;;Customer VIP Gold;vipgold@hybris.com;
+;vipsilver@hybris.com;customergroup;;Customer VIP Silver;vipsilver@hybris.com;
+;vipbronze@hybris.com;customergroup;;Customer VIP Bronze;vipbronze@hybris.com;
+;women@hybris.com;customergroup;;Women;women@hybris.com;
+;men@hybris.com;customergroup;;Men;men@hybris.com;
+;menover30@hybris.com;customergroup;;Men;menover30@hybris.com;
+;womenvipgold@hybris.com;customergroup;;Women Vip Gold;womenvipgold@hybris.com;
+;womenvipsilver@hybris.com;customergroup;;Women Vip Silver;womenvipsilver@hybris.com;
+;menvipbronze@hybris.com;customergroup;;Men Vip bronze;;menvipbronze@hybris.com;
+;menvipgold@hybris.com;customergroup;;Men Vip gold;;menvipgold@hybris.com;
+

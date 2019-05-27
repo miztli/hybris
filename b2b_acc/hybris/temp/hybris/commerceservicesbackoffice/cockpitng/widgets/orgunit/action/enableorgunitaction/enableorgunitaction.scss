@@ -1,0 +1,20 @@
+@import "../../../../cng/scss/support/_commerceservicesbackoffice-variables.scss";
+.ya-de_hybris_platform_commerceservices_backoffice_orgunits_actions_enableorgunitaction {
+    &:hover {
+        background: $sales-org__button--hover-bg-color;
+        color: $sales-org__button-text--hover-color;
+        transition: background-color 0.3s ease 0s;
+    }
+    .z-hbox-separator {
+        display: none;
+    }
+
+    .cng-action-text {
+        padding-right: 5px;
+        padding-top: 2px;
+    }
+    &.cng-action-disabled:hover {
+        color: inherit;
+        background: none; 
+    }
+}

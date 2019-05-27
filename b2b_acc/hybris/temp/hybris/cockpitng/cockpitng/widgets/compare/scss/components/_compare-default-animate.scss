@@ -1,0 +1,57 @@
+//Default Animate
+.yw-compareview-grid {
+	.y-table {
+		&.y-scroll-animate-position {
+			&.y-scroll-animate {
+				.y-tableheader,
+				.y-tablecell-sticky, 
+				.y-tablecell-header-sticky {
+					transition: $compareview__scroll-animate--transition;
+				}
+			}
+			.y-tablecell-sticky,
+			.y-tablecell-header-sticky {
+				&:first-child{
+					background-color: $compareview__container--bg-color;
+
+					&:after {
+						position: absolute;
+						top: 0;
+						height: $compareview__component-mask--size;
+						width: $compareview__component-mask--size;
+						left: $compareview__side-component-mask--left;
+						background-color: inherit;
+						content: "";
+						box-shadow: none;
+						margin-left: $compareview__container--margin-left;
+					}
+					.yw-compareview-cell-content:before {
+						background-color: $compareview__cell-fill--bg-color;
+					}
+				}
+			}
+		}
+	}
+    .y-table-active.y-scroll-x {
+		.y-tablecell-header,
+		.y-tablecell {
+	 		&-sticky {
+			opacity: 0 !important;
+	  		}
+		}
+  	}
+	.y-table-active.y-scroll-y {
+		.y-tableheader {
+			opacity: 0 !important;
+		}
+	}
+	.y-table.y-scroll-bar-active {
+		&.y-scroll-x + .y-scroll-table-container {
+		  	.y-tableheader:before {
+				top: 0;
+				height: $compareview__selected-column-header-cell--top;
+				background-color: $compareview__container--bg-color;
+		  	}
+		}
+	}
+}

@@ -1,0 +1,691 @@
+/*================================
+    Cockpit variables
+================================*/
+@import "cockpitng-globals.scss";
+
+$body-bg-color: $grey__light--1100;
+$body__default--color: $grey__default--900;
+
+$editor-defaults__label--color: $grey__default--600;
+
+$editor-defaults__label-inactive--color: $grey__default--700;
+$editor-defaults__input-inactive--color: $grey__light--700;
+
+$editor-defaults__drag-element--bg-color: $grey__default--1000;
+
+// Input-Field Definitions
+$editor-defaults__input-field--border-width: $boxes--border__thin;
+$editor-defaults__input-field--box-shadow: inset 3px 3px 6px -3px rgba(0,0,0,0.2);
+$editor-defaults__input-field--box-shadow-focus: inset 3px 3px 6px -3px rgba(0,0,0,0.1);
+$editor-defaults__input-field--box-shadow-inactive: inset 3px 3px 6px -3px rgba(0,0,0,0.1);
+$editor-defaults__input-field--font-size: $font-size__base;
+$editor-defaults__input-field--padding-left: 8px;
+$editor-defaults__input-field--line-height: $font-size__medium;
+$editor-defaults__input-field--text-indent: $container-spacing-default__third;
+$editor-defaults__input-field--color: $grey__dark--700;
+
+$editor-defaults__action-button--hover-bg-color: $white;
+$editor-defaults__action-button--hover-color: $white;
+$editor-defaults__action-button--transition: background-color .2s ease, border-color .15s ease .05s;
+$editor-defaults__action-button--hover-border-color: $editor-defaults__action-button-hover--border-color;
+$editor-defaults__action-button--border-width: $editor-defaults__action-button--border-width;
+
+$editor-defaults__box-button--hover-color: $blue__default;
+$editor-defaults__box-button--hover-bg-color: $white;
+
+$editor-defaults__pagin-input--border-color: $grey__light--800;
+$editor-defaults__pagin-selected--color: $blue__default;
+$editor-defaults__pagin-selected--bg-color: $white;
+$editor-defaults__pagin--font-size: $font-size__small;
+$editor-defaults__pagin-info--line-height: $toolbar__vertical-centering-base--height;
+$editor-defaults__pagin--padding: 0 10px;
+$editor-defaults__pagin--bg-color: $grey__light--300;
+
+$editor-defaults__pagin-input--height: $toolbar__vertical-centering-base--height;
+$editor-defaults__pagin-input--width: $toolbar__vertical-centering-base--height;
+$editor-defaults__pagin-text--line-height: $toolbar__vertical-centering-base--height;
+$editor-defaults__pagin-input-text--text-align: center;
+
+$editor-defaults__pagin-button--min-width: 23px;
+$editor-defaults__pagin-button--bg-image: url("images/pg-btn_default.png");
+$editor-defaults__pagin-button--hover-bg-image: url("images/pg-btn_hover.png");
+$editor-defaults__pagin-button--hover-color: $editor-defaults__pagin-selected--color;
+$editor-defaults__pagin-button--hover-bg-color: $editor-defaults__pagin-selected--bg-color;
+$editor-defaults__pagin-button--line-height: 28px;
+$editor-defaults__pagin-button--margin-right: 2px;
+$editor-defaults__pagin-button--padding: 0 5px;
+$editor-defaults__pagin-button--transition: background-color .1s, box-shadow .05s;
+$editor-defaults__pagin-button--opacity: 0.5;
+$editor-defaults__pagin-button-icon--bg-color: transparent;
+
+$editor-defaults__pagin-first-button--bg-position: center -70px;
+$editor-defaults__pagin-previous-button--bg-position: center -22px;
+$editor-defaults__pagin-next-button--bg-position: center 2px;
+$editor-defaults__pagin-last-button--bg-position: center -46px;
+
+$editor-defaults__pagin-selectior-button--width: $editor-defaults__pagin-button--line-height;
+
+$editor-defaults__pagin-os-cnt--bg-color: $grey__default--1100;
+$editor-defaults__pagin-os-cnt-selected--bg-color: $blue__greyish--700;
+$editor-defaults__pagin-os-cnt--color: $white;
+$editor-defaults__pagin-os-cnt-selected-hover--color: $white;
+$editor-defaults__pagin-os-cnt--margin: 2px;
+
+
+$editor-defaults__pagin-input--padding: 0 3px;
+$editor-defaults__pagin-input--margin-left: 20px;
+$editor-defaults__pagin-text--margin: 0 20px 0 10px;
+
+$editor-defaults__box--font-size: $font-size__small;
+$editor-defaults__box-headlines-font-size: $font-size__extra-small;
+$editor-defaults__box--height: $editor-defaults__inline-box--height;
+$editor-defaults__box--border-color: $body__default--color;
+$editor-defaults__box--text-color: $black__blueish--100; //$black;
+$editor-defaults__box--focus-color: $blue__default;//$grey__default--600;//$blue__default;//$blue__greyish--600;
+$editor-defaults__box--hover-bg-color: $grey__default--100;
+$editor-defaults__box--shadow-color: $grey__light--500;
+
+$editor-defaults__input-box-disabled--border-color: $editor-defaults__input-box-disabled--color;
+
+$editor-defaults__loading--bg-color: $blue__greyish--700;
+$editor-defaults__loading--color: $white;
+$editor-defaults__loading--margin-y: 10px;
+$editor-defaults__loading--font-size: $font-size__base;
+$editor-defaults__loading-icon--size: 50px;
+$editor-defaults__loading-indicator--padding: 15px 18px;
+$editor-defaults--component--bg-color: $white;
+
+$editor-defaults__button--color: $white;
+$editor-defaults__button--bg-color: $blue__dark--300;
+$editor-defaults__button--hover-bg-color: $blue__dark--400;
+$editor-defaults__button--focus-bg-color: $blue__dark--500;
+$editor-defaults__button--active-color: $grey__default--600;
+$editor-defaults__button--active-bg-color: $blue__dark--500;
+$editor-defaults__button--active-box-shadow-color: rgba($black, 0.20);
+$editor-defaults__button--active-box-shadow-size: 0px 1px 2px 1px;
+
+$editor-defaults__button-primary--active-box-shadow-color: rgba($black, .1);
+
+$editor-defaults__button-text--hover-color: $blue__default;
+$editor-defaults__button-text--color: inherit;
+$editor-defaults__button-text--bg-color: transparent;
+$editor-defaults__button-text--hover-text-decoration: underline;
+$editor-defaults__button-text--font-weight: $font-weight-bold;
+
+$editor-defaults__button--font-size: $font-size__medium;
+$editor-defaults__button--height: $editor-defaults__inline-box--height;
+$editor-defaults__button--line-height: 24px;
+$editor-defaults__button--padding: floor(($editor-defaults__inline-box--height - $editor-defaults__button--line-height - $editor-defaults__input-field--border-width *2)/2) 15px;
+
+$editor-defaults__inline-button--size: $editor-defaults__inline-box--height;
+
+$editor-defaults__icon--color: $blue__greyish--400;
+$editor-defaults__headline--color: $black__blueish--100;
+$editor-defaults__headline--font-weight: $font-weight-bold;
+
+$editor-defaults__button-disabled--bg-color: $grey__light--100;
+$editor-defaults__button-disabled--color: $grey__light--700;
+
+$editor-defaults__item-delete-button--color: $red__default--200;
+$editor-defaults__item-delete-button--hover-color: $red__default--100;
+$editor-defaults__item-delete-button--focus-color: $red__default--200;
+$editor-defaults__item-delete-button--disabled-color: $grey__light--700;
+$editor-defaults__item-delete-button--font-size: $font-size__medium;
+$editor-defaults__item-delete-button--line-height: $font-size__base;
+$editor-defaults__item-delete-button--size: $font-size__medium - 1;
+
+$editor-boxes__default--hover-color: $white;
+$editor-boxes__input-field--bg-color: $white;
+$editor-boxes__input-field--padding: 4px 6px;
+$editor-boxes__textarea-field--padding: ($editor-defaults__box--height - $editor-defaults__input-field--border-width *2 - $editor-defaults__input-field--line-height)/2 6px;
+
+$_editor-boxes__textarea-buttons--margin-top: $container-spacing-default__third;
+
+//Toolbar Definitions
+$toolbar-defaults__statusbar--bg-color: $grey__light--600;
+
+$_toolbar-defaults__ztoolbar--bg-color: $grey__light--300;
+$_toolbar-defaults__ztoolbar--padding: 0px;
+$_toolbar-defaults__ztoolbar--min-height: 32px;
+
+$_toolbar-defaults__ztoolbar-button--margin: 0 !important;
+$_toolbar-defaults__ztoolbar-button--padding: 6px 10px;
+
+$_toolbar-defaults__ytoolbar-number-of-items--padding: 0 10px;
+$_toolbar-defaults__ytoolbar-number-of-items--line-height: $toolbar__vertical-centering-base--height;
+
+$_toolbar-defaults__ytoolbar-leftslot-action-group--margin: -1px;
+$_toolbar-defaults__ytoolbar-rightslot-action-group--margin: $_toolbar-defaults__ytoolbar-leftslot-action-group--margin;
+
+$_toolbar-defaults__ytoolbar-separator--width: 2px !important;
+$_toolbar-defaults__ytoolbar-separator--bg-color: $grey__light--500;
+
+$_toolbar-defaults__ytoolbar-button--shadow: inset 0 0 0 $editor-defaults__action-button--border-width rgba($editor-defaults__action-button--hover-border-color, 0);
+$_toolbar-defaults__ytoolbar-button-hover-focus--shadow: inset 0 0 0 $editor-defaults__action-button--border-width $editor-defaults__action-button--hover-border-color;
+$_toolbar-defaults__ytoolbar-button-disabled-hover-focus--shadow: none;
+
+$_toolbar-defaults__toolbarbutton--margin: 0;
+$_toolbar-defaults__toolbarbutton--padding: 0;
+$_toolbar-defaults__toolbarbutton-hover--bg-color: $white;
+$_toolbar-defaults__toolbarbutton-content--color: $black__blueish--100;
+
+
+//Checkbox & Radio-Box Defaults
+$editor-defaults__inputbox--border-color: $grey__default--800;
+$editor-defaults__inputbox--bg-color: $white;
+$editor-defaults__inputbox--border-width: $boxes--border__thin;
+$editor-defaults__inputbox--size: 23px;
+$editor-defaults__inputbox-container--margin-bottom: 0;
+$editor-defaults__inputbox-container--padding-right: $font-size__base;
+$editor-defaults__inputbox-container--padding-left: $editor-defaults__inputbox--size + 8px; //+8px
+$editor-defaults__inputbox-disabled--border-color: $grey__default--600;
+$editor-defaults__inputbox-disabled-label--color: $grey__default--600;
+$editor-defaults__inputbox-selected--bg-color: $blue__default;
+$editor-defaults__inputbox-selected-disabled--bg-color: $editor-defaults__inputbox-disabled--border-color;
+//Checkbox Defaults
+$editor-defaults__checkbox-checked--color: $white;
+$editor-defaults__checkbox-checked--border-color: $editor-defaults__inputbox-selected--bg-color;
+$editor-defaults__checkbox-checked-icon--line-height: 18px;
+$editor-defaults__checkbox-checked--bg-image-width: 23px;
+//Radiobox Defaults
+$editor-defaults__radiobox-selected--color: $white;
+$editor-defaults__radiobox-selected--bg-color: $blue__default--100;
+$editor-defaults__radiobox-selected--border-width: 3px;
+$editor-defaults__radiobox-selected--border-color: $blue__default;
+
+$editor-defaults__wizard-popup-locedtior-icont--top: 1px;
+$editor-defaults__loceditor-caption--min-height: 16px;
+$editor-defaults__loceditor-caption--padding-right: 20px;
+$editor-defaults__editor-validation-label--padding-right: $editor-defaults__loceditor-caption--padding-right;
+$editor-defaults__editor-validation-loceditor-caption--padding-right: $editor-defaults__loceditor-caption--padding-right + 18px;
+
+
+//Window popup
+$window__popup--bg-color: $white;
+$window__popup-header--bg-color: $white;
+$window__popup-header--color: $black;
+$window__popup-header--font-size: $font-size__large;
+
+$window__popup--border-color: $grey__default--800;
+$window__popup--border-radius: 0;
+$window__popup--border: 0;
+$window__popup--box-shadow: 0px 0px 12px 1px rgba(127, 144, 164, 0.23);
+$window__popup-plain--box-shadow: 0px 1px 1px rgba($black, 0.6);
+
+$window__popup-content--color: $black__blueish--100;
+$window__popup-content--padding: 0;
+$window__popup-content-tooltip--padding: 8px;
+$window__toolbar-list-add-popup--width: 230px;
+
+$window__box-popup-shadow--box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+$window__box-popup-shadow--border-radius: 1px;
+
+$window__custom-popup-reference-editor--width: 280px;
+$window__custom-popup-reference-editor--height: $editor-defaults__inline-box--height; 
+
+//Window highlighted (eg. Error-prompt, Wizard)
+$window-highlighted__navigation-button--color: $grey__default--500;
+
+$window-highlighted__header-element--padding-x: ($container-spacing-default__third * 2);
+
+$navigation-defaults__button-primary--color: $blue__dark--100;
+$navigation-defaults__button-primary--bg-color: $yellow__default;
+$navigation-defaults__button-primary--hover-bg-color: $yellow__default--300;
+$navigation-defaults__button-primary--focus-bg-color: $yellow__default--300;
+$navigation-defaults__button-primary--active-color: $grey__light--400;
+$navigation-defaults__button-primary--active-bg-color: $yellow__default;
+
+$navigation-defaults__button-secondary--color: $editor-defaults__button--color;
+$navigation-defaults__button-secondary--bg-color: $editor-defaults__button--bg-color;
+$navigation-defaults__button-secondary--hover-bg-color: $editor-defaults__button--hover-bg-color;
+$navigation-defaults__button-secondary--focus-bg-color: $editor-defaults__button--focus-bg-color;
+$navigation-defaults__button-secondary--active-color: $editor-defaults__button--active-color;
+$navigation-defaults__button-secondary--active-bg-color: $editor-defaults__button--active-bg-color;
+
+//window
+$window__icon--color: $blue__greyish--700;
+$window__icon--hover-color: $white;
+
+$window__icon-close--bg-color: $white;//$blue__greyish--700;
+$window__icon-close--color: $grey__default--200;
+$window__icon-close--size: 15px;
+$window__icon-close-button--size: 24px;
+
+$window__borderlayout--bg-color: $blue__dark--100;
+$window__splitter--size: 5px;
+$window__splitter--color: $blue__dark--100;
+$window__splitter--hover-color: lighten($window__splitter--color, .5);
+$window__splitter-button--color: $blue__greyish--200;
+$window__splitter-button--hover-color: $window__splitter--color;
+$window__splitter-button--hover-bg-color: $blue__greyish--200;
+
+$window__borderlayout-icon--hover-bg-color: transparent; //$blue__dark--500; //#6f7c91;
+$window__borderlayout-icon--bg-color: false;
+$window__borderlayout-icon--hover-color: $blue__default;
+$window__borderlayout-icon--color: false;
+
+$window__default--bg-color: $grey__light--500;
+$window__default--hover-bg-color: $grey__light--800;
+$window__default--padding: $container-spacing-default__third; 
+
+$window__default-container--border-color: $grey__default;
+
+$window__default-header-caption--padding-right: $editor-defaults__inline-box--height;
+$window__default-header-caption--min-height: $editor-defaults__inline-box--height;
+
+$window__collapsed--padding: 1px;
+
+
+$window__action-group-popup-action--border: $boxes--border__thin solid $grey__light--800;
+$window__action-group-popup-action-text--padding: 0 5px;
+$window__action-group-popup-action--width: 100%;
+$window__action-group-popup-action-text--height: 30px;
+$window__action-group-popup-action-hover--bg-color: $blue__light--300; //$grey__light--1200;
+$window__action-group-popup-action-hover--color: $blue__default;
+$window__action-group-delimiter--border: $editor-defaults__action-button--border-width solid $grey__light--800;
+$window__action-group-delimiter--margin-x: 8px;
+$window__action-group-delimiter--z-index: -1;
+$window__action-group-delimiter--height: $toolbar__button-default--height;
+$window__action-group-label--line-height: $font-size__medium;
+$window__action-group-label--color: $blue__default--600;
+$window__action-group-label--padding: floor(($toolbar__button-default--height - $window__action-group-label--line-height)/2) 2px;
+
+//Container Defaults
+//$container-defaults__collapsible--padding: 7px;
+
+//Listbox Colors
+//List-Header
+$list-default__header--bg-color: $white; //$blue__greyish--100; //$grey__light--600;
+$list-default__header--color: $black__blueish--100;//$black; //$grey__default--400;
+$list-default__header--line-height: $font-size__medium;
+$list-default__header--font-size: $font-size__base;
+$list-default__header--padding: 6px;
+$list-default__header-checkable--margin-right: $container-spacing-default__third;
+
+//Tree Popup
+$tree-popup__menu--max-width: 260px;
+
+//Tree Content
+$treecell-default__content--font-size: $font-size__base;
+$treecell-default__content--line-height: $font-size__large;
+$treecell-default__content--color: $black__blueish--100;
+$treecell-default__content--padding: 0;
+
+
+//Tree Cell
+$treecell-default__cell--padding-y: floor(($editor-defaults__inline-box--height - $treecell-default__content--line-height)/2);
+//$treecell-default__cell--padding: $treecell-default__cell--padding-y $container-spacing-default__third;
+$treecell-default__type-selector-cell--padding: $treecell-default__cell--padding-y ($container-spacing-default__half) $treecell-default__cell--padding-y $container-spacing-default__third;
+$treecell-default__cell--border-color: rgba($blue__greyish--400, 0.2);
+$treecell-default__cell--border: $boxes--border__thin solid $treecell-default__cell--border-color;
+
+$treecell-default__tree-spacer--width: $container-spacing-default__third;
+$treecell-default__row-selecte--bg-color: $blue__light;
+
+$treecell-default__type-selector-popup-action-hover--color: $window__action-group-popup-action-hover--color;
+
+//Tree Icon
+$tree-default__icon--color: $blue__greyish--400;
+
+//Abstracttype
+$createTypeSelector__abstracttype-cell--cursor: not-allowed;
+$createTypeSelector__abstracttype-text--font-style: italic;
+$createTypeSelector__abstracttype-text--color: lightgray;
+
+//vFiletree
+$vfiletree__icon--width: 10px;
+$vfiletree__icon-adjustment--margin-x: 3px;
+$_vfiletree__icon--line-height: 24px;
+$vfiletree__item-indent-spacer--width: 10px;
+$vfiletree__item-label--padding: 3px 0 2px 12px;
+$vfiletree__row--padding-y: 8px;
+$vfiletree__row--border-color: $grey__light--800;
+$vfiletree__row-cell--border: $boxes--border__thin solid $vfiletree__row--border-color;
+$vfiletree__treebody--border: $vfiletree__row-cell--border;
+$vfiletree__row-selected--color: $blue__default;
+
+
+//List Content Colors
+$list-default__content--color: $black__blueish--100;
+$list-default__content--hover-color: $black__blueish--100;
+$list-default__content--hover-bg-color: $grey__light--1200;
+$list-default__content--selected-color: $black__blueish--100;
+$list-default__content--selected-bg-color: $blue__light--100;
+
+$listitem-default__selected--color: $blue__light--100;
+
+//List Content
+$list-default__content--font-size: $font-size__medium;
+$list-default__content--line-height: $font-size__large;
+
+$list-default__content--border-width: $boxes--border__thin;
+$list-default__content--cell-padding-y: floor(($editor-defaults__inline-box--height - $list-default__content--line-height)/2) - $list-default__content--border-width;
+//$container-spacing-default__third - 3px;
+$list-default__content--cell-padding: ($list-default__content--cell-padding-y + $list-default__content--border-width) 5px $list-default__content--cell-padding-y;
+$list-default__content--border-color: $grey__light--200;
+
+$list-default__content-empty--padding-y: $container-spacing-default__third;
+$list-default__content-empty--bg-color: $grey__light--500;
+
+$list-default__treecell-indent--width: $container-spacing-default__third;
+
+// Label-Field Defintions
+$editor-defaults__label-field--line-height: $font-size__base;
+$editor-defaults__label-field--color: $grey__dark--500;
+$editor-defaults__label-field--margin-bottom: 10px;
+$editor-defaults__label-field--margin-top: 10px;
+
+$editor-defaults__range-label-field--font-size: $font-size__small;
+$editor-defaults__range-label-field--margin-top: 10px;
+$editor-defaults__range-featurevalue--width-percentage: 62%;
+$editor-defaults__range-featurevalue--padding-right: 2%;
+$editor-defaults__range-combobox--width-percentage: 100% - $editor-defaults__range-featurevalue--width-percentage - $editor-defaults__range-featurevalue--padding-right;
+
+//default sizes
+$editor-defaults__locedit-label--bg-color: $white;
+$editor-defaults__locedit-label--padding: 0 10px;
+$editor-defaults__locedit-label--width: 65px; //81px;
+$editor-defaults__locedit-options--margin-y: 10px;
+$editor-defaults__locedit-options--margin-x: 15px;
+$editor-defaults__locedit-box--border-width: 1px;
+
+$editor-defaults__icon--size: 16px; //width & height
+
+$editor-defaults__timebox-button--height: $editor-defaults__box--height/2 - $editor-defaults__inputbox--border-width;
+$editor-defaults__timebox-button--line-height: round($editor-defaults__timebox-button--height * 0.85);
+$editor-defaults__timebox-input--width: calc(100% - #{$editor-defaults__inline-button--size});
+
+//selectbox variables
+$selectbox__combobox--border-color: $grey__light--700;
+$selectbox__combobox--bckg-color: $white;
+$selectbox__combobox--shadow-color: $editor-defaults__box--shadow-color;
+$selectbox__combobox--hover-bckg-color: $blue__light--300;
+$selectbox__combobox-open--color: $black__blueish--100;
+$selectbox__combobox-open--bckg-color: $blue__light;
+$selectbox__combobox-comboitem--border-color: $grey__light--900;
+$selectbox__combobox-comboitem--border-width: $boxes--border__thin;
+$selectbox__combobox-comboitem--font-size: $font-size__small;
+$selectbox__combobox-comboitem--height: auto !important;
+$selectbox__combobox-comboitem--max-height: $editor-defaults__popup-box--max-height;
+$selectbox__combobox-comboitem--min-height: $editor-defaults__inline-box--height;
+$selectbox__combobox-input--font-size: $font-size__base;
+$selectbox__combobox-popup--padding-y: floor(($editor-defaults__inline-box--height - $selectbox__combobox-input--font-size)/2);
+$selectbox__combobox-popup--text-indent: $selectbox__combobox-popup--padding-y $editor-defaults__input-field--text-indent ($selectbox__combobox-popup--padding-y - $selectbox__combobox-comboitem--border-width);
+
+//Content tabs
+$editorarea__tab-text--font-color: $blue__greyish--400;
+$editorarea__tab-text-hover--font-color: $blue__default;
+$editorarea__tab-text--font-weight: $font-weight-normal;
+$editorarea__tab-text--font-size: $font-size__base;
+$editorarea__tab-caret--font-family: $font-family-fontawesome;
+$editorarea__tab-caret--font-size: $font-size__medium;
+
+$editorarea__tab--padding: 0 10px;
+$editorarea__tab-first--padding-left: 30px;
+$editorarea__tab-last--padding-right: 30px;
+$editorarea__tab--border-color: $blue__default;
+$editorarea__tab--border: 2px solid $editorarea__tab--border-color;
+
+$editorarea__tab--bg-color: transparent;
+$editorarea__tab-hover--bg-color: transparent;
+$editorarea__tab-pinned--font-weight: 600;
+$editorarea__tabpanel-content--bg-color: transparent;
+$editorarea__tabpanel-accordion--bg-color: $white;
+$editorarea__tabpanel-accordion-tab--bg-color: transparent;
+
+$editorarea__tabpanel-accordion-caret--width: 10px;
+$editorarea__tabpanel-accordion-caret--right: 10px;
+$editorarea__tabpanel-accordion-caret--left: $container-spacing-default__base;
+$editorarea__tabpanel-accordion-caret--padding-left: $editorarea__tabpanel-accordion-caret--left + $editorarea__tabpanel-accordion-caret--right + $editorarea__tabpanel-accordion-caret--width;
+
+$editorarea__tabpanel-accordion-tab--padding: 15px $container-spacing-default__base 15px $editorarea__tabpanel-accordion-caret--padding-left;
+
+$editorarea__tabs-content--padding-bottom: 0;
+$editorarea__tabs-content--border-bottom-width: 0;
+$editorarea__tabs--border-color: $grey__default--1000;
+$editorarea__tabs-caption-content--padding: 0;
+$editorarea__tabs-caption-content--margin-bottom: 3px;
+$editorarea__tabs-accordion-caption-content--margin-bottom: 0;
+
+$editorarea__tabs-content--shadow-color: $grey__light--1100;
+$editorarea__tabs-content--shadow: inset 0 -1px 0 0 $editorarea__tabs-content--shadow-color;
+
+$editorarea__tabpanel-accordion--shadow-color: rgba($blue__greyish--400, .2);
+$editorarea__tabpanel-accordion--shadow: inset 0 -1px 0 0 $editorarea__tabpanel-accordion--shadow-color;
+
+$editorarea__tabpanel-accordion-selected--bg-color: $grey__light--500;
+$editorarea__tabpanel-accordion-selected--shadow-color: rgba(80, 116, 143, 0.25);
+$editorarea__tabpanel-accordion-selected--shadow: 0 -2px 5px 0 $editorarea__tabpanel-accordion-selected--shadow-color inset;
+$editorarea__tabpanel-accordion-selected--padding: 0 0 5px;
+
+$editorarea__tabs-scroll--margin: 0 $container-spacing-default__base;
+$_editorarea__tabs-scroll-popup--margin: 0;
+$_editorarea__tabs-scroll--left: $container-spacing-default__base;
+
+$editorarea__tabbox-scroll--bg-color: transparent;
+$editorarea__tabbox-scroll--border-color: $editorarea__tabs--border-color;
+$editorarea__tabbox-scroll--border: $boxes--border__thin solid $editorarea__tabbox-scroll--border-color;
+
+$editorarea__tabbox-accordion-down--content: $caretarrow__down--content;
+$editorarea__tabbox-accordion-up--content: $caretarrow__up--content;
+$editorarea__tabbox-scroll-left--content: $caretarrow__left--content;
+$editorarea__tabbox-scroll-right--content: $caretarrow__right--content;
+
+$editorarea__tabbox-icon-chevron--width: 30px;
+$editorarea__tabbox-icon-chevron--height: 22px;
+$editorarea__tabbox-icon-chevron--padding-top: 5px;
+
+$editorarea__tabbox-icon-chevron--font-size: $font-size__medium;
+$editorarea__tabbox-icon-chevron--font-color: $editorarea__tab-text--font-color;
+$editorarea__tabbox-icon-chevron-hover--font-color: $editorarea__tab-text-hover--font-color;
+
+$editorarea__password_panel--padding: $container-spacing-default__half;
+$editorarea__password-panel-label-validation--color: $validation__error--color;
+
+$editor-defaults__switch-checkbox--line-height: $editor-defaults__inline-box--height;
+$editor-defaults__switch-checkbox--width: 22px; //38px
+$editor-defaults__switch-checkbox-btn--size: 12px; //16px
+$editor-defaults__switch-checkbox--border-radius: (ceil($editor-defaults__switch-checkbox-btn--size/2));
+
+$editor-defaults__switch-checkbox--border-color: $grey__default--900;
+$editor-defaults__switch-checkbox--border: $boxes--border__thin solid $editor-defaults__switch-checkbox--border-color;
+$editor-defaults__switch-checkbox-btn--bg-color: $white;
+$editor-defaults__switch-checkbox-checked--bg-color: $blue__default;
+$editor-defaults__switch-checkbox--transition: background-color .15s ease, margin-left .15s ease, left .15s ease;
+$editor-defaults__invalid-box--border-color: $validation__error--color;
+
+$editor-area__groupbox--border-color: $grey__default--300;
+$editor-area__groupbox--border-top: $boxes--border__thin solid $editor-area__groupbox--border-color;
+$editor-area__groupbox--padding-y: $container-spacing-default__third;
+
+$notification-box-defaults__box--bg-color: $validation__error--color;
+$notification-box-defaults__box--border-color: $validation__error--color;
+$notification-box-defaults__box--width: 250px;
+$notification-box-defaults__box--min-height: 50px;
+$notification-box-defaults__box--padding: $editor-area__groupbox--padding-y 25px 12px 36px;
+$notification-box-defaults__box--box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+$notification-box-defaults__box--border-width: $boxes--border__thin;
+$notification-box-defaults__box--border-radius: 3px;
+$notification-box-defaults__box-close-icon--hover-color: rgba($white, .85);
+
+$notification-box-defaults__pointer--size: 7px;
+$notification-box-defaults__pointer-inner--z-index: 10;
+$notification-box-defaults__pointer-inner--border-width: $notification-box-defaults__pointer--size;
+$notification-box-defaults__pointer-outer--border-width: $notification-box-defaults__pointer-inner--border-width + $notification-box-defaults__box--border-width;
+$notification-box-defaults__pointer-inner--margin-top: -($notification-box-defaults__pointer-inner--border-width + 2 * $notification-box-defaults__box--border-width);
+$notification-box-defaults__pointer-outer--margin-top: -($notification-box-defaults__pointer-outer--border-width + 2 * $notification-box-defaults__box--border-width);
+
+$notification-box-defaults__side-pointer--size: 11px;
+$notification-box-defaults__errorbox-icon--top: 11px;
+$notification-box-defaults__errorbox-icon--left: 14px;
+$notification-box-defaults__errorbox-up--top: 8px;
+$notification-box-defaults__errorbox-right--right: 7px;
+$notification-box-defaults__errorbox-close--top: 7px;
+$notification-box-defaults__errorbox-close--right: 5px;
+
+$notification-box-defaults__notification-box--width: ($notification-box-defaults__box--width - 2*$notification-box-defaults__box--border-width);
+$notification-box-defaults__icon--top: 12px;
+$notification-box-defaults__icon--left: $notification-box-defaults__icon--top;
+$notification-box-defaults__close--right: 5px;
+
+$notification-box-error__box--padding-x: $container-spacing-default__third;
+$notification-box-error__close-icon--size: 16px;
+$notification-box-error__box--padding: $editor-area__groupbox--padding-y ($container-spacing-default__third + $notification-box-error__close-icon--size + $notification-box-defaults__close--right) $editor-area__groupbox--padding-y $notification-box-error__box--padding-x;
+$notification-box-error__close-icon--top: $editor-area__groupbox--padding-y;
+$notification-box-error__close-icon--right: $notification-box-error__box--padding-x;
+
+$navigation-popup__menu--bg-color: $navigation__top-menu--bg-color;
+$navigation-popup__menu-item--hover-bg-color: mix($white, $navigation-popup__menu--bg-color, 40%);
+$navigation-popup__menu-item--color: $white;
+$navigation-popup__menu-item--font-size: $font-size__base;
+
+$navigation-popup__pointer-menu--bg-color: $white;
+
+$navigation-popup__pointer-menu-item--color: $black__blueish--100;
+$navigation-popup__pointer-menu-item--hover-color: $window__action-group-popup-action-hover--color;
+$navigation-popup__pointer-menu-item--hover-bg-color: $window__action-group-popup-action-hover--bg-color;
+$navigation-popup__pointer-menu-item-disabled--color: $editor-defaults__button-disabled--color;
+
+$navigation-popup__pointer-menu-pointer-default--border-size: 7px;
+$navigation-popup__pointer-menu-pointer-default--border-width: $boxes--border__thin;
+
+$navigation-popup__pointer-menu-pointer--border-width: $navigation-popup__pointer-menu-pointer-default--border-size ($navigation-popup__pointer-menu-pointer-default--border-size + 2 * $navigation-popup__pointer-menu-pointer-default--border-width);
+$navigation-popup__pointer-menu-pointer-shadow--border-width: ((nth($navigation-popup__pointer-menu-pointer--border-width, 1) + $navigation-popup__pointer-menu-pointer-default--border-width)) ((nth($navigation-popup__pointer-menu-pointer--border-width, 2) + $navigation-popup__pointer-menu-pointer-default--border-width));
+
+$navigation-popup__pointer-menu-pointer-side--border-width: ($navigation-popup__pointer-menu-pointer-default--border-size + 2 * $navigation-popup__pointer-menu-pointer-default--border-width) $navigation-popup__pointer-menu-pointer-default--border-size;
+
+$navigation-popup__pointer-menu-pointer-side-shadow--border-width: (nth($navigation-popup__pointer-menu-pointer-side--border-width, 1) + $navigation-popup__pointer-menu-pointer-default--border-width) (nth($navigation-popup__pointer-menu-pointer-side--border-width, 2) + $navigation-popup__pointer-menu-pointer-default--border-width);
+
+$navigation-popup__pointer-menu-pointer--spacing: ($navigation-popup__pointer-menu-pointer-default--border-size * 2) * -1;
+
+$navigation-popup__pointer-menu-pointer-shadow--spacing: ($navigation-popup__pointer-menu-pointer-default--border-size * 2 + 2* $navigation-popup__pointer-menu-pointer-default--border-width) * -1;
+$navigation-popup__pointer-menu-pointer-shadow--margin: $navigation-popup__pointer-menu-pointer-default--border-width * -1;
+
+$navigation-popup__pointer-menu-pointer--indent: $container-spacing-default__half;
+$navigation-popup__pointer-menu-pointer-side--indent: $container-spacing-default__third;
+
+$navigation-popup__pointer-menu-pointer--border-color: $grey__light--100;
+$navigation-popup__pointer-menu-pointer--border: $navigation-popup__pointer-menu-pointer-default--border-width solid $navigation-popup__pointer-menu-pointer--border-color;
+$navigation-popup__pointer-menu-secondary--margin-top: nth($navigation-popup__pointer-menu-pointer--border, 1) * -1;
+
+
+$navigation-popup__pointer-menu-pointer-shadow--color: $black__blueish--200;
+$navigation-popup__pointer-menu-pointer-shadow--border-color: rgba($navigation-popup__pointer-menu-pointer-shadow--color, 0.5);
+
+$navigation-popup__pointer-menu-pointer-shadow--box-shadow: 0 2px 4px 0 rgba($navigation-popup__pointer-menu-pointer-shadow--color, 0.3);
+
+$navigation-popup__pointer-menu-pointer-menu-item--border: $boxes--border__thin solid $grey__light--100;
+
+//Validation
+
+//Validation popup
+$validation-popup__box--margin-top: -6px;
+$validation-popup__box--margin-left: 10px;
+$validation-popup__box-arrow-after--right: $notification-box-defaults__icon--top;
+$validation-popup__box-arrow-after--bottom: -18px;
+$validation-popup__box-arrow-before--bottom: -17px;
+$validation-popup__box-arrow--border-color: $blue__dark;
+
+$validation-popup__box-arrow--border: 9px solid $editorarea__tabbox-scroll--bg-color; // transparent
+$validation-popup__box-arrow--border-top: 9px solid $validation-popup__box-arrow--border-color; // #384d66
+$validation-popup__box-arrow--border-width: 9px;
+
+$validation-popup__content-listcell--padding: 5px $container-spacing-default__third;
+$validation-popup__content-listcell--line-height: $font-size__large;
+$validation-popup__content-vlayout--padding-left: $container-spacing-default__base;
+$validation-popup__content-vlayout-inner--padding: 8px;
+$validation-popup__content-vlayout-inner--border-color: $blue__greyish--900;
+$validation-popup__content-vlayout-inner--border-bottom: 1px solid $validation-popup__content-vlayout-inner--border-color;
+$validation-popup__content-label--padding-left: $window__action-group-popup-action-text--height;
+$validation-popup__content-label--top: $editor-defaults__radiobox-selected--border-width;
+$validation-popup__button-primary--margin: $container-spacing-default__third;
+$validation-popup__button-primary--color: $grey__default--500;
+$validation-popup__button-confirm--color: $orange__default--300;
+
+$validation-popup-results__default---width: $notification-box-defaults__box--width;
+
+$validation-popup-results__default--box-shadow: 0px 0px 12px 1px rgba(127, 144, 164, 0.23); //0 0 4px rgba(0, 0, 0, 0.35);
+$validation-popup-results__list--max-height: 350px;
+$validation-popup-results__list--bg-color: $white;
+$validation-popup-results__list-row-validation--max-height: 224px;
+$validation-popup-results__default--border: $boxes--border__thin solid $grey__default--900;
+$validation-popup-results__default--margin-left: -4px;
+$validation-popup-results__default--margin-top: 8px;
+$validation-popup-results__pointer-above--margin-top: -$validation-popup-results__default--margin-top;
+$validation-popup-results__header-text--font-size: $font-size__small;
+$validation-popup-results__header-text--font-weight: $font-weight-bold;
+$validation-popup-results__header-text--padding: 6px 5px 6px 10px;
+$validation-popup-results__listcell--border-color: $grey__default;
+
+$validation-popup-results__validation-icon---margin: 2px 5px 3px 0;
+
+$validation-popup__pointer-default--border: 8px solid $editorarea__tabbox-scroll--bg-color;
+$validation-popup__pointer-default--border-width: $boxes--border__thin;
+
+$validation-popup__pointer-default-before--border-width: 8px 10px;
+$validation-popup__pointer-default-before--top: -14px;
+$validation-popup__pointer-default-before--left: 18px;
+$validation-popup__pointer-default-before--right: 18px;
+$validation-popup__pointer-default-before--border-color: $white;
+$validation-popup__pointer-default-before--z-index: 5;
+
+$validation-popup__pointer-default-after--border-width: (nth($validation-popup__pointer-default-before--border-width, 1) - $validation-popup__pointer-default--border-width) (nth($validation-popup__pointer-default-before--border-width, 2) - $validation-popup__pointer-default--border-width);
+$validation-popup__pointer-default-after--top: -15px;
+$validation-popup__pointer-default-after--left: $validation-popup__pointer-default-before--left + $validation-popup__pointer-default--border-width;
+$validation-popup__pointer-default-after--right: $validation-popup__pointer-default-before--right + $validation-popup__pointer-default--border-width;
+$validation-popup__pointer-default-after--border-color: $grey__default--900;
+$validation-popup__pointer-default-after--opacity: 0.7;
+
+$validation-popup__pointer--before-above--top: 100%;
+$validation-popup__pointer-above--top: $validation-popup__pointer--before-above--top;
+$validation-popup__pointer-above-before--side: 19px;
+$validation-popup__pointer-above-before--border-width: 6px 8px;
+
+$validation-popup__pointer-above-before--border-top-color: $white;
+$validation-popup__pointer-left--margin-left: 0;
+
+$validation-popup__pointer-above-after--border-width: (nth($validation-popup__pointer-above-before--border-width, 1) + $validation-popup__pointer-default--border-width) (nth($validation-popup__pointer-above-before--border-width, 2) + 2* $validation-popup__pointer-default--border-width);
+$validation-popup__pointer-above-after--side: $validation-popup__pointer-above-before--side - 2* $validation-popup__pointer-default--border-width;
+
+$table-scroll-container-size: 200px;
+
+//modal messagebox
+
+$messagebox-popup__mask--top: 0;
+$messagebox-popup__mask--left: 0;
+$messagebox-popup__mask--background-color: rgba(0, 0, 0, 0.65);
+
+$messagebox-popup__messagebox--background-color: $white;
+$messagebox-popup__messagebox--width: 400px;
+$messagebox-popup__messagebox--text-color: $black;
+$messagebox-popup__messagebox--top: 50%;
+$messagebox-popup__messagebox--left: 0;
+$messagebox-popup__messagebox--right: $messagebox-popup__messagebox--left;
+
+$messagebox-popup__messagebox-title--padding: $container-spacing-default__third 40px $container-spacing-default__third $container-spacing-default__third;
+$messagebox-popup__messagebox-title--border-bottom: $boxes--border__thin solid $grey__default;
+$messagebox-popup__messagebox-title--font-size: $font-size__large;
+
+$messagebox-popup__messagebox-label--font-weight: $font-weight-bold;
+
+$messagebox-popup__messagebox-close-btn--top: $container-spacing-default__third;
+$messagebox-popup__messagebox-close-btn--right: $container-spacing-default__third;
+$messagebox-popup__messagebox-close-btn--size: 24px;
+
+$messagebox-popup__messagebox-navigation--border-top: $messagebox-popup__messagebox-title--border-bottom;
+$messagebox-popup__messagebox-navigation--padding: $container-spacing-default__third;
+
+$messagebox-popup__messagebox-navigation-btn--padding: 7px $container-spacing-default__half;
+$messagebox-popup__messagebox-navigation-btn--color: $grey__default--500;
+$messagebox-popup__messagebox-navigation-btn-hover--color: $blue__default;
+
+$messagebox-popup__messagebox-message--padding: $messagebox-popup__messagebox-navigation--padding;
+
+$messagebox-popup__messagebox-message-span--padding: $messagebox-popup__messagebox-message--padding;
+
+$messagebox-popup__messagebox-message-footer--font-size: $font-size__small;
+
+$messagebox-popup__messagebox-message-warn--color: $validation__warn--color;
+$messagebox-popup__messagebox-message-warn--font-weight: $font-weight-bold;
+
+$popup-defaults__config-add-setting-popup-content--padding: 8px;

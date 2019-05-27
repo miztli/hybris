@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<!-- WARNING: This is the Spring WEB configuration file. If you want to replace
+	items or managers you have to do this from the extensions core configuration
+	file (cockpit2/resources/cockpit2-spring.xml) -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<import resource="classpath:META-INF/cockpitcore-spring.xml"/>
+	<import resource="classpath:META-INF/cockpitframework-spring.xml"/>
+	<import resource="classpath:META-INF/cockpitadmin-spring.xml"/>
+	<import resource="classpath:META-INF/cockpit-data-integration-spring.xml"/>
+
+	<bean id="moduleEntry" abstract="true"
+		  class="com.hybris.cockpitng.modules.ModuleEntry"/>
+
+	<bean id="backofficeCoreLabelLocator" class="com.hybris.cockpitng.util.labels.ResourcesLabelLocator"
+		  scope="singleton" init-method="init" lazy-init="false">
+		<property name="location" value="/backoffice/core/labels"/>
+		<property name="name" value="labels"/>
+	</bean>
+
+	<alias name="backofficeWidgetLibUtils" alias="widgetLibUtils"/>
+	<bean id="backofficeWidgetLibUtils" parent="defaultWidgetLibUtils">
+		<property name="rootDirectory" value="${user.home}/.cockpit/cws"/>
+	</bean>
+
+	<alias alias="widgetConnectionsRemover" name="defaultWidgetConnectionsRemover"/>
+	<bean id="defaultWidgetConnectionsRemover"
+		  class="com.hybris.cockpitng.modules.persistence.impl.DefaultWidgetConnectionsRemover"/>
+
+	<alias alias="widgetPersistenceService" name="cockpitModuleWidgetPersistenceService"/>
+	<bean id="cockpitModuleWidgetPersistenceService" parent="xmlWidgetPersistenceService"
+		  class="com.hybris.cockpitng.modules.persistence.impl.XmlModuleAwarePersistenceService">
+		<property name="defaultWidgetConfig" value="/ws-widgets.xml"/>
+		<property name="cockpitModuleConnector" ref="cockpitModuleConnector"/>
+		<property name="widgetConnectionsRemover" ref="widgetConnectionsRemover"/>
+	</bean>
+
+	<alias alias="widgetDefinitionService" name="componentDefinitionService"/>
+	<alias alias="componentDefinitionService" name="moduleComponentDefinitionService"/>
+	<alias alias="cockpitComponentDefinitionService" name="moduleComponentDefinitionService"/>
+	<alias alias="cockpitModulesApplicationContextInitializer" name="moduleComponentDefinitionService"/>
+	<bean id="moduleComponentDefinitionService" parent="frameworkDefaultComponentDefinitionService"
+		  class="com.hybris.cockpitng.modules.core.impl.CockpitModuleComponentDefinitionService">
+		<property name="cockpitModuleConnector" ref="cockpitModuleConnector"/>
+		<property name="servletContextResolver" ref="servletContextResolver"/>
+		<property name="definitionLoaders">
+			<list merge="true">
+				<bean
+						class="com.hybris.cockpitng.modules.core.impl.ModuleJarDefinitionLoader">
+					<property name="widgetLibUtils" ref="widgetLibUtils"/>
+				</bean>
+			</list>
+		</property>
+		<property name="widgetLibUtils" ref="widgetLibUtils"/>
+	</bean>
+
+	<alias name="defaultServletContextResolver" alias="servletContextResolver"/>
+	<bean id="defaultServletContextResolver" class="com.hybris.cockpitng.modules.DefaultServletContextResolver"/>
+
+	<alias name="defaultLoginInformationHandler" alias="loginInformationHandler"/>
+	<bean id="defaultLoginInformationHandler"
+		  class="com.hybris.cockpitng.handler.login.impl.DefaultLoginInformationHandler"
+		  init-method="init" scope="session">
+		<constructor-arg ref="loginInfoModel"/>
+		<property name="configuration">
+			<list>
+				<bean class="com.hybris.cockpitng.handler.login.LoginInformationConfigData">
+					<constructor-arg value="j_username"></constructor-arg>
+					<constructor-arg value="login.user.label"></constructor-arg>
+					<constructor-arg value="java.lang.String"></constructor-arg>
+					<constructor-arg>
+						<value type="java.lang.Integer">0</value>
+					</constructor-arg>
+				</bean>
+				<bean class="com.hybris.cockpitng.handler.login.LoginInformationConfigData">
+					<constructor-arg value="j_password"></constructor-arg>
+					<constructor-arg value="login.password.label"></constructor-arg>
+					<constructor-arg value="java.lang.String"></constructor-arg>
+					<constructor-arg>
+						<value type="java.lang.Integer">2</value>
+					</constructor-arg>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultLoginInfoModel" alias="loginInfoModel"/>
+	<bean id="defaultLoginInfoModel" class="com.hybris.cockpitng.core.util.impl.TypedSettingsMap" scope="session"/>
+
+	<alias name="defaultLoginInfoRenderer" alias="loginInfoRenderer"/>
+	<bean id="defaultLoginInfoRenderer" class="com.hybris.cockpitng.composer.DefaultLoginInfoRenderer"/>
+
+
+	<alias alias="labelService" name="dataIntegrationLabelService"/>
+	<bean id="dataIntegrationLabelService" parent="defaultLabelService"
+		  class="com.hybris.cockpitng.labels.impl.TypeAwareLabelService">
+		<property name="typeFacade" ref="typeFacade"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+		<property name="labelStringObjectHandler" ref="typeQualifierStringObjectHandler"/>
+	</bean>
+
+	<alias name="defaultTypeQualifierStringObjectHandler" alias="typeQualifierStringObjectHandler"/>
+	<bean id="defaultTypeQualifierStringObjectHandler"
+		  class="com.hybris.cockpitng.labels.impl.BackofficeTypeQualifierStringObjectHandler">
+		<property name="typeFacade" ref="typeFacade"/>
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+		<property name="fallbackLocaleProvider" ref="fallbackLocaleProvider"/>
+	</bean>
+
+	<bean id="backofficeTypeUtils" class="com.hybris.cockpitng.util.type.BackofficeTypeUtils">
+		<property name="typeFacade" ref="typeFacade"/>
+	</bean>
+
+	<alias alias="labelService" name="backofficeCoreLabelService"/>
+	<bean id="backofficeCoreLabelService" parent="dataIntegrationLabelService"
+		  class="com.hybris.cockpitng.labels.impl.BackofficeCoreLabelService">
+	</bean>
+
+	<bean id="hotDeploymentService" class="com.hybris.cockpitng.modules.HotDeploymentService"/>
+
+	<alias name="defaultExceptionTranslationService" alias="exceptionTranslationService"/>
+	<bean id="defaultExceptionTranslationService"
+		  class="com.hybris.cockpitng.service.impl.DefaultExceptionTranslationService">
+		<property name="defaultHandler">
+			<bean class="com.hybris.cockpitng.service.impl.DefaultExceptionTranslationHandler"/>
+		</property>
+		<property name="exceptionHandlers">
+			<list/>
+		</property>
+	</bean>
+
+	<context:annotation-config/>
+
+</beans>

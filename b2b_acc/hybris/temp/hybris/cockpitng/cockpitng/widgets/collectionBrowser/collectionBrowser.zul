@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:h="http://www.w3.org/1999/xhtml" xmlns:zk="http://www.zkoss.org/2005/zk"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd" height="100%">
+
+	<div id="contentsContainer" width="100%" height="100%">
+		<div sclass="yw-listview-actioncontainer">
+			<div sclass="yw-listview-caption">
+				<label id="listTitle" sclass="yw-listview-title"/>
+				<label id="listSubtitle" sclass="yw-listview-subtitle"/>
+			</div>
+			<div sclass="yw-listview-spacer"/>
+			<div sclass="y-toolbar">
+				<actions id="actionSlot" config="${widgetSettings.actionSlotComponentId}"
+						 group="common" sclass="yw-listview-actionSlot"/>
+				<div id="pagingContainerTop" sclass="yw-listview-paging-container-top" />
+				<hbox id="moldSelectorContainer" sclass="yw-coll-browser-mold-sel-container"/>
+				<div sclass="yw-toolbar-center-container">
+					<widgetslot slotID="toolbarCenter" id="toolbarCenter" sclass="yw-nested-widget" />
+				</div>
+			</div>
+			<div sclass="yw-listview-spacer"/>
+		</div>
+
+		<div vflex="true" width="100%" sclass="yw-coll-browser-container" id="browserContainer" />
+
+		<div id="bottomBar" sclass="yw-listview-bottom-bar" visible="false">
+			<div sclass="y-statusbar" id="statusBar" visible="false">
+				<button sclass="yw-listview-statusbar-button" id="itemCount">
+					<custom-attributes ytestid="itemCount"/>
+				</button>
+				<popup id="deselectPopup" sclass="yw-listview-statusbar-popup">
+					<div sclass="yw-listview-statusbar-popup-div">
+						<button id="deselectAll" label="${labels.deselectAll}" sclass="yw-listview-statusbar-popup-div-button">
+							<custom-attributes ytestid="deselectAll"/>
+						</button>
+					</div>
+				</popup>
+			</div>
+
+			<div id="pagingContainerBottom" sclass="yw-listview-paging-container-bottom" visible="false" />
+		</div>
+	</div>
+
+	<div id="notifierStack" sclass="yw-listview-busynotifier">
+		<custom-attributes verticalLayout="true"/>
+	</div>
+</widget>

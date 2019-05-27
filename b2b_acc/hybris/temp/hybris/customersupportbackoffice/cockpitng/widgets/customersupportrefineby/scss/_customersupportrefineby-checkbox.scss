@@ -1,0 +1,39 @@
+/*
+ * [y] hybris Platform
+ *
+ * Copyright (c) 2018 SAP SE or an SAP affiliate company.
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of SAP
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with SAP.
+ */
+
+/*================================
+    Inbox Refine By Checkboxes
+================================*/
+@import "support/_customersupportrefineby-variables.scss";
+
+.yw-customersupportrefineby {
+    .z-checkbox {
+        display: block;
+        padding-left: $customersupportrefineby__checkbox--padding-left;
+
+        label {
+            vertical-align: top;
+
+            &:before {
+                width: $customersupportrefineby__checkbox-label-after--width;
+                height: $customersupportrefineby__checkbox-label-after--height;
+                margin-top: $customersupportrefineby__checkbox-label-after--margin-top;
+                top: 0;
+                line-height: inherit;
+            }
+        }
+
+        input:checked + label:before {
+            background-size: $customersupportrefineby__checkbox-label-before--background-size;
+        }
+    }
+}

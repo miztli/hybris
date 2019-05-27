@@ -1,0 +1,191 @@
+.yas-results-header {
+    background: $searchResultBrowser__results-header--background;
+    color: $searchResultBrowser__results-header--color;
+    padding: $searchResultBrowser__results-header--padding;
+
+    &,
+    .z-label {
+        font-size: $searchResultBrowser__results-header--font-size;
+    }
+
+    .yas-promoted-results &,
+    .yas-navigation + .yas-default-results & {
+        display: none;
+    }
+}
+
+.yas-results-body {
+    width: $searchResultBrowser__result--width;
+}
+
+.yas-promoted-results {
+    .yas-result {
+        background: $searchResultBrowser__result-promoted--background;
+    }
+}
+
+.yas-result {
+    display: table;
+    width: $searchResultBrowser__result--width;
+    color: $searchResultBrowser__result--color;
+    background-color: $searchResultBrowser__result--background;
+
+    & + & {
+        .yas-result-inner > div {
+            border-top: $searchResultBrowser__result--border;
+        }
+    }
+
+    &.z-drag-over {
+        background-color: $searchResultBrowser__result-drag-over--background;
+
+        // &.yas-promoted .yas-result-inner > div {
+        //     border-top-color: $blue__default;
+        // }
+    }
+    &.yas-highlighted.z-drag-ghost,
+    &.z-drag-ghost {
+        width: $searchResultBrowser__result-drag-ghost--width;
+        border: $searchResultBrowser__result-drag-ghost--border;
+    }
+
+    &.yas-highlighted {
+        background-color: $_searchResultBrowser__result-highlighted--background;
+
+        &.z-drag-over {
+            background-color: $_searchResultBrowser__result-highlighted-drag-over--background;
+        }
+        .yas-info .yas-info-score {
+            background-color: $_searchResultBrowser__result-highlighted-info-score--background;
+        }
+    }
+    .yas-results-body & {
+        &.z-dragged {
+            opacity: $_searchResultBrowser__result-dragged--opacity;
+        }
+    }
+
+    &-title {
+        font-weight: $searchResultBrowser__result-title--font-weight;
+        font-size: $searchResultBrowser__result-title--font-size;
+    }
+    &-price {
+        font-weight: $searchResultBrowser__result-price--font-weight;
+        font-size: $searchResultBrowser__result-price--font-size
+    }
+
+    .yas-info {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: $searchResultBrowser__result-info--width;
+
+        .yas-info-icon {
+            height: $searchResultBrowser__result-info-icon-md--size;
+            width: $searchResultBrowser__result-info-icon-md--size;
+            margin-left: $searchResultBrowser__result-info-icon---margin;
+            margin-right: $searchResultBrowser__result-info-icon---margin;
+            background-image: url(images/icon_func_star_sprite.png);
+            background-repeat: no-repeat;
+            background-position: $searchResultBrowser__result-info-icon-fromSearchConfiguration--bg-position;
+            background-attachment: scroll;
+        }
+
+        .yas-info-score {
+            font-size: $searchResultBrowser__result-info-score--font-size;
+        }
+    }
+
+    &.yas-promoted {
+        .yas-info {
+            .yas-info-icon {
+                background-position: $searchResultBrowser__result-info-icon-inherit--bg-position;
+
+                .yas-default-results & {
+                    top: $searchResultBrowser__result-info-icon-and-text-icon--top;
+                    margin-top: $searchResultBrowser__result-info-icon-and-text-icon--margin-top;
+                    position: relative;                    
+
+                    &:only-child {
+                        position: static;
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+    &.yas-promoted.yas-from-search-configuration {
+        .yas-info {
+            .yas-info-icon {
+                background-position: $searchResultBrowser__result-info-icon-fromSearchConfiguration--bg-position;
+            }
+        }
+    }
+
+    &.yas-promoted.yas-from-search-configuration.yas-override {
+        .yas-info {
+            .yas-info-icon {
+                width: $searchResultBrowser__result-info-icon-lg--width;
+                height: $searchResultBrowser__result-info-icon-lg--height;
+                background-position: $searchResultBrowser__result-info-icon-fromSearchConfiguration-inherit--bg-position;
+            }
+        }
+    }
+
+    &-inner {
+        display: table-row;
+
+        .yas-content {
+            display: table-cell;
+            padding: $searchResultBrowser__result-content--padding;
+
+            & > .z-hlayout > .z-hlayout-inner {
+                vertical-align: middle;
+            }
+            & > .z-hlayout > .z-hlayout-inner:nth-child(2) {
+                width: $searchResultBrowser__result-content--width;
+            }
+        }
+
+        .yas-actions {
+            display: table-cell;
+            vertical-align: middle;
+            width: $searchResultBrowser__result-actions--width;
+            padding: $searchResultBrowser__result-actions--padding;
+
+            .z-button {
+                background: $searchResultBrowser__result-actions-button--background;
+                color: $searchResultBrowser__result-actions-button--color;
+                font-size: $searchResultBrowser__result-actions-button--font-size;
+
+                &[disabled]{
+                    background: transparent !important;
+                }
+
+                &:active, &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+   /* will probably be implemented
+    &:not(.yas-from-search-profile):not(.yas-from-search-configuration),
+    &.yas-from-search-profile.yas-from-search-configuration.yas-override:not(.yas-override-from-search-profile) {
+        .z-hlayout-inner:first-child:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 7px;
+            width: 6px;
+            background: url("images/icon_appendix_external-profile.png") no-repeat;
+            background-color: white;
+        }
+    }*/
+}
+
+.search-results-highlight {
+	font-weight: bold;
+}

@@ -1,0 +1,263 @@
+
+.cng-adminmode {
+    &-symbolic {
+        .cng-placeholderContent {
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .cng-addChildWidgetSymbolic,
+        .addMainSlotWidgetBtn {
+            background: url("images/icon_plus_16x16.png") no-repeat 2px 2px;
+            cursor: pointer;
+            border-top-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border: 1px dotted #A1D4F3;
+        }
+        .cng-addChildWidgetSymbolic {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border-bottom: none;
+            border-right: none;
+            
+            &:hover {
+                background-color: #99bbdd;
+            }
+        }
+        .addMainSlotWidgetBtn {
+            padding-left: 20px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            background-color: #ccc;
+        }
+        .widgetTemplate {
+            background: #90A842;
+            opacity: 1;
+
+            > div {
+                opacity: 1;
+            }
+        }
+        .widget_cnt:first-child {
+            margin-top: 0 !important;
+        }
+        .widgetSlot_label {
+            display: none;
+        }
+        &.z-window-noborder.z-window-embedded {
+
+            .z-window-content{
+                overflow: visible;
+                
+                > .widget_cnt {
+                    padding-bottom: 5px;
+                    overflow: visible;
+                    padding-top: 30px;
+                    top: 60px;
+                }
+                > .mainWidgetSlot {
+                    @if ($admin-defaults__symbolic-main-widget--top and $admin-defaults__symbolic-main-widget--top != $admin-defaults__main-widget--top) {
+                        top: $admin-defaults__symbolic-main-widget--top;
+                    }
+                    margin-top: 0;
+                    z-index: 1;
+                    
+                    &:before {
+                        content: "";
+                        position: fixed;
+                        z-index: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            &, 
+            .z-window-content > .mainWidgetSlot,
+            .z-window-content > .mainWidgetSlot:before {
+                background: $admin-defaults__symbolic-window--bg-color;
+            }
+        }
+        &, .z-window-embedded.z-window-noborder .z-window-content {
+            overflow: hidden;
+        }
+        .widget_toolbar {
+            top: 20px;
+            display: none;
+        }
+        .widget_toolbar.singleWidget {
+            display: block;
+        }
+
+        > div > .widget_cnt {
+            position: absolute;
+        //    bottom: 3px;
+            left: 0;
+        //    right: 0;
+            height: 110% !important;
+            top: 25px;
+        //    overflow: hidden;
+        //    border: 1px solid gray;
+            margin-top: 0;
+
+            > .widget_toolbar {
+                top: 0;
+            }
+            > .widgetPlaceholder {
+                left: 20px;
+                top: 10px;
+            }
+        }
+        .mainToolbar_table .symbolicCheck {
+            left: auto !important;
+        }
+
+    }
+    /* DO NOT REMOVE THIS, IT IS FOR KEEP THE CONTENT SCROLLABLE */
+    &.cng-adminmode-symbolic {
+        height: inherit;
+        width: inherit;
+        overflow: inherit;
+        
+        
+        > .z-window-embedded.z-window-noborder .z-window-content  {
+            overflow: inherit;
+        }
+        .mainWidgetSlot {
+            &.stubs_presented  > .widgetPlaceholder {
+                margin-left:290px;
+            }
+            &.no_stubs > .widgetPlaceholder {
+                margin-left:48px;
+            }
+            > .widgetPlaceholder {
+                left: 29px;
+                margin-bottom: 20px;
+                margin-left:48px;
+            }
+        }
+        &.z-window-embedded.z-window-noborder  > .mainWidgetSlot {
+            left: 0;
+        }
+        .widget_cnt.widget_children {
+            border: none;
+        }
+        .widget_toolbar.singleWidget {
+            left: 0px;
+            right: 0px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        //    overflow: hidden;
+        }
+        .widgetStub{
+            background-color: #fff;
+            border:none;
+            width:100%;
+            left:0px;
+            margin-left:0px;
+            margin-right:0px;
+            min-height:50px;
+
+           .widget_toolbar.singleWidget{
+                border-top-right-radius: 0px;
+                border-top-left-radius: 0px;
+                border:none;
+                background: #f0f0f0;
+            }
+        }
+        .stubWidgetContainerHeader{
+            background-color: #f0f0f0;
+            height: 30px;
+            width: 250px;
+        }
+        .stubWidgetContainerHeader > .z-label {
+            color: navy;
+            font-size: 12px;
+            font-weight: bold;
+            padding-left: 5px;
+            position: relative;
+            top: 9px;
+            width: 100%;
+            text-transform: uppercase;
+            color: #303030;
+        }
+        .widgetStub .widget_toolbar .toolbarComponent {
+            position: absolute;
+            top: 5px;
+            right: 1px;
+        }
+        .stubContainer {
+            float: left;
+            position: relative;
+            margin-left:10px;
+            margin-top:10px;
+            background-color: transparent;
+            height: 98% !important;
+
+            > .widget_cnt {
+                left:0px;
+                margin-top:0px;
+                padding: 5px 0 0;
+            }
+        }
+        .widget_cnt,
+        .widget_children_list > .widget_cnt {
+            border: none;
+            overflow: visible;
+            padding-top: 0px;
+            margin-top: 40px;
+            margin-bottom: 0;
+            background: transparent;
+            position: relative;
+            top: 0;
+        }
+        .stub_toggle_btn {
+            background-image: url("images/icon_func_colapse_left.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            position: absolute;
+            right: 0;
+            text-indent: -9999px;
+            width: 28px;
+        }
+        .stubContainerButton {
+            background-image: url("images/icon_editor_holder.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            float: left;
+            height: 28px;
+            left: 5px;
+            margin-top: 10px;
+            position: relative;
+            text-indent: -9999px;
+            width: 28px;
+        }
+    }
+}
+
+.cng-connectionsVisible {
+    background-color: $admin-defaults__symbolic-window--bg-color;
+    
+    .z-window-content > .mainWidgetSlot {
+        background: transparent;
+        &:before {
+            display: none;
+        }
+    }
+
+    .cng-adminmode .widget_toolbar .toolbarComponent,
+    .cng-addChildWidgetSymbolic {
+        display: none;
+    }
+    .mainWidgetSlot {
+        opacity: 0.7;
+    }
+    .z-button.stub_toggle_btn{
+        visibility: hidden;
+    }
+}

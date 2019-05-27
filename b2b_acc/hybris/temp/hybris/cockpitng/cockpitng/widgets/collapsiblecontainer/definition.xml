@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						 xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+						 id="com.hybris.cockpitng.collapsiblecontainer">
+	<name>Collapsible Container</name>
+	<description>
+		A container with two or three sections that the end-user can collapse and expand. The title of each section is configurable. The heights of the top and center sections can be specified as a percentage of the total height of the container.
+	</description>
+	<defaultTitle>Collapsible</defaultTitle>
+	<author>hybris</author>
+	<version>1.0</version>
+
+	<sockets>
+		<input id="collapseState" type="com.hybris.cockpitng.widgets.controller.collapsiblecontainer.CollapsibleContainerState"/>
+	</sockets>
+	<view src="collapsiblecontainer.zul"/>
+	<controller class="com.hybris.cockpitng.widgets.controller.CollapsibleContainerController"/>
+
+	<settings>
+		<setting key="thirdSectionDisabled" type="java.lang.Boolean" default-value="false"/>
+
+		<setting key="topCaption" default-value="Top Caption"/>
+		<setting key="centerCaption" default-value="Center Caption"/>
+		<setting key="bottomCaption" default-value="Bottom Caption"/>
+		<setting key="topHeight" default-value="33%"/>
+		<setting key="centerHeight" default-value="50%"/>
+
+		<setting key="topPanelCollapsed" type="java.lang.Boolean" default-value="false"/>
+		<setting key="centerPanelCollapsed" type="java.lang.Boolean" default-value="false"/>
+		<setting key="bottomPanelCollapsed" type="java.lang.Boolean" default-value="false"/>
+
+		<setting key="allowLockingTopPanel" type="java.lang.Boolean" default-value="false"/>
+		<setting key="allowLockingCenterPanel" type="java.lang.Boolean" default-value="false"/>
+		<setting key="allowLockingBottomPanel" type="java.lang.Boolean" default-value="false"/>
+
+		<setting key="topPanelInitiallyLocked" type="java.lang.Boolean" default-value="false"/>
+		<setting key="centerPanelInitiallyLocked" type="java.lang.Boolean" default-value="false"/>
+		<setting key="bottomPanelInitiallyLocked" type="java.lang.Boolean" default-value="false"/>
+	</settings>
+
+	<keywords>
+		<keyword>Layout</keyword>
+	</keywords>
+</widget-definition>

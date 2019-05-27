@@ -1,0 +1,41 @@
+.cngConnectionEndpoint {
+  z-index: 5; }
+
+.cngConnectionLabel {
+  z-index: 1000;
+  background: black;
+  color: white;
+  opacity: 0.8;
+  padding: 2px;
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  border: 1px dashed pink; }
+
+.cngConnectionLabelEmpty {
+  display: none; }
+
+div.widget_toolbar {
+  z-index: 2; }
+
+.widgetPlaceholder div.barDiv {
+  z-index: 2; }
+
+.cngSelection {
+  z-index: 3 !important; }
+
+.cngTarget,
+.cngConnectionLabel,
+.cng-targetConnectionsVisible .cngConnectionLabel.cngTarget,
+.cng-connectionLabelsVisible .cngConnectionLabel.cngTarget {
+  visibility: hidden; }
+
+.cng-connectionLabelsVisible .cngConnectionLabel,
+.cng-targetConnectionsVisible .cngTarget,
+.cng-targetConnectionsVisible.cng-connectionLabelsVisible .cngConnectionLabel.cngTarget {
+  visibility: visible; }
+
+.cng-connectionsVisible .cng-widget-clipboard {
+  visibility: hidden; }
+.cng-connectionsVisible .mainToolbar .cng-widget-clipboard {
+  display: none; }

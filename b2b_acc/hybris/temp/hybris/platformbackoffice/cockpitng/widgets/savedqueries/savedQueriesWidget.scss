@@ -1,0 +1,243 @@
+/*================================
+    Explorer Tree
+================================*/
+// Modifications on z-Tree components (and their contents)
+
+
+@import "cockpitng-globals.scss";
+
+$saved-queries__default--color: $white;
+$saved-queries__default--bg-color: $black__blueish--200;
+
+$saved-queries__list--bg-color: transparent;
+$saved-queries__list--padding: 0 20px;
+$safed-queries__filter-checkbox--line-height: $editor-defaults__inline-box--height;
+$safed-queries__vlist-filter-checkbox--line-height: normal;
+$safed-queries__vlist-filter-checkbox--margin-top: $container-spacing-default__third;
+
+$saved-queries__list-item--bg-color: transparent;
+$saved-queries__list-item--hover-bg-color: rgba($blue__greyish--200, .1); //rgba($white, .4);
+$saved-queries__list-item--hover-color: false; //$blue__greyish--200;
+$saved-queries__list-item-label--padding-left: 0;
+$saved-queries__list-item--color: $white;
+$saved-queries__list-item--padding-left: 5px;
+
+$saved-queries__list-item-delete-btn--size: 15px;
+$saved-queries__list-item-delete-btn--line-height: $font-size__base;
+
+$saved-queries__filter-input--bg-color: transparent;
+$saved-queries__filter-input--color: $white;
+$saved-queries__filter-input--border-color: $white;
+$saved-queries__filter-input--focus-bg-color: rgba($white, .85);
+$saved-queries__filter-input--focus-color: $black__blueish--100;
+
+$saved-queries__filter-button--hover-bg-color: transparent;
+
+$saved-queries__header-content--height: 32px;
+$saved-queries__header--padding: 12px 20px;
+$saved-queries__header-label--line-height: 19px;
+$saved-queries__header-label--padding-left: 1px;
+$saved-queries__header-filter-toggle-icon--size: 28px;
+
+$saved-queries__header-delimiter--border-color: $grey__dark--600;
+$saved-queries__header-delimiter--border-size: 2px;
+
+$saved-queries__tree-filter--padding: 0 20px 20px;
+
+$saved-queries__recently-added--color: $blue__default;
+$saved-queries__recently-added-delete-btn--color: $red__default--200;
+
+@mixin _placeholder-text-color ($color) {
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+    &::-moz-placeholder {  /* Firefox 19+ */
+       color: $color;  
+    }
+    &:-ms-input-placeholder {  
+       color: $color;  
+    }
+}
+
+@mixin _filter-textbox-colors ($color, $border-color, $bg-color:transparent, $focus-color:false, $focus-border-color:false, $focus-bg-color:false) {
+    background-color: $bg-color;
+    border-color: $border-color;
+    color: $color;
+    @include _placeholder-text-color ( rgba($color, .5) );
+    
+    &:focus {
+        @include _placeholder-text-color ( transparent );
+        @if $focus-color {
+            color: $focus-color;
+        }
+        @if $focus-color {
+            border-color: $focus-border-color;
+        }
+        @if $focus-bg-color {
+            background-color: $focus-bg-color;
+        }
+    }
+}
+
+@mixin _comp-vertically-adjusted ($attribute, $relation-height, $object-height, $right: 0, $left: 0) {
+    #{$attribute} : ceil(($relation-height - $object-height)/2) $right floor(($relation-height - $object-height)/2) $left;
+}
+
+.yw-savedqueries {
+    &-container {
+        height: 100%;
+        background-color: $saved-queries__default--bg-color;
+        color: $saved-queries__default--color;
+        
+        .header-container {
+            // border-bottom: $saved-queries__header-delimiter--border-size solid $saved-queries__header-delimiter--border-color;
+            background-color: $saved-queries__default--bg-color;
+            padding: $saved-queries__header--padding;
+
+            .z-label {
+                @include _comp-vertically-adjusted (padding, $saved-queries__header-content--height, $saved-queries__header-label--line-height, 0, $saved-queries__header-label--padding-left);
+                text-transform: uppercase;
+                font-weight: bold;
+                display: inline-block;
+                line-height: $saved-queries__header-label--line-height;
+            }
+        }
+        .z-vlayout-inner {
+            padding-bottom: 0px !important;
+        }
+        .filterDiv {
+            padding: $saved-queries__tree-filter--padding;
+            border-bottom: $saved-queries__header-delimiter--border-size solid $saved-queries__header-delimiter--border-color;
+            color: $saved-queries__default--color;
+        }
+        .yw-filter-textbox {
+            @include _filter-textbox-colors ($saved-queries__filter-input--color, 
+                $saved-queries__filter-input--border-color, 
+                $saved-queries__filter-input--bg-color, 
+                $saved-queries__filter-input--focus-color, 
+                false, 
+                $saved-queries__filter-input--focus-bg-color);
+        }
+    }
+    &-list {
+        height: 100%;
+        background-color: $saved-queries__list--bg-color;
+        border: none;
+        overflow: auto;
+
+        tr.z-listitem, .z-listitem {
+            background-color: $saved-queries__list-item--bg-color;
+            transition: background-color 2s ease-in-out !important; 
+            
+            .z-listcell{
+                border-color: transparent;
+
+                &-content {
+                    @if $saved-queries__list-item--color and $saved-queries__list-item--color != $saved-queries__default--color {
+                        color: $saved-queries__list-item--color;
+                    }
+                    @else {
+                        color: $saved-queries__default--color;
+                    }
+                }
+            }
+            .z-label {
+                @if $saved-queries__list-item-label--padding-left and $saved-queries__list-item-label--padding-left > 0 {
+                    padding-left: $saved-queries__list-item-label--padding-left;
+                }
+                color: inherit;
+            }
+            &, &.z-listitem-selected, {
+                &:hover {
+                    background-color: $saved-queries__list-item--hover-bg-color;
+                    
+                    .z-listcell-content {
+                        background-color: transparent;
+                        @if $saved-queries__list-item--hover-color {
+                            color: $saved-queries__list-item--hover-color;
+                        }
+                        @else {
+                            color: $saved-queries__default--color;
+                        }
+                    }
+                    .ye-delete-btn {
+                        display: inline-block;
+                    }
+                }
+            }
+			&.yw-savedqueries-recently-added-item {
+                background-color: $saved-queries__recently-added--color;
+            }
+        }
+
+        .ye-delete-btn {
+            display: none;
+            background-color: transparent;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            left: floor($saved-queries__list-item-delete-btn--size/-2);
+            line-height: $saved-queries__list-item-delete-btn--line-height;
+            min-height: $saved-queries__list-item-delete-btn--size;
+            min-width: $saved-queries__list-item-delete-btn--size;
+        }
+        .cell{
+            &-btn {
+                width: 28px;
+
+                .z-listcell-content {
+                    text-align: center;
+                }
+            }
+            &-name {
+                @if $saved-queries__list-item--padding-left and $saved-queries__list-item--padding-left > 0 {
+                    padding-left: $saved-queries__list-item--padding-left;
+                }
+            }
+        }
+
+        tbody.z-listbox-emptybody td {
+            background: $saved-queries__list--bg-color;
+        }
+
+        .z-listbox-body {
+            @if $saved-queries__list--padding {
+                padding: $saved-queries__list--padding;
+            }
+        }
+    }
+}
+
+.header-container {
+    .yw-filter-toolbarbutton {
+        background: url("images/icon_action_filter_default.png");
+        height: $saved-queries__header-filter-toggle-icon--size;
+        width: $saved-queries__header-filter-toggle-icon--size;
+        @include _comp-vertically-adjusted (margin, $saved-queries__header-content--height, $saved-queries__header-filter-toggle-icon--size);
+        float: right;
+        opacity: 1;
+        &:hover {
+            background-color: $saved-queries__filter-button--hover-bg-color;
+            opacity: 0.75;
+        }
+        
+        &.z-toolbarbutton-checked {
+            background-image: url("images/icon_action_filter_disabled.png");
+        }
+    }
+}
+
+.filterDiv {
+    .z-checkbox {
+        line-height: $safed-queries__filter-checkbox--line-height;
+    }
+    &.z-vlayout .z-checkbox {
+        line-height: $safed-queries__vlist-filter-checkbox--line-height;
+        margin-top: $safed-queries__vlist-filter-checkbox--margin-top;
+        display: block;
+        
+        &-content {
+            padding-top: floor($font-size__base/4);
+        }
+    }
+}

@@ -1,0 +1,170 @@
+/*================================
+    z-Listbox
+================================*/
+// Defintions of the z-Listbox and it's cells / contents
+
+
+@import "../support/_cockpit-mixins.scss";
+
+tr.z-listbox-odd {
+    background: none;
+}
+
+div.z-listcell-content {
+    background: none;
+    border: none;
+    color: $list-default__content--color;
+    padding: $list-default__content--cell-padding;
+    font-size: $list-default__content--font-size;
+    line-height: $list-default__content--line-height;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    > .z-listitem-checkable {
+        background: none;
+        border: none;
+    }
+    .z-label {
+        color: $editor-defaults__box--text-color;
+    }
+}
+
+//zk-override
+.z-listitem:first-child {
+    .z-listcell-content,
+    .z-listgroup-content {
+        padding: $list-default__content--cell-padding;
+    }
+}
+
+.z-listbox-body .z-listcell {
+    border: none;
+    border-top: $list-default__content--border-width solid $list-default__content--border-color;
+    background: transparent;
+}
+
+div.z-listbox-header .z-listhead-bar {
+    border-color: $list-default__content--border-color;
+}
+
+.z-listbox-body .z-listitem:first-child .z-listcell {
+    border-top-width: 0;
+}
+
+tr.z-listitem {
+    transition: background-color .1s;
+    color: $list-default__content--color;
+
+    /* HOVER */
+    &:hover {
+        background: $list-default__content--hover-bg-color; 
+        color: $list-default__content--hover-color;
+        
+        > td.z-listcell,
+        > td.z-listcell.z-draggable-over {
+            background: transparent;
+        }
+    }
+
+    /* SELECTED */
+    &-selected.z-listitem,
+    &-selected.z-listitem:hover {
+        /* SELECTED + HOVER */
+        background: $list-default__content--selected-bg-color;
+        @if $list-default__content--selected-color != $list-default__content--hover-color {
+            color: $list-default__content--selected-color;
+        }
+    }
+}
+
+.z-listitem:hover, 
+.z-listitem-selected{
+    > .z-listcell > .z-listcell-content {
+        color: $list-default__content--color;
+    }
+}
+
+/* EMPTY STATE */
+tbody.z-listbox-emptybody td {
+    padding-top: $list-default__content-empty--padding-y !important; //!important needs to override zk.wcs
+    padding-bottom: $list-default__content-empty--padding-y !important;
+    background: $list-default__content-empty--bg-color;
+    line-height: $list-default__content--line-height;
+}
+
+.z-listbox-header, .z-listheader, .z-listheadbar {
+    background: $list-default__header--bg-color; //#6F7C91;
+}
+
+.z-listheader-content {
+    color: $list-default__header--color;
+    padding: $list-default__header--padding;
+    line-height: $list-default__header--line-height;
+    font-size: $list-default__header--font-size;
+    font-weight: 600;
+}
+
+.z-listbox-header-border,
+.z-listheader {
+    border-color: $list-default__content--border-color;
+}
+
+.z-listheader-image,
+.z-listitem-image-checkbox,
+.z-listitem-image-radio,
+.z-listgroup-image-checkbox,
+.z-listgroup-image-radio,
+.z-listgroupfoot-image {
+    background-image: url("images/check-sprite.png");
+}
+
+/*====== checkable listitem ======*/
+
+.z-listitem-checkable,
+.z-listheader-checkable {
+    border-radius: $editor-defaults__input-field--border-radius;
+    border-color: $editor-defaults__inputbox--border-color
+}
+
+.z-listitem-selected > .z-listcell > .z-listcell-content > .z-listitem-checkable .z-listitem-icon.z-icon-check,
+.z-listheader-checkable.z-listheader-checked .z-listheader-icon {
+    color: $editor-defaults__inputbox-selected--bg-color;
+}
+
+.z-listitem-selected > .z-listcell > .z-listcell-content > .z-listitem-checkable .z-listitem-icon.z-icon-radio {
+    background: $editor-defaults__inputbox-selected--bg-color;
+}
+
+.z-listitem-checkable.z-listitem-checkbox,
+.z-listitem-checkable.z-listitem-radio,
+.z-listheader-checkable {
+    margin-right: $list-default__header-checkable--margin-right;
+}
+
+.z-listitem {
+    >.z-listcell>.z-listcell-content>.z-listitem-checkable {
+        position: relative;
+        
+        .z-listitem-icon.z-icon-radio {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -(ceil($editor-defaults__inputbox--size/2));
+            margin-left: -(ceil($editor-defaults__inputbox--size/2));
+            display: inline-block;
+            width: $editor-defaults__inputbox--size;
+            height: $editor-defaults__inputbox--size;
+            background: $editor-defaults__inputbox--bg-color;
+            border: $editor-defaults__inputbox--border-width solid $editor-defaults__inputbox--border-color;
+            border-radius: ceil($editor-defaults__inputbox--size/2);
+        }
+    }
+    &-selected >.z-listcell>.z-listcell-content>.z-listitem-checkable {
+        .z-listitem-icon.z-icon-radio {
+            background: $blue__default--100;
+            border-radius: ceil($editor-defaults__inputbox--size/2);
+            border: $editor-defaults__radiobox-selected--border-width solid $editor-defaults__radiobox-selected--border-color;
+        }
+    }
+}

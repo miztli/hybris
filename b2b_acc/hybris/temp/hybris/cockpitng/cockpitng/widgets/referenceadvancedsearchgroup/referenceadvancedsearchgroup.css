@@ -1,0 +1,99 @@
+.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-caption-container {
+    display: block;
+    position: static; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-topcontainer-open {
+    top: 50px;
+    display: block;
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: auto !important;
+    overflow: auto;
+    bottom: 0; }
+    .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-topcontainer-open, .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-topcontainer-open.yw-non-collapsible {
+      height: auto !important; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-active-attributes-grid {
+    width: auto; }
+    .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-active-attributes-grid .z-grid-header {
+      width: auto !important;
+      max-width: 100%; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-search-mode-container {
+    padding-left: 20px; }
+.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-com_hybris_cockpitng_collectionBrowser .y-statusbar,
+.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-toggle-advanced-search.yw-toggle-open {
+  display: none; }
+.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-coll-browser-container div.z-listbox-body,
+.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-coll-browser-container tbody.z-listbox-emptybody td {
+  background-color: #ffffff; }
+.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-active-attributes-grid > .z-grid-body > table {
+  margin-bottom: 0; }
+.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-caption-container.yw-noncollapsible-caption {
+  padding: 0 10px 10px; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-caption-container.yw-noncollapsible-caption .yw-textsearch {
+    overflow: hidden; }
+.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-topcontainer-open {
+  border: 1px solid #dbdbdb;
+  border-width: 1px 0; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-topcontainer-open .yw-active-attributes-grid {
+    width: auto !important;
+    overflow: visible; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-topcontainer-open .z-grid-body {
+    width: auto !important; }
+.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-listview-actioncontainer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dbdbdb; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-listview-actioncontainer .y-toolbar {
+    border-width: 0;
+    padding: 0; }
+
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-caption-container.yw-noncollapsible-caption {
+  padding-left: 20px;
+  padding-right: 20px; }
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-toggle-advanced-search[style*="display:none;"] + .yw-search-mode-container {
+  padding-left: 0; }
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-active-attributes-grid > .z-grid-header > table,
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch .yw-active-attributes-grid > .z-grid-body > table {
+  border-left-width: 20px;
+  border-right-width: 20px; }
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-coll-browser-container tr.z-listhead th:first-of-type .z-listheader-content,
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-coll-browser-container .z-listitem > td:first-of-type .z-listcell-content {
+  padding-left: 20px; }
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-coll-browser-container tr.z-listhead th:nth-last-of-type(2) .z-listheader-content,
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-coll-browser-container .z-listitem > td:last-of-type .z-listcell-content {
+  padding-right: 20px; }
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-coll-browser-container .z-listitem > td:first-child .z-listcell-content:before,
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-coll-browser-container tr.z-listhead th.yw-listview-colheader:first-child:before {
+  left: 20px; }
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-coll-browser-container .z-listitem > td:last-of-type .z-listcell-content:before,
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-coll-browser-container tr.z-listhead th.yw-listview-colheader:nth-last-of-type(2):before {
+  right: 20px; }
+
+@media (max-width: 1100px) {
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-caption-container .yw-buttons-container {
+    float: right; } }
+@media (max-width: 1080px) {
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-topcontainer-open {
+    top: 90px; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-caption-container .yw-search-mode-container {
+    float: none; } }
+@media screen and (max-width: 980px) {
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-caption-container .yw-textsearch-searchbox {
+    width: auto;
+    max-width: 70%;
+    width: 70%; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-caption-container .yw-textsearch .yw-global-typeSelector.z-bandbox {
+    max-width: none;
+    width: unset; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch-header-container .yw-global-typeSelector-container.yw-advancedsearch-header-container {
+    width: auto; }
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-textsearch.yw-toggle-open .yw-buttons-container {
+    margin-right: 0; } }
+@media screen and (max-width: 950px) {
+  .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-topcontainer-open {
+    top: 130px; } }

@@ -1,0 +1,38 @@
+@import "cockpitng-globals.scss";
+
+$simplelist__listbox--height: 100%;
+
+$simplelist__gridcontainer--width: 100%;
+$simplelist__gridcontainer--background: $grey__light--500;
+
+$simplelist__griditem--height: 300px;
+$simplelist__griditem--width: 31.33%;
+$simplelist__griditem--max-width: 250px;
+$simplelist__griditem--min-width: 150px;
+$simplelist__griditem--margin: $container-spacing-default__third 1%;
+$simplelist__griditem--padding: 1%;
+$simplelist__griditem--border: $boxes--border__thin solid $grey__default;
+$simplelist__griditem--background: $white;
+$simplelist__griditem--shadow: 0px 0px 5px $grey__default--1000;
+
+$simplelist__grid-imgcontainer--width: 96%;
+$simplelist__grid-imgcontainer--margin: 0 2% 5px;
+
+$simplelist__grid-zbutton--margin: $container-spacing-default__third 1%;
+
+$simplelist__imgcontainer--margin-left: 1%;
+$simplelist__imgcontainer--margin-right: 2%;
+
+$simplelist__imgcontainer-img--border: $boxes--border__thin solid $grey__default--900;
+$simplelist__imgcontainer-img--max-width: 100px;
+
+$simplelist__labelcontainer--margin-left: 1%;
+
+$simplelist__label--width: 100%;
+$simplelist__label--padding: 3px;
+
+$simplelist__label-zlabel--font-family: $font-family-opensans;
+$simplelist__label-zlabel--font-size: $font-size__medium;
+$simplelist__label-zlabel--font-weight: 300;
+
+$simplelist__fallbackimg--width: 32px;

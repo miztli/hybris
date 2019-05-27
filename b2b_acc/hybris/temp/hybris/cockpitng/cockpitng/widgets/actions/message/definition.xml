@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="com.hybris.cockpitng.action.message"
+						 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						 xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+	<name>Message action</name>
+	<description>An action to send a message through a result socket</description>
+	<author>hybris</author>
+	<version>0.1</version>
+
+	<actionClassName>com.hybris.cockpitng.actions.MessageAction</actionClassName>
+	<customRendererClassName>com.hybris.cockpitng.actions.MessageActionRenderer</customRendererClassName>
+	<iconUri>icons/icon_dummy_default.png</iconUri>
+
+	<settings>
+		<setting key="message" default-value="" type="java.lang.String"/>
+	</settings>
+</action-definition>

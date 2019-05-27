@@ -1,0 +1,204 @@
+/*================================
+    Box-Defaults
+================================*/
+// Default Defintions on Basic Box-Elements (Focus on Combobox, Bandbox)
+
+
+
+@import "../support/_cockpit-mixins.scss";
+
+
+/* textboxes / label / checkbox- & radio-button container */
+
+.z-label, .z-radio-content, .z-checkbox-content,
+.z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox, .z-combobox-input {
+    font-size: $editor-defaults__input-field--font-size;
+}
+
+.z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox, .z-combobox-input {
+    border-radius: $editor-defaults__input-field--border-radius;
+    width: 100%;
+    padding: $editor-boxes__input-field--padding;
+}
+
+input.z-textbox {
+    border-width: $editor-defaults__input-field--border-width;
+    border-style: solid;
+}
+
+input::-ms-clear{ 
+    display: none;
+}
+
+textarea.z-textbox {
+    padding: $editor-boxes__textarea-field--padding;
+}
+
+.z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox, .z-bandbox-input, .z-textbox-focus, .z-timebox-input, .z-spinner-input, .z-doublespinner-input, .z-paging-input {
+    outline: none;
+    -webkit-box-shadow: $editor-defaults__input-field--box-shadow;
+    -moz-box-shadow: $editor-defaults__input-field--box-shadow;
+    box-shadow: $editor-defaults__input-field--box-shadow;
+
+    &:focus {
+        outline: none;
+        -webkit-box-shadow: $editor-defaults__input-field--box-shadow-focus;
+        -moz-box-shadow: $editor-defaults__input-field--box-shadow-focus;
+        box-shadow: $editor-defaults__input-field--box-shadow-focus;
+    }
+    
+}
+
+.z-datebox-input, .z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox, .z-bandbox-input, .z-combobox-input, .z-textbox-focus, .z-timebox-input, .z-spinner-input, .z-doublespinner-input, .z-paging-input {
+    line-height: $editor-defaults__input-field--line-height;
+    height: $editor-defaults__box--height;
+    padding-left: $editor-defaults__input-field--text-indent;
+    border-color: $editor-defaults__box--border-color;
+    color: $editor-defaults__input-field--color;
+
+    &:focus {
+        border-color: $editor-defaults__box--focus-color;
+    }
+}
+
+
+/*======== z-combobox, z-bandbox =======*/
+
+.z-combobox,
+.z-bandbox {
+    width: 100%;
+    display: table;
+    border-spacing: 0;
+}
+
+//taken from zk
+.z-combobox-button:hover, 
+.z-bandbox-button:hover, 
+.z-datebox-button:hover, 
+.z-timebox-button:hover, 
+.z-spinner-button:hover, 
+.z-doublespinner-button:hover {
+    color: $editor-defaults__box-button--hover-color;
+    background-color: $editor-defaults__box-button--hover-bg-color;
+    
+    > i {
+        color: inherit;
+    }    
+}
+
+.z-comboitem:hover {
+    background: $editor-defaults__box--hover-bg-color;
+    color: $editor-boxes__default--hover-color;
+}
+
+.z-combobox {
+    .z-combobox-button:hover>i {
+        color:  $editor-defaults__box--text-color;
+    }
+    .z-combobox-input{
+        & + .z-combobox-button, &:focus + .z-combobox-button{
+            border-left: none;
+        }
+    }
+}
+
+.z-combobox .z-combobox-input,
+.z-bandbox .z-bandbox-input {
+    margin-bottom: 0;
+    width: 100%;
+    display: table-cell;
+    background: $editor-defaults__component--bg-color;
+    border-color: $editor-defaults__box--border-color;
+    border-right-width: 0;
+    color: $editor-defaults__box--text-color;
+    box-sizing: border-box;
+}
+
+.z-bandbox .z-bandbox-button,
+.z-combobox .z-combobox-button,
+.z-datebox .z-datebox-button{
+    display: table-cell;
+    border: $editor-defaults__inputbox--border-width solid $editor-defaults__box--border-color;
+    
+    &:hover{
+        background-position: -28px 0;
+    }
+    &:active {
+        background-position: -56px 0;
+    }
+}
+.z-combobox .z-combobox-button,
+.z-datebox-input + .z-datebox-button:hover{
+    border-left: none;
+    background-color: $editor-defaults__component--bg-color;
+}
+input[disabled] + .z-datebox-button:hover,
+input[disabled] + .z-combobox-button:hover{
+    border-color: $editor-defaults__box--border-color;
+}
+.z-combobox .z-combobox-input:focus,
+.z-combobox .z-combobox-input:focus + .z-combobox-button,
+.z-bandbox .z-bandbox-input:focus,
+.z-bandbox .z-bandbox-input:focus + .z-bandbox-button,
+.z-datebox .z-datebox-input:focus + .z-datebox-button{
+    border-color: $editor-defaults__box--focus-color;
+}
+
+.z-combobox-input, .z-bandbox-input,
+.z-datebox-input, .z-timebox-input,
+.z-spinner-input, .z-doublespinner-input {
+    font-size: $editor-defaults__input-field--font-size;
+}
+
+/*====== z-timebox, z-spinner =========*/
+
+.z-timebox,
+.z-spinner {
+    td > &:only-child {
+        display: block;
+    }
+}
+
+.z-timebox .z-timebox,
+.z-spinner .z-spinner {
+    &-input{
+        border-right-width: $editor-defaults__inputbox--border-width;
+        width: $editor-defaults__timebox-input--width;
+        box-sizing: border-box;
+
+        &:focus{
+            border-right: $editor-defaults__inputbox--border-width solid $editor-defaults__box--focus-color;
+        }
+    }
+    &-button{
+        border-color: $editor-defaults__box--border-color;
+        height: $editor-defaults__inline-button--size;
+        width: $editor-defaults__inline-button--size;
+        border-left: none;
+        box-sizing: border-box;
+
+        &>a{
+            width: auto;
+            line-height: $editor-defaults__timebox-button--line-height;
+            height: $editor-defaults__timebox-button--height;
+
+            &:hover{
+                background-color: $editor-defaults__box--hover-bg-color;
+                color: $editor-defaults__icon--color;
+            }
+            &:active{
+                background-color: $editor-defaults__box--focus-color;
+                color: $editor-boxes__input-field--bg-color;
+            }
+        }
+    }
+}
+.ye-validation{
+    &-error, &-info, &-warn {
+        .z-timebox-button .z-timebox-icon,
+        .z-spinner-button .z-spinner-icon {
+            border: none;
+        }
+    }
+}
+

@@ -1,0 +1,368 @@
+/*================================
+    z-Popup
+================================*/
+// Defintions on Standard-Popups & contained Elements (Basig ones)
+
+
+@import "../support/_cockpit-variables.scss";
+@import "../support/_cockpit-mixins.scss";
+
+.z-popup {
+    background-color: $window__popup--bg-color;
+    border: $window__popup--border;
+    border-radius: $window__popup--border-radius;
+    box-shadow: $window__popup--box-shadow;
+
+    &-content {
+        //overwrite zk styling
+        color: $window__popup-content--color;
+        padding: $window__popup-content--padding;
+
+        .yw-desc-tooltip & {
+            padding: $window__popup-content-tooltip--padding;
+        }
+
+    }  
+
+    &-plain {
+        box-shadow: $window__popup-plain--box-shadow;
+    }
+
+    .z-popup-cl {
+        background: $window__popup--bg-color;
+    }
+    &.z-popup-open.ye-list-toolbar-popup-add {
+        width: $window__toolbar-list-add-popup--width;
+    }
+    &.ya-cng-action-group-popup {
+        .cng-action {
+            display: block;
+            width: $window__action-group-popup-action--width;
+            
+
+            .cng-action-text {
+                height: $window__action-group-popup-action-text--height;
+                padding: $window__action-group-popup-action-text--padding;
+                display: table-cell;
+                vertical-align: middle;
+                box-sizing: border-box;
+
+                .z-label {
+                    display: inline-block;
+                }
+            }
+            &.cng-action-enabled:hover {
+                background-color: $window__action-group-popup-action-hover--bg-color;
+                color: $window__action-group-popup-action-hover--color;
+                
+                .cng-action-text {
+                    color: inherit;
+                }
+            }
+        }
+        
+        .z-popup-content > .z-div {
+            border-top: $window__action-group-popup-action--border;
+            box-sizing: border-box;
+            
+            &:first-child {
+                border-top-width: 0;
+            }
+        }
+    }
+
+    &.add_setting_popup {
+        .z-button {
+            float: right;
+        }
+        .z-popup-content {
+            padding: $popup-defaults__config-add-setting-popup-content--padding;
+        }
+    }
+}
+
+.z-combobox-shadow,
+.z-bandbox-shadow {
+    box-shadow: $window__box-popup-shadow--box-shadow;
+    border-radius: $window__box-popup-shadow--border-radius;
+}
+
+// z-menupopup
+// ====================
+//
+
+.z-menupopup, .z-menu {
+    border: none;
+    padding: 0;
+}
+
+.z-menupopup-content {
+    background-color: $navigation-popup__menu--bg-color;
+    
+    .z-menu-content:hover, 
+    .z-menu-content:hover .z-menu-icon, 
+    .z-menuitem-content:hover {
+        background-color: $navigation-popup__menu-item--hover-bg-color;
+    }
+    
+    .z-menu a.z-menu-content,
+    .z-menuitem a.z-menuitem-content,
+    .z-menu-icon {
+        color: $navigation-popup__menu-item--color;
+    }
+
+    .z-menu:hover,
+    .z-menuitem:hover {
+        background-color: $navigation-popup__menu--bg-color;
+    }
+
+    /* zk7-revised-TODO */
+    .z-menu:hover .z-menuitem,
+    .z-menuitem:hover .z-menu {
+        &-cl,
+        &-cr,
+        &-cm {
+            background-color: $navigation-popup__menu--bg-color;
+        }
+    }
+}
+
+.z-menupopup {
+    &, 
+    .z-menu, 
+    .z-menuitem {
+        background-color: $navigation-popup__menu--bg-color;
+    }
+    .z-menu-content, 
+    .z-menuitem-content {
+        font-size: $navigation-popup__menu-item--font-size;
+    }    
+}
+
+
+    
+
+div.z-menupopup-separator {
+    display: none;
+}
+
+li.z-menuseparator {
+    margin-left: 26px;
+    margin-right: 10px;
+}
+
+.yw-pointer-menupopup {
+    overflow: visible;
+    background-color: $navigation-popup__pointer-menu--bg-color;
+    border: $navigation-popup__pointer-menu-pointer--border;
+    box-shadow: $navigation-popup__pointer-menu-pointer-shadow--box-shadow;
+
+    &,
+    &-widget .z-toolbarbutton {
+        &:before {
+            @include _pointingPopupDefaults(-1);
+        }
+        &:after {
+            @include _pointingPopupDefaults();
+        }
+    }
+    &.z-menupopup, 
+    .z-menu, 
+    .z-menuitem {
+        background-color: $navigation-popup__pointer-menu--bg-color;
+        
+    }
+    .z-menuitem {
+        border-top: $navigation-popup__pointer-menu-pointer-menu-item--border;
+        &:first-child {
+            border-top-width: 0;
+        }
+    }
+
+    
+    .z-menupopup-content {
+        a.z-menu-content, 
+        a.z-menuitem-content,
+        .z-menu-icon {
+            color: $navigation-popup__pointer-menu-item--color;
+        }
+        
+        a.z-menuitem-content {
+            background-color: $editor-defaults__button--color;
+        }
+
+        a.z-menu-content, 
+        a.z-menuitem-content {
+            &:hover {
+                color: $navigation-popup__pointer-menu-item--hover-color;
+                background-color: $navigation-popup__pointer-menu-item--hover-bg-color;
+                
+                .z-menu-icon {
+                    color: $navigation-popup__pointer-menu-item--hover-color;
+                    background-color: inherit;
+                }
+            }
+        }
+    }
+    .z-menu-content, 
+    .z-menuitem-content,
+    .z-menupopup-content a.z-menu-content,
+    .z-menupopup-content a.z-menuitem-content {
+        &[disabled]{
+            &,
+            &:hover {
+                color: $navigation-popup__pointer-menu-item-disabled--color;
+                background-color: transparent !important;
+                text-decoration: none;
+                cursor: default;
+            }
+        }
+    }
+    ~ .yw-pointer-menupopup-secondary {
+        margin-top: $navigation-popup__pointer-menu-secondary--margin-top;
+    }
+    &-top,
+    &-top-right {
+        &:before {
+            top: $navigation-popup__pointer-menu-pointer-shadow--spacing;
+            left: $navigation-popup__pointer-menu-pointer--indent;
+            margin-left: $navigation-popup__pointer-menu-pointer-shadow--margin;
+            margin-right: $navigation-popup__pointer-menu-pointer-shadow--margin;
+            border-width: $navigation-popup__pointer-menu-pointer-shadow--border-width;
+            left: $navigation-popup__pointer-menu-pointer--indent;
+            border-bottom-color: $navigation-popup__pointer-menu-pointer--border-color;
+        }
+        &:after {   
+            top: $navigation-popup__pointer-menu-pointer--spacing;
+            left: $navigation-popup__pointer-menu-pointer--indent;
+            border-width: $navigation-popup__pointer-menu-pointer--border-width;
+            border-bottom-color: $navigation-popup__pointer-menu--bg-color;
+        }
+    }
+    &-widget .z-toolbarbutton {
+        &:before {
+            margin-left: $navigation-popup__pointer-menu-pointer-shadow--margin;
+            margin-right: $navigation-popup__pointer-menu-pointer-shadow--margin;
+            border-width: $navigation-popup__pointer-menu-pointer-shadow--border-width;
+            border-bottom-color: $navigation-popup__pointer-menu-pointer--border-color;
+        }
+        &:after {
+            border-width: $navigation-popup__pointer-menu-pointer--border-width;
+            border-bottom-color: $navigation-popup__pointer-menu--bg-color;
+        }
+        &:before,
+        &:after {
+            left: 50%;
+            transform: translate3d(-50%, 0, 0);
+            bottom: 0;
+            display: none;
+        }
+    }
+    &-top-right {
+        &:before,
+        &:after {
+            left: auto;
+            right: $navigation-popup__pointer-menu-pointer--indent;
+        }
+    }
+    &-right {
+        &:before {
+            right: $navigation-popup__pointer-menu-pointer-shadow--spacing;
+            top: $navigation-popup__pointer-menu-pointer-side--indent;
+            margin-top: $navigation-popup__pointer-menu-pointer-shadow--margin;
+            border-width: $navigation-popup__pointer-menu-pointer-side-shadow--border-width;
+            border-left-color: $navigation-popup__pointer-menu-pointer--border-color;
+        }
+        &:after{
+            right: $navigation-popup__pointer-menu-pointer--spacing;
+            top: $navigation-popup__pointer-menu-pointer-side--indent;
+            border-width: $navigation-popup__pointer-menu-pointer-side--border-width;
+            border-left-color: $navigation-popup__pointer-menu--bg-color;
+        }
+    }
+    &-left {
+        &:before {
+            left: $navigation-popup__pointer-menu-pointer-shadow--spacing;
+            top: $navigation-popup__pointer-menu-pointer-side--indent;
+            margin-top: $navigation-popup__pointer-menu-pointer-shadow--margin;
+            border-width: $navigation-popup__pointer-menu-pointer-side-shadow--border-width;
+            left: $navigation-popup__pointer-menu-pointer--indent;
+            border-right-color: $navigation-popup__pointer-menu-pointer--border-color;
+        }
+        &:after{
+            left: $navigation-popup__pointer-menu-pointer--spacing;
+            top: $navigation-popup__pointer-menu-pointer-side--indent;
+            border-width: $navigation-popup__pointer-menu-pointer-side--border-width;
+            border-right-color: $navigation-popup__pointer-menu--bg-color;
+        }
+    }
+}
+
+
+// Popup Bandbox / Combobox
+// ====================
+//
+
+.ye-inline-editor-row-popup {
+    border: 1px solid #6f7c91;
+    box-shadow: $window__box-popup-shadow--box-shadow;
+    border-radius: $window__box-popup-shadow--border-radius;
+    width: 160px;
+    
+    &:after {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        top: -1px;
+        left: 156px;
+        box-sizing: border-box;
+        background-color: $window__popup--bg-color;
+        transform-origin: 0 0;
+        transform: rotate(135deg);
+        border: 0 none;
+        border-left: 1px solid #6f7c91;
+        border-bottom: 1px solid #6f7c91;
+        box-shadow: $window__box-popup-shadow--box-shadow;
+    }
+    .z-menuitem {
+        background: transparent !important;
+        &:last-child {
+            a.z-menuitem-content {
+                border-bottom: 0 none;
+            }
+        }
+        &-image {
+            display: none;
+        }
+    }   
+}
+
+
+.z-datebox-popup{
+    border-color: $editor-defaults__box--border-color;
+    box-shadow: -2px 2px 0 $editor-defaults__box--shadow-color;
+
+    .z-calendar + .z-timebox{
+        margin: $editor-defaults__locedit-options--margin-y $editor-defaults__locedit-options--margin-x;
+        display: block;
+    }
+}
+
+.z-combobox-popup, 
+.z-bandbox-popup {
+    //height for bandbox-popup added at the moment (should not be) - remove if fixed (or merge-conflict related)
+    height: $selectbox__combobox-comboitem--height;
+    max-height: $selectbox__combobox-comboitem--max-height;
+    font-size: $selectbox__combobox-comboitem--font-size;
+}
+
+.ye-validation-results-popup.ye-row-validation-result-popup.y-popup{
+    margin-top: 0px;
+}
+
+.z-datebox-popup {
+    .z-timebox .z-timebox-input {
+        float: left;
+    }
+}

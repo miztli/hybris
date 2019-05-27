@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="com.hybris.cockpitng.summaryView"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+
+    <name>Summary View</name>
+    <description>Displays configurable summary view of an object with preview image and actions</description>
+    <defaultTitle>Summary View</defaultTitle>
+    <author>hybris</author>
+    <version>0.1</version>
+
+    <view src="summaryView.zul"/>
+    <controller class="com.hybris.cockpitng.widgets.summaryview.SummaryViewController"/>
+
+    <sockets>
+        <input id="inputObject" type="java.lang.Object"/>
+        <output id="focusAttribute" type="com.hybris.cockpitng.widgets.baseeditorarea.FocusRequest"/>
+    </sockets>
+
+    <keywords>
+        <keyword>Preview</keyword>
+    </keywords>
+
+    <settings>
+        <setting key="summaryViewConfigCtx" default-value="summary-view" type="String"/>
+        <setting key="defaultThumbnailRenderer" default-value="summaryViewThumbnailRenderer" type="String" />
+        <setting key="defaultActionsRenderer" default-value="" type="String" />
+        <setting key="defaultSectionRenderer" default-value="summaryViewSectionRenderer" type="String" />
+        <setting key="defaultEditorWrapperTemplate" default-value="com.hybris.cockpitng.editor.instanteditor(%s)" type="String" />
+    </settings>
+
+</widget-definition>

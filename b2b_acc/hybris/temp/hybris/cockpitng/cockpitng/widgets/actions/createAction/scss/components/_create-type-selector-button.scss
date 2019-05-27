@@ -1,0 +1,92 @@
+/*================================
+    Create Button
+================================*/
+// Styling of the Create Button visible on different Widgets
+
+@import "../support/_create-variables.scss";
+
+
+/* SELECTBUTTON */
+a.ya-create-type-selector-button {
+    .z-toolbarbutton-content {
+        width: $create__create-new-button-caret-icon--size;
+        height: $create__create-new-button-caret-icon--size;
+        background: url("icons/icon_func_toggle_sprite.png") center no-repeat;
+        background-position: 0 (-$create__create-new-button-caret-icon--size);
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &.z-toolbarbutton {
+        width: $create__create-new-button--caret-button--width;
+        height: $create__create-new-button--height;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        position: relative;
+
+        &:hover {
+            .z-toolbarbutton-content {
+                background-position: (-$create__create-new-button-caret-icon--size) (-$create__create-new-button-caret-icon--size);
+            }
+        }
+        &[disabled] {
+            .z-toolbarbutton-content {
+                opacity: 0.5;
+            }
+        }
+        &[disabled]:hover {
+            .z-toolbarbutton-content {
+                background-position: 0 (-$create__create-new-button-caret-icon--size);
+            }
+        }
+    }
+
+    &-opened.z-toolbarbutton {
+        &,
+        &:hover,
+        &:focus {
+            background-color: $create__create-new-button-opened--bg-color;
+            border: $create__create-new-button-opened--border;
+            box-shadow: $create__create-new-button-opened--box-shadow;
+
+            .z-toolbarbutton-content {
+                background-position: (-$create__create-new-button-caret-icon--size) (-$create__create-new-button-caret-icon--size * 2);
+            }
+        }
+    }
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus {
+        background-color: transparent!important;
+    }
+}
+
+/* ADD BUTTON */
+.ya-com_hybris_cockpitng_action_create {
+    display: table-cell;
+
+    &:hover{
+        color: $create__create-new-button--hover-color;
+        background: $create__create-new-button--hover-bg-color;
+        transition: $create__create-new-button--hover-transition;
+    }
+}
+
+/* DISABLE STATE */
+.ya-create-type-selector-button.z-button-os-disd,
+.ya-com_hybris_cockpitng_action_create.cng-action-disabled {
+    background-color: transparent!important;
+}
+
+.ya-create-type-selector-button.z-button-os-disd {
+    background-position: $create__create-new-button-select-disabled--bg-position;
+}
+
+.ya-create-type-no-visible-subtypes {
+    display: block;
+    font-style: italic;
+    padding: $create__create-no-subtype-popup--padding;
+    color: $create__create-no-subtype-popup--color;
+}

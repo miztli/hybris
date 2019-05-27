@@ -1,0 +1,62 @@
+@import "release-info-variables.scss";
+
+.yw-cng-release-releaseinfo {
+	color: $releaseinfo__component--color;
+	font-size: $releaseinfo__component--font-size;
+	background: $releaseinfo__component--background;
+	font-family: $releaseinfo__component--font-family;
+	overflow: auto;
+
+	> .z-div {
+		margin: $releaseinfo__component-z-div--margin;
+	}
+
+	ul {
+
+		li {
+			padding-left: $releaseinfo__list-li--padding-left;
+			list-style: none;
+		
+			&.level1 {
+				font-weight: $releaseinfo__list-level1--font-weight;
+				font-size: $releaseinfo__list-level1--font-size;
+				margin-top: $releaseinfo__list-level1--margin-top;
+				margin-left: $releaseinfo__list-level1--margin-left;
+			}
+
+			&.level2 {
+			    margin-left: $releaseinfo__list-level2--margin-left;
+			    color: $releaseinfo__list-level2--color;
+			    list-style: disc outside none;
+			}
+		}
+	}
+
+	&-titleContainer {
+
+		.z-label {
+			font-size: $releaseinfo__title-label--font-size;
+			font-weight: $releaseinfo__title-label--font-weight;
+			color: $releaseinfo__title-label--color;
+		}
+	}
+
+	&-teaserContainer {
+		
+		> .z-label{
+			font-size: $releaseinfo__teaser-label--font-size;
+			font-weight: $releaseinfo__teaser-label--font-weight;
+			color: $releaseinfo__teaser-label--color;
+		}
+	}
+
+	.featureheader {
+		border-bottom: $releaseinfo__featureheader--border-bottom;
+	    font-size: $releaseinfo__featureheader--font-size;
+	    font-weight: $releaseinfo__featureheader--font-weight;
+	    margin: $releaseinfo__featureheader--margin;
+	    padding-bottom: $releaseinfo__featureheader--padding-bottom;
+	    padding-right: $releaseinfo__featureheader--padding-right;
+	    display: block;
+	}
+}

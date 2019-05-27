@@ -1,0 +1,187 @@
+div.ye-default-reference-editor {
+    .z-listitem div.z-listcell-content, 
+    .z-listitem:first-child .z-listcell-content {
+        padding: $default-reference-editor__list-item-content--padding;
+    }
+    &-item-container,
+    &-selected-item-container {
+        background: $editor-area__component--bg-color;
+        border: $default-reference-editor__box--border-width solid $editor-area__box--border-color;
+        padding: $default-reference-editor__list-item-content--padding;
+        position: relative;
+        min-height: $editor-area__box--height;
+        height: $editor-area__box--height;
+        line-height: $editor-area__input-field--line-height;
+        font-size: $editor-area__input-field--font-size;
+    }
+    &-listbox,
+    &-selected-listbox {
+        span.z-label {
+            font-weight: normal;
+            font-size: $editor-area__input-field--font-size;
+            margin-bottom: 0;
+            display: inline;
+            -ms-word-wrap: break-word;
+            word-wrap: break-word;           
+        }
+        .z-listitem div.z-listcell-content, 
+        .z-listitem:first-child .z-listcell-content {
+            padding: $default-reference-editor__list-item-content--padding;
+        }
+    }
+
+    &-listbox {
+        border: none;
+
+        .z-listitem {
+            background-color: $default-reference-editor__list-item--bg-color;
+
+            > td {
+                border-bottom: none;
+                position: relative;
+            }
+            .z-listcell-content > .z-label:last-child:after {
+                content: "";
+                width: $default-reference-editor__list-item-add-icon--size;
+                height: $default-reference-editor__list-item-add-icon--size;
+                background-image: url("images/icon_action_add_sprite_15.png");
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                position: absolute;
+                right: $default-reference-editor__list-item-add-icon--right;
+                top: 50%;
+                margin-top: $default-reference-editor__list-item-add-icon--margin-top;
+                display: none;
+            }
+            &-selected:hover, 
+            &:hover{
+                //remove if not necessary
+                    @if $default-reference-editor__list-item--hover-bg-color {
+                        background-color: $default-reference-editor__list-item--hover-bg-color;
+                    }
+                .z-listcell-content > .z-label:last-child:after {
+                    display: block;
+                }
+            } 
+        }
+        .ye-default-reference-editor-bandbox-autocorrection-reference:hover > td  {
+            background-image: none;
+        }
+    }
+    &-selected-listbox {
+        border: none;
+        border-radius: $editor-area__input-field--border-radius;
+        
+        > div.z-listbox-body {
+            @if $default-reference-editor__list-body-loading--bg-color {
+                background-color: $default-reference-editor__list-body-loading--bg-color;
+            }
+            background-image: url("images/icon_loading_indicator_default.gif");
+            background-position: $default-reference-editor__list-body-loading-icon--background-position;
+            background-repeat: no-repeat;
+            /* FIX FOR WRONG ZK WIDTH CALCULATION */
+            width: 100% !important;
+
+            .z-listcell {
+                padding: 0;
+                border: none;
+            }
+        }
+        .z-listitem-selected:hover,
+        .z-listitem:hover {
+            background-color: $default-reference-editor__list-item--hover-bg-color;
+        }
+        //to take defaults defined in _cockpit-listbox.scss
+/*        .z-listitem,
+        .z-listitem tr.z-listitem:hover > td.z-listcell {
+            background: none !important;
+        }
+*/
+        div.ye-default-reference-editor {
+            &-item-container, 
+            &-selected-item-container {
+                border-bottom-width: $default-reference-editor__box--border-width;
+                border-top-width: 0;
+            }
+        }
+        .z-listitem-selected, .z-listitem {
+            &:first-child {
+                div.ye-default-reference-editor {
+                    &-item-container, 
+                    &-selected-item-container {
+                        border-top-width: $default-reference-editor__box--border-width;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.yw-loceditor-fixed-open .yw-loceditor-row-locale.z-label + .yw-loceditor-row-editor >.z-div > .ye-com_hybris_cockpitng_editor_defaultreferenceeditor {
+    .ye-default-reference-editor-selected-listbox {
+        margin-bottom: 0;
+
+        .ye-default-reference-editor-selected-item-container {
+            border: none;
+        }
+    }
+}
+
+.ye-default-reference-editor {
+    &-listbox {
+        .ye-create-new-reference.z-listitem div.z-listcell-content {
+            white-space: normal;
+            text-overflow: clip;
+            padding: $default-reference-editor__list-item-create-new-content--padding;
+            line-height: $default-reference-editor__create-new-container--line-height;
+        }
+        .z-listitem > .z-listcell > div.z-listcell-content:hover {
+            padding-right: $default-reference-editor__list-item-remove-enabled--hover-padding-right;
+        }
+    }
+    &-selected-listbox {
+        .z-listcell-content{
+            padding: 0!important;
+        }
+    }
+    &-listbox .z-listitem img,
+    .ye-default-reference-editor-selected-listbox .ye-default-reference-editor-selected-item-container img {
+        max-width: 16px;
+        max-height: 16px;
+        padding: 0 5px 0 0;
+        vertical-align: middle;
+    }
+    &-preview-popup-image {
+        max-width: 150px;
+        max-height: 200px;
+    }
+}
+
+.z-listitem-selected:hover,
+.z-listitem:hover {
+    div.ye-default-reference-editor-selected-item-container.ye-remove-enabled {
+        background: $default-reference-editor__list-item--hover-bg-color;
+        
+        .ye-default-reference-editor-remove-button {
+            display: block;
+        }
+    }
+}
+
+.yw-listbox-disabled .z-listitem-selected:hover,
+.yw-listbox-disabled .z-listitem:hover {
+    div.ye-default-reference-editor-selected-item-container {
+        background: $default-reference-editor__list-item-disabled--bg-color;
+        cursor: default;
+    }
+}
+
+
+// Overrides
+/*
+.yw-wizard-property .ye-default-reference-editor-selected-listbox .z-listitem div.ye-default-reference-editor-item-container,
+.yw-wizard-property .ye-default-reference-editor-selected-listbox .z-listitem div.ye-default-reference-editor-selected-item-container {
+    height: $editor-area__box--height - 2px;
+    background-color: #f0f !important;
+}
+*/

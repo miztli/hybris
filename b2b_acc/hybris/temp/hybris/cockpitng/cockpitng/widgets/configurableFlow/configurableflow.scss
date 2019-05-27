@@ -1,0 +1,338 @@
+/*================================
+	Configurable Flow Widget
+================================*/
+// Defines Componentes & necessary Styling on the Configurabe Flow Widget (Wizard)
+
+
+@import "cockpitng-globals.scss";
+
+// Component Specific Variables
+$default-grey-text: $grey__default--500;
+
+$configurableflow__header--bckg: $white;
+$configurableflow__navigation--bckg: $white;
+$configurableflow__navigation--border-color: $grey__light--800;
+$configurableflow__navigation--border: $boxes--border__thin solid $configurableflow__navigation--border-color;
+$configurableflow__navigation-text--color: $default-grey-text;
+
+$configurableflow__info--bckg: $validation__info--bg-color;
+$configurableflow__info--color: $validation__info--color;
+$configurableflow__info--border-color: $grey__default;
+$configurableflow__info-loceditor--color: $grey__default--200;
+$configurableflow__breadcrumb--bckg: $grey__default--100;
+$configurableflow__breadcrumb--color: $grey__default--400;
+$configurableflow__breadcrumb-arrow--color: $grey__default--500;
+$configurableflow__validation-popup--before-border-color: $grey__light--500;
+$configurableflow__validation-popup--after-border-color: $blue__dark;
+$configurableflow__z-label--color: $grey__dark--700;
+$configurableflow__z-label-error--color: $validation__error--color; //$red__default;
+$configurableflow__warn--bckg: $validation__warn--bg-color;
+$configurableflow__warn--color: $validation__warn--color;
+$configurableflow__error--bckg: $validation__error--bg-color;
+$configurableflow__error--color: $validation__error--color;
+$configurableflow__error-loceditor--color: $configurableflow__info-loceditor--color;
+$_configurableflow__mandatory--font-weight: $font-weight-bold;
+$configurableflow__btn-primary--color: $blue__dark--100;
+$configurableflow__modal-headline--font-size: $font-size__large;
+$configurableflow__breadcrumb-sublabel--font-size: $font-size__semi-base;
+$configurableflow__breadcrumb-label--font-size: $font-size__base;
+
+
+$configurableflow__base--space: $container-spacing-default__third;
+$configurableflow__base--semi-space: $container-spacing-default__half;
+$configurableflow__base--double-space: $configurableflow__base--space * 2;
+$configurableflow__navigation--height: $container-spacing-default__third * 2 + $editor-defaults__inline-box--height;
+$configurableflow__window--max-width: 800px;
+$configurableflow__window--min-width: 300px;
+$configurableflow__content--min-height: 250px; 
+$configurableflow__content--max-height: 420px;
+$configurableflow__bp-m--min-height: 720px;
+$configurableflow__content-bp-m--max-height: calc(100vh - 300px);
+$configurableflow__navigation-wrapper-padding: $container-spacing-default__third;
+
+$_configurableflow__textarea-buttons--margin-top: 10px;
+
+$configurableflow__window-size: (
+    small: (width: 30%, max-width: 500px),
+    medium: (width: 60%, max-width: 800px),
+    large: (width: 90%, max-width: 1200px)
+);
+
+@mixin _configurableflow-validation-coloring ($keyname, $bg-color, $color, $loc-edit-color){
+    .yw-loceditor-row-wysiwyg.ye-validation-#{$keyname} .cke_wysiwyg_frame, &.ye-validation-#{$keyname} > .yw-loceditor-row-editor {
+        background: $bg-color;
+    }
+
+    .yw-loceditor {
+        .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell-label.z-label,
+        .yw-loceditor-row.ye-validation-#{$keyname} .z-label {
+            color: $color;
+        }
+    }
+}
+
+@each $key, $value in $configurableflow__window-size {
+    .yw-modal-configurableFlow-#{$key} {
+        width: map_get(map_get($configurableflow__window-size, $key), width);
+        max-width: map_get(map_get($configurableflow__window-size, $key), max-width);
+    }
+}
+
+.yw-modal-configurableFlow {
+    min-width: $configurableflow__window--min-width;
+    height: auto;
+
+    .z-window-content {
+        height: auto !important;
+    }
+    .yw-wizard-breadcrumb {
+        position: relative;
+        display: table-cell;
+        overflow: visible;
+        color: $configurableflow__breadcrumb--color;
+        padding: $configurableflow__base--double-space;
+        
+        //Breadcrumb centering Container
+        &-cnt {
+            display: table;
+            padding: 0;
+            margin: 0;
+            border-bottom: $configurableflow__navigation--border;
+            
+            &:empty {
+                display: none;
+            }
+        }
+        &-wrapper {
+            position: relative;
+            background: $configurableflow__breadcrumb--bckg;
+            padding: 0;
+            border-top: $configurableflow__navigation--border;
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                display: block;
+                height: 0;
+                border-bottom: $configurableflow__navigation--border;
+            }
+        }
+
+        &:first-child {
+            .yw-wizard-breadcrumb-spacer {
+                display: none;
+            }
+        }
+        
+        &-active {
+            color: $configurableflow__info--color;
+            
+            .yw-wizard-breadcrumb-label {
+                &:after {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    bottom: 0;
+                    border-bottom: 2px solid $configurableflow__info--color;
+                    right: $configurableflow__base--double-space;
+                    left: $configurableflow__base--double-space;
+                    height: 1px;
+                }
+            }
+            &:first-child {
+                
+            }
+        }
+        
+        &-spacer {
+            position: absolute;
+            left: -($configurableflow__base--space/2);
+            width: $configurableflow__base--space;
+            top: 50%;
+            margin-top: -10px;
+            color: $configurableflow__breadcrumb-arrow--color;
+            &:before{
+                content: $simple-arrow__right--content;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        &-sublabel .z-label {
+            font-size: $configurableflow__breadcrumb-sublabel--font-size;
+        }
+
+        &-label .z-label {
+            font-size: $configurableflow__breadcrumb-label--font-size;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        &-label,
+        &-sublabel {
+            display: block;
+        }
+        &-before {
+            color: $black;
+            cursor: pointer;
+        }
+    }
+
+    .yw-wizard-msgArea-cnt {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .yw-labelstyle {
+        color: $configurableflow__info--color;
+    }
+
+    .yw-wizard-column-content {
+        padding: 5px;
+        min-width: 100px;
+    }
+
+    .yw-wizard-info {
+        padding: $configurableflow__base--double-space;
+        overflow: auto;
+        background: none repeat scroll 0 0 $configurableflow__info--bckg;
+        border-bottom: $boxes--border__thin solid $configurableflow__info--border-color;
+    }
+
+    .yw-wizard-tabpanel.z-tabpanel {
+        padding: 0;
+    }
+
+    .yw-wizard-tabs{
+        &> .z-tabs-header {
+            .z-tab-hm,.z-tab-hr, .z-tab-hl {
+                background: none;
+            }
+        }
+    }
+    .yw-wizard-layout {
+        > .z-vlayout-inner {
+            height: auto !important;
+        }
+    }
+    .yw-wizard-content {
+        padding: $configurableflow__base--space $configurableflow__base--double-space;
+        min-height: $configurableflow__content--min-height;
+        max-height: $configurableflow__content--max-height;
+        overflow: hidden;
+        overflow-y: auto;
+        width: 100%;
+        height: auto !important;
+
+        @media screen and (min-height: $configurableflow__bp-m--min-height){
+            max-height: $configurableflow__content-bp-m--max-height;
+        }   
+
+        .ye-qualifier-not-found-error.z-label {
+            border: thin dashed;
+            color: $configurableflow__z-label-error--color;
+            display: block;
+            padding: 5px;
+        }
+    }
+    .ye-validation {
+        &-info, &-warn, &-error {
+            .yw-loceditor-row-wysiwyg {
+                &> .yw-loceditor-row-locale{
+                    &:before, &:after{
+                        display: none;
+                    }
+                }
+            }
+            //To Do: should be set elsewhere
+            .ye-validation-exclamation-icon {
+                top: 1px;
+                right: 1px;
+                position: absolute;
+            }
+            .yw-loceditor-caption span.y-icon-loceditor {
+                left: -($configurableflow__base--space);
+            }
+
+            .ye-localized {
+                .ye-validation-exclamation-icon {
+                    top: 1px;
+                }
+            }
+            .ye-com_hybris_cockpitng_editor_localized {
+                margin-top: 0;
+            }
+        }
+        &-info {
+            @include _configurableflow-validation-coloring (info, $configurableflow__info--bckg, $configurableflow__info--color, $configurableflow__info-loceditor--color);
+        }
+        &-warn {
+            @include _configurableflow-validation-coloring (warn, $configurableflow__warn--bckg, $configurableflow__warn--color, $configurableflow__warn--color);
+        }
+        &-error {
+            @include _configurableflow-validation-coloring (error, $configurableflow__error--bckg, $configurableflow__error--color, $configurableflow__error--color);
+        }
+    }
+
+    .yw-wizard-property {
+        margin-bottom: $configurableflow__base--semi-space;
+        position: relative;
+        overflow: hidden;
+
+        &-label{
+            color: $configurableflow__error-loceditor--color;
+            font-weight: normal;
+
+            &-mandatory {
+                font-weight: $_configurableflow__mandatory--font-weight;
+            }
+        }
+        .z-spinner,
+        .z-timebox {
+            display: block;
+        }
+
+        textarea.z-textbox {
+            & + * button {
+                margin-top: $_configurableflow__textarea-buttons--margin-top;
+            }
+        }
+    }
+
+    .yw-wizard-navigation {
+        background: none repeat scroll 0 0 $configurableflow__navigation--bckg;
+        border-top: $boxes--border__thin solid $configurableflow__info--border-color;
+        height: $configurableflow__navigation--height;
+
+        .yw-left-pack, .yw-right-pack {
+
+            //changed in sass-integration, on develop still .compontent-wrapper
+            .yw-component-wrapper, .component-wrapper{
+                display: inline-block;
+                padding: $configurableflow__navigation-wrapper-padding;
+            }
+        }
+        .yw-right-pack {
+            position: absolute;
+            right: 0;
+            top: 0;
+            .yw-component-wrapper + .yw-component-wrapper,
+            .component-wrapper + .component-wrapper {
+                padding-left: 0;
+            }
+        }
+        .yw-left-pack {
+            .yw-component-wrapper + .yw-component-wrapper,
+            .component-wrapper + .component-wrapper {
+                padding-right: 0;
+            }
+        }
+    }
+
+    .ye-com_hybris_cockpitng_editor_defaultboolean.z-radiogroup {
+        clear: both;
+        display: block;
+    }
+}

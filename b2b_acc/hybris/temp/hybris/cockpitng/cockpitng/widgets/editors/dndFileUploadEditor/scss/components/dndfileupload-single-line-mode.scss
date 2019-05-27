@@ -1,0 +1,72 @@
+@import "../support/dndfileupload-variables.scss";
+
+.ye-dndfileupload-single-line-mode {
+	//Same styling as ye-default-reference-editor-item-container
+    background: $editor-area__component--bg-color;
+    border: $ye-dndfileupload-single-line-mode__box--border-width solid $editor-area__box--border-color;
+    padding: $ye-dndfileupload-single-line-mode__list-item-content--padding;
+    position: relative;
+    min-height: $editor-area__box--height;
+    height: $editor-area__box--height;
+    line-height: $editor-area__input-field--line-height;
+    font-size: $editor-area__input-field--font-size;
+	&.ye-dndfileupload-container {
+		box-shadow: none;
+		display: block;
+		height: auto;
+		margin: 0;
+	}
+	.ye-dndfileupload-preview {
+		&-container {
+			padding: $ye-dndfileupload-single-line-mode__preview-container--padding;
+			margin: $ye-dndfileupload-single-line-mode__preview-container--margin;
+			text-align: left;
+			position: relative;
+			display: block;
+		}
+
+		&-remove-btn {
+			display: none;
+		}
+
+		&-image {
+			max-height: $ye-dndfileupload-single-line-mode__preview_image--max-size;
+			max-width: $ye-dndfileupload-single-line-mode__preview_image--max-size;
+			transform: translateY(-50%);
+			margin-top: 0;
+			margin-bottom: 0;
+			position: absolute;
+			top: 50%;
+		}
+		&-filename.z-label {
+			padding-left: $ye-dndfileupload-single-line-mode__preview-label--padding-left;
+			font-size: $ye-dndfileupload-single-line-mode__preview-label--font-size;
+			margin-bottom: 0;
+			display: inline-block;
+			-ms-word-wrap: break-word;
+			word-wrap: break-word;
+			color: black;
+		}
+	}
+	&:hover {
+		.ye-dndfileupload {
+			&-preview-remove-btn{
+				width: $ye-dndfileupload-single-line-mode__delete-btn--size;
+				height: $ye-dndfileupload-single-line-mode__delete-btn--size;
+				min-height: $ye-dndfileupload-single-line-mode__delete-btn--size;
+				margin-top: $ye-dndfileupload-single-line-mode__delete-btn--margin-top;
+				right: $ye-dndfileupload-single-line-mode__delete-btn--right;
+				display: block;
+				position: absolute;
+				top: 50%;
+				
+				&,
+				&:hover,
+				&:focus,
+				&:active {
+					background: transparent;
+				}
+			}
+		}
+	}
+}

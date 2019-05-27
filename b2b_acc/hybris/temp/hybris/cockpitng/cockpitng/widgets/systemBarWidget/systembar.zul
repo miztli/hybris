@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<widget height="100%">
+        <div sclass="yw-systemBarContainer yw-systemBarContainer_flexible">
+            <div sclass="yw-statusToolbar yw-statusToolbar-left">
+                <widgetslot slotID="genericActionContainerSlotLeft"/>
+                <div sclass="yw-logoContainer" id="logoContainer"/>
+                <widgetslot slotID="perspectiveChooser" sclass="yw-perspectiveChooser"/>
+            </div>
+            <div sclass="yw-statusToolbar yw-statusToolbar-center">
+            </div>
+            <div sclass="yw-statusToolbar yw-statusToolbar-right">
+                <div sclass="yw-systemItemsContainer" id="systemItemsContainer">
+                    <actions if="${cockpitProperties.getProperty('cockpitng.development.mode')}" id="devToolbarActionSlot" group="common" sclass="yw-dev-toolbar-actions"/>
+                    <widgetslot slotID="genericActionContainerSlotRight"/>
+                </div>
+                <widgetchildren slotID="indicators"/>
+                <toolbarbutton id="logoutBtn" image="${wr}/images/icon_system_logout.svg"
+                                   tooltiptext="${labels.general.logout}"/>
+                <widgetslot slotID="globalLinksSlot"/>
+            </div>
+            <widgetslot slotID="notificationarea" sclass="yw-notification"/>
+        </div>
+    </widget>
+</zk>

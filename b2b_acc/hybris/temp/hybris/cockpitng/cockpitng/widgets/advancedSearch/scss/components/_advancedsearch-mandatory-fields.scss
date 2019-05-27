@@ -1,0 +1,43 @@
+/*================================
+    Advanced Search - Mandatory Fields
+================================*/
+// Styling of Fields contained in the Advanced-Search Contents (Size, Bahaviour, Validation)
+
+
+@import "../support/_advancedsearch-variables.scss";
+
+//mandatory-field styling in advances-search
+.yw-advancedsearch .z-grid .z-cell.yw-advancedsearch-mandatory-field {
+    input {
+        &,
+        + .z-bandbox-button,
+        + .z-combobox-button{
+            background: $advancedsearch__attribute-mandatory--bg-color;
+            border-color: $advancedsearch__attribute-mandatory--color;
+            color: $advancedsearch__attribute-mandatory--color;
+        }
+        + .z-bandbox-button {
+            &:hover, 
+            &:hover i {
+                color: $advancedsearch__attribute-mandatory--button-color;
+                background-color: $advancedsearch__attribute-mandatory--color;
+            }
+        }
+        + .z-bandbox-button i,
+        .z-radio .z-radio-content {
+            color: $advancedsearch__attribute-mandatory--color;
+        }
+        &:not([value=""]) {
+            background: $advancedsearch__attribute-mandatory-filled--bg-color;
+            border-color: $advancedsearch__attribute-mandatory-filled--border-color;
+            color: $advancedsearch__attribute-mandatory-filled--color;
+            
+            + .z-bandbox-button,
+            + .z-combobox-button {
+                border-color: $advancedsearch__attribute-mandatory-filled--border-color;
+                color: $advancedsearch__attribute-mandatory-filled--color;
+                background: $advancedsearch__attribute-mandatory-filled--bg-color;
+            }
+        }
+    }
+}

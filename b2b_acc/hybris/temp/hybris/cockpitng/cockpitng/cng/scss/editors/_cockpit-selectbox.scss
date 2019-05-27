@@ -1,0 +1,53 @@
+/*================================
+	Selectbox widget
+================================*/
+//styling depending on the state of selectbox (-none,-info, -warn, -error)
+.ye-validation {
+    &-none {
+        .z-combobox {
+            box-shadow: -2px 2px 2px $selectbox__combobox--shadow-color;
+            
+            &:focus, &:hover{
+                .z-combobox-input, .z-combobox-button {
+                    background-color: $selectbox__combobox--hover-bckg-color;
+                }
+            }
+            &.z-combobox-disabled {
+                box-shadow: none;
+                .z-combobox-input, .z-combobox-button, .z-combobox-button i {
+                    background-color: $selectbox__combobox--bckg-color !important; //overrides for .z-combobox-disabled * in  zk.wcs
+                }
+                .z-combobox-button, .z-combobox-input {
+                    border-color: $selectbox__combobox--border-color;
+                    color: $selectbox__combobox--border-color;
+                }
+            }
+        }
+    }
+}
+
+.z-combobox-popup {
+    border: $editor-defaults__input-field--border-width solid $selectbox__combobox--border-color;
+}
+
+//global styling of combobox dropdown, it is the same for all states
+.z-combobox-open.z-combobox-popup {
+    box-shadow: none;
+
+    .z-combobox-content {
+        .z-comboitem {
+            font-size: $selectbox__combobox-input--font-size;
+            padding: $selectbox__combobox-popup--text-indent;
+            border-bottom: $editor-defaults__input-field--border-width solid $selectbox__combobox-comboitem--border-color;
+            line-height: 1;
+            min-height: $selectbox__combobox-comboitem--min-height;
+            &.z-comboitem-selected {
+              background-color: $selectbox__combobox-open--bckg-color;
+            }
+            &:hover {
+              color: $selectbox__combobox-open--color;
+              background-color: $selectbox__combobox--hover-bckg-color;
+            }
+        }
+    }
+}

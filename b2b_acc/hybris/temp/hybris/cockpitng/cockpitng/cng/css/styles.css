@@ -1,0 +1,118 @@
+body {
+  padding: 0; }
+
+body > #zk_proc .z-loading {
+  left: auto !important;
+  top: auto !important;
+  bottom: 0;
+  right: 0;
+  padding: 0; }
+
+body > #zk_proc .z-loading .z-loading-indicator {
+  padding: 0; }
+
+.z-window-embedded.z-window-noborder .z-window-content {
+  padding: 0; }
+
+.z-tabpanel {
+  padding: 0; }
+
+/* div.yw-borderlayoutWorkaround div.borderlayoutWorkaround-spacingTop { */
+/* 	height: 3px !important; */
+/* } */
+.z-east-splitter, .z-west-splitter {
+  width: 3px !important; }
+
+.opaquefalse .z-borderlayout .borderlayoutWorkaround-spacingTop {
+  border-bottom: none; }
+
+.z-west-splitter-button {
+  left: 2px;
+  position: relative;
+  background: none repeat scroll 0 0 transparent; }
+
+.z-east-splitter-button {
+  left: -2px;
+  position: relative; }
+
+.z-north-splitter {
+  /*  background-color: #24324d;  */
+  height: 3px; }
+
+.z-west-splitter {
+  /*  background-color: #24324d;  */ }
+
+.z-caption button, .z-caption .z-button {
+  background-image: -moz-linear-gradient(center top, #F9F9F9, #D6D6D6);
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  color: #555;
+  font-size: 11px;
+  height: 20px;
+  padding-bottom: 2px; }
+
+.z-combobox-popup.z-combobox-shadow {
+  padding: 0;
+  border: 0;
+  -moz-box-shadow: 0 5px 7px #999;
+  -webkit-box-shadow: 0 5px 7px #999;
+  box-shadow: 0 5px 7px #999; }
+
+.z-combobox-popup.z-combobox-shadow .z-comboitem td {
+  padding: 2px 3px; }
+
+.z-combobox-popup.z-combobox-shadow .z-comboitem td.z-comboitem-text {
+  padding-left: 0;
+  text-transform: capitalize; }
+
+.yw-editor-area-widget .z-tabs-scroll .z-tabs-left-scroll {
+  top: 10px;
+  -moz-box-shadow: 3px 0 3px #ddd;
+  -webkit-box-shadow: 3px 0 3px #ddd;
+  box-shadow: 3px 0 3px #ddd;
+  background-position: 0 0; }
+
+.yw-editor-area-widget .z-tabs-scroll .z-tabs-right-scroll {
+  top: 10px;
+  -moz-box-shadow: -3px 0 3px #ddd;
+  -webkit-box-shadow: -3px 0 3px #ddd;
+  box-shadow: -3px 0 3px #ddd;
+  background-position: -26px 0; }
+
+.yw-editor-area-widget .z-tabs-scroll .z-tabs-header {
+  top: 10px;
+  position: relative; }
+
+.yw-editor-area-widget .z-toolbar-tabs-outer, .yw-editor-area-widget .z-toolbar-tabs {
+  background-image: none;
+  background-color: transparent; }
+
+/* quick fix */
+.widget_body .z-fieldset-content {
+  overflow: visible; }
+
+.widget_body .z-fieldset-content > .z-vlayout {
+  width: 100%; }
+
+/* silvertail */
+/*.z-panel-tl {
+	height: 0;
+}
+
+.z-panel-tl {
+	visibility: hidden;
+}
+
+.z-panel-hl {
+	padding-left: 0;
+}
+
+.z-panel-hr {
+	padding-right: 0;
+}
+*/
+.z-tabpanel {
+  border: none; }
+
+.z-borderlayout .z-west-splitter {
+  background-color: #EDEDED; }

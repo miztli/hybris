@@ -1,0 +1,383 @@
+@charset "UTF-8";
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox {
+  position: relative;
+  border-bottom: 1px solid #acacac; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox:before, .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox:after {
+    content: "";
+    position: absolute;
+    border-left: 1px solid #acacac;
+    width: 0;
+    left: 0;
+    top: 40px;
+    bottom: 0;
+    display: block;
+    z-index: 1; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox:after {
+    left: auto;
+    right: 0; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox > div.z-listbox-body {
+    background-image: url("images/icon_loading_indicator_default.gif");
+    background-position: 50% 12px;
+    background-repeat: no-repeat;
+    box-sizing: border-box; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox > div.z-listbox-body .yw-last-column .z-listcell-content {
+      padding-right: 25px;
+      position: relative;
+      overflow: visible; }
+      .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox > div.z-listbox-body .yw-last-column .z-listcell-content .ye-default-reference-editor-remove-button {
+        right: -5px;
+        height: 22px; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox > div.z-listbox-body > table {
+      box-shadow: -3px -1px 1px 1px rgba(172, 172, 172, 0.6); }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem > .z-listcell {
+    border-bottom: 1px solid #f2f2f2;
+    height: 40px;
+    position: relative; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem > .z-listcell.ye-editable-property.ye-current-edit-state-inline-cell > .z-listcell-content .yw-listview-cell-label, .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem > .z-listcell.ye-editable-property.ye-current-edit-state-inline-cell > .z-listcell-content:hover:after {
+      display: none; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem > .z-listcell.ye-editable-property > .z-listcell-content input {
+      box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.25);
+      left: -10px;
+      position: relative;
+      height: 39px; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem > .z-listcell.ye-editable-property > .z-listcell-content:hover:after {
+      width: 15px;
+      min-height: 15px;
+      right: -23px;
+      background: transparent url("images/icon_edit-pencil.png") center no-repeat;
+      content: "";
+      position: absolute;
+      height: 100%;
+      bottom: 0;
+      cursor: default; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem > .z-listcell.ye-current-edit-state-inline-cell {
+      overflow: visible; }
+      .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem > .z-listcell.ye-current-edit-state-inline-cell > .z-listcell-content > .z-div {
+        display: inline-block; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem:last-child > .z-listcell {
+    border-bottom-width: 0; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem .yw-ref-list-cell > .z-listcell-content {
+    display: inline; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem .yw-ref-list-cell.ye-editable-property .ye-com_hybris_cockpitng_editor_boolean_wrapper {
+    margin: 0 0 -5px;
+    padding: 0; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem .yw-ref-list-cell.ye-editable-property .ye-com_hybris_cockpitng_editor_boolean_wrapper td table td,
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem .yw-ref-list-cell.ye-editable-property .ye-com_hybris_cockpitng_editor_boolean_wrapper .z-div {
+      line-height: 1 !important; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listitem .yw-ref-list-cell.ye-editable-property .ye-com_hybris_cockpitng_editor_boolean_wrapper table {
+      display: inline-block;
+      line-height: 1; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status {
+    padding: 0;
+    position: relative; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status .z-listcell-content {
+      width: 25px;
+      padding: 0; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-edited, .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-invalid {
+      border-left-color: #0486e0;
+      box-sizing: border-box; }
+      .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-edited:before, .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-invalid:before {
+        border-left: 4px solid transparent;
+        content: "";
+        border-left-color: inherit;
+        position: absolute;
+        height: auto;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        display: block; }
+      .ie .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-edited, .edge .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-edited, .ie .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-invalid, .edge .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-invalid {
+        border-left: 4px solid #0486e0; }
+        .ie .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-edited .ye-validation-exclamation-icon, .edge .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-edited .ye-validation-exclamation-icon, .ie .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-invalid .ye-validation-exclamation-icon, .edge .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-invalid .ye-validation-exclamation-icon {
+          margin-left: 3px; }
+        .ie .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-edited:before, .edge .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-edited:before, .ie .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-invalid:before, .edge .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-invalid:before {
+          display: none; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status-invalid {
+      border-left-color: #ff3b30; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-row-status .ye-validation-exclamation-icon {
+      float: left;
+      margin-left: 7px; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.yw-ref-list-cell {
+    padding-right: 30px; }
+    .y-editor-area-attributes-cnt-min .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.yw-ref-list-cell {
+      padding-right: 15px; }
+      .y-editor-area-attributes-cnt-min .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.yw-ref-list-cell:first-child {
+        padding-left: 15px; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.yw-ref-list-cell:first-child {
+      padding-left: 30px; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listcell.ye-cell-modified > .z-listcell-content {
+    font-style: italic; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .ye-current-edit-state-inline-cell .z-listcell-content .ye-com_hybris_cockpitng_editor_defaultdate {
+    max-width: 250px; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem {
+  background-color: #ffffff; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem .z-listcell-content {
+    position: relative; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.z-listitem-selected {
+    background-color: #ffffff; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.z-listitem-selected:hover {
+      background-color: #eaf1f6; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.z-listitem-selected div.z-listcell-content {
+      color: inherit; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell, .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell-content {
+  font-size: 14px;
+  line-height: 16px; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell-content .yw-compound-renderer-container {
+  padding-left: 6px; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell-content .yw-compound-renderer-container:first-child {
+    padding-left: 0; }
+
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header-bg {
+  display: none; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox {
+  margin-bottom: 5px; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .ye-default-reference-editor-selected-listbox .z-listbox-header-border {
+    border-color: #acacac; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header .z-listhead-bar {
+  border-color: transparent; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header .z-listheader {
+  border: none;
+  height: 40px;
+  vertical-align: middle; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header .z-listheader .z-listheader-content {
+    padding: 0;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header .z-listheader-sort .z-listheader-sorticon {
+    top: auto;
+    height: auto;
+    position: relative;
+    display: inline;
+    float: right;
+    line-height: inherit;
+    font-size: 12px;
+    margin: 0;
+    left: 15px;
+    color: inherit; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header .z-listheader-sort .z-listheader-sorticon i {
+      position: absolute;
+      line-height: inherit; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header .z-listheader-sort .z-listheader-content {
+    padding: 0 30px 0 0; }
+    .y-editor-area-attributes-cnt-min .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header .z-listheader-sort .z-listheader-content {
+      padding-right: 15px; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header .z-listheader-sort:first-child .z-listheader-content {
+    padding-left: 30px; }
+  .y-editor-area-attributes-cnt-min .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header .z-listheader-sort:first-child .z-listheader-content {
+    padding-left: 15px; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listbox-header th.z-auxheader {
+  border: none; }
+
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .yw-global-save {
+  position: relative;
+  height: 16px;
+  width: 60px;
+  margin: auto -22px;
+  background-position: 0 -64px; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .yw-global-save:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+    background-image: url("images/globalsave.png");
+    background-repeat: no-repeat;
+    background-position: inherit; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .yw-global-save-active {
+    background-position: 0 0px; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .yw-global-save-active:hover {
+      background-position: 0 -16px;
+      cursor: pointer; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots {
+  padding-right: 0 !important;
+  text-align: left; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots > .z-listcell-content {
+    height: 24px;
+    width: 24px;
+    background: url("images/dots.png") 0 0;
+    background-image: url("images/dots.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 0;
+    margin: 0 auto; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots:first-child {
+    text-align: left; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots:first-child > .z-listcell-content {
+      float: left;
+      margin-left: 3px; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots:last-child {
+    text-align: right; }
+    .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots:last-child > .z-listcell-content {
+      margin-right: 8px;
+      float: right; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots:hover > .z-listcell-content {
+    height: 24px;
+    width: 24px;
+    background-position: 0 -24px;
+    background-repeat: no-repeat; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots-focus > .z-listcell-content {
+    background-position: 0 -48px; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots-active > .z-listcell-content {
+    background-position: 0 -48px; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots-disabled, .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-actiondots-disabled:hover > .z-listcell-content {
+    background-position: 0 -72px; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor td.ye-row-status + td.ye-actiondots > .z-listcell-content {
+  margin-left: -4px; }
+
+.ye-complextype-edit-popup, .ye-inline-editor-row-popup {
+  border: 1px solid #c4cedc;
+  box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff !important; }
+  .ye-complextype-edit-popup:after, .ye-inline-editor-row-popup:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    transform-origin: 0 0;
+    border: 1px solid #c4cedc; }
+
+.ye-inline-editor-row-popup {
+  border: 1px solid #c4cedc;
+  width: 160px;
+  margin-top: -40px;
+  margin-left: -37px; }
+  .ye-inline-editor-row-popup:after {
+    top: 8px;
+    left: 158px;
+    border-width: 1px 1px 0 0;
+    transform: rotate(45deg);
+    box-shadow: 2px -2px 2px 0 rgba(0, 0, 0, 0.1); }
+  .ye-inline-editor-row-popup .z-menuitem {
+    background: transparent !important; }
+    .ye-inline-editor-row-popup .z-menuitem:last-child a.z-menuitem-content {
+      border-bottom: 0 none; }
+    .ye-inline-editor-row-popup .z-menuitem-image {
+      display: none; }
+  .ye-inline-editor-row-popup .z-menupopup-content {
+    z-index: 1; }
+    .ye-inline-editor-row-popup .z-menupopup-content .z-menuitem a.z-menuitem-content {
+      color: #151c22;
+      font-size: 14px;
+      border-top: 1px solid #f2f2f2; }
+      .ye-inline-editor-row-popup .z-menupopup-content .z-menuitem a.z-menuitem-content:hover {
+        background-color: transparent;
+        color: #0486e0; }
+      .ye-inline-editor-row-popup .z-menupopup-content .z-menuitem a.z-menuitem-content:first-child {
+        border-top-width: 0; }
+
+.ye-inline-editor-row-popup.z-menupopup .z-menupopup-content {
+  background: transparent; }
+
+.ye-complextype-edit-popup {
+  width: 300px;
+  overflow: visible; }
+  .ye-complextype-edit-popup:after {
+    transform: rotate(-45deg);
+    left: 50%;
+    margin-left: -17px;
+    border-width: 0 0 1px 1px;
+    box-shadow: -3px 2px 2px 0 rgba(0, 0, 0, 0.1); }
+  .ye-complextype-edit-popup .ye-complextype-main-cnt .z-vlayout-inner {
+    padding-bottom: 0 !important;
+    display: block; }
+  .ye-complextype-edit-popup .z-popup-content {
+    padding: 0px; }
+  .ye-complextype-edit-popup .ye-complextype-footer-cnt {
+    width: 100%;
+    display: inline-block;
+    background-color: #ffffff;
+    min-height: 40px;
+    padding: 15px 15px;
+    border-top: 1px solid #acacac; }
+    .ye-complextype-edit-popup .ye-complextype-footer-cnt .z-button {
+      padding-left: 10px;
+      margin-left: 10px;
+      float: right; }
+  .ye-complextype-edit-popup .ye-complextype-label-cnt {
+    padding: 15px 15px 0; }
+  .ye-complextype-edit-popup .ye-complextype-editor-cnt {
+    padding: 0 15px 15px;
+    max-height: 200px;
+    overflow-y: auto; }
+  .ye-complextype-edit-popup .ye-complextype-ok-button, .ye-complextype-edit-popup .ye-complextype-cancel-button {
+    width: 40px;
+    position: relative; }
+    .ye-complextype-edit-popup .ye-complextype-ok-button:after, .ye-complextype-edit-popup .ye-complextype-cancel-button:after {
+      content: "";
+      position: absolute;
+      font-family: "FontAwesome", sans-serif;
+      font-size: 14px;
+      text-align: center;
+      width: 100%;
+      color: inherit;
+      left: 0;
+      top: 50%;
+      line-height: 14px;
+      margin-top: -7px; }
+  .ye-complextype-edit-popup .ye-complextype-ok-button:after {
+    content: ""; }
+  .ye-complextype-edit-popup .ye-complextype-cancel-button:after {
+    content: ""; }
+  .ye-complextype-edit-popup .yw-advancedsearch-local + .yw-advancedsearch-local-editor {
+    margin-top: 5px; }
+
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-error .z-listcell {
+  background-color: #ffdfdd; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-error .z-listcell.ye-editable-property input {
+    background: #ffffff;
+    border-color: #acacac;
+    color: #000000 !important; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-error:hover .z-listcell {
+  background-color: #ffdfdd; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-error td.ye-row-status-edited {
+  border-left-color: #ff3b30 !important; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-error {
+  color: #ff3b30; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-error .z-listcell-content,
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-error .z-listcell-content .z-label,
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-error .z-listcell-content .yw-listview-cell-label {
+    color: inherit; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-warn .z-listcell {
+  background-color: #ffeec6; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-warn .z-listcell.ye-editable-property input {
+    background: #ffffff;
+    border-color: #acacac;
+    color: #000000 !important; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-warn:hover .z-listcell {
+  background-color: #ffeec6; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-warn td.ye-row-status-edited {
+  border-left-color: #ff9914 !important; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-warn {
+  color: #ff9914; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-warn .z-listcell-content,
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-warn .z-listcell-content .z-label,
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-warn .z-listcell-content .yw-listview-cell-label {
+    color: inherit; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-info .z-listcell {
+  background-color: #d5eeff; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-info .z-listcell.ye-editable-property input {
+    background: #ffffff;
+    border-color: #acacac;
+    color: #000000 !important; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-info:hover .z-listcell {
+  background-color: #d5eeff; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-info td.ye-row-status-edited {
+  border-left-color: #0486e0 !important; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-info {
+  color: #0486e0; }
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-info .z-listcell-content,
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-info .z-listcell-content .z-label,
+  .ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-info .z-listcell-content .yw-listview-cell-label {
+    color: inherit; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem.ye-validation-none .z-listcell {
+  background-color: #ffffff; }
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listcell.ye-validation-none .z-listcell-content {
+  color: #000000 !important; }

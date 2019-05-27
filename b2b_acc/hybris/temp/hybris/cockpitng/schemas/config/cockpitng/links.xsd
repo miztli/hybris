@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0"
+           targetNamespace="http://www.hybris.com/cockpitng/config/links"
+           xmlns:tns="http://www.hybris.com/cockpitng/config/links"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:common="http://www.hybris.com/cockpitng/config/common">
+
+    <xs:import namespace="http://www.hybris.com/cockpitng/config/common" schemaLocation="common-config.xsd"/>
+
+    <xs:element name="links">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="link" type="tns:link" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="link">
+        <xs:complexContent>
+            <xs:extension base="common:positioned">
+                <xs:attribute name="label" type="xs:string" use="required"/>
+                <xs:attribute name="icon" type="xs:string" use="optional"/>
+                <xs:attribute name="url" type="xs:string" use="optional"/>
+                <xs:attribute name="target" type="tns:target" use="optional"/>
+                <xs:attribute name="merge-mode" type="common:MergeMode" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="target" final="restriction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="_blank"/>
+            <xs:enumeration value="_self"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

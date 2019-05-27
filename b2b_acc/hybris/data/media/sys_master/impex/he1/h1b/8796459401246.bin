@@ -1,0 +1,81 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$contentCatalog=powertoolsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$jarResourceCms=jar:de.hybris.platform.personalizationsampledataaddon.constants.PersonalizationsampledataaddonConstants&/personalizationsampledataaddon/import/cockpit/cmscockpit
+$siteResource=jar:de.hybris.platform.personalizationsampledataaddon.constants.PersonalizationsampledataaddonConstants&/personalizationsampledataaddon/import/contentCatalogs/$contentCatalog
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV);
+$defaultComponent=defaultCmsComponent(uid,$contentCV)
+$components=cmsComponents(uid,$contentCV)[mode=append]
+
+INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];realfilename;altText;mime[default='image/jpeg'];$contentCV[unique=true];folder(qualifier)[default=images];
+#banner
+#Special offers - default variation - CategoryLovers
+;mobile;Powertools_SpecialOffers_EN_01_320W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_SpecialOffers_EN_01_320W.jpg;Powertools_SpecialOffers_EN_01_320W.jpg;"Special Offers";
+;tablet;Powertools_SpecialOffers_EN_01_770W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_SpecialOffers_EN_01_770W.jpg;Powertools_SpecialOffers_EN_01_770W.jpg;"Special Offers";
+;desktop;Powertools_SpecialOffers_EN_01_960W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_SpecialOffers_EN_01_960W.jpg;Powertools_SpecialOffers_EN_01_960W.jpg;"Special Offers";
+;widescreen;Powertools_SpecialOffers_EN_01_1400W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_SpecialOffers_EN_01_1400W.jpg;Powertools_SpecialOffers_EN_01_1400W.jpg;"Special Offers";
+
+#content 2A
+#powerDrillsLover
+;mobile;powerDrillsLover_Content_Mobile.jpg;$siteResource/images/banners/homepage/responsive/Powertools_240x200_PowerDrills_EN_01_240W_Discount.jpg;Powertools_240x200_PowerDrills_EN_01_240W_Discount.jpg;"Special Power Drills Offer!";
+;tablet;powerDrillsLover_Content_Tablet.jpg;$siteResource/images/banners/homepage/responsive/Powertools_320x260_PowerDrills_EN_01_320W_Discount.jpg;Powertools_320x260_PowerDrills_EN_01_320W_Discount.jpg;"Special Power Drills Offer!";
+;desktop;powerDrillsLover_Content_Desktop.jpg;$siteResource/images/banners/homepage/responsive/Powertools_350x290_PowerDrills_EN_01_350W_Discount.jpg;Powertools_350x290_PowerDrills_EN_01_350W_Discount.jpg;"Special Power Drills Offer!";
+;widescreen;powerDrillsLover_Content_Widescreen.jpg;$siteResource/images/banners/homepage/responsive/Powertools_385x290_PowerDrills_EN_01_385W_Discount.jpg;Powertools_385x290_PowerDrills_EN_01_385W_Discount.jpg;"Special Power Drills Offer!";
+
+#content 2B
+#screwdriversLover
+;mobile;screwdriversLover_Content_Mobile.jpg;$siteResource/images/banners/homepage/responsive/Powertools_240x200_Screwdrivers_EN_01_240W_Offers.jpg;Powertools_240x200_Screwdrivers_EN_01_240W_Offers.jpg;"Special Screwdrivers Offer!";
+;tablet;screwdriversLover_Content_Tablet.jpg;$siteResource/images/banners/homepage/responsive/Powertools_320x260_Screwdrivers_EN_01_320W_Offers.jpg;Powertools_320x260_Screwdrivers_EN_01_320W_Offers.jpg;"Special Screwdrivers Offer!";
+;desktop;screwdriversLover_Content_Desktop.jpg;$siteResource/images/banners/homepage/responsive/Powertools_350x290_Screwdrivers_EN_01_350W_Offers.jpg;Powertools_350x290_Screwdrivers_EN_01_350W_Offers.jpg;"Special Screwdrivers Offer!";
+;widescreen;screwdriversLover_Content_Widescreen.jpg;$siteResource/images/banners/homepage/responsive/Powertools_385x290_Screwdrivers_EN_01_385W_Offers.jpg;Powertools_385x290_Screwdrivers_EN_01_385W_Offers.jpg;"Special Screwdrivers Offer!";
+
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$contentCV[unique=true]
+#banner
+;specialoffers-default-powertools-homepage-splash;Powertools_SpecialOffers_EN_01_320W.jpg,Powertools_SpecialOffers_EN_01_770W.jpg,Powertools_SpecialOffers_EN_01_960W.jpg,Powertools_SpecialOffers_EN_01_1400W.jpg
+#content 2A
+;powerDrillsLover-content-powertools-homepage-2a;powerDrillsLover_Content_Mobile.jpg,powerDrillsLover_Content_Tablet.jpg,powerDrillsLover_Content_Desktop.jpg,powerDrillsLover_Content_Widescreen.jpg
+#content 2B
+;screwdriversLover-content-powertools-homepage-2b;screwdriversLover_Content_Mobile.jpg,screwdriversLover_Content_Tablet.jpg,screwdriversLover_Content_Desktop.jpg,screwdriversLover_Content_Widescreen.jpg
+
+INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];$mediaContainer;name;urlLink;
+#banner
+;;specialOffersSplashBannerComponent;specialoffers-default-powertools-homepage-splash;Special Offers Powertools Homepage Splash Banner Component;/Open-Catalogue/Tools/Power-Drills/c/1596;
+#content 2A
+;;powerDrillsLoverContentComponent;powerDrillsLover-content-powertools-homepage-2a;Power Drills Lover Content Component;/Open-Catalogue/Tools/Power-Drills/c/1360;
+#content 2B
+;;screwdriversLoverContentComponent;screwdriversLover-content-powertools-homepage-2b;Screwdrivers Lover Content Component;/Open-Catalogue/Tools/Screwdrivers/c/1593;
+
+#remove old components from the slots
+INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];slots
+;;PowertoolsHompageSplashBannerComponent;;
+;;PowertoolsHompagePowerDrillsBannerComponent;;
+;;PowertoolsHompageScrewdriversBannerComponent;;
+;;PowertoolsHompageAngleGrindersBannerComponent;;
+;;PowertoolsHompageSandersBannerComponent;;
+
+
+
+INSERT_UPDATE CxCmsComponentContainer;$contentCV[unique=true];uid[unique=true];sourceId;name;$defaultComponent;
+#banner
+;;Section1SlotHomepageCxContainer;Section1SlotHomepageCxContainer;Section1SlotHomepageCxContainer;PowertoolsHompageSplashBannerComponent;
+#content 2A
+;;Section2ASlotHomepageCxContainer;Section2ASlotHomepageCxContainer;Section2ASlotHomepageCxContainer;PowertoolsHompagePowerDrillsBannerComponent;
+#content 2B
+;;Section2BSlotHomepageCxContainer;Section2BSlotHomepageCxContainer;Section2BSlotHomepageCxContainer;PowertoolsHompageScrewdriversBannerComponent;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;$components
+;;Section1Slot-Homepage;Section1 Slot for Homepage;true;Section1SlotHomepageCxContainer
+;;Section2ASlot-Homepage;Section2A Slot for Homepage;true;Section2ASlotHomepageCxContainer,PowertoolsHompageAngleGrindersBannerComponent
+;;Section2BSlot-Homepage;Section2B Slot for Homepage;true;Section2BSlotHomepageCxContainer,PowertoolsHompageSandersBannerComponent
+	

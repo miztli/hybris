@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd "
+        height="100%">
+
+    <vlayout width="100%" height="100%" sclass="yw-editorarea-body" spacing="auto">
+        <div sclass="yw-editorarea-caption" visible="${widgetSettings.enableEmbededTitle}">
+            <label id="editorAreaTitle" sclass="yw-editorarea-title"/>
+        </div>
+        <widgetslot slotID="notificationArea"/>
+        <div id="toolbarContainer" sclass="yw-listview-actioncontainer yw-editorarea-actioncontainer">
+            <div sclass="y-toolbar">
+                <div sclass="y-toolbar-leftslot-widget">
+                    <widgetslot slotID="toolbarLeft"/>
+                </div>
+                <div sclass="y-toolbar-inner">
+                    <div sclass="y-toolbar-leftslot">
+                        <actions id="actionSlot" group="common" sclass="yw-listview-actionSlot"/>
+                    </div>
+                    <widgetslot slotID="toolbarInner" sclass="yw-editor-area-nested-toolbar-widget" if="${widgetSettings.toolbarButtonsPosition=='top'}"/>
+                    <div sclass="y-toolbar-rightslot">
+                        <div sclass="yw-editorarea-navi-container">
+                            <toolbarbutton id="viewModeButton" sclass="yw-viewMode-btn"
+                                           visible="${widgetSettings.viewModeBtnVisible}"/>
+                            <widgetslot slotID="previousItemSelectorSlot"/>
+                            <widgetslot slotID="nextItemSelectorSlot"/>
+                        </div>
+                        <div sclass="ye-cancel-container" if="${widgetSettings.toolbarButtonsPosition=='top'}">
+                            <button id="cancelButton" label="${labels.editorArea.reset}" autodisable="self"/>
+                        </div>
+                        <div sclass="ye-save-container" if="${widgetSettings.toolbarButtonsPosition=='top'}">
+                            <button id="saveButton" label="${labels.editorArea.save}" sclass="y-btn-primary"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div sclass="yw-editor-area-main-content" vflex="1">
+            <div id="attributesDiv">
+                <widgetslot id="staticSectionSlot" slotID="staticSectionSlot" sclass="yw-static-section-slot yw-static-section-inactive"/>
+            </div>
+        </div>
+        <div sclass="ye-editorarea-bottom-bar" if="${widgetSettings.toolbarButtonsPosition=='bottom'}">
+            <widgetslot slotID="toolbarInner" sclass="yw-editor-area-nested-toolbar-widget" />
+            <div sclass="ye-cancel-container">
+                <button id="cancelButton" label="${labels.editorArea.reset}" autodisable="self"/>
+            </div>
+            <div sclass="ye-save-container">
+                <button id="saveButton" label="${labels.editorArea.save}" sclass="y-btn-primary"/>
+            </div>
+        </div>
+    </vlayout>
+</widget>

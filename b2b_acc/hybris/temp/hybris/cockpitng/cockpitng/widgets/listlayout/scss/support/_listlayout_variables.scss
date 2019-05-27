@@ -1,0 +1,7 @@
+@import "cockpitng-globals.scss";
+
+$listlayout__list-defaults--padding: $container-spacing-default__base;
+$listlayout__list-container--max-width: 1260px;
+$listlayout__list-container--padding-bottom: $listlayout__list-defaults--padding;
+$listlayout__list-child--margin: $listlayout__list-defaults--padding $listlayout__list-defaults--padding 0; 
+$listlayout__list-child--box-shadow: 0px 2px 5px 1px rgba($black, 0.3);

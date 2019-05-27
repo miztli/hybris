@@ -1,0 +1,36 @@
+@import "scss/support/_listlayout_variables.scss";
+
+.yw-listLayout {
+	&-widget {
+		overflow: auto;
+		text-align: center;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;		
+	}
+	&-container {
+		padding-bottom: $listlayout__list-container--padding-bottom;
+		max-width: $listlayout__list-container--max-width;
+		display: block;
+		box-sizing: border-box;
+		text-align: left;
+		width: auto;		
+		height: auto;
+		margin: 0 auto;
+
+		> .widget_children_list > .widget_cnt {
+			margin: $listlayout__list-child--margin;
+			box-shadow: $listlayout__list-child--box-shadow;
+			padding: 0;
+
+			.cng-adminmode &,
+			&:empty {
+				margin: 0;
+			}
+			&:empty {
+				display: none;
+			}
+		}
+	}
+}

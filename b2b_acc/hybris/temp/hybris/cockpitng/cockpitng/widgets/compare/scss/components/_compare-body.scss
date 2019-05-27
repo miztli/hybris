@@ -1,0 +1,39 @@
+@import "../support/_compare-variables.scss";
+
+.yw-compareview-grid {
+	.yw-compareview-header-summary-item,
+	.yw-compareview-attribute-name,
+	.yw-compareview-section-name {
+		.yw-compareview-cell-content {
+			width: $compareview__name-column--width;
+			margin-left: $compareview__name-column--margin-left;
+		}
+		&.y-scroll-sticky-left .yw-compareview-cell-content {
+			&:before {
+				width: $compareview__name-column--width + $boxes--border__thin;
+			}
+		}
+	}
+
+	.y-tablerows {
+		margin-top: $compareview__rows-container--margin-top;
+		display: inline-table;
+		overflow: visible;
+
+		.yw-compareview-cell-content {
+			&:before {
+				height: $compareview__component-mask--size;
+			}
+		}
+		> tr:last-child {
+			overflow: visible;
+		}
+		// .yw-compareview-section-header-row.y-tablerow-collapsed {
+		// 	opacity: 1;
+		// 	height: auto;
+		// }
+	}
+	.yw-compareview-section-name-label {
+		margin: $compareview__section-label--margin;
+	}
+}

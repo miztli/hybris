@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+        sclass="yw-dashboard">
+
+	<div sclass="yw-dashboard-container" id="container">
+        <div id="innerContainer">
+            <button id="toggleLock" sclass="yw-dashboard-lock" label="${labels.toggle.lock.unlock}"/>
+            <actions id="actions" config="${widgetSettings.actionSlotComponentId}"
+                     group="common" sclass="yw-dashboard-actions"/>
+            <widgetchildren id="childrenContainer" type="dashboard" height="100%" width="100%"
+                            sclass="yw-children-container" slotID="dashboardWidgets"/>
+        </div>
+    </div>
+
+</widget>

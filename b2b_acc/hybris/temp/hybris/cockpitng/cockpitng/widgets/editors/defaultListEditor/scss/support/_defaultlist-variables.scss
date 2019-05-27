@@ -1,0 +1,36 @@
+/*================================
+    Default List
+================================*/
+// Defined Variables for Default List
+
+$list-editor__listox--border-color: $grey__default--900;
+$list-editor__listox--border-top-color: rgba($blue__greyish--400, 0.2);
+
+$list-editor__toolbar-button--size: 40px;
+$list-editor__toolbar-button-hover--bg-color: $white;
+$list-editor__toolbar-add-button--bg-image: url("icons/icon_func_add_default.png");
+$list-editor__toolbar-add-button-hover--bg-image: url("icons/icon_func_add_hover.png");
+$list-editor__toolbar-add-button-disabled--bg-image: url("icons/icon_func_add_disabled.png");
+$list-editor__toolbar-edit-button--bg-image: url("icons/icon_func_edit_default.png");
+$list-editor__toolbar-edit-button-hover--bg-image: url("icons/icon_func_edit_hover.png");
+$list-editor__toolbar-edit-button-disabled--bg-image: url("icons/icon_func_edit_disabled.png");
+$list-editor__toolbar-delete-button--bg-image: url("icons/icon_func_delete_default.png");
+$list-editor__toolbar-delete-button-hover--bg-image: url("icons/icon_func_delete_hover.png");
+$list-editor__toolbar-delete-button-disabled--bg-image: url("icons/icon_func_delete_disabled.png");
+
+$list-editor__paging--line-height: $toolbar__vertical-centering-base--height;
+
+$list-editor__cell--bg: $white;
+$list-editor__button--margin-top: 5px;
+$list-editor__button--margin-left: 5px;
+
+$list-editor__toolbar-popup-content--padding: $container-spacing-default__third;
+$list-editor__toolbar-popup-cl--bg: $container-spacing-default__third;
+$list-editor__toolbar-popup-cancel-primary-button--margin: 0 0 0 5px;
+$list-editor__toolbar-popup-cancel-primary-button--padding: 0 $container-spacing-default__half;
+$list-editor__toolbar-popup-checkbox--margin-top: $container-spacing-default__third;
+
+$list-editor__toolbar-popup-checkbox--margin-top: $container-spacing-default__third;
+
+$list-editor__list--line-height: 18px;
+$list-editor__list-paging-button--bg-image: none;

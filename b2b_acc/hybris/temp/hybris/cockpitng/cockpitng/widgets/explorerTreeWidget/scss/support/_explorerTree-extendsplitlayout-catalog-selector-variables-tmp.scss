@@ -1,0 +1,13 @@
+@import "cockpitng-globals.scss";
+
+$explorerTree__toolbar-catalog-selector--color: $white;
+$explorerTree__toolbar-catalog-selector--background: transparent;
+$explorerTree__toolbar-catalog-selector--border-color: rgba($white, .5);
+$explorerTree__toolbar-catalog-selector-dropdown-icon--bg-color: $explorertree__default--bg-color;
+$explorerTree__toolbar-catalog-selector-dropdown-icon--color: $explorertree__treerow-default--color;
+
+$explorerTree-light__toolbar-catalog-selector--border-color: $grey__light--800;
+$explorerTree-light__toolbar-catalog-selector--color: inherit;
+$explorerTree-light__toolbar-catalog-selector--background: $white;
+$explorerTree-light__toolbar-catalog-selector-dropdown-icon--bg-color: $explorertree-light__default--bg-color;
+$explorerTree-light__toolbar-catalog-selector-dropdown-icon--color: $explorertree-light__row--color;

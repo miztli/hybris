@@ -1,0 +1,85 @@
+/*================================
+    Create Container
+================================*/
+// Styling of the Create Container visible on different Widgets
+
+
+@import "../support/_create-variables.scss";
+
+.ya-create-container {
+    border: $create__create-new-button--border;
+    background-color: $create__create-new-button--bg-color;
+    display: table;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    .cng-action-text {
+        color: $create__create-type-action-text--color;
+        display: inline-block;
+        vertical-align: middle;
+
+        .z-label {
+            margin-right: $create__create-new-button-action-text-label--margin-right;
+        }
+    }
+
+    //todo: check if parent (&) is needed here!?
+    &.cng-action-disabled .cng-action-text {
+        font-style: italic;
+    }
+
+    .y-toolbar & .z-hbox-sep {
+        display: none;
+    }
+    .y-toolbar &,
+    .yw-explorerTree-toolbar & {
+        border: none;
+        border-color: $create__create-type-toolbar-item-delimiter--color;
+        margin: 0;
+        background-color: transparent;
+        
+        .cng-action-text {
+            display: none;
+        }
+        .ya-create-type-selector-button {
+            box-sizing: border-box;
+            border: $create__create-new-button--border-width solid transparent;
+            margin-left: $create__create-type-selector-button--margin-left;
+            border-left-color: inherit;
+            position: relative;
+            display: inline-block;
+            
+            &:hover,
+            &:focus {
+                border-color: inherit;
+            }
+            &[disabled] {
+                &:hover,
+                &:focus {
+                    border-color: transparent;
+                    border-left-color: inherit !important;
+                }
+            }      
+        }
+        > .ya-create-type-selector-button:last-child {
+            width: $create__toolbar-action-group-item-create-type-button--width;
+            .z-toolbarbutton-content {
+                margin-left: -1px;
+            }
+        }
+        &:hover {
+            .cng-action-enabled {
+                box-shadow: $create__create-new-action-hover--box-shadow;
+                
+                + .ya-create-type-selector-button {
+                    border-color: inherit;
+                }
+            }
+        }
+    }
+
+}

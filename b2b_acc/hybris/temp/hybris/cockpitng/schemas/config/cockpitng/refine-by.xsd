@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0"
+		   targetNamespace="http://www.hybris.com/cockpitng/config/refineBy"
+		   xmlns:tns="http://www.hybris.com/cockpitng/config/refineBy"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="facet-config">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="facets" type="tns:facets" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="blacklist" type="tns:blacklist" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="facets">
+		<xs:sequence>
+			<xs:element name="facet" type="tns:facet" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="not-listed" type="tns:notListedFacets" use="optional"/>
+		<xs:attribute name="order" type="tns:facetsOrder" use="optional"/>
+	</xs:complexType>
+
+	<xs:complexType name="blacklist">
+		<xs:sequence>
+			<xs:element name="facet" type="tns:facet" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="facet">
+		<xs:sequence>
+			<xs:element name="parameter" type="tns:parameter" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="renderer" type="xs:string" use="optional"/>
+		<xs:attribute name="merge-mode" type="xs:string" use="optional"/>
+	</xs:complexType>
+
+	<xs:simpleType name="notListedFacets" final="restriction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="visible" />
+			<xs:enumeration value="skip" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="facetsOrder" final="restriction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="listed" />
+			<xs:enumeration value="received" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="parameter">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

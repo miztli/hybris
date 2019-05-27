@@ -1,0 +1,255 @@
+/*================================
+    Collection Browser - Grid
+================================*/
+// Grid-Styling for Collection Browser
+
+
+@import "../support/_collectionBrowser-variables.scss";
+
+.yw-grid-view {
+    padding: $collection-browser__grid--padding;  
+    height: 100%;
+    overflow: auto;
+     
+    &-container {
+        color: $collection-browser__grid-view-container--color;
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: hidden; 
+        position: relative;
+
+        &:after {
+            color: $collection-browser__grid-top-shadow--color;
+            right: $collection-browser__grid-top-shadow--side-x;
+            left: $collection-browser__grid-top-shadow--side-x;
+            box-shadow: $collection-browser__grid-top-shadow--box-shadow;
+            content: "";
+            position: absolute;
+            height: 0;
+            top: 0;
+        }
+    }
+
+
+    &-tile {
+        text-align: center;
+        border: $collection-browser__grid-tile--border;
+        position: relative;
+        background-color: $collection-browser__grid-tile--bg-color;
+        box-shadow: $collection-browser__grid-tile--shadow;
+        transition: $collection-browser__grid-tile--transition;
+        overflow: hidden;
+        
+        width: $collection-browser__grid-tile--width;
+        height: $collection-browser__grid-tile--height;
+        margin: $collection-browser__grid-tile--margin;
+        max-height: $collection-browser__grid-tile--height;
+        float: left;
+
+        &:before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: $collection-browser__grid-tile-image-part--bottom;
+            background-color: $collection-browser__grid-tile-image-part--bg-color;
+        }
+
+        &.yw-coll-browser-focused {
+            box-shadow: $collection-browser__grid-tile--focused-shadow;
+        }
+
+        &:hover,
+        &.yw-selected,
+        &.yw-selected:hover {
+            box-shadow: $collection-browser__grid-tile--hover-shadow;
+
+            &.yw-coll-browser-focused {
+                box-shadow: $collection-browser__grid-tile--focused-hover-shadow;
+            }      
+        }
+        
+        &.yw-coll-browser-focused {
+            background-color: $collection-browser__list-view-focus--bg-color;
+            border-color: $collection-browser__grid-tile--focused--border-color;
+            
+            &:hover {
+                background-color: $collection-browser__list-view-focus-hover--bg-color;
+            }
+        }
+
+        &.yw-selected {
+            background-color: $collection-browser__list-view-selected--bg-color;
+            border-color: $collection-browser__grid-tile-selected--border-color;
+
+            &:hover {
+                background-color: $collection-browser__list-view-selected-hover--bg-color;
+            }
+            
+            &.yw-coll-browser-focused {
+                background-color: $collection-browser__list-view-selected-focus--bg-color;
+
+                &:hover {
+                    background-color: $collection-browser__list-view-selected-focus-hover--bg-color;
+                }
+            }
+            .yw-grid-view-tile-selection {
+                color: $collection-browser__grid-tile-selected--color;
+            }
+        }
+        
+        .yw-grid-view-tile-thumbnail {
+            
+            max-width: $collection-browser__grid-tile-image--max-width;
+            max-height: $collection-browser__grid-tile-image--max-height;
+            margin: $collection-browser__grid-tile-image--margin-top auto 0;
+            height: auto;
+            width: auto;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .yw-grid-view-tile-selection {
+            height: $collection-browser__grid-tile-select-button--size;
+            width: $collection-browser__grid-tile-select-button--size;
+            left: $collection-browser__grid-tile-select-button--indent;
+            top: $collection-browser__grid-tile-select-button--indent;
+            background-color: rgba(0,0,0,0.1);
+            color: $collection-browser__grid-tile-hover--color;
+            overflow: hidden;
+            display: inline-block;
+            position: absolute;
+            cursor: pointer;
+            background: transparent;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            &:after {
+                content: $collection-browser__grid-tile-selected-check-icon--content;
+                width: $collection-browser__grid-tile-selected-check-icon--size;
+                height: $collection-browser__grid-tile-selected-check-icon--size;
+                font: normal normal normal $collection-browser__grid-tile-selected-check-icon--font-size/1 $collection-browser__grid-tile-selected-check-icon--font-family;
+                position: absolute;
+                z-index: 1;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+        }
+
+        .z-label {
+            width: 100%;
+            height:  $collection-browser__grid-tile-label--height;
+            color: $collection-browser__grid-tile-label--color;
+            font-size: $collection-browser__grid-tile-label--font-size;
+            line-height: $collection-browser__grid-tile-label--line-height;
+            word-wrap: $collection-browser__grid-tile-label--word-wrap;
+            padding: $collection-browser__grid-tile--padding;
+            border-top: $collection-browser__grid-tile--border;
+            bottom: $collection-browser__grid-tile-label--bottom;            
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: bold;
+            text-align: left;
+            position: absolute;
+            background-color: inherit;
+            // multiline-ellipsis for webkit only
+            display: -webkit-box;
+            -webkit-line-clamp: $collection-browser__grid-tile-label--line-clamp;
+            -webkit-box-orient: vertical;
+        }
+
+        //narrow-tile
+        &.yw-grid-view-tile-narrow {
+            &:before {
+                bottom: $collection-browser__grid-tile-narrow-image-part--bottom;    
+            }
+            .yw-grid-view-tile-thumbnail {
+                max-height: $collection-browser__grid-tile-narrow-image--max-height;
+            }
+            .z-label {
+                bottom: $collection-browser__grid-tile-narrow-label--bottom;
+            }
+            .bottom-panel {
+                padding: $collection-browser__grid-tile--padding;
+                bottom: $collection-browser__grid-tile--padding-value;
+                width: 100%;
+                position: absolute; 
+                text-align: left;
+                
+                &-container{
+                    display: inline-block;
+
+                    > .z-span {
+                        display: inline;
+                    }
+                }
+            }
+        }
+        &.yw-draggable {
+            .z-image,
+            .z-label,
+            .z-span {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+        }
+    }
+}
+
+// body:not(.webkit):not(.gecko):not(.edge){
+//     & .yw-grid-view-tile {
+        
+//     }
+// }
+
+
+// Fix for status-bar miss-positioning in grid-view layout
+// - only valid for IE9+ FF3.5+, Chrome4+, Safari3.2+, Opera10.1+
+.yw-com_hybris_cockpitng_collectionBrowser > .z-vlayout > .z-vlayout-inner:last-child {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.y-statusbar {
+    z-index: 100;
+}
+
+@media screen and (max-width: ($collection-browser__grid-tile--width * 2 + $collection-browser__grid--padding-x * 4 + $collection-browser__grid-collapse-addition--space )) {
+    @include _single-row-tile();
+}
+
+
+@supports (display: grid) {
+
+    .yw-grid-view {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: repeat(auto-fill, minmax($collection-browser__grid-tile--width, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax($collection-browser__grid-tile--width, 1fr));
+        -ms-grid-rows: minmax($collection-browser__grid-tile--height, $collection-browser__grid-tile--height);
+        grid-auto-rows: minmax($collection-browser__grid-tile--height, $collection-browser__grid-tile--height);
+        grid-gap: $collection-browser__grid-tile--margin * 2;
+        padding: $collection-browser__grid-modern--padding;
+
+         &-tile {
+            float: none;
+            height: auto;
+            width: auto;
+            margin: 0;
+            max-height: none;
+        }
+    }
+}

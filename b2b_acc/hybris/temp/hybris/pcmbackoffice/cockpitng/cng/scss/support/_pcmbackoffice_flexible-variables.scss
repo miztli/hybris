@@ -1,0 +1,53 @@
+@import "cockpitng-globals.scss";
+
+$pcmbackoffice__flex-side-toolbar--display: inline;
+$pcmbackoffice__flex-side-toolbar--background-color: $blue__default;
+$pcmbackoffice__flex-side-toolbar--height: 100%;
+$pcmbackoffice__flex-side-toolbar--width: 2px;
+$pcmbackoffice__flex-side-toolbar--content: " ";
+$pcmbackoffice__flex-side-toolbar--margin-right: 5px;
+
+$pcmbackoffice__flex-side-action-text--min-width: 200px;
+$pcmbackoffice__flex-side-action-text--color: $grey__default--500;
+$pcmbackoffice__flex-side-action-text-active--color: $white;
+$pcmbackoffice__flex-side-action-text--line-height: 32px;
+$pcmbackoffice__flex-side-action-text--transition: none;
+$pcmbackoffice__flex-side-action-text-hover--transition: opacity 0.3s ease 0.2s, visibility 0s;
+
+$pcmbackoffice__rootpane-flex-side-action-icon--bg: none;
+$pcmbackoffice__flex-side-action-icon--width: 32px;
+$pcmbackoffice__flex-side-action-icon--height: 32px;
+
+$pcmbackoffice__flex-content-borderlayout--bg: transparent;
+
+$pcmbackoffice__flex-content-xmlconfig--height: auto !important;
+
+$pcmbackoffice__navibar--bg-color: $black__blueish--200;
+
+$pcmbackoffice__flex-trigger--bg-image: url("../images/icon_open_menu_default.svg");
+$pcmbackoffice__flex-trigger-hover--bg-image: url("../images/icon_open_menu_hover.svg");
+
+$pcmbackoffice__flex-trigger-action--size: $toolbar__vertical-centering-base--height;
+$pcmbackoffice__flex-trigger-action--margin: (floor($globals__toolbar--height - $pcmbackoffice__flex-trigger-action--size) / 2);
+$pcmbackoffice__flex-trigger-action-shadow--margin: - floor($pcmbackoffice__flex-trigger-action--size/2);
+$pcmbackoffice__flex-trigger-action-shadow--hover-box-shadow: 0 0 4px 0px rgba($black,0.2);
+$pcmbackoffice__flex-trigger-action-shadow--box-shadow: 0 0 0 0;
+$pcmbackoffice__flex-trigger-action-shadow--transition: box-shadow .2s ease-in-out;
+$pcmbackoffice__flex-trigger-action-shadow--border: $boxes--border__thin solid $editor-defaults__action-button-hover--border-color;
+
+$pcmbackoffice__flex-trigger-editorarea-active--color: $blue__default;
+$pcmbackoffice__flex-trigger-editorarea--bg-image: url("../images/icon_quicklist_default.svg");
+$pcmbackoffice__flex-trigger-editorarea-hover--bg-image: url("../images/icon_quicklist_hover.svg");
+
+$pcmbackoffice__flex-trigger-list-view--bg-image: url("../images/icon_quicklist_default.svg");
+$pcmbackoffice__flex-trigger-list-view-hover--bg-image: url("../images/icon_quicklist_hover.svg");
+
+$pcmbackoffice__flex-trigger-hover--bg-color: transparent;
+
+$pcmbackoffice__flex-sidebar-hover--mq-xs--min-width: 1024px;
+$pcmbackoffice__flex-sidebar-footer--height: $globals__toolbar--height;
+$pcmbackoffice__flex-sidebar-footer-collapse-button--height: 30px;
+$pcmbackoffice__flex-sidebar-footer--padding-y: floor(($pcmbackoffice__flex-sidebar-footer--height - $pcmbackoffice__flex-sidebar-footer-collapse-button--height)/2);
+
+$pcmbackoffice__flex-xmlconfig-window--border: $boxes--border__thin solid $grey__light--800;
+$pcmbackoffice__flex-xmlconfig-window-bottom-border--bottom: nth($pcmbackoffice__flex-xmlconfig-window--border, 1) * -1;

@@ -1,0 +1,72 @@
+.yw-roleselector-container {
+  width: 100%;
+  height: 100%;
+  background: #0486e0; }
+
+.yw-selector-body {
+  width: 100%;
+  height: 100%; }
+.yw-selector-grid {
+  width: 350px;
+  margin: 0 auto;
+  padding-top: 150px;
+  background: url("images/logo_transparent.png") no-repeat transparent;
+  transform: translate(0, 50%); }
+  .yw-selector-grid:after {
+    content: "";
+    display: block;
+    clear: both; }
+  .yw-selector-grid label,
+  .yw-selector-grid .z-label {
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    color: #ffffff;
+    line-height: 16px;
+    margin-bottom: 9px; }
+.yw-selector-holder,
+.yw-selector-holder > div,
+.yw-selector-holder > div > div {
+  border: none;
+  background: none; }
+.yw-selector-image {
+  width: 17px;
+  height: 17px;
+  padding-left: 85%;
+  background: url("images/icon_questionmark.png") no-repeat 1px 0;
+  background-clip: content-box;
+  background-origin: content-box; }
+.yw-selector-listitem .yw-selector-listcell {
+  transition: background-color 0.5s; }
+  .yw-selector-listitem .yw-selector-listcell.z-listcell:first-child {
+    width: 100%; }
+.yw-selector-listitem:first-child .z-listcell-content {
+  padding-left: 50px; }
+.yw-selector-listitem .z-listcell-content {
+  text-overflow: initial;
+  white-space: initial;
+  line-height: 24px;
+  text-indent: -35px;
+  padding-left: 50px;
+  word-wrap: break-word; }
+.yw-selector .z-listitem-checkable.z-listitem-radio {
+  margin-top: 2px; }
+
+button.z-button.yw-selector-btn {
+  float: right;
+  margin-top: 20px;
+  display: inline-block; }
+
+.yw-selector select {
+  width: 97%;
+  height: 40px;
+  display: inline-block;
+  outline: none;
+  color: #8a8fa3;
+  font-size: 14px;
+  border: 1px solid #21428b;
+  padding: 4px 6px;
+  background: url(images/selectbox_arrow.png) no-repeat center right #13275a;
+  -webkit-appearance: none;
+  box-shadow: inset 0 -5px 5px rgba(0, 0, 0, 0.15);
+  transition: border linear 0.2s, box-shadow linear 0.2s; }

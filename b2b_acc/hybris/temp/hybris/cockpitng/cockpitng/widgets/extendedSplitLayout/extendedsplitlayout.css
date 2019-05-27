@@ -1,0 +1,63 @@
+.yw-extendedsplitlayout {
+  position: relative; }
+  .yw-extendedsplitlayout-toolbar {
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    text-align: right;
+    position: absolute; }
+    .yw-extendedsplitlayout-toolbar-action {
+      height: 100%;
+      display: inline-block; }
+      .yw-extendedsplitlayout-toolbar-action .cng-action {
+        margin: 0 10px; }
+        .yw-extendedsplitlayout-toolbar-action .cng-action table td, .yw-extendedsplitlayout-toolbar-action .cng-action-group table td {
+          vertical-align: middle; }
+  .yw-extendedsplitlayout-toolbar + .yw-extendedsplitlayout-holder {
+    padding-top: 50px; }
+  .yw-extendedsplitlayout-holder, .yw-extendedsplitlayout-box-wrapper {
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex; }
+  .yw-extendedsplitlayout-twin-south, .yw-extendedsplitlayout-box-wrapper {
+    -ms-flex-direction: column;
+    flex-direction: column; }
+  .yw-extendedsplitlayout-box {
+    width: 33%;
+    height: 100%; }
+    .yw-extendedsplitlayout-box:last-child {
+      width: 34%; }
+      .yw-extendedsplitlayout-box:last-child > .ui-resizable-handle {
+        border-right-width: 0; }
+  .yw-extendedsplitlayout-box-wrapper, .yw-extendedsplitlayout-box {
+    min-width: 100px;
+    min-height: 100px;
+    overflow: hidden; }
+  .yw-extendedsplitlayout-single > .yw-extendedsplitlayout-box {
+    width: 100%; }
+  .yw-extendedsplitlayout-twin-south > .yw-extendedsplitlayout-box, .yw-extendedsplitlayout-twinmix-left > .yw-extendedsplitlayout-box-wrapper > .yw-extendedsplitlayout-box, .yw-extendedsplitlayout-twinmix-right > .yw-extendedsplitlayout-box-wrapper > .yw-extendedsplitlayout-box {
+    width: 100%;
+    height: 50%; }
+  .yw-extendedsplitlayout-box-wrapper, .yw-extendedsplitlayout-twin-east > .yw-extendedsplitlayout-box, .yw-extendedsplitlayout-twinmix-left > .yw-extendedsplitlayout-box, .yw-extendedsplitlayout-twinmix-right > .yw-extendedsplitlayout-box {
+    width: 50%; }
+  .yw-extendedsplitlayout-box-wrapper > .ui-resizable-e, .yw-extendedsplitlayout-box > .ui-resizable-e {
+    width: 0;
+    cursor: ew-resize;
+    right: 0;
+    border: 0 solid #c4cedc;
+    border-right-width: 4px; }
+  .yw-extendedsplitlayout-box > .ui-resizable-s {
+    height: 0;
+    cursor: ns-resize;
+    bottom: 0;
+    border: 0 solid #c4cedc;
+    border-bottom-width: 4px; }
+  .yw-extendedsplitlayout-content-box {
+    width: 100%;
+    height: 100%;
+    min-width: 100px;
+    min-height: 100px; }
+  .yw-extendedsplitlayout-holder .yw-extendedsplitlayout-holder {
+    padding: 20px; }
+  .yw-extendedsplitlayout-holder .yw-extendedsplitlayout-holder .yw-extendedsplitlayout-box {
+    background-color: #ffffff; }

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<language-addon>
+	<addon-name>hybris.cockpit</addon-name>
+	<language-name>xul/html</language-name>
+
+	<depends>zul,zkbind,zkmax</depends>
+
+	<component>
+		<component-name>tabbox</component-name>
+		<extends>tabbox</extends>
+		<mold>
+			<mold-name>default</mold-name>
+			<mold-uri>mold/tabbox-static.js</mold-uri>
+		</mold>
+		<mold>
+			<mold-name>accordion</mold-name>
+			<mold-uri>mold/tabbox-accd-static.js</mold-uri>
+		</mold>
+	</component>
+	<component>
+			<component-name>widgetslot</component-name>
+			<extends>div</extends>
+			<component-class>com.hybris.cockpitng.components.Widgetslot</component-class>
+	</component>
+	<component>
+			<component-name>widgetchildren</component-name>
+			<extends>widgetslot</extends>
+			<component-class>com.hybris.cockpitng.components.Widgetchildren</component-class>
+	</component>
+	<component>
+			<component-name>widget</component-name>
+			<extends>div</extends>
+			<component-apply>${widgetController}</component-apply>
+	</component>
+	<component>
+			<component-name>editor</component-name>
+			<extends>div</extends>
+			<component-class>com.hybris.cockpitng.components.Editor</component-class>
+			<property>
+				<property-name>widgetInstanceManager</property-name>
+				<property-value>${widgetInstanceManager}</property-value>
+			</property>
+			<annotation>
+			<annotation-name>ZKBIND</annotation-name>
+			<property-name>value</property-name>
+			<attribute>
+				<attribute-name>ACCESS</attribute-name>
+				<attribute-value>both</attribute-value>
+			</attribute>
+			<attribute>
+				<attribute-name>SAVE_EVENT</attribute-name>
+				<attribute-value>onValueChanged</attribute-value>
+			</attribute>
+		</annotation>
+	</component>
+	<component>
+			<component-name>editors</component-name>
+			<extends>div</extends>
+			<component-class>com.hybris.cockpitng.components.Editors</component-class>
+			<property>
+				<property-name>widgetInstanceManager</property-name>
+				<property-value>${widgetInstanceManager}</property-value>
+			</property>
+	</component>
+	<component>
+			<component-name>action</component-name>
+			<extends>div</extends>
+			<component-class>com.hybris.cockpitng.components.Action</component-class>
+			<property>
+				<property-name>widgetInstanceManager</property-name>
+				<property-value>${widgetInstanceManager}</property-value>
+			</property>
+	</component>
+	<component>
+			<component-name>actions</component-name>
+			<extends>div</extends>
+			<component-class>com.hybris.cockpitng.components.Actions</component-class>
+			<property>
+				<property-name>widgetInstanceManager</property-name>
+				<property-value>${widgetInstanceManager}</property-value>
+			</property>
+	</component>
+	<component>
+			<component-name>codeeditor</component-name>
+			<component-class>com.hybris.cockpitng.components.Codeeditor</component-class>
+			<widget-class>com.hybris.codeeditor.CodeEditor</widget-class>
+			<mold>
+				<mold-name>default</mold-name>
+				<mold-uri>mold/default.js</mold-uri>
+				<css-uri>vendor/codemirror-3.14/lib/codemirror.css</css-uri>
+			</mold>
+	</component>
+	<component>
+			<component-name>stopwatch</component-name>
+			<extends>label</extends>
+			<component-class>com.hybris.cockpitng.components.Stopwatch</component-class>
+			<widget-class>com.hybris.stopwatch.Stopwatch</widget-class>
+	</component>
+	<component>
+			<component-name>progressbar</component-name>
+			<component-class>com.hybris.cockpitng.components.ProgressBar</component-class>
+			<widget-class>com.hybris.progressbar.ProgressBar</widget-class>
+	</component>
+	<component>
+		<component-name>table</component-name>
+		<component-class>com.hybris.cockpitng.components.table.Table</component-class>
+		<widget-class>com.hybris.table.Table</widget-class>
+	</component>
+	<component>
+		<component-name>table-header</component-name>
+		<component-class>com.hybris.cockpitng.components.table.TableHeader</component-class>
+		<widget-class>com.hybris.table.TableHeader</widget-class>
+	</component>
+	<component>
+		<component-name>table-rows</component-name>
+		<component-class>com.hybris.cockpitng.components.table.TableRows</component-class>
+		<widget-class>com.hybris.table.TableRows</widget-class>
+	</component>
+	<component>
+		<component-name>table-rows-group</component-name>
+		<component-class>com.hybris.cockpitng.components.table.TableRowsGroup</component-class>
+		<widget-class>com.hybris.table.TableRowsGroup</widget-class>
+	</component>
+	<component>
+		<component-name>table-row</component-name>
+		<component-class>com.hybris.cockpitng.components.table.TableRow</component-class>
+		<widget-class>com.hybris.table.TableRow</widget-class>
+	</component>
+	<component>
+		<component-name>table-cell</component-name>
+		<component-class>com.hybris.cockpitng.components.table.TableCell</component-class>
+		<widget-class>com.hybris.table.TableCell</widget-class>
+	</component>
+	<component>
+		<component-name>networkchart</component-name>
+		<component-class>com.hybris.cockpitng.components.visjs.network.NetworkChart</component-class>
+		<widget-class>com.hybris.visjs.NetworkChart</widget-class>
+		<mold>
+			<mold-name>default</mold-name>
+			<css-uri>vendor/css/visjs.css</css-uri>
+		</mold>
+	</component>
+
+	<javascript src="~./js/zk-patches/ZK-3235.js"/>
+	<javascript src="~./js/zk-patches/TSB-4046.js"/>
+	<javascript src="~./js/zk-patches/CNG-2600.js"/>
+	<javascript src="~./js/zk-custom/CNG-2232.js"/>
+	<javascript src="~./js/zk-custom/CNG-2327.js"/>
+	<javascript src="~./js/zk-custom/TSB-4579.js"/>
+	<javascript src="~./js/zk-custom/TSB-4619.js"/>
+	<javascript src="~./js/zk-custom/CNG-test.js"/>
+	<javascript src="~./js/zk-custom/CNG-3594.js"/>
+	<javascript src="~./js/zk-custom/FF-714.js"/>
+	<javascript src="~./js/zk-custom/TSB-5869-wysiwygB64.js"/>
+</language-addon>

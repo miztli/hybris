@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=hi
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;ट्रिगर नियम संदेश (कार्ट कुल थ्रेशोल्ड);नियम शर्त पूर्ति के आधार पर संदेश प्रदर्शित करें;
+;y_trigger_message_parameterized_category;ट्रिगर नियम संदेश (श्रेणी);नियम शर्त पूर्ति के आधार पर संदेश प्रदर्शित करें;
+;y_trigger_message_parameterized_product;ट्रिगर नियम संदेश (उत्पाद);नियम शर्त पूर्ति के आधार पर संदेश प्रदर्शित करें;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;कार्ट कुल थ्रेशोल्ड;नियंत्रण पर कार्ट कुल थ्रेशोल्ड
+;y_trigger_message_parameterized_category;catalog;कैटलॉग द्वारा फ़िल्टर का चयन करें;चयनित कैटलॉग मान संबद्ध फ़ील्ड के भीतर फॉल्टरिंग उद्देश्यों के लिए उपयोग किया जाएगा
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;मात्रा;योग्य श्रेणी से आवश्यक उत्पादों की मात्रा
+;y_trigger_message_parameterized_category;qualifying_categories;श्रेणियां;योग्य श्रेणियां
+;y_trigger_message_parameterized_product;catalog;कैटलॉग द्वारा फ़िल्टर का चयन करें;चयनित कैटलॉग मान संबद्ध फ़ील्ड के भीतर फॉल्टरिंग उद्देश्यों के लिए उपयोग किया जाएगा
+;y_trigger_message_parameterized_product;qualifying_products_quantity;मात्रा;आवश्यक योग्य उत्पादों की मात्रा
+;y_trigger_message_parameterized_product;qualifying_products;उत्पाद;योग्य उत्पाद
+

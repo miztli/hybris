@@ -1,0 +1,36 @@
+.yw-cng-release-releaseinfo {
+  color: #151c22;
+  font-size: 13px;
+  background: #eef3f7;
+  font-family: "Open Sans", sans-serif;
+  overflow: auto; }
+  .yw-cng-release-releaseinfo > .z-div {
+    margin: 20px 20px 0; }
+  .yw-cng-release-releaseinfo ul li {
+    padding-left: 1em;
+    list-style: none; }
+    .yw-cng-release-releaseinfo ul li.level1 {
+      font-weight: 200;
+      font-size: 14px;
+      margin-top: 20px;
+      margin-left: -1em; }
+    .yw-cng-release-releaseinfo ul li.level2 {
+      margin-left: 1.4em;
+      color: #6f7c91;
+      list-style: disc outside none; }
+  .yw-cng-release-releaseinfo-titleContainer .z-label {
+    font-size: 25px;
+    font-weight: 200;
+    color: #085abc; }
+  .yw-cng-release-releaseinfo-teaserContainer > .z-label {
+    font-size: 13px;
+    font-weight: normal;
+    color: #6f7c91; }
+  .yw-cng-release-releaseinfo .featureheader {
+    border-bottom: 1px solid #cccccc;
+    font-size: 19px;
+    font-weight: 200;
+    margin: 50px -20px 0 0;
+    padding-bottom: 5px;
+    padding-right: 20px;
+    display: block; }

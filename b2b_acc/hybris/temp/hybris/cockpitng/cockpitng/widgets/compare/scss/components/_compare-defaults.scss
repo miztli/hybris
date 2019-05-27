@@ -1,0 +1,415 @@
+@import "../support/_compare-variables.scss";
+
+.yw-compareview-grid {
+  background-color: $compareview__container--bg-color;
+  font-family: $compareview__container--font;
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  overflow: auto;
+  position: absolute;
+
+  > .y-table {
+    border-color: $compareview__container--border-color;
+    background-color: inherit;
+  }
+  > .y-table,
+  .y-tableheader,
+  .y-tablerows {
+    overflow: hidden;
+    min-height: 100%;
+  }
+
+  .y-table {
+    background-color: $compareview__container--bg-color;
+    color: $compareview__cell-defaults--color;
+
+    .gecko & {
+      display: inline-block;
+      margin-bottom: -4px;
+    }
+
+    .y-tablerow {
+      &.y-tablerow-collapsed, 
+      &.y-tablerowsgroup-collapsed {
+        display: none;
+      }
+      &.yw-compareview-localized-row-current:not(.y-tablerowsgroup-collapsed) {
+        display: flex;
+        opacity: $_compareview__localized-row-current--opacity;
+        
+        .yw-compareview-language-differentiator {
+          display: none;
+        }
+      }
+
+      .y-icon-loceditor {
+        display: none;
+      }
+
+      &.yw-compareview-localized-row-current .y-icon-loceditor {
+        display: inherit;
+        position: absolute;
+        top: $_compareview__localized-icon--top;
+        right: $_compareview__localized-icon--right;
+        padding: $_compareview__localized-icon--padding; /*overwriting*/
+        min-height: auto; /*overwriting*/
+
+        &.z-button {
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: transparent; /*overwriting*/
+            box-shadow: none; /*overwriting*/
+          }
+        }
+      }
+
+      &,
+      &.y-tablerow-header {
+        display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+        display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+        display: -ms-flexbox; /* TWEENER - IE 10 */
+        display: -webkit-flex; /* NEW - Chrome */
+        display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+      }
+    }
+
+    .y-tablerows {
+      display: block;
+      position: relative;
+      z-index: 1;
+
+      .yw-compareview-cell-content {
+        &:before {
+          display: none !important;
+        }
+      }
+
+      tr:first-child .y-tablecell-sticky .yw-compareview-cell-content:after {
+        display: none;
+      }
+      
+      .y-tablerow-header.y-tablerow-collapsed,
+      .y-tablerow:last-child {
+        .yw-compareview-cell-content:before {
+          background-color: inherit;
+          display: block !important;
+          position: absolute;
+          content: "";
+          height: $compareview__column-selected-box-shadow--height;
+          border-left-width: 0;
+          border-right: inherit;
+          z-index: -1;
+          margin-right: 0;
+          border-top-width: 0;
+          box-shadow: none;
+          box-sizing: content-box;
+        }
+        .y-tablecell-sticky .yw-compareview-cell-content:before {
+          box-sizing: border-box;
+          border-top: 0;
+        }
+      }
+    }
+    .y-tablecell {
+      &-sticky,
+      &-header-sticky {
+
+        &:first-child {
+          .yw-compareview-cell-content {
+            margin-left: $compareview__name-column--margin-left;
+          }
+        }
+      }
+    }
+    .y-tablecell-header-sticky ~ .y-tablecell-header-sticky {
+      &:after,
+      &:before {
+        background-color: inherit;
+        top: $compareview__column-selected-box-shadow--top;
+        position: absolute;
+        content: "";
+        width: $compareview__column-selected-box-shadow--width;
+        height: $compareview__column-selected-box-shadow--height;
+        box-sizing: content-box;
+        z-index: -1;
+        background-image: url("images/sticky-gradient.png");
+      }
+      &:before {
+        left: -4px;
+        background-position: left;
+      }
+      &:after {
+        right: -3px;
+        background-position: right;
+        border-left: $compareview__column--border;
+      }
+    }
+    .y-tablecell-header-sticky {
+      .yw-compareview-cell-content:before {
+        display: block !important;
+        content: "";
+        top: $compareview-flex__selected-column-header-cell-before--top;
+        height: $compareview__column-header-cell--top - $compareview-flex__selected-column-header-cell-before--top;
+        background-color: inherit;
+        position: absolute;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        z-index: -1;
+      }
+      &:first-child {
+        .yw-compareview-cell-content:before {
+          display: none !important;
+        }
+      }
+    }
+    .yw-compareview-section-header-row {
+      .yw-compareview-cell-content {
+        border-top: $compareview__row-header-border-top;
+      }
+    }
+        .y-tablecell,
+    .y-tablecell-header {
+      -webkit-box-ordinal-group: 2;
+      -moz-box-ordinal-group: 2;
+      -ms-flex-order: 2;
+      -webkit-order: 2;
+      order: 2;
+      display: block;
+      
+      &:first-child .yw-compareview-cell-content {
+        border-left: none;
+      }
+      
+      .yw-compareview-cell-content {
+        -webkit-box-flex:1;
+        -ms-flex:1;
+        flex: 1;
+      }
+    }
+    .y-tablecell-header-sticky,
+    .y-tablecell-sticky {
+      -webkit-box-ordinal-group: 1;
+      -moz-box-ordinal-group: 1;
+      -ms-flex-order: 1;
+      -webkit-order: 1;
+      order: 1;
+      left: inherit !important;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      .yw-image-pin-icon {
+        background-image: url("images/icon-pin-selected.svg");
+        cursor: default;
+      }
+      &.yw-compareview-header-summary-item {
+        .yw-compareview-cell-content {
+          &:before {
+            top: $compareview__column-header-cell--top;
+          }
+        }
+      }
+    }
+  }
+
+  .y-tableheader,
+  .y-tablerows {
+    background-color: $compareview__container--bg-color;
+  }
+
+  
+
+
+
+  .y-scroll-table-container {
+    background: transparent;
+
+    .y-table,
+    .y-tableheader,
+    .y-tablerows {
+      background-color: inherit;
+    }
+
+  }
+  .y-table.y-scroll-y + .y-scroll-table-container .y-tableheader {
+    &,
+    .y-tableheader-cell {
+      background-color: $compareview__container--bg-color;
+    }
+  }
+
+  .y-tablecell {
+    &-sticky,
+    &-header-sticky {
+      position: relative;
+      left: 0;
+      border: none;
+      z-index: 3;
+    }
+    &-header {
+      padding-top: $compareview__column-header-cell--top;
+    }
+  }
+  .y-tablerows .y-tablecell-sticky:first-child {
+    z-index: 2;
+  }
+
+  .yw-compareview-cell-content {
+    width: $compareview__value-column--width;
+    padding: $compareview__cell--padding;
+    position: relative;
+
+    &:before {
+      background-color: $compareview__cell-fill--bg-color;
+      border-top: $compareview__column--border;
+      border-left: $compareview__column--border;
+      border-left-width: $compareview__column--border-left-width;
+      margin-left: $compareview__cell-fill--margin-left;
+      width: $compareview__cell-fill--width;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+    &:after {
+      border-top: $compareview__column--border;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .yw-compareview-section-header-row {
+    .yw-compareview-cell-content {
+      &:before {
+        border-top: $compareview__row-header-border-top;
+      }
+      &.yw-compareview-header-summary-invalid {
+      }
+    }
+    &.y-tablerow-collapsed {
+      .yw-compareview-section-header-expand-trigger:before {
+        content: $compareview__section-expand-button--content;
+      }
+    }
+  }
+  .y-tablecell-header-sticky {
+    .yw-compareview-cell-content:before {
+      box-shadow: $compareview__column-selected--box-shadow;
+    }
+    &:first-child {
+      .yw-compareview-cell-content:before {
+        box-shadow: none;
+      }
+    }
+  }
+  .y-tablecell-sticky,
+  .y-tablecell-header-sticky {
+    .yw-compareview-cell-content {
+      z-index: 1;
+
+      &:before {
+        width: $compareview__selected-column-cell-fill--width;
+        margin-right: $compareview__selected-column-cell-fill--margin-right;
+        border-right: $compareview__column--border;
+        background-color: $compareview__selected-column-cell-fill--bg-color;
+      }
+    }
+    &:first-child {
+      background-color: $compareview__container--bg-color;
+
+      &:after {
+        position: absolute;
+        top: 0;
+        height: $compareview__component-mask--size;
+        width: $compareview__side-component-mask--width;
+        left: 0;
+        margin-left: 0;
+        background-color: inherit;
+        content: "";
+        background-image: none;
+      }
+      .yw-compareview-cell-content:before {
+        background-color: $compareview__cell-fill--bg-color;
+      }
+    }
+  }
+  tr:first-child .y-tablecell-sticky {
+    .yw-compareview-cell-content {
+      top: 0;
+
+      &:after {
+        position: absolute;
+        top: inherit;
+        margin-left: $compareview__cell-fill--margin-left;
+        height: $compareview__column-selected-box-shadow--height;
+        width: $compareview__selected-column-cell-fill--width;
+        content: "";
+        display: inline-block;
+        box-shadow: $compareview__column-body-selected--box-shadow;
+      }
+    }
+    &:first-child {
+      .yw-compareview-cell-content:after {
+        display: none;
+      }
+    }
+  }
+
+}
+
+.yw-compareview-diff-only {
+  &.yw-compareview-grid .y-table tbody.y-tablerows {
+    tr.y-tablerow {
+      &:not(.yw-compareview-different-mark) {
+        display: none;
+      }
+      &.yw-compareview-localized-row-current.yw-compareview-different-mark{
+        &:not(.y-tablerowsgroup-collapsed) {
+          display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+          display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+          display: -ms-flexbox; /* TWEENER - IE 10 */
+          display: -webkit-flex; /* NEW - Chrome */
+          display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+          opacity: inherit;
+        }
+        &.y-tablerowsgroup-collapsed {
+          display: none;
+        }
+      }
+      &.yw-compareview-localized-row-current {
+        &.yw-compareview-localized-row-indifferent {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+tr {
+  &.yw-compareview-localized-row-translation {
+    .yw-compareview-attribute-name-label {
+      display: none;
+    }
+  }
+}
+
+.yw-compareview-grid .y-table .y-tablerow,
+.yw-compareview-hyperlink {
+    overflow-wrap: break-word;
+}
+
+// IE & Edge fallback for overflow-wrap
+body.edge,
+body.ie {
+  .yw-compareview-grid .y-table .y-tablerow,
+  .yw-compareview-hyperlink {
+      word-break: break-all;
+  }
+}
+
+      

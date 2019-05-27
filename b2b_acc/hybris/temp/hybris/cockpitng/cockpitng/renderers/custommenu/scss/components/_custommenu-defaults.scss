@@ -1,0 +1,49 @@
+@import "../support/_custommenu-variables.scss";
+
+.yw-show-menu-action {
+  height: $custommenu__actiondots-icon--size;
+  width: $custommenu__actiondots-icon--size;
+  background: $custommenu__actiondots-icon--background;
+  padding-left: $custommenu__actiondots-button--padding-x;
+  padding-right: $custommenu__actiondots-button--padding-x;
+  display: inline-block;
+  
+  &.z-button {
+    min-height: $custommenu__actiondots-icon--size;
+    
+    &:hover,
+    &:active,
+    &:focus {
+      background-image: $custommenu__actiondots-icon--background-image;
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  &-container {
+    vertical-align: middle;
+  }
+  &-content {
+    display: inline-block;
+    width: auto;
+    height: auto;
+  }
+
+  &:hover {
+    background-position: $custommenu__actiondots-button--hover-bg-position;
+    cursor: pointer;
+  }
+
+  &-focus,
+  &-active {
+    background-position: $custommenu__actiondots-button--focus-bg-position;
+  }
+
+  &-disabled {
+    &, &:hover {
+      background-position: $custommenu__actiondots-button-disabled--bg-position;
+      opacity: $custommenu__actiondots-button-disabled--opacity;
+      cursor: default;
+    }
+  }
+}

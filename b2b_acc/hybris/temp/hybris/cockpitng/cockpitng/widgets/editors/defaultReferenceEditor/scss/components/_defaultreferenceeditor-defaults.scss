@@ -1,0 +1,172 @@
+//    DefaultReferenceEditor Defaults
+// ================================
+
+@import "../support/_defaultreferenceeditor-variables.scss";
+
+.ye-default-reference-editor {
+    &-bandpopup {
+        /* DO NOT REMOVE  - FIX FOR 100% WIDTH BUG */
+        overflow: hidden;
+        display: inline;
+    }
+
+    .z-bandbox-button {
+        background-color: $default-reference-editor__bandbox-button--bg-color;
+        background-position: center center;
+        border-radius: 0;
+        width: $default-reference-editor__bandbox-button--size;
+        height: $default-reference-editor__bandbox-button--size;
+        color: $editor-area__box--icon-color;
+
+        &.ye-create-only {
+            top: -$default-reference-editor__create-new-button--size;
+            height: $default-reference-editor__create-new-button--size;
+            width: $default-reference-editor__create-new-button--size;
+            right: $default-reference-editor__create-only-button--right;
+            
+            &[disabled] {
+                background-position: center center;
+                border-radius: 0;
+            }
+            .z-bandbox-icon {
+                line-height: $editor-defaults__inline-box--height - 2;
+                height: $editor-defaults__inline-box--height;
+                
+            }
+        }
+        .z-bandbox-icon {
+            width: $default-reference-editor__bandbox-button-icon--width;
+        }
+        .z-icon-search {
+            height: 100%;
+            line-height: 0.5;
+            
+            &:before {
+                content: $ellipsis--content;
+                height: $default-reference-editor__bandbox-ellipsis-icon--height;
+                line-height: $default-reference-editor__bandbox-ellipsis-icon--line-height;
+                font-size: $default-reference-editor__bandbox-ellipsis-icon--font-size;
+            }
+        }
+        &:hover {
+            color: $default-reference-editor__bandbox-button-icon--hover-color;
+        }
+        &:focus {
+            background-color: $default-reference-editor__bandbox-input-focus--bg-color !important;
+            border-color: $editor-area__box--focus-color;
+        }
+    }
+
+    &-bandbox {
+        &.ye-create-only {
+            .z-bandbox-input{
+                padding-left: $default-reference-editor__list-item-add-button-label--margin-left;
+                cursor: pointer;
+                background-image: url("images/icon_func_referenceselector_add_default.png") !important;
+                background-repeat: no-repeat !important;
+                background-position: $default-reference-editor__create-only-add-icon--background-postion !important;
+                border-color: $editor-area__box--border-color;
+
+                &.z-bandbox-rightedge + .z-bandbox-disabled {
+                    border-left-color: transparent;
+                }
+            }
+        }
+        &-autocorrection-value {
+            padding-left: 5px;
+        }
+        .z-bandbox-input {
+            margin-bottom: 0;
+            width: 100%;
+            border-right-width: 0;
+            border-radius: $editor-area__input-field--border-radius 0 0 $editor-area__input-field--border-radius;
+            
+            &:focus {
+                background-color: $default-reference-editor__bandbox-input-focus--bg-color;
+                border-color: $editor-area__box--focus-color;
+            }
+        }
+        .z-bandbox-icon {
+            color: $editor-area__box--icon-color;
+        }
+    }
+}
+
+div.ye-default-reference-editor {
+    &-bandbox {
+        width: 100%;
+        display: table;
+    }
+}
+
+div.ye-default-reference-container {
+    position: relative;
+}
+
+div.ye-default-reference-container .ye-delete-btn,
+div.ye-default-reference-editor-remove-button {
+    right: $default-reference-editor__list-item-remove-button--right;
+    margin-top: $default-reference-editor__list-item-remove-button--margin-top;
+    width: $default-reference-editor__list-item-remove-button--size;
+    height: $default-reference-editor__list-item-remove-button--size;
+    background: transparent;
+    box-shadow: none;
+    position: absolute;
+    top: 50%;
+    display: none;
+}
+
+.ye-create-type-selector-container .z-treecell > .z-treecell-content > .z-treecell-text {
+    display: inline;
+}
+
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor .z-listitem .z-listcell,
+.ye-create-type-selector-container .z-treecell > .z-treecell-content,
+.ye-default-reference-editor-listbox .z-listitem div.z-listcell-content {
+    height: auto;
+    white-space: normal;
+    padding-right: $default-reference-editor__list-item-remove-enabled--hover-padding-right;
+}
+
+.ye-default-reference-editor-selected-listbox .z-listitem div.ye-default-reference-editor-selected-item-container {
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+    line-height: 1;
+}
+
+div.ye-default-reference-editor-item-container.ye-remove-enabled:hover,
+div.ye-default-reference-editor-selected-item-container:hover {
+    padding-right: $default-reference-editor__list-item-remove-enabled--hover-padding-right;
+}
+
+.referenceEditorPaging.z-paging {
+    height: $default-reference-editor__paging--height;
+    text-align: center;
+    background-color: $default-reference-editor__paging--bg-color;
+    padding: $default-reference-editor__paging--padding;
+    border-width: $default-reference-editor__paging--border-width;
+    border-color: $editor-area__box--border-color;
+
+    .z-paging-input {
+        height: $default-reference-editor__paging-input--height;
+    }
+    .z-paging-input, .z-paging-text {
+        width: $default-reference-editor__paging-text--width;
+        max-width: 100%;
+    }
+    li {
+        display: inline-block;
+        height: 100%;
+        line-height: 1;
+        vertical-align: middle;
+
+        a {
+            position: relative;
+            
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+}

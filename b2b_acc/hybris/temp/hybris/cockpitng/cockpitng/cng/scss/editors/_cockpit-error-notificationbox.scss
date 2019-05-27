@@ -1,0 +1,202 @@
+/*================================
+    Validation- / Error- / Notification-Boxes
+================================*/
+// Layout & Coloring for Validation, Error & Notification-Boxes or Popups
+
+
+@import "../support/_cockpit-mixins.scss";
+
+.ye-editor-validation-popup {
+    overflow: visible;
+    margin-top: $validation-popup__box--margin-top;
+    margin-left: $validation-popup__box--margin-left;
+    
+    &:before {
+        bottom: $validation-popup__box-arrow-before--bottom;
+        right: $validation-popup__box-arrow-after--right;
+        border: $validation-popup__box-arrow--border;
+        border-top-color: $validation-popup__pointer-default-before--border-color;
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 0;
+        z-index: 5;
+    }
+    &:after {
+        bottom: $validation-popup__box-arrow-after--bottom;
+        right: $validation-popup__box-arrow-after--right;
+        border: $validation-popup__box-arrow--border;
+        border-top-color: $validation-popup__box-arrow--border-color;
+        position: absolute;
+        content: '';
+        height: 0;
+        width: 0;
+        opacity: 0.7;
+        
+    }
+    &-content .z-label {
+        position: relative;
+        top: $validation-popup__content-label--top;
+
+    }
+}
+
+.z-window-content .ye-editor-validation-popup-content {
+    .z-label {
+        top: 0;
+        display: block;
+        padding-left: $validation-popup__content-label--padding-left;
+        word-wrap: break-word;
+    }
+    .z-vlayout-inner {
+        border-bottom: $validation-popup__content-vlayout-inner--border-bottom;
+        padding: $validation-popup__content-vlayout-inner--padding !important;
+    }
+
+    .z-vlayout-inner:last-child {
+        border-bottom: none;
+        margin-bottom: 0 !important;
+    }
+}
+
+.z-errorbox {
+    width: $notification-box-defaults__box--width;
+    padding: 0 !important;
+
+    > .z-errorbox-icon {
+        top: $notification-box-defaults__icon--top;
+        left: $notification-box-defaults__icon--left;
+    }
+
+    > .z-errorbox-right ~ .z-errorbox-close {
+        right: $notification-box-defaults__errorbox-right--right;
+    }
+
+    > .z-errorbox-up ~ .z-errorbox-close {
+        top: $notification-box-defaults__errorbox-up--top;
+        right: $notification-box-defaults__errorbox-right--right;
+    }
+
+    > .z-errorbox-left+.z-errorbox-icon {
+        left: $notification-box-defaults__errorbox-icon--left;
+        top: $notification-box-defaults__errorbox-icon--top;
+    }
+    &-close {
+        top: $notification-box-defaults__errorbox-close--top;
+        right: $notification-box-defaults__errorbox-close--right;
+    }
+}
+
+.z-notification {
+    &-content {
+        min-height: $notification-box-defaults__box--min-height;
+    }
+    &.z-notification-warning .z-notification {
+        &-icon.z-icon-exclamation {
+            &-triangle, &-circle {
+                top: $notification-box-defaults__icon--top;
+                margin-top: 0;
+            }
+        }
+    }
+    &-right  ~ .z-notification-close {
+        right: $notification-box-defaults__close--right;
+    }
+    .z-notification-pointer {
+        + .z-notification-icon {
+            left: $notification-box-defaults__icon--top;
+        }
+        ~ .z-notification-content {
+            width: $notification-box-defaults__notification-box--width;
+            font-size: $notification-box-defaults__icon--top;
+        }
+    }
+}
+
+//.z-errorbox > .z-errorbox-icon.z-icon-exclamation-triangle:before, //original
+.z-errorbox .z-errorbox,
+.z-notification.z-notification-warning .z-notification {
+    &-content {
+        background: $notification-box-defaults__box--bg-color;
+        padding: $notification-box-defaults__box--padding;
+        border-radius: $notification-box-defaults__box--border-radius;
+        border: $notification-box-defaults__box--border-width solid $notification-box-defaults__box--border-color;
+        box-shadow: $notification-box-defaults__box--box-shadow;
+        width: $notification-box-defaults__box--width;
+    }
+    &-pointer {
+        border: none;
+        top: 50% !important;
+
+        &:after,
+        &:before {
+            width: 0;
+            height: 0;
+            content: '';
+            position: absolute;
+            top: 0;
+        }
+        &:before {
+            border: $notification-box-defaults__pointer-inner--border-width solid transparent;
+            margin-top: $notification-box-defaults__pointer-inner--margin-top;
+            z-index: $notification-box-defaults__pointer-inner--z-index;
+        }
+        &:after {
+            border: $notification-box-defaults__pointer-outer--border-width solid transparent;
+            margin-top: $notification-box-defaults__pointer-outer--margin-top;
+        }
+    }
+    &-icon {
+        &.z-icon-exclamation {
+            &-circle,
+            &-triangle {
+                &:before {
+                    content: '';
+                    width: $editor-defaults__icon--size;
+                    height: $editor-defaults__icon--size;
+                    background: url("images/icon_validation_sprite.png") no-repeat 0 (-4 * $editor-defaults__icon--size);
+                }
+            }
+        }
+    }
+}
+
+body > .z-notification.z-notification-error {
+    .z-notification-content {
+        background: $notification-box-defaults__box--bg-color;
+        padding: $notification-box-error__box--padding;
+        border-radius: $notification-box-defaults__box--border-radius;
+        border: $notification-box-defaults__box--border-width solid $notification-box-defaults__box--border-color;
+        box-shadow: $notification-box-defaults__box--box-shadow;
+        width: 250px;
+    }
+    > .z-notification-icon.z-icon-times-circle {
+        position: absolute;
+        left: auto;
+        margin-top: 0;
+        right: $notification-box-error__close-icon--right;
+        top: $notification-box-error__close-icon--top;
+        width: $notification-box-error__close-icon--size;
+        height: $notification-box-error__close-icon--size;
+
+        &:before {
+            content: "";
+            width: $notification-box-error__close-icon--size;
+            height: $notification-box-error__close-icon--size;
+            background: url("images/icon_close-window-bright.png") center no-repeat;
+        }
+    }
+}
+
+
+.z-errorbox .z-errorbox-pointer.z-errorbox,
+.z-notification-warning .z-notification-pointer.z-notification {
+    @include _add-error-notification-box-side-directional-pointers (left);
+    @include _add-error-notification-box-side-directional-pointers (right);
+}
+
+.z-notification-open .z-notification-close:hover,
+.z-errorbox-open .z-errorbox-close:hover {
+    color: $notification-box-defaults__box-close-icon--hover-color;
+    background: $editor-defaults__pagin-button-icon--bg-color;
+}

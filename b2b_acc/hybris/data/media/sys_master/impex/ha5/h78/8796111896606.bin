@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=ko
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;규칙 메시지 트리거(장바구니 총계 임계값);규칙 조건 충족 여부에 따라 규칙 메시지 표시;
+;y_trigger_message_parameterized_category;규칙 메시지 트리거(범주);규칙 조건 충족 여부에 따라 규칙 메시지 표시;
+;y_trigger_message_parameterized_product;규칙 메시지 트리거(제품);규칙 조건 충족 여부에 따라 규칙 메시지 표시;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;장바구니 총계 임계값;제어할 장바구니 총계 임계값
+;y_trigger_message_parameterized_category;catalog;카탈로그별 선택 필터링;선택된 카탈로그 값을 사용하여, 연결된 필드 내에서 필터링
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;수량;적격 범주에서 필요한 제품 수량
+;y_trigger_message_parameterized_category;qualifying_categories;범주;적격 범주
+;y_trigger_message_parameterized_product;catalog;카탈로그별 선택 필터링;선택된 카탈로그 값을 사용하여, 연결된 필드 내에서 필터링
+;y_trigger_message_parameterized_product;qualifying_products_quantity;수량;필요한 적격 제품 수량
+;y_trigger_message_parameterized_product;qualifying_products;제품;적격 제품
+

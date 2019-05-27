@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?page title="${cockpitProperties.getProperty('cockpitng.appTitle')}" contentType="text/html;charset=UTF-8" ?>
+<?root-attributes lang="${sessionScope['org.zkoss.web.preferred.locale'].language}" ?>
+<?meta if="${zk.ie > 10}" http-equiv="X-UA-Compatible" content="IE=10" ?>
+<?meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes" ?>
+<?link rel="stylesheet" type="text/css" href="./cng/css/vendor/jquery-ui.1.12.1-resizable.min.css"?>
+<?link rel="stylesheet" type="text/css" href='${empty cockpitProperties.getProperty("cockpitng.mainpage.css") ? "./cng/css/cockpit.css" : cockpitProperties.getProperty("cockpitng.mainpage.css")}'?>
+<?link rel="stylesheet" type="text/css" href="./cng/css/${param.mainSlotId}_cngpreload.css"?>
+<?link rel="stylesheet" type="text/css" href="./cng/css/_coc_modules.css"?>
+<?link rel="shortcut icon" type="image/x-icon" href='${empty cockpitProperties.getProperty("cockpitng.mainpage.favicon") ? "./cng/images/favicon.ico" : cockpitProperties.getProperty("cockpitng.mainpage.favicon")}'?>
+<?link rel="icon" type="image/x-icon" href='${empty cockpitProperties.getProperty("cockpitng.mainpage.favicon") ? "./cng/images/favicon.ico" : cockpitProperties.getProperty("cockpitng.mainpage.favicon")}'?>
+<?link if='${not empty cockpitProperties.getProperty("cockpitng.overridewidgetsandeditors.css")}' rel="stylesheet" type="text/css" href='${cockpitProperties.getProperty("cockpitng.overridewidgetsandeditors.css")}'?>
+<?script src="/cng/scripts/cockpitNGAdapter.js"?>
+<?script src="/cng/scripts/vendor/jquery.anythingzoomer.min.js"?>
+<?script src="/cng/scripts/base64v1_0.js"?>
+<?script src="/cng/scripts/vendor/jquery-ui-1.12.1-resizable.min.js"?>
+<?script src="/cng/scripts/vendor/jquery.mousewheel-3.1.9.js"?>
+<?script src="/cng/scripts/cockpitng-fx-1.0.js"?>
+<?script src="/cng/scripts/backspace-intercept.js"?>
+<?script src="/cng/scripts/client-info-override.js"?>
+<?script src="/cng/scripts/popup-utils.js"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:c="http://www.zkoss.org/2005/zk/client"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd">
+
+    <window id="mainWin" mode="embedded" height="100%" width="100%" shadow="false" apply="${cngMainWindowComposer}" ctrlKeys="#f4">
+        <attribute c:name="onCtrlKey"><![CDATA[
+            cngResetConnections();
+        ]]></attribute>
+        <div id="notifierStack" style="position: absolute; bottom: 4px; left: 4px; z-index: 10000;"/>
+        <widgetslot slotID='${empty(param.mainSlotId)?"mainSlot":param.mainSlotId}' height="100%" id="slot"
+                    sclass="mainWidgetSlot"/>
+        <timer id="globalEventTimer" repeats="true"
+               running="${cockpitProperties.getProperty('cockpitng.globaleventtimer.enabled')}"
+               delay="${cockpitProperties.getProperty('cockpitng.globaleventtimer.interval')}"/>
+    </window>
+</zk>

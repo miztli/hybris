@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.
+ All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd" 
+    sclass="oms-widget-cancelorder-configuration"
+	id="cancelorderview" height="100%" width="100%">
+
+    <separator width="100%" sclass="oms-widget-cancelorder-configuration--separator"/>
+
+	<hlayout sclass="oms-widget-cancelorder-header">
+		<hbox sclass="oms-widget-cancelorder-body">
+			<vbox>
+				<label value="${labels.customersupportbackoffice.cancelorder.ordernumber}" width="140px" />
+				<textbox sclass="oms-widget-cancelorder-input-text-box" readonly="true" id="orderNumber" width="140px" />
+			</vbox>
+		</hbox>
+		<hbox sclass="oms-widget-cancelorder-body">
+			<vbox>
+				<label value="${labels.customersupportbackoffice.cancelorder.customer}" width="100%" />
+				<textbox sclass="oms-widget-cancelorder-input-text-box" readonly="true" id="customerName" width="240px" />
+			</vbox>
+		</hbox>
+	</hlayout>
+
+    <separator width="100%" sclass="oms-widget-cancelorder-configuration--separator"/>
+	
+	<hlayout width="100%" sclass="oms-widget-cancelorder-list">
+        <div sclass="oms-widget-cancelorder-list-container">
+            <grid id="orderEntries" mold="paging"
+                  pageSize="5" width="100%" height="100%">
+                  <custom-attributes org.zkoss.zul.grid.autoSort="true" />
+                <columns>
+                    <column width="30px" sclass="oms-widget-cancelorder-listbox-header">
+                        <checkbox id="globalCancelEntriesSelection" class="oms-widget-cancelorder-list-container__checkbox"/>
+                    </column>
+                    <column width="12%" sclass="oms-widget-cancelorder-listbox-header" sort="auto" sortDirection="ascending">
+                        <label value="${labels.customersupportbackoffice.cancelorder.productcode}" width="100%"/>
+                    </column>
+                    <column width="18%" sclass="oms-widget-cancelorder-listbox-header">
+                        <label value="${labels.customersupportbackoffice.cancelorder.productname}" width="100%"/>
+                    </column>
+                     <column width="18%" sclass="oms-widget-cancelorder-listbox-header">
+                        <label value="${labels.customersupportbackoffice.cancelorder.deliverymode}" width="100%"/>
+                     </column>
+                    <column width="11%" sclass="oms-widget-cancelorder-listbox-header">
+                        <label value="${labels.customersupportbackoffice.cancelorder.qtycancellable}" width="100%"  class="oms-widget-cancelorder--qty-label__centered"/>
+                    </column>
+                    <column width="11%" sclass="oms-widget-cancelorder-listbox-header">
+                        <label value="${labels.customersupportbackoffice.cancelorder.qtycancelled}" width="100%" style="margin-left:7px"/>
+                    </column>
+                    <column width="19%" sclass="oms-widget-cancelorder-listbox-header">
+                        <combobox id="globalCancelReasons" placeholder="${labels.customersupportbackoffice.cancelorder.popup.placeholder.reason}" readonly="true"/>
+                    </column>
+                    <column width="19%" sclass="oms-widget-cancelorder-listbox-header oms-widget-cancelorder-listbox-header__comment">
+                       <textbox class="oms-widget-cancelorder-listbox-header__comment" id="globalCancelComment" maxlength="255" placeholder="${labels.customersupportbackoffice.cancelorder.popup.placeholder.comment}"/>
+                    </column>
+                </columns>
+                <rows>
+                    <template name="model">
+                        <row>
+                            <checkbox class="oms-widget-reallocationconsignment-list-container__checkbox"/>
+                            <label value="${each.orderEntry.product.code}" width="100%"/>
+                            <label value="${each.orderEntry.product.name}" width="100%"/>
+                             <label value="${each.deliveryModeName}" width="100%"/>
+                            <label value="${each.quantityAvailableToCancel}" width="100%" class="oms-widget-cancelorder--qty-label"/>
+                            <intbox value="${each.quantityToCancel}" width="50%" style="margin-left:15px;text-align:center;"
+                                    constraint="no empty,no negative: Quantity Must be Greater Than Zero"/>
+                            <combobox   xmlns:w="client" 
+                                        w:onSelect="CockpitNG.sendEvent(this.uuid,'onCustomChange',this._value)"
+                                        model="${each.cancelReasonsModel}" 
+                                        placeholder="${labels.customersupportbackoffice.cancelorder.popup.placeholder.reason}" 
+                                        readonly="true" 
+                                        sclass="oms-widget-cancelorder__template-reason"
+                                        style="">
+                                <template name="model">
+                                    <comboitem label="${each}"/>
+                                </template>
+                            </combobox>
+                            <textbox value="${each.cancelOrderEntryComment}" 
+                                    maxlength="255" 
+                                    placeholder="${labels.customersupportbackoffice.cancelorder.popup.placeholder.comment}"
+                                    sclass="oms-widget-cancelorder__template-comment"/>
+                        </row>
+                    </template>
+                </rows>
+            </grid>
+        </div>
+    </hlayout>
+
+
+    <div class="oms-widget-cancelorder-configuration-footer oms-widget-footer">
+        <button id="undocancellation"
+				label="${labels.customersupportbackoffice.cancelorder.button.undo}" 
+				sclass="oms-widget-cancelorder-configuration-button oms-widget-cancelorder-configuration-revert-button" />
+	    <button id="confirmcancellation" 
+				label="${labels.customersupportbackoffice.cancelorder.button.confirm}" 
+				sclass="y-btn-primary oms-widget-cancelorder-configuration-button oms-widget-cancelorder-configuration-save-button" />
+    </div>
+	
+</widget>

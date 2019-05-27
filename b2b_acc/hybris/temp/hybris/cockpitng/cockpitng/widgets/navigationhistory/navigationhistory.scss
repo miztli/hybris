@@ -1,0 +1,110 @@
+@import "scss/support/_navigationhistory-variables.scss";
+
+.yw-com_hybris_cockpitng_navigationhistory {
+    height: 100%;
+    vertical-align: middle;
+}
+
+.yw-navigationhistory {
+    &-back {
+        color: $navigationhistory__back-button--color;
+        padding: $navigationhistory__back-button--padding;
+        margin-right: $navigationhistory__button-default--margin-right;
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+        
+        &:before {
+            content: $anglearrow__left--content;
+            height: $navigationhistory__back-icon--size;
+            width: $navigationhistory__back-icon--size;
+            font-family: $font-family-fontawesome;
+            left: $navigationhistory__back-icon--left;
+            line-height: $navigationhistory__back-icon--size;
+            margin-top: -(floor($navigationhistory__back-icon--size/2));
+            top: 50%;
+            position: absolute;            
+            color: inherit;
+            text-align: center;
+            display: inline-block;
+            
+        }
+
+        &:hover {
+            color: $navigationhistory__back-button--hover-color;
+            cursor: pointer;
+        }
+
+        &-disabled {
+            &, &:hover {
+                color: $navigationhistory__back-button-disabled--color;
+                cursor: default;
+            }
+        }
+    }
+    
+    &-stack {
+		width: $navigationhistory__stack-button--size;
+        margin-right: $navigationhistory__button-default--margin-right;
+        display: inline-block;
+        position: relative;
+        height: $navigationhistory__actioncontainer--height;
+        line-height: $navigationhistory__actioncontainer--height;
+        vertical-align: middle;
+
+        &:after {
+            content:'';
+            background: url("images/dots.png") center 0 no-repeat;
+            width: $navigationhistory__stack-button--size;
+            height: $navigationhistory__stack-button--size;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+		&:hover {
+            &:after {
+                background-position: center ($navigationhistory__stack-button--size * -1);
+            }
+		}
+		
+		&-disabled {
+			&, 
+            &:hover {
+                opacity: $navigationhistory__stack-button-disabled--opacity;
+				background-position: center 0;
+			}
+		}
+    }
+    &-nostack &-stack {
+        display: none;
+
+        + .yw-navigationhistory-title {
+            margin-left: $navigationhistory__no-stack-title--margin-left;
+        }
+    }
+
+    &-title {
+        color: $navigationhistory__content--color;
+        border-left: $navigationhistory__content-delimit__border;
+        padding-left: $navigationhistory__title--padding-left;
+        height: $navigationhistory__title--height;
+        display: inline-block;
+    }
+    
+    &-history {
+        min-width: $navigationhistory__history-menupopup--min-width;
+        min-height: $navigationhistory__history-menupopup--min-height;
+        margin-left: $navigationhistory__history-menupopup--margin-left;
+
+        &:before,
+        &:after {
+            left: $navigationhistory__history-menupopup-pointer--left;
+        }
+        .z-menuitem-text {
+            font-size: $navigationhistory__menuitem-text--font-size;
+        }
+    }
+}

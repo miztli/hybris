@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="com.hybris.cockpitng.previousItemSelector"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+
+    <name>Previous Item Selector</name>
+    <description>Provides default implementation of selecting previous item</description>
+    <defaultTitle>Previous Item Selector</defaultTitle>
+    <author>hybris</author>
+    <version>1.0</version>
+    <view src="none"/>
+    <controller class="com.hybris.cockpitng.widgets.navigation.prev.PreviousItemSelectorController"/>
+    <sockets>
+        <input id="previousItemSelectorContext"
+               type="com.hybris.cockpitng.widgets.navigation.NavigationItemSelectorContext"/>
+        <output id="previousItemSelectorInvocation" type="[T]"/>
+    </sockets>
+    <keywords>
+        <keyword>Navigation</keyword>
+    </keywords>
+</widget-definition>

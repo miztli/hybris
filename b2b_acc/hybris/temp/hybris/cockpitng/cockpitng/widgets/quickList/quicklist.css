@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/*================================
+    Quick List Widget
+================================*/
+.z-popup-content .ye-quicklist-preview-popup-image {
+  max-width: 200px;
+  max-height: 150px; }
+
+.yw-quicklist {
+  color: #151c22;
+  background: #f6f8fa;
+  height: 100%; }
+  .yw-quicklist .yw-main-container {
+    height: 100%;
+    overflow: auto; }
+  .yw-quicklist .yw-info-container {
+    font-weight: bold;
+    padding: 15px 20px 16px;
+    border-bottom: 1px solid #d5d8dc; }
+    .yw-quicklist .yw-info-container + .yw-main-container {
+      height: calc(100% - 50px); }
+  .yw-quicklist-actionSlot {
+    float: right; }
+  .yw-quicklist-tile {
+    line-height: 17px;
+    padding: 30px 20px 20px;
+    border-bottom: 1px solid #d5d8dc;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+    position: relative;
+    color: inherit; }
+    .yw-quicklist-tile:after {
+      content: "";
+      display: block;
+      clear: both; }
+    .yw-quicklist-tile-selected {
+      background-color: #ffffff;
+      border-left-color: #0486e0; }
+    .yw-quicklist-tile:hover {
+      background-color: rgba(255, 255, 255, 0.5); }
+      .yw-quicklist-tile:hover .ye-delete-btn {
+        display: block; }
+    .yw-quicklist-tile-title {
+      max-height: 53px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      padding-right: 15px; }
+    .yw-quicklist-tile-thumbnail {
+      max-width: 86px;
+      border: 1px solid #bdc6d2;
+      float: left; }
+    .yw-quicklist-tile-subtitle-container {
+      max-width: calc(100% - 86px);
+      color: #043263;
+      padding-left: 15px;
+      width: 100%;
+      float: left; }
+    .yw-quicklist-tile-subtitle {
+      max-height: 53px;
+      font-size: 12px;
+      margin-bottom: 5px;
+      display: block; }
+    .yw-quicklist-tile-title, .yw-quicklist-tile-subtitle {
+      width: 100%;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; }
+  .yw-quicklist-hyperlink:hover, .yw-quicklist-tile-title:hover {
+    color: #0486e0;
+    cursor: pointer; }
+  .yw-quicklist .ye-delete-btn {
+    width: 16px;
+    height: 16px;
+    min-height: 16px;
+    background-color: transparent;
+    right: 15px;
+    top: 15px;
+    padding: 0;
+    position: absolute;
+    overflow: visible;
+    display: none; }
+    .yw-quicklist .ye-delete-btn:hover:after {
+      content: "";
+      font-size: 26px;
+      margin-top: -5px;
+      margin-left: -10px; }
+  .yw-quicklist-tile.z-drag-ghost {
+    background-color: #ffffff;
+    max-width: 300px;
+    border: 1px solid #d5d8dc;
+    box-shadow: 0 0 2px rgba(213, 216, 220, 0.6); }
+    .yw-quicklist-tile.z-drag-ghost .ye-delete-btn {
+      display: none; }
+  .yw-quicklist-tile.z-dragged {
+    color: inherit;
+    background-color: #ffffff; }
+    .yw-quicklist-tile.z-dragged > span,
+    .yw-quicklist-tile.z-dragged > div {
+      opacity: 0.8; }
+  .yw-quicklist-tile.z-drag-over {
+    background-color: #f6f8fa; }

@@ -1,0 +1,40 @@
+/*================================
+    Editor-Area: Inset Editor
+================================*/
+// Styling of contents of the Inset Editor type
+
+
+.ye-com_hybris_cockpitng_editor_defaultinseteditor {
+    .z-textbox-wrapper,
+    .z-button-wrapper {
+        display: table-cell;
+    }
+    .z-button-wrapper {
+        width: 1%;
+        padding: 0 0 0 5px;
+    }
+    .z-textbox-wrapper {
+        width: 100%;
+    }
+}
+
+.yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-ed-editor .inset-editor {
+    width: 100%;
+
+    &:after {
+        clear: both;
+        display: block;
+        content: '';
+    }
+    .z-div {
+        margin: 0 92px 0 0;
+
+        input.ye-input-text {
+            float: left;
+        }
+    }
+    .voucher-code-generator {
+        float: right;
+        margin: 0 0 0 -2px;
+    }
+}

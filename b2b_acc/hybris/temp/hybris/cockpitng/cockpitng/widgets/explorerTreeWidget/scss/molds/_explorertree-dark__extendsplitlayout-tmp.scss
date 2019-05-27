@@ -1,0 +1,40 @@
+@import "../support/_explorerTree-extendsplitlayout-variables-tmp.scss";
+
+.yw-extendedsplitlayout-content-box {
+  .yw-explorerTree-widget {
+    .yw-explorerTree {
+      .z-treebody,
+      .z-vfiletree-body {
+        border-bottom: $explorertree-extendsplitlayout--tree-body--border-width solid transparent;
+      }
+
+      &-filterDiv {
+        padding: $explorertree-extendsplitlayout--tree-filter--padding;
+      }
+
+      .z-treerow {
+        &,
+        &.yw-selected,
+        &.z-treerow-focus,
+        &.yw-highlighted,
+        &:hover,
+        &:active,
+        &-selected,
+        &.yw-selected:active,
+        &-focus {
+          &.z-dragged {
+            background: $explorertree__treerow-dragged--background;
+            color: $explorertree__treerow-dragged--color;
+
+            .z-treecell .z-treecell-content {
+              color: $explorertree__treerow-dragged--color;
+            }
+          }
+        }
+      }
+      .z-treecell {
+        padding: $explorertree__treecell-padding--y 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0"
+           targetNamespace="http://www.hybris.com/cockpitng/config/extendedsplitlayout"
+           xmlns="http://www.hybris.com/cockpitng/config/extendedsplitlayout"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+	<xs:element name="extended-split-layout">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="layout-mapping" type="LayoutMapping" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="defaultLayout" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="LayoutMapping">
+		<xs:attribute name="parentLayout" type="xs:string" use="required"/>
+		<xs:attribute name="selfLayout" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>

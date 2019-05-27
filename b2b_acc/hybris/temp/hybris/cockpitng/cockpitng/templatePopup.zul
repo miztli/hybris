@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd ">
+
+    <div width="500px" apply="${templatePopupComposer}">
+        <div style="margin-bottom: 5px;">
+            <label value="Widget Instance Settings" style="font-weight: bold;"/>
+        </div>
+        <grid oddRowSclass="no">
+            <columns>
+                <column label="" width="200px"/>
+                <column label=""/>
+            </columns>
+            <rows>
+                <group label="General"/>
+                <row>
+                    <cell>
+                        <label value="Socket event routing mode: "/>
+                    </cell>
+                    <cell>
+                        <combobox text="${rulesConfig.socketEventRoutingMode}" id="routingModelCombo"/>
+                    </cell>
+                </row>
+                <row>
+                    <cell>
+                        <label value="Responsive: "/>
+                    </cell>
+                    <cell>
+                        <checkbox checked="${rulesConfig.responsive}" id="responsive"/>
+                    </cell>
+                </row>
+                <group label="Create"/>
+                <row>
+                    <cell>
+                        <label value="Create on init: "/>
+                    </cell>
+                    <cell>
+                        <checkbox checked="${rulesConfig.createOnInit}" id="createOnInit"/>
+                    </cell>
+                </row>
+                <row>
+                    <cell>
+                        <label value="Auto create on: "/>
+                    </cell>
+                    <cell>
+                        <listbox width="100%" height="100%" checkmark="true" oddRowSclass="no"
+                                 model="${createOnIncomingSocketsModel}" itemRenderer="${socketListRenderer}">
+                            <listhead>
+                                <listheader label="all incoming events"></listheader>
+                            </listhead>
+                        </listbox>
+                    </cell>
+                </row>
+                <row>
+                    <cell>
+                        <label value="Reuse existing: "/>
+                    </cell>
+                    <cell>
+                        <checkbox checked="${rulesConfig.reuseExisting}" id="reuseExisting"/>
+                    </cell>
+                </row>
+                <group label="Select"/>
+                <row>
+                    <cell>
+                        <label value="Auto select on: "/>
+                    </cell>
+                    <cell>
+                        <listbox width="100%" height="100%" checkmark="true" oddRowSclass="no"
+                                 model="${selectOnIncomingSocketsModel}" itemRenderer="${socketListRenderer}">
+                            <listhead>
+                                <listheader label="all incoming events"></listheader>
+                            </listhead>
+                        </listbox>
+                    </cell>
+                </row>
+                <group label="Close"/>
+                <row>
+                    <cell>
+                        <label value="Auto close on: "/>
+                    </cell>
+                    <cell>
+                        <listbox width="100%" height="100%" checkmark="true" oddRowSclass="y"
+                                 model="${closeOnIncomingSocketsModel}" itemRenderer="${socketListRenderer}">
+                            <listhead>
+                                <listheader label="all incoming events"></listheader>
+                            </listhead>
+                        </listbox>
+                        <listbox width="100%" height="100%" checkmark="true" oddRowSclass="no"
+                                 model="${closeOnOutgoingSocketsModel}" itemRenderer="${socketListRenderer}">
+                            <listhead>
+                                <listheader label="all outgoing events"></listheader>
+                            </listhead>
+                        </listbox>
+                    </cell>
+                </row>
+            </rows>
+        </grid>
+        <div style="text-align: right;">
+            <button label="OK" id="okButton"/>
+        </div>
+    </div>
+</zk>		

@@ -1,0 +1,186 @@
+@import "cockpitng-globals.scss";
+
+$pcmbackoffice__general--bg-color: transparent;
+$pcmbackoffice__contents--width: 100%;
+$pcmbackoffice__contents--height: 100%;
+$pcmbackoffice__contents--bg-color: $grey__light--1100;
+$pcmbackoffice__contents--border-width: $boxes--border__thin;
+
+$pcmbackoffice__navibar--navigation--padding: 5px;
+$pcmbackoffice__collection-toolbar-delimited--border-left: $boxes--border__thin solid transparent;
+$pcmbackoffice__collection-toolbar-delimited-light--border-left-color: $grey__light--800;
+
+$pcmbackoffice__navibar--toolbar-vertical--width: 100%;
+$pcmbackoffice__navibar--toolbar-vertical--height: 100%;
+$pcmbackoffice__navibar--toolbar-vertical--font-size: $font-size__large;
+
+$pcmbackoffice__navibar--toolbar-toogle--width: 100%;
+$pcmbackoffice__navibar--toolbar-toogle--height: 50px;
+$pcmbackoffice__navibar--toolbar-toogle--border-left: 3px solid transparent;
+$pcmbackoffice__navibar--toolbar-toogle-active--bg-color: $black__blueish--300;
+$pcmbackoffice__navibar--toolbar-toogle-hover--border-left: 3px solid $white;
+
+$pcmbackoffice__navibar--toolbar-action--padding: 9px 5px;
+$pcmbackoffice__navibar--toolbar-action-text--padding-left: 5px;
+$pcmbackoffice__navibar--toolbar-action-text--padding-right: 5px;
+
+$pcmbackoffice__browser--max-width: 95%;
+$pcmbackoffice__browser--margin: 0 $container-spacing-default__base;
+$pcmbackoffice__browser-shadow--side: -(nth($pcmbackoffice__browser--margin, 2));
+$pcmbackoffice__browser-shadow--box-shadow: inset 1px 1px 2px 0px rgba($black, 0.2);
+
+$pcmbackoffice__browser-busy-notifier--side: nth($pcmbackoffice__browser--margin, 2) * -1;
+
+$pcmbackoffice__dark--bg-color: $black__blueish--200;
+$pcmbackoffice__light--bg-color: $white; //$grey__light--500
+$pcmbackoffice__light-splitter--bg-color: $grey__light--200;
+$pcmbackoffice__light-splitter-button--color: $black;
+$pcmbackoffice__light-splitter-button--hover-bg-color: lighten($grey__light--1000, 2%);
+
+$pcmbackoffice__listview-actioncontainer--padding: $container-spacing-default__half 0;
+
+$pcmbackoffice__collection-toolbar-toggle-container--min-width: $container-spacing-default__half;
+$pcmbackoffice__collection-toolbar--color: $black__blueish--100;
+$pcmbackoffice__collection-toolbar--font-weight: $font-weight-bold;
+$pcmbackoffice__collection-toolbar--shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.5);
+
+$pcmbackoffice__collection-toolbar-action-text--line-height: $globals__toolbar--height;
+$pcmbackoffice__collection-toolbar-action-text--padding-left: 5px;
+$pcmbackoffice__collection-toolbar-action-text--padding-right: 5px;
+$pcmbackoffice__collection-toolbar-action-text-hover--color: $blue__default--100;
+
+$pcmbackoffice__toolbar-summary-action--margin: 0 10px;
+$pcmbackoffice__toolbar-summary-flex-trigger--margin: 0;
+
+$pcmbackoffice__toolbar-inner--width: auto;
+$pcmbackoffice__toolbar-after--float: right;
+
+$pcmbackoffice__catalog-selector--width: 300px;
+$pcmbackoffice__catalog-selector-button--color: $black__blueish--200;
+
+$pcmbackoffice__editorarea-delimit-border--border-color: $grey__default--300;
+
+$pcmbackoffice__editorarea-actioncontainer-rightslot__calc-width: 243px;
+$pcmbackoffice__editorarea-actioncontainer-leftslot__max-width:  calc(100% - #{$pcmbackoffice__editorarea-actioncontainer-rightslot__calc-width});
+$pcmbackoffice__editorarea-actioncontainer-navigation-history-text-element--height: 32px;
+$pcmbackoffice__editorarea-actioncontainer-navigation-history-back--width: 76px;
+$pcmbackoffice__editorarea-actioncontainer-navigation-history-title--width: calc(100% - 95px);
+$pcmbackoffice__editorarea-actioncontainer-navigation-history-container--padding: floor(($pcmbackoffice__collection-toolbar-action-text--line-height - $pcmbackoffice__editorarea-actioncontainer-navigation-history-text-element--height)/2) 0;
+
+$pcmbackoffice__editorarea-toolbar-text-button-default--bg-color: transparent;
+$pcmbackoffice__editorarea-toolbar-text-button-default--color: $grey__default--500;
+$pcmbackoffice__editorarea-toolbar-text-button-default--hover-color: $blue__default;
+$pcmbackoffice__editorarea-toolbar-action-group--border-right: $boxes--border__thin solid $grey__light--800;
+$pcmbackoffice__editorarea-toolbar-action--margin-right: $container-spacing-default__third;
+
+$pcmbackoffice__editorarea-tabbox-tabpanles--padding-x: $container-spacing-default__base;
+
+$pcmbackoffice__editorarea-tabbox-tabpanles-static-section--bg-color: $grey__light--1300;
+
+$pcmbackoffice__editorarea-toolbar-bottom--height: $globals__toolbar--height;
+$pcmbackoffice__editorarea-toolbar-bottom-button--height: $pcmbackoffice__editorarea-toolbar-bottom--height;
+$pcmbackoffice__editorarea-toolbar-bottom-button--padding-y: 13px;
+$pcmbackoffice__editorarea-toolbar-side-action-container--margin-x: $container-spacing-default__half;
+
+$pcmbackoffice__collection-browser-container--box-shadow: 0 2px 4px -2px rgba($black, 0.5);
+
+$pcmbackoffice__collection-browser-statusbar--bg-color: $pcmbackoffice__contents--bg-color;
+$pcmbackoffice__collection-browser-statusbar--box-shadow: 0 1px 4px 0 rgba($pcmbackoffice__collection-browser-statusbar--bg-color, 1);
+$pcmbackoffice__collection-browser-default--border-width: $boxes--border__thin;
+$pcmbackoffice__collection-browser-cell--border-color: $grey__light--1100;
+$pcmbackoffice__collection-browser-toolbar--border-color: $grey__light--700;
+$pcmbackoffice__collection-browser-toolbar-delimiter--padding: 0 5px;
+$pcmbackoffice__collection-browser-container-side-cell--padding-x: $container-spacing-default__third;
+
+$pcmbackoffice__collection-browser-tree-view-table--box-shadow: 0 2px 4px -2px rgba($black, 0.5);
+$pcmbackoffice__collection-browser-tree-view-treecell--padding-x: $pcmbackoffice__collection-browser-container-side-cell--padding-x;
+$pcmbackoffice__collection-browser-grid-view--padding: floor($container-spacing-default__third/2) $container-spacing-default__third;
+//$pcmbackoffice__collection-browser-grid-view-container-indented--width: calc(100% + #{(nth($pcmbackoffice__browser--margin, 2)*2)});
+$pcmbackoffice__collection-browser-grid-view-indented--margin: 0 (nth($pcmbackoffice__browser--margin, 2) * -1);
+
+$pcmbackoffice__collection-browser-statusbar-button--hover-color: $blue__default;
+
+$pcmbackoffice__collection-browser-toolbar-bottom--border-top: $boxes--border__thin solid $grey__light--700;
+
+$pcmbackoffice__splitlayout-actioncontainer--padding: 0;
+
+$pcmbackoffice__splitlayout-toolbar--min-height: $pcmbackoffice__collection-toolbar-action-text--line-height;
+$pcmbackoffice__splitlayout-toolbar--bg-color: $white;
+$pcmbackoffice__splitlayout-toolbar--border-top: 0;
+
+$pcmbackoffice__splitlayout-toolbar--padding-x: 11px;
+$pcmbackoffice__splitlayout-toolbar--padding: 11px $pcmbackoffice__splitlayout-toolbar--padding-x;
+$pcmbackoffice__splitlayout-toolbar-bottom--border-top: $boxes--border__thin solid $grey__light--800;
+
+$pcmbackoffice__media-query-xs--max-width: 640px;
+
+$pcmbackoffice__dragn-n-drop-highlight--color: rgba($blue__default, .5);
+$pcmbackoffice__dragn-n-drop-between-highlight--color: $blue__default;
+$pcmbackoffice__dragn-n-drop-dragged-highlight--border: $boxes--border__thin solid $blue__default;
+$pcmbackoffice__dragn-n-drop-dragged-highlight--bg-color: $grey__light--1200; //$white; 
+$pcmbackoffice__dragn-n-drop-row-highlight--height: 5px;
+
+$pcmbackoffice__dragn-n-drop-target--bg-color: $grey__light--200;
+$pcmbackoffice__dragn-n-drop-target-indicator-icon--size: 16px;
+$pcmbackoffice__dragn-n-drop-target-indicator-icon--right: $container-spacing-default__third;
+$pcmbackoffice__dragn-n-drop-target-indicator-icon--margin-top: -(floor($pcmbackoffice__dragn-n-drop-target-indicator-icon--size/2));
+$pcmbackoffice__dragn-n-drop-target-indicator-icon--border: $boxes--border__thin dashed  $blue__default--100;
+
+$pcmbackoffice__primary-toolbar-action--size: $toolbar__vertical-centering-base--height;
+$pcmbackoffice__primary-toolbar-action--margin: (floor($globals__toolbar--height - $pcmbackoffice__primary-toolbar-action--size) / 2);
+$pcmbackoffice__primary-toolbar-action-shadow--margin: - floor($pcmbackoffice__primary-toolbar-action--size/2);
+$pcmbackoffice__primary-toolbar-action-shadow--hover-box-shadow: 0 0 4px 0px rgba($black,0.2);
+$pcmbackoffice__primary-toolbar-action-shadow--box-shadow: 0 0 0 0;
+$pcmbackoffice__primary-toolbar-action-shadow--transition: box-shadow .2s ease-in-out;
+$pcmbackoffice__primary-toolbar-action-shadow--border: $boxes--border__thin solid $editor-defaults__action-button-hover--border-color;
+
+$pcmbackoffice__editorarea-action-group-delimiter--font-size: 24px;
+$pcmbackoffice__editorarea-action-group-delimiter--line-height: 1;
+$pcmbackoffice__editorarea-action-group-delimiter--margin-left: floor($pcmbackoffice__primary-toolbar-action--margin/2) * -1;
+
+$pcmbackoffice__editorarea-split-group-create-button--width: 18px;
+$pcmbackoffice__editorarea-split-group-create-button--border-width: $boxes--border__thin;
+$pcmbackoffice__editorarea-split-group-create-button-adjust--margin-right: $pcmbackoffice__editorarea-split-group-create-button--border-width * -1;
+$pcmbackoffice__editorarea-split-group-create-container-button--width: $pcmbackoffice__editorarea-split-group-create-button--width + 2 * $pcmbackoffice__editorarea-split-group-create-button--border-width;
+$pcmbackoffice__editorarea-split-group-hover-create-container-button--padding-left: $pcmbackoffice__editorarea-split-group-create-button--border-width;
+
+$pcmbackoffice__editor-area-centered-tabbox-content--max-width: 1240px;
+$pcmbackoffice__dashboard-container--max-width: $pcmbackoffice__editor-area-centered-tabbox-content--max-width;
+
+$pcmbackoffice__dashboardbottompanel-stats--bg-color: #f4f7fa;
+$pcmbackoffice__dashboardbottompanel-stats-hover--bg-color: #e5edf2;
+
+$pcmbackoffice__dashboard-row--height: 500px;
+
+$pcmbackoffice__dashboard-slot--margin: 0 $container-spacing-default__third $container-spacing-default__half 0;
+$pcmbackoffice__dashboard-slot--height: calc(100% - #{$container-spacing-default__half}) !important;
+$pcmbackoffice__dashboard-slot--box-shadow: 0 1px 2px rgba(111, 124, 145, 0.58);
+
+$pcmbackoffice__dashboard-collaboration--width: 100% !important;
+
+$pcmbackoffice__dashboard-collaboration-toppanel--height: 60px !important;
+$pcmbackoffice__dashboard-collaboration-toppanel--bg-color: $white;
+$pcmbackoffice__dashboard-collaboration-on-drag--bg-color: $white;
+$pcmbackoffice__dashboard-collaboration-toppanel--padding: 20px 20px 14px;
+$pcmbackoffice__dashboard-collaboration-toppanel-label--font-size: $font-size__h4;
+$pcmbackoffice__dashboard-collaboration-content--top: $pcmbackoffice__dashboard-collaboration-toppanel--height;
+
+$pcmbackoffice__dashboard-collaboration-workflowlist-menu-action--max-width: 24px;
+$pcmbackoffice__dashboard-collaboration-workflowlist-list-title--font-weight: $font-weight-bold;
+$pcmbackoffice__dashboard-collaboration-workflowlist-list-title--color: $black;
+$pcmbackoffice__dashboard-collaboration-workflowlist-label--padding-right: $container-spacing-default__half;
+$pcmbackoffice__dashboard-collaboration-workflowlist-label--color: $black;
+$pcmbackoffice__dashboard-collaboration-workflowlist-date-label--color: $grey__default--500;
+
+$pcmbackoffice__dashboard-collaboration-workflowlist-bottompanel--padding-top: 5px;
+$pcmbackoffice__dashboard-collaboration-workflowlist-bottompanel--font-size: $font-size__semi-base;
+
+$pcmbackoffice__dashboard-collaboration-tab--width: 200px;
+
+$pcmbackoffice__dashboard-bp-m--max-width: 720px;
+$pcmbackoffice__dashboard-collaboration-drag-over--opacity: 0.8;
+$pcmbackoffice__dashboard-collaboration-bp-m--height: $pcmbackoffice__dashboard-row--height;
+$pcmbackoffice__dashboard-collaboration-drag-ghost--max-width: 500px;
+$pcmbackoffice__dashboard-collaboration-bp-m--min-width: 400px;
+$pcmbackoffice__dashboard-collaboration-drag-ghost-bp-m--min-width: $pcmbackoffice__dashboard-collaboration-bp-m--min-width;
+

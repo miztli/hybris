@@ -1,0 +1,96 @@
+@import "cockpitng-globals.scss";
+
+$DndValidation__popup--width: 700px;
+$DndValidation__header--padding-bottom: 0;
+$DndValidation__content--max-height: 440px;
+$DndValidation__default--border-color: $grey__light--1100;
+$DndValidation__default-delimit--border-width: $boxes--border__thin;
+
+$DndValidation__summary-error--padding: 0 0 $container-spacing-default__third ($container-spacing-default__base - $container-spacing-default__third);
+$DndValidation__summary-error--color: $orange__default--300;
+
+//$DndValidation__checkbox-label-before--left: 1px;
+//$DndValidation__checkbox-label-before--top: calc(50% + 1px);
+$DndValidation__checkbox--height: 24px;
+
+$DndValidation__checkbox-multi-select--margin: 0 0 $container-spacing-default__third ($container-spacing-default__base - $container-spacing-default__third);
+$DndValidation__checkbox-multi-select-multistate--top: $container-spacing-default__third;
+$DndValidation__checkbox-multi-select-multistate--left: 5px;
+$DndValidation__checkbox-multi-select-multistate--width: 14px;
+$DndValidation__checkbox-multi-select-multistate--height: 4px;
+$DndValidation__checkbox-multi-select-multistate--bg-color: $blue__default;
+
+$DndValidation__control-container--padding: ($container-spacing-default__half) ($container-spacing-default__base - $container-spacing-default__third) ($container-spacing-default__half - $DndValidation__default-delimit--border-width);
+
+$DndValidation__cancel-btn--bg: transparent;
+$DndValidation__cancel-btn--color: $blue__greyish--400;
+// $DndValidation__cancel-btn--hover-color: $blue__default;
+$DndValidation__save-btn--bg: transparent;
+$DndValidation__save-btn--color: $orange__default--300;
+$DndValidation__save-btn--border: $boxes--border__thin solid $orange__default--300;
+$DndValidation__save-btn--margin-left: 30px;
+
+$DndValidation__content-list--border-width: $DndValidation__default-delimit--border-width 0;
+$DndValidation__content-list--border: $DndValidation__default-delimit--border-width solid $DndValidation__default--border-color;
+$DndValidation__content-list--max-height: 305px;
+
+$DndValidation__row-selected--bg: $blue__light--100;
+$DndValidation__row-selected--border-color: $white;
+$DndValidation__row-selected-fake-borders--border-color: $DndValidation__row-selected--border-color;
+
+$DndValidation__cell--padding: 7px 0;
+$DndValidation__cell--border-color: $DndValidation__default--border-color;
+$DndValidation__cell-content--margin: 0;
+$DndValidation__cell-content--padding: 0;
+
+$DndValidation__select-cell--width: 60px;
+$DndValidation__select-cell-content--margin: 0 5px 0 ($container-spacing-default__base - $container-spacing-default__third);
+
+$DndValidation__validation-icon-cell--width: $DndValidation__select-cell--width;
+$DndValidation__validation-icon-cell-icon--size: 16px;
+$DndValidation__validation-icon-cell-icon-warn--position: ($DndValidation__validation-icon-cell-icon--size * -1) 0;
+$DndValidation__validation-icon-cell-icon-error--position: ($DndValidation__validation-icon-cell-icon--size * -2) 0;
+
+$DndValidation__details-cell--width: 70px;
+$DndValidation__details-cell-content--line-height: 20px;
+$DndValidation__details-cell-details-btn--height: 16px;
+$DndValidation__details-cell-details-btn--line-height: 16px;
+$DndValidation__details-cell-details-btn--margin-right: $container-spacing-default__base - $container-spacing-default__third;
+$DndValidation__details-cell-details-btn-after--content: $anglearrow__down--content;
+$DndValidation__details-cell-details-btn-after-expanded--content: $anglearrow__up--content;
+$DndValidation__details-cell-details-btn-after--color: $blue__greyish--400;
+$DndValidation__details-cell-details-btn-after--font-size: 16px;
+$DndValidation__details-cell-details-btn-after--font-family: $font-family-fontawesome;
+$DndValidation__details-cell-details-btn-after--top: 0;
+$DndValidation__details-cell-details-btn-after--right: $DndValidation__details-cell-details-btn--margin-right;
+
+$DndValidation__symbol-cell-content--top: 10px;
+
+$DndValidation__title--font-weight: $font-weight-bold;
+$DndValidation__message--font-size: $font-size__small;
+
+$DndValidation__validation-details-container--margin-top: nth($DndValidation__cell--padding, 1);
+
+$DndValidation__validation-details-headline--padding: 5px 0;
+$DndValidation__validation-details-headline-fake-border--height: $DndValidation__default-delimit--border-width;
+$DndValidation__validation-details-headline-fake-border--width: 150%;
+//$DndValidation__validation-details-headline-fake-border--top: 27px;
+$DndValidation__validation-details-headline-fake-border--left: -($DndValidation__validation-icon-cell--width) + $DndValidation__details-cell-details-btn--margin-right;
+$DndValidation__validation-details-headline-fake-border--bg: $DndValidation__default--border-color;
+
+$DndValidation__validation-details-labels--max-width: 95%;
+$DndValidation__validation-details-labels--font-size: $font-size__small;
+$DndValidation__validation-details-message--padding: $container-spacing-default__half 0;
+$DndValidation__validation-details-message-last-child--padding-bottom: (nth($DndValidation__validation-details-message--padding, 1) -  nth($DndValidation__cell--padding, 1)); 
+$DndValidation__validation-details-message-fake-border--height: $DndValidation__default-delimit--border-width;
+$DndValidation__validation-details-message-fake-border--width: 150%;
+$DndValidation__validation-details-message-fake-border--margin-top: -(nth($DndValidation__validation-details-message--padding, 1));
+$DndValidation__validation-details-message-fake-border--left: -$DndValidation__details-cell-details-btn--margin-right;
+$DndValidation__validation-details-message-fake-border--bg: $DndValidation__default--border-color;
+
+$DndValidation__validation-details-content-fake-border--left: -($DndValidation__validation-icon-cell--width);
+
+$DndValidation__validation-details-icon-cell--top: 3px;
+$DndValidation__validation-details-icon-cell--margin-right: $DndValidation__details-cell-details-btn--margin-right;
+
+

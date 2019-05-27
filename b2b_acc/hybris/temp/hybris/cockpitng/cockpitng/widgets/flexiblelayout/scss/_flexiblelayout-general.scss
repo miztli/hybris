@@ -1,0 +1,157 @@
+@import "support/_flexiblelayout-variables.scss";
+
+//rootpane
+.yw-flexlayout-rootpane {
+    height: 100%;
+    overflow: hidden;
+
+    .yw-flexlayout[style*="width: 100%"] & {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+
+        &.yw-flexlayout-sidbar-overlap.yw-flexlayout-sidebar-right {
+
+            &.yw-flexlayout-sidebar-closed > .yw-flexlayout-sidebar {
+                transform: translateX(0);
+                display: none;
+            }
+        }
+    }
+}
+
+//sidebar
+.yw-flexlayout-sidebar {
+    width: $flexlayout__sidebar--width;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    vertical-align: top;
+    visibility: hidden;
+    z-index: $flexlayout__sidebar--z-index;
+    box-shadow: $flexlayout__sidebar--box-shadow;
+
+    //sidebar collapsed
+    &-collapsed > & {
+        width: $flexlayout__sidebar-collapsed--width;
+    }
+
+    //right sidebar
+    &-right > & {
+        right: 0;
+    }
+
+    &-right:not(&-collapsed) > & {
+        transform: $flexlayout__sidebar--transform-right;
+    }
+
+    //left sidebar
+    &-left:not(&-collapsed) > & {
+        transform: $flexlayout__sidebar--transform-left;
+    }
+
+    //sidebar header
+    &-header {
+        display: none;
+        position: absolute;
+        top: 0;
+        z-index: $flexlayout__sidebar-header--z-index;
+
+        .yw-flexlayout-sidebar-left > .yw-flexlayout-sidebar & {
+            right: 0;
+        }
+
+        & &-btn {
+            width: $flexlayout__sidebar-header-btn--width;
+            height: $flexlayout__sidebar-header-btn--height;
+            background-color: $flexlayout__sidebar-header-btn--bg-color;
+            padding: $flexlayout__sidebar-header-btn--padding;
+            margin-top: $flexlayout__sidebar-header-btn--margin-top;
+            border: $flexlayout__sidebar-header-btn--border;
+            border-radius: $flexlayout__sidebar-header-btn--border-radius;
+
+            &:after,
+            &:before {
+                width: $flexlayout__sidebar-header-btn-arrow--width;
+                height: $flexlayout__sidebar-header-btn-arrow--height;
+                font-size: $flexlayout__sidebar-footer-before--font-size;
+                font-family: $flexlayout__sidebar-footer-before--font-family;
+                line-height: $flexlayout__sidebar-footer-before--line-height;
+                display: inline-block;
+            }
+
+            &:hover {
+                background-color: $flexlayout__sidebar-header-btn-hover--bg-color;
+            }
+        }
+    }
+
+    //left sidebar header
+    &-right > & &-header-btn {
+        margin-left: $flexlayout__sidebar-right-header-btn--margin-left;
+        text-align: $flexlayout__sidebar-right-header-btn--text-align;
+        border-right-width: 0;
+        box-shadow: $flexlayout__sidebar-header-btn-right--box-shadow;
+
+        &:before,
+        &:after {
+            content: $flexlayout__sidebar-footer-angle-right--content;
+        }
+
+        &:before {
+            color: $flexlayout__sidebar-footer-before--color;
+            transform: $flexlayout__sidebar-right-header-btn-before--transform;
+        }
+
+        &:after {
+            color: $flexlayout__sidebar-right-header-btn-after--color;
+            transform: $flexlayout__sidebar-right-header-btn-after--transform;
+        }
+
+        &:hover:after {
+            color: $flexlayout__sidebar-header-btn--arrow-hover--color;
+        }
+    }
+
+    //right sidebar header
+    &-left > & &-header-btn {
+        margin-right: $flexlayout__sidebar-left-header-btn--margin-right;
+        text-align: $flexlayout__sidebar-left-header-btn--text-align;
+        border-left-width: 0;
+        box-shadow: $flexlayout__sidebar-header-btn-left--box-shadow;
+
+        &:before,
+        &:after {
+            content: $flexlayout__sidebar-footer-angle-left--content;
+        }
+
+        &:before {
+            color: $flexlayout__sidebar-left-header-btn-before--color;
+            transform: $flexlayout__sidebar-left-header-btn-before--transform;
+        }
+
+        &:hover:before {
+            color: $flexlayout__sidebar-header-btn--arrow-hover--color;
+        }
+
+        &:after {
+            color: $flexlayout__sidebar-left-header-btn-after--color;
+            transform: $flexlayout__sidebar-left-header-btn-after--transform;
+        }
+    }
+
+    &-hover-overlap:not(&-overlap) > .yw-flexlayout-sidebar:hover {
+        width: $flexlayout__sidebar--width;
+    }
+}
+
+//content
+.yw-flexlayout-contents {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}

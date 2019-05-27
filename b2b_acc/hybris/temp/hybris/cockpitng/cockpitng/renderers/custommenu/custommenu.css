@@ -1,0 +1,28 @@
+.yw-show-menu-action {
+  height: 24px;
+  width: 24px;
+  background: url("../img/default/dots.png") no-repeat 0 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: inline-block; }
+  .yw-show-menu-action.z-button {
+    min-height: 24px; }
+    .yw-show-menu-action.z-button:hover, .yw-show-menu-action.z-button:active, .yw-show-menu-action.z-button:focus {
+      background-image: url("../img/default/dots.png");
+      background-color: transparent;
+      box-shadow: none; }
+  .yw-show-menu-action-container {
+    vertical-align: middle; }
+  .yw-show-menu-action-content {
+    display: inline-block;
+    width: auto;
+    height: auto; }
+  .yw-show-menu-action:hover {
+    background-position: 0 -24px;
+    cursor: pointer; }
+  .yw-show-menu-action-focus, .yw-show-menu-action-active {
+    background-position: 0 -48px; }
+  .yw-show-menu-action-disabled, .yw-show-menu-action-disabled:hover {
+    background-position: 0 -72px;
+    opacity: 0.5;
+    cursor: default; }

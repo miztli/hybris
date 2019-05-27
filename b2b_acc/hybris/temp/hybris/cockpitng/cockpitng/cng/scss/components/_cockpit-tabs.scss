@@ -1,0 +1,246 @@
+/*================================
+    z-Tabs / z-Tabpanel
+================================*/
+// Defintions of Tabs, Tabpanel
+
+
+@import "../support/_cockpit-mixins.scss";
+
+.z-tabbox-accordion > .z-tabpanels,
+.z-tabbox-top > .z-tabs {
+    .z-tab {
+        padding-bottom: $editorarea__tabs-content--padding-bottom;
+        
+        &.z-tab-selected {
+            box-shadow: none;
+        }
+    }
+
+    .z-tabs-content {
+        border-bottom-width: $editorarea__tabs-content--border-bottom-width;
+        border-color: $editorarea__tabs--border-color;
+//        box-shadow: $editorarea__tabs-content--shadow;
+    }
+
+    .z-caption {
+        min-height: 0;
+    }    
+}
+
+.z-tabbox-accordion > .z-tabpanels,
+.z-tabbox-accordion > .z-tabbox-content > .z-tabpanels,
+.z-tabbox-top > .z-tabs {
+    .z-label {
+        font-size: $editorarea__tab-text--font-size;
+        font-weight: $editorarea__tab-text--font-weight;
+    }
+}
+
+.z-tabbox-top > .z-tabpanels > .z-tabpanel {
+    padding-top: 0;
+}
+
+.z-tab {
+    padding: $editorarea__tab--padding;
+    background-color: $editorarea__tab--bg-color;
+    border: none;
+    line-height: 1;
+
+    &:hover {
+        background-color: $editorarea__tab-hover--bg-color;
+
+        .z-tab-text {
+            color: $editorarea__tab-text-hover--font-color;
+        }
+    }
+
+    &:first-child {
+        padding-left: $editorarea__tab-first--padding-left;
+    }
+
+    &:last-child {
+        padding-right: $editorarea__tab-last--padding-right;
+    }
+
+    .z-caption-content {
+        padding: $editorarea__tabs-caption-content--padding;
+        margin-bottom: $editorarea__tabs-caption-content--margin-bottom;
+    }
+
+/*    .z-label {
+        font-size: $editorarea__tab-text--font-size;
+        font-weight: $editorarea__tab-text--font-weight;
+    }
+    */
+}
+
+.z-tabs-content {
+    .cng-newTab .z-tab-text {
+        //TODO: check if it is needed
+        cursor: pointer;
+    }
+}
+
+.z-tab-text {
+    color: $editorarea__tab-text--font-color;
+    text-transform: uppercase;
+
+    .z-tab-selected & {
+        color: $editorarea__tab-text-hover--font-color;
+        border-bottom: $editorarea__tab--border;
+    }
+    .yw-editorarea-tab-pinned & {
+        font-weight: $editorarea__tab-pinned--font-weight;
+    }
+}
+
+.z-tabpanel-content {
+    background-color: $editorarea__tabpanel-content--bg-color;
+}
+
+/* z-tabs-scroll */
+
+.z-tabbox-scroll {
+    .z-tabbox-left-scroll,
+    .z-tabbox-right-scroll {
+        width: auto;
+        min-height: initial;
+        line-height: normal;
+        background-color: $editorarea__tabbox-scroll--bg-color;
+        border-color: $editorarea__tabs--border-color;
+        border-width: 0;
+    }
+
+    .z-icon-chevron-right,
+    .z-icon-chevron-left {
+        width: $editorarea__tabbox-icon-chevron--width;
+        height: $editorarea__tabbox-icon-chevron--height;
+        padding-top: $editorarea__tabbox-icon-chevron--padding-top;
+        
+        &:before {
+            font-size: $editorarea__tabbox-icon-chevron--font-size;
+            color: $editorarea__tabbox-icon-chevron--font-color;
+        }
+    }
+
+    .z-tabbox-left-scroll:hover .z-icon-chevron-left,
+    .z-tabbox-right-scroll:hover .z-icon-chevron-right {
+        &:before {
+            color: $editorarea__tabbox-icon-chevron-hover--font-color;
+        }
+    }
+
+    .z-tabbox-right-scroll .z-icon-chevron-right {
+        border-left: $editorarea__tabbox-scroll--border;
+        &:before {
+            content: $editorarea__tabbox-scroll-right--content;
+        }
+    }
+
+    .z-tabbox-left-scroll .z-icon-chevron-left {
+        border-right: $editorarea__tabbox-scroll--border;
+        &:before {
+            content: $editorarea__tabbox-scroll-left--content;
+        }
+    }
+
+    > .z-tabs {
+        margin: $editorarea__tabs-scroll--margin;
+
+        .yw-modal-collectionEditorAreaGroup & {
+            margin: $_editorarea__tabs-scroll-popup--margin;
+            position: absolute;
+            left: $_editorarea__tabs-scroll--left;
+        }
+    }
+    
+
+    .z-tab {
+        &:first-child {
+            padding: $editorarea__tab--padding;
+        }
+
+        &:last-child {
+            padding: $editorarea__tab--padding;
+        }
+    }
+}
+
+/* z-tabs-scroll */
+
+/* z-tabs-accordion */
+
+.z-tabbox-accordion {
+    &.z-tabbox {
+        overflow: auto;
+    }
+
+    .z-tabpanel {
+        background-color: $editorarea__tabpanel-accordion--bg-color;
+        box-shadow: $editorarea__tabpanel-accordion--shadow;
+
+        > .z-tabpanel-content {
+            height: auto !important;
+        }
+
+        > .z-tab {
+            padding: $editorarea__tabpanel-accordion-tab--padding;
+            background-color: $editorarea__tabpanel-accordion-tab--bg-color;
+            color: $editorarea__tab-text--font-color;
+
+            &:before {
+                content: $editorarea__tabbox-accordion-down--content;
+                font-family: $editorarea__tab-caret--font-family;
+                font-size: $editorarea__tab-caret--font-size;
+                //auto vertical centering static values
+                position: absolute;
+                line-height: 0;
+                top: 50%;
+                left: $editorarea__tabpanel-accordion-caret--left;
+            }
+
+            &:hover {
+                color: $editorarea__tab-text-hover--font-color;
+            }
+
+            &.z-tab-selected {
+                background-color: $editorarea__tabpanel-accordion-selected--bg-color;
+                box-shadow: $editorarea__tabs-content--shadow;
+                color: $editorarea__tab-text-hover--font-color;
+
+                .z-tab-text {
+                    color: $editorarea__tab-text-hover--font-color; //overwrite zk style
+                    border-bottom: none;
+                }
+
+                &:before {
+                    content: $editorarea__tabbox-accordion-up--content;
+                }
+            }
+
+            .z-label, .z-caption-content {
+                margin-bottom: $editorarea__tabs-accordion-caption-content--margin-bottom;
+            }
+
+            .z-caption{
+                min-height: auto;
+
+                &-content {
+                    line-height: normal;
+                }
+            }
+
+            .z-label {
+                color: inherit;
+            }
+        }
+
+        .z-tab-selected + .z-tabpanel-content {
+            padding: $editorarea__tabpanel-accordion-selected--padding;
+            box-shadow: $editorarea__tabpanel-accordion-selected--shadow;
+            border: none;
+        }
+    }
+}
+
+/* z-tabs-accordion */

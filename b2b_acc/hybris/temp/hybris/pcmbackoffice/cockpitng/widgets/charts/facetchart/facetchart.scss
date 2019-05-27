@@ -1,0 +1,416 @@
+@import "scss/support/facetchart-variables.scss";
+
+.yw-solrfacetchart {
+	position: relative;
+	display: flex;
+    flex-wrap: wrap;
+
+	&-toppanel {
+		padding: $solrfacetchart__toppanel--padding;
+		height: $solrfacetchart__toppanel--height;
+		position: absolute;
+		overflow: hidden;
+		width: 100%;
+	  	z-index: 1;
+		-webkit-box-flex: 1;
+		-webkit-flex: 1 1 100%;
+		-moz-box-flex: 1;
+		-ms-flex: 1 1 100%;
+		flex: 1 1 100%;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		-moz-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+
+	  	.yw-solrfacetchart-chart-title {
+	  		font-size: $solrfacetchart__toppanel-title--font-size;
+	  		top: $solrfacetchart__toppanel-title--top;
+	  		position: relative;
+	  		-webkit-box-flex: 1;
+			-webkit-flex: 1 1 auto;
+			-moz-box-flex: 1;
+			-ms-flex: 1 1 auto;
+			flex: 1 1 auto;
+	  	}
+
+		&-facetchooser {
+    		padding-left: $_solrfacetchart__toppanel-elements--padding-left;
+
+			.z-label {
+				display: none;
+			}
+			
+			.z-combobox {
+				min-height: $solrfacetchart__toppanel-facetchooser-combobox--min-height;
+				height: $solrfacetchart__toppanel-facetchooser-combobox--height;
+				border-right: none;
+
+				&:hover,
+				&:active,
+				&:focus {
+					.z-combobox-input,
+					.z-combobox-button {
+						border-color: $solrfacetchart__toppanel-facetchooser-combobox-hover--border-color;
+
+						&:hover,
+						&:focus,
+						&:active,
+						&:hover .z-combobox-icon,
+						&:focus .z-combobox-icon,
+						&:active .z-combobox-icon {
+							color: $solrfacetchart__toppanel-facetchooser-combobox-hover--color;
+						}
+					}		
+				}
+
+				&-input,
+				&-button {
+					height: $solrfacetchart__toppanel-facetchooser-combobox--height;
+					border: $solrfacetchart__toppanel-facetchooser-combobox--border;
+
+					&:focus,
+					&:focus + .z-combobox-button {
+						border-color: $solrfacetchart__toppanel-facetchooser-combobox-focus--border-color;
+						outline: none;
+					}
+				}
+
+				&-input {
+					width: $solrfacetchart__toppanel-facetchooser-combobox-input--width;
+				}
+
+				&-button {
+					width: $solrfacetchart__toppanel-facetchooser-combobox-button--width;
+
+					& .z-combobox-icon {
+						width: $solrfacetchart__toppanel-facetchooser-combobox-button-icon--width;
+						height: $solrfacetchart__toppanel-facetchooser-combobox-button-icon--height;
+						line-height: $solrfacetchart__toppanel-facetchooser-combobox-button-icon--line-height;
+					}
+				}
+			}
+		}
+		&-filter-button.z-button {
+			padding: $solrfacetchart__toppanel-button--padding;
+			width: $solrfacetchart__toppanel-button--size;
+			height: $solrfacetchart__toppanel-button--size;
+			min-height: $solrfacetchart__toppanel-button--size;
+			background: $solrfacetchart__toppanel-filterbutton--background;
+			border: $solrfacetchart__toppanel-button--border;
+			display: block;
+			position: static;
+			font-size: 0;
+
+			&:hover,
+			&:focus,
+			&:active,
+			.yw-solrfacetchart-toppanel-filters-container span[style*="display: none"] + & {
+				background-position: $solrfacetchart__toppanel-button-hover--bg-position;
+				background-color: $solrfacetchart__toppanel-button-hover--bg-color;
+				border-color: $solrfacetchart__toppanel-button-hover--border-color;
+			}	
+		}
+		&-filters-container {
+			padding-left: $_solrfacetchart__toppanel-elements--padding-left;
+			display: block;
+			position: relative;
+			-webkit-box-flex: 0;
+			-webkit-flex: 0 0 auto;
+			-moz-box-flex: 0;
+			-ms-flex: 0 0 auto;
+			flex: 0 0 auto;
+		}
+		&-filters {
+			padding: $solrfacetchart__toppanel-filters--padding;
+
+			&-popup & {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: horizontal;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: row;
+				-moz-box-orient: horizontal;
+				-moz-box-direction: normal;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-webkit-box-pack: justify;
+				-webkit-justify-content: space-between;
+				-moz-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				-webkit-flex-wrap: wrap;
+				-ms-flex-wrap: wrap;
+				flex-wrap: wrap;
+			}
+			.z-label {
+				margin-bottom: $solrfacetchart__toppanel-filters-label--margin-bottom;
+				color: $solrfacetchart__toppanel-filters-label--color;
+				display: block;
+			}
+
+			&-popup {
+				width: $_solrfacetchart__toppanel-filters-popup--width;
+				
+				.ye-delete-btn {
+					width: $_solrfacetchart__toppanel-filters-delet-btn--width;
+					display: inline-block;
+				}
+				.z-label {
+					max-width: $_solrfacetchart__toppanel-filters-label--max-width;
+					display: inline-block;
+					margin-bottom: 0;
+				}
+				.z-chosenbox,
+				.z-combobox,
+				.yw-solrfacetchart-filters > .z-div {
+					margin-top: $_solrfacetchart__toppanel-filters-editor--margin-top;
+					margin-bottom: $_solrfacetchart__toppanel-filters-editor--margin-bottom;
+					width: 100%;
+					display: block;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+
+			}
+
+			.z-combobox {
+				margin-bottom: $solrfacetchart__toppanel-filters-combobox--margin-bottom;
+
+				&:hover {
+					& > * {
+						background-color: $solrfacetchart__toppanel-filters-combobox-hover--bg-color;
+					}
+				}
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+		  	&-counter {
+				min-width: $_solrfacetchart__toppanel-filters-counter--min-width;
+				height: $_solrfacetchart__toppanel-filters-counter--height;
+				font-size: $_solrfacetchart__toppanel-filters-counter--font-size;
+				font-weight: $_solrfacetchart__toppanel-filters-counter--font-weight;
+				line-height: $_solrfacetchart__toppanel-filters-counter--line-height;
+				color: $_solrfacetchart__toppanel-filters-counter--color;
+				background: $_solrfacetchart__toppanel-filters-counter--bg-color;
+				border-radius: $_solrfacetchart__toppanel-filters-counter--border-radius;
+				padding: $_solrfacetchart__toppanel-filters-counter--padding;
+			  	right: $_solrfacetchart__toppanel-filters-counter--right;
+			  	top: $_solrfacetchart__toppanel-filters-counter--top;
+			  	z-index: $_solrfacetchart__toppanel-filters-counter--z-index;
+			  	transform: $_solrfacetchart__toppanel-filters-counter--transform;
+			  	text-align: center;
+			  	position: absolute;
+
+				&:empty {
+				  display: none;
+				}
+			}
+		}
+	}
+
+	&-charts {
+		background: $solrfacetchart__charts--bg-color;
+		flex: 2 1 70%;
+		overflow: hidden;
+
+		.z-charts[data-highcharts-chart="3"] .highcharts-root { //Positioning of the pie-chart. ONLY TEMPORARY SOLUTION
+			position: relative;
+			left: 50%;
+			-webkit-transform: translateX(-50%);
+			-ms-transform: translateX(-50%);
+			transform: translateX(-50%);
+		}
+
+		.highcharts {
+			&-container {
+				width: 100% !important;
+				height: $solrfacetchart__chart-container--height !important;
+				min-height: $solrfacetchart__chart-container--height !important;
+				margin-top: $solrfacetchart__chart-container--margin-top;
+				margin-bottom: $solrfacetchart__chart-container--margin-bottom;
+			}
+			&-root {
+				width: auto !important;
+				height: 100% !important;
+				min-height: $solrfacetchart__chart-container--height !important;
+				display: block;
+				margin: 0 auto;
+			}
+
+			&-background {
+				height: 100%;
+				width: 100%;
+			}
+
+			&-title {
+				display: none;
+			}
+
+			&-series > rect {
+    			stroke-width: 0; // removing border and shadow under bars;
+			}
+
+			&-tick {
+				display: none;
+			}
+
+			&-text-outline {
+			  display: none;
+			}
+
+			&-label.highcharts-tooltip text > tspan:nth-child(3) {
+			  display: none !important;
+			}
+		}
+	}
+
+	&-rightpanel {
+		flex: 1 1 30%;
+		background: $solrfacetchart__rightpanel-container--bg-color;
+
+		&:empty {
+			display: none;
+		}
+
+		&-container {
+			padding: $solrfacetchart__rightpanel-container--padding;
+			height: 100%;
+			display: -webkit-box; 
+			display: -ms-flexbox;
+			display: -webkit-flex; 
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-webkit-flex-direction: column;
+			-moz-box-orient: vertical;
+			-moz-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			-webkit-box-pack: center;
+			-webkit-justify-content: center;
+			-moz-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-webkit-align-items: center;
+			-moz-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			text-align: center;
+			width: 100%;
+		}
+
+		&-total-product-count {
+			font-size: $solrfacetchart__rightpanel-total-count--font-size;
+    		font-weight: bold;
+    		display: inline-block;
+    		text-align: center;
+
+    		&-label {
+    			flex: 0 1 auto;
+    			width: 100%;
+
+    			&:after {
+    				content: '';
+    				display: block;
+    				padding-top: $solrfacetchart__rightpanel-total-count-delimiter--space-y;
+    				border-bottom: $solrfacetchart__rightpanel-total-count-delimiter--border;
+    				width: $solrfacetchart__rightpanel-total-count-delimiter--width;
+    				margin: 0 auto $solrfacetchart__rightpanel-total-count-delimiter--space-y;
+    				-webkit-box-flex: 0;
+					-webkit-flex: 0 1 auto;
+					-moz-box-flex: 0;
+					-ms-flex: 0 1 auto;
+					flex: 0 1 auto;
+    			}
+    		}
+		}
+
+		&-go-to-all-products-button,
+		&-add-new-product-button {
+			color: $solrfacetchart__rightpanel-button--color;
+			margin-bottom: $solrfacetchart__rightpanel-button--margin-bottom;
+			font-size: $solrfacetchart__rightpanel-button--font-size;
+			margin-left: $solrfacetchart__rightpanel-button--margin-left;
+			text-decoration: none;
+			position: relative;
+			display: inline-block;
+			
+			&:hover {
+				text-decoration: underline;
+			}
+			&:before {
+				position: absolute;
+				content: '';
+				top: 50%;
+				left: $solrfacetchart__rightpanel-button-icon--left;
+				width: $solrfacetchart__rightpanel-button-icon--size;
+				height: $solrfacetchart__rightpanel-button-icon--size;
+				margin-top: $solrfacetchart__rightpanel-button-icon--margin-top;
+				background: $solrfacetchart__rightpanel-button-all--bg-image center no-repeat;
+				background-size: $solrfacetchart__rightpanel-button-icon--size auto;
+			}
+		}
+		&-add-new-product-button {
+			&:before {
+				background-image: $solrfacetchart__rightpanel-button-add--bg-image;
+			}
+		}
+	}
+
+	&-bottompanel {
+		width: 100%;
+		display: -webkit-box; 
+		display: -ms-flexbox;
+		display: -webkit-flex; 
+		display: flex;
+		text-align: center;
+		min-height: $solrfacetchart__bottompanel-stats--min-height;
+		
+		&-onepoint {
+			padding: $solrfacetchart__bottompanel-stats--padding;
+			background-color: $solrfacetchart__bottompanel-stats--bg-color;
+			cursor: pointer;
+			-webkit-box-flex: 1;
+			-webkit-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+
+
+			&:hover {
+				background-color: $solrfacetchart__bottompanel-stats-hover--bg-color;
+			}
+
+			&-value {
+				display: block;
+			}
+
+			&-label {
+				font-size: $solrfacetchart__bottompanel-stats-label--font-size;
+				line-height: $solrfacetchart__bottompanel-stats-label--line-height;
+				font-weight: $solrfacetchart__bottompanel-stats-label--font-weight;
+				display: block;
+			}
+
+		    &-color-label {
+			  	width: $solrfacetchart__bottompanel-stats-color-label--width;
+			  	height: $solrfacetchart__bottompanel-stats-color-label--height;
+				border-radius: $solrfacetchart__bottompanel-stats-color-label--border-radius;
+				display: inline-block;
+			}
+		}
+	}
+}

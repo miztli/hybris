@@ -1,0 +1,27 @@
+/*================================
+    Refine By Checkboxes
+================================*/
+@import "../support/_refineby-variables.scss";
+
+.yw-refineby {
+    .z-checkbox {
+        display: block;
+        padding-left: $refineby__checkbox--padding-left;
+
+        label {
+            vertical-align: top;
+
+            &:before {
+                width: $refineby__checkbox-label-after--width;
+                height: $refineby__checkbox-label-after--height;
+                margin-top: $refineby__checkbox-label-after--margin-top;
+                top: 0;
+                line-height: inherit;
+            }
+        }
+
+        input:checked + label:before {
+            background-size: $refineby__checkbox-label-before--background-size;
+        }
+    }
+}

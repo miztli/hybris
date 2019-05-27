@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=hu
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;Eseményindító szabály üzenete (kosár összegének küszöbértéke);Szabály üzenetének megjelenítése a szabályfeltétel teljesülésétől függően;
+;y_trigger_message_parameterized_category;Eseményindító szabály üzenete (kategória);Szabály üzenetének megjelenítése a szabályfeltétel teljesülésétől függően;
+;y_trigger_message_parameterized_product;Eseményindító szabály üzenete (termék);Szabály üzenetének megjelenítése a szabályfeltétel teljesülésétől függően;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;Kosár összegének küszöbértéke;Kosár összegének beállítandó küszöbértéke
+;y_trigger_message_parameterized_category;catalog;Kiválasztás katalógus szerinti szűrése;A kiválasztott katalógusértéket fogja a társított mezőkön belül szűrési célra használni a rendszer
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;Mennyiség;A megfelelő kategóriából szükséges termékek mennyisége
+;y_trigger_message_parameterized_category;qualifying_categories;Kategóriák;Megfelelő kategóriák
+;y_trigger_message_parameterized_product;catalog;Kiválasztás katalógus szerinti szűrése;A kiválasztott katalógusértéket fogja a társított mezőkön belül szűrési célra használni a rendszer
+;y_trigger_message_parameterized_product;qualifying_products_quantity;Mennyiség;Szükséges megfelelő termékek mennyisége
+;y_trigger_message_parameterized_product;qualifying_products;Termék;Megfelelő termékek
+

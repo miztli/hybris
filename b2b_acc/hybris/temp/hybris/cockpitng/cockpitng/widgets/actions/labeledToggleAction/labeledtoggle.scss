@@ -1,0 +1,26 @@
+@import "support/_labeledtoggle-variables.scss";
+
+.yw-labeled-toggle {
+	&-label {
+		top: $labeled-toggle-action__label--top;
+		background-color: $labeled-toggle-action__label--bg-color;
+		font-size: $labeled-toggle-action__label--font-size;
+		padding: $labeled-toggle-action__label--padding;
+		border-radius: $labeled-toggle-action__label--border-radius;
+		min-width: $labeled-toggle-action__label--min-width;
+		left: $labeled-toggle-action__label--left;
+		border-width: 0;
+		box-sizing: content-box;
+		text-align: center;
+		position: absolute;
+		line-height: 1;
+		pointer-events: none;
+
+		.yw-systemBarContainer .yw-statusToolbar .z-toolbarbutton & {
+			top: $labeled-toggle-action__systembar-button-label--top;
+			left: $labeled-toggle-action__systembar-button-label--left;
+			border-width: $labeled-toggle-action__systembar-button-label--border-width;
+			border-style: solid;
+		}
+	}         
+}

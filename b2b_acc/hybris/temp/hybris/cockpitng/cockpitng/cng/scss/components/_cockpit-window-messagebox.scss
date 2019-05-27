@@ -1,0 +1,118 @@
+/*================================
+    Highilighte Window
+================================*/
+// Layout & Coloring for Highlighted Windows
+
+
+div.z-window-highlighted {
+    &-tl, &-tr, &-hl, &-hr, &-hm, &-cr, &-cl, &-br, &-bl {
+        background: #d3d9df;
+    }
+    &-cm {
+        background: #f2f4f5;
+        border: none;
+    }
+}
+
+.z-window-highlighted {
+    .z-window-content {
+        > .z-hbox:first-child {
+            background: #fff; //$window__popup--bg-color
+            width: 100%;
+            table-layout: fixed;
+            word-break: break-all;
+        }
+        > .z-hbox {
+            padding: 10px;
+        }
+    }
+    &-icon.z-window-highlighted-close {
+        background: url("images/icon_func_modal_close.png") no-repeat scroll center center #6F7C91;
+        height: 26px;
+        width: 26px;
+    }
+    &-header {
+        font-size: 15px;
+        font-weight: 400;
+        padding-top: 0px;
+        line-height: 25px;
+    }
+    .z-center,
+    .z-north,
+    .z-south,
+    .z-west,
+    .z-east {
+        &-header {
+            .yw-caption-container {
+                position: relative;
+            }
+        }
+    }
+}
+
+div.z-separator-horizontal-bar {
+    display: none;
+}
+
+
+/*================================
+    Messagebox Window
+================================*/
+// Layout & Coloring for Message Windows
+
+
+
+.z-window .z-messagebox .z-html {
+    text-align: justify;
+    display: inline-block;
+}
+
+.z-messagebox-window {
+    .z-window-highlighted .z-window-content {
+        background: #f2f4f5;
+        padding: 0px;
+    }
+    .z-label {
+        font-size: $font-size__semi-base;
+    }
+    .z-messagebox {
+        word-break: normal;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    // check: all icons into one sprite? (due to all having the same size), try skipping !important.
+    .z-msgbox-question {
+        width: 60px;
+        height: 55px;
+        background: transparent url(images/help_icon.png) no-repeat !important;
+    }
+
+    .z-msgbox-information {
+        width: 60px;
+        height: 55px;
+        background: transparent url(images/info_icon.png) no-repeat !important;
+    }
+
+    .z-msgbox-error {
+        width: 60px;
+        height: 55px;
+        background: transparent url(images/error_icon.png) no-repeat !important;
+    }
+
+    .z-msgbox-exclamation {
+        width: 60px;
+        height: 55px;
+        background: transparent url(images/caution_icon.png) no-repeat !important;
+    }
+
+    .z-msgbox-success {
+        width: 60px;
+        height: 55px;
+        background: transparent url(images/success_icon.png) no-repeat !important;
+    }
+}
+
+.z-window-highlighted .z-window-content .z-messagebox {
+    padding: 5px;
+}

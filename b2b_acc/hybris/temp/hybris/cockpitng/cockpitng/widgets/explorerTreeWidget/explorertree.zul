@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<widget style="min-height: 30px; height:100%" sclass="yw-explorerTree-widget">
+		<vlayout height="100%" id="mainCnt" sclass="yw-panel-navigation yw-explorerTree-mainCnt yw-navigationCnt" spacing="auto">
+			<div id="toolbarContainer" sclass="yw-explorerTree-toolbar" visible="${widgetSettings.showToolbar and (widgetSettings.showPrimaryActions or widgetSettings.showNestedToolbarWidget or widgetSettings.showSecondaryActions)}">
+				<actions id="primaryActions" group="common" sclass="yw-explorerTree-actions yw-explorerTree-primary-actions" visible="${widgetSettings.showPrimaryActions}" config="${widgetSettings.primaryActionsConfigCtx}"/>
+				<div sclass="yw-explorerTree-right-holder">
+					<widgetslot id="toolbarSlot" slotID="toolbar" visible="${widgetSettings.showNestedToolbarWidget}" sclass="yw-explorerTree-widget-slot"/>
+					<actions id="secondaryActions" group="common" sclass="yw-explorerTree-actions yw-explorerTree-secondary-actions" visible="${widgetSettings.showSecondaryActions}" config="${widgetSettings.secondaryActionsConfigCtx}"/>
+				</div>
+			</div>
+			<div id="filterDiv" sclass="yw-explorerTree-filterDiv" visible="${widgetSettings.allowFilteringEntries}">
+				<textbox id="filterTextbox" sclass="yw-explorerTree-filterTextbox yw-filter-textbox y-general-textinput" placeholder="${labels.filter.tree.entries}"/>
+			</div>
+			<div vflex="1">
+				<tree id="explorerTree" multiple="false" sclass="yw-explorerTree" zclass="z-vfiletree" />
+			</div>
+		</vlayout>
+	</widget>
+</zk>

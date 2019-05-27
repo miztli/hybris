@@ -1,0 +1,20 @@
+.yw-toolbar-horizontal {
+  width: 100%; }
+  .yw-toolbar-horizontal .yw-toolbar-content .yw-toolbar-before,
+  .yw-toolbar-horizontal .yw-toolbar-content .yw-toolbar-actions,
+  .yw-toolbar-horizontal .yw-toolbar-content .yw-toolbar-after {
+    height: 100%;
+    display: inline-block; }
+    .yw-toolbar-horizontal .yw-toolbar-content .yw-toolbar-before .cng-action table td, .yw-toolbar-horizontal .yw-toolbar-content .yw-toolbar-before .cng-action-group table td,
+    .yw-toolbar-horizontal .yw-toolbar-content .yw-toolbar-actions .cng-action table td,
+    .yw-toolbar-horizontal .yw-toolbar-content .yw-toolbar-actions .cng-action-group table td,
+    .yw-toolbar-horizontal .yw-toolbar-content .yw-toolbar-after .cng-action table td,
+    .yw-toolbar-horizontal .yw-toolbar-content .yw-toolbar-after .cng-action-group table td {
+      vertical-align: middle; }
+  .yw-toolbar-horizontal .yw-toolbar-content .yw-toolbar-actions {
+    vertical-align: middle; }
+  .yw-toolbar-horizontal > .yw-toolbar-content > .yw-toolbar-before {
+    float: left; }
+
+.yw-toolbar-before > .widget_cnt:empty {
+  display: none; }

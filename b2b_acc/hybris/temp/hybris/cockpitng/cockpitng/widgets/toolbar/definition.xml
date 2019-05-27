@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="com.hybris.backoffice.widgets.toolbar" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+
+    <name>Toolbar</name>
+    <description>Toolbar</description>
+    <author>hybris</author>
+    <version>1.0</version>
+
+    <controller class="com.hybris.backoffice.widgets.toolbar.ToolbarWidgetController"/>
+
+    <keywords>
+        <keyword>Navigation</keyword>
+        <keyword>Actions</keyword>
+    </keywords>
+
+    <sockets>
+        <input id="type" type="java.lang.String"/>
+        <input id="toolbarActions" type="java.lang.String"/>
+        <output id="loadedActions" type="com.hybris.cockpitng.core.config.impl.jaxb.hybris.Actions"/>
+    </sockets>
+
+    <settings>
+        <setting key="toolbarActions" type="java.lang.String"/>
+        <setting key="viewMode" type="ENUM(Horizontal,Vertical)" default-value="Horizontal"/>
+    </settings>
+</widget-definition>

@@ -1,0 +1,39 @@
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:h="http://www.w3.org/1999/xhtml" 
+		xmlns:zk="http://www.zkoss.org/2005/zk"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		height="100%">
+ <style src="${wr}/outputTestWidget.css"/>
+ 	<div sclass="yw-outputTest-toolbar">
+ 		<menubar height="40px" id="menuBar">
+ 			<menu label="Filter" id="filterMenu">
+ 				<menupopup id="filterPopUp">
+ 					<menuitem label="show Qualified Names" id="qualifiedNames" checkmark="true" autocheck="true" checked="${widgetModel.qualifiedNames}"/>
+ 					<menuitem label="show Static Variables" id="staticVariables" checkmark="true" autocheck="true" checked="${widgetModel.staticVariables}"/>
+ 					<menuitem label="show Constants" id="constantsMenuItem" checkmark="true" autocheck="true" checked="${widgetModel.constants}"/>
+ 				</menupopup>
+ 			</menu>
+ 		</menubar>
+ 	</div>
+ 	<div sclass="yw-listcomponent cng-busy" >
+		<div height="100%">
+	 		<borderlayout height="100%">
+	 			<north id="north" visible="true" splittable="true" height="30%" autoscroll="true" minsize="50" >
+	 				<listbox id="showCollInput" width="100%" style="border: none;"/>
+		    	</north>
+		    	<center>
+
+				    <listbox id="attributeValueList" multiple="true" height="100%"
+					    	droppable="outputTestWidgetObject" >
+				    	<listhead sizable="true">
+				    		<listheader width="18px"/>
+				    		<listheader label="name" />
+				    		<listheader label="value"/>
+				    	</listhead>
+				    </listbox>
+				</center>
+		    </borderlayout>
+		</div>
+  	</div>
+</widget>

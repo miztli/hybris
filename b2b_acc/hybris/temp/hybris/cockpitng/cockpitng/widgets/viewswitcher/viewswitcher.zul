@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget width="100%" height="100%" xmlns="http://www.zkoss.org/2005/zul" sclass="yw-view-switch-container">
+	<widgetchildren id="viewsContainer" type="switch" height="100%" width="100%" sclass="yw-view-switch-views" slotID="views"/>
+</widget>

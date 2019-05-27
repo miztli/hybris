@@ -1,0 +1,68 @@
+@import "_pcmbackoffice_general-variables.scss";
+
+@mixin  _addPrimaryToolbarActionDefaultStates ($additionalFocusSelector:false) {
+	.cng-action {
+        position: relative;
+        width: auto;
+        min-width: $pcmbackoffice__primary-toolbar-action--size;
+        height: $pcmbackoffice__primary-toolbar-action--size;
+        margin: $pcmbackoffice__primary-toolbar-action--margin;
+        z-index:0;
+
+        &-enabled {
+        	&:before {
+	            content: "";
+	            position: absolute;
+	            height: $pcmbackoffice__primary-toolbar-action--size;
+	            border: $pcmbackoffice__primary-toolbar-action-shadow--border;
+	            margin-left: $pcmbackoffice__primary-toolbar-action-shadow--margin;
+	            margin-top: $pcmbackoffice__primary-toolbar-action-shadow--margin;
+	            box-shadow: $pcmbackoffice__primary-toolbar-action-shadow--box-shadow;
+	            transition: $pcmbackoffice__primary-toolbar-action-shadow--transition;
+	            color: inherit;
+	            width: 100%;
+	            top: 50%;
+	            left: 50%;
+	            display: none;
+	            z-index: -1;
+	        }
+	        &:hover:before {
+	            box-shadow: $pcmbackoffice__primary-toolbar-action-shadow--hover-box-shadow;
+	        }
+	        &:hover,
+	        &:focus {
+	            background-color: transparent;
+	            
+	            @if not $additionalFocusSelector {
+					background-color: transparent;
+
+		            &:before {
+		                display: block;
+		            }
+	            }
+	        }
+	        @if not $additionalFocusSelector {
+	        	&:focus:before {
+		            border-color: $editor-defaults__action-button-hover--border-color;
+	        	}
+	        }
+        }
+    }
+    @if $additionalFocusSelector {
+		#{$additionalFocusSelector},
+        .cng-action-enabled:hover,
+        .cng-action-enabled:focus {
+            background-color: transparent;
+
+            &:before {
+                display: block;
+            }
+        }
+        #{$additionalFocusSelector},
+        .cng-action-enabled:focus {
+            &:before {
+                border-color: $editor-defaults__action-button-hover--border-color;
+            }
+        }
+	}
+}

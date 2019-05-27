@@ -1,0 +1,19 @@
+@import "../support/_explorerTree-extendsplitlayout-catalog-selector-variables-tmp.scss";
+
+.yw-extendedsplitlayout-content-box {
+  .yw-explorerTree-widget {
+    .yw-catalog-selector:before, .yw-catalog-selector:after {
+      background: $explorerTree__toolbar-catalog-selector--border-color;
+    }
+    .yw-explorerTree-toolbar {
+      .yw-catalog-selector button {
+        color: $explorerTree__toolbar-catalog-selector--color;
+        background: $explorerTree__toolbar-catalog-selector--background;
+      }
+      .yw-catalog-selector button.z-button + span:empty {
+        color: $explorerTree__toolbar-catalog-selector-dropdown-icon--color;
+        background: $explorerTree__toolbar-catalog-selector-dropdown-icon--bg-color;
+      }
+    }
+  }
+}

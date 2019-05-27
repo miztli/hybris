@@ -1,0 +1,71 @@
+@import "scss/support/_defaultDateEditor-variables.scss";
+
+.ye-com_hybris_cockpitng_editor_defaultdate {
+	.z-datebox {
+		display: table;
+		position: relative;
+		width: 100%;
+		
+		&-button {
+			display: table-cell;
+			vertical-align: middle;
+			white-space: nowrap;
+			padding: $editor-defaults__input-box-btn--padding;
+			border-left: none;
+			box-sizing: border-box;
+			&:hover {
+				border-left: none;
+			}
+		}
+		&-icon {
+			//!important is needed for overriding zk default styling when z-datebox is disabled
+			background-image: url('img/icon_inline_calendar_default.png') !important;
+			background-repeat: no-repeat !important;
+			background-position: center -1px !important;
+			height: 30px;
+		}
+		&-input {
+			margin-bottom: 0;
+			width: 100%;
+			display: table-cell;
+			border-right: none;
+			box-sizing: border-box;
+		}
+		&-input.z-datebox-invalid {
+			box-shadow: none;
+			border-right-width: 0 !important;
+			border-color: $date-editor__invalid-box--border-color !important;
+			
+			+ .z-datebox-button {
+				border-color: $date-editor__invalid-box--border-color !important;
+			}
+		}
+	}
+	.z-icon-calendar {
+		&:before {
+			content: "";
+		}
+	}
+	.z-datebox-disabled {
+		* {
+			background-color: $editor-defaults__input-box-disabled--bg-color;
+		}
+		.z-datebox-icon {
+			background-position: center -33px !important;
+		}
+	}
+	.ye-inline-editing-disabled {
+		.z-datebox-input[readonly] {
+			border-color: $date-editor__box--border-color;
+			background-color: $date-editor__box--bg-color;
+			&:focus {
+				border-color: $date-editor__box--focus-color;
+			}
+		}
+	}
+}
+
+.z-window-highlighted .ye-com_hybris_cockpitng_editor_defaultdate table {
+	table-layout: fixed;
+	width: 100%;
+}

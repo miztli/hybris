@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:common="http://www.hybris.com/cockpitng/config/common"
+               xmlns="http://www.hybris.com/cockpitng/component/summaryview"
+               targetNamespace="http://www.hybris.com/cockpitng/component/summaryview"
+               elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.hybris.com/cockpitng/config/common"
+               schemaLocation="../../../../../../../../cockpit-base/cockpit-data-integration/src/main/resources/schemas/config/cockpitng/common-config.xsd"/>
+
+    <xs:element name="summary-view">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="common:image-preview">
+                    <xs:sequence>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="custom-section" type="customSection"/>
+                            <xs:element name="section" type="section"/>
+                        </xs:choice>
+                    </xs:sequence>
+                    <xs:attribute name="display-title" type="xs:boolean" default="true"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="parameter">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="attribute">
+        <xs:complexContent>
+            <xs:extension base="common:positioned">
+                <xs:sequence>
+                    <xs:element name="editor-parameter" type="parameter" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+                <xs:attribute name="qualifier" type="xs:string" use="optional"/>
+                <xs:attribute name="label" type="xs:string" use="optional"/>
+                <xs:attribute name="visible" type="xs:boolean" use="optional" default="true"/>
+                <xs:attribute name="editor" type="xs:string" use="optional"/>
+                <xs:attribute name="merge-mode" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="customAttribute">
+        <xs:complexContent>
+            <xs:extension base="attribute">
+                <xs:sequence>
+                    <xs:element name="render-parameter" type="parameter" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+                <xs:attribute name="class" type="xs:string" use="optional"/>
+                <xs:attribute name="spring-bean" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="abstractSection" abstract="true">
+        <xs:complexContent>
+            <xs:extension base="common:positioned">
+                <xs:attribute name="name" type="xs:string" use="optional"/>
+                <xs:attribute name="merge-mode" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="section">
+        <xs:complexContent>
+            <xs:extension base="abstractSection">
+                <xs:sequence>
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="custom-attribute" type="customAttribute"/>
+                        <xs:element name="attribute" type="attribute"/>
+                        <xs:element name="actions" type="actions" />
+                        <xs:element name="data-quality-group" type="dataQualityGroup" />
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="customSection">
+        <xs:complexContent>
+            <xs:extension base="section">
+                <xs:sequence>
+                    <xs:element name="render-parameter" type="parameter" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+                <xs:attribute name="class" type="xs:string" use="optional"/>
+                <xs:attribute name="spring-bean" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="actions">
+	    <xs:complexContent>
+	        <xs:extension base="common:positioned">
+                <xs:attribute name="component-id" type="xs:string" use="required"/>
+	            <xs:attribute name="group" type="xs:string" use="optional"/>
+                <xs:attribute name="renderer" type="xs:string" use="optional"/>
+	        </xs:extension>
+	    </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="dataQualityGroup">
+        <xs:complexContent>
+            <xs:extension base="common:positioned">
+                <xs:attribute name="warning" type="xs:double" use="optional"/>
+                <xs:attribute name="error" type="xs:double" use="optional"/>
+                <xs:attribute name="domain-id" type="xs:string" use="required"/>
+                <xs:attribute name="label" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

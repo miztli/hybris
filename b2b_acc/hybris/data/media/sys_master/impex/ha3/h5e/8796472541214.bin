@@ -1,0 +1,270 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+INSERT_UPDATE Employee; UID[unique = true]; groups(uid)[mode = append]
+                      ; admin             ; backofficeadministratorrole
+
+INSERT_UPDATE BackofficeRole; UID[unique = true]           ; groups(uid)[mode = append]; locName                                 ; name                                    ; backOfficeLoginDisabled; authorities
+                            ; backofficeworkflowusergroup  ; employeegroup             ; Backoffice Workflow User Group          ; Backoffice Workflow User Group          ; FALSE                  ; backofficeworkflowuser
+                            ; backofficeworkflowadmingroup ; admingroup                ; Backoffice Workflow Administrator Group ; Backoffice Workflow Administrator Group ; FALSE                  ; backofficeworkflowadmin
+
+
+$START_USERRIGHTS; ; ; ; ; ; ; ; ;
+Type      ; UID                         ; MemberOfGroups ; Password ; Target                      ; read ; change ; create ; remove ; change_perm
+UserGroup ; backofficeworkflowusergroup ;                ;          ;                             ;      ;        ;        ;        ;
+
+# Access Rights for Workflow Users ;;;;;;;;;
+          ;                             ;                ;          ; ItemSyncTimestamp           ; +    ;        ;        ;
+          ;                             ;                ;          ; SyncItemJob                 ; +    ;        ;        ;
+          ;                             ;                ;          ; Type                        ; +    ;        ;        ;
+          ;                             ;                ;          ; Product                     ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; Category                    ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; VariantType                 ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; Catalog                     ; +    ;        ;        ;
+          ;                             ;                ;          ; CatalogVersion              ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; ClassificationAttributeUnit ; +    ;        ;        ;
+          ;                             ;                ;          ; Media                       ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; MediaContainer              ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; MediaFormat                 ; +    ; +      ; +      ;        ;   ;
+          ;                             ;                ;          ; MediaFolder                 ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; Vendor                      ; +    ; +      ; +      ; +      ; + ;
+          ;                             ;                ;          ; StockLevel                  ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; Tax                         ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; TaxRow                      ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; PriceRow                    ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; ProductFeature              ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; ProductReference            ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; Warehouse                   ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; ProductTaxCode              ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; ProductOrderLimit           ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; Job                         ; +    ; +      ;        ;        ;   ;
+          ;                             ;                ;          ; CronJob                     ; +    ; +      ;        ;        ;   ;
+          ;                             ;                ;          ; JobLog                      ; +    ; +      ; +      ;        ;   ;
+          ;                             ;                ;          ; CronJobHistory              ; +    ; +      ; +      ;        ;   ;
+          ;                             ;                ;          ; WorkflowAction              ; +    ; +      ;        ;        ;   ;
+          ;                             ;                ;          ; AbstractComment             ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; Comment                     ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; Reply                       ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; WorkflowItemAttachment      ; +    ; +      ;        ;        ;   ;
+          ;                             ;                ;          ; Domain                      ; +    ;        ;        ;        ;   ;
+          ;                             ;                ;          ; Component                   ; +    ;        ;        ;        ;   ;
+          ;                             ;                ;          ; CommentType                 ; +    ;        ;        ;        ;   ;
+          ;                             ;                ;          ; CommentUserSetting          ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; CommentMetadata             ; +    ; +      ; +      ; +      ;   ;
+          ;                             ;                ;          ; WorkflowDecision            ; +    ;        ;        ;        ;   ;
+          ;                             ;                ;          ; UserGroup                   ; +    ;        ;        ;        ;   ;
+$END_USERRIGHTS; ; ; ; ;
+
+$START_USERRIGHTS; ; ; ; ; ; ; ; ;
+Type      ; UID                          ; MemberOfGroups ; Password ; Target                      ; read ; change ; create ; remove ; change_perm
+UserGroup ; backofficeworkflowadmingroup ;                ;          ;                             ;      ;        ;        ;        ;
+
+# Access Rights for Workflow Users ;;;;;;;;;
+          ;                              ;                ;          ; Job                         ; +    ; +      ; +      ;        ;   ;
+          ;                              ;                ;          ; CronJob                     ; +    ; +      ; +      ;        ;   ;
+          ;                              ;                ;          ; JobLog                      ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; CronJobHistory              ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; WorkflowAction              ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; AbstractComment             ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; Comment                     ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; Reply                       ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; WorkflowItemAttachment      ; +    ; +      ;        ;        ;   ;
+          ;                              ;                ;          ; Domain                      ; +    ;        ;        ;        ;   ;
+          ;                              ;                ;          ; Component                   ; +    ;        ;        ;        ;   ;
+          ;                              ;                ;          ; CommentType                 ; +    ;        ;        ;        ;   ;
+          ;                              ;                ;          ; CommentUserSetting          ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; CommentMetadata             ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; WorkflowDecision            ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; WorkflowTemplate            ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; WorkflowDecisionTemplate    ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; WorkflowActionTemplate      ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; ItemSyncTimestamp           ; +    ;        ;        ;
+          ;                              ;                ;          ; SyncItemJob                 ; +    ;        ;        ;
+          ;                              ;                ;          ; Type                        ; +    ;        ;        ;
+          ;                              ;                ;          ; Product                     ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; Category                    ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; VariantType                 ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; Catalog                     ; +    ;        ;        ;
+          ;                              ;                ;          ; CatalogVersion              ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; ClassificationAttributeUnit ; +    ;        ;        ;
+          ;                              ;                ;          ; Media                       ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; MediaContainer              ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; MediaFormat                 ; +    ; +      ; +      ;        ;   ;
+          ;                              ;                ;          ; MediaFolder                 ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; Vendor                      ; +    ; +      ; +      ; +      ; + ;
+          ;                              ;                ;          ; StockLevel                  ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; Tax                         ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; TaxRow                      ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; PriceRow                    ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; ProductFeature              ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; ProductReference            ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; Warehouse                   ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; ProductTaxCode              ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; ProductOrderLimit           ; +    ; +      ; +      ; +      ;   ;
+          ;                              ;                ;          ; UserGroup                   ; +    ;        ;        ;        ;   ;
+$END_USERRIGHTS; ; ; ; ;
+
+
+
+# Workflow Sample Data - Principals
+
+INSERT_UPDATE UserGroup ; UID[unique=true]          ; locname[lang=de]  ; locname[lang=en]  ; description       ; groups(uid)
+								; wfl_usergroup             ;                   ; Workflow Users    ; Defines workflow access rights;employeegroup
+								; wfl_productManagementGroup; Produkt Management; Product Management; Product Management; wfl_usergroup
+								; wfl_PurchaseGroup         ; Einkauf           ; Purchase          ; Purchase          ; wfl_usergroup,backofficeworkflowusergroup
+
+
+								; wfl_marketingGroup        ; Marketing         ; Marketing         ; Marketing         ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_marketingGroup_EN     ; Marketing         ; Marketing         ; Marketing         ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_marketingGroup_DE     ; Marketing         ; Marketing         ; Marketing         ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_marketingGroup_DE     ; Marketing         ; Marketing         ; Marketing         ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_marketingGroup_ES     ; Marketing         ; Marketing         ; Marketing         ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_marketingGroup_GB     ; Marketing         ; Marketing         ; Marketing         ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_marketingGroup_SWE    ; Marketing         ; Marketing         ; Marketing         ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_marketingGroup_FR     ; Marketing         ; Marketing         ; Marketing         ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_marketingGroup_IT     ; Marketing         ; Marketing         ; Marketing         ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_marketingGroup_GSW    ; Marketing         ; Marketing         ; Marketing         ; wfl_usergroup,backofficeworkflowusergroup
+
+
+
+
+								; wfl_translatorGroup_DE    ; Übersetzer        ; Translator        ; Translator        ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_translatorGroup_EN    ; Übersetzer        ; Translator        ; Translator        ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_translatorGroup_ES    ; Übersetzer        ; Translator        ; Translator        ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_translatorGroup_GB    ; Übersetzer        ; Translator        ; Translator        ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_translatorGroup_SWE   ; Übersetzer        ; Translator        ; Translator        ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_translatorGroup_FR    ; Übersetzer        ; Translator        ; Translator        ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_translatorGroup_IT    ; Übersetzer        ; Translator        ; Translator        ; wfl_usergroup,backofficeworkflowusergroup
+								; wfl_translatorGroup_GSW   ; Übersetzer        ; Translator        ; Translator        ; wfl_usergroup,backofficeworkflowusergroup
+
+INSERT_UPDATE BackofficeRole;UID[unique=true];groups(uid)[mode=append];locName;name;backOfficeLoginDisabled;authorities
+;backofficeproductmanagergroup;employeegroup,wfl_productManagementGroup;Backoffice Product Manager;Backoffice Product Manager;FALSE;backofficeproductmanager,backofficeworkflowuser,backofficeworkflowadmin
+;backofficeproductadministratorgroup;admingroup,backofficeproductmanagergroup;Backoffice Product Administrator;Backoffice Product Administrator;FALSE;backofficeproductadministrator,backofficeworkflowuser,backofficeworkflowadmin
+
+INSERT_UPDATE Employee;UID[unique=true];name;groups(uid);description;password
+;BackofficeProductManager;Backoffice Product Manager;backofficeproductmanagergroup;Backoffice Product Manager User has access to the PCM Backoffice Cockpit.;1234
+;BackofficeProductAdministrator;Backoffice Product Administrator;backofficeproductadministratorgroup;Backoffice Product Administrator User has access to the Administraction Cockpit and PCM Backoffice Cockpit.;1234
+;BackofficeWorkflowUser;Backoffice Workflow Sample User;backofficeworkflowusergroup;Backoffice Workflow Sample User.;1234
+;BackofficeWorkflowAdministrator;Backoffice Workflow Administrator;backofficeworkflowadmingroup;Backoffice Workflow Administrator.;1234
+
+
+INSERT_UPDATE Employee; UID[unique=true]     ; name           ; groups(uid)               ; password; backOfficeLoginDisabled[default=false];
+         ; wfl_productManagement; Product Manager; backofficeproductmanagergroup; 1234    ;                                       ;
+         ; wfl_purchase         ; Purchase       ; wfl_PurchaseGroup         ; 1234    ;                                       ;
+         ; wfl_marketing        ; Marketing      ; wfl_marketingGroup        ; 1234    ;                                       ;
+         ; wfl_marketing_DE     ; Marketing DE   ; wfl_marketingGroup_DE     ; 1234    ;                                       ;
+         ; wfl_marketing_EN     ; Marketing EN   ; wfl_marketingGroup_EN     ; 1234    ;                                       ;
+         ; wfl_marketing_ES     ; Marketing ES   ; wfl_marketingGroup_ES     ; 1234    ;                                       ;
+         ; wfl_marketing_GB     ; Marketing GB   ; wfl_marketingGroup_GB     ; 1234    ;                                       ;
+         ; wfl_marketing_SWE    ; Marketing SWE  ; wfl_marketingGroup_SWE    ; 1234    ;                                       ;
+         ; wfl_marketing_FR     ; Marketing FR   ; wfl_marketingGroup_FR     ; 1234    ;                                       ;
+         ; wfl_marketing_IT     ; Marketing IT   ; wfl_marketingGroup_IT     ; 1234    ;                                       ;
+         ; wfl_marketing_GSW    ; Marketing GSW  ; wfl_marketingGroup_GSW    ; 1234    ;                                       ;
+
+
+         ; wfl_translator_DE    ; Translator DE  ; wfl_translatorGroup_DE    ; 1234    ;                                       ;
+         ; wfl_translator_EN    ; Translator EN  ; wfl_translatorGroup_EN    ; 1234    ;                                       ;
+         ; wfl_translator_ES    ; Translator ES  ; wfl_translatorGroup_ES    ; 1234    ;                                       ;
+         ; wfl_translator_GB    ; Translator GB  ; wfl_translatorGroup_GB    ; 1234    ;                                       ;
+         ; wfl_translator_SWE   ; Translator SWE ; wfl_translatorGroup_SWE   ; 1234    ;                                       ;
+         ; wfl_translator_FR    ; Translator FR  ; wfl_translatorGroup_FR    ; 1234    ;                                       ;
+         ; wfl_translator_IT    ; Translator IT  ; wfl_translatorGroup_IT    ; 1234    ;                                       ;
+         ; wfl_translator_GSW   ; Translator GSW ; wfl_translatorGroup_GSW   ; 1234    ;                                       ;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;backofficeproductmanagergroup;;;;;;;;
+
+# Access Rights for Products & Catalog for Backoffice Product Manager ;;;;;;;;;
+;;;;ItemSyncTimestamp;+;;;
+;;;;SyncItemJob;+;;;
+;;;;Type;+;;;
+;;;;Product;+;+;+;+;+;
+;;;;Category;+;+;+;+;+;
+;;;;VariantType;+;+;+;+;+;
+;;;;Catalog;+;+;+;+;
+;;;;CatalogVersion;+;+;+;+;+;
+;;;;ClassificationAttributeUnit;+;;;
+;;;;Media;+;+;+;+;+;
+;;;;MediaContainer;+;+;+;+;+;
+;;;;MediaFormat;+;+;+;+;+;
+;;;;MediaFolder;+;+;+;+;+;
+;;;;Vendor;+;+;+;+;+;
+;;;;StockLevel;+;+;+;+;+;
+;;;;Tax;+;+;+;+;+;
+;;;;TaxRow;+;+;+;+;+;
+;;;;PriceRow;+;+;+;+;+;
+;;;;ProductFeature;+;+;+;+;+;
+;;;;ProductReference;+;+;+;+;+;
+;;;;Warehouse;+;+;+;+;+;
+;;;;ProductTaxCode;+;+;+;+;+;
+;;;;ProductOrderLimit;+;+;+;+;+;
+;;;;Job;+;+;+;+;+;
+;;;;CronJob;+;+;+;+;+;
+;;;;JobLog;+;+;+;+;+;
+;;;;CronJobHistory;+;+;+;+;+;
+;;;;AbstractComment;+;+;+;+;+;
+;;;;Comment;+;+;+;+;+;
+;;;;Reply;+;+;+;+;+;
+;;;;Domain;+;+;+;+;+;
+;;;;Component;+;+;+;+;+;
+;;;;CommentType;+;+;+;+;+;
+;;;;CommentUserSetting;+;+;+;+;+;
+;;;;CommentMetadata;+;+;+;+;+;
+;;;;UserGroup;+;;;;;
+;;;;Workflow;+;;+;;;
+$END_USERRIGHTS;;;;;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;wfl_usergroup;;;;;;;;
+
+# Access Rights for Workflow Users ;;;;;;;;;
+;;;;ItemSyncTimestamp;+;;;
+;;;;SyncItemJob;+;;;
+;;;;Type;+;;;
+;;;;Product;+;+;+;+;;
+;;;;Category;+;+;+;+;;
+;;;;VariantType;+;+;+;+;;
+;;;;Catalog;+;;;
+;;;;CatalogVersion;+;+;+;+;;
+;;;;ClassificationAttributeUnit;+;;;
+;;;;Media;+;+;+;+;;
+;;;;MediaContainer;+;+;+;+;;
+;;;;MediaFormat;+;+;+;;;
+;;;;MediaFolder;+;+;+;+;;
+;;;;Vendor;+;+;+;+;+;
+;;;;StockLevel;+;+;+;+;;
+;;;;Tax;+;+;+;+;;
+;;;;TaxRow;+;+;+;+;;
+;;;;PriceRow;+;+;+;+;;
+;;;;ProductFeature;+;+;+;+;;
+;;;;ProductReference;+;+;+;+;;
+;;;;Warehouse;+;+;+;+;;
+;;;;ProductTaxCode;+;+;+;+;;
+;;;;ProductOrderLimit;+;+;+;+;;
+;;;;Job;+;+;;;;
+;;;;CronJob;+;+;;;;
+;;;;JobLog;+;+;+;;;
+;;;;CronJobHistory;+;+;+;;;
+;;;;WorkflowAction;+;+;;;;
+;;;;AbstractComment;+;+;+;+;;
+;;;;Comment;+;+;+;+;;
+;;;;Reply;+;+;+;+;;
+;;;;WorkflowItemAttachment;+;+;;;;
+;;;;Domain;+;;;;;
+;;;;Component;+;;;;;
+;;;;CommentType;+;;;;;
+;;;;CommentUserSetting;+;+;+;+;;
+;;;;CommentMetadata;+;+;+;+;;
+;;;;WorkflowDecision;+;;;;;
+;;;;UserGroup;+;;;;;
+$END_USERRIGHTS;;;;;

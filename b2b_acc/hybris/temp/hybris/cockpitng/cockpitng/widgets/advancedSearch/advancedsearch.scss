@@ -1,0 +1,22 @@
+/*================================
+    Advanced Search
+================================*/
+// Styling of the Simple- & Advanced-Search Components.
+
+
+@import "cockpitng-globals.scss";
+@import "scss/support/_advancedsearch-variables.scss";
+
+@import "scss/components/_advancedsearch-defaults.scss";
+@import "scss/components/_advancedsearch-header.scss";
+@import "scss/components/_advancedsearch-footer.scss";
+@import "scss/components/_advancedsearch-fields.scss";
+
+@import "scss/editors/_advancedsearch-textsearch.scss";
+//unfinished
+@import "scss/editors/_advancedsearch-facetsearch.scss";
+
+//candidates for removal
+@import "scss/components/_advancedsearch-direction-radio-buttons.scss";
+@import "scss/components/_advancedsearch-mandatory-fields.scss";
+@import "scss/components/_advancedsearch-save-query.scss";

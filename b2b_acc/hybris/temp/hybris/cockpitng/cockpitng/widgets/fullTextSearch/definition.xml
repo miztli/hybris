@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+                   id="com.hybris.cockpitng.fulltextsearch">
+    <name>Full Text Search</name>
+    <description>Full Text Search widget</description>
+    <defaultTitle>Full Text Search</defaultTitle>
+    <author>hybris</author>
+    <version>0.1</version>
+
+    <view src="fullTextSearch.zul" />
+    <sockets>
+        <input id="type" type="java.lang.String"/>
+        <input id="initContext" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchInitContext"/>
+        <input id="fullTextSearchData" type="com.hybris.cockpitng.search.data.FullTextSearchData"/>
+        <input id="autosuggestions" type="java.util.Map"/>
+        <input id="reset" type="java.lang.Object"/>
+        <input id="clear" type="java.lang.Object"/>
+        <output id="autosuggestionQuery" type="com.hybris.cockpitng.search.data.AutosuggestionQueryData"/>
+        <output id="searchData" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchData"/>
+        <output id="searchContextChanged" type="com.hybris.cockpitng.dataaccess.context.Context"/>
+    </sockets>
+
+    <controller class="com.hybris.backoffice.widgets.fulltextsearch.FullTextSearchController"/>
+    <keywords>
+        <keyword>Search</keyword>
+    </keywords>
+
+    <settings>
+        <setting key="fulltextSearchConfigCtxCode" default-value="fulltext-search" type="String"/>
+        <setting key="actionSlotComponentName" type="String" default-value="fullTextSearchActions"/>
+        <setting key="minAutosuggestionsQueryLength" type="Integer" default-value="3"/>
+        <setting key="fieldQueryEnabled" type="java.lang.Boolean" default-value="true"/>
+        <setting key="simpleSearchConfigCtxCode" type="java.lang.String" default-value="simple-search"/>
+        <setting key="preferredSearchStrategy" type="java.lang.String"/>
+    </settings>
+</widget-definition>

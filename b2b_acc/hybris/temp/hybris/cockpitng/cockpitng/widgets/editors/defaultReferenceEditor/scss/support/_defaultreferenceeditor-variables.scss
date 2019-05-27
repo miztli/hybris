@@ -1,0 +1,93 @@
+@import "../../../../defaultEditorArea/scss/support/_defaultEditorArea-variables.scss";
+
+//    Variables
+// ================================
+
+// Validation-Variables in _defaultEditorArea-variables
+
+$default-reference-editor__input-add-bg-image--size: 23px;
+
+$default-reference-editor__box--border-width: $editor-area__input-field--border-width;
+
+$default-reference-editor__paging--height: auto;
+$default-reference-editor__paging--padding: 8px 10px;
+$default-reference-editor__paging--border-width: $default-reference-editor__box--border-width 0 0;
+$default-reference-editor__paging--bg-color: $white;
+$default-reference-editor__paging-input--height: $editor-defaults__inline-box--height;
+$default-reference-editor__paging-text--width: $editor-defaults__inline-box--height;
+
+$default-reference-editor__bandbox-button--size: $editor-defaults__inline-box--height;
+$default-reference-editor__bandbox-create-new-button--top: -($default-reference-editor__bandbox-button--size);
+$default-reference-editor__bandbox-button-icon--width: $default-reference-editor__bandbox-button--size - 2*$default-reference-editor__box--border-width;
+$default-reference-editor__bandbox-input-focus--bg-color: $blue__light--200;
+//$default-reference-editor__bandbox-button-icon--width: $default-reference-editor__bandbox-button--size - 2px;
+$default-reference-editor__bandbox-button--bg-color: $white;
+$default-reference-editor__bandbox-button-selected--bg-color: $blue__default;
+$default-reference-editor__bandbox-ellipsis-icon--font-size: $font-size__h4; // 18px;
+$default-reference-editor__bandbox-ellipsis-icon--height: $default-reference-editor__bandbox-button--size - 2*$default-reference-editor__box--border-width;
+$default-reference-editor__bandbox-ellipsis-icon--line-height: $default-reference-editor__bandbox-button--size;
+
+$default-reference-editor__bandbox-button-icon--hover-color: $blue__default;
+$default-reference-editor__bandbox-button-icon--hover-bg-color: $white;
+
+$default-reference-editor__listbox-to-create-only-box--margin-bottom: 5px;
+
+$default-reference-editor__list-item-content--padding-y: floor(($editor-defaults__inline-box--height - 2*$default-reference-editor__box--border-width - $editor-area__input-field--font-size)/2);
+$default-reference-editor__list-item-content--padding-x: $container-spacing-default__third;
+$default-reference-editor__list-item-content--padding: $default-reference-editor__list-item-content--padding-y $default-reference-editor__list-item-content--padding-x ($default-reference-editor__list-item-content--padding-y - $default-reference-editor__box--border-width);
+$default-reference-editor__list-item-create-new-content--padding: 0 0 0 $default-reference-editor__list-item-content--padding-x;
+
+$default-reference-editor__list-item--hover-bg-color: $blue__light--300;
+$default-reference-editor__list-item--bg-color: false; // $white;
+$default-reference-editor__list-item-disabled--bg-color: $default-reference-editor__list-item--bg-color;
+
+$default-reference-editor__list-item-default-button--size: $editor-defaults__inline-box-delete-btn--size;
+$default-reference-editor__list-item-button-box--width: $editor-defaults__inline-box--height;
+
+$default-reference-editor__list-item-add-button--size: $default-reference-editor__list-item-default-button--size;
+$default-reference-editor__list-item-add-button--top: -2*$default-reference-editor__box--border-width;
+$default-reference-editor__list-item-add-button-label--margin-left: 28px;
+$default-reference-editor__list-item-add-button--left: -($default-reference-editor__list-item-add-button--size + 2*$default-reference-editor__box--border-width + 2px );
+$default-reference-editor__list-item-add-icon--size: 15px;
+$default-reference-editor__list-item-add-icon--margin-top: -(floor($default-reference-editor__list-item-add-icon--size/2));
+$default-reference-editor__list-item-add-icon--right: $default-reference-editor__list-item-content--padding-x;
+
+$default-reference-editor__create-new-container--line-height: $editor-defaults__inline-box--height - 2*$default-reference-editor__box--border-width;
+$default-reference-editor__create-new-button--top: - $default-reference-editor__box--border-width;
+$default-reference-editor__create-new-button--font: $font-family-fontawesome;
+$default-reference-editor__create-new-button--size: $editor-defaults__inline-box--height;
+$default-reference-editor__create-new-button-active--color: $blue__default;
+$default-reference-editor__create-new-button-active--bg-color: $blue__light--200;
+$default-reference-editor__create-new-button--bg-color: $white;
+$default-reference-editor__create-only-button--right: 0;//$default-reference-editor__box--border-width;
+$default-reference-editor__create-only-add-icon--background-postion-x: ($default-reference-editor__list-item-add-button-label--margin-left/2) - ($default-reference-editor__list-item-default-button--size/2);
+$default-reference-editor__create-only-add-icon--background-postion: $default-reference-editor__create-only-add-icon--background-postion-x floor(($editor-defaults__inline-box--height - $default-reference-editor__input-add-bg-image--size - 2)/2);
+
+$default-reference-editor__create-type-selector-container--margin-left: $default-reference-editor__list-item-content--padding-x * -1;
+$default-reference-editor__list-item-remove-button--size: $default-reference-editor__list-item-default-button--size;
+$default-reference-editor__list-item-remove-button--right: ceil(($default-reference-editor__list-item-button-box--width - $default-reference-editor__list-item-remove-button--size)/2);
+$default-reference-editor__list-item-remove-button--margin-top: -(floor($default-reference-editor__list-item-remove-button--size/2));
+$default-reference-editor__list-item-remove-icon--size: 15px;
+$default-reference-editor__list-item-remove-icon--margin-top: -(floor($default-reference-editor__list-item-remove-icon--size/2));
+$default-reference-editor__list-item-remove-icon--margin-left: $default-reference-editor__list-item-remove-icon--margin-top;
+
+$default-reference-editor__list-body-loading--bg-color: false;
+$default-reference-editor__list-body-loading-icon--size: 16px;
+$default-reference-editor__list-body-loading-icon--background-position: 50% floor(($editor-defaults__inline-box--height - $default-reference-editor__list-body-loading-icon--size)/2);
+
+$default-reference-editor__multi-reference-list-item--padding-right: $default-reference-editor__list-item-remove-button--right;
+$default-reference-editor__list-item-remove-enabled--hover-padding-right: $default-reference-editor__list-item-remove-button--right + $default-reference-editor__list-item-remove-button--size - 5px; //overlap
+
+$default-reference-editor__treecell--padding: 0 $default-reference-editor__list-item-content--padding-x;
+$default-reference-editor__list-tree-cell--border-color: $grey__light--200;
+$default-reference-editor__treecell--bg-color: false;
+$default-reference-editor__treecell--hover-bg-color: false;
+$default-reference-editor__treecell--hover-color: false;
+$default-reference-editor__treecell-abstract--color: $grey__default--100;
+$default-reference-editor__treecell-abstract--hover-color: false;
+$default-reference-editor__treecell-lvl0--bg-color: false;
+$default-reference-editor__treecell-text--padding-left: 2px;
+$default-reference-editor__type-select-container--margin: 0;
+
+$default-reference-editor__type-selector-popup--max-height: 250px;
+$default-reference-editor__type-selector-popup--max-width: 300px;

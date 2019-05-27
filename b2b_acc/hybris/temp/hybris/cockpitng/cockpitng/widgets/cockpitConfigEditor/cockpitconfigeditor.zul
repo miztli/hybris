@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:h="http://www.w3.org/1999/xhtml" 
+		xmlns:zk="http://www.zkoss.org/2005/zk"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		width="100%" height="100%" 
+		align="center"
+		onSocketInput_config_string="cockpitConfigurationService.setConfigAsString(event.getData())">
+
+	<div style="position: relative;" width="100%" height="100%" align="left">
+		<div height="30px">
+			<div  style="background: #fafafa; margin: 2px; padding: 5px; padding-left: 15px; border: 1px solid #ccc; border-radius: 6px 6px 6px 6px;">
+				<hbox width="100%" widths="50%,50%">
+					<label value="Cockpit Config" style="color: #4C7094"/>
+					<div align="right">
+						<toolbarbutton label="Reload config" 
+							onClick='widgetInstanceManager.sendOutput("config_string", cockpitConfigurationService.getConfigAsString())'/>
+					</div>
+				</hbox>
+			</div>
+		</div>
+		
+		<div width="100%" style="position: absolute; top: 30px; bottom: 0px; background: #EDEDED;">
+			<div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;">
+				<widgetslot slotID="contentSlot" height="100%" />
+			</div>
+		</div>
+	</div>
+</widget>

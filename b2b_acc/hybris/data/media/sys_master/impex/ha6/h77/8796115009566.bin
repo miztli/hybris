@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=fr
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_qualifying_coupons;Code de bon de réduction;Code de bon de réduction du bon de réduction appliqué {bons de réduction};
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_qualifying_coupons;coupons;Bons de réduction concernés;Bons de réduction préconfigurés pouvant être utilisés pour déclencher cette promotion
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang];;
+;coupon;Bon de réduction;;
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_given_coupon;Bon de réduction gratuit;Bon de réduction gratuit {valeur};
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_given_coupon;value;Code de bon de réduction;Bon de réduction gratuit octroyé dans le cadre de cette promotion

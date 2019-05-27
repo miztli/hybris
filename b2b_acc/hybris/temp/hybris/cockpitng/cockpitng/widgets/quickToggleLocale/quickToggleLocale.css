@@ -1,0 +1,13 @@
+/*================================
+    QuickLocaleToggle Popup (Systembar)
+================================*/
+/*================================
+    Systembar Variables
+================================*/
+.yw-quickToggleLocale-cl {
+  width: 100%;
+  padding: 8px 10px;
+  border-top: 1px solid transparent; }
+  .yw-quickToggleLocale-cl-value, .yw-quickToggleLocale-cl-label {
+    display: inline-block;
+    padding: 3px 5px 2px 5px; }

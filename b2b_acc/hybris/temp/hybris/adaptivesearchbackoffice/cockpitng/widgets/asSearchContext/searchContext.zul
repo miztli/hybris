@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<div sclass="yas-selectors">
+		<div id="asLanguageSelector" sclass="yas-language-selector">
+			<label value="${labels.searchContext.language}" />
+			<combobox id="languageSelector" readonly="true">
+				<template name="model">
+					<comboitem label="${each.name}" value="${each.isoCode}" />
+				</template>
+			</combobox>
+		</div>
+		<div id="asCurrencySelector" sclass="yas-currency-selector">
+			<label value="${labels.searchContext.currency}" />
+			<combobox id="currencySelector" readonly="true">
+				<template name="model">
+					<comboitem label="${each.name}" value="${each.isoCode}" />
+				</template>
+			</combobox>
+		</div>
+	</div>
+</widget>
+

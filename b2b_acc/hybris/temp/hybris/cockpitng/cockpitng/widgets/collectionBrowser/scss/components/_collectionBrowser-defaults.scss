@@ -1,0 +1,74 @@
+/*================================
+    Collection Browser - Defaults
+================================*/
+// All Defaults connected to the Collection Browser
+
+
+@import "../support/_collectionBrowser-variables.scss";
+
+/* STATUSBAR */
+button.yw-listview-statusbar-button {
+    background: none repeat scroll 0 0 transparent;
+    color: $collection-browser__list-item--color;
+    height: auto;
+    left: inherit;
+    padding: $collection-browser__list-view-status-button--padding;
+    
+    &:hover {
+        background-color: $collection-browser__list-view-status-button--hover-bg-color;
+        color: $collection-browser__list-view-status-button--hover-color;
+        cursor: default;
+    }
+    &[disabled], &[disabled]:hover {
+        background-color: transparent !important;
+    }
+}
+
+.yw-coll-browser-container {
+    .z-treerow .z-treecell,
+    .z-listcell-content,
+    .z-treecell-content {
+        cursor: $collection-browser__tree-view-content--cursor;
+    }
+    .yw-coll-browser-hyperlink {
+        &.z-label:hover {
+            text-decoration: underline;
+        }
+        &:hover {
+            cursor: $collection-browser__hyperlink-label-hover--cursor;
+            color: $collection-browser__hyperlink-label-hover--color;
+        }
+    }
+    .yw-coll-browser-focused .yw-coll-browser-hyperlink {
+        color: $collection-browser__focused-element-hyperlink-label--color;
+    }
+    .z-listitem,
+    .z-treerow,
+    .yw-grid-view-tile {
+        &:hover .yw-coll-browser-hyperlink {
+            text-decoration: underline;
+        }
+    }
+    .yw-listview-cell .yw-compound-renderer-container,
+    .yw-grid-view-container .bottom-panel-container{
+        padding-left: $collection-browser__status-icons-container--padding-left;
+        
+        &:first-child {
+            padding-left: 0;
+        }
+    }
+}
+
+.yw-collection-preview {
+    .z-listbox-body {
+        background-color: $collection-browser__collection-preview--bg-color;
+        background-image: url("img/icon_loading_indicator_default.gif");
+        background-position: $collection-browser__collection-preview--bg-position;
+        background-repeat: no-repeat;
+        width: 100% !important; /* FIX FOR WRONG ZK WIDTH CALCULATION */
+    }
+    &-empty-list.z-listbox .z-listbox-body {
+        background: $collection-browser__collection-preview--bg-color;
+    }
+}
+

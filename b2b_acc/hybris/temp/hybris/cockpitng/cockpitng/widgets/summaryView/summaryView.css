@@ -1,0 +1,349 @@
+@charset "UTF-8";
+/*================================
+    Summary View Widget
+================================*/
+.yw-summaryview {
+  height: 100%;
+  color: #151c22;
+  background-color: #f4f7fa;
+  padding: 0;
+  line-height: 17px;
+  word-break: normal;
+  word-wrap: break-word;
+  word-break: break-word; }
+  .yw-summaryview.z-vlayout > .z-vlayout-inner {
+    height: auto !important; }
+  .yw-summaryview-content-noitem {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 15px; }
+  .yw-summaryview .yw-summary-content-noitem {
+    padding: 0 20px;
+    font-weight: bold; }
+  .yw-summaryview-title-container {
+    margin: 0 20px;
+    padding-top: 15px; }
+    .yw-summaryview-title-container .z-label {
+      max-height: 53px;
+      font-weight: bold;
+      display: block;
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; }
+  .yw-summaryview-image-container {
+    text-align: center;
+    width: 100%;
+    height: 290px;
+    padding: 15px 0;
+    position: relative; }
+    .yw-summaryview-image-container .yw-summaryview-img-thumbnail {
+      width: auto;
+      height: auto;
+      max-height: 260px;
+      max-width: 260px;
+      min-height: 180px;
+      min-width: 180px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto; }
+    .yw-summaryview-image-container:before {
+      background-color: #ffffff;
+      top: 15px;
+      height: 260px;
+      width: 260px;
+      margin-left: -130px;
+      left: 50%;
+      position: absolute;
+      z-index: 0;
+      content: ""; }
+  .yw-summaryview-main-content {
+    overflow: auto; }
+    .yw-static-section-slot .yw-summaryview-main-content {
+      height: auto !important; }
+    .yw-summaryview-main-content > .z-div:last-child {
+      margin-bottom: 40px; }
+  .yw-summaryview-section-container {
+    padding: 0;
+    border: none; }
+    .yw-summaryview-section-container-content {
+      position: relative;
+      z-index: 0; }
+      .yw-summaryview-section-container-content > .z-vlayout-inner {
+        padding-bottom: 1px !important; }
+    .yw-summaryview-section-container > .z-groupbox-header {
+      height: auto;
+      padding: 10px 30px 10px 20px;
+      border-bottom: 1px solid #e0e9f0;
+      position: relative; }
+      .yw-editorarea .yw-summaryview-section-container > .z-groupbox-header > .yw-summaryview-section-container-caption > .z-caption-content:after,
+      .yw-summaryview-section-container > .z-groupbox-header > .yw-summaryview-section-container-caption > .z-caption-content:after {
+        display: none; }
+    .yw-summaryview-section-container-caption {
+      padding-right: 0;
+      min-height: 24px; }
+      .yw-summaryview-section-container-caption .z-caption-content {
+        position: relative;
+        overflow: visible;
+        line-height: 24px;
+        padding-bottom: 2px; }
+    .yw-summaryview-section-container .z-groupbox-content {
+      padding: 0 0 10px; }
+    .yw-summaryview-section-container-content > .z-vlayout-inner > .z-label,
+    .yw-summaryview-section-container > .z-groupbox-content > .z-label {
+      padding: 10px 20px; }
+    .yw-summaryview-section-container .ye-instant-editor-editor-container.ye-instant-editor-component-visible .yw-loceditor-caption {
+      height: auto;
+      overflow: hidden; }
+      .yw-summaryview-section-container .ye-instant-editor-editor-container.ye-instant-editor-component-visible .yw-loceditor-caption .y-icon-loceditor {
+        margin-top: 10px; }
+  .yw-summaryview .z-groupbox .z-groupbox-header .yw-summaryview-dataquality-container-caption > .z-caption-content:after,
+  .yw-summaryview .z-groupbox .z-groupbox-header .yw-summaryview-dataquality-container-caption > .z-caption-content:hover:after,
+  .yw-summaryview .z-groupbox .z-groupbox-header .yw-summaryview-section-container-caption:after {
+    content: "";
+    width: 10px;
+    height: 15px;
+    font-size: 16px;
+    line-height: 15px;
+    font-family: "FontAwesome", sans-serif;
+    color: #7f90a5;
+    text-align: center;
+    position: absolute; }
+  .yw-summaryview .z-groupbox .z-groupbox-header .yw-summaryview-dataquality-container-caption > .z-caption-content:after,
+  .yw-summaryview .z-groupbox .z-groupbox-header .yw-summaryview-dataquality-container-caption > .z-caption-content:hover:after {
+    top: 5px;
+    right: -15px;
+    border: none;
+    left: auto;
+    display: block; }
+  .yw-summaryview .z-groupbox-collapsed > .z-groupbox-header .yw-summaryview-dataquality-container-caption > .z-caption-content:after,
+  .yw-summaryview .z-groupbox-collapsed > .z-groupbox-header .yw-summaryview-dataquality-container-caption > .z-caption-content:hover:after,
+  .yw-summaryview .z-groupbox-collapsed > .z-groupbox-header .yw-summaryview-section-container-caption:after {
+    content: "";
+    width: 10px;
+    height: 15px;
+    font-size: 16px;
+    line-height: 15px;
+    font-family: "FontAwesome", sans-serif;
+    color: #7f90a5;
+    text-align: center;
+    position: absolute; }
+  .z-groupbox > .z-groupbox-header .yw-summaryview-section-container-caption {
+    background: transparent;
+    position: static;
+    padding: 0;
+    font-size: 18px;
+    display: block; }
+  .yw-summaryview-section-container-caption .z-caption-content .z-caption-content {
+    color: #151c22;
+    display: block;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; }
+  .yw-summaryview-section-container-caption:after {
+    top: 10px;
+    right: 15px;
+    margin-top: 9px; }
+  .yw-summaryview-icon-item-container {
+    color: #818ea2;
+    padding: 10px 20px 10px 56px;
+    position: relative;
+    background-color: transparent; }
+    .yw-summaryview-icon-item-container div.ye-default-reference-editor-selected-item-container:hover {
+      padding-right: 10px; }
+    .yw-summaryview-icon-item-container.yw-summaryview-container-editable .yw-summaryview-icon-item-text-container,
+    .yw-summaryview-icon-item-container .ye-instant-editor-label-editable,
+    .yw-summaryview-icon-item-container .ye-instant-editor-editor-container {
+      text-decoration: none; }
+      .yw-summaryview-icon-item-container.yw-summaryview-container-editable .yw-summaryview-icon-item-text-container:before, .yw-summaryview-icon-item-container.yw-summaryview-container-editable .yw-summaryview-icon-item-text-container:after,
+      .yw-summaryview-icon-item-container .ye-instant-editor-label-editable:before,
+      .yw-summaryview-icon-item-container .ye-instant-editor-label-editable:after,
+      .yw-summaryview-icon-item-container .ye-instant-editor-editor-container:before,
+      .yw-summaryview-icon-item-container .ye-instant-editor-editor-container:after {
+        content: "";
+        position: absolute;
+        display: none; }
+      .yw-summaryview-icon-item-container.yw-summaryview-container-editable .yw-summaryview-icon-item-text-container:before,
+      .yw-summaryview-icon-item-container .ye-instant-editor-label-editable:before,
+      .yw-summaryview-icon-item-container .ye-instant-editor-editor-container:before {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fcfdfe; }
+    .yw-summaryview-icon-item-container:hover .ye-instant-editor-label-editable {
+      text-decoration: underline; }
+      .yw-summaryview-icon-item-container:hover .ye-instant-editor-label-editable:after {
+        z-index: 1;
+        display: inline-block; }
+    .yw-summaryview-icon-item-container:hover .ye-instant-editor-label-editable:before, .yw-summaryview-icon-item-container.yw-summaryview-container-editable:hover .yw-summaryview-icon-item-text-container:before,
+    .yw-summaryview-icon-item-container .ye-instant-editor-editor-container.ye-instant-editor-component-visible:before {
+      display: inline-block;
+      z-index: -1; }
+    .yw-summaryview-icon-item-container .yw-summaryview-icon-item-text-container .ye-instant-editor-label-editable {
+      margin-left: 0; }
+    .yw-summaryview-icon-item-container .ye-instant-editor-editor-container.ye-instant-editor-component-visible .ye-instant-editor-buttons-container {
+      right: 20px; }
+  .yw-summaryview-icon-item-label,
+  .yw-summaryview .ye-instant-editor-attribute-label {
+    color: #000000;
+    font-weight: bold;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .yw-summaryview-icon-item-value .ye-text-button {
+    font-size: 14px; }
+  .yw-summaryview-icon-item-label + .yw-summaryview-icon-item-value {
+    padding-top: 5px; }
+    .yw-summaryview-icon-item-label + .yw-summaryview-icon-item-value .z-label,
+    .yw-summaryview-icon-item-label + .yw-summaryview-icon-item-value .ye-text-button {
+      padding-top: 2px;
+      display: block; }
+      .yw-summaryview-icon-item-label + .yw-summaryview-icon-item-value .z-label:first-child,
+      .yw-summaryview-icon-item-label + .yw-summaryview-icon-item-value .ye-text-button:first-child {
+        padding-top: 0; }
+  .yw-summaryview-sync-status-icon, .yw-summaryview-sync-status-text {
+    display: inline-block; }
+  .yw-summaryview-sync-status-error {
+    color: #ff3b30; }
+
+.yw-summaryview-icon-item-icon {
+  width: 16px;
+  min-height: 16px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  float: left;
+  position: relative; }
+  .yw-summaryview-icon-item-icon:after {
+    font-family: "FontAwesome", sans-serif;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    width: 100%; }
+.yw-summaryview-section-container-content .yw-summaryview-icon-item-icon {
+  margin-top: -8px;
+  margin-left: 20px;
+  position: absolute;
+  top: 50%;
+  left: 0; }
+.yw-summaryview-approval-status-approved {
+  background-image: url("images/icon-product-approval-status-approved.svg"); }
+.yw-summaryview-approval-status-unapproved {
+  background-image: url("images/icon-product-approval-status-unapproved.svg"); }
+.yw-summaryview-approval-status-check {
+  background-image: url("images/icon-product-approval-status-check.svg"); }
+.yw-summaryview-online-status-online:after, .yw-summaryview-online-status-offline:after {
+  content: "";
+  color: #7ed321; }
+.yw-summaryview-online-status-offline:after {
+  color: #ff3b30; }
+.yw-summaryview-attribute-itemtype {
+  background-image: url("images/icon-summaryView-type.svg"); }
+.yw-summaryview-attribute-variants {
+  background-image: url("images/icon-summaryView-variants.svg"); }
+.yw-summaryview-attribute-catalogversion {
+  background-image: url("images/icon-summaryView-source-target-sync.svg"); }
+.yw-summaryview-assets-thumbnail-picture-normal-thumbnails-detail-logo-data_sheet-others {
+  background-image: url("images/icon-summaryView-digital-assets.svg"); }
+.yw-summaryview-icon-item-container.yw-summaryview-container-editable.yw-summaryview-sync-status .yw-summaryview-icon-item-text-container {
+  width: calc(100% - 20px); }
+  .yw-summaryview-icon-item-container.yw-summaryview-container-editable.yw-summaryview-sync-status .yw-summaryview-icon-item-text-container:after {
+    background: url(images/icon_summaryView_sync_hover.png) center no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    right: 20px;
+    cursor: pointer;
+    left: auto;
+    top: 50%; }
+.yw-summaryview-icon-item-container.yw-summaryview-container-editable.yw-summaryview-sync-status:hover .yw-summaryview-icon-item-text-container:after {
+  display: inline-block;
+  content: " ";
+  z-index: 1; }
+
+.yw-summaryview-dataquality-bar {
+  height: 9px;
+  background: #d5d8dc;
+  background-image: none;
+  border-radius: 2px;
+  margin-top: 10px;
+  position: relative;
+  width: 100%; }
+  .yw-summaryview-dataquality-bar-container-caption {
+    width: 100%; }
+    .yw-summaryview-dataquality-bar-container-caption .z-caption-content {
+      font-size: 13px;
+      width: 100%; }
+  .yw-summaryview-dataquality-bar .z-progressmeter-image {
+    top: 0;
+    border-radius: 2px; }
+  .yw-summaryview-dataquality-bar-valid .z-progressmeter-image {
+    background-color: #7ed321;
+    height: 9px; }
+  .yw-summaryview-dataquality-bar-warning .z-progressmeter-image {
+    background-color: #ff9914;
+    height: 9px; }
+  .yw-summaryview-dataquality-bar-error .z-progressmeter-image {
+    background-color: #ff3b30;
+    height: 9px; }
+.yw-summaryview-dataquality-container {
+  background: #fcfdfe;
+  border: none; }
+  .yw-summaryview-dataquality-container.z-groupbox {
+    padding-top: 0; }
+    .yw-summaryview-dataquality-container.z-groupbox > .z-groupbox-header {
+      padding: 15px 30px 20px 20px;
+      border-bottom: 1px solid #e0e9f0;
+      height: auto;
+      position: relative; }
+      .yw-summaryview-dataquality-container.z-groupbox > .z-groupbox-header .z-caption {
+        min-height: 15px;
+        padding: 0;
+        background: transparent;
+        position: static; }
+        .yw-summaryview-dataquality-container.z-groupbox > .z-groupbox-header .z-caption-content {
+          font-size: 13px;
+          position: relative;
+          width: 100%; }
+    .yw-summaryview-dataquality-container.z-groupbox-collapsed {
+      background: transparent; }
+  .yw-summaryview-section-container-content .yw-summaryview-dataquality-container > .z-groupbox-content {
+    padding: 0 0 0 40px;
+    border-bottom: 1px solid #e0e9f0; }
+  .yw-summaryview-dataquality-container-content > .z-vlayout-inner {
+    border-bottom: 1px solid #e0e9f0; }
+    .yw-summaryview-dataquality-container-content > .z-vlayout-inner:last-child {
+      border: none; }
+.yw-summaryview-dataquality-item-container {
+  position: relative;
+  cursor: pointer; }
+  .yw-summaryview-dataquality-item-container .z-label {
+    margin-right: 40px;
+    padding: 12px 0;
+    font-size: 13px;
+    display: inline-block; }
+  .yw-summaryview-dataquality-item-container button.z-button {
+    height: 24px;
+    width: 20px;
+    margin-top: -12px;
+    right: 10px;
+    top: 50%;
+    padding: 0;
+    min-height: 0;
+    background: transparent !important;
+    display: block;
+    position: absolute; }
+  .yw-summaryview-dataquality-item-container .z-icon-times {
+    color: #ff9914; }
+  .yw-summaryview-dataquality-item-container .z-icon-check {
+    color: #7ed321; }

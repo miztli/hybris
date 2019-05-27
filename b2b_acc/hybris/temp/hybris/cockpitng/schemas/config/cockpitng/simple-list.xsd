@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://www.hybris.com/cockpitng/config/simplelist"
+        xmlns:tns="http://www.hybris.com/cockpitng/config/simplelist" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+  <xs:element name="simple-list" type="tns:simple-list"/>
+
+  <xs:complexType name="simple-list">
+    <xs:sequence>
+      <xs:element name="name" type="tns:name" minOccurs="0"/>
+      <xs:element name="description" type="tns:description" minOccurs="0"/>
+      <xs:element name="image" type="tns:image" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="name">
+    <xs:complexContent>
+      <xs:extension base="tns:list-slot">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="list-slot" abstract="true">
+    <xs:sequence/>
+    <xs:attribute name="field" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="description">
+    <xs:complexContent>
+      <xs:extension base="tns:list-slot">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="image">
+    <xs:complexContent>
+      <xs:extension base="tns:list-slot">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

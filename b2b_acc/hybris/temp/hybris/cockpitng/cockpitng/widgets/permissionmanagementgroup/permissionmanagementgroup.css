@@ -1,0 +1,119 @@
+/*================================
+   Y PERMISSION SKINNING
+================================*/
+.yw-modal-permissionmanagementgroup .z-west-splitter {
+  background: #eef3f7; }
+.yw-modal-permissionmanagementgroup .yw-com_hybris_cockpitng_borderlayout .z-borderlayout,
+.yw-modal-permissionmanagementgroup .yw-borderlayout .opaquetrue .yw-layoutregion.z-south {
+  background: #eef3f7; }
+.yw-modal-permissionmanagementgroup .z-north, .yw-modal-permissionmanagementgroup .z-north.yw-collapsed-down .z-north-header {
+  background: #eef3f7; }
+.yw-modal-permissionmanagementgroup .z-north .z-north-header button.yw-expandCollapse {
+  margin-top: -10px; }
+.yw-modal-permissionmanagementgroup .z-center {
+  background: #eef3f7; }
+  .yw-modal-permissionmanagementgroup .z-center.yw-collapsed-down {
+    background: #ffffff; }
+.yw-modal-permissionmanagementgroup .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container > .z-caption-content > button.yw-expandCollapse, .yw-modal-permissionmanagementgroup .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container > .z-caption-content > button.yw-collapsibleContainer-locked, .yw-modal-permissionmanagementgroup .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container > .z-caption-content > button.yw-collapsibleContainer-unlocked,
+.yw-modal-permissionmanagementgroup .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container > .z-caption-content > button.yw-expandCollapse,
+.yw-modal-permissionmanagementgroup .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container > .z-caption-content > button.yw-collapsibleContainer-locked,
+.yw-modal-permissionmanagementgroup .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container > .z-caption-content > button.yw-collapsibleContainer-unlocked {
+  top: 50%;
+  margin-top: -8px; }
+.yw-modal-permissionmanagementgroup tbody.z-listbox-emptybody td {
+  background: transparent; }
+.yw-modal-permissionmanagementgroup .z-north-splitter, .yw-modal-permissionmanagementgroup .z-south-splitter {
+  background: #eef3f7; }
+.yw-modal-permissionmanagementgroup .yw-collapsed-down .z-north-header, .yw-modal-permissionmanagementgroup .yw-collapsibleContainer-caption > .z-south-header {
+  border-color: #eef3f7 !important; }
+.yw-modal-permissionmanagementgroup .yw-layoutregion.z-south, .yw-modal-permissionmanagementgroup .yw-layoutregion.z-south > .z-south-body {
+  min-height: 64px; }
+.yw-modal-permissionmanagementgroup .yw-borderlayout .yw-caption-container {
+  min-height: auto; }
+.yw-modal-permissionmanagementgroup .yw-textsearch-single {
+  padding: 0px 20px; }
+.yw-modal-permissionmanagementgroup .yw-collapsibleContainer-caption > .z-north-header, .yw-modal-permissionmanagementgroup .yw-collapsibleContainer-caption > .z-center-header {
+  height: auto;
+  padding: 10px 20px 5px; }
+.yw-modal-permissionmanagementgroup .yw-collapsibleContainer-caption > .z-north-body {
+  height: auto !important; }
+.yw-modal-permissionmanagementgroup .yw-com_hybris_cockpitng_collectionBrowser .yw-listview-actioncontainer {
+  padding-top: 0; }
+.yw-modal-permissionmanagementgroup .z-listbox-body {
+  background: #ffffff; }
+
+.yw-permission-controll-cell {
+  height: 20px;
+  width: 20px; }
+.yw-permission-cell-inherit-denied-false, .yw-permission-cell-denied-false, .yw-permission-cell-inherit-denied-true, .yw-permission-cell-denied-true {
+  height: 16px;
+  width: 16px;
+  position: relative; }
+  .yw-permission-cell-inherit-denied-false:before, .yw-permission-cell-denied-false:before, .yw-permission-cell-inherit-denied-true:before, .yw-permission-cell-denied-true:before {
+    content: "\f00d";
+    position: absolute;
+    font: normal normal normal 16px FontAwesome;
+    color: inherit;
+    width: 100%;
+    text-align: center;
+    line-height: 18px; }
+.yw-permission-cell-denied-false:before, .yw-permission-cell-inherit-denied-false:before {
+  content: "\f00c"; }
+.yw-permission-cell-inherit-denied-true, .yw-permission-cell-inherit-denied-false {
+  color: #7f90a4; }
+  .yw-permission-cell-inherit-denied-true:hover, .yw-permission-cell-inherit-denied-false:hover {
+    color: #8293a6; }
+.yw-permission-cell-denied-false {
+  color: #18bc33; }
+  .yw-permission-cell-denied-false:hover {
+    color: #19c134; }
+.yw-permission-cell-denied-true {
+  color: #ff3b30; }
+  .yw-permission-cell-denied-true:hover {
+    color: #ff4035; }
+.yw-permission-cell-disabled {
+  opacity: 0.5;
+  cursor: default; }
+  .yw-permission-cell-disabled:hover {
+    cursor: default; }
+.yw-permission-notpersisted {
+  font-style: italic; }
+.yw-permission-legend {
+  display: table;
+  padding: 15px 15px 20px; }
+  .yw-permission-legend-holder {
+    display: table-cell;
+    padding: 5px 10px; }
+    .yw-permission-legend-holder > span {
+      float: left;
+      line-height: 19px; }
+      .yw-permission-legend-holder > span.z-label {
+        padding-left: 5px;
+        padding-right: 10px; }
+  .yw-permission-legend-icon-inherited-ig, .yw-permission-legend-icon-g, .yw-permission-legend-icon-inherited-id, .yw-permission-legend-icon-d {
+    height: 17px;
+    width: 17px;
+    position: relative;
+    display: inline-block; }
+    .yw-permission-legend-icon-inherited-ig:before, .yw-permission-legend-icon-g:before, .yw-permission-legend-icon-inherited-id:before, .yw-permission-legend-icon-d:before {
+      content: "\f00d";
+      position: absolute;
+      font: normal normal normal 16px FontAwesome;
+      color: inherit;
+      width: 100%;
+      text-align: center;
+      line-height: 19px; }
+  .yw-permission-legend-icon-g:before, .yw-permission-legend-icon-inherited-ig:before {
+    content: "\f00c"; }
+  .yw-permission-legend-icon-inherited-id, .yw-permission-legend-icon-inherited-ig {
+    color: #7f90a4; }
+    .yw-permission-legend-icon-inherited-id:hover, .yw-permission-legend-icon-inherited-ig:hover {
+      color: #8293a6; }
+  .yw-permission-legend-icon-g {
+    color: #18bc33; }
+    .yw-permission-legend-icon-g:hover {
+      color: #19c134; }
+  .yw-permission-legend-icon-d {
+    color: #ff3b30; }
+    .yw-permission-legend-icon-d:hover {
+      color: #ff4035; }

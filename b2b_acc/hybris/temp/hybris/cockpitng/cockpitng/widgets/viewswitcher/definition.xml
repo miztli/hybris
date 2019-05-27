@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+	id="com.hybris.backoffice.viewswitcher">
+	<name>View Switcher</name>
+	<description>Widget changing view on basis of children ids</description>
+	<defaultTitle>View Switcher</defaultTitle>
+	<author>hybris</author>
+	<version>1.0</version>
+	<controller class="com.hybris.backoffice.widgets.viewswitcher.ViewSwitcherWidgetController"/>
+	<sockets>
+		<input id="selectViews" type="java.lang.Object" />
+        <output id="selectedViews" type="java.lang.String" multiplicity="Collection" />
+        <output id="viewsSwitched" type="com.hybris.backoffice.widgets.viewswitcher.ViewsSwitchedData"/>
+        <output id="requestedViews" type="java.lang.String" multiplicity="Collection" />
+	</sockets>
+	<keywords>
+		<keyword>Layout</keyword>
+	</keywords>
+	<settings>
+		<setting key="viewSwitcherConfigCtx" type="java.lang.String" default-value="view-switcher"/>
+		<setting key="defaultView" type="java.lang.String" default-value="" />
+        <setting key="initialView" type="java.lang.String" default-value="" />
+        <setting key="selectViews_eval" type="java.lang.String" default-value="" />
+        <setting key="autoCloseInactive" type="java.lang.Boolean" default-value="true" />
+	</settings>
+</widget-definition>

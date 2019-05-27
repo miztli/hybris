@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul" sclass="yw-roleChooser-widget">
+	<popup id="userRoleChooser" sclass="yw-roleChooser-popup yw-systemBarMenu-popup">
+		<listbox id="userRoleList" rows="0" width="240px" emptyMessage="${labels.emptyList}">
+			<template name="model">
+				<listitem value="${each}" selected="${each.selected}">
+					<listcell>
+						<label value="${each.name}" if="${each.name != null}" sclass="yw-roleChooser-roleName"/>
+						<label value="${each.code}" if="${each.name == null}" sclass="yw-roleChooser-roleName"/>
+						<label value="${each.description}" sclass="yw-roleChooser-roleDesc"/>
+					</listcell>
+				</listitem>
+			</template>
+		</listbox>
+	</popup>
+	<toolbarbutton id="userRoleChooserBtn" popup="userRoleChooser, position=after_start" image="${wr}/images/icon_systembar_user.svg"/>
+</widget>

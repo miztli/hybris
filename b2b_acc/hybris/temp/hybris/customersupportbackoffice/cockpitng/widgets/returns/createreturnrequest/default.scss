@@ -1,0 +1,188 @@
+@import "cockpitng-globals.scss";
+
+$oms-widget-popup-bottom-toolbar--height: 155px;
+$oms-widget-createreturnrequest-header--height: 110px;
+$oms-widget-footer-gutter: 2*$container-spacing-default__third;
+$oms-widget-gutter: 2*$container-spacing-default__third;
+$oms-widget-footer--border: 1px solid $grey__default--300;
+
+$oms-widget-createreturnrequest-list-container__checkbox-label--margin-left: 3px;
+$oms-widget-createreturnrequest-listbox-header__column-header--padding: 4px;
+$oms-widget-createreturnrequest-listbox-header__comment--margin-top: -3px;
+$oms-widget-createreturnrequest-controller-area--width: 351px;
+$oms-widget-createreturnrequest-controller-area--margin-top: 33px;
+$oms-widget-createreturnrequest-confirm-area--width: 60%;
+$oms-widget-createreturnrequest-configuration-revert-button--width: 25%;
+$oms-widget-createreturnrequest-listbox--row--gutter: 4px;
+$oms-widget-createreturnrequest-listbox--row__comment--width: 93%;
+$oms-widget-createreturnrequest-listbox--row__return-qt--width: 50%;
+$oms-widget-createreturnrequest-listbox--row__return-qt--margin-left: 17%;
+
+//implementing the footer buttons styling
+.oms-widget-createreturnrequest-footer{
+    padding: $oms-widget-footer-gutter;
+    text-align: right;
+    border-top: $oms-widget-footer--border;
+    height: $oms-widget-popup-bottom-toolbar--height;
+    width: 100%;
+}
+
+.oms-widget-createreturnrequest-header{
+    height: $oms-widget-createreturnrequest-header--height;
+    border-top: $oms-widget-footer--border;
+    border-bottom: $oms-widget-footer--border;
+    padding: $oms-widget-gutter;
+}
+
+.oms-widget-createreturnrequest-refund-amount-area--delivery-cost,
+.oms-widget-createreturnrequest-refund-amount-area--total-refund,
+.oms-widget-createreturnrequest-refund-amount-area--estimated-tax,
+.oms-widget-createreturnrequest-refund-amount-area,
+.oms-widget-createreturnrequest-controller-area,
+.oms-widget-createreturnrequest-configuration-revert-button,
+.oms-widget-createreturnrequest-confirm-area{
+    display: inline-block;
+}
+
+//overwriting grid styling to match the listbox - header
+.oms-widget-createreturnrequest-list-container .z-grid-header{
+    background: transparent;
+}
+
+//overwrite styling from backoffice - as the case is not implemented by the framework
+//move some inline styling in the scss file
+.oms-widget-createreturnrequest-list-container__checkbox.z-checkbox {
+    display: block;
+    padding-left: 2*$container-spacing-default__third;
+    label{
+        display: inline;
+        padding-right: 0;
+        margin-left: $oms-widget-createreturnrequest-list-container__checkbox-label--margin-left;
+    }
+
+    >input{
+        width: 0;
+    }
+
+}
+
+.oms-widget-createreturnrequest-listbox-header .z-column-content{
+    padding: $oms-widget-createreturnrequest-listbox-header__column-header--padding;
+}
+
+.oms-widget-createreturnrequest-listbox-header__comment .z-column-content{
+    margin-top: $oms-widget-createreturnrequest-listbox-header__comment--margin-top;
+}
+
+.oms-widget-createreturnrequest--body{
+    height: calc(100% - #{$oms-widget-popup-bottom-toolbar--height + $oms-widget-createreturnrequest-header--height});
+    padding-top: $oms-widget-gutter/2;
+}
+
+.oms-widget-createreturnrequest--body{
+    width: 100%;
+    padding-left: $oms-widget-gutter;
+}
+
+.oms-widget-createreturnrequest-listbox--row__return-qt{
+    text-align: center;
+    width: $oms-widget-createreturnrequest-listbox--row__return-qt--width;
+    margin-left: $oms-widget-createreturnrequest-listbox--row__return-qt--margin-left;
+}
+
+.oms-widget-createreturnrequest-listbox--row__refund-amt{
+    text-align: right;
+}
+
+.oms-widget-createreturnrequest-listbox-header__comment{
+    margin-bottom: 2px;
+}
+
+.oms-widget-createreturnrequest-listbox-header__comment,
+.oms-widget-createreturnrequest-listbox--row__comment{
+    width: $oms-widget-createreturnrequest-listbox--row__comment--width;
+}
+
+
+.oms-widget-createreturnrequest-listbox--row__prd-code,
+.oms-widget-createreturnrequest-listbox--row__prd-name,
+.oms-widget-createreturnrequest-listbox--row__isocode,
+.oms-widget-createreturnrequest-listbox--row__base-price,
+.oms-widget-createreturnrequest-listbox--row__returnable-qty,
+.oms-widget-createreturnrequest-configuration-save-button{
+    width: 100%;
+}
+
+.oms-widget-createreturnrequest-listbox--row__isocode{
+    text-align:center;
+}
+
+.oms-widget-createreturnrequest-listbox--row__base-price{
+    text-align:right;
+}
+
+.oms-widget-createreturnrequest-listbox--row__returnable-qty{
+    text-align:center;
+    display: block;
+}
+
+.oms-widget-createreturnrequest-header--customer__vbox,
+.oms-widget-createreturnrequest-header--totalDiscounts__vbox,
+.oms-widget-createreturnrequest-header--orderTotal__vbox,
+.oms-widget-createreturnrequest-refund-amount-area--total-refund,
+.oms-widget-createreturnrequest-refund-amount-area--estimated-tax{
+    padding-left: $oms-widget-gutter;
+}
+
+.oms-widget-createreturnrequest-controller-area{
+    width: $oms-widget-createreturnrequest-controller-area--width;
+}
+
+.oms-widget-createreturnrequest-refund-amount-area--delivery-cost--wrapper,
+.oms-widget-createreturnrequest-refund-amount-area--total-refund--wrapper,
+.oms-widget-createreturnrequest-refund-amount-area--estimated-tax--wrapper{
+    display: table;
+}
+
+.oms-widget-createreturnrequest-refund-amount-area--delivery-cost--wrapper--div,
+.oms-widget-createreturnrequest-refund-amount-area--delivery-cost--wrapper__cost,
+.oms-widget-createreturnrequest-refund-amount-area--total-refund-label,
+.oms-widget-createreturnrequest-refund-amount-area--total-refund-field,
+.oms-widget-createreturnrequest-refund-amount-area--estimated-tax-label,
+.oms-widget-createreturnrequest-refund-amount-area--estimated-tax-field{
+    display: table-row;
+}
+
+.oms-widget-createreturnrequest-configuration-revert-button{
+    vertical-align: top;
+    width: $oms-widget-createreturnrequest-configuration-revert-button--width;
+}
+
+.oms-widget-createreturnrequest-refund-amount-area--delivery-cost--wrapper__cost,
+.oms-widget-createreturnrequest-refund-amount-area--total-refund-field,
+.oms-widget-createreturnrequest-refund-amount-area--estimated-tax-field{
+    text-align:right;
+}
+
+.oms-widget-createreturnrequest-confirm-area{
+    width: $oms-widget-createreturnrequest-confirm-area--width;
+}
+
+.oms-widget-createreturnrequest-refund-amount-area--total-refund-field,
+.oms-widget-createreturnrequest-refund-amount-area--delivery-cost--wrapper__cost,
+.oms-widget-createreturnrequest-refund-amount-area--estimated-tax-field{
+    margin-top: $oms-widget-gutter/2;
+}
+
+.oms-widget-createreturnrequest-refund-amount-area,
+.oms-widget-createreturnrequest-controller-area{
+    vertical-align: top;
+}
+
+.oms-widget-createreturnrequest-controller-area{
+    margin-top: $oms-widget-createreturnrequest-controller-area--margin-top;
+}
+
+.oms-widget-createreturnrequest-configuration-save-button{
+    margin-bottom: $oms-widget-gutter/2;
+}

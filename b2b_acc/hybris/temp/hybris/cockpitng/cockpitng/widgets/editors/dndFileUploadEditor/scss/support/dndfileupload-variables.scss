@@ -1,0 +1,57 @@
+@import 'cockpitng-globals.scss';
+
+$ye-dndfileupload__drop-area--height: 140px;
+
+$ye-dndfileupload__container--min-height: 120px;
+$ye-dndfileupload__container--bg-color: $white;
+$ye-dndfileupload__container--box-shadow: 0 0 1px 1px rgba($grey__dark--500, 0.25);
+$ye-dndfileupload__container--border: $boxes--border__thin solid $grey__default--900;
+$ye-dndfileupload__container--margin: 0 nth($ye-dndfileupload__container--box-shadow, 3) nth($ye-dndfileupload__container--box-shadow, 3) nth($ye-dndfileupload__container--box-shadow, 3);
+
+$ye-dndfileupload__drop-area-icon--width: 120px;
+$ye-dndfileupload__drop-area-icon--height: 48px;
+$ye-dndfileupload__drop-area-icon--half-height: floor($ye-dndfileupload__drop-area-icon--height/2);
+$ye-dndfileupload__drop-area-icon--margin-top: ceil($ye-dndfileupload__drop-area-icon--height/2)*-1;
+$ye-dndfileupload__drop-area-icon--margin-left: $ye-dndfileupload__drop-area-icon--width*-1;
+$ye-dndfileupload__drop-area-icon--background: url('icons/icon_upload-file-area.svg') no-repeat 0 0;
+
+$ye-dndfileupload__component-container--margin: 0;
+
+$ye-dndfileupload__drop-area--color: $grey__default--600;
+$ye-dndfileupload__drop-area--padding-left: $ye-dndfileupload__drop-area-icon--width;
+$ye-dndfileupload__drop-area--border-radius: 3px;
+$ye-dndfileupload__drop-area--border: $boxes--border__thin dashed $ye-dndfileupload__drop-area--color;
+$ye-dndfileupload__drop-area--bg-color: transparent;
+$ye-dndfileupload__drop-area-on-add--bg-color: $grey__light--1200;
+$ye-dndfileupload__drop-area-label--padding-left: $ye-dndfileupload__drop-area-icon--width;
+
+$ye-dndfileupload__drop-area-btn--margin-right: 0.5em;
+$ye-dndfileupload__drop-area-btn--color: $blue__default;
+$ye-dndfileupload__drop-area-btn--padding: $ye-dndfileupload__drop-area-icon--half-height 0 $ye-dndfileupload__drop-area-icon--half-height $ye-dndfileupload__drop-area-icon--width;
+$ye-dndfileupload__drop-area-content--font-size: $font-size__base;
+$ye-dndfileupload__drop-area-content--line-height: $font-size__large;
+
+$ye-dndfileupload__delete-btn--size: 24px;
+$ye-dndfileupload__preview-container--padding: 5px;
+$ye-dndfileupload__preview_image--max-height: 250px;
+$ye-dndfileupload__preview_image--margin-bottom: $container-spacing-default__third;
+$ye-dndfileupload__preview_image--max-width:100%;
+$ye-dndfileupload__preview_filename_label--font-size:$font-size__small;
+$ye-dndfileupload-single-line-mode__delete-btn--size: 16px;
+$ye-dndfileupload-single-line-mode__delete-btn--right: $container-spacing-default__third;
+$ye-dndfileupload-single-line-mode__delete-btn--margin-top: floor($ye-dndfileupload-single-line-mode__delete-btn--size/2) * -1;
+$ye-dndfileupload-single-line-mode__preview_image--max-size: 20px;
+$ye-dndfileupload-single-line-mode__preview-label--font-size: $font-size__semi-base;
+$ye-dndfileupload-single-line-mode__preview-label--padding-left: $ye-dndfileupload-single-line-mode__preview_image--max-size + $container-spacing-default__third;
+$ye-dndfileupload-single-line-mode__preview-container--padding: 0 0 0 0;
+$ye-dndfileupload-single-line-mode__preview-container--margin: 0 ($ye-dndfileupload-single-line-mode__delete-btn--size + floor($container-spacing-default__third/2)) 0 0;
+
+
+
+// add and rename styling variables for ye-default-reference-editor-item-container
+@import "../../../../defaultEditorArea/scss/support/_defaultEditorArea-variables.scss";
+
+$ye-dndfileupload-single-line-mode__box--border-width: $editor-area__input-field--border-width;
+$ye-dndfileupload-single-line-mode__list-item-content--padding-y: floor(($editor-defaults__inline-box--height - 2*$ye-dndfileupload-single-line-mode__box--border-width - $editor-area__input-field--font-size)/2);
+$ye-dndfileupload-single-line-mode__list-item-content--padding-x: $container-spacing-default__third;
+$ye-dndfileupload-single-line-mode__list-item-content--padding: $ye-dndfileupload-single-line-mode__list-item-content--padding-y $ye-dndfileupload-single-line-mode__list-item-content--padding-x ($ye-dndfileupload-single-line-mode__list-item-content--padding-y - $ye-dndfileupload-single-line-mode__box--border-width);

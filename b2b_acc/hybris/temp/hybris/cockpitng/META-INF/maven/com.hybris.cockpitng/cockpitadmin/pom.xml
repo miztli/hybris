@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.hybris.cockpitng</groupId>
+		<artifactId>cockpit-base</artifactId>
+		<version>18.11.1-RC2</version>
+	</parent>
+	<artifactId>cockpitadmin</artifactId>
+
+	<properties>
+		<root.project.relative.path>../../</root.project.relative.path>
+		<sass.compilation.skip>false</sass.compilation.skip>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.hybris.cockpitng</groupId>
+			<artifactId>cockpittesting</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+</project>

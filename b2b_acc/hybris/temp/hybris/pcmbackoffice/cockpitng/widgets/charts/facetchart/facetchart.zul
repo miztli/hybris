@@ -1,0 +1,24 @@
+<widget sclass="yw-solrfacetchart" xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd">
+
+		<div id="topPanel" sclass="yw-solrfacetchart-toppanel">
+			<label id="chartTitle" sclass="yw-solrfacetchart-chart-title"/>
+			<div id="facetChooser" sclass="yw-solrfacetchart-toppanel-facetchooser"/>
+			<div sclass="yw-solrfacetchart-toppanel-filters-container">
+				<label id="filtersCounterLabel" sclass="yw-solrfacetchart-toppanel-filters-counter"/>
+				<popup id="filtersPopup" sclass="yw-solrfacetchart-toppanel-filters-popup">
+					<div id="filtersContainer" sclass="yw-solrfacetchart-toppanel-filters"/>
+				</popup>
+				<button id="showFilters" sclass="yw-solrfacetchart-toppanel-filter-button" />
+			</div>
+		</div>
+
+		<div sclass="yw-solrfacetchart-charts">
+				<charts id="charts"/>
+		</div>
+
+		<div id="rightPanel" sclass="yw-solrfacetchart-rightpanel"/>
+
+		<div id="bottomPanel" sclass="yw-solrfacetchart-bottompanel"/>
+</widget>

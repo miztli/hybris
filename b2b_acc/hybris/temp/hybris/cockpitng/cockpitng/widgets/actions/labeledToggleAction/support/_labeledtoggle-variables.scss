@@ -1,0 +1,12 @@
+@import "cockpitng-globals.scss";
+
+$labeled-toggle-action__label--bg-color: $white;
+$labeled-toggle-action__label--font-size: floor(($font-size__base * 0.60));
+$labeled-toggle-action__label--border-radius: 8px;
+$labeled-toggle-action__label--padding: 1px;
+$labeled-toggle-action__label--min-width: 8px;
+$labeled-toggle-action__label--left: 27px;
+$labeled-toggle-action__label--top: 14px;
+$labeled-toggle-action__systembar-button-label--border-width: $boxes--border__medium;
+$labeled-toggle-action__systembar-button-label--left: $labeled-toggle-action__label--left - $labeled-toggle-action__systembar-button-label--border-width;
+$labeled-toggle-action__systembar-button-label--top: $labeled-toggle-action__label--top - $labeled-toggle-action__systembar-button-label--border-width;

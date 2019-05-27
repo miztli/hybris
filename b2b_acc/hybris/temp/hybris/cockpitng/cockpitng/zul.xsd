@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.zkoss.org/2005/zul"
+			  targetNamespace="http://www.zkoss.org/2005/zul" elementFormDefault="qualified">
+
+	<xs:redefine schemaLocation="zul-8.5.1.2.xsd">
+		<xs:group name="anyGroup">
+			<xs:choice>
+				<xs:group ref="anyGroup"/>
+				<xs:element ref="editor"/>
+				<xs:element ref="editors"/>
+				<xs:element ref="action"/>
+				<xs:element ref="actions"/>
+				<xs:element ref="widget"/>
+				<xs:element ref="widgetchildren"/>
+				<xs:element ref="widgetslot"/>
+				<xs:element ref="codeeditor"/>
+				<xs:element ref="stopwatch"/>
+				<xs:element ref="progressbar"/>
+			</xs:choice>
+		</xs:group>
+
+		<xs:group name="anyGroupSingle">
+			<xs:choice>
+				<xs:group ref="anyGroupSingle"/>
+				<xs:element ref="editor"/>
+				<xs:element ref="editors"/>
+				<xs:element ref="action"/>
+				<xs:element ref="actions"/>
+				<xs:element ref="widget"/>
+				<xs:element ref="widgetchildren"/>
+				<xs:element ref="widgetslot"/>
+				<xs:element ref="codeeditor"/>
+				<xs:element ref="stopwatch"/>
+				<xs:element ref="progressbar"/>
+			</xs:choice>
+		</xs:group>
+	</xs:redefine>
+
+	<xs:element name="widget" type="widgetType"/>
+	<xs:complexType name="widgetType" mixed="true">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="xulElementAttrGroup"/>
+		<xs:attributeGroup ref="rootAttrGroup"/>
+	</xs:complexType>
+
+	<xs:element name="editor" type="editorType"/>
+	<xs:complexType name="editorType" mixed="true">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="xulElementAttrGroup"/>
+		<xs:attribute name="property" type="xs:string" use="optional"/>
+		<xs:attribute name="value" type="xs:string" use="optional"/>
+		<xs:attribute name="optional" type="xs:boolean" use="optional"/>
+		<xs:attribute name="type" type="editorAttrType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Specifies the value type. It can be a java class
+					name like 'java.lang.String' or anything specified as a type in an
+					editor. Use List(&lt;element type&gt;) or Set(&lt;element type&gt;)
+					for multi value types. This field is not generally restricted. It
+					will be used by the editor registry to pick a suitable editor for
+					the value type.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="editorconfigs" type="xs:string" use="optional"/>
+		<xs:attribute name="defaultEditor" type="xs:string" use="optional"/>
+		<xs:attribute name="readOnly" type="xs:boolean" default="false"
+						  use="optional"/>
+		<xs:attribute name="onValueChanged" type="xs:string" use="optional"/>
+		<xs:attribute name="onEditorEvent" type="xs:string" use="optional"/>
+		<xs:attributeGroup ref="rootAttrGroup"/>
+	</xs:complexType>
+
+	<xs:simpleType name="editorAttrType">
+		<xs:annotation>
+			<xs:documentation>Specifies the value type. It can be a java class
+				name like 'java.lang.String' or anything specified as a type in an
+				editor. Use List(&lt;element type&gt;) or Set(&lt;element type&gt;)
+				for multi value types. This field is not generally restricted. It
+				will be used by the editor registry to pick a suitable editor for
+				the value type.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="java.lang.String"/>
+					<xs:enumeration value="java.lang.Boolean"/>
+					<xs:enumeration value="java.util.Date"/>
+					<xs:enumeration value="java.lang.Double"/>
+					<xs:enumeration value="java.lang.Integer"/>
+					<xs:enumeration value="java.lang.Long"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string"/>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="List\(.*\)"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="Set\(.*\)"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="Range\(.*\)"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
+	<xs:element name="editors" type="editorsType"/>
+	<xs:complexType name="editorsType" mixed="true">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="xulElementAttrGroup"/>
+		<xs:attribute name="config" type="xs:string" use="required"/>
+		<xs:attribute name="group" type="xs:string" use="optional"/>
+		<xs:attribute name="prefix" type="xs:string" use="optional"/>
+		<xs:attribute name="onValueChanged" type="xs:string" use="optional"/>
+		<xs:attribute name="renderer" type="xs:string" use="optional"/>
+		<xs:attributeGroup ref="rootAttrGroup"/>
+	</xs:complexType>
+
+	<xs:element name="action" type="actionType"/>
+	<xs:complexType name="actionType" mixed="true">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="xulElementAttrGroup"/>
+		<xs:attribute name="inputValue" type="xs:string" use="optional"/>
+		<xs:attribute name="property" type="xs:string" use="optional"/>
+		<xs:attribute name="outputProperty" type="xs:string" use="optional"/>
+		<xs:attribute name="actionId" type="xs:string" use="required"/>
+		<xs:attribute name="onActionPerformed" type="xs:string"
+						  use="optional"/>
+		<xs:attribute name="viewMode" type="actionViewModeAttrType"
+						  use="optional"/>
+		<xs:attributeGroup ref="rootAttrGroup"/>
+	</xs:complexType>
+
+	<xs:element name="actions" type="actionsType"/>
+	<xs:complexType name="actionsType" mixed="true">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="xulElementAttrGroup"/>
+		<xs:attribute name="config" type="xs:string" use="required"/>
+		<xs:attribute name="group" type="xs:string" use="optional"/>
+		<xs:attribute name="prefix" type="xs:string" use="optional"/>
+		<xs:attribute name="inputValue" type="xs:string" use="optional"/>
+		<xs:attribute name="onActionPerformed" type="xs:string"
+						  use="optional"/>
+		<xs:attribute name="renderer" type="xs:string" use="optional"/>
+		<xs:attribute name="viewMode" type="actionViewModeAttrType"
+						  use="optional"/>
+		<xs:attributeGroup ref="rootAttrGroup"/>
+	</xs:complexType>
+
+	<xs:element name="widgetslot" type="widgetslotType"/>
+	<xs:complexType name="widgetslotType" mixed="true">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="xulElementAttrGroup"/>
+		<xs:attribute name="slotID" type="xs:string" use="required"/>
+		<xs:attributeGroup ref="rootAttrGroup"/>
+	</xs:complexType>
+
+	<xs:element name="stopwatch" type="stopwatchType"/>
+	<xs:complexType name="stopwatchType" mixed="true">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="labelElementAttrGroup"/>
+		<xs:attribute name="startTime" type="xs:long" use="optional"/>
+		<xs:attribute name="stopTime" type="xs:long" use="optional"/>
+		<xs:attribute name="displayEmptyHours" type="xs:boolean" use="optional"/>
+		<xs:attribute name="displayDays" type="xs:boolean" use="optional"/>
+		<xs:attribute name="timeDelimiter" type="xs:string" use="optional"/>
+		<xs:attribute name="daysDelimiter" type="xs:string" use="optional"/>
+	</xs:complexType>
+
+	<xs:element name="widgetchildren" type="widgetchildrenType"/>
+	<xs:complexType name="widgetchildrenType" mixed="true">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="xulElementAttrGroup"/>
+		<xs:attribute name="type" type="widgetchildrenTypeAttrType"
+						  use="optional" default="portal"/>
+		<xs:attributeGroup ref="rootAttrGroup"/>
+		<xs:attribute name="slotID" type="xs:string" use="optional"/>
+	</xs:complexType>
+
+	<xs:simpleType name="widgetchildrenTypeAttrType">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="portal"/>
+					<xs:enumeration value="tab"/>
+					<xs:enumeration value="list"/>
+					<xs:enumeration value="h_split"/>
+					<xs:enumeration value="v_split"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string"/>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
+	<xs:simpleType name="actionViewModeAttrType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="iconOnly"/>
+			<xs:enumeration value="iconAndText"/>
+			<xs:enumeration value="textOnly"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="codeeditor" type="codeeditorType"/>
+	<xs:complexType name="codeeditorType" mixed="true">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="xulElementAttrGroup"/>
+		<xs:attribute name="value" type="xs:string" use="optional"/>
+		<xs:attribute name="syntax" type="xs:string" use="optional"/>
+		<xs:attribute name="readonly" type="xs:boolean" default="false"
+						  use="optional"/>
+		<xs:attributeGroup ref="rootAttrGroup"/>
+	</xs:complexType>
+
+	<xs:element name="progressbar" type="progressbarType"/>
+	<xs:complexType name="progressbarType" mixed="true">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="xulElementAttrGroup"/>
+		<xs:attribute name="lastUpdatePercentage" type="xs:integer" use="optional"/>
+		<xs:attribute name="maxPercentage" type="xs:integer" use="optional"/>
+		<xs:attribute name="timeToIncreaseOnePercent" type="xs:long" use="optional"/>
+		<xs:attributeGroup ref="rootAttrGroup"/>
+	</xs:complexType>
+
+	<xs:element name="networkchart" type="networkchartType" />
+	<xs:complexType name="networkchartType">
+		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:attributeGroup ref="xulElementAttrGroup"/>
+		<xs:attributeGroup ref="rootAttrGroup"/>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.
+ All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+        sclass="oms-widget-cancelreturnpopup-configuration" width="100%"
+        id="cancelreturnpopupview">
+
+
+    <hlayout sclass="oms-widget-cancelreturnpopup-header">
+	    <hbox sclass="oms-widget-cancelreturnpopup-body oms-widget-cancelreturnpopup-body__rma">
+		    <vbox sclass="oms-widget-cancelreturnpopup-body__rma--vbox">
+			    <label 	sclass="oms-widget-cancelreturnpopup-body__rma--label" 
+						value="${labels.customersupportbackoffice.cancelreturnpopup.rma}"/>
+			    <textbox sclass="oms-widget-cancelreturnpopup-body__rma--textbox" 
+						readonly="true" 
+						id="returnRequestCode"/>
+		    </vbox>
+	    </hbox>
+
+	    <hbox sclass="oms-widget-cancelreturnpopup-body oms-widget-cancelreturnpopup-body__customer">
+		    <vbox sclass="oms-widget-cancelreturnpopup-body__customer--vbox">
+			    <label 	sclass="oms-widget-cancelreturnpopup-body__customer--label" 
+						value="${labels.customersupportbackoffice.cancelreturnpopup.customer}" />
+			    <textbox sclass="oms-widget-cancelreturnpopup-body__customer--textbox" 
+						readonly="true" 
+						id="customerName"></textbox>
+		    </vbox>
+	    </hbox>
+    </hlayout>
+
+	<hlayout sclass="oms-widget-cancelreturnpopup-reason-header" width="100%">
+		<hbox sclass="oms-widget-cancelreturnpopup-reason-header__hbox">
+			<label sclass="oms-widget-cancelreturnpopup-reason-header__label oms-widget-cancelreturnpopup-reason-header__label--reason" 
+					value="${labels.customersupportbackoffice.cancelreturnpopup.label.reason}" />
+			<label sclass="oms-widget-cancelreturnpopup-reason-header__label oms-widget-cancelreturnpopup-reason-header__label--comment" 
+					value="${labels.customersupportbackoffice.cancelreturnpopup.popup.placeholder.comment}" />
+		</hbox>
+	</hlayout>
+
+	<hlayout sclass="oms-widget-cancelreturnpopup-reason-body">
+		<hbox sclass="oms-widget-cancelreturnpopup-reason-body__hbox">
+			<combobox sclass="oms-widget-cancelreturnpopup-reason-body--combo" 
+						model="${each.cancelReasonsModel}" 
+						xmlns:w="client" 
+						w:onSelect="CockpitNG.sendEvent(this.uuid, 'onCustomChange', this._value)"
+						id="globalCancelReasons" 
+						placeholder="${labels.customersupportbackoffice.cancelreturnpopup.popup.placeholder.reason}">
+			    <template name="model">
+                    <comboitem label="${each}"/>
+                </template>
+			</combobox>
+			<textbox class="oms-widget-cancelreturnpopup-reason-body--comment" 
+						rows="3"
+						id="globalCancelComment" 
+						maxlength="255" />
+		</hbox>
+	</hlayout>
+
+	<div class="oms-widget-cancelorder-configuration-footer oms-widget-footer">
+		<button id="undocancelreturn"
+        		label="${labels.customersupportbackoffice.cancelreturnpopup.button.undo}"
+                sclass="oms-widget-cancelreturnpopup-configuration-button oms-widget-cancelreturnpopup-configuration-revert-button"
+                width="100px"/>
+        <button id="confirmcancelreturn"
+                label="${labels.customersupportbackoffice.cancelreturnpopup.button.confirm}"
+                sclass="y-btn-primary oms-widget-cancelreturnpopup-configuration-button oms-widget-cancelreturnpopup-configuration-save-button"
+                width="100px"/>
+	</div>
+
+</widget>

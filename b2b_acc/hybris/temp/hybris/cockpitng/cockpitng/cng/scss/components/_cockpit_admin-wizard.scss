@@ -1,0 +1,122 @@
+
+.widgetCell,
+.addWidgetWizardDetails {
+    .widgetName > .z-label {
+        margin-right: 20px;
+        color: #555555;
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+.addWidgetWizardDetails {
+    position: relative;
+    
+    .widgetDescr {
+        margin-top: 4px;
+        padding-left: 20px;
+
+        .z-label {
+            color: #333;
+        }
+    }
+    .infoCnt {
+        padding: 5px;
+        padding-left: 15px;
+        overflow: auto;
+        height: 316px;
+        border-bottom: 1px solid #aaa;
+    }
+    &.settingsContent .infoCnt {
+        border-bottom: none;
+    }
+    &.z-div .z-label{
+        font-size: 10px;
+    }
+    .addBtn {
+        margin-top: 30px;
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        .z-button {
+            margin-left: 3px;
+        }
+    }
+    .descTitle {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    .socketLabel {
+        margin-left: 20px;
+    }
+    .sockets {
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        .z-label {
+            display:block;
+        }
+        .socketLabel {
+            color: #333;
+        }
+    }
+}
+
+.chooseWidgetWizard {
+    .z-window-highlighted.z-window-content {
+        background: #ddd;
+    }
+    .z-toolbarbutton-content {
+        font-size: 11px;
+        font-weight: normal;
+    }
+    .z-toolbarbutton {
+        right: 5px !important;
+    }
+    .z-window-content {
+        .z-textbox {
+            width: 140px;
+        }
+        > .z-div > .z-div > .z-div > .z-label {
+            font-size: 12px;
+        }
+        &:first-child .z-div > .z-div > .z-div > .z-button {
+            width: 50px;
+            font-size: 12px;
+        }
+    }
+    .yo-refreshLibraryButton {
+        height: $admin-defaults__chooze-wizard-refreshLibraryButton--height;
+        line-height: $admin-defaults__chooze-wizard-refreshLibraryButton--line-height;
+        right: 0 !important;
+        &:hover .z-toolbarbutton-content {
+            color: $admin-defaults__chooze-wizard-refreshLibraryButton--hover-color;
+        }
+    }
+    .yo-searchNavigationBar {
+        display: block;
+        margin: 3px;
+
+        + .z-div, 
+        + .z-listbox {
+            border: $admin-defaults__chooze-wizard-content--border;
+            border-width: $admin-defaults__content--border-width 0 0;
+        }
+    }
+}
+
+.yw-xmlConfigWin.z-popup .z-popup-content > .z-borderlayout {
+    background-color: $admin-defaults__config-popup-container--bg-color;
+}
+
+.yo-create-widget-group-wizard {
+    .z-tree{
+        overflow: auto;
+    }
+    .z-tree-body {
+        background-color: #f00;
+        > table {
+            width: auto;
+        }
+    }
+}

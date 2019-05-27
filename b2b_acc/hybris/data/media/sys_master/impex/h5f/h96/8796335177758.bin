@@ -1,0 +1,25 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for importing products Future Stock into Powertools Store
+
+# Macros / Replacement Parameter definitions
+$productCatalog=powertoolsProductCatalog
+$productCatalogName=Powertools Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+
+INSERT_UPDATE FutureStock;productCode[unique=true];quantity;date[unique=true,dateformat=yyyy-MM-dd]
+;3318057;50;2018-03-10
+;3318057;85;2018-06-15
+;72399000_53;15;2018-03-10
+;72399000_53;25;2018-06-10
+;72399000_55;35;2018-03-10
+;72399000_56;45;2018-04-10

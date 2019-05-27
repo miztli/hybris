@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:common="http://www.hybris.com/cockpitng/config/common"
+		   xmlns="http://www.hybris.com/cockpitng/component/compareview"
+		   targetNamespace="http://www.hybris.com/cockpitng/component/compareview"
+		   elementFormDefault="qualified">
+
+	<xs:import namespace="http://www.hybris.com/cockpitng/config/common"
+			   schemaLocation="common-config.xsd"/>
+
+	<xs:element name="compare-view">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="editor-area-ctx" type="editor-area-ctx" minOccurs="0"/>
+				<xs:element name="grid-view-ctx" type="grid-view-ctx" minOccurs="0"/>
+				<xs:element name="header" type="header" minOccurs="0"/>
+				<xs:element name="section" type="section" maxOccurs="unbounded" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="editor-area-ctx">
+		<xs:attribute name="ctx" type="xs:string" default="editor-area"/>
+		<xs:attribute name="use" type="xs:boolean" default="true"/>
+	</xs:complexType>
+
+	<xs:complexType name="grid-view-ctx">
+		<xs:attribute name="ctx" type="xs:string" default="grid-view"/>
+		<xs:attribute name="use" type="xs:boolean" default="true"/>
+	</xs:complexType>
+
+	<xs:complexType name="section">
+		<xs:complexContent>
+			<xs:extension base="common:positioned">
+				<xs:sequence>
+					<xs:element name="attribute" type="attribute" maxOccurs="unbounded" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="merge-mode" type="common:MergeMode" default="MERGE"/>
+				<xs:attribute name="name" type="xs:string" use="required"/>
+				<xs:attribute name="tooltipText" type="xs:string"/>
+				<xs:attribute name="renderer" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="attribute">
+		<xs:complexContent>
+			<xs:extension base="common:positioned">
+				<xs:sequence>
+					<xs:element name="parameter" type="common:parameter" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="merge-mode" type="common:MergeMode" default="MERGE"/>
+				<xs:attribute name="qualifier" type="xs:string" use="required"/>
+				<xs:attribute name="label" type="xs:string"/>
+				<xs:attribute name="renderer" type="xs:string"/>
+				<xs:attribute name="editor" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="header">
+		<xs:complexContent>
+			<xs:extension base="common:image-preview">
+				<xs:sequence>
+					<xs:element name="additional-renderer" type="renderer" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="renderer">
+		<xs:complexContent>
+			<xs:extension base="common:positioned">
+				<xs:sequence>
+					<xs:element name="parameter" type="common:parameter" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="spring-bean" use="required"/>
+				<xs:attribute name="merge-mode" type="common:MergeMode" default="MERGE"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>

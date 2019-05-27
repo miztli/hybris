@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	id="com.hybris.cockpitng.widgets.common.advancedsearchengine"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+
+	<name>Advanced Search Engine</name>
+	<description>An advanced search engine widget provides implementation of search logic.</description>
+	<defaultTitle>Search</defaultTitle>
+	<author>hybris</author>
+	<version>0.1</version>
+	<view src="none" />
+	<keywords>
+		<keyword>Search</keyword>
+	</keywords>
+
+	<sockets>
+		<input id="searchData" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchData" />
+		<input id="autosuggestionQuery" type="com.hybris.cockpitng.search.data.AutosuggestionQueryData" />
+		<input id="changeSearchContext" type="com.hybris.cockpitng.dataaccess.context.Context" />
+		<output id="autosuggestions" type="java.util.Map" />
+		<output id="fullTextSearchData" type="com.hybris.cockpitng.search.data.FullTextSearchData" />
+		<output id="pageable" type="com.hybris.cockpitng.search.data.pageable.Pageable" />
+	</sockets>
+
+	<controller class="com.hybris.backoffice.widgets.advancedsearch.engine.AdvancedSearchEngineController" />
+
+	<settings>
+		<setting key="defaultPageSize" default-value="25" type="Integer"/>
+	</settings>
+</widget-definition>

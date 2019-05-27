@@ -1,0 +1,142 @@
+@import "../support/_dndvalidation-variables.scss";
+
+.y-dnd-validation-popup .y-content-list {
+    border: $DndValidation__content-list--border;
+    border-width: $DndValidation__content-list--border-width;
+    max-height: $DndValidation__content-list--max-height;
+
+    > .z-listbox-body {
+        max-height: $DndValidation__content-list--max-height;
+        overflow-y: auto;
+        
+        > table {
+            overflow: hidden;
+        }
+    }
+    .z-listitem {
+        &:hover {
+            background-color: inherit;
+        }
+        > .z-listcell {
+            padding: $DndValidation__cell--padding;
+            border-color: $DndValidation__cell--border-color;
+
+            &:nth-child(2) {
+                overflow: visible;
+
+                .z-listcell-content {
+                    overflow: visible;
+                }
+            }
+        }
+        .z-listcell-content {
+            margin: $DndValidation__cell-content--margin;
+            padding: $DndValidation__cell-content--padding;
+            white-space: pre-wrap;
+        }
+        &.y-row-selected {
+            background: $DndValidation__row-selected--bg;
+            
+            > .z-listcell {
+                border-color: $DndValidation__row-selected--border-color;
+            }
+        }
+    }
+    .y-validation-overview-container {
+        .z-label {
+            display: block;
+        } 
+    }
+    .y-select-cell {
+        vertical-align: baseline;
+        position: relative;
+        width: $DndValidation__select-cell--width;
+
+        .z-listcell-content {
+            margin: $DndValidation__select-cell-content--margin;
+        }
+    }
+
+    .y-validation-icon-cell {
+        
+        vertical-align: baseline;
+        position: relative;
+        
+        .y-error, 
+        .y-warn {
+            width: $DndValidation__validation-icon-cell-icon--size;
+            height: $DndValidation__validation-icon-cell-icon--size;
+            background: url("images/icon_validation_sprite.png") $DndValidation__validation-icon-cell-icon-warn--position no-repeat;
+            
+        }
+        .y-error {
+            background-position: $DndValidation__validation-icon-cell-icon-error--position;
+        }
+    }
+    td.y-validation-icon-cell {
+        width: $DndValidation__validation-icon-cell--width;
+        
+        .y-error, 
+        .y-warn {
+            float: right;
+        }
+    }
+
+    .y-details-cell {
+        text-align: right;
+        width: $DndValidation__details-cell--width;
+        vertical-align: baseline;
+        position: relative;
+
+        .z-listcell-content {
+            line-height: $DndValidation__details-cell-content--line-height;
+        }            
+    }
+
+    .y-show-details-btn {
+        height: $DndValidation__details-cell-details-btn--height;
+        line-height: $DndValidation__details-cell-details-btn--line-height;
+        margin-right: $DndValidation__details-cell-details-btn--margin-right;
+        display: inline-block;
+        background: transparent;
+        
+        
+        &.y-expanded-details {
+            &:after {
+                content: $DndValidation__details-cell-details-btn-after-expanded--content;
+            }
+        }
+        &:after {
+            content: $DndValidation__details-cell-details-btn-after--content;            
+            color: $DndValidation__details-cell-details-btn-after--color;
+            font-size: $DndValidation__details-cell-details-btn-after--font-size;
+            font-family: $DndValidation__details-cell-details-btn-after--font-family;
+            top: $DndValidation__details-cell-details-btn-after--top;
+            right: $DndValidation__details-cell-details-btn-after--right;
+            display: inline-block;
+            width: 100%;
+            position: absolute;
+        }
+    }
+
+    .y-validation-icon-cell,
+    .y-details-cell,
+    .y-select-cell {
+        & > .z-listcell-content {
+            top: $DndValidation__symbol-cell-content--top;
+            position: absolute;
+            width: 100%;
+        }
+    }
+
+    .y-title {
+        font-weight: bold;
+        white-space: pre-line;
+
+    }
+    .y-message {
+        font-size: $DndValidation__message--font-size;
+        white-space: pre-line;
+        display: block !important; // temporary until hiding function is removed
+    }
+}

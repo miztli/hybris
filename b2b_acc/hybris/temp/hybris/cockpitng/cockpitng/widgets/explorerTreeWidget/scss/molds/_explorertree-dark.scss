@@ -1,0 +1,56 @@
+/*================================
+    Explorer Tree Mold - Dark (default)
+================================*/
+@import "../support/_explorerTree-mixins.scss";
+
+.yw-explorerTree {
+  &-widget {
+    &,
+    .cng-adminmode &.yw-widget-mold-dark {
+        background: $explorertree__default--bg-color;
+    }
+  }
+
+  @include _rowStateColor("z-treerow", $explorertree__treerow-default--color);
+  @include _rowStateColor("z-treerow:hover", $explorertree__treerow-hover--color);
+  
+  // styling for those who are not different in light-mold.
+  &-widget & {
+    @include _rowStateColor("z-treerow.yw-highlighted", $explorertree__treerow-highlighted--color);
+    @include _rowStateColor("z-treerow.yw-selected", $explorertree__treerow-selected--color);
+    @include _rowStateColor("z-treerow.yw-selected:hover", $explorertree__treerow-selected--color);
+    @include _rowStateColor("z-treerow.z-treerow-focus", $explorertree__treerow-focus--color);
+    @include _rowStateColor("z-treerow.z-treerow-focus:hover", $explorertree__treerow-focus--color);
+  }
+
+  .z-treerow {
+    background-color: $explorertree__row--bg-color;
+    
+    &.yw-navigationNode {
+      &-level1 {
+        background-color: $explorertree__row-l1--bg-color;
+      }
+      &-level2 {
+        background: $explorertree__row-l2--bg-color;
+      }
+      &-level3 {
+        background: $explorertree__row-l3--bg-color;
+      }
+    }
+  }
+
+  &-filterDiv {
+    input.yw-filter-textbox {
+      @include _filter-textbox-colors ($explorertree__tree-filter-input--color,
+        $explorertree__tree-filter-input--border-color,
+        $explorertree__tree-filter-input--bg-color,
+        $explorertree__tree-filter-input-focus--color,
+        $explorertree__tree-filter-input-focus--border-color,
+        $explorertree__tree-filter-input-focus--bg-color);
+      @include _placeholder-text-color ( rgba($explorertree__tree-filter-input--color, .5) );
+    }
+  }
+}
+
+@import "_explorertree-dark__extendsplitlayout-tmp.scss";
+@import "_explorertree-dark__extendsplitlayout-catalogselector-tmp.scss";

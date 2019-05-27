@@ -1,0 +1,88 @@
+@import "../support/_explorerTree-extendsplitlayout-variables-tmp.scss";
+
+.yw-extendedsplitlayout-content-box {
+    .yw-explorerTree-widget.yw-widget-mold-light {
+        .yw-explorerTree {
+            border-color: $explorertree__treerow-border--color;
+            border-top-width: $explorertree-extendsplitlayout--tree-body--border-width;
+
+            .z-treebody,
+            .z-vfiletree-body,
+            .z-treechildren {
+                border-color: inherit;
+            }
+
+            .yw-navigationNode {
+                &-level2 {
+                    background: inherit;
+                }
+                &-level3 {
+                    background: inherit;
+                }
+            }
+            .yw-opened {
+                background-color: inherit;
+            }
+            .z-treecell {
+                box-shadow: none;
+                .z-vfiletree-icon {
+                    color: $explorertree__treecell-arrow-color;
+                }
+            }
+
+            //Overrides to align with mockups
+            //Background Color according to Specs-PDF for Collectionbrowser-tree/list-view highlighting
+            .z-treerow {
+                background: transparent;
+                border-top-color: inherit;
+
+                &:hover {
+                    > .z-treecell .z-treecell-content {
+                        color: inherit;
+                    }
+                }
+                &, &.yw-selected, &.z-treerow-focus, &.yw-highlighted {
+                    &, &:hover {
+                        > .z-treecell {
+                            .z-treecell-content {
+                                color: inherit;
+                            }
+                        }
+                    }
+                }
+                &:hover, &:active {
+                    background-color: $explorertree-extendsplitlayout--row-hover--bg-color;
+                }
+                &-selected {
+                    background-color: $explorertree-extendsplitlayout--row-focus--bg-color;
+                }
+                &.yw-selected {
+                    &, &:hover, &:active {
+                        background-color: $explorertree-extendsplitlayout--row-selected--bg-color;
+
+                        &.z-dragged {
+                            background: $explorertree__treerow-dragged--background;
+                            color: $explorertree__treerow-dragged--color;
+                        }
+                    }
+                }
+                &-focus {
+                    background-color: $explorertree-extendsplitlayout--row-focus--bg-color;
+                    &:hover {
+                        background-color: $explorertree-extendsplitlayout--row-focus-hover--bg-color;
+                    }
+                    &.yw-selected {
+                        background-color: $explorertree-extendsplitlayout--row-selected-focus--bg-color;
+                        &:hover {
+                            background-color: $explorertree-extendsplitlayout--row-selected-focus-hover--bg-color;
+                        }
+                    }
+                }
+                &.z-dragged {
+                    background: $explorertree-extendsplitlayout--row-dragged--bg-color;
+                    color: $explorertree__treerow-dragged--color;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,153 @@
+.ye-list-inline {
+  position: relative;
+  width: 100%;
+  float: left;
+  min-height: 28px; }
+  .ye-list-inline-editor input {
+    width: 96%; }
+
+.z-listcell-content {
+  position: relative; }
+  .z-listcell-content:hover .ye-remove-button {
+    background: url("icons/icon-delete-red.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    right: 10px; }
+
+.ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .z-listcell-content {
+  padding: 0 10px;
+  height: 38px;
+  line-height: 38px; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .z-listcell-content:hover {
+    background: #eaf1f6;
+    padding-right: 26px; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .z-listcell-content .ye-map-value, .ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .z-listcell-content .ye-map-key {
+    color: #000000; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .z-listcell-content .ye-map-value {
+    font-weight: bold;
+    display: inline; }
+.ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .ye-list-line-editor .z-listcell-content {
+  height: auto;
+  line-height: normal;
+  padding: 10px; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .ye-list-line-editor .z-listcell-content:hover {
+    padding: 10px; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .ye-list-line-editor .z-listcell-content .ye-list-line-editor {
+    position: relative;
+    padding-right: 90px; }
+    .ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .ye-list-line-editor .z-listcell-content .ye-list-line-editor input {
+      width: 100%; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .ye-list-line-editor .z-listcell-content .ye-list-inline {
+    width: 100%;
+    min-width: 80px;
+    float: none; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .z-listitem .ye-list-line-editor .z-listcell-content .ye-map-editor-btn-container {
+    bottom: 0;
+    margin-top: -6px; }
+.ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox .z-listitem:hover .ye-list-line-editor {
+  background-color: transparent; }
+.ye-com_hybris_cockpitng_editor_defaultmap .ye-list-line-editor .z-listcell-content {
+  height: auto; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-line-editor .z-listcell-content > .z-label:empty {
+    line-height: 38px; }
+.ye-com_hybris_cockpitng_editor_defaultmap .ye-list-line-editor > .ye-map-editor-btn-container {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -23px; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-line-editor > .ye-map-editor-btn-container .z-image {
+    padding: 11px;
+    border: 1px solid #acacac; }
+    .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-line-editor > .ye-map-editor-btn-container .z-image:first-child {
+      border-right: none; }
+.ye-com_hybris_cockpitng_editor_defaultmap .ye-list-line-editor:after {
+  clear: both;
+  display: block;
+  content: ''; }
+.ye-com_hybris_cockpitng_editor_defaultmap .z-listitem-selected.z-listitem {
+  background-color: initial; }
+.ye-com_hybris_cockpitng_editor_defaultmap .z-listitem-selected .ye-default-reference-editor .ye-default-reference-editor-selected-item-container.ye-remove-enabled {
+  padding-right: 26px; }
+.ye-com_hybris_cockpitng_editor_defaultmap .ye-map-footer {
+  background: #ffffff; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .ye-map-footer .z-listfooter-content {
+    padding: 10px;
+    cursor: pointer; }
+    .ye-com_hybris_cockpitng_editor_defaultmap .ye-map-footer .z-listfooter-content .z-label {
+      margin-left: 10px;
+      color: #000000;
+      margin-bottom: 0;
+      vertical-align: middle; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .ye-map-footer > .z-listfooter .ye-list-line-editor {
+    padding-right: 85px;
+    position: relative;
+    margin-bottom: -6px; }
+    .ye-com_hybris_cockpitng_editor_defaultmap .ye-map-footer > .z-listfooter .ye-list-line-editor > .ye-map-editor-btn-container,
+    .ye-com_hybris_cockpitng_editor_defaultmap .ye-map-footer > .z-listfooter .ye-list-line-editor > .ye-list-inline {
+      margin-bottom: 6px; }
+    .ye-com_hybris_cockpitng_editor_defaultmap .ye-map-footer > .z-listfooter .ye-list-line-editor > .ye-list-inline {
+      min-width: 80px; }
+    .ye-com_hybris_cockpitng_editor_defaultmap .ye-map-footer > .z-listfooter .ye-list-line-editor .ye-list-inline-editor > input {
+      width: 100%; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .ye-map-footer .ye-list-line-editor .ye-list-inline {
+    width: 50%;
+    padding-right: 10px;
+    box-sizing: border-box; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .ye-map-footer > .z-listfoot-bar:empty {
+    display: none; }
+.ye-com_hybris_cockpitng_editor_defaultmap > .ye-list-content > .ye-list-listbox {
+  border: none; }
+.ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox > .z-listbox-footer {
+  margin-top: 5px;
+  border: 1px solid #acacac;
+  width: 100% !important; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox > .z-listbox-footer .z-listfooter {
+    width: 100% !important; }
+  .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox > .z-listbox-footer .z-listfoot-bar:empty,
+  .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox > .z-listbox-footer .z-listfooter-bar:empty {
+    display: none; }
+.ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox > .z-listbox-body {
+  border: 1px solid #acacac; }
+.ye-com_hybris_cockpitng_editor_defaultmap .ye-map-separator {
+  margin: 5px 10px; }
+
+.yw-loceditor-fixed-open .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox > .z-listbox-body, .yw-loceditor-dynamic-content .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox > .z-listbox-body {
+  border: none; }
+.yw-loceditor-fixed-open .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox > .z-listbox-footer, .yw-loceditor-dynamic-content .ye-com_hybris_cockpitng_editor_defaultmap .ye-list-listbox > .z-listbox-footer {
+  border-width: 1px 0 0; }
+
+.ye-validation-error .ye-list-listbox .ye-map-footer input, .ye-validation-error .ye-list-listbox .ye-map-footer input.z-textbox, .ye-validation-error .ye-list-listbox .ye-map-footer .z-longbox, .ye-validation-error .ye-list-listbox .ye-map-footer .z-intbox, .ye-validation-error .ye-list-listbox .ye-map-footer .z-decimalbox, .ye-validation-error .ye-list-listbox .ye-map-footer .z-doublebox, .ye-validation-warn .ye-list-listbox .ye-map-footer input, .ye-validation-warn .ye-list-listbox .ye-map-footer input.z-textbox, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-longbox, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-intbox, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-decimalbox, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-doublebox, .ye-validation-info .ye-list-listbox .ye-map-footer input, .ye-validation-info .ye-list-listbox .ye-map-footer input.z-textbox, .ye-validation-info .ye-list-listbox .ye-map-footer .z-longbox, .ye-validation-info .ye-list-listbox .ye-map-footer .z-intbox, .ye-validation-info .ye-list-listbox .ye-map-footer .z-decimalbox, .ye-validation-info .ye-list-listbox .ye-map-footer .z-doublebox {
+  border-color: #acacac;
+  background: none;
+  color: #303030; }
+  .ye-validation-error .ye-list-listbox .ye-map-footer input:focus, .ye-validation-error .ye-list-listbox .ye-map-footer input.z-textbox:focus, .ye-validation-error .ye-list-listbox .ye-map-footer .z-longbox:focus, .ye-validation-error .ye-list-listbox .ye-map-footer .z-intbox:focus, .ye-validation-error .ye-list-listbox .ye-map-footer .z-decimalbox:focus, .ye-validation-error .ye-list-listbox .ye-map-footer .z-doublebox:focus, .ye-validation-warn .ye-list-listbox .ye-map-footer input:focus, .ye-validation-warn .ye-list-listbox .ye-map-footer input.z-textbox:focus, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-longbox:focus, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-intbox:focus, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-decimalbox:focus, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-doublebox:focus, .ye-validation-info .ye-list-listbox .ye-map-footer input:focus, .ye-validation-info .ye-list-listbox .ye-map-footer input.z-textbox:focus, .ye-validation-info .ye-list-listbox .ye-map-footer .z-longbox:focus, .ye-validation-info .ye-list-listbox .ye-map-footer .z-intbox:focus, .ye-validation-info .ye-list-listbox .ye-map-footer .z-decimalbox:focus, .ye-validation-info .ye-list-listbox .ye-map-footer .z-doublebox:focus {
+    border-color: #0486e0;
+    background: none; }
+.ye-validation-error .ye-list-listbox .ye-map-footer .z-bandbox-input:focus + .z-bandbox-button, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-bandbox-input:focus + .z-bandbox-button, .ye-validation-info .ye-list-listbox .ye-map-footer .z-bandbox-input:focus + .z-bandbox-button {
+  border-color: #0486e0; }
+.ye-validation-error .ye-list-listbox .ye-map-footer .z-combobox-button, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-combobox-button, .ye-validation-info .ye-list-listbox .ye-map-footer .z-combobox-button {
+  border-color: #acacac;
+  background: none; }
+.ye-validation-error .ye-list-listbox .ye-map-footer input:focus + .z-combobox-button, .ye-validation-warn .ye-list-listbox .ye-map-footer input:focus + .z-combobox-button, .ye-validation-info .ye-list-listbox .ye-map-footer input:focus + .z-combobox-button {
+  border-color: #0486e0; }
+.ye-validation-error .ye-list-listbox .ye-map-footer .z-combobox:focus .z-combobox-input,
+.ye-validation-error .ye-list-listbox .ye-map-footer .z-combobox:focus .z-combobox-button,
+.ye-validation-error .ye-list-listbox .ye-map-footer .z-combobox:hover .z-combobox-input,
+.ye-validation-error .ye-list-listbox .ye-map-footer .z-combobox:hover .z-combobox-button, .ye-validation-warn .ye-list-listbox .ye-map-footer .z-combobox:focus .z-combobox-input,
+.ye-validation-warn .ye-list-listbox .ye-map-footer .z-combobox:focus .z-combobox-button,
+.ye-validation-warn .ye-list-listbox .ye-map-footer .z-combobox:hover .z-combobox-input,
+.ye-validation-warn .ye-list-listbox .ye-map-footer .z-combobox:hover .z-combobox-button, .ye-validation-info .ye-list-listbox .ye-map-footer .z-combobox:focus .z-combobox-input,
+.ye-validation-info .ye-list-listbox .ye-map-footer .z-combobox:focus .z-combobox-button,
+.ye-validation-info .ye-list-listbox .ye-map-footer .z-combobox:hover .z-combobox-input,
+.ye-validation-info .ye-list-listbox .ye-map-footer .z-combobox:hover .z-combobox-button {
+  background-color: #eaf1f6; }
+
+.yw-loceditor-fixed-open .ye-list.ye-com_hybris_cockpitng_editor_defaultmap .ye-list-line-editor .ye-input-text.z-textbox,
+.yw-loceditor-dynamic-content .ye-list.ye-com_hybris_cockpitng_editor_defaultmap .ye-list-line-editor .ye-input-text.z-textbox {
+  border-width: 1px !important; }
+.yw-loceditor-fixed-open .ye-list.ye-com_hybris_cockpitng_editor_defaultmap .z-listbox-footer,
+.yw-loceditor-dynamic-content .ye-list.ye-com_hybris_cockpitng_editor_defaultmap .z-listbox-footer {
+  margin-top: 0; }

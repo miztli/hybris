@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup">
+    <sockets>
+        <input id="inputDataInput" type="com.hybris.cockpitng.data.TypeAwareSelectionContext" visibility="default"/>
+        <input id="singleObjectSavedOutputForward" type="java.lang.Boolean" visibility="invisible"/>
+        <input id="notificationSelectedItemForward" type="java.lang.Object"/>
+        <input id="deletedItemForward" type="java.lang.Object" />
+        <output id="singleObjectSavedOutput" type="java.lang.Boolean" visibility="default"/>
+        <output id="inputDataInputForward" type="com.hybris.cockpitng.data.TypeAwareSelectionContext" visibility="invisible"/>
+        <output id="notificationSelectedItem" type="java.lang.Object"/>
+        <output id="deletedItem" type="java.lang.Object"/>
+        <forward input="inputDataInput" output="inputDataInputForward"/>
+        <forward input="singleObjectSavedOutputForward" output="singleObjectSavedOutput"/>
+        <forward input="notificationSelectedItemForward" output="notificationSelectedItem"/>
+        <forward input="deletedItemForward" output="deletedItem"/>
+    </sockets>
+    <name>Collection Editor Area Group</name>
+    <description>Collection Editor Area Group</description>
+    <version>1.0</version>
+    <keywords>
+        <keyword>Groups</keyword>
+    </keywords>
+</widget-definition>

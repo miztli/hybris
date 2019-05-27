@@ -1,0 +1,377 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$defaultPassword=1234
+
+# (Re-)Impexing groups as they might not be impexed by the time this file is executed and the user impex uploads might fail
+INSERT_UPDATE UserGroup;UID[unique=true];groups(uid)[mode=append];readableLanguages(isocode)[mode=append];writeableLanguages(isocode)[mode=append]
+;previewmanagergroup;employeegroup;en;
+;apparel-de-cmsmanagergroup;basecmsmanagergroup;de;de
+;apparel-uk-cmsmanagergroup;basecmsmanagergroup;en;en
+;base-electronics-cmsmanagergroup;basecmsmanagergroup;;
+;electronics-cmsmanagergroup;base-electronics-cmsmanagergroup;;
+;powertools-cmsmanagergroup;basecmsmanagergroup;en;en
+
+
+# Create Workflow user groups
+INSERT_UPDATE UserGroup;UID[unique=true];groups(uid)[mode=append];locname[lang=en];description
+;cmsworkflowgroup;basecmsmanagergroup;CMS Workflow Group;Defines access rights to CMS workflow
+;cmseditorgroup;cmsworkflowgroup;CMS Editor Group;Content Editors
+;cmsreviewergroup;cmsworkflowgroup;CMS Reviewer Group;Content Reviewers
+;cmspublishergroup;cmsworkflowgroup;CMS Publisher Group;Content Publishers
+
+# Translator groups for workflow
+INSERT_UPDATE UserGroup;UID[unique=true];groups(uid)[mode=append];locname[lang=en];description;readableLanguages(isocode)[mode=append];writeableLanguages(isocode)[mode=append]
+;basecmstranslatorgroup;cmsworkflowgroup;Base CMS Translator Group;Base CMS Translator Group;en;;
+;cmstranslatorgroup-DE;basecmstranslatorgroup;German CMS Translator Group;German CMS Translator Group;de;de
+;cmstranslatorgroup-JP;basecmstranslatorgroup;Japanese CMS Translator Group;Japanese CMS Translator Group;ja;ja
+;cmstranslatorgroup-ZH;basecmstranslatorgroup;Chinese CMS Translator Group;Chinese CMS Translator Group;zh;zh
+;cmstranslatorgroup;basecmstranslatorgroup;CMS Translator Group;Content Translators;;;
+
+
+# Enable workflow for cmsmanagergroup
+INSERT_UPDATE PrincipalGroupRelation;source(uid)[unique=true];target(uid)[unique=true]
+;basecmsmanagergroup;previewmanagergroup;
+;cmsmanagergroup;cmseditorgroup
+;cmsmanagergroup;cmspublishergroup
+;cmsmanagergroup;cmsreviewergroup
+;cmsmanagergroup;cmstranslatorgroup
+;electronics-cmsmanagergroup;cmseditorgroup
+;electronics-cmsmanagergroup;cmstranslatorgroup
+;electronics-cmsmanagergroup;cmsreviewergroup
+;electronics-cmsmanagergroup;cmspublishergroup
+;cmstranslatorgroup;cmstranslatorgroup-DE
+;cmstranslatorgroup;cmstranslatorgroup-JP
+;cmstranslatorgroup;cmstranslatorgroup-ZH
+
+
+# Specific storefront CMS managers
+INSERT_UPDATE Employee;UID[unique=true];password[default=$defaultPassword];description;name;groups(uid)[mode=append];sessionLanguage(isocode)
+;cmsmanager-apparel-de;;Apparel DE CMS Manager;Apparel DE CMS Manager;apparel-de-cmsmanagergroup;en
+;cmsmanager-apparel-uk;;Apparel UK CMS Manager;Apparel UK CMS Manager;apparel-uk-cmsmanagergroup;en
+;cmsmanager-electronics;;Electronics CMS Manager;Electronics CMS Manager;electronics-cmsmanagergroup;en
+;cmsmanager-powertools;;Powertools CMS Manager;Powertools CMS Manager;powertools-cmsmanagergroup;en
+
+# Workflow users
+INSERT_UPDATE Employee;UID[unique=true];name;description;groups(uid)[mode=append];sessionLanguage(isocode);password[default=$defaultPassword]
+;cmseditor;CMS Editor;CMS Editor;cmseditorgroup;en;;
+;cmspublisher;CMS Publisher;CMS Publisher;cmspublishergroup;en;;
+;cmsreviewer;CMS Reviewer;CMS Reviewer;cmsreviewergroup;en;;
+;cmstranslator;CMS Translator;CMS Translator;cmstranslatorgroup;en;;
+;cmstranslator-Annette;German Translator;German Translator;cmstranslatorgroup-DE;de;;
+;cmstranslator-Seb;Asia-Pacific Translator;Asia-Pacific Translator;cmstranslatorgroup-JP,cmstranslatorgroup-ZH;ja;;
+
+# Access rights for managers
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;apparel-de-cmsmanagergroup;basecmsmanagergroup,employeegroup;;;;;;;
+
+# general
+;;;;Item;+;+;;;;
+;;;;UserGroup;+;+;;;;
+;;;;Employee;+;+;;;;
+;;;;ItemSyncTimestamp;+;;;;;
+;;;;SyncItemJob;+;;;;;
+;;;;Type;+;;;;;
+
+# access rights for Products, Store, Site and Catalogs
+;;;;Product;+;+;;;;
+;;;;Category;+;+;;;;
+;;;;VariantType;+;;;;;
+;;;;BaseSite;+;+;-;-;-;
+;;;;BaseStore;+;-;-;-;-;
+;;;;Catalog;+;;;;;
+;;;;CatalogVersion;+;+;+;+;;
+;;;;ContentCatalog;+;+;+;+;+;
+;;;;MediaContainer;+;+;+;+;+;
+;;;;MediaContext;+;+;+;+;+;
+;;;;MediaFormat;+;+;+;+;+;
+;;;;MediaFormatMapping;+;+;+;+;+;
+
+# cms2 items
+;;;;AbstractComponentContainer;+;+;+;+;+;
+;;;;AbstractComponentContainer.itemtype;+;-;-;-;-;
+;;;;AbstractCMSComponent;+;+;+;+;+;
+;;;;AbstractCMSComponent.itemtype;;-;-;-;-;
+;;;;AbstractCMSAction;+;+;+;+;+;
+;;;;AbstractCMSAction.itemtype;;-;-;-;-;
+;;;;CMSItem;+;+;+;+;+;
+;;;;CMSItem.itemtype;;-;-;-;-;
+;;;;CMSPageType;+;+;+;+;+;
+;;;;CMSRelation;+;+;+;+;+;
+;;;;CMSCatalogRestriction;;;+;+;+;
+;;;;CMSCategoryRestriction;;;+;+;+;
+;;;;CMSProductRestriction;;;+;+;+;
+;;;;CatalogPage;-;-;-;-;-;
+;;;;CategoryPage;;;+;+;+;
+;;;;ContentPage;;;+;+;+;
+;;;;ProductPage;;;+;+;+;
+;;;;ContentSlot;+;+;+;+;+;
+;;;;ContentSlotForPage;+;+;+;+;+;
+;;;;ContentSlotForTemplate;+;+;+;+;+;
+;;;;ContentSlotName;+;+;+;+;+;
+;;;;ComponentTypeGroup;+;+;+;+;+;
+;;;;ElementsForContainer;+;+;+;+;+;
+;;;;ElementsForSlot;+;+;+;+;+;
+;;;;CockpitUIScriptConfigMedia;-;-;-;-;-;
+;;;;PageRestrictions;+;+;+;+;+;
+;;;;CatalogsForCMSSite;+;+;+;+;+;
+;;;;AvailableSlotsForTemplate;+;+;+;+;+;
+;;;;RestrictionsForPages;+;+;+;+;+;
+;;;;CatalogsForRestriction;+;+;+;+;+;
+;;;;CategoriesForRestriction;+;+;+;+;+;
+;;;;ProductsForRestriction;+;+;+;+;+;
+;;;;UsersForRestriction;+;+;+;+;+;
+;;;;UserGroupsForRestriction;+;+;+;+;+;
+;;;;PreviewDataToCatalogVersion;+;+;+;+;+;
+;;;;PreviewData;+;+;+;+;+;
+;;;;CMSSite;+;+;+;+;+;
+;;;;CMSVersion;+;+;+;+;+;
+;;;;BusinessProcess;+;+;+;+;+;
+$END_USERRIGHTS;;;;;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;apparel-uk-cmsmanagergroup;basecmsmanagergroup,employeegroup;;;;;;;
+
+# general
+;;;;Item;+;+;;;;
+;;;;UserGroup;+;+;;;;
+;;;;Employee;+;+;;;;
+;;;;ItemSyncTimestamp;+;;;;;
+;;;;SyncItemJob;+;;;;;
+;;;;Type;+;;;;;
+
+# access rights for Products, Store, Site and Catalogs
+;;;;Product;+;+;;;;
+;;;;Category;+;+;;;;
+;;;;VariantType;+;;;;;
+;;;;BaseSite;+;+;-;-;-;
+;;;;BaseStore;+;-;-;-;-;
+;;;;Catalog;+;;;;;
+;;;;CatalogVersion;+;+;+;+;;
+;;;;ContentCatalog;+;+;+;+;+;
+;;;;MediaContainer;+;+;+;+;+;
+;;;;MediaContext;+;+;+;+;+;
+;;;;MediaFormat;+;+;+;+;+;
+;;;;MediaFormatMapping;+;+;+;+;+;
+
+# cms2 items
+;;;;AbstractComponentContainer;+;+;+;+;+;
+;;;;AbstractComponentContainer.itemtype;+;-;-;-;-;
+;;;;AbstractCMSComponent;+;+;+;+;+;
+;;;;AbstractCMSComponent.itemtype;;-;-;-;-;
+;;;;AbstractCMSAction;+;+;+;+;+;
+;;;;AbstractCMSAction.itemtype;;-;-;-;-;
+;;;;CMSItem;+;+;+;+;+;
+;;;;CMSItem.itemtype;;-;-;-;-;
+;;;;CMSPageType;+;+;+;+;+;
+;;;;CMSRelation;+;+;+;+;+;
+;;;;CMSCatalogRestriction;;;+;+;+;
+;;;;CMSCategoryRestriction;;;+;+;+;
+;;;;CMSProductRestriction;;;+;+;+;
+;;;;CatalogPage;-;-;-;-;-;
+;;;;CategoryPage;;;+;+;+;
+;;;;ContentPage;;;+;+;+;
+;;;;ProductPage;;;+;+;+;
+;;;;ContentSlot;+;+;+;+;+;
+;;;;ContentSlotForPage;+;+;+;+;+;
+;;;;ContentSlotForTemplate;+;+;+;+;+;
+;;;;ContentSlotName;+;+;+;+;+;
+;;;;ComponentTypeGroup;+;+;+;+;+;
+;;;;ElementsForContainer;+;+;+;+;+;
+;;;;ElementsForSlot;+;+;+;+;+;
+;;;;CockpitUIScriptConfigMedia;-;-;-;-;-;
+;;;;PageRestrictions;+;+;+;+;+;
+;;;;CatalogsForCMSSite;+;+;+;+;+;
+;;;;AvailableSlotsForTemplate;+;+;+;+;+;
+;;;;RestrictionsForPages;+;+;+;+;+;
+;;;;CatalogsForRestriction;+;+;+;+;+;
+;;;;CategoriesForRestriction;+;+;+;+;+;
+;;;;ProductsForRestriction;+;+;+;+;+;
+;;;;UsersForRestriction;+;+;+;+;+;
+;;;;UserGroupsForRestriction;+;+;+;+;+;
+;;;;PreviewDataToCatalogVersion;+;+;+;+;+;
+;;;;PreviewData;+;+;+;+;+;
+;;;;CMSSite;+;+;+;+;+;
+;;;;CMSVersion;+;+;+;+;+;
+;;;;BusinessProcess;+;+;+;+;+;
+$END_USERRIGHTS;;;;;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;base-electronics-cmsmanagergroup;basecmsmanagergroup,employeegroup;;;;;;;
+
+# general
+;;;;Item;+;+;;;;
+;;;;UserGroup;+;+;;;;
+;;;;Employee;+;+;;;;
+;;;;ItemSyncTimestamp;+;;;;;
+;;;;SyncItemJob;+;;;;;
+;;;;Type;+;;;;;
+
+# access rights for Products, Store, Site and Catalogs
+;;;;Product;+;+;;;;
+;;;;Category;+;+;;;;
+;;;;VariantType;+;;;;;
+;;;;BaseSite;+;+;-;-;-;
+;;;;BaseStore;+;-;-;-;-;
+;;;;Catalog;+;;;;;
+;;;;CatalogVersion;+;+;+;+;;
+;;;;ContentCatalog;+;+;+;+;+;
+;;;;MediaContainer;+;+;+;+;+;
+;;;;MediaContext;+;+;+;+;+;
+;;;;MediaFormat;+;+;+;+;+;
+;;;;MediaFormatMapping;+;+;+;+;+;
+
+# cms2 items
+;;;;AbstractComponentContainer;+;+;+;+;+;
+;;;;AbstractComponentContainer.itemtype;+;-;-;-;-;
+;;;;AbstractCMSComponent;+;+;+;+;+;
+;;;;AbstractCMSComponent.itemtype;;-;-;-;-;
+;;;;AbstractCMSAction;+;+;+;+;+;
+;;;;AbstractCMSAction.itemtype;;-;-;-;-;
+;;;;CMSItem;+;+;+;+;+;
+;;;;CMSItem.itemtype;;-;-;-;-;
+;;;;CMSPageType;+;+;+;+;+;
+;;;;CMSRelation;+;+;+;+;+;
+;;;;CMSCatalogRestriction;;;+;+;+;
+;;;;CMSCategoryRestriction;;;+;+;+;
+;;;;CMSProductRestriction;;;+;+;+;
+;;;;CatalogPage;-;-;-;-;-;
+;;;;CategoryPage;;;+;+;+;
+;;;;ContentPage;;;+;+;+;
+;;;;ProductPage;;;+;+;+;
+;;;;ContentSlot;+;+;+;+;+;
+;;;;ContentSlotForPage;+;+;+;+;+;
+;;;;ContentSlotForTemplate;+;+;+;+;+;
+;;;;ContentSlotName;+;+;+;+;+;
+;;;;ComponentTypeGroup;+;+;+;+;+;
+;;;;ElementsForContainer;+;+;+;+;+;
+;;;;ElementsForSlot;+;+;+;+;+;
+;;;;CockpitUIScriptConfigMedia;-;-;-;-;-;
+;;;;PageRestrictions;+;+;+;+;+;
+;;;;CatalogsForCMSSite;+;+;+;+;+;
+;;;;AvailableSlotsForTemplate;+;+;+;+;+;
+;;;;RestrictionsForPages;+;+;+;+;+;
+;;;;CatalogsForRestriction;+;+;+;+;+;
+;;;;CategoriesForRestriction;+;+;+;+;+;
+;;;;ProductsForRestriction;+;+;+;+;+;
+;;;;UsersForRestriction;+;+;+;+;+;
+;;;;UserGroupsForRestriction;+;+;+;+;+;
+;;;;PreviewDataToCatalogVersion;+;+;+;+;+;
+;;;;PreviewData;+;+;+;+;+;
+;;;;CMSSite;+;+;+;+;+;
+;;;;CMSVersion;+;+;+;+;+;
+;;;;BusinessProcess;+;+;+;+;+;
+$END_USERRIGHTS;;;;;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;powertools-cmsmanagergroup;basecmsmanagergroup,employeegroup;;;;;;;
+
+# general
+;;;;Item;+;+;;;;
+;;;;UserGroup;+;+;;;;
+;;;;Employee;+;+;;;;
+;;;;ItemSyncTimestamp;+;;;;;
+;;;;SyncItemJob;+;;;;;
+;;;;Type;+;;;;;
+
+# access rights for Products, Store, Site and Catalogs
+;;;;Product;+;+;;;;
+;;;;Category;+;+;;;;
+;;;;VariantType;+;;;;;
+;;;;BaseSite;+;+;-;-;-;
+;;;;BaseStore;+;-;-;-;-;
+;;;;Catalog;+;;;;;
+;;;;CatalogVersion;+;+;+;+;;
+;;;;ContentCatalog;+;+;+;+;+;
+;;;;MediaContainer;+;+;+;+;+;
+;;;;MediaContext;+;+;+;+;+;
+;;;;MediaFormat;+;+;+;+;+;
+;;;;MediaFormatMapping;+;+;+;+;+;
+
+# cms2 items
+;;;;AbstractComponentContainer;+;+;+;+;+;
+;;;;AbstractComponentContainer.itemtype;+;-;-;-;-;
+;;;;AbstractCMSComponent;+;+;+;+;+;
+;;;;AbstractCMSComponent.itemtype;;-;-;-;-;
+;;;;AbstractCMSAction;+;+;+;+;+;
+;;;;AbstractCMSAction.itemtype;;-;-;-;-;
+;;;;CMSItem;+;+;+;+;+;
+;;;;CMSItem.itemtype;;-;-;-;-;
+;;;;CMSPageType;+;+;+;+;+;
+;;;;CMSRelation;+;+;+;+;+;
+;;;;CMSCatalogRestriction;;;+;+;+;
+;;;;CMSCategoryRestriction;;;+;+;+;
+;;;;CMSProductRestriction;;;+;+;+;
+;;;;CatalogPage;-;-;-;-;-;
+;;;;CategoryPage;;;+;+;+;
+;;;;ContentPage;;;+;+;+;
+;;;;ProductPage;;;+;+;+;
+;;;;ContentSlot;+;+;+;+;+;
+;;;;ContentSlotForPage;+;+;+;+;+;
+;;;;ContentSlotForTemplate;+;+;+;+;+;
+;;;;ContentSlotName;+;+;+;+;+;
+;;;;ComponentTypeGroup;+;+;+;+;+;
+;;;;ElementsForContainer;+;+;+;+;+;
+;;;;ElementsForSlot;+;+;+;+;+;
+;;;;CockpitUIScriptConfigMedia;-;-;-;-;-;
+;;;;PageRestrictions;+;+;+;+;+;
+;;;;CatalogsForCMSSite;+;+;+;+;+;
+;;;;AvailableSlotsForTemplate;+;+;+;+;+;
+;;;;RestrictionsForPages;+;+;+;+;+;
+;;;;CatalogsForRestriction;+;+;+;+;+;
+;;;;CategoriesForRestriction;+;+;+;+;+;
+;;;;ProductsForRestriction;+;+;+;+;+;
+;;;;UsersForRestriction;+;+;+;+;+;
+;;;;UserGroupsForRestriction;+;+;+;+;+;
+;;;;PreviewDataToCatalogVersion;+;+;+;+;+;
+;;;;PreviewData;+;+;+;+;+;
+;;;;CMSSite;+;+;+;+;+;
+;;;;CMSVersion;+;+;+;+;+;
+;;;;BusinessProcess;+;+;+;+;+;
+$END_USERRIGHTS;;;;;
+
+#
+# Import permissions for SmartEdit users
+#
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+User;cmsmanager;;1234;;;;;;
+;;;;CatalogVersion;+;+;+;+;;
+$END_USERRIGHTS;;;;;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+User;cmsmanager-apparel-de;;1234;;;;;;
+;;;;CatalogVersion;+;+;+;+;;
+$END_USERRIGHTS;;;;;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+User;cmsmanager-apparel-uk;;1234;;;;;;
+;;;;CatalogVersion;+;+;+;+;;
+$END_USERRIGHTS;;;;;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+User;cmsmanager-electronics;;1234;;;;;;
+;;;;CatalogVersion;+;+;+;+;;
+$END_USERRIGHTS;;;;;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+User;cmsmanager-powertools;;1234;;;;;;
+;;;;CatalogVersion;+;+;+;+;;
+$END_USERRIGHTS;;;;;

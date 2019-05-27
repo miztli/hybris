@@ -1,0 +1,102 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+$contentCatalog=powertoolsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$jarResourceCms=jar:de.hybris.platform.commerceorgaddon.constants.CommerceorgaddonConstants&/commerceorgaddon/import/cockpits/cmscockpit
+
+
+#### Media ####
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+;;manageUnitsPagePreview;text/png;ManageUnitsPage.png;$jarResourceCms/preview-images/powertools/ManageUnitsPage.png
+;;manageUserGroupsPagePreview;text/png;ManageUserGroupsPage.png;$jarResourceCms/preview-images/powertools/ManageUserGroupsPage.png
+;;myCompanyloginPagePreview;text/png;MyCompanyLoginPage.png;$jarResourceCms/preview-images/powertools/MyCompanyLoginPage.png
+;;manageUnitApproversPagePreview;text/png;ManageUnitApproversPage.png;$jarResourceCms/preview-images/powertools/ManageUnitApproversPage.png
+
+
+# Functional Content Pages
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV)
+;;manageUnits;manageUnitsPagePreview
+;;manageUsergroups;manageUserGroupsPagePreview
+;;my-company-login;myCompanyloginPagePreview
+;;manageUnitApprovers;manageUnitApproversPagePreview
+
+
+#################    MY COMPANY START    #################
+
+
+#### add my-company related cms items for responsive ####
+
+# create cms link components for my-company pages
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;target(code)[default='sameWindow']
+;;BudgetLink;Company Manage Budget Link;/my-company/organization-management/manage-budgets/;BudgetLink;
+#;;BudgetAddLink;Company Add Budget Link;/my-company/organization-management/manage-budgets/add;BudgetAddLink;
+#;;BudgetEditLink;Company Edit Budget Link;/my-company/organization-management/manage-budgets/;BudgetEditLink;
+;;CostCenterLink;Company Manage Cost Centers Link;/my-company/organization-management/manage-costcenters/;CostCenterLink;
+#;;CostCenterAddLink;Company Add Cost Centers Link;/my-company/organization-management/manage-costcenters/add;CostCenterAddLink;
+#;;CostCenterEditLink;Company Manage Cost Centers Link;/my-company/organization-management/manage-costcenters/;CostCenterEditLink;
+;;UnitsLink;Company Manage Units Link;/my-company/organization-management/manage-units/;UnitsLink;
+#;;UnitsAddLink;Company Add Units Link;/my-company/organization-management/manage-units/;UnitsAddLink;
+#;;UnitsEditLink;Company Edit Units Link;/my-company/organization-management/manage-units/;UnitsEditLink;
+;;UsersLink;Company Manage Users Link;/my-company/organization-management/manage-users/;UsersLink;
+#;;UsersAddLink;Company Add Users Link;/my-company/organization-management/manage-users/;UsersAddLink;
+#;;UsersEditLink;Company Edit Users Link;/my-company/organization-management/manage-users/;UsersEditLink;
+;;UserGroupsLink;Company Manage User Groups Link;/my-company/organization-management/manage-usergroups/;UserGroupsLink;
+#;;UserGroupsAddLink;Company Add User Groups Link;/my-company/organization-management/manage-usergroups/;UserGroupsAddLink;
+#;;UserGroupsEditLink;Company Edit User Groups Link;/my-company/organization-management/manage-usergroups/;UserGroupsEditLink;
+;;PermissionsLink;Company Manage User Groups Link;/my-company/organization-management/manage-permissions/;PermissionsLink;
+#;;PermissionsAddLink;Company Add User Groups Link;/my-company/organization-management/manage-permissions/;PermissionsAddLink;
+#;;PermissionsEditLink;Company Edit User Groups Link;/my-company/organization-management/manage-permissions/;PermissionsEditLink;
+
+# create navigation root node for my-company & child nodes for the root node
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&linkRef);&nodeRef
+;MyCompanyNavNode;;My Company;PowertoolsNavNode;;MyCompanyNavNode
+# children for my-company
+;BudgetNavNode;;Budget;MyCompanyNavNode;;BudgetNavNode
+;CostCenterNavNode;;Cost Center;MyCompanyNavNode;;CostCenterNavNode
+;UnitsNavNode;;Units;MyCompanyNavNode;;UnitsNavNode
+;UsersNavNode;;Users;MyCompanyNavNode;;UsersNavNode
+;UserGroupsNavNode;;User Groups;MyCompanyNavNode;;UserGroupsNavNode
+;PermissionsNavNode;;Permissions;MyCompanyNavNode;;PermissionsNavNode
+
+# create cms navigation entry for navigation child nodes
+INSERT_UPDATE CMSNavigationEntry;uid[unique=true];$contentCV[unique=true];name;navigationNode(&nodeRef);item(&linkRef);
+;BudgetNavNodeEntry;;Budget Nav Node Entry;BudgetNavNode;BudgetLink;
+;CostCenterNavNodeEntry;;Cost Center Nav Node Entry;CostCenterNavNode;CostCenterLink;
+;UnitsNavNodeEntry;;Units Nav Node Entry;UnitsNavNode;UnitsLink;
+;UsersNavNodeEntry;;Users Nav Node Entry;UsersNavNode;UsersLink;
+;UserGroupsNavNodeEntry;;User Groups Nav Node Entry;UserGroupsNavNode;UserGroupsLink;
+;PermissionsNavNodeEntry;;Permissions Nav Node Entry;PermissionsNavNode;PermissionsLink;
+
+# create navigation component for my-company
+INSERT_UPDATE NavigationComponent;$contentCV[unique=true];uid[unique=true];name;styleClass;&componentRef;navigationNode(&nodeRef)
+;;MyCompanyComponent;My Company;companyNavComponent;MyCompanyComponent;MyCompanyNavNode
+
+#### add appropriate restrictions ####
+
+# CMS User Group Restrictions
+INSERT_UPDATE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;userGroups(uid);includeSubgroups;components(&componentRef)
+;;MyCompanyLinkAdminGroupRestriction;My Company Link Admin Group Restriction;b2badmingroup;true;MyCompanyComponent
+
+#### add my-company stuff here ####
+
+# add my account navigation component to a content slot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)[mode=append]
+;;HeaderLinksSlot;MyCompanyComponent
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(&componentRef);
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV);&componentRef
+
+
+UPDATE SyncAttributeDescriptorConfig[batchmode=true];includedInSync;attributeDescriptor(qualifier, enclosingType(code))[unique=true]
+;false;navigationNodeList:AbstractPage
+#################    MY COMPANY END    #################

@@ -1,0 +1,35 @@
+@import "cockpitng-globals.scss";
+
+$releaseinfo__component--color: $black__blueish--100;
+$releaseinfo__component--background: $grey__light--300;
+$releaseinfo__component--font-size: $font-size__semi-base;
+$releaseinfo__component--light-font: 200;
+$releaseinfo__component--font-family: $font-family-opensans;
+
+$releaseinfo__component-z-div--margin: $container-spacing-default_two-thirds $container-spacing-default_two-thirds 0;
+
+$releaseinfo__list-li--padding-left: 1em;
+
+$releaseinfo__list-level1--font-weight: $releaseinfo__component--light-font;
+$releaseinfo__list-level1--font-size: $font-size__base;
+$releaseinfo__list-level1--margin-top: $container-spacing-default_two-thirds;
+$releaseinfo__list-level1--margin-left: -1em;
+
+$releaseinfo__list-level2--margin-left: 1.4em;
+$releaseinfo__list-level2--color: $grey__default--1100;
+
+$releaseinfo__title-label--font-size: 25px;
+$releaseinfo__title-label--font-weight: $releaseinfo__component--light-font;
+$releaseinfo__title-label--color: $blue__default--300;
+
+$releaseinfo__teaser-label--color: $releaseinfo__list-level2--color;
+$releaseinfo__teaser-label--font-size: $font-size__semi-base;
+$releaseinfo__teaser-label--font-weight: $font-weight-normal;
+
+$releaseinfo__featureheader--border-bottom: $boxes--border__thin solid $grey__default;
+$releaseinfo__featureheader--font-size: $font-size__large;
+$releaseinfo__featureheader--font-weight: $releaseinfo__component--light-font;
+$releaseinfo__featureheader--margin: 50px ($container-spacing-default_two-thirds*-1) 0 0;
+$releaseinfo__featureheader--padding-bottom: floor($container-spacing-default__third * 0.5);
+$releaseinfo__featureheader--padding-right: $container-spacing-default_two-thirds;
+

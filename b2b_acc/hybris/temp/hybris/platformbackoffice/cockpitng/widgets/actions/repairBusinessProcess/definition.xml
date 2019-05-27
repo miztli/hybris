@@ -1,0 +1,33 @@
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="com.hybris.cockpitng.action.repairprocess"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+
+    <name>Repair business process</name>
+    <description>Repair business process</description>
+    <author>hybris</author>
+    <version>1.0</version>
+
+    <actionClassName>de.hybris.platform.platformbackoffice.actions.processengine.RepairBusinessProcessAction</actionClassName>
+
+    <inputType>de.hybris.platform.catalog.model.BusinessProcessModel</inputType>
+    <outputType>java.lang.Object</outputType>
+    <sockets>
+        <output id="startSyncForm" type="de.hybris.platform.platformbackoffice.widgets.catalogsynchronization.StartSyncForm"/>
+    </sockets>
+
+    <!-- folder icons with the icons must be created in the following directory: myextension/backoffice/resources/widgets/actions/myaction -->
+    <iconUri>icons/icon_action_repair_process_default.png</iconUri>
+    <iconHoverUri>icons/icon_action_repair_process_hover.png</iconHoverUri>
+    <iconDisabledUri>icons/icon_action_repair_process_disabled.png</iconDisabledUri>
+
+</action-definition>

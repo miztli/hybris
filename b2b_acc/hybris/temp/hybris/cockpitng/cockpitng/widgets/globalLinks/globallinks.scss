@@ -1,0 +1,88 @@
+/*================================
+    Global Links Popup
+================================*/
+// Relevant Changes applied to the Global Links Popup
+
+
+@import "scss/support/_globallinks-variables.scss";
+
+.yw-global-links {
+  max-width: $globallinks__popup-container--max-width;
+  width: $globallinks__popup-container--width;
+  
+  &_right{
+    left: auto !important;
+    right: 0;
+  }  
+
+  @media (max-width: $globallinks__default--bp-s){
+    width: $globallinks__popup-container-bp-s--width;
+  }
+  @media (max-width: $globallinks__default--bp-xs){
+    width: $globallinks__popup-container-bp-xs--width;
+  }
+  &.z-popup-open {
+    padding: $globallinks__popup--padding;
+    background: transparent;
+    overflow: visible;
+    box-shadow: none;
+    > .z-popup-content {
+      background: $globallinks__popup--bg-color;
+      border-radius: $globallinks__popup--border-radius;
+      box-shadow: $globallinks__popup--box-shadow;
+      overflow: auto;
+      height: auto;
+      max-height: $globallinks__popup--max-height;
+    }
+  }
+  .yw-global-links-container {
+    width: 100%;
+    background: $globallinks__popup-item--bg-color;
+    padding: $globallinks__popup-container--padding;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    &-link {
+      width: $globallinks__popup-item--width;
+      border-radius: $globallinks__popup-item--border-radius;
+      margin: $globallinks__popup-item--margin;
+      display: inline-block;
+      vertical-align: top;
+      box-shadow: $globallinks__default--box-shadow;
+      
+      @media (max-width: $globallinks__default--bp-s){
+        width: $globallinks__popup-item-bp-s--width;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: $globallinks__popup-item-hover--bg-color;
+        transition: $globallinks__popup-item--transition;
+      }
+
+      &-icon {
+        width: 100%;
+        height: $globallinks__navigation-icon--height;
+        padding: $globallinks__navigation-icon--padding;
+        margin: $globallinks__navigation-icon--margin;
+      }
+
+      &-label {
+        width: 100%;
+        color: $globallinks__navigation-label--color;
+        padding: $globallinks__navigation-label--padding;
+        text-align: $globallinks__navigation-label--text-align;
+        line-height: $globallinks__navigation-label--line-height;
+        display: block;
+      }
+    }
+  }
+
+  &-btn {
+    img {
+      height: $globallinks__navigation-btn--height;
+    }
+  }
+}

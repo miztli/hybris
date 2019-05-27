@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:h="http://www.w3.org/1999/xhtml"
+	 xmlns:w="http://www.zkoss.org/2005/zk/client"
+	 xmlns:zk="http://www.zkoss.org/2005/zk">
+
+	<widget sclass="yw-cng-release-releaseinfo" height="100%">
+
+		<div>
+			<style src="${wr}/default.css"/>
+			<div sclass="yw-cng-release-releaseinfo-titleContainer">
+				<label value="Next Generation Cockpit Framework: 1.0"/>
+			</div>
+
+			<div sclass="yw-cng-release-releaseinfo-teaserContainer">
+				The Next Generation Cockpit Framework has been designed to allow powerful business tools and user interfaces - fully
+				leveraging hybris platform functionality - to be developed easily and in a consistent way. Consistency is assured by
+				having one single business tool environment and web application and have domain specific functionality tied in as
+				plugins.
+			</div>
+			<div sclass="yw-cng-release-releaseinfo-teaserContainer">
+				One of the key concepts behind the new framework is the idea of an application being constituted of a set of widgets,
+				where each widget is a stand-alone, deployable component with a clearly defined interface and a specific purpose. By
+				combining and connecting widgets, a tailor-made application can be designed and put together in no time. Especially,
+				using the UI-driven Application Orchestrator.
+			</div>
+			<div sclass="yw-cng-release-releaseinfo-teaserContainer">
+				Besides providing the tools required to build powerful administrative applications, the framework has - from the very
+				beginning on - been designed to make it easier to create applications which focus on business roles and business
+				processes.
+			</div>
+
+			The widget approach allows components built by hybris, partners and customers to be shared and re-used by everyone.
+
+		</div>
+
+		<div sclass="yw-cng-release-current">
+			<label sclass="featureheader" value="Features"/>
+			<ul xmlns="http://www.w3.org/1999/xhtml" sclass="featurelist">
+				<li sclass="level1">Designed to allow business role/process centric applications to be created in a jiffy.</li>
+				<li sclass="level1">The Widget engine and Widget API makes it easy to re-use, configure, and extend existing
+					components
+				</li>
+				<li sclass="level2">Focus on real value-adds</li>
+				<li sclass="level2">Shorten the time-to-market</li>
+				<li sclass="level2">Benefit from the work of others</li>
+				<li sclass="level1">We know how your functionality is split up in channels, modules, extensions, etc, but there is no
+					good reason why business users should have to. One commerce solution, one business tool. Period.
+				</li>
+				<li sclass="level2">Usable for all touchpoints (desktop, mobile, web, in-store, etc.)</li>
+				<li sclass="level2">Consistent user experience across domains</li>
+				<li sclass="level2">Easily create and deploy domain specific functionality as plugins</li>
+				<li sclass="level1">Runtime deployment and configuration</li>
+				<li sclass="level2">Deploy and load widgets, plugins and UI configurations instantly, without having to restart any
+					systems
+				</li>
+				<li sclass="level1">The UI-driven Application Orchestrator allows you to create business tools, tailor made for your
+					organization in no time. Without having to code anything.
+				</li>
+			</ul>
+
+		</div>
+
+		<div sclass="yw-cng-release-v2">
+			<label sclass="featureheader" value="Second Release"/>
+			<ul xmlns="http://www.w3.org/1999/xhtml" sclass="featurelist">
+				<!-- TODO				<li sclass="level1">Standard hybris widgets</li> -->
+				<!-- 				<li sclass="level2">Explorer tree</li> -->
+				<!-- 				<li sclass="level2">SOLR powered search</li> -->
+				<!-- 				<li sclass="level2">List view</li> -->
+				<!-- 				<li sclass="level2">Editor area</li> -->
+				<!-- 				<li sclass="level1">Generic Data Access</li> -->
+				<!-- 				<li sclass="level2">Perform CRUD operations using a generic interface</li> -->
+				<!-- 				<li sclass="level2">Possible to create custom implementation for any backend system</li> -->
+				<!-- 				<li sclass="level2">REST operations</li> -->
+				<!-- 				<li sclass="level1">General backoffice improvements</li> -->
+				<!-- 				<li sclass="level2">Bug fixes, performance, ...</li> -->
+
+			</ul>
+
+		</div>
+
+		<div sclass="yw-cng-release-v3">
+			<label sclass="featureheader" value="Third Release"/>
+			<ul xmlns="http://www.w3.org/1999/xhtml" sclass="featurelist">
+				<!-- 	TODO			<li sclass="level1">Backoffice user actions/tasks</li> -->
+				<!-- 				<li sclass="level2">Model user processes and provide visual components</li> -->
+			</ul>
+
+		</div>
+
+	</widget>
+</zk>

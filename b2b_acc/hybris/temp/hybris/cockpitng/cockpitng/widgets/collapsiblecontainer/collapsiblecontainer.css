@@ -1,0 +1,158 @@
+/*================================
+    Collapsible-Container
+================================*/
+button.yw-expandCollapse,
+.z-window-highlighted button.yw-expandCollapse {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  min-height: 16px;
+  padding: 0;
+  background-image: url("images/icon_func_colapse_sprite.png") !important;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: transparent; }
+  button.yw-expandCollapse:focus, button.yw-expandCollapse:hover, button.yw-expandCollapse:active,
+  .z-window-highlighted button.yw-expandCollapse:focus,
+  .z-window-highlighted button.yw-expandCollapse:hover,
+  .z-window-highlighted button.yw-expandCollapse:active {
+    background-color: transparent;
+    color: inherit;
+    border-color: transparent;
+    box-shadow: none; }
+  button.yw-expandCollapse:hover, button.yw-expandCollapse:active,
+  .z-window-highlighted button.yw-expandCollapse:hover,
+  .z-window-highlighted button.yw-expandCollapse:active {
+    background-position: 0 -16px; }
+
+.yw-expandCollapse.z-button[disabled],
+.yw-expandCollapse.z-button[disabled]:hover,
+.yw-expandCollapse.z-button[disabled]:active {
+  opacity: 0.5;
+  background-color: transparent !important;
+  background-position: 0px -64px !important; }
+  .yw-collapsed-down .yw-expandCollapse.z-button[disabled], .yw-collapsed-down
+  .yw-expandCollapse.z-button[disabled]:hover, .yw-collapsed-down
+  .yw-expandCollapse.z-button[disabled]:active {
+    background-position: -16px -64px !important; }
+
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-locked, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-unlocked {
+  top: 5px;
+  right: 21px;
+  width: 16px;
+  height: 16px;
+  min-height: 16px;
+  position: absolute;
+  padding: 0;
+  background: none;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat; }
+  .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-locked:hover, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-locked:active, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-locked:focus, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-unlocked:hover, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-unlocked:active, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-unlocked:focus {
+    min-height: 16px;
+    background-color: transparent;
+    box-shadow: none; }
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-locked, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-locked:hover, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-locked:active, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-locked:focus {
+  background-image: url("images/icon_action_lock_colapse_active.png") !important; }
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-unlocked, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-unlocked:hover, .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-unlocked:active {
+  background-image: url("images/icon_action_lock_colapse_default.png") !important; }
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container button.yw-expandCollapse,
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container button.yw-collapsibleContainer-locked,
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container button.yw-collapsibleContainer-unlocked,
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container button.yw-expandCollapse,
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container button.yw-collapsibleContainer-locked,
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container button.yw-collapsibleContainer-unlocked,
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption > .z-south-header .yw-caption-container button.yw-expandCollapse,
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption > .z-south-header .yw-caption-container button.yw-collapsibleContainer-locked,
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption > .z-south-header .yw-caption-container button.yw-collapsibleContainer-unlocked {
+  top: 50%;
+  margin-top: -8px; }
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption.yw-collapsed-down > .z-center-header .yw-expandCollapse,
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption.yw-collapsed-down > .z-north-header .yw-expandCollapse {
+  background-position: -16px 0; }
+  .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption.yw-collapsed-down > .z-center-header .yw-expandCollapse:hover,
+  .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption.yw-collapsed-down > .z-north-header .yw-expandCollapse:hover {
+    background-position: -16px -48px; }
+
+.yw-collapsibleContainer-caption > .z-center-header,
+.yw-collapsibleContainer-caption > .z-north-header,
+.yw-collapsibleContainer-caption > .z-south-header {
+  overflow: visible;
+  padding: 10px 30px;
+  min-height: 40px;
+  height: auto;
+  border: none;
+  background: none; }
+  .yw-collapsibleContainer-caption > .z-center-header > [class$=-caption],
+  .yw-collapsibleContainer-caption > .z-north-header > [class$=-caption],
+  .yw-collapsibleContainer-caption > .z-south-header > [class$=-caption] {
+    width: auto !important; }
+  .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container > .z-caption-content,
+  .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container > .z-caption-content,
+  .yw-collapsibleContainer-caption > .z-south-header .yw-caption-container > .z-caption-content {
+    max-width: 100%; }
+    .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container > .z-caption-content > [class="z-div"] .z-label,
+    .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container > .z-caption-content > [class="z-div"] .z-label,
+    .yw-collapsibleContainer-caption > .z-south-header .yw-caption-container > .z-caption-content > [class="z-div"] .z-label {
+      max-width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+  .yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container, .yw-com_hybris_backoffice_perspectiveContainer
+  .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container, .yw-com_hybris_backoffice_perspectiveContainer
+  .yw-collapsibleContainer-caption > .z-south-header .yw-caption-container {
+    position: relative; }
+.yw-collapsibleContainer-caption > .z-north-header .yw-caption-container > .z-caption-content,
+.yw-collapsibleContainer-caption > .z-center-header .yw-caption-container > .z-caption-content {
+  padding-right: 37px; }
+  .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container > .z-caption-content .yw-textsearch-searchbutton,
+  .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container > .z-caption-content .yw-textsearch-searchbutton {
+    margin-left: -1px;
+    border-left-width: 1px !important;
+    display: inline-block;
+    float: left; }
+  .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container > .z-caption-content .yw-search-mode-container,
+  .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container > .z-caption-content .yw-search-mode-container {
+    display: inline;
+    float: left;
+    white-space: normal; }
+  .yw-collapsibleContainer-caption > .z-north-header .yw-caption-container > .z-caption-content button.yw-toggle-advanced-search,
+  .yw-collapsibleContainer-caption > .z-center-header .yw-caption-container > .z-caption-content button.yw-toggle-advanced-search {
+    display: inline-block; }
+.yw-collapsibleContainer-caption > .z-south-header {
+  border-top: 5px solid #27394f;
+  background-color: #ffffff; }
+.yw-collapsibleContainer-caption .z-caption-content {
+  text-align: left; }
+.yw-collapsibleContainer-caption.yw-collapsed-down > .z-north-header {
+  background-color: #ffffff; }
+  .yw-collapsibleContainer-caption.yw-collapsed-down > .z-north-header .yw-caption-container > .z-caption-content {
+    padding-right: 37px; }
+    .yw-collapsibleContainer-caption.yw-collapsed-down > .z-north-header .yw-caption-container > .z-caption-content .yw-search-mode-container,
+    .yw-collapsibleContainer-caption.yw-collapsed-down > .z-north-header .yw-caption-container > .z-caption-content .yw-textsearch.yw-toggle-open {
+      height: 40px;
+      overflow: hidden; }
+.yw-collapsibleContainer-caption .z-north-capcnt,
+.yw-collapsibleContainer-caption .z-south-capcnt,
+.yw-collapsibleContainer-caption .z-west-capcnt,
+.yw-collapsibleContainer-caption .z-east-capcnt,
+.yw-collapsibleContainer-caption .z-center-capcnt {
+  height: auto;
+  min-height: 21px; }
+.yw-collapsibleContainer-caption .yw-caption-container span.z-label {
+  color: #043263;
+  font-size: 16px;
+  float: left; }
+
+.yw-caption-container span.z-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%; }
+
+.yw-collapsibleContainer-container {
+  overflow: auto;
+  clear: both;
+  width: 100%;
+  height: 100%; }

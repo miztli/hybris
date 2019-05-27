@@ -1,0 +1,31 @@
+@import "support/_flexiblelayout-variables.scss";
+
+.yw-flexlayout-trigger {
+    background-image: $flexlayout__trigger--bg-image;
+
+    &, &-summary {
+        width: $flexlayout__trigger--width;
+        height: $flexlayout__trigger--height;
+        background-repeat: no-repeat;
+        background-position: center center;
+        display: inline-block;
+        cursor: pointer;
+        vertical-align: top;
+
+        .ya-toggle-active &,
+        &:hover,
+        &:focus {
+            background-color: $flexlayout__trigger-hover--bg-color;
+        }
+    }
+
+    &-summary {
+        background-image: $flexlayout__trigger-summary--bg-image;
+
+        .ya-toggle-active &,
+        &:hover,
+        &:focus {
+            background-image: $flexlayout__trigger-summary-hover--bg-image;
+        }
+    }
+}

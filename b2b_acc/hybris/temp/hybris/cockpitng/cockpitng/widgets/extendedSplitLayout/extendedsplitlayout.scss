@@ -1,0 +1,115 @@
+@import "scss/support/_extendedSplitLayout-variables.scss";
+
+.yw-extendedsplitlayout {
+  position: relative;
+
+  &-toolbar {
+    width: $extendedsplitlayout__toolbar--width;
+    height: $extendedsplitlayout__toolbar--height;
+    background-color: $extendedsplitlayout__toolbar--bg-color;
+    text-align: right;
+    position: absolute;
+
+    &-action {
+      height: 100%;
+      display: inline-block;
+
+      .cng-action {
+        margin: $extendedsplitlayout__toolbar-action--margin;
+
+        &, &-group {
+          table td {
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+
+  &-toolbar + &-holder {
+    padding-top: $extendedsplitlayout__toolbar-holder--padding-top;
+  }
+
+  &-holder,
+  &-box-wrapper {
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  &-twin-south,
+  &-box-wrapper {
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  &-box {
+    width: 33%;
+    height: 100%;
+    
+    &:last-child {
+      width: 34%;
+      > .ui-resizable-handle {
+        border-right-width: 0;
+      }
+    }
+  }
+
+  &-box-wrapper,
+  &-box {
+    min-width: 100px;
+    min-height: 100px;
+    overflow: hidden;
+  }
+
+  &-single > &-box {
+    width: 100%;
+  }
+
+  &-twin-south > &-box,
+  &-twinmix-left > &-box-wrapper > &-box,
+  &-twinmix-right > &-box-wrapper > &-box {
+    width: 100%;
+    height: 50%;
+  }
+
+  &-box-wrapper,
+  &-twin-east > &-box,
+  &-twinmix-left > &-box,
+  &-twinmix-right > &-box {
+    width: 50%;
+  }
+
+  &-box-wrapper > .ui-resizable-e,
+  &-box > .ui-resizable-e {
+    width: 0;
+    cursor: ew-resize;
+    right: 0;
+    border: $extendedsplitlayout__toolbar-box-resizable--border;
+    border-right-width: $extendedsplitlayout__toolbar-box-resizable--border-width;
+  }
+
+  &-box > .ui-resizable-s {
+    height: 0;
+    cursor: ns-resize;
+    bottom: 0;
+    border: $extendedsplitlayout__toolbar-box-resizable--border;
+    border-bottom-width: $extendedsplitlayout__toolbar-box-resizable--border-width;
+  }
+
+  &-content-box {
+    width: 100%;
+    height: 100%;
+    min-width: $extendedsplitlayout__content-box--min-width;
+    min-height: $extendedsplitlayout__content-box--min-height;
+
+  }
+
+  &-holder &-holder {
+	padding: $extendedsplitlayout__content-box-inner-holder-box--margin;
+  }
+  
+  &-holder &-holder &-box {
+  	background-color: $extendedsplitlayout__content-box-inner-holder-box-content--bg-color;
+  }
+}

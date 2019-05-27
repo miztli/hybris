@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+        xmlns:w="http://www.zkoss.org/2005/zk/client"
+        height="100%">
+    <vlayout sclass="yw-savedqueries-container">
+        <div id="headerContainer" sclass="header-container">
+            <label id="headerLabel" value="${labels.savedqueries.header.label}"/>
+            <toolbarbutton id="showQueriesFilterBtn" mode="toggle" w:onCheck="jq(this).closest('.yw-savedqueries-container').find('.filterDiv').toggle()"
+                           disabled="true" sclass="yw-filter-toolbarbutton" />
+        </div>
+        <vlayout id="filterDiv" sclass="filterDiv" style="display:none">
+            <textbox hflex="1" id="filterTextbox" sclass="yw-filter-textbox y-general-textinput"
+                     placeholder="${labels.filter.queries}"/>
+            <checkbox id="sharedCheckBox" label="${labels.filter.shared.label}" checked="true" tooltiptext="${labels.filter.shared.tooltip}"/>
+        </vlayout>
+        <div vflex="1">
+            <listbox id="listbox" sclass="yw-savedqueries-list"/>
+        </div>
+    </vlayout>
+</widget>

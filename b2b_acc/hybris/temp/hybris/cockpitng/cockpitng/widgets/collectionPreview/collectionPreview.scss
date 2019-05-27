@@ -1,0 +1,49 @@
+@import "cockpitng-globals.scss";
+
+$collection-preview__container--bg-color: $grey__light--300;
+$collection-preview__listcell--padding: $container-spacing-default__third;
+$collection-preview__imgcontainer-image--max-width: 150px;
+$collection-preview__imgcontainer-image--border: $boxes--border__thin solid #b5bcc8;
+$collection-preview__item-selected-imgcontainer-image--border-color: #1462bf;
+$collection-preview__list-label--padding: 3px 0;
+
+.yw-collection-preview-cnt {
+    width: 100%;
+    height: 100%;
+    background: $collection-preview__container--bg-color;
+    
+    > div.z-listbox {
+        border:none;
+    }
+    > div.z-listboxdiv .z-listbox-body {
+        .z-listitem {
+            background: none;
+        }
+        .z-listcell{
+            padding: $collection-preview__listcell--padding;
+        }
+    }
+    div.z-listbox-body .z-listitem-selected div.yw-collection-prev-imgcontainer img {
+       border-color: $collection-preview__item-selected-imgcontainer-image--border-color;
+    }
+}
+.yw-collection-prev {
+    &-imgcontainer img {
+        border: $collection-preview__imgcontainer-image--border;
+        max-width: $collection-preview__imgcontainer-image--max-width;
+    }
+    &-label{
+        padding: $collection-preview__list-label--padding;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    &-descr {
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        span.z-label {
+        color: #303030 !important;
+        }
+    }
+}

@@ -1,0 +1,136 @@
+@import "../support/dndfileupload-variables.scss";
+
+.ye-dndfileupload {
+	&-upload-container {
+		display: table;
+		width: 100%;
+		text-align: center;
+		position: relative;
+
+		> .ye-dndfileupload-drop-upload {
+			left: 0px !important;
+			top: 0px !important;
+			position: absolute !important;
+			background: rgba(255,255,255,0);
+		}
+	}
+
+	&-container {
+		min-height: $ye-dndfileupload__container--min-height;
+		box-shadow: $ye-dndfileupload__container--box-shadow;
+		background-color: $ye-dndfileupload__container--bg-color;
+		border: $ye-dndfileupload__container--border;
+		margin: $ye-dndfileupload__container--margin;
+		width: auto;
+		display: inline-table;
+		position: relative;
+	}
+
+	&-preview {
+		&-container {
+			text-align: center;
+			vertical-align: middle;
+			display: table-cell;
+			padding: $ye-dndfileupload__preview-container--padding;
+		}
+
+		&-image {
+			max-height: $ye-dndfileupload__preview_image--max-height;
+			max-width: $ye-dndfileupload__preview_image--max-width;
+			margin-bottom: $ye-dndfileupload__preview_image--margin-bottom;
+		}
+		&-filename.z-label {
+			display: block;
+			font-size: $ye-dndfileupload__preview_filename_label--font-size;
+		}
+	}
+
+	&-component {
+		margin: $ye-dndfileupload__component-container--margin;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&-drop-anchor {
+		border: $ye-dndfileupload__drop-area--border;
+		height: $ye-dndfileupload__drop-area--height;
+		border-radius: $ye-dndfileupload__drop-area--border-radius;
+		background-color: $ye-dndfileupload__drop-area--bg-color;
+		color: $ye-dndfileupload__drop-area--color;
+		box-sizing: border-box;
+		text-align: center;
+		display: table-cell;
+		vertical-align: middle;
+		width: 100%;
+
+		.z-button,
+		.z-label {
+			font-size: $ye-dndfileupload__drop-area-content--font-size; 
+			line-height: $ye-dndfileupload__drop-area-content--line-height;
+			display: inline;
+			position: relative;
+			font-size: inherit;
+			line-height: inherit;
+			vertical-align: baseline;
+
+		}
+		.z-button {
+			margin-right: $ye-dndfileupload__drop-area-btn--margin-right;
+			color: $ye-dndfileupload__drop-area-btn--color;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			padding: $ye-dndfileupload__drop-area-btn--padding;
+			&:before {
+				width: $ye-dndfileupload__drop-area-icon--width;
+				height: $ye-dndfileupload__drop-area-icon--height;
+				background: $ye-dndfileupload__drop-area-icon--background;
+				top: 50%;
+				left: 0;
+				position: absolute;
+				display: inline-block;
+				content: "";
+			    transform: translate(0,-50%);
+
+			}
+		}
+	}
+
+	&-drop-upload {
+		background: transparent;
+
+		+ .ye-dndfileupload-drop-anchor {
+			background-color: $ye-dndfileupload__drop-area-on-add--bg-color;
+
+		}
+		&[style*="display: none"] + .ye-dndfileupload-drop-anchor {
+			background-color: $ye-dndfileupload__drop-area--bg-color;
+			border-color: $ye-dndfileupload__drop-area--color;
+		}
+		> div {
+			display: none;
+		}
+	}
+
+	&-preview-remove-btn {
+		width: $ye-dndfileupload__delete-btn--size;
+		height: $ye-dndfileupload__delete-btn--size;
+		min-height: $ye-dndfileupload__delete-btn--size;
+		display: inline-block;
+		position: absolute;
+		right: 0;
+
+		&,
+		&:hover,
+		&:focus,
+		&:active {
+			background: none;
+			padding: 0;
+			box-shadow: none;
+			border: none;
+		}
+	}
+}
+

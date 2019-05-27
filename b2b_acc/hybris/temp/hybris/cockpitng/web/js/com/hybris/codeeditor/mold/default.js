@@ -1,0 +1,3 @@
+function (out) {
+ // do nothing
+}

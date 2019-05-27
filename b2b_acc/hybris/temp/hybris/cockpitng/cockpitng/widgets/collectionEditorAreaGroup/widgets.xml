@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widgets>
+    <widget id="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" widgetDefinitionId="com.hybris.cockpitng.backoffice.collectionEditorArea" slotId="composedRootSlot" template="false">
+
+        <widget id="editorArea" widgetDefinitionId="com.hybris.cockpitng.backoffice.defaultEditorArea" slotId="editorArea" template="false">
+            <widget id="notificationArea" widgetDefinitionId="com.hybris.backoffice.notificationarea" slotId="notificationArea" template="false">
+                <setting key="notificationId" type="String">collectionEANotification</setting>
+                <setting key="widgetStyleAttribute" type="String"></setting>
+                <setting key="debugLog" type="Boolean">false</setting>
+                <setting key="widgetStyleClass" type="String"></setting>
+                <setting key="stackSize" type="Integer">3</setting>
+                <setting key="useDynamicNotificationId" type="Boolean">true</setting>
+                <virtual-sockets/>
+            </widget>
+
+            <setting key="widgetStyleAttribute" type="String"></setting>
+            <setting key="widgetStyleClass" type="String"></setting>
+            <setting key="actionSlotComponentId" type="String">collectioneditorareaactions</setting>
+            <virtual-sockets>
+                <output id="com.hybris.cockpitng.action.delete.success" type="java.lang.Object"/>
+            </virtual-sockets>
+        </widget>
+        <widget id="collectionPreview" widgetDefinitionId="com.hybris.cockpitng.widgets.common.collectionPreview" slotId="list" template="false">
+            <setting key="socketDataType_$T" type="String">java.lang.Object</setting>
+            <setting key="widgetStyleAttribute" type="String"></setting>
+            <setting key="widgetStyleClass" type="String"></setting>
+            <setting key="configContext" type="String">base</setting>
+            <virtual-sockets/>
+        </widget>
+        <setting key="widgetStyleAttribute" type="String"></setting>
+        <setting key="widgetStyleClass" type="String"></setting>
+		  <virtual-sockets/>
+    </widget>
+    <widget-connection sourceWidgetId="collectionPreview" outputId="selectedItem" targetWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" inputId="currentObject"/>
+    <widget-connection sourceWidgetId="editorArea" outputId="objectSaved" targetWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" inputId="modifiedObject"/>
+    <widget-connection sourceWidgetId="editorArea" outputId="com.hybris.cockpitng.action.delete.success" targetWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" inputId="deletedItem"/>
+    <widget-connection sourceWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" outputId="inputDataInputForward" targetWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" inputId="inputData"/>
+    <widget-connection sourceWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" outputId="singleObjectSaved" targetWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" inputId="singleObjectSavedOutputForward"/>
+    <widget-connection sourceWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" outputId="selectedObject" targetWidgetId="editorArea" inputId="inputObject"/>
+    <widget-connection sourceWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" outputId="pageable" targetWidgetId="collectionPreview" inputId="pageable"/>
+    <widget-connection sourceWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" outputId="selectedObject" targetWidgetId="collectionPreview" inputId="selectedItem"/>
+    <widget-connection sourceWidgetId="notificationArea" outputId="selectedElement" targetWidgetId="com.hybris.cockpitng.backoffice.collectionEditorAreaGroup" inputId="notificationSelectedItemForward"/>
+</widgets>

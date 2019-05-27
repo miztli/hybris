@@ -1,0 +1,52 @@
+/*================================
+    Systembar Variables
+================================*/
+.yw-notification {
+  position: absolute;
+  z-index: 1700;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  height: auto !important; }
+  .yw-notification-type {
+    color: #ffffff; }
+  .yw-notification-message {
+    display: block;
+    padding: 15px 45px 15px 35px;
+    box-shadow: 0 0 1px #000000;
+    background: url("images/icon_close-window-bright.png") 99% 50% no-repeat;
+    cursor: pointer;
+    text-align: center;
+    word-wrap: break-word; }
+    .yw-notification-message a, .yw-notification-message .z-label {
+      color: #ffffff; }
+
+.success {
+  background-color: rgba(24, 188, 51, 0.85); }
+
+.failure {
+  background-color: rgba(242, 47, 47, 0.85); }
+
+.warning {
+  background-color: rgba(255, 153, 20, 0.85); }
+
+.info {
+  background-color: rgba(4, 134, 224, 0.85); }
+
+/* Special Skin changes for Wizzard */
+.yw-com_hybris_cockpitng_widgets_configurableflow .yw-notification {
+  position: relative;
+  top: 0; }
+  .yw-com_hybris_cockpitng_widgets_configurableflow .yw-notification-message {
+    padding-left: 20px;
+    padding-right: 35px;
+    text-align: left;
+    background-position: 98% 50%;
+    box-shadow: none; }
+    .yw-com_hybris_cockpitng_widgets_configurableflow .yw-notification-message .z-label {
+      word-wrap: break-word;
+      display: block;
+      padding-left: 0; }
+      .yw-com_hybris_cockpitng_widgets_configurableflow .yw-notification-message .z-label.yw-notification-type {
+        word-wrap: normal;
+        padding: 0; }

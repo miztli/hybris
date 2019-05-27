@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+id="com.hybris.backoffice.perspectiveChooser">
+	<name>Backoffice Perspective Chooser</name>
+	<description>Backoffice Perspective Chooser</description>
+	<defaultTitle>Perspective Chooser</defaultTitle>
+	<author>hybris</author>
+	<version>1.0</version>
+	<controller class="com.hybris.backoffice.widgets.perspectivechooser.controller.PerspectiveChooserWidgetController"/>
+	<view src="perspectiveChooser.zul"/>
+	<sockets>
+        <input id="actions" type="com.hybris.backoffice.actionbar.ActionDefinition" multiplicity="Collection"/>
+		<input id="perspectiveSelected" type="com.hybris.backoffice.navigation.NavigationNode"/>
+		<output id="selectPerspective" type="com.hybris.backoffice.navigation.NavigationNode"/>
+	</sockets>
+	<keywords>
+		<keyword>Navigation</keyword>
+	</keywords>
+	<settings>
+		<setting key="showDefaultIcons" default-value="true" type="java.lang.Boolean"/>
+	</settings>
+</widget-definition>

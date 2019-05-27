@@ -1,0 +1,283 @@
+/*================================
+    Cockpit Window Defaults
+================================*/
+// Layout & Coloring Defaults for Windows
+
+
+@import "../support/_cockpit-variables.scss";
+
+body {
+    background: $body-bg-color;
+    font-weight: $font-weight-normal;
+    font-style: normal;
+    font-family: $font-family-opensans;
+    font-size: $editor-defaults__box--font-size;
+    padding: 0;
+}
+
+.yw-modal-responsive {
+    width: 90%!important;
+    max-width: 1020px!important;
+    left: 50%!important;
+    transform: translateX(-50%)!important;
+}
+
+
+// main layout* zk7-revised //
+.z-window-embedded .z-window-content > .mainWidgetSlot {
+    bottom: 0;
+    height: auto !important;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.z-window-embedded,
+.z-window-content {
+    background-color: transparent;
+}
+
+div.z-listbox, .z-panel-children, .z-panel-header {
+    border-color: $window__default-container--border-color;
+}
+
+.z-panel-head {
+    padding: 1px $window__default--padding;
+    background: $window__default--bg-color;
+}
+
+.yw-perspective-container > .yw-persp-chld > .z-tabbox-top > .z-tabpanels > .z-tabpanel {
+    padding-top: 0;
+    background: transparent;
+}
+
+.z-borderlayout {
+    background: $window__borderlayout--bg-color;
+}
+
+.z-center,
+.z-north,
+.z-south,
+.z-west,
+.z-east {
+    background-color: $window__default--bg-color;
+    border: medium none;
+    color: $editor-defaults__label-field--color;
+}
+
+.z-north,
+.z-south,
+.z-west,
+.z-east {
+    &-splitter {
+        background: $window__splitter--color;
+        height: $window__splitter--size;
+        width: $window__splitter--size;
+        &-button {
+            color: $window__splitter-button--color;
+            &:hover {
+                @if $window__splitter-button--hover-bg-color {
+                    background: $window__splitter-button--hover-bg-color;
+                }
+                @else {
+                    background: transparent;
+                }
+                color: $window__splitter-button--hover-color;
+            }
+        }
+        &:hover {
+            background-color: $window__splitter--hover-color;
+            @if not $window__splitter-button--hover-bg-color {
+                [class$="-splitter-button"] {
+                    color: $window__splitter-button--hover-color;
+                }
+            }
+        }
+    }
+    &-collapsed {
+        background-color: $window__default--bg-color;
+        border: none;
+        padding: $window__collapsed--padding;
+
+        &:hover {
+            // background: $window__default--hover-bg-color;
+        }
+        .z-borderlayout-icon {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            &:before {
+                position: absolute;
+                right: $window__default--padding;
+            }
+        }
+    }
+}
+
+.z-north,
+.z-south {
+    &-splitter {
+        border-right: none;
+        border-left: none;
+    }
+    &-icon[class*="icon-caret"] {
+        line-height: 11px;
+    }
+}
+
+.z-west, .z-east {
+    &-icon {
+        left: 0;
+    }
+} 
+
+.z-temp, 
+.z-modal-mask {
+    background: none repeat scroll 0 0 $black__blueish--200;
+    opacity: 0.65;
+}
+
+.z-window {
+    &-modal-shadow,
+    &-overlapped-shadow,
+    &-popup-shadow,
+    &-embedded-shadow,
+    &-highlighted-shadow {
+        border-radius: 0 0 0 0;
+    }
+
+    &-modal-tl,
+    &-modal-tr,
+    &-modal-hl,
+    &-modal-hr,
+    &-modal-hm {
+        background: $window__default--hover-bg-color;
+    }
+    &-modal-cl,
+    &-modal-cr {
+        background: $window__popup--bg-color;
+    }
+    &-modal-cm {
+        border: none;
+        padding: $window__default--padding 0;
+    }
+    .z-window-content {
+        padding: 0;
+    }
+
+    &-header {
+        /* from configurableflow.scss */    
+        color: $window__popup-header--color;
+        background: $window__popup-header--bg-color;
+        padding: $window__default--padding $window-highlighted__header-element--padding-x;//$configurableflow__base--space $configurableflow__base--double-space;
+        font-size: $window__popup-header--font-size;
+        font-weight: normal;
+
+        .z-caption-content {
+            font-size: $window__popup-header--font-size;
+        }
+        > .z-caption {
+            position: relative;
+            padding-right: $window__default-header-caption--padding-right;
+            min-height: $window__default-header-caption--min-height;
+            > .z-window-close {
+                position:absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+    &-highlighted {
+        &.yw-modal-catalogversiondiff {
+            .widgetTemplate > .z-vlayout > .z-vlayout-inner:first-child {
+                padding: 0 $window-highlighted__header-element--padding-x;
+            }
+        }
+        .z-tabbox-accordion .z-tabpanel .z-tab-selected + .z-tabpanel-content {
+            padding: 0;
+        }
+    }
+}
+
+.z-window-move-ghost {
+    background: darken($window__popup--bg-color, 20%);
+}
+
+/*===== WINDOW ICON ======*/
+
+.z-window-icon {
+    color: $window__icon--color;
+    &:hover {
+        background: $window__icon--color;
+        color: $window__icon--hover-color;
+    }
+    &.z-window-close {
+        background: $window__icon-close--bg-color;
+        color: $window__icon-close--color;
+        
+        .z-icon-remove,
+        .z-icon-close,
+        .z-icon-times {
+            width: $window__icon-close-button--size;
+            height: $window__icon-close-button--size;
+            position: relative;
+            
+            &:before {
+                content: "";
+                width: $window__icon-close--size;
+                height: $window__icon-close--size;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -(floor($window__icon-close--size/2));
+                margin-top: -(floor($window__icon-close--size/2));
+                background: url('images/icon_close-window.png') center no-repeat;
+            }
+        }
+    }
+}
+
+.yw-collapsed-down {
+    .z-north-header {
+//        height: 50px;
+        border-bottom: $window__splitter--size solid $window__splitter--color !important;
+    }
+}
+
+/***************************************************************/
+/******************* TO SORT: Div. CSS Rules *******************/
+// should be defined in different scss-Files - todo: check where
+
+// odd listbox background-coloring
+tr.z-listbox-odd {
+    background: transparent;
+}
+
+
+// important disabled defaults
+
+.safari .z-textbox-disabled {
+    color: black !important;
+}
+
+.z-menupopup-content .z-menuitem-disabled,
+.z-menupopup-content .z-menuitem-disabled * {
+    color: $blue__greyish--300 !important;
+}
+/***************** END TO SORT: Div. CSS Rules *****************/
+/***************************************************************/
+
+.z-borderlayout-icon{
+    @if $window__borderlayout-icon--bg-color {
+        background: $window__borderlayout-icon--bg-color;
+    }
+    @if $window__borderlayout-icon--color {
+        color: $window__borderlayout-icon--color;
+    }
+    &:hover {
+        background: $window__borderlayout-icon--hover-bg-color;
+        color: $window__borderlayout-icon--hover-color;
+    }
+}

@@ -1,0 +1,103 @@
+@import 'cockpitng-globals.scss';
+
+$fullTextSearch__button--size: $toolbar__button-default--height;
+$fullTextSearch__input--border-width: $boxes--border__thin;
+$fullTextSearch__input--border: $fullTextSearch__input--border-width solid transparent;
+
+$fullTextSearch__search-button-default--bg: transparent url('images/icon-full-text-search.png') no-repeat 5px -23px;
+$fullTextSearch__search-button-hover--bg: $white url('images/icon-full-text-search.png') no-repeat 5px -51px;
+
+$fullTextSearch__fieldquery-button-default--bg: transparent url('images/icon-full-text-search-fieldquery.png') no-repeat 5px -23px;
+$fullTextSearch__fieldquery-button-hover--bg: $white url('images/icon-full-text-search-fieldquery.png') no-repeat 5px -51px;
+
+$fullTextSearch__input-box--right: $fullTextSearch__button--size - 1px;
+$fullTextSearch__input-box--transition: width 0.5s ease-in-out, border 0.5s ease-in-out;
+$fullTextSearch__input-wrapper--transition: padding 0.5s ease-in-out;
+
+$fullTextSearch__button-wrapper--margin-right: $container-spacing-default__third;
+
+$fullTextSearch__button--height: $fullTextSearch__button--size;
+$fullTextSearch__button--padding-right: 20px;
+
+$fullTextSearch__button-clear--padding: 0 5px;
+$fullTextSearch__button-clear--width: 20px;
+
+$fullTextSearch__filters-counter-wrappper--margin-left: 7px;
+$fullTextSearch__filters-counter-wrappper--top: -3px;
+
+$fullTextSearch__filters-counter--height: 15px;
+$fullTextSearch__filters-counter--min-width: $fullTextSearch__filters-counter--height;
+$fullTextSearch__filters-counter--font-size: $font-size__small;
+$fullTextSearch__filters-counter--font-weight: bold;
+$fullTextSearch__filters-counter--color: $white;
+$fullTextSearch__filters-counter--text-align: center;
+$fullTextSearch__filters-counter--background: $blue__default;
+$fullTextSearch__filters-counter--border-radius: (ceil($fullTextSearch__filters-counter--height/2));
+$fullTextSearch__filters-counter--line-height: $fullTextSearch__filters-counter--height; //(ceil($fullTextSearch__filters-counter--height/2)) * 2;
+$fullTextSearch__filters-counter--padding: 0 4px;
+
+$fullTextSearch__input-box-expanded--border-color: $blue__default;
+$fullTextSearch__input-box-expanded--border: $boxes--border__thin solid $fullTextSearch__input-box-expanded--border-color;
+$fullTextSearch__input-box--border: $boxes--border__thin solid transparent;
+
+$fullTextSearch__input--width: 200px;
+$fullTextSearch__input-box-expanded--width: $fullTextSearch__input--width + $fullTextSearch__input--border-width;
+$fullTextSearch__input-box-collapsed--width: 0;
+
+$fullTextSearch__fieldquery-popup--width: 320px;
+$fullTextSearch__fieldquery-popup--padding-x: $container-spacing-default__half;
+$fullTextSearch__fieldquery-popup-delimiter--border: $boxes--border__thin solid $white;
+$fullTextSearch__fieldquery-popup-delimiter-applied--border: $boxes--border__thin solid $grey__light--1100;
+
+$fullTextSearch__fieldquery-popup-header--padding: (2 * $container-spacing-default__third) $fullTextSearch__fieldquery-popup--padding-x;
+$fullTextSearch__fieldquery-popup-filter--padding-top: $container-spacing-default__half;
+$fullTextSearch__fieldquery-popup-filter--padding-bottom: $container-spacing-default__half;
+$fullTextSearch__fieldquery-popup-filter-boolean-type--line-height: $editor-defaults__inline-box--height;
+$fullTextSearch__fieldquery-popup-filter-applied--padding-top: $container-spacing-default__third;
+$fullTextSearch__fieldquery-popup-body--padding: 0;
+$fullTextSearch__fieldquery-popup-innerbox--padding-top: $container-spacing-default__third;
+$fullTextSearch__fieldquery-popup-body--max-height: 2*(3*$editor-defaults__inline-box--height + 2 * $fullTextSearch__fieldquery-popup-innerbox--padding-top + ($fullTextSearch__fieldquery-popup-filter--padding-top + $fullTextSearch__fieldquery-popup-filter--padding-bottom) + nth($fullTextSearch__fieldquery-popup-delimiter--border, 1));
+
+$fullTextSearch__fieldquery-popup-footer--bg-color: $grey__light--1200;
+$fullTextSearch__fieldquery-popup-text-button-default--bg-color: transparent;
+$fullTextSearch__fieldquery-popup-text-button-default--color: $grey__default--500;
+$fullTextSearch__fieldquery-popup-text-button-default--hover-color: $blue__default;
+$fullTextSearch__fieldquery-popup-text-button-default--line-height: 24px;
+$fullTextSearch__fieldquery-popup-text-button-default--padding-y: $container-spacing-default__half;
+$fullTextSearch__fieldquery-popup-text-button-default--height: 2 * $fullTextSearch__fieldquery-popup-text-button-default--padding-y + $fullTextSearch__fieldquery-popup-text-button-default--line-height;
+
+$fullTextSearch__fieldquery-popup-operator-label--line-height: $editor-defaults__inline-box--height;
+$fullTextSearch__fieldquery-popup-operator-label-follow-up--margin-top: -(floor($fullTextSearch__fieldquery-popup-operator-label--line-height/2 - 1px));
+$fullTextSearch__fieldquery-popup-filename-label--font-weight: $font-weight-bold;
+
+$fullTextSearch__fieldquery-popup-add-icon--size: 16px;
+$fullTextSearch__fieldquery-popup-add-icon--border-radius: ceil($fullTextSearch__fieldquery-popup-add-icon--size/2);
+$fullTextSearch__fieldquery-popup-add-icon--border-width: $boxes--border__medium;
+$fullTextSearch__fieldquery-popup-add-icon--font-size: 10px;
+$fullTextSearch__fieldquery-popup-add-icon--line-height: $fullTextSearch__fieldquery-popup-add-icon--font-size + $fullTextSearch__fieldquery-popup-add-icon--border-width;
+$fullTextSearch__fieldquery-popup-add-icon--top: (floor($fullTextSearch__fieldquery-popup-add-icon--line-height - $fullTextSearch__fieldquery-popup-add-icon--size)/2);
+$fullTextSearch__fieldquery-popup-add-icon--margin-right: $container-spacing-default__third - $fullTextSearch__fieldquery-popup-add-icon--border-width;
+$fullTextSearch__fieldquery-popup-add-icon--content: "\f067";
+
+$fullTextSearch__fieldquery-localeditor--padding-top: $container-spacing-default__third;
+$fullTextSearch__fieldquery-filename--width: 70%;
+$fullTextSearch__fieldquery-advanced-search-input--width: 70%;
+$fullTextSearch__fieldquery-advanced-search-dropdown--margin-right: $container-spacing-default__third;
+$fullTextSearch__fieldquery-advanced-search-dropdown--width: calc(30% - #{$fullTextSearch__fieldquery-advanced-search-dropdown--margin-right});
+$fullTextSearch__fieldquery-toggle-checkbox--right: 30px;
+
+$fullTextSearch__filter-label--color: $black;
+
+$fullTextSearch__filter-disabled-label--color: $black; //grey__default--900;
+$fullTextSearch__filter-disabled-label--focus-color: $black__blueish--100;
+$fullTextSearch__filter-disabled-filtername-label--text-decoration: line-through; 
+$fullTextSearch__filter-disabled-element--opacity: .5;
+$fullTextSearch__filter-disabled-element--focus-opacity: 1;
+
+$fullTextSearch__filter--bg-color: $blue__light--100;
+$fullTextSearch__filter-applied--bg-color: transparent;
+
+// $fullTextSearch__collection-browser-toolbar-button--box-shadow: inset 0 0 1px 1px rgba($grey__default--1000, .9);
+$fullTextSearch__toolbar-button--hover-border-color: $grey__default--1000;
+$fullTextSearch__toolbar-button--focus-border-color: $fullTextSearch__input-box-expanded--border-color;
+$fullTextSearch__toolbar-button--transition: background-color .05s, border-color .05s;

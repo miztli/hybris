@@ -1,0 +1,34 @@
+<widget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.zkoss.org/2005/zul" height="100%"
+	style="overflow: auto">
+
+
+
+	<vlayout style="overflow: auto" height="100%">
+		<hbox align="center">
+			<label value="Select synchronization job: " />
+			<combobox id="diffOperationComboBox" readonly="true" />
+			<button id="generateButton" label="Generate" />
+		</hbox>
+
+		<grid id="diffResultGrid" mold="paging" pagingPosition="top"
+			autopaging="true" vflex="true">
+			<columns>
+				<column width="120px" label="Type" align="left" />
+				<column hflex="1" label="Source" align="left" />
+				<column width="220px" label="Last modification of source"
+					align="left" />
+				<column width="190px" label="Last synchronization" align="left" />
+			</columns>
+			<template name="model">
+				<row>
+					<label value="${each.type}" />
+					<label value="${each.source}" />
+					<label value="${each.modificationTime}" />
+					<label value="${each.lastSyncTime}" />
+				</row>
+			</template>
+		</grid>
+	</vlayout>
+
+</widget>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="de.hybris.platform.solrfacetsearchbackoffice.action.indexerhotupdate" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+
+    <name>Indexer Hot Update Action</name>
+    <description>Action for a hot update indexing</description>
+    <author>hybris</author>
+    <version>1.0</version>
+
+    <actionClassName>de.hybris.platform.solrfacetsearchbackoffice.actions.SolrIndexerHotUpdateAction</actionClassName>
+    <customRendererClassName>de.hybris.platform.solrfacetsearchbackoffice.actions.renderers.SolrIndexerHotUpdateActionRenderer</customRendererClassName>
+
+  	<sockets>
+      <output id="operationWizard" type="java.util.Map"/>
+   	</sockets>
+
+    <inputType>de.hybris.platform.solrfacetsearch.model.config.SolrFacetSearchConfigModel</inputType>
+	<outputType>java.lang.Object</outputType>
+
+    <iconUri>icons/indexer_hotupdate_wizard_default.png</iconUri>
+    <iconDisabledUri>icons/indexer_hotupdate_wizard_disabled.png</iconDisabledUri>
+	<iconHoverUri>icons/indexer_hotupdate_wizard_hover.png</iconHoverUri>
+	
+	<settings>
+		<setting key="viewMode" default-value="iconAndText"/>
+	</settings>
+	
+</action-definition>

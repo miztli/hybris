@@ -1,0 +1,12 @@
+/*================================
+    Advanced Search - Footer
+================================*/
+// Styling of the footer of the advanced-search component.
+
+
+@import "../support/_advancedsearch-variables.scss";
+
+.yw-advancedsearch .yw-advancedsearch-footer {
+    padding: $advancedsearch__footer--padding;
+    min-height: $advancedsearch__footer--min-height;
+}

@@ -1,0 +1,25 @@
+@import "cockpitng-globals.scss";
+
+
+$valueChooser__option--hover-bg-color: $grey__light--1300;
+$valueChooser__option-container--border: $boxes--border__thin solid $grey__light--1100;
+$valueChooser__option-selected-icon--size: 24px;
+$valueChooser__option-selected-icon--color: $blue__default;
+$valueChooser__option-selected-icon--bg-color: $blue__light--100;
+$valueChooser__option-selected-icon--font-size: 16px;
+$valueChooser__option-selected-icon--border-radius: 50%;
+$valueChooser__option-selected-icon--content: $check--content;
+$valueChooser__option-selected-icon--line-height: $valueChooser__option-selected-icon--size;
+$valueChooser__option-selected-icon--margin-left: floor($valueChooser__option-selected-icon--size/2) * -1;
+$valueChooser__option-selected-icon--margin-top: $valueChooser__option-selected-icon--margin-left;
+$valueChooser__option-selected-icon--font: $font-family-fontawesome;
+$valueChooser__option-selected--border-bottom-color:  $valueChooser__option-selected-icon--color;
+$valueChooser__option--padding-left: 4px;
+$valueChooser__option--font-size: $font-size__medium;
+$valueChooser__option-selected-icon--left: 16px + floor($valueChooser__option-selected-icon--size/2);
+
+$valueChooser__option--border-bottom: $boxes--border__medium solid transparent;
+
+$valueChooser__option-container--padding: 30px 40px;
+$valueChooser__option-container-transition: background-color .3s;
+$valueChooser__option-transition: border-color .3s;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<widget xmlns="http://www.zkoss.org/2005/zul"
+			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			  xmlns:h="http://www.w3.org/1999/xhtml"
+			  xmlns:zk="http://www.zkoss.org/2005/zk"
+			  xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+			  sclass="yw-global-links-widget"
+			  >
+		<popup id="globalLinksPopup" sclass="yw-global-links yw-global-links_right">
+			<div id="globalLinksContainer" sclass="yw-global-links-container"/>
+		</popup>
+		<toolbarbutton id="globalLinksBtn" sclass="yw-global-links-btn" popup="globalLinksPopup, position=after_start"
+							image="${wr}/images/icon_waffle.svg">
+		</toolbarbutton>
+	</widget>
+</zk>

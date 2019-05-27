@@ -1,0 +1,59 @@
+@import "cockpitng-globals.scss";
+
+$quicklist-preview-popup-image__max-width: 200px;
+$quicklist-preview-popup-image__max-height: 150px;
+
+$quicklist__widget--color: $black__blueish--100;
+$quicklist__widget--bg-color: $grey__light--1200;
+$quicklist__widget--info-container--height: 50px;
+$quicklist__widget--main-container--height: calc(100% - #{$quicklist__widget--info-container--height});
+$quicklist__widget-inner-default--padding: $container-spacing-default__third * 2;
+
+$quickList__info-container--font-weight: bold;
+$quicklist__info-container--padding: $container-spacing-default__half $quicklist__widget-inner-default--padding $container-spacing-default__half + $boxes--border__thin;
+
+$quickList__tile--line-height: 17px;
+$quickList__tile--padding: $container-spacing-default__base $quicklist__widget-inner-default--padding $quicklist__widget-inner-default--padding;
+$quickList__tile--border-bottom-color: $grey__light--800;
+$quickList__tile--border-bottom: $boxes--border__thin solid $quickList__tile--border-bottom-color;
+$quickList__tile--border-x: $boxes--border__medium solid transparent;
+
+$quickList__tile-hover--bg-color: rgba($white, 0.5);
+
+$quickList__tile-selected--bg-color: $white;
+$quickList__tile-selected--border-color: $blue__default;
+
+$quickList__hyperlink--color: $blue__default;
+
+$quickList__tile-title--webkit-line-clamp: 3;
+$quickList__tile-title--max-height: $quickList__tile--line-height * $quickList__tile-title--webkit-line-clamp + ($quickList__tile-title--webkit-line-clamp - 1) * 1px;
+$quickList__tile-title--font-weight: bold;
+$quickList__tile-title--margin-bottom: $container-spacing-default__half;
+$quickList__tile-title--padding-right: $container-spacing-default__half;
+
+
+$quickList__tile-thumbnail--max-width: 86px;
+$quickList__tile-thumbnail--border: $boxes--border__thin solid $grey__light--700;
+
+$quickList__tile-subtitle-container--max-width: calc(100% - #{$quickList__tile-thumbnail--max-width});
+$quickList__tile-subtitle-container--color: $blue__default--600;
+$quickList__tile-subtitle-container--padding-left: $container-spacing-default__half;
+
+$quickList__tile-subtitle--max-height: $quickList__tile-title--max-height;
+$quickList__tile-subtitle--font-size: $font-size__small;
+$quickList__tile-subtitle--margin-bottom: 5px;
+
+$quickList__tile-ghost--border: $quickList__tile--border-bottom;
+$quickList__tile-ghost--max-width: 300px;
+$quickList__tile-ghost--box-shadow: 0 0 2px rgba($quickList__tile--border-bottom-color, 0.6);
+$quickList__tile-dragged--opacity: 0.8;
+
+$quickList__remove-btn--size: 16px;
+$quickList__remove-btn--bg-color: transparent;
+$quickList__remove-btn--right: $container-spacing-default__half;
+$quickList__remove-btn--top: $container-spacing-default__half;
+
+$quickList__remove-btn-hover-after--content: "\f057";
+$quickList__remove-btn-hover-after--font-size: 26px;
+$quickList__remove-btn-hover-after--margin-top: -5px;
+$quickList__remove-btn-hover-after--margin-left: -10px;

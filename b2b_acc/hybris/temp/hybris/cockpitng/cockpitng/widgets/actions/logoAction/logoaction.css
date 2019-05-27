@@ -1,0 +1,17 @@
+/*================================
+    Logo Action
+================================*/
+/*================================
+    Create Button Variables
+================================*/
+.z-button.yw-logo-button {
+  width: 25px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding: 0;
+  background: none; }
+  .z-button.yw-logo-button:hover, .z-button.yw-logo-button:focus, .z-button.yw-logo-button:active {
+    background: none;
+    box-shadow: none; }
+  .z-button.yw-logo-button img {
+    height: 24px; }

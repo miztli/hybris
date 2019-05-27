@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="de.hybris.platform.promotions.action.calculatewithpromotionsaction"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+	
+	<name>Calculate With Promotions</name>
+	<description>Action recalculating order or cart with promotions.</description>
+	<author>hybris</author>
+	<version>1.0</version>
+	
+	<actionClassName>de.hybris.platform.promotions.backoffice.actions.CalculateWithPromotionsAction</actionClassName>
+
+	
+    <inputType>de.hybris.platform.jalo.order.AbstractOrder</inputType>
+	<outputType>java.lang.Object</outputType>
+	
+    <iconUri>icons/calculate_with_promotions_default.png</iconUri>
+    <iconDisabledUri>icons/calculate_with_promotions_disabled.png</iconDisabledUri>
+	 <iconHoverUri>icons/calculate_with_promotions_hover.png</iconHoverUri>
+</action-definition>

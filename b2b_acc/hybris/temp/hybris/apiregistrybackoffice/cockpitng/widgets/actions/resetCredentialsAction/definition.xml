@@ -1,0 +1,34 @@
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="de.hybris.platform.apiregistrybackoffice.actions.credentials.reset" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+
+    <name>Reset Exposed Credentials Action</name>
+    <description>Reset OAuth Client Details of a ExposedOAuthCredential and re-registers all affected exposed destinations in the target system</description>
+    <author>hybris</author>
+    <version>0.1</version>
+
+    <actionClassName>de.hybris.platform.apiregistrybackoffice.actions.ResetCredentialsAction</actionClassName>
+
+    <inputType>Object</inputType>
+    <outputType>Object</outputType>
+
+    <sockets>
+        <output id="openWizard" type="java.util.Map"/>
+    </sockets>
+
+    <iconUri>icons/icon_action_reset_credentials_default.png</iconUri>
+    <iconDisabledUri>icons/icon_action_reset_credentials_disabled.png</iconDisabledUri>
+    <iconHoverUri>icons/icon_action_reset_credentials_hover.png</iconHoverUri>
+
+</action-definition>
+
+

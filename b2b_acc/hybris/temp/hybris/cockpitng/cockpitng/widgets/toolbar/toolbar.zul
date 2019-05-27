@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<widget height="100%" xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd">
+		<div id="toolbarContainer" sclass="yw-toolbar">
+			<div sclass="yw-toolbar-before-margin"></div>
+
+			<div sclass="yw-toolbar-content">
+				<div sclass="yw-toolbar-before">
+					<widgetslot slotID="toolbarBeforeSlot" />
+				</div>
+				<div sclass="yw-toolbar-actions">
+					<actions id="toolbarSlot" group="common" />
+				</div>
+				<div sclass="yw-toolbar-after">
+					<widgetslot slotID="toolbarAfterSlot" />
+				</div>
+			</div>
+
+			<div sclass="yw-toolbar-after-margin"></div>
+		</div>
+	</widget>
+</zk>

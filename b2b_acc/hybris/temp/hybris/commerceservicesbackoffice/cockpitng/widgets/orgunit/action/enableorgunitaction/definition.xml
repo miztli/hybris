@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="de.hybris.platform.commerceservices.backoffice.orgunits.actions.enableorgunitaction"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+	
+	<name>org.unit.enable</name>
+	<description>Action to Enable Organization Unit.</description>
+	<author>hybris</author>
+	<version>1.0</version>
+	
+	<actionClassName>de.hybris.platform.commerceservices.backoffice.orgunits.actions.EnableOrgUnitAction</actionClassName>
+
+	
+    <inputType>de.hybris.platform.commerceservices.model.OrgUnitModel</inputType>
+	<outputType>java.lang.Object</outputType>
+	
+    <iconUri>icons/icon_action_enable-default.png</iconUri>
+    <iconHoverUri>icons/icon_action_enable-hover.png</iconHoverUri>
+    <iconDisabledUri>icons/icon_action_enable-disabled.png</iconDisabledUri>
+
+</action-definition>

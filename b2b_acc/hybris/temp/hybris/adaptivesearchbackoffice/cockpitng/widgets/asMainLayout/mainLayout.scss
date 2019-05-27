@@ -1,0 +1,32 @@
+/*
+ * [y] hybris Platform
+ *
+ * Copyright (c) 2000-2016 hybris AG
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of hybris
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with hybris.
+ */
+.yw-de_hybris_platform_adaptivesearch_widgets_mainLayout {
+	overflow: auto;
+	background-color: #eaedf1;
+
+	.yas-mainlayout-context {
+		width: 100%;
+		min-height: $globals__toolbar--height;
+		padding: 9px 30px;
+		border-bottom: 1px solid #d5d8dc;
+		background-color: $white;
+	}
+
+	.yas-mainlayout-search {
+		width: 100%;
+		padding: 25px 30px 10px;
+	}
+
+	.yas-mainlayout-searchresult {
+		width: 100%;
+	}
+}

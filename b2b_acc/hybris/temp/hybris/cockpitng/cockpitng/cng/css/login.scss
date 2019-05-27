@@ -1,0 +1,280 @@
+@import "support/_login-variables.scss";
+
+html, body {
+    height: auto;
+    min-height: 100%
+}
+
+body {
+    padding: 0;
+    @if $login__body--bg-color {
+        background: $login__body--bg-color;
+    }
+    &.gecko {
+        .login_grid select option {
+            height: $login__grid-label--line-height;
+            padding-top: ($login__grid-label--line-height - $login__input-box--font-size)/2 - nth($login__input-box--padding, 1);
+            display: block;
+
+            &:hover, &:focus, &:active, &:checked {
+                box-shadow: inset $login__grid-label--line-height $login__grid-label--line-height rgba($white, .5);
+            }
+        }
+    }
+}
+
+.z-page,
+.z-window-embedded,
+.z-window-content {
+    background: $login__z-window--bg;
+    border: none;
+}
+
+.z-window-content > div {
+    overflow: auto;
+}
+
+.clearfix {
+    *zoom: 1;
+
+    &:before,
+    &:after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+.login_grid {
+    margin: 10% auto 20px;
+    padding-top: $login__grid--padding-top;
+    width: 400px;
+
+    @media (max-width: 350px) {
+        width: auto;
+        padding-left: 10px;
+    }
+
+    @media (min-width: 351px) and (max-width: 400px) {
+        width: auto;
+        padding-left: 20px;
+    }
+
+    .z-grid {
+        border: none;
+    }
+
+    form {
+        margin: $login__grid-form--margin;
+    }
+
+    label,
+    .z-label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: $login__grid-label--line-height;
+        min-height: $login__grid-label--line-height;
+        padding-right: 10px;
+        color: $login__grid-label--color;
+        width: $login__grid-label--width;
+
+        @media (max-width: 350px) {
+            width: auto;
+            min-width: 95px;
+        }
+
+        @media (min-width: 351px) and (max-width: 400px) {
+            width: auto;
+            min-width: 110px;
+        }
+
+        &.z-radio-content {
+            display: inline-block;
+            width: auto;
+        }
+    }
+
+    .wrong_credentials_cnt .z-label {
+        width: auto;
+    }
+
+    .z-checkbox-content {
+        margin: 3px 0 0 0;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: $login__input-box--width;
+        border: $login__input-box--border;
+        color: $login__input-box--color;
+        display: inline-block;
+        padding: $login__input-box--padding;
+        margin-bottom: $login__input-box--margin-bottom;
+        font-size: $login__input-box--font-size;
+        border-radius: 0;
+        transition: border linear .3s;
+        box-sizing: border-box;
+        background: $login__input-box--bg-color;
+    }
+
+    select {
+        width: $login__input-box--width;
+        height: $login__select-box--height;
+        border: $login__input-box--border;
+        color: $login__input-box--color;
+        display: inline-block;
+        padding: $login__input-box--padding;
+        margin-bottom: $login__input-box--margin-bottom;
+        font-size: $login__input-box--font-size;
+        border-radius: 0;
+        transition: border .3s;
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        background: $login__select-box--bg;
+
+        &::-ms-expand {
+            display: none;
+        }
+    }
+
+    input:focus,
+    input:-webkit-autofill,
+    select:focus {
+        color: $login__input-box--focus-color !important;
+        border: $login__input-box-focus--border;
+        @if $login__input-box--focus-bg-color {
+            background-color: $login__input-box--focus-bg-color;
+        }
+    }
+
+    button[type="submit"] {
+        margin-top: $login__submit-button--margin-top;
+        @media (min-width: 401px) {
+            float: right;
+        }
+        @media (max-width: 400px) {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .z-spinner,
+    .z-doublespinner {
+        background: none;
+        width: $login__grid-spinner--width;
+    }
+
+    .z-spinner-button,
+    .z-doublespinner-button {
+        background: $login__grid-spinner-button--bg-color;
+        height: 26px;
+    }
+
+    .z-spinner > input[type="text"],
+    .z-spinner > input[type="password"],
+    .z-doublespinner > input[type="text"],
+    .z-doublespinner > input[type="password"] {
+        width: $login__grid-spinner-input-box--width;
+    }
+
+    .z-spinner .z-spinner-button:hover {
+        background-color: $login__grid-spinner-button--hover-bg-color;
+    }
+
+    .z-spinner .z-spinner-button-lower,
+    .z-doublespinner .z-doublespinner-button-lower,
+    .z-spinner .z-spinner-button:hover .z-spinner-button-lower,
+    .z-doublespinner .z-doublespinner-button:hover .z-doublespinner-button-lower {
+        margin-top: 7px;
+    }
+}
+
+.login-wrapper {
+    padding-top: $login__grid--padding-top;
+    margin-top: 10%;
+    background: $login__grid--bg;
+
+    .login_grid {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+.login-checkbox {
+    margin: 15px 0 10px 0;
+    display: block;
+
+    label,
+    input {
+        float: left;
+    }
+
+    input {
+        margin-right: 10px;
+    }
+}
+
+.z-radiogroup {
+    line-height: $editor-defaults__inline-box--height;
+
+    > .z-hlayout {
+        margin-bottom: 5px;
+        padding-left: 2px;
+        white-space: inherit;
+        width: $login__radio--width;
+    }
+
+    input:checked + .z-radio-content:before {
+        box-shadow: $login__radio-checked--box-shadow;
+    }
+    .z-radio {
+        display: inline-block;
+
+        &-content {
+            line-height: 24px;
+            min-height: auto;
+            padding-top: 3px;
+
+            .safari & {
+                padding-top: 9px;
+            }
+        }
+    }
+}
+
+.top_area {
+    .compRowCnt {
+        width: 8em;
+        margin-bottom: 8px;
+    }
+
+    .compRowCnt + td > .compRowCnt,
+    .z-hbox-separator + td > .compRowCnt {
+        width: auto;
+    }
+}
+
+.wrong_credentials_cnt {
+    background: $login__error-notification-box--bg;
+    margin: $login__error-notification-box--margin;
+    padding: $login__error-notification-box--padding;
+}
+
+.singlesignon_login_cell {
+    text-align: center;
+    vertical-align: middle;
+    height: 100px;
+
+    a {
+        color: white;
+    }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd" sclass="yas-navigationcontext">
+
+    <div sclass="yas-navigationcontext-element">
+        <label value="${labels.navigationContext.indexConfiguration}" />
+        <combobox id="indexConfigurationSelector" readonly="true">
+            <template name="model">
+                <comboitem label="${each.name}" value="${each.code}" />
+            </template>
+        </combobox>
+    </div>
+
+	<div sclass="yas-navigationcontext-element">
+        <label value="${labels.navigationContext.indexType}" />
+        <combobox id="indexTypeSelector" readonly="true">
+            <template name="model">
+                <comboitem label="${each.name}" value="${each.code}" />
+            </template>
+        </combobox>
+    </div>
+
+	<div sclass="yas-navigationcontext-element">
+        <label value="${labels.navigationContext.catalogVersion}" />
+        <combobox id="catalogVersionSelector" readonly="true">
+            <template name="model">
+                <comboitem label="${each.name}" value="${each.catalogVersion}" />
+            </template>
+        </combobox>
+    </div>
+
+    <div sclass="yas-navigationcontext-element">
+        <label value="${labels.navigationContext.searchProfile}" />
+        <editor id="searchProfileSelector" type="Reference(AbstractAsSearchProfile)" />
+    </div>
+</widget>
+

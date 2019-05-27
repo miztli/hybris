@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="com.hybris.cockpitng.backoffice.referenceadvancedsearchgroup">
+
+	<name>Reference Advanced Search Group</name>
+	<description>Allows to search references with Advanced Search</description>
+	<version>1.0</version>
+	<sockets>
+		<input id="referenceSearchCtx" type="com.hybris.cockpitng.data.TypeAwareSelectionContext"/>
+		<input id="cancelOutputForward" type="java.lang.Object" visibility="invisible"/>
+		<input id="selectedReferencesOutputForward" type="java.lang.Object" multiplicity="List" visibility="invisible"/>
+
+		<output id="selectedReferencesOutput" type="java.lang.Object" multiplicity="List"/>
+		<output id="cancelOutput" type="java.lang.Object"/>
+
+		<forward input="selectedReferencesOutputForward" output="selectedReferencesOutput"/>
+		<forward input="cancelOutputForward" output="cancelOutput"/>
+	</sockets>
+	<keywords>
+		<keyword>Search</keyword>
+	</keywords>
+</widget-definition>

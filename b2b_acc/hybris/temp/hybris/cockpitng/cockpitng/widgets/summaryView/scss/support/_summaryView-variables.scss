@@ -1,0 +1,162 @@
+@import "cockpitng-globals.scss";
+
+$summaryView__widget--side-spacing: 20px;
+
+$summaryView__widget--height: 100%;
+$summaryView__widget--color: $black__blueish--100;
+$summaryView__widget--bg-color: $grey__light--1300;
+$summaryView__widget--padding: 0;
+$summaryView__widget--line-height: 17px;
+$summaryView__widget--padding-v: $container-spacing-default__half;
+$summaryView__widget--default--font-size: $font-size__medium;
+$summaryView__widget--smaller--font-size: $font-size__semi-base;
+
+$summaryView__content-noitem--text-align: right;
+$summaryView__content-noitem--font-weight: bold;
+$summaryView__content-noitem--margin-top: $summaryView__widget--padding-v;
+$summaryView__content-noitem--padding: 0 $summaryView__widget--side-spacing;
+
+$summaryView__widget-thumbnail--padding: $summaryView__widget--padding-v 0;
+$summaryView__widget-thumbnail--max-size: 260px;
+$summaryView__widget-thumbnail--min-size: 180px;
+$summaryView__widget-thumbnail--text-align: center;
+$summaryView__widget-thumbnail--bg-color: $white;
+$summaryView__widget-thumbnail-before--margin-left: floor($summaryView__widget-thumbnail--max-size/2) *-1;
+$summaryView__widget-thumbnail-before--top: nth($summaryView__widget-thumbnail--padding, 1);
+
+$summaryView__main-content--overflow: auto;
+$summaryView__main-content--padding-bottom: 40px;
+
+$summaryView__title-container--max-height: 53px;
+$summaryView__title-container--font-weight: bold;
+$summaryView__title-container--margin: 0 $summaryView__widget--side-spacing;
+$summaryView__title-container--padding-top: $summaryView__widget--padding-v;
+$summaryView__title-label--margin: 0 $container-spacing-default__half;
+
+$summaryView__widget-container--padding: 0;
+$summaryView__widget-container--border: none;
+
+$summaryView__contetent-container--padding-bottom: $boxes--border__thin !important;
+$summaryView__groupbox-header--height: auto;
+
+$summaryView__groupbox-header--border: $boxes--border__thin solid $grey__light--1100;
+
+$summaryView__groupbox-header--border-color: $grey__light--800;
+$summaryView__groupbox-header-after--border: $boxes--border__thin solid $summaryView__groupbox-header--border-color;
+
+
+$summaryView__groupbox-header-collapse-icon--content: $anglearrow__up--content;
+$summaryView__groupbox-header-collapsed-collapse-icon--content: $anglearrow__down--content;
+
+$summaryView__groupbox-header-collapse-icon--height: 15px;
+$summaryView__groupbox-header-collapse-icon--width: 10px;
+$summaryView__groupbox-header-collapse-icon--top: 5px;
+$summaryView__groupbox-header-collapse-icon--right: ($summaryView__groupbox-header-collapse-icon--width + 5px) * -1;
+$summaryView__groupbox-header-collapse-icon--font-size: $font-size__medium;
+$summaryView__groupbox-header-collapse-icon--font: $font-family-fontawesome;
+$summaryView__groupbox-header-collapse-icon--color: $blue__greyish--400;
+$summaryView__groupbox-header-collapse-icon--border: none;
+
+$summaryView__groupbox-header-collapsible--padding: $container-spacing-default__third ($summaryView__widget--side-spacing + $summaryView__groupbox-header-collapse-icon--width)  $container-spacing-default__third $summaryView__widget--side-spacing;
+
+$summaryView__section-groupbox-header-content--line-height: 24px;
+$summaryView__section-groupbox-header-caption--padding: $container-spacing-default__third;
+$summaryView__section-groupbox-header-caption-content--padding-bottom: 2px;
+
+$summaryView__section-groupbox-header-collapsible-icon--right: nth($summaryView__groupbox-header-collapsible--padding, 2) + $summaryView__groupbox-header-collapse-icon--right;
+$summaryView__section-groupbox-header-collapsible-icon--top: nth($summaryView__groupbox-header-collapsible--padding, 1);
+$summaryView__section-groupbox-header-caption--padding: 0;
+$summaryView__section-groupbox-header-caption--font-size: $font-size__h4;
+
+$summaryView__groupbox-content--padding: 0 0 10px;
+
+$summaryView__groupbox-header-caption--bg-color: transparent;
+$summaryView__groupbox-header-caption--position: static;
+
+$summaryView__groupbox-header-caption-content--color: $black__blueish--100;
+
+$summaryView__widget-attribute-container--color: $grey__default--600;//$black__blueish--100;
+
+$summaryView__widget-attribute-label--padding-y: $container-spacing-default__third;
+$summaryView__widget-attribute-label--color: $black;
+$summaryView__widget-attribute-label-value--padding-top: 5px;
+$summaryView__widget-attribute-label-value-elements--padding-top: 2px;
+$summaryView__widget-attribute-label-value-text-button--font-size: $font-size__base;
+
+$summaryView__widget-custom-attribute-label--padding: $summaryView__widget-attribute-label--padding-y $summaryView__widget--side-spacing;
+
+$summaryView__widget-attribute-editable--hover-color: $grey__light--1400; // //#fcfdfe
+
+$summaryView__widget-state-icon--size: 16px;
+$summaryView__widget-state-icon-default--font-family: $font-family-fontawesome;
+$summaryView__widget-state-icon-default--font-size: $font-size__medium;
+
+$summaryView__widget-attribute-icon--space-left: $container-spacing-default__third * 2;
+$summaryView__widget-attribute-container--padding: $container-spacing-default__third $summaryView__widget--side-spacing $container-spacing-default__third ($summaryView__widget--side-spacing + $summaryView__widget-state-icon--size + $summaryView__widget-attribute-icon--space-left);
+$summaryView__reference-editor-selected-item-container-hover--padding: $container-spacing-default__third;
+
+$summaryView__widget-inline-edit-attribute-editor-localized-icon--margin-top: nth($summaryView__widget-attribute-container--padding, 1);
+
+$summaryView__widget-attribute-icon-element--margin-top: -($summaryView__widget-state-icon--size/2);
+$summaryView__widget-attribute-icon-element--margin-left: $summaryView__widget--side-spacing;
+
+$summaryView__widget-attribute-item-label--font-weight: $font-weight-bold;
+
+$summaryView__approval-status-approved--bg-image: url("images/icon-product-approval-status-approved.svg");
+$summaryView__approval-status-unapproved--bg-image: url("images/icon-product-approval-status-unapproved.svg");
+$summaryView__online-state-online--content: "\f111";
+$summaryView__online-state-online--color: $green_light-200;
+$summaryView__online-state-offline--color: $red__default--200;
+$summaryView__approval-status-check--bg-image: url("images/icon-product-approval-status-check.svg");
+$summaryView__type--bg-image: url("images/icon-summaryView-type.svg");
+$summaryView__variants--bg-image: url("images/icon-summaryView-variants.svg");
+$summaryView__source-target-sync--bg-image: url("images/icon-summaryView-source-target-sync.svg");
+$summaryView__digital-assets--bg-image: url("images/icon-summaryView-digital-assets.svg");
+
+$summaryView__instant-editor-button-container--right: $summaryView__widget--side-spacing;
+
+$summaryView__quallity-container--background: $grey__light--1400;
+$summaryView__quallity-default-border: $summaryView__groupbox-header--border;
+$summaryView__quallity-thick-border: 1px solid $grey__light--1100;
+
+$summaryView__quallity-bar--background: $grey__light--800;
+$summaryView__quallity-bar--height: 9px;
+$summaryView__quallity-bar--border-radius: 2px;
+$summaryView__quallity-bar--margin-top: $container-spacing-default__third;
+$summaryView__quallity-bar-progressmeter-valid--color: $green_light-200;
+$summaryView__quallity-bar-progressmeter-warning--color: $orange__default;
+$summaryView__quallity-bar-progressmeter-error--color: $red__default--200;
+
+$summaryView__quality-header--padding: $container-spacing-default__half ($summaryView__widget--side-spacing + $summaryView__groupbox-header-collapse-icon--width)  ($container-spacing-default__third * 2) $summaryView__widget--side-spacing;
+$summaryView__quality-content--padding: 0 0 0 ($summaryView__widget--side-spacing * 2);
+
+$summaryView__quality-item-label--padding: 12px 0;
+$summaryView__quality-item-label--margin-right: nth($summaryView__quality-header--padding, 2) + $container-spacing-default__third;
+$summaryView__quality-item-status-button--height: 24px;
+$summaryView__quality-item-status-button--width: 20px;
+$summaryView__quality-item-status-button--right: nth($summaryView__quality-header--padding, 2) - $summaryView__quality-item-status-button--width;
+$summaryView__quality-item-status-button--margin-top: -(floor($summaryView__quality-item-status-button--height/2));
+
+$summaryView__sync-state-hover-icon--background: url(images/icon_summaryView_sync_hover.png) center no-repeat;
+$summaryView__sync-state-hover-icon--size: 20px;
+$summaryView__sync-state-hover-icon--right: $summaryView__widget--side-spacing;
+$summaryView__sync-state-hover-text-container--width: calc(100% - #{$summaryView__sync-state-hover-icon--size});
+$summaryView__sync-state-hover-icon--margin: -(floor($summaryView__sync-state-hover-icon--size/2));
+$summaryView__sync-state-error--color: $red__default--200;
+
+@mixin _ellipsis {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin _ellipsis-clamp {
+    display: block;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

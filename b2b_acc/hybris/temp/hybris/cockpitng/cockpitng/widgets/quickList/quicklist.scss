@@ -1,0 +1,161 @@
+/*================================
+    Quick List Widget
+================================*/
+@import "scss/support/_quicklist-variables.scss";
+
+
+.z-popup-content .ye-quicklist-preview-popup-image {
+    max-width: $quicklist-preview-popup-image__max-width;
+    max-height: $quicklist-preview-popup-image__max-height;
+}
+
+.yw-quicklist {
+    color: $quicklist__widget--color;
+    background: $quicklist__widget--bg-color;
+    height: 100%;
+    
+    .yw-main-container {
+        height: 100%;
+        overflow: auto;
+    }
+
+    .yw-info-container {
+        font-weight: $quickList__info-container--font-weight;
+        padding: $quicklist__info-container--padding;
+        border-bottom: $quickList__tile--border-bottom;
+
+        + .yw-main-container {
+            height: $quicklist__widget--main-container--height;
+        }
+    }
+
+    &-actionSlot {
+        float: right;
+    }
+
+    // Tile
+    &-tile {
+        line-height: $quickList__tile--line-height;
+        padding: $quickList__tile--padding;
+        border-bottom: $quickList__tile--border-bottom;
+        border-right: $quickList__tile--border-x;
+        border-left: $quickList__tile--border-x;
+        position: relative;
+        color: inherit;
+
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        &-selected {
+            background-color: $quickList__tile-selected--bg-color;
+            border-left-color: $quickList__tile-selected--border-color;
+        }
+
+        &:hover {
+            background-color: $quickList__tile-hover--bg-color;
+
+            .ye-delete-btn {
+                display: block;
+            }
+        }
+
+        &-title {
+            @extend .yw-quicklist-hyperlink;
+            max-height: $quickList__tile-title--max-height;
+            font-weight: $quickList__tile-title--font-weight;
+            margin-bottom: $quickList__tile-title--margin-bottom;
+            padding-right: $quickList__tile-title--padding-right;
+        }
+
+        &-thumbnail {
+            max-width: $quickList__tile-thumbnail--max-width;
+            border: $quickList__tile-thumbnail--border;
+            float: left;
+        }
+
+        &-subtitle-container {
+            max-width: $quickList__tile-subtitle-container--max-width;
+            color: $quickList__tile-subtitle-container--color;
+            padding-left: $quickList__tile-subtitle-container--padding-left;
+            width: 100%;
+            float:left;
+        }
+
+        &-subtitle {
+            max-height: $quickList__tile-subtitle--max-height;
+            font-size: $quickList__tile-subtitle--font-size;
+            margin-bottom: $quickList__tile-subtitle--margin-bottom;
+            display: block;
+        }
+
+        &-title,
+        &-subtitle {
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            display: -webkit-box;
+            -webkit-line-clamp: $quickList__tile-title--webkit-line-clamp;
+            -webkit-box-orient: vertical;
+        }
+    }
+
+    &-hyperlink {
+        &:hover {
+            color: $quickList__hyperlink--color;
+            cursor: pointer;
+        }
+    }
+    
+    .ye-delete-btn {
+        width: $quickList__remove-btn--size;
+        height: $quickList__remove-btn--size;
+        min-height: $quickList__remove-btn--size;
+        background-color: $quickList__remove-btn--bg-color;
+        right: $quickList__remove-btn--right;
+        top: $quickList__remove-btn--top;
+        padding: 0;
+        position: absolute;
+        overflow: visible;
+        display: none;
+
+        &:hover:after {
+            content: $quickList__remove-btn-hover-after--content;
+            font-size: $quickList__remove-btn-hover-after--font-size;
+            margin-top: $quickList__remove-btn-hover-after--margin-top;
+            margin-left: $quickList__remove-btn-hover-after--margin-left;
+        }
+    }
+
+    // Tile Drag
+    &-tile {
+        &.z-drag-ghost {
+            background-color: $quickList__tile-selected--bg-color;
+            max-width: $quickList__tile-ghost--max-width;
+            border: $quickList__tile-ghost--border;
+            box-shadow: $quickList__tile-ghost--box-shadow;
+            
+            .ye-delete-btn {
+                display: none;
+            }
+
+        }
+
+        &.z-dragged {
+            color: inherit;
+            background-color: $quickList__tile-selected--bg-color;
+
+            > span, 
+            > div {
+                opacity: $quickList__tile-dragged--opacity;
+            }
+        }
+        &.z-drag-over {
+            background-color: $quicklist__widget--bg-color;
+        }
+    }
+}

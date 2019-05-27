@@ -1,0 +1,172 @@
+//    DefaultReferenceEditor Create-Type
+// ================================
+
+@import "../support/_defaultreferenceeditor-variables.scss";
+
+.ye-create-type-selector {
+    &-container {
+        max-width: $default-reference-editor__type-selector-popup--max-width;
+        max-height: $default-reference-editor__type-selector-popup--max-height;
+        overflow: auto;
+    }
+    &-button{
+        &.z-button-os {
+            background-color: transparent;
+            background-image: url("images/icon_func_toggle_sprite.png");
+            background-position: 4px -17px;
+            background-repeat: no-repeat;
+            padding: 0 10px;
+        }
+        &.z-button {
+            font-family: $default-reference-editor__create-new-button--font;
+            background: $default-reference-editor__create-new-button--bg-color;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            border-left: $default-reference-editor__box--border-width solid $editor-area__box--border-color;
+            color: $editor-area__box--icon-color;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        &:before {
+            content: $caretarrow__down--content;
+        }
+    }
+}
+
+//create-only
+
+.z-bandbox-button.ye-create-only {
+    text-decoration: none;
+    border-color: $editor-area__box--border-color;
+    float: right;
+    position: relative;
+    top: $default-reference-editor__create-new-button--top;
+    
+    &:hover, &:active {
+        background-color: $default-reference-editor__bandbox-button-icon--hover-bg-color;
+        color: $default-reference-editor__bandbox-button-icon--hover-color;
+    }
+}
+.ye-default-reference-editor-bandbox.ye-create-only .z-bandbox-input .z-bandbox-icon.z-icon-search {
+        display: none;
+}
+
+.ye-create-new-reference {
+    div.z-listcell-content {
+        position: relative;
+        
+        > .z-label {
+            position: relative;
+            display: inline; 
+            padding-left: 0;
+            min-height: $default-reference-editor__list-item-add-button--size; 
+            margin-left: $default-reference-editor__list-item-add-button-label--margin-left;
+
+            &:before{
+                content: "";
+                position: absolute;
+                width: $default-reference-editor__list-item-add-button--size;
+                height: $default-reference-editor__list-item-add-button--size;
+                top: $default-reference-editor__list-item-add-button--top;
+                left: $default-reference-editor__list-item-add-button--left;
+                background-image: url("images/icon_func_referenceselector_add_default.png");
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+    }
+    > td.z-listcell {
+        border-top: $default-reference-editor__box--border-width solid $editor-area__box--border-color !important;
+    }
+}
+
+
+//reason for having this distict in -editor-listbox?
+.ye-default-reference-editor-listbox {
+    .ye-create-new-reference {
+        div.z-listcell-content {
+            padding: 0;
+        }
+        > td.z-listcell {
+            padding-left: 0;
+            //> .z-listcell-content {
+                button.ye-create-type-selector-button {
+                    width: $default-reference-editor__create-new-button--size;
+                    height: $default-reference-editor__create-new-button--size;
+                    position: relative;
+                    float: right; 
+                    margin-top: $default-reference-editor__create-new-button--top;
+                    border-top: $default-reference-editor__box--border-width solid $editor-area__box--border-color;
+                    
+                    &:hover {
+                        color: $default-reference-editor__bandbox-button-icon--hover-color;
+                    }
+                    &:focus {
+                        background-color: $default-reference-editor__bandbox-input-focus--bg-color;
+                    }   
+
+                    &.ye-button-active {
+                        background: $default-reference-editor__create-new-button-active--bg-color;
+                        color: $default-reference-editor__create-new-button-active--color;
+                        
+                        &:before{
+                            content: $caretarrow__up--content;
+                            color: $default-reference-editor__create-new-button-active--color;
+                        }
+                    }
+
+                }
+            //}
+        }
+        .z-listcell-content .ye-create-type-selector-container {
+            margin: 0;
+            margin-left: $default-reference-editor__create-type-selector-container--margin-left;
+            border-top: $default-reference-editor__box--border-width solid $editor-area__box--border-color;
+            max-width: inherit;
+            display: block;
+
+            > .z-tree {
+                border: none;
+            }
+
+            .z-treecell-content {
+                padding: $default-reference-editor__treecell--padding;
+                display: inline-table;
+            }
+
+            .z-treecell-content .z-treecell-text{
+                padding-left: $default-reference-editor__treecell-text--padding-left;
+            }
+
+            .z-treecell-content .z-tree-icon{
+                vertical-align: top;
+            }
+        }
+        &.z-listitem > .z-listcell > div.z-listcell-content:hover{
+            padding-right: 0;
+        }
+    }  
+}
+
+
+//unverified/unchanged
+
+.ye-create-only .z-treerow {
+    &-selected > .z-treecell > .z-treecell-content > .z-tree-icon,
+    &-selected > .z-treecell > .z-treecell-content,
+    &:hover > .z-treecell > .z-treecell-content {
+        color: #4b5c80;
+    }
+}
+
+.z-bandpopup.ye-create-only {
+    background: #e0e5eb;
+}
+
+.ye-create-only.z-bandpopup .ye-create-type-selector-container{
+    border-top:1px solid #d2d7de;
+    width: 100%;
+    max-width: none;
+}

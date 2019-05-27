@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:cng="http://www.hybris.com/cockpitng/spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	                    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+                        http://www.hybris.com/cockpitng/spring http://www.hybris.com/cockpitng/spring/cng-spring.xsd">
+
+	<alias alias="resourceCockpitComponentLoader" name="defaultWebResourceCockpitComponentLoader"/>
+	<bean id="defaultWebResourceCockpitComponentLoader" parent="defaultResourceCockpitComponentLoader"
+	      class="com.hybris.cockpitng.core.impl.WebResourceCockpitComponentLoader">
+		<property name="widgetLibUtils" ref="widgetLibUtils"/>
+	</bean>
+
+	<bean id="widgetUtils" class="com.hybris.cockpitng.util.impl.DefaultWidgetUtils">
+		<property name="sessionService" ref="cockpitSessionService"/>
+		<property name="widgetService" ref="widgetService"/>
+		<property name="widgetDefinitionService" ref="widgetDefinitionService"/>
+		<property name="widgetPersistenceService" ref="widgetPersistenceService"/>
+		<property name="cockpitEventQueue" ref="cockpitEventQueue"/>
+		<property name="xmlBasedWidgetPersistenceService" ref="xmlWidgetPersistenceService"/>
+		<property name="elementsToReset">
+			<set>
+				<ref bean="cockpitZulCache"/>
+				<ref bean="cockpitResourceCache"/>
+			</set>
+		</property>
+	</bean>
+
+	<alias name="defaultKeyboardSupportService" alias="keyboardSupportService"/>
+	<bean id="defaultKeyboardSupportService" class="com.hybris.cockpitng.keyboard.impl.DefaultKeyboardSupportService"/>
+
+	<alias alias="componentDefinitionService" name="frameworkDefaultComponentDefinitionService"/>
+	<alias alias="widgetDefinitionService" name="frameworkDefaultComponentDefinitionService"/>
+	<alias alias="cockpitComponentDefinitionService" name="frameworkDefaultComponentDefinitionService"/>
+	<bean id="frameworkDefaultComponentDefinitionService"
+	      class="com.hybris.cockpitng.core.impl.DefaultCockpitComponentDefinitionService"
+	      parent="defaultComponentDefinitionService">
+		<property name="definitionLoaders">
+			<list merge="true">
+			</list>
+		</property>
+		<property name="definitionFactories">
+			<map merge="true">
+				<entry key="action" value-ref="defaultActionDefinitionFactory"/>
+				<entry key="editor" value-ref="defaultEditorDefinitionFactory"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="defaultActionDefinitionFactory" class="com.hybris.cockpitng.actions.impl.ActionDefinitionFactory"
+	      parent="abstractCockpitComponentDefinitionFactory"/>
+
+	<bean id="defaultEditorDefinitionFactory" class="com.hybris.cockpitng.editors.impl.EditorDefinitionFactory"
+	      parent="abstractCockpitComponentDefinitionFactory"/>
+
+	<alias name="defaultFrameworkCockpitProperties" alias="cockpitProperties"/>
+	<bean id="defaultFrameworkCockpitProperties" parent="defaultCockpitProperties">
+		<property name="properties">
+			<map merge="true">
+				<entry key="cockpit.ytestid.enabled" value="false"/>
+				<entry key="cockpit.localization.locales" value="en_CA,de_DE"/>
+			</map>
+		</property>
+	</bean>
+
+	<alias alias="cockpitSessionService" name="defaultCockpitSessionService"/>
+	<bean id="defaultCockpitSessionService" class="com.hybris.cockpitng.util.impl.DefaultCockpitSessionService">
+	</bean>
+
+	<alias alias="cockpitEventQueue" name="defaultCockpitEventQueue"/>
+	<bean id="defaultCockpitEventQueue" class="com.hybris.cockpitng.events.impl.DefaultCockpitEventQueue"
+	      scope="singleton">
+		<property name="cockpitUserService" ref="cockpitUserService"/>
+	</bean>
+
+	<alias alias="cockpitEventQueueConnector" name="defaultCockpitEventQueueConnector"/>
+	<bean id="defaultCockpitEventQueueConnector"
+	      class="com.hybris.cockpitng.events.impl.DefaultCockpitEventQueueConnector"
+	      scope="singleton"
+	      init-method="initialize">
+		<property name="eventQueue" ref="cockpitEventQueue"/>
+	</bean>
+
+	<alias alias="cockpitWidgetEngine" name="defaultCockpitWidgetEngine"/>
+	<bean id="defaultCockpitWidgetEngine" class="com.hybris.cockpitng.engine.impl.DefaultCockpitWidgetEngine"
+	      scope="singleton">
+		<property name="widgetService" ref="widgetService"/>
+		<property name="widgetInstanceFacade" ref="widgetInstanceFacade"/>
+		<property name="componentDefinitionService" ref="componentDefinitionService"/>
+		<property name="widgetUtils" ref="widgetUtils"/>
+		<property name="rulesEngine" ref="widgetTemplateRulesEngine"/>
+		<property name="sessionWidgetInstanceRegistry" ref="sessionWidgetInstanceRegistry"/>
+		<property name="widgetPersistenceService" ref="widgetPersistenceService"/>
+		<property name="widgetLibUtils" ref="widgetLibUtils"/>
+		<property name="modelValueHandlerFactory" ref="widgetModelValueHandlerFactory"/>
+		<property name="cockpitConfigurationService" ref="cockpitConfigurationService"/>
+		<property name="widgetConfigurationContextDecoratorList" ref="widgetConfigurationContextDecoratorList"/>
+		<property name="widgetAuthorizationService" ref="widgetAuthorizationService"/>
+		<property name="cockpitProperties" ref="cockpitProperties"/>
+		<property name="childrenContainerRenderer">
+			<map>
+				<entry key="portal" value-ref="portalContainerRenderer"/>
+				<entry key="dashboard" value-ref="dashboardContainerRenderer"/>
+				<entry key="tab" value-ref="tabContainerRenderer"/>
+				<entry key="switch" value-ref="switchContainerRenderer"/>
+				<entry key="list" value-ref="listContainerRenderer"/>
+				<entry key="h_split" value-ref="hsplitContainerRenderer"/>
+				<entry key="v_split" value-ref="vsplitContainerRenderer"/>
+				<entry key="invisible" value-ref="listContainerRenderer"/>
+				<entry key="symbolic" value-ref="symbolicContainerRenderer"/>
+				<entry key="perspective" value-ref="perspectiveContainerRenderer"/>
+				<entry key="flow" value-ref="flowContainerRenderer"/>
+				<entry key="tab-nomanual" value-ref="tabNoManualContainerRenderer"/>
+			</map>
+		</property>
+		<property name="notificationStack" ref="notificationStack"/>
+		<property name="cockpitTypeUtils" ref="cockpitTypeUtils"/>
+		<property name="socketConnectionService" ref="socketConnectionService"/>
+		<property name="labelService" ref="labelService"/>
+		<property name="notificationService" ref="notificationService"/>
+	</bean>
+
+	<alias name="defaultCockpitZulCache" alias="cockpitZulCache"/>
+	<bean id="defaultCockpitZulCache" class="com.hybris.cockpitng.util.impl.DefaultCockpitZulCache"/>
+
+	<alias name="defaultCockpitUIFactoryBeanAccesHelper" alias="cockpitUIFactoryBeanAccesHelper"/>
+	<bean id="defaultCockpitUIFactoryBeanAccesHelper"
+	      class="com.hybris.cockpitng.util.CockpitUIFactoryBeanAccessHelper">
+		<property name="cockpitProperties" ref="cockpitProperties"/>
+		<property name="cockpitZulCache" ref="cockpitZulCache"/>
+		<property name="widgetLibUtils" ref="widgetLibUtils"/>
+	</bean>
+
+	<alias name="defaultWidgetAuthorizationService" alias="widgetAuthorizationService"/>
+	<bean id="defaultWidgetAuthorizationService"
+	      class="com.hybris.cockpitng.core.security.impl.DefaultWidgetAuthorizationService">
+		<property name="cockpitUserService" ref="cockpitUserService"/>
+	</bean>
+
+	<alias name="defaultCockpitUserService" alias="cockpitUserService"/>
+	<bean id="defaultCockpitUserService" class="com.hybris.cockpitng.core.user.impl.DefaultCockpitUserService"
+	      scope="session">
+		<aop:scoped-proxy proxy-target-class="false"/>
+	</bean>
+
+	<alias name="defaultCockpitLocaleService" alias="cockpitLocaleService"/>
+	<bean id="defaultCockpitLocaleService" class="com.hybris.cockpitng.i18n.impl.DefaultCockpitLocaleService">
+		<property name="cockpitProperties" ref="cockpitProperties"/>
+		<property name="cockpitConfigurationService" ref="cockpitConfigurationService"/>
+		<property name="cockpitLocalesFactory" ref="cockpitLocalesFactory"/>
+		<property name="widgetConfigurationContextDecoratorList" ref="widgetConfigurationContextDecoratorList"/>
+	</bean>
+
+	<alias name="defaultLocalizedValuesService" alias="localizedValuesService"/>
+	<bean id="defaultLocalizedValuesService" class="com.hybris.cockpitng.i18n.impl.DefaultLocalizedValuesService">
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+	</bean>
+
+	<alias name="defaultValidationRenderer" alias="validationRenderer"/>
+	<bean id="defaultValidationRenderer"
+	      class="com.hybris.cockpitng.components.validation.DefaultValidationRenderer">
+		<property name="validationErrorKey" value="ye-validation-error"/>
+		<property name="validationWarningKey" value="ye-validation-warn"/>
+		<property name="validationInfoKey" value="ye-validation-info"/>
+		<property name="validationNoneKey" value="ye-validation-none"/>
+	</bean>
+
+	<alias name="defaultWidgetConfigurationContextDecoratorList" alias="widgetConfigurationContextDecoratorList"/>
+	<bean id="defaultWidgetConfigurationContextDecoratorList"
+	      class="org.springframework.beans.factory.config.ListFactoryBean">
+		<property name="sourceList">
+			<list value-type="com.hybris.cockpitng.core.config.WidgetConfigurationContextDecorator" merge="true">
+				<bean class="com.hybris.cockpitng.core.config.impl.WidgetSettingsConfigurationContextDecorator"/>
+				<ref bean="sessionUserConfigurationContextDecorator"/>
+				<ref bean="sessionAuthorityConfigurationContextDecorator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultSessionUserConfigurationContextDecorator" alias="sessionUserConfigurationContextDecorator"/>
+	<bean id="defaultSessionUserConfigurationContextDecorator"
+	      class="com.hybris.cockpitng.core.config.impl.SessionUserConfigurationContextDecorator"/>
+
+	<alias name="defaultSessionAuthorityConfigurationContextDecorator" alias="sessionAuthorityConfigurationContextDecorator"/>
+	<bean id="defaultSessionAuthorityConfigurationContextDecorator" parent="defaultSessionUserConfigurationContextDecorator"
+		  class="com.hybris.cockpitng.core.config.impl.SessionAuthorityConfigurationContextDecorator">
+		<property name="cockpitProperties" ref="cockpitProperties" />
+	</bean>
+
+	<alias name="defaultWidgetInstanceFacade" alias="widgetInstanceFacade"/>
+	<bean id="defaultWidgetInstanceFacade" class="com.hybris.cockpitng.engine.impl.DefaultWidgetInstanceFacade"
+	      scope="singleton">
+		<property name="widgetInstanceService" ref="widgetInstanceService"/>
+	</bean>
+
+	<alias name="defaultSessionWidgetInstanceRegistry" alias="sessionWidgetInstanceRegistry"/>
+	<bean id="defaultSessionWidgetInstanceRegistry"
+	      class="com.hybris.cockpitng.engine.impl.DefaultSessionWidgetInstanceRegistry">
+		<property name="sessionService" ref="cockpitSessionService"/>
+		<property name="cockpitProperties" ref="cockpitProperties"/>
+	</bean>
+
+	<alias alias="widgetTemplateRulesEngine" name="defaultWidgetTemplateRulesEngine"/>
+	<bean id="defaultWidgetTemplateRulesEngine" class="com.hybris.cockpitng.core.impl.DefaultWidgetTemplateRulesEngine">
+		<property name="widgetInstanceFacade" ref="widgetInstanceFacade"/>
+	</bean>
+
+	<alias name="defaultNotificationStack" alias="notificationStack"/>
+	<bean id="defaultNotificationStack" class="com.hybris.cockpitng.core.impl.DefaultNotificationStack" scope="session">
+		<aop:scoped-proxy proxy-target-class="false"/>
+	</bean>
+
+	<bean id="abstractChildrenContainerRenderer"
+	      class="com.hybris.cockpitng.engine.impl.AbstractChildrenContainerRenderer"
+	      scope="singleton" abstract="true">
+		<property name="widgetInstanceFacade" ref="widgetInstanceFacade"/>
+	</bean>
+
+	<bean id="portalContainerRenderer" class="com.hybris.cockpitng.engine.impl.PortalContainerRenderer"
+	      parent="abstractChildrenContainerRenderer" scope="singleton"/>
+
+	<alias name="defaultGridBagLayoutManager" alias="gridBagLayoutManager"/>
+	<bean id="defaultGridBagLayoutManager" class="com.hybris.cockpitng.layout.impl.gridbag.GridBag">
+		<property name="dndKeyPrefix" value="dashboard_dnd_"/>
+		<property name="columnClass" value="yw-dashboard-column"/>
+		<property name="rowClass" value="yw-dashboard-row"/>
+		<property name="slotClass" value="yw-dashboard-slot"/>
+		<property name="fillClass" value="yw-dashboard-empty-fill"/>
+		<property name="draggableHeaderClass" value="yw-dashboard-slot-draggable"/>
+	</bean>
+
+	<bean id="dashboardContainerRenderer" class="com.hybris.cockpitng.engine.impl.DashboardContainerRenderer"
+	      parent="abstractChildrenContainerRenderer" scope="singleton">
+		<property name="layoutManager" ref="gridBagLayoutManager"/>
+		<property name="widgetAuthorizationService" ref="widgetAuthorizationService"/>
+	</bean>
+
+	<alias name="defaultSwitchContainerRenderer" alias="switchContainerRenderer"/>
+	<bean id="defaultSwitchContainerRenderer" class="com.hybris.cockpitng.engine.impl.ConditionalChildrenContainerRenderer"
+	      parent="abstractChildrenContainerRenderer" scope="singleton">
+		<property name="fallbackRenderer" ref="fallbackSwitchContainerRenderer"/>
+		<property name="condition">
+			<bean class="com.hybris.cockpitng.engine.impl.AdminModeCondition">
+				<property name="sessionService" ref="cockpitSessionService"/>
+			</bean>
+		</property>
+		<property name="specificRenderer" ref="tabContainerRenderer"/>
+	</bean>
+
+	<bean id="tabContainerRenderer" class="com.hybris.cockpitng.engine.impl.TabContainerRenderer"
+	      parent="abstractChildrenContainerRenderer" scope="singleton">
+		<property name="sessionService" ref="cockpitSessionService"/>
+		<property name="widgetAuthorizationService" ref="widgetAuthorizationService"/>
+	</bean>
+	<bean id="tabNoManualContainerRenderer" class="com.hybris.cockpitng.engine.impl.TabContainerRenderer"
+	      parent="tabContainerRenderer" scope="singleton">
+		<property name="showNewTab" value="false"/>
+		<property name="closable" value="false"/>
+		<property name="widgetAuthorizationService" ref="widgetAuthorizationService"/>
+	</bean>
+	<bean id="listContainerRenderer" class="com.hybris.cockpitng.engine.impl.ListContainerRenderer"
+	      parent="abstractChildrenContainerRenderer" scope="singleton">
+		<property name="defaultWindowHeight" value="400px"/>
+		<property name="defaultWindowWidth" value="600px"/>
+		<property name="notificationStack" ref="notificationStack"/>
+		<property name="modalWindowStack" ref="modalWindowStack"/>
+	</bean>
+	<alias name="defaultFallbackSwitchContainerRenderer" alias="fallbackSwitchContainerRenderer"/>
+	<bean id="defaultFallbackSwitchContainerRenderer" class="com.hybris.cockpitng.engine.impl.SwitchContainerRenderer"
+		  parent="abstractChildrenContainerRenderer">
+		<property name="sessionService" ref="cockpitSessionService" />
+		<property name="widgetAuthorizationService" ref="widgetAuthorizationService" />
+	</bean>
+
+	<alias name="defaultModalWindowStack" alias="modalWindowStack"/>
+	<bean id="defaultModalWindowStack" class="com.hybris.cockpitng.engine.impl.DefaultModalWindowStack" scope="session">
+		<aop:scoped-proxy proxy-target-class="false"/>
+	</bean>
+
+	<bean id="hsplitContainerRenderer" class="com.hybris.cockpitng.engine.impl.HSplitviewContainerRenderer"
+	      parent="abstractChildrenContainerRenderer" scope="singleton"/>
+	<bean id="vsplitContainerRenderer" class="com.hybris.cockpitng.engine.impl.VSplitviewContainerRenderer"
+	      parent="abstractChildrenContainerRenderer" scope="singleton"/>
+	<bean id="symbolicContainerRenderer" class="com.hybris.cockpitng.engine.impl.SymbolicModeContainerRenderer"
+	      parent="abstractChildrenContainerRenderer" scope="singleton"/>
+	<bean id="flowContainerRenderer" parent="tabContainerRenderer" scope="singleton">
+		<property name="showNewTab" value="false"/>
+		<property name="showTabs" value="false"/>
+	</bean>
+	<bean id="perspectiveContainerRenderer" parent="tabContainerRenderer" scope="singleton">
+		<property name="showNewTab" value="false"/>
+		<property name="showTabs" value="false"/>
+	</bean>
+
+	<bean id="cockpitFrameworkLabelLocator" class="com.hybris.cockpitng.util.labels.ResourcesLabelLocator"
+	      scope="singleton" init-method="init" lazy-init="false">
+		<property name="location" value="/cockpitng/labels"/>
+		<property name="name" value="labels"/>
+	</bean>
+
+	<alias name="defaultComponentDefinitionLabelLocator" alias="componentDefinitionLabelLocator"/>
+	<bean id="defaultComponentDefinitionLabelLocator"
+	      class="com.hybris.cockpitng.util.labels.CockpitComponentDefinitionLabelLocator" scope="singleton"
+	      init-method="init" lazy-init="false">
+		<property name="componentDefinitionService" ref="componentDefinitionService"/>
+	</bean>
+
+	<alias alias="labelService" name="defaultLabelService"/>
+	<bean id="defaultLabelService" class="com.hybris.cockpitng.labels.impl.DefaultLabelService">
+		<property name="cockpitConfigurationService" ref="cockpitConfigurationService"/>
+		<property name="modelValueHandlerFactory" ref="widgetModelValueHandlerFactory"/>
+	</bean>
+
+	<alias name="defaultTypedSettingsRenderer" alias="typedSettingsRenderer"/>
+	<bean id="defaultTypedSettingsRenderer" class="com.hybris.cockpitng.renderers.common.DefaultTypedSettingsRenderer"/>
+
+	<alias alias="cockpitLocaleJaxbFactory" name="defaultCockpitLocaleJaxbFactory"/>
+	<bean id="defaultCockpitLocaleJaxbFactory" class="com.hybris.cockpitng.config.locales.jaxb.ObjectFactory"/>
+
+	<alias alias="cockpitLocalesFactory" name="defaultCockpitLocalesFactory"/>
+	<bean id="defaultCockpitLocalesFactory"
+	      class="com.hybris.cockpitng.config.locales.factory.impl.DefaultCockpitLocalesFactory">
+		<constructor-arg ref="cockpitLocaleJaxbFactory"/>
+	</bean>
+
+	<alias name="defaultComponentWidgetAdapter" alias="componentWidgetAdapter"/>
+	<bean id="defaultComponentWidgetAdapter" class="com.hybris.cockpitng.engine.impl.DefaultComponentWidgetAdapter"
+	      scope="prototype">
+		<property name="cockpitWidgetEngine" ref="cockpitWidgetEngine"/>
+		<property name="widgetUtils" ref="widgetUtils"/>
+		<property name="widgetInstanceFacade" ref="widgetInstanceFacade"/>
+	</bean>
+
+	<alias name="defaultCollectionLabelProvider" alias="collectionLabelProvider"/>
+	<bean id="defaultCollectionLabelProvider" class="com.hybris.cockpitng.labels.impl.DefaultCollectionLabelProvider">
+		<property name="labelService" ref="labelService"/>
+	</bean>
+
+	<alias name="defaultMapLabelProvider" alias="mapLabelProvider"/>
+	<bean id="defaultMapLabelProvider" class="com.hybris.cockpitng.labels.impl.DefaultMapLabelProvider">
+		<property name="labelService" ref="labelService"/>
+	</bean>
+
+	<alias name="defaultLocaleLabelProvider" alias="localeLabelProvider"/>
+	<bean id="defaultLocaleLabelProvider" class="com.hybris.cockpitng.labels.impl.LocaleLabelProvider">
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+	</bean>
+
+	<alias name="defaultJavaLangDoubleLabelProvider" alias="javaLangDoubleLabelProvider"/>
+	<bean id="defaultJavaLangDoubleLabelProvider" class="com.hybris.cockpitng.labels.impl.DoubleNumberFormatLabelProvider"/>
+
+	<alias name="defaultDateLabelProvider" alias="dateLabelProvider"/>
+	<bean id="defaultDateLabelProvider" class="com.hybris.cockpitng.labels.impl.DefaultDateLabelProvider">
+	</bean>
+
+	<alias name="defaultFixedDimensionResponsiveLayoutStrategy" alias="responsiveLayoutStrategy"/>
+	<bean id="defaultFixedDimensionResponsiveLayoutStrategy"
+	      class="com.hybris.cockpitng.layout.impl.FixedDimensionsResponsiveLayoutStrategy"/>
+
+	<bean id="defaultObjectMapperFactory" class="com.hybris.cockpitng.json.impl.DefaultObjectMapperConfiguration"/>
+
+	<alias name="defaultJSONMapper" alias="jsonMapper"/>
+	<bean id="defaultJSONMapper" class="com.hybris.cockpitng.json.impl.DefaultJSONMapper">
+		<property name="configurations">
+			<list>
+				<ref bean="defaultObjectMapperFactory"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultAbstractJSONMapperExtender" alias="abstractJSONMapperExtender"/>
+	<cng:list-extender id="defaultAbstractJSONMapperExtender" abstract="true" property="configurations" unique="true"
+					   bean="jsonMapper"/>
+
+	<alias name="defaultAbstractAngularChainedDependenciesExtender" alias="abstractAngularChainedDependenciesExtender"/>
+	<cng:list-extender id="defaultAbstractAngularChainedDependenciesExtender" abstract="true" property="dependencies"
+					   unique="true" bean="angularChainedDependencies"/>
+
+
+	<alias name="defaultAngularChainedDependencies" alias="angularChainedDependencies"/>
+	<bean id="defaultAngularChainedDependencies" class="com.hybris.cockpitng.web.js.impl.NameChainedDependencies">
+		<property name="regexp" value="angular.*"/>
+		<property name="dependencies">
+			<list>
+				<value>cng/scripts/angular-adapter.min.js</value>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultAngularDependencyResolver" alias="angularDependencyResolver"/>
+	<bean id="defaultAngularDependencyResolver" class="com.hybris.cockpitng.web.js.impl.NameDependenciesResolver">
+		<property name="name" value="angular"/>
+		<property name="protocol" value="2"/>  <!-- REMOTE_RESOURCE -->
+		<property name="version" value="1.6.5"/>
+		<property name="url" value="cng/scripts/vendor/angular.1.6.5.min.js"/>
+	</bean>
+
+	<alias name="defaultAbstractDependenciesManagerExtender" alias="abstractDependenciesManagerExtender"/>
+	<cng:list-extender id="defaultAbstractDependenciesManagerExtender" abstract="true" property="chained" unique="true"
+					   bean="dependenciesManager"/>
+
+	<alias name="defaultDependenciesManager" alias="dependenciesManager"/>
+	<bean id="defaultDependenciesManager" class="com.hybris.cockpitng.web.js.impl.DefaultDependenciesManager">
+		<property name="widgetLibUtils" ref="widgetLibUtils"/>
+		<property name="cockpitResourceLoader" ref="widgetResourceReader"/>
+		<property name="cockpitProperties" ref="cockpitProperties"/>
+		<property name="chained">
+			<list>
+				<ref bean="angularChainedDependencies"/>
+			</list>
+		</property>
+		<property name="resolvers">
+			<list>
+				<ref bean="angularDependencyResolver"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultSettingsTemplateValuesProvider" alias="settingsTemplateValuesProvider"/>
+	<bean id="defaultSettingsTemplateValuesProvider"
+	      class="com.hybris.cockpitng.web.template.impl.WidgetSettingsTemplateValuesProvider">
+	</bean>
+	<cng:list-extender property="valuesProviders" bean="templateEngine">
+		<cng:add>
+			<ref bean="settingsTemplateValuesProvider"/>
+		</cng:add>
+	</cng:list-extender>
+	<cng:list-extender property="valuesProviders" bean="widgetTemplateEngine">
+		<cng:add>
+			<ref bean="settingsTemplateValuesProvider"/>
+		</cng:add>
+	</cng:list-extender>
+
+	<alias name="defaultSessionInfoTemplateValuesProvider" alias="sessionInfoTemplateValuesProvider"/>
+	<bean id="defaultSessionInfoTemplateValuesProvider"
+	      class="com.hybris.cockpitng.web.template.impl.SessionInfoTemplateValuesProvider">
+		<property name="collector" ref="jsWidgetSessionInfoCollector"/>
+	</bean>
+	<cng:list-extender property="valuesProviders" bean="templateEngine">
+		<cng:add>
+			<ref bean="sessionInfoTemplateValuesProvider"/>
+		</cng:add>
+	</cng:list-extender>
+
+	<alias name="defaultLabelsTemplateValuesProvider" alias="labelsTemplateValuesProvider"/>
+	<bean id="defaultLabelsTemplateValuesProvider"
+	      class="com.hybris.cockpitng.web.template.impl.LabelsTemplateValuesProvider">
+		<property name="widgetLibUtils" ref="widgetLibUtils"/>
+		<property name="componentDefinitionService" ref="componentDefinitionService"/>
+	</bean>
+	<cng:list-extender property="valuesProviders" bean="templateEngine">
+		<cng:add>
+			<ref bean="labelsTemplateValuesProvider"/>
+		</cng:add>
+	</cng:list-extender>
+
+	<alias name="defaultIdTemplateValuesProvider" alias="idTemplateValuesProvider"/>
+	<bean id="defaultIdTemplateValuesProvider" class="com.hybris.cockpitng.web.template.impl.IdTemplateValuesProvider">
+	</bean>
+	<cng:list-extender property="valuesProviders" bean="templateEngine">
+		<cng:add>
+			<ref bean="idTemplateValuesProvider"/>
+		</cng:add>
+	</cng:list-extender>
+
+	<alias name="defaultAbstractTemplateValuesProvidersExtender" alias="abstractTemplateValuesProvidersExtender"/>
+	<cng:list-extender id="defaultAbstractTemplateValuesProvidersExtender" abstract="true" bean="templateEngine"
+					   unique="true" property="valuesProviders"/>
+
+	<alias name="defaultJsWidgetSessionInfoCollector" alias="jsWidgetSessionInfoCollector"/>
+	<bean id="defaultJsWidgetSessionInfoCollector"
+	      class="com.hybris.cockpitng.util.js.DefaultJsWidgetSessionInfoCollector">
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+		<property name="cockpitUserService" ref="cockpitUserService"/>
+	</bean>
+
+	<alias name="defaultJsWidgetSessionInfoCollectorExtender" alias="abstractJsWidgetSessionInfoCollectorExtender"/>
+	<cng:list-extender id="defaultJsWidgetSessionInfoCollectorExtender" abstract="true"
+					   bean="defaultJsWidgetSessionInfoCollector" unique="true" property="decorators"/>
+
+	<alias name="defaultValidationHandler" alias="validationHandler"/>
+	<bean id="defaultValidationHandler" class="com.hybris.cockpitng.validation.impl.DefaultValidationHandler"/>
+
+	<alias name="defaultLocalizationAwareValidationHandler" alias="localizationAwareValidationHandler"/>
+	<bean id="defaultLocalizationAwareValidationHandler"
+		  class="com.hybris.cockpitng.validation.impl.DefaultLocalizationAwareValidationHandler"/>
+
+	<alias name="defaultEditorValidationFactory" alias="editorValidationFactory"/>
+	<bean id="defaultEditorValidationFactory"
+	      class="com.hybris.cockpitng.components.validation.DefaultEditorValidationFactory"/>
+
+	<alias name="defaultDashboardConfigurationFallbackStrategy" alias="dashboardConfigurationFallbackStrategy"/>
+	<bean id="defaultDashboardConfigurationFallbackStrategy"
+	      class="com.hybris.cockpitng.core.config.DefaultDashboardConfigurationFallbackStrategy"/>
+
+	<bean class="com.hybris.cockpitng.core.config.util.CockpitConfigurationServiceExtender" lazy-init="false">
+		<property name="fallbackStrategies">
+			<map>
+				<entry key="com.hybris.cockpitng.config.dashboard.jaxb.Dashboard">
+					<list>
+						<ref bean="dashboardConfigurationFallbackStrategy"/>
+					</list>
+				</entry>
+			</map>
+		</property>
+		<property name="configurationService" ref="cockpitConfigurationService"/>
+	</bean>
+
+
+	<alias name="cockpitframeworkSchemaLocationRegistry" alias="cockpitConfigurationSchemaLocationRegistry"/>
+	<bean id="cockpitframeworkSchemaLocationRegistry" parent="coreSchemaLocationRegistry">
+		<property name="schemaLocations">
+			<map merge="true" key-type="java.lang.String" value-type="java.lang.String">
+				<entry key="available-locales" value="/schemas/config/cockpitng/available-locales.xsd"/>
+				<entry key="dashboard" value="/schemas/config/cockpitng/dashboard.xsd"/>
+			</map>
+		</property>
+	</bean>
+
+	<alias name="defaultComponentMarkingUtils" alias="componentMarkingUtils"/>
+	<bean id="defaultComponentMarkingUtils" class="com.hybris.cockpitng.util.impl.DefaultComponentMarkingUtils" />
+
+	<alias name="defaultNotificationService" alias="notificationService"/>
+	<bean id="defaultNotificationService"
+		  class="com.hybris.cockpitng.util.notifications.DefaultNotificationService"/>
+
+</beans>

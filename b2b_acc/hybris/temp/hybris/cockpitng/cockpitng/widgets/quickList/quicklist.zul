@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		sclass="yw-quicklist">
+	<div id="infoContainer" sclass="yw-info-container" if="${widgetSettings.showInfo}">
+		<label id="infoLabel" sclass="yw-quicklist-info-label"/>
+		<actions id="actionSlot" config="${widgetSettings.actionSlotComponentId}" group="common" sclass="yw-quicklist-actionSlot"/>
+	</div>
+	<div sclass="yw-main-container">
+		<div id="itemContainer" sclass="yw-item-container" visible="true"/>
+	</div>
+</widget>

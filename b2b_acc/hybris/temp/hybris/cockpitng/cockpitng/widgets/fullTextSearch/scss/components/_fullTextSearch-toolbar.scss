@@ -1,0 +1,180 @@
+@import '../support/fullTextSearch-variables';
+
+.yw-fulltextsearch {
+    &-search-button,
+    &-fieldquery-button,
+    &-clear-button {
+        width: $fullTextSearch__button--size;
+        height: $fullTextSearch__button--size;
+        min-height: $fullTextSearch__button--size;
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    &-search-button,
+    &-fieldquery-button {
+        &, &:hover, &:active, &:focus {
+            border: $fullTextSearch__input--border;
+            box-shadow: none;
+        }
+        &:hover, &:active, &:focus {
+            border-color: $fullTextSearch__toolbar-button--hover-border-color;
+        }
+    }
+
+    &-search-button {
+        background: $fullTextSearch__search-button-default--bg;
+
+        &:hover,
+        &:focus,
+        &:active,
+        .yw-fulltextsearch-container-expanded & {
+            background: $fullTextSearch__search-button-hover--bg;
+        }
+
+        .yw-fulltextsearch-container-expanded & {
+            border: $fullTextSearch__input-box-expanded--border;
+        }
+    }
+
+    &-wrapper {
+        display: inline-block;
+        position: relative;
+        margin-right: $fullTextSearch__button-wrapper--margin-right;
+    }
+
+    &-input{
+        width: $fullTextSearch__input--width;
+        min-height: $fullTextSearch__button--height;
+        
+        &-wrapper {
+            padding: 0;
+            transition: $fullTextSearch__input-wrapper--transition;
+
+            .yw-fulltextsearch-container-expanded & {
+                padding-left: $fullTextSearch__input-box-expanded--width;
+            }
+        }
+
+        &-box {
+            overflow: hidden;
+            position: absolute;
+            right: $fullTextSearch__input-box--right;
+            transition: $fullTextSearch__input-box--transition;
+
+            .yw-fulltextsearch-container-collapsed &,
+            .yw-fulltextsearch-container-expanded & {
+                .z-bandbox-input {
+                    border-color: $fullTextSearch__input-box-expanded--border-color;
+                }
+            }
+
+            .yw-fulltextsearch-container-collapsed & {
+                width: $fullTextSearch__input-box-collapsed--width;
+                border-right: $fullTextSearch__input--border;
+            }
+
+            .yw-fulltextsearch-container-expanded & {
+                width: $fullTextSearch__input-box-expanded--width;
+                border-right: $fullTextSearch__input-box-expanded--border;
+            }
+        }
+        .z-bandbox-input {
+            height: $fullTextSearch__button--height;
+            padding-right: $fullTextSearch__button--padding-right;
+            border-right-width: 0;
+            box-shadow: none;
+        }
+
+        .z-bandbox-button {
+            display: none;
+        }
+    }
+
+    &-container {
+        font-size: 0;
+        text-align: right;
+    }
+
+    &-clear-button {
+        &.ye-delete-btn {
+            box-shadow: none;
+            background-color: transparent;
+            width: $fullTextSearch__button-clear--width;
+        }
+
+        .yw-fulltextsearch-container-expanded & {
+            padding: $fullTextSearch__button-clear--padding;
+            position: relative;
+        }
+    }
+
+    &-fieldquery-button {
+        background: $fullTextSearch__fieldquery-button-default--bg;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background: $fullTextSearch__fieldquery-button-hover--bg;
+        }
+    }
+
+    &-filters-counter {
+        min-width: $fullTextSearch__filters-counter--min-width;
+        height: $fullTextSearch__filters-counter--height;
+        font-size: $fullTextSearch__filters-counter--font-size;
+        font-weight: $fullTextSearch__filters-counter--font-weight;
+        line-height: $fullTextSearch__filters-counter--line-height;
+        color: $fullTextSearch__filters-counter--color;
+        text-align: center;
+        display: inline-block;
+        background: $fullTextSearch__filters-counter--background;
+        border-radius: $fullTextSearch__filters-counter--border-radius;
+        padding: $fullTextSearch__filters-counter--padding;
+
+        &:empty {
+            display: none;
+        }
+
+        &-wrapper {
+            pointer-events: none;
+            text-align: center;
+            width: auto;
+            min-width: $fullTextSearch__button--size;
+            margin-left: $fullTextSearch__filters-counter-wrappper--margin-left;
+            top: $fullTextSearch__filters-counter-wrappper--top;
+            position: absolute;
+        }
+    }
+   
+    .y-toolbar & {
+        &-fieldquery-button,
+        &-search-button {
+            transition: $fullTextSearch__toolbar-button--transition;
+         /*    
+            &:after {
+                box-shadow: none;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                position: absolute;
+            }
+        }
+        &-fieldquery-button:hover,
+        &-fieldquery-button:active,
+        &-fieldquery-button:focus,
+        &-search-button:hover {
+            &:after {
+                content: "";
+                box-shadow: $fullTextSearch__collection-browser-toolbar-button--box-shadow;
+                transition: $fullTextSearch__collection-browser-toolbar-button--transition;
+            }
+        }
+
+        &-container-expanded .yw-fulltextsearch-search-button:after {
+            content: normal;
+        */
+        }
+    }
+}

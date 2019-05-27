@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd">
+	<widget>
+		<div id="fullTextSearchContainer" sclass="yw-fulltextsearch-container">
+			<div class="yw-fulltextsearch-wrapper yw-fulltextsearch-input-wrapper">
+				<div id="fullTextSearchBox" sclass="yw-fulltextsearch-input-box">
+					<bandbox id="searchBox" sclass="yw-fulltextsearch-input"/>
+				</div>
+				<button id="clearButton" sclass="yw-fulltextsearch-clear-button ye-delete-btn"/>
+				<button id="searchButton" sclass="yw-fulltextsearch-search-button"/>
+			</div>
+			<div class="yw-fulltextsearch-wrapper yw-fulltextsearch-filter-wrapper" if="${widgetSettings.fieldQueryEnabled}">
+				<div id="fieldQueryFiltersCounterLabelWrapper" sclass="yw-fulltextsearch-filters-counter-wrapper">
+					<label id="fieldQueryFiltersCounterLabel" sclass="yw-fulltextsearch-filters-counter"/>
+				</div>
+				<button id="fieldQueryButton" sclass="yw-fulltextsearch-fieldquery-button" visible="false"/>
+				<popup id="fieldQueryPopup" sclass="yw-fulltextsearch-fieldquery-popup"/>
+			</div>
+		</div>
+	</widget>
+</zk>

@@ -1,0 +1,55 @@
+@import "scss/support/_splitLayoutChooser-variables";
+
+.z-button.yw-split-layout-chooser-button {
+    width: $actionSplitLayoutChooser__btn--width;
+    height: $actionSplitLayoutChooser__btn--height;
+    min-height: $actionSplitLayoutChooser__btn--height;
+    padding: $actionSplitLayoutChooser__btn--padding;
+    background: $actionSplitLayoutChooser__btn--background;
+    display: block;
+    position: relative;
+
+    &:before {
+        content:'';
+        width: 0;
+        position: absolute;
+        top: 0;
+        left: $actionSplitLayoutChooser__btn-before--left;
+        bottom: 0;
+        background-color: $actionSplitLayoutChooser__btn-before--bg-color;
+        transition: $actionSplitLayoutChooser__btn-before--transition;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: $actionSplitLayoutChooser__btn-hover--background;
+        box-shadow: none;
+
+        &:before {
+            width: $actionSplitLayoutChooser__btn-before-hover--width;
+        }
+    }
+
+    img {
+        vertical-align: top;
+    }
+
+    &.yw-split-layout-chooser-button-with-label {
+        width: $actionSplitLayoutChooser__btn-label--width;
+        font-size: $actionSplitLayoutChooser__btn-label--font-size;
+        font-family: $actionSplitLayoutChooser__btn-label--font-family;
+        color: $actionSplitLayoutChooser__btn-label--color;
+        text-align: $actionSplitLayoutChooser__btn-label--text-align;
+        text-transform: none;
+    }
+}
+
+.ya-com_hybris_cockpitng_action_splitlayoutchooser.cng-action {
+    line-height: 1;
+}
+
+.yw-split-layout-chooser-popup {
+    margin: $actionSplitLayoutChooser__popup-container--margin;
+    padding: $actionSplitLayoutChooser__popup-container--padding;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		sclass="yw-refineby">
+	<div sclass="yw-main-container">
+		<div id="infoContainer" sclass="yw-info-container" visible="true">
+			<label value="${labels.no.facet.available}"/>
+		</div>
+		<div id="facetContainer" sclass="yw-facet-container" visible="false">
+		</div>
+	</div>
+</widget>

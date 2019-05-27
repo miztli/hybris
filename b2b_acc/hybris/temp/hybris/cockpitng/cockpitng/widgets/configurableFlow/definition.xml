@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						 xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+						 id="com.hybris.cockpitng.widgets.configurableflow">
+<name>Configurable Flow Wizard</name>
+	<description>Configurable Flow Wizard</description>
+	<defaultTitle>Configurable Flow Wizard</defaultTitle>
+	<author>hybris</author>
+	<version>1.0</version>
+	<sockets>
+		<input id="context" type="java.util.Map"/>
+		<input id="contextType" type="java.lang.String"/>
+		<output id="wizardResult" type="java.util.Map"/>
+		<output id="cancel" type="java.lang.Object"/>
+	</sockets>
+	<view src="configurableflow.zul"/>
+	<keywords>
+		<keyword>Wizard</keyword>
+	</keywords>
+	<settings>
+		<setting key="notificationId" default-value="wizardNotification" type="String"/>
+		<setting key="isNestedObjectCreationDisabled" default-value="true" type="Boolean"/>
+		<setting key="configurableFlowConfigCtx" default-value="create-wizard" type="String"/>
+		<setting key="showLinksInNotifications" type="Boolean" default-value="true"/>
+		<setting key="notificationsContext" type="String" default-value="editor-area"/>
+	</settings>
+	<controller
+			class="com.hybris.cockpitng.widgets.configurableflow.ConfigurableFlowController"/>
+</widget-definition>

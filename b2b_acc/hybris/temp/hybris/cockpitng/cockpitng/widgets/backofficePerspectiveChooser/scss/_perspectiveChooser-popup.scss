@@ -1,0 +1,111 @@
+/*================================
+    PerspectiveChooser Popup (Systembar)
+================================*/
+// Relevant Changes applied to the Perspective Chooser Popup
+
+
+@import "../../systemBarWidget/scss/support/_systembar-mixins.scss";
+
+.yw-perspective-popup {
+  top: $systembar-popup__menu--top !important;  //overwriting inner styling
+  width: $systembar-popup__menu--width;
+  padding: $systembar__perspective-menu--padding;
+  background-color: $systembar__perspective-popup-container--bg-color;
+  border-radius: $systembar__perspective-menu--border-radius;
+  box-shadow: $systembar-popup__menu--box-shadow;
+  border: none;
+
+  .z-treechildren {
+    background-color: $systembar__perspective-popup-item--bg-color;
+  }
+
+  .z-treerow {
+    width: $systembar-popup__treerow--width;
+    display: inline-block;
+    position: relative;
+    border-top: $systembar-popup__list-cell--border-top;
+    background: none;
+
+    &:hover {
+      background-color: $systembar__perspective-popup-item-hover--bg-color;
+    }
+    &:first-child {
+      border-top-color: transparent;
+      margin-top: $systembar__perspective-menu--border-width * -1;
+    }
+
+    @for $i from 0 through 5 {
+      &.yw-perspective-popup-level#{$i} .yw-perspective-popup-treecell {
+        padding-left: $systembar-popup__treerow--indentation + ($systembar-popup__treerow--indentation-step * $i);
+      }
+    }
+
+    .z-treecell {
+      padding: $systembar-popup__tree-cell--padding;
+      background: none;
+    }
+
+    .z-treecell-content {
+      line-height: $systembar__perspective-breadcrumb-content--line-height;
+      position: static;
+      @include _systembar_fonts ();
+    }
+    > .z-treecell > .z-treecell-content {
+      color: $systembar__perspective-popup-item--color;
+    }
+
+    &.z-treerow-selected {
+      background-color: $systembar__perspective-popup-item-selected--bg-color;
+
+      &:hover {
+        background-color: $systembar__perspective-popup-item-selected--bg-color;
+      }
+    }
+  }
+
+  .z-treecell-content {
+    padding: $systembar-popup__tree-cell-content--padding;
+
+    .z-tree-spacer {
+      display: none;
+    }
+
+    .z-treecell-text {
+      display: inline-block;
+      
+      img {
+        margin-right: $systembar-popup__tree-cell-image--margin-right;
+        height: $systembar-popup__tree-cell-image--height;
+        width: auto;
+
+        &:only-child {
+          margin-left: $systembar-popup__tree-cell-image--margin-left;
+        }
+      }
+    }
+
+    .z-tree-icon {
+      text-align: left;
+      padding: $systembar-popup__tree-icon--padding;
+    }
+  }
+
+  .z-tree {
+    border: none;
+  }
+
+  .z-icon-caret-right {
+    @include _systembar_vertical_centering ($systembar__caret-right--width, $systembar__caret-right--height);
+  }
+
+  .z-icon-caret-down {
+    @include _systembar_vertical_centering ($systembar__caret-down--width, $systembar__caret-down--height);
+  }
+
+  .z-icon-caret-right,
+  .z-icon-caret-down {
+    &:before {
+      color: $systembar__perspective-item-icon--color;
+    }
+  }
+}

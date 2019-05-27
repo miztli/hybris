@@ -1,0 +1,115 @@
+@import "../support/_collectionBrowser-variables.scss";
+
+.yw-treeview {
+    &-cell {
+        display: inline-block;
+
+        &-data-attr {
+            font-style: italic;
+        }
+        /* Spacing for IMG + Label */
+        &-preview,
+        &-label {
+            margin-left: $collection-browser__tree-item-label--margin-left;
+        }
+        &-preview + &-label {
+            margin-left: $collection-browser__tree-item-preview-to-label--space;
+        }
+    }
+    &-row-subnode {
+        background: $collection-browser__tree-item-subnode--bg-color;
+    }
+}
+
+.yw-coll-browser-tree-view-table {
+    > .z-tree-body > table {
+        background-color: $collection-browser__default--bg-color;
+    }
+    .z-treerow {
+        background-color: transparent;
+    }
+    .z-tree-body td.z-treecell,
+    .z-tree-footer td.z-treefooter {
+        border: none;
+        border-top: $collection-browser__tree-item--border;
+        padding: $collection-browser__tree-item--padding;
+        border-width: 0;
+        position: relative;
+
+        &:before {
+            content: "";
+            border-top: inherit;
+            border-top-width: nth($collection-browser__tree-item--border, 1);
+            position: absolute;
+            left: $collection-browser__side-content-indent--padding;
+            right: $collection-browser__side-content-indent--padding;
+            top: 0;
+        }
+    }
+    
+    .z-tree-body .yw-treeview-row-topnode.z-treerow:first-child .z-treecell{
+        &:before{
+            border: none;
+        }
+    }
+
+    .z-tree-body .z-treecell-content {
+        padding-left: $collection-browser__tree-view-content--padding-left;
+    }
+    table {
+        table-layout: auto !important;
+    }
+    &-empty .z-treechildren {
+        font-weight: normal;
+        color: $collection-browser__tree-item-emptynode--color;
+        font-style: italic;
+        text-align: center;
+    }
+    .z-treerow {
+        > .z-treecell:hover {
+            background-color: $collection-browser__list-view-hover--bg-color;
+            box-shadow: $collection-browser__list-item--box-shadow $collection-browser__list-view-hover--bg-color;
+
+            &.z-label {
+                text-decoration: underline;
+            }
+        }
+        &.yw-coll-browser-focused > .z-treecell {
+            background-color: $collection-browser__list-view-focus--bg-color;
+            box-shadow: $collection-browser__list-item--box-shadow $collection-browser__list-view-focus--bg-color;
+            
+            &:hover {
+                background-color: $collection-browser__list-view-focus-hover--bg-color;
+                box-shadow: $collection-browser__list-item--box-shadow $collection-browser__list-view-focus-hover--bg-color;
+            }
+        }
+        &.z-treerow-selected {
+            > .z-treecell {
+                background-color: $collection-browser__list-view-selected--bg-color;
+                box-shadow: $collection-browser__list-item--box-shadow $collection-browser__list-view-selected--bg-color;
+
+                &:hover {
+                    background-color: $collection-browser__list-view-selected-hover--bg-color;
+                    box-shadow: $collection-browser__list-item--box-shadow $collection-browser__list-view-selected-hover--bg-color;
+
+                    &.z-label {
+                        text-decoration: underline;
+                    }
+                }
+            }
+            &.yw-coll-browser-focused > .z-treecell {
+                background-color: $collection-browser__list-view-selected-focus--bg-color;
+                box-shadow: $collection-browser__list-item--box-shadow $collection-browser__list-view-selected-focus--bg-color;
+                
+                &:hover {
+                    background-color: $collection-browser__list-view-selected-focus-hover--bg-color;
+                    box-shadow: $collection-browser__list-item--box-shadow $collection-browser__list-view-selected-focus-hover--bg-color;
+                }
+            }
+            + .z-treerow-selected > .z-treecell {
+                border-top-color: $collection-browser__list-item-selected-delimiter--border-color;
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,97 @@
+/*================================
+    Create Button
+================================*/
+// Styling of the Create Button visible on different Widgets
+
+
+@import "../support/_create-variables.scss";
+
+// Toolbar
+// ====================
+//
+
+.ya-create-type-selector-popup {
+    /* TREE */
+
+    .z-popup-cnt > .z-tree {
+        border: none;
+
+        > .z-tree-body {
+            width: 100%!important;
+        }
+        tr.z-treerow {
+            td {
+                border: medium none;
+                padding: $create__create-type-popup-list-item--padding;
+            }
+        }
+        tr.ye-create-type-selector {
+            &-lvl-1 {
+                background: $create__create-type-popup-lvl-1--bg-color;
+            }
+            &-lvl-2 {
+                background: $create__create-type-popup-lvl-2--bg-color;
+            }
+            &-lvl-3 {
+                background: $create__create-type-popup-lvl-3--bg-color;
+            }
+            &-lvl-4 {
+                background: $create__create-type-popup-lvl-4--bg-color;
+            }
+        }
+        tr.z-treerow {
+            &-over {
+                background: $create__create-type-popup-row--hover-bg-color;
+            }
+            &-seld,
+            &-over-seld {
+                background: $create__create-type-popup-row-selected--bg-color;
+            }
+            &-seld div.z-treecell-cnt,
+            &-over-seld div.z-treecell-cnt {
+                color: $create__create-type-popup-row-selected--color;
+            }
+        }
+    }
+
+    /* ICONS */
+    .z-popup-cnt > .z-tree {
+        .z-tree-ico {
+            background-image: url("icons/icon_func_toggle_sprite.png");
+
+            &.z-tree-last-close,
+            &.z-tree-root-close {
+                background-position: 0 0;
+            }
+        }
+        tr.z-treerow-seld .z-tree-ico {
+            background-position: $create__create-new-button-caret-icon--size $create__create-new-button-caret-icon--size;
+
+            &.z-tree-last-close,
+            &.z-tree-root-close {
+                background-position: $create__create-new-button-caret-icon--size 0;
+            }
+        }
+    }
+    &.z-popup-open {
+        max-height: 100%;
+        overflow-y: auto;
+    }
+}
+
+.z-popup.ya-cng-action-group-popup {
+    .cng-action {
+        padding: $create__create-action-group-popup--padding;
+
+        .cng-action-text {
+            padding: 0;
+            height: $create__create-action-group-popup-cell--height;
+        }
+    }
+    .ya-create-container {
+        width: 100%;
+        border: none;
+    }
+}
+
+

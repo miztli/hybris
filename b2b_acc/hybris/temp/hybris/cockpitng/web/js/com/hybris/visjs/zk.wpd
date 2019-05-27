@@ -1,0 +1,4 @@
+<package name="com.hybris.visjs" language="xul/html" depends="zul.wgt">
+    <script src="vendor/vis.min.js" />
+    <widget name="NetworkChart"/>
+</package>

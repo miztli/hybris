@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=pt
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;Acionar mensagem da regra (limite total do carrinho de compras);Exibe a mensagem para a regra dependendo do cumprimento da condição de regra;
+;y_trigger_message_parameterized_category;Acionar mensagem da regra (categoria);Exibe a mensagem para a regra dependendo do cumprimento da condição de regra;
+;y_trigger_message_parameterized_product;Acionar mensagem da regra (produto);Exibe a mensagem para a regra dependendo do cumprimento da condição de regra;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;Limite total do carrinho;Limite total do carrinho de compras a ser controlado
+;y_trigger_message_parameterized_category;catalog;Seleção de filtro por catálogo;O valor de catálogo selecionado será utilizado para fins de filtragem nos campos associados.
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;Quantidade;A quantidade de produtos obrigatórios da categoria aplicável
+;y_trigger_message_parameterized_category;qualifying_categories;Categorias;Categorias que se qualificam
+;y_trigger_message_parameterized_product;catalog;Seleção de filtro por catálogo;O valor de catálogo selecionado será utilizado para fins de filtragem nos campos associados.
+;y_trigger_message_parameterized_product;qualifying_products_quantity;Quantidade;Quantidade de produtos aplicáveis obrigatória
+;y_trigger_message_parameterized_product;qualifying_products;Produto;Produtos que se qualificam
+

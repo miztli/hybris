@@ -1,0 +1,150 @@
+/*================================
+    z-Paging
+================================*/
+// Defintions of the z-Paging-Element (Navigation)
+
+
+@import "../support/_cockpit-mixins.scss";
+
+.yw-itemSelectorButton,
+.z-paging-button {
+    line-height: $editor-defaults__pagin-button--line-height;
+    margin-right: $editor-defaults__pagin-button--margin-right;
+    transition: $editor-defaults__pagin-button--transition;
+    background-repeat: no-repeat;
+
+    &:hover,
+    &:focus {
+        background-image: $editor-defaults__pagin-button--hover-bg-image;
+        background-color: $editor-defaults__pagin-button--hover-bg-color;
+        color: $editor-defaults__pagin-button--hover-color;
+        transition: $editor-defaults__pagin-button--transition;
+        box-shadow: none;
+    }
+
+    &,
+    &[disabled],
+    &[disabled]:hover {
+        background-image: $editor-defaults__pagin-button--bg-image;
+        background-color: transparent;
+    }
+
+    &[disabled],
+    &[disabled]:hover {
+        opacity: $editor-defaults__pagin-button--opacity;
+        box-shadow: none !important;
+    }
+}
+
+.yw-itemSelectorButton {
+    width: $editor-defaults__pagin-selectior-button--width;
+    padding: 0;
+
+    &[disabled],
+    &[disabled]:hover {
+        background-color: transparent !important;
+    }
+}
+
+.z-paging {
+    height: auto;
+    padding: $editor-defaults__pagin--padding;
+    background-color: $editor-defaults__pagin--bg-color;
+
+    &-info {
+        height: auto;
+        font-size: $editor-defaults__pagin--font-size;
+        line-height: $editor-defaults__pagin-info--line-height;
+    }
+
+    &-input,
+    &-text {
+        font-size: $editor-defaults__pagin--font-size;
+        text-align: $editor-defaults__pagin-input-text--text-align;
+    }
+
+    &-input {
+        width: $editor-defaults__pagin-input--width;
+        height: $editor-defaults__pagin-input--height;
+        border-color: $editor-defaults__pagin-input--border-color;
+        padding: $editor-defaults__pagin-input--padding;
+        margin-left: $editor-defaults__pagin-input--margin-left;
+    }
+
+    &-text {
+        line-height: $editor-defaults__pagin-text--line-height;
+        margin: $editor-defaults__pagin-text--margin;
+        vertical-align: middle;
+    }
+
+    &-button {
+        font-size: $editor-defaults__pagin--font-size;
+        min-width: $editor-defaults__pagin-button--min-width;
+        padding: $editor-defaults__pagin-button--padding;
+        height: auto;
+        border: none;
+        vertical-align: top;
+
+        &[disabled],
+        &[disabled]:hover {
+
+            .z-paging-icon,
+            .z-paging-icon:hover {
+                background-color: $editor-defaults__pagin-button-icon--bg-color;
+            }
+        }
+        
+        .z-paging-icon[class*="z-icon-angle-"]:before {
+            content: "";
+        }
+    }
+
+    @include _add-modified-button-bg-position($editor-defaults__pagin-first-button--bg-position,-first);
+    @include _add-modified-button-bg-position($editor-defaults__pagin-previous-button--bg-position,-previous);
+    @include _add-modified-button-bg-position($editor-defaults__pagin-next-button--bg-position,-next);
+    @include _add-modified-button-bg-position($editor-defaults__pagin-last-button--bg-position,-last);
+    
+    &-selected {
+
+        &,
+        &:hover,
+        &:active {
+            color: $editor-defaults__pagin-selected--color;
+            background-color: $editor-defaults__pagin-button--hover-bg-color;
+        }
+    }
+}
+
+div.z-paging-os-cnt {
+
+    &-l {
+        background: $editor-defaults__pagin-os-cnt--bg-color;
+        margin: $editor-defaults__pagin-os-cnt--margin;
+    }
+
+    &-selected-l {
+        background: $editor-defaults__pagin-os-cnt-selected--bg-color;
+        margin: $editor-defaults__pagin-os-cnt--margin;
+    }
+}
+
+.z-paging-os {
+
+    div.z-paging-os-cnt-l .z-paging-os-cnt {
+        color: $editor-defaults__pagin-os-cnt--color;
+    }
+
+    .z-paging-os-selected:hover {
+        color: $editor-defaults__pagin-os-cnt-selected-hover--color;
+        font-weight: bold;
+    }
+
+    .z-paging-button,
+    .z-paging-button[disabled] {
+
+        &,
+        &:hover {
+            background-image: none;
+        }
+    }
+}

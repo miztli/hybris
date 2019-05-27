@@ -1,0 +1,23 @@
+.cng-adminmode .widget_toolbar .toolbarComponent > div {
+  visibility: visible; }
+
+.cng-adminmode-symbolic .cng-addChildWidgetSymbolic {
+  visibility: visible;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-bottom: none;
+  border-right: none; }
+
+.connectionLabel {
+  display: inline;
+  position: absolute;
+  left: 30px;
+  bottom: 5px;
+  color: #4099F8;
+  border: 1px solid #0059B8;
+  background: #222;
+  padding: 3px;
+  white-space: nowrap; }

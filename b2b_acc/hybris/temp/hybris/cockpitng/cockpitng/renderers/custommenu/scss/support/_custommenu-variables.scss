@@ -1,0 +1,11 @@
+@import "cockpitng-globals.scss";
+
+$custommenu__actiondots-icon--size: 24px;
+$custommenu__actiondots-cell--width: $editor-defaults__inline-box--height;
+$custommenu__actiondots-button--padding-x: floor(($custommenu__actiondots-cell--width - $custommenu__actiondots-icon--size)/2);
+$custommenu__actiondots-icon--background-image: url("../img/default/dots.png");
+$custommenu__actiondots-icon--background: $custommenu__actiondots-icon--background-image no-repeat 0 0;
+$custommenu__actiondots-button--hover-bg-position: 0 (-$custommenu__actiondots-icon--size);
+$custommenu__actiondots-button--focus-bg-position: 0 (-2* $custommenu__actiondots-icon--size);
+$custommenu__actiondots-button-disabled--bg-position: 0 (-3* $custommenu__actiondots-icon--size);
+$custommenu__actiondots-button-disabled--opacity: 0.5;

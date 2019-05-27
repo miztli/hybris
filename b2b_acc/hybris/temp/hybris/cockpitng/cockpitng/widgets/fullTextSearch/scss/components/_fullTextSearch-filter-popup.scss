@@ -1,0 +1,84 @@
+@import '../support/fullTextSearch-variables';
+
+.yw-fulltextsearch-fieldquery-popup {
+    width: $fullTextSearch__fieldquery-popup--width;
+    overflow: auto;
+
+    &-layout > .z-vlayout-inner {
+        padding: 0 !important;
+    }
+
+    &-header,
+    &-body {
+        padding: $fullTextSearch__fieldquery-popup-header--padding;
+    }
+
+    &-body {
+        padding: $fullTextSearch__fieldquery-popup-body--padding;
+        max-height: $fullTextSearch__fieldquery-popup-body--max-height;
+        border-top: $fullTextSearch__fieldquery-popup-delimiter-applied--border;
+        overflow: auto;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    &-footer {
+        border-top: $fullTextSearch__fieldquery-popup-delimiter--border;
+        background-color: $fullTextSearch__fieldquery-popup-footer--bg-color;
+        position: relative;
+
+        > .z-hlayout-inner {
+            position: static;
+        }
+    }
+
+    &-button-add-filter {
+        color: $fullTextSearch__fieldquery-popup-text-button-default--color;
+        padding-top: $fullTextSearch__fieldquery-popup-text-button-default--padding-y;
+        padding-bottom: $fullTextSearch__fieldquery-popup-text-button-default--padding-y;
+        height: $fullTextSearch__fieldquery-popup-text-button-default--height;
+        text-transform: initial;
+        border-width: 0;
+        position: relative;
+
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            box-shadow: none;
+            background-color: $fullTextSearch__fieldquery-popup-text-button-default--bg-color;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $fullTextSearch__fieldquery-popup-text-button-default--hover-color;
+            border-color: $fullTextSearch__fieldquery-popup-text-button-default--hover-color;
+        }
+
+        &:before {
+            font-family: $font-family-fontawesome;
+            font-size: $fullTextSearch__fieldquery-popup-add-icon--font-size;
+            line-height: $fullTextSearch__fieldquery-popup-add-icon--line-height;
+            height: $fullTextSearch__fieldquery-popup-add-icon--size;
+            width: $fullTextSearch__fieldquery-popup-add-icon--size;
+            border: $fullTextSearch__fieldquery-popup-add-icon--border-width solid transparent;
+            border-radius: $fullTextSearch__fieldquery-popup-add-icon--border-radius;
+            top: $fullTextSearch__fieldquery-popup-add-icon--top;
+            margin-right: $fullTextSearch__fieldquery-popup-add-icon--margin-right;
+            content: $fullTextSearch__fieldquery-popup-add-icon--content;
+            color: inherit;
+            border-color: inherit;
+            display: inline-block;
+            position: relative;
+            box-sizing: border-box;
+        }
+    }
+
+    &-apply-filters.z-button {
+        float:right;
+        height: $fullTextSearch__fieldquery-popup-text-button-default--height;
+    }
+}

@@ -1,0 +1,19 @@
+.yw-labeled-toggle-label {
+  top: 14px;
+  background-color: #ffffff;
+  font-size: 8px;
+  padding: 1px;
+  border-radius: 8px;
+  min-width: 8px;
+  left: 27px;
+  border-width: 0;
+  box-sizing: content-box;
+  text-align: center;
+  position: absolute;
+  line-height: 1;
+  pointer-events: none; }
+  .yw-systemBarContainer .yw-statusToolbar .z-toolbarbutton .yw-labeled-toggle-label {
+    top: 12px;
+    left: 25px;
+    border-width: 2px;
+    border-style: solid; }

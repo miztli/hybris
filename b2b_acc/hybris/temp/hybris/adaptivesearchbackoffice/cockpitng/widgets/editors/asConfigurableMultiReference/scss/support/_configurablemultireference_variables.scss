@@ -1,0 +1,87 @@
+
+$configurableMultireference__default-groupbox--padding-bottom: 30px;
+$configurableMultireference__default-groupbox-lastchild--padding-bottom: 0;
+
+$configurableMultireference__area-label--color: $black;
+$configurableMultireference__area-label--font-weight: $font-weight-bold;
+
+$configurableMultireference__default-facets-notvalid--background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAANklEQVQoU2NkwAM+ffr0nxGXPEiSj4+PEasCmCRIM4YCZEkMBeiSKAqwScIV4JIEK8AnCVIAAFqcH94OKvGiAAAAAElFTkSuQmCC) repeat;
+$adaptiveSearchBackoffice-default-facets-notvalid--color: $grey__dark--100;
+$adaptiveSearchBackoffice-default-facets-notcurrent--color: $grey__dark--100;
+
+$configurableMultireference__yas-label--max-width: 0;
+$configurableMultireference__yas-label--color: $black;
+$configurableMultireference__yas-label--padding-right: 6px;
+
+$configurableMultireference__add-item-button--width: 100%;
+$configurableMultireference__add-item-button--height: 30px;
+$configurableMultireference__add-item-button--background: transparent;
+$configurableMultireference__add-item-button--color: $black;
+$configurableMultireference__add-item-button--border: $boxes--border__thin solid $grey__default--900;
+$configurableMultireference__add-item-button--padding-left: 27px;
+$configurableMultireference__add-item-button--font-size: $font-size__small;
+$configurableMultireference__add-item-button--box-shadow: -2px 2px 2px $grey__light--500;
+$configurableMultireference__add-item-button--hover-bg: $blue__light--300;
+
+$configurableMultireference__add-item-button-icon--top: 2px;
+$configurableMultireference__add-item-button-icon--left: -10px;
+$configurableMultireference__add-item-button-icon--color: $grey__default--1100;
+$configurableMultireference__add-item-button-icon--font-size: 16px;
+
+$configurableMultireference__actions-button--color: $blue__default;
+$configurableMultireference__actions-button--padding-x: $container-spacing-default__third;
+$configurableMultireference__actions-button--font-size: 20px;
+$configurableMultireference__actions-button--min-width: 28px;
+$configurableMultireference__actions-container--width: 30px;
+
+$configurableMultireference__applied-filter-counter--width: 46px;
+$configurableMultireference__applied-filter-counter--padding: 0;
+$configurableMultireference__applied-filter-counter--text-align: center;
+
+$configurableMultireference__applied-filter-counter--border-radius: $editor-defaults__inline-box--height;
+
+$configurableMultireference__applied-filter-counter--color: $white;
+$configurableMultireference__applied-filter-counter--font-size: $font-size__small;
+$configurableMultireference__applied-filter-counter--background: $blue__default;
+$configurableMultireference__applied-filter-counter-label--padding: 2px 8px 1px 7px;
+
+$configurableMultireference__applied-filter-icon--size: 16px;
+$configurableMultireference__applied-filter-icon--background: transparent url(images/icon-applied-filter.svg) no-repeat;
+$configurableMultireference__applied-filter-icon--transform: translate(2px, 3px);
+
+$configurableMultireference__facet-value-list-action--bg-color: $white;
+$configurableMultireference__facet-value-list-action--color: $blue__default;
+$configurableMultireference__facet-value-list-action--line-height: 24px;
+$configurableMultireference__facet-value-list-action--padding-y: 2px;
+$configurableMultireference__facet-value-list-action--hover-bg-color: $grey__light--1200;
+$configurableMultireference__detail-list-item-intentation--left: 56px;
+
+$configurableMultireference__info-icon--size: 32px;
+$configurableMultireference__info-element--size: $editor-defaults__inline-box--height;
+$configurableMultireference__info-element--padding: floor(($configurableMultireference__info-element--size - $configurableMultireference__info-icon--size)/2);
+
+$configurableMultireference__info-icon-appendix-external--top: 1px;
+$configurableMultireference__info-icon-appendix-external--left: $configurableMultireference__info-icon-appendix-external--top;
+$configurableMultireference__info-icon-appendix-external--size: 7px;
+$configurableMultireference__info-override-fromSearchConfiguration-icon-appendix-external--left: -3px;
+
+@mixin _applyInfoSpriteIconPosition($bgimageColumn:0){
+	.yas-item {
+		.yas-info-icon {
+			background-position: -23px $bgimageColumn;
+		}
+
+		&.yas-from-search-configuration {
+			.yas-info-icon {
+				background-position: 5px $bgimageColumn;
+			}
+		}
+
+		&.yas-from-search-configuration.yas-override {
+			.yas-info-icon {
+				background-position: -56px $bgimageColumn;
+			}
+		}
+	}
+}
+

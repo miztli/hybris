@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+	sclass="yw-flexlayout" width="100%" height="100%">
+	<div id="rootpane" class="yw-flexlayout-rootpane">
+		<div id="sidebar" class="yw-flexlayout-sidebar">
+			<div class="yw-flexlayout-sidebar-header" visible="${widgetSettings.showSidebarHeader}">
+				<button id="closeSidebarButton" class="yw-flexlayout-sidebar-header-btn" />
+			</div>
+			<widgetslot slotID="sidebar" />
+			<div class="yw-flexlayout-sidebar-footer" visible="${widgetSettings.sidebarCollapsible}">
+				<div id="collapseButton" class="yw-flexlayout-sidebar-footer-collapse" />
+			</div>
+		</div>
+		<div id="contents" class="yw-flexlayout-contents">
+			<div id="flexlayoutOverlay" class="yw-flexlayout-contents-dimmer" />
+			<widgetslot slotID="contents" />
+		</div>
+	</div>
+</widget>

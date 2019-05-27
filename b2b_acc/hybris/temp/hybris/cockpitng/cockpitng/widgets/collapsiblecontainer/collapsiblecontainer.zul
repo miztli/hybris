@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		  xmlns:h="http://www.w3.org/1999/xhtml"
+		  xmlns:zk="http://www.zkoss.org/2005/zk"
+		  xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		  height="100%" sclass="yw-collapsibleContainer">
+
+	<div sclass="outerContainer" width="100%" height="100%">
+		<borderlayout id="outerBorderlayout" width="100%" height="100%">
+			<north id="outerNorth" splittable="true" height="${widgetSettings.topHeight}" sclass="yw-collapsibleContainer-caption">
+				<caption sclass="yw-caption-container">
+					<div id="outerNorthCaptionContainer"/>
+					<button id="outerNorthStickyButton"/>
+					<button id="outerNorthButton" sclass="yw-expandCollapse"/>
+				</caption>
+				<div id="outerTopContainer" sclass="yw-collapsibleContainer-container">
+					<widgetslot slotID="top"/>
+				</div>
+			</north>
+			<center>
+				<borderlayout id="borderlayout" width="100%" height="100%">
+					<north id="north" splittable="true" height="${widgetSettings.centerHeight}" sclass="yw-collapsibleContainer-caption">
+						<caption sclass="yw-caption-container">
+							<div id="northCaptionContainer">
+								<div id="northCaptionContainerInner"/>
+							</div>
+							<button id="northStickyButton"/>
+							<button id="northButton" sclass="yw-expandCollapse"/>
+						</caption>
+						<div id="topContainer" sclass="yw-collapsibleContainer-container">
+							<widgetslot slotID="center"/>
+						</div>
+					</north>
+					<center id="center" sclass="yw-collapsibleContainer-caption yw-collapsed-down">
+						<caption sclass="yw-caption-container">
+							<div id="centerCaptionContainer">
+								<div id="centerCaptionContainerInner"/>
+							</div>
+							<button id="centerStickyButton"/>
+							<button id="centerButton" sclass="yw-expandCollapse"/>
+						</caption>
+						<div id="bottomContainer" sclass="yw-collapsibleContainer-container">
+							<widgetslot slotID="bottom"/>
+						</div>
+					</center>
+					<south id="south" visible="false" splittable="false" sclass="yw-collapsibleContainer-caption">
+						<caption sclass="yw-caption-container">
+							<div id="southCaptionContainer"/>
+							<button id="southStickyButton"/>
+							<button id="southButton" sclass="yw-expandCollapse"/>
+						</caption>
+					</south>
+				</borderlayout>
+			</center>
+		</borderlayout>
+	</div>
+</widget>

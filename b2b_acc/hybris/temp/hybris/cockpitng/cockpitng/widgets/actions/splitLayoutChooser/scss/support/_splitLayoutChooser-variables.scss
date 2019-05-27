@@ -1,0 +1,24 @@
+/*================================
+    Split Layout Chooser Button
+================================*/
+@import "cockpitng-globals.scss";
+
+$actionSplitLayoutChooser__btn--width: $toolbar__vertical-centering-base--height;
+$actionSplitLayoutChooser__btn--height: $toolbar__vertical-centering-base--height;
+$actionSplitLayoutChooser__btn--padding: 0;
+
+$actionSplitLayoutChooser__btn--background: none;
+$actionSplitLayoutChooser__btn-hover--background: none;
+$actionSplitLayoutChooser__btn-before--bg-color: $blue__default;
+$actionSplitLayoutChooser__btn-before--left: -2px;
+$actionSplitLayoutChooser__btn-before--transition: all 0.2s ease;
+$actionSplitLayoutChooser__btn-before-hover--width: 2px;
+
+$actionSplitLayoutChooser__btn-label--width: 100px;
+$actionSplitLayoutChooser__btn-label--font-size: $font-size__base;
+$actionSplitLayoutChooser__btn-label--font-family: $font-family-opensans;
+$actionSplitLayoutChooser__btn-label--color: $black;
+$actionSplitLayoutChooser__btn-label--text-align: left;
+
+$actionSplitLayoutChooser__popup-container--margin: $actionSplitLayoutChooser__btn--height 0 0 -2px;
+$actionSplitLayoutChooser__popup-container--padding: 2px;

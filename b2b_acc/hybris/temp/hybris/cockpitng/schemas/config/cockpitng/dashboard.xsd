@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0"
+		   targetNamespace="http://www.hybris.com/cockpitng/config/dashboard"
+		   xmlns:dsb="http://www.hybris.com/cockpitng/config/dashboard" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import namespace="http://www.hybris.com/cockpitng/config/common" schemaLocation="common-config.xsd"/>
+
+	<xs:element name="dashboard">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="grid" type="dsb:grid" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="defaultGridId" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="grid">
+		<xs:sequence>
+			<xs:element name="placement" type="dsb:placement" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="minScreenWidth" type="dsb:positiveInt" use="optional" />
+		<xs:attribute name="maxScreenWidth" type="dsb:positiveInt" use="optional" />
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="merge-mode" type="xs:string" use="optional"/>
+		<xs:attribute name="unassigned" type="dsb:unassignedBehavior" default="append" use="optional" />
+		<xs:attribute name="rowHeight" type="dsb:positiveInt" default="500" use="optional" />
+		<xs:attribute name="fluid" type="xs:boolean" default="false" use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="placement">
+		<xs:attribute name="widgetId" type="xs:string" use="required"/>
+		<xs:attribute name="width" type="dsb:positiveInt" default="1"/>
+		<xs:attribute name="height" type="dsb:positiveInt" default="1" />
+		<xs:attribute name="x" type="xs:int" use="optional" default="0" />
+		<xs:attribute name="y" type="xs:int" use="optional" default="0" />
+		<xs:attribute name="merge-mode" type="xs:string" use="optional"/>
+	</xs:complexType>
+
+	<xs:simpleType name="positiveInt" id="positiveInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="unassignedBehavior">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="append"/>
+			<xs:enumeration value="exclude"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

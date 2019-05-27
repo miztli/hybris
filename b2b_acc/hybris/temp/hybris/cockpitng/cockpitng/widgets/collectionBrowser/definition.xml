@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="com.hybris.cockpitng.collectionBrowser"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+
+	<name>Collection Browser</name>
+	<description>Displays objects in a table format</description>
+	<defaultTitle>Collection Browser</defaultTitle>
+	<author>hybris</author>
+	<version>0.8</version>
+
+	<sockets>
+		<input id="list" type="[T]" multiplicity="List" />
+		<input id="pageable" type="com.hybris.cockpitng.search.data.pageable.Pageable"/>
+        <input id="previousItemSelectorInvocation" type="[T]" />
+        <input id="nextItemSelectorInvocation" type="[T]" />
+		<input id="reset" type="java.util.Map"/>
+		<input id="resetActionSlot" type="java.lang.Object"/>
+		<input id="selectItem" type="[T]"/>
+		<input id="deselectItems" type="[T]" multiplicity="List" />
+		<input id="selectionContext" type="java.util.Map" />
+		<input id="deselectAllItems" type="java.lang.Object" />
+		<input id="focusItem" type="[T]" />
+		<output id="selectedItem" type="[T]" />
+		<output id="focusedItem" type="[T]" />
+		<output id="selectedItems" type="[T]" multiplicity="List"/>
+		<output id="sortData" type="com.hybris.cockpitng.search.data.SortData" />
+        <output id="previousItemSelectorContext" type="com.hybris.cockpitng.widgets.navigation.NavigationItemSelectorContext"/>
+        <output id="nextItemSelectorContext" type="com.hybris.cockpitng.widgets.navigation.NavigationItemSelectorContext"/>
+	</sockets>
+
+	<view src="collectionBrowser.zul" />
+	<controller
+		class="com.hybris.cockpitng.widgets.collectionbrowser.CollectionBrowserController" />
+	<keywords>
+		<keyword>List</keyword>
+	</keywords>
+
+	<settings>
+		<setting key="actionSlotComponentId" default-value="listviewactions" type="String" />
+		<setting key="colConfigCtxCode" default-value="listview" type="String" />
+		<setting key="collectionBrowserConfigCtx" default-value="collection-browser" type="String"/>
+		<setting key="gridViewConfigCtx" default-value="grid-view" type="String"/>
+		<setting key="treeViewConfigCtx" default-value="collection-browser-tree" type="String"/>
+		<setting key="itemRenderer" default-value="listViewRenderer" type="String" />
+        <setting key="treeItemRenderer" default-value="treeViewRenderer" type="String" />
+        <setting key="gridItemRenderer" default-value="gridBoxRenderer" type="String" />
+		<setting key="multiSelect" default-value="FALSE" type="Boolean"/>
+		<setting key="pageSize" default-value="20" type="Integer"/>
+		<setting key="maxCharsInCell" default-value="70" type="Integer"/>
+		<setting key="listTitle" default-value=""/>
+        <setting key="listSubtitle" default-value=""/>
+		<setting key="displayNumberOfItemsInSubTitle" default-value="false" type="Boolean"/>
+		<setting key="asyncLoading" default-value="TRUE" type="Boolean"/>
+		<setting key="sortableListHeader" default-value="TRUE" type="Boolean"/>
+		<setting key="refreshAfterObjectCreation" default-value="FALSE" type="Boolean" />
+		<setting key="sendItemsOnSelect" default-value="TRUE" type="Boolean" />
+        <setting key="hyperlinks" default-value="FALSE" type="Boolean" />
+		<setting key="pagingPosition" default-value="top" type="ENUM(top,bottom)" />
+		<setting key="fallbackTypeCode" type="java.lang.String" />
+	</settings>
+
+</widget-definition>

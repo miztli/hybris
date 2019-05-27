@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="com.hybris.cockpitng.notgate"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+
+	<name>Logical NOT Gate</name>
+	<description>Performs the logical gate operation NOT (output = !input)</description>
+	<defaultTitle>Logical NOT Gate</defaultTitle>
+	<author>hybris</author>
+	<version>0.1</version>
+
+	<controller
+		class="com.hybris.cockpitng.widgets.controller.NotGateController" />
+	<view src="none" />
+	<sockets>
+		<input id="input" type="java.lang.Boolean" />
+		<output id="output" type="java.lang.Boolean" />
+	</sockets>
+
+	<keywords>
+		<keyword>Adapters</keyword>
+	</keywords>
+</widget-definition>

@@ -1,0 +1,245 @@
+@import "../support/_compare-variables.scss";
+
+.yw-compareview-grid {
+  .y-tableheader {
+    position: relative;
+    display: block;
+    overflow: visible;
+
+    &:before {
+      top: $compareview__header-mask--top;
+      height: $compareview__component-mask--size;
+      content: "";
+      position: absolute;
+      width: 100%;
+      background-color: inherit;
+    }
+    .yw-image-pin-icon {
+      height: $compareview__header-icon--size;
+      width: $compareview__header-icon--size;
+      right: $compareview__header-pin-button--right;
+      top: $compareview__header-pin-button--top;
+      content: "";
+      overflow: hidden;
+      display: inline-block;
+      position: absolute;
+      background: url("images/icon-pin-default.svg") no-repeat center;
+      cursor: pointer;
+      
+      &:hover {
+        background-image: url("images/icon-pin-hover.svg");
+        cursor: pointer;
+      }
+    }
+    .yw-image-remove-item-icon {
+      width: $compareview__header-icon--size;
+      height: $compareview__header-icon--size;
+      line-height: $compareview__header-icon--size;
+      right: $compareview__header-close-button--right;
+      top: $compareview__header-close-button--top;
+      background: url("images/icon_close-column_default.svg") no-repeat center;
+      display: inline-block;
+      position: absolute;
+      
+
+      &:hover {
+        background-image: url("images/icon_close-column_hover.svg");
+        cursor: pointer;
+      }
+    }
+    .yw-compareview-cell-content {
+      padding-top: 0;
+      padding-bottom: 0;
+      height: 100%;
+
+      &:before {
+        top: $compareview__column-header-cell--top;
+        border-bottom: $compareview__column--border;
+        border-bottom-color: $compareview__row-header--border-color;
+        left: 0;
+        margin-left: 0;
+      }
+      > div {
+        &:first-child {
+          padding-top: $compareview__header-cell--padding-top;
+          padding-bottom: $compareview__header-cell--padding-bottom;
+          display: block;
+        }
+      }
+      > span {
+        &:first-child {
+          padding-top: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    > .y-tablerow {
+      height: auto !important;
+      overflow: visible;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      > th {
+        height: auto;
+      }
+    }
+
+  }
+  .yw-compareview-header-summary-item {
+    vertical-align: bottom;
+
+    .yw-compareview-cell-content {
+      text-align: left;
+    }
+  }
+  .yw-compareview-header-summary-add {
+    bottom: $compareview__header-add-button--bottom;
+    line-height: $compareview__header-add-button--line-height;
+    font-size: $compareview__header-buttons--font-size;
+    padding-bottom: $compareview__header-buttons--padding-bottom;
+    display: block;
+    position: absolute;
+
+    &:before {
+      width: $compareview__header-icon--size;
+      height: $compareview__header-icon--size;
+      top: $compareview__header-buttons-icon--top;
+      margin-right: $compareview__header-buttons-icon--margin-right;
+      background: url("images/icon_add-column.svg") no-repeat center;
+      display: inline-block;
+      position: relative;
+      content: "";
+      background-color: inherit;
+    }
+  }
+  .yw-compareview-diff-only-checkbox {
+    bottom: $_compareview__header-show-diff-only--bottom;
+    font-size: $compareview__header-buttons--font-size;
+    padding-bottom: $compareview__header-buttons--padding-bottom;
+    display: block;
+    width: auto;
+
+    .z-checkbox-content {
+      font-weight: inherit;
+    }
+  }
+}
+
+.yw-compareview-empty {
+  overflow: hidden;
+
+  .y-table {
+    &,
+    .gecko & {
+      display: block;
+      overflow: auto;
+    }
+        
+    .y-tableheader {
+      overflow: visible;
+    }
+
+    .y-tableheader:before,
+    .yw-compareview-header-summary-empty:first-child:after,
+    .yw-compareview-diff-only-checkbox {
+      display: none;
+    }
+
+    .y-tableheader,
+    .y-tableheader .y-tablerow {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100% !important;
+    }
+
+    .yw-compareview-header-summary {
+      &-empty:first-child {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+
+        .yw-compareview-cell-content {
+          padding: $compareview__empty-container--padding;
+          top: $compareview__empty-content--top;
+          left: $compareview__empty-content--left;
+          width: $compareview__empty-container--width;
+          margin-top: $compareview__empty-content--padding-top;
+          height: auto;
+          transform: translate(-50%,-50%);
+          background-image: url("images/island.svg");
+          background-position: right top;
+          background-repeat: no-repeat;
+          background-color: transparent;
+          margin-left: 0;
+          text-align: center;
+          border: none;
+          position: absolute;
+        }
+      }    
+      .yw-compareview-header-summary-label {
+        padding-top: $compareview__empty-item--padding;
+        text-align: center;
+        display: block;
+      }
+
+      &-add {
+        bottom: $compareview__empty-button--bottom;
+        border: $compareview__empty-button--border;
+        border-radius: $compareview__empty-button--border-radius;
+        padding: $compareview__empty-button--padding;
+        font-size: $compareview__empty-button--font-size;
+        line-height: $compareview__empty-button--line-height;
+        color: $compareview__empty-button--color;
+        text-transform: uppercase;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+
+        &:before {
+          margin-right: $compareview__empty-button-icon--margin-right;
+          width: $compareview__empty-button-icon--thickness;
+          height: $compareview__empty-button-icon--size;
+          background: $compareview__empty-button--color;
+          left: $compareview__empty-button-icon--left;
+          margin-left: $compareview__empty-button-icon-border--margin;
+          margin-top: $compareview__empty-button-icon-adjust--margin;
+          position: absolute;
+          content: '';
+          top: 50%;
+        }
+        &:after {
+          margin-right: $compareview__empty-button-icon--margin-right;
+          width: $compareview__empty-button-icon--size;
+          height: $compareview__empty-button-icon--thickness;
+          background: $compareview__empty-button--color;
+          left: $compareview__empty-button-icon--left;
+          margin-top: $compareview__empty-button-icon-border--margin;
+          margin-left: $compareview__empty-button-icon-adjust--margin;
+          position: absolute;
+          content: '';
+          top: 50%;
+        }
+        &:hover {
+          color: $compareview__empty-button--hover-color;
+          background-color: $compareview__empty-button--hover-bg-color;
+          text-decoration: none;
+          
+          &:after,
+          &:before {
+            background-color: $compareview__empty-button--hover-color;
+          }
+        }
+      }
+    }
+  }
+}

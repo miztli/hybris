@@ -1,0 +1,114 @@
+/*================================
+    Default List Defaults
+================================*/
+
+.ye-list-toolbar,
+.ye-list-content .z-listbox {
+    border-color: $list-editor__listox--border-color;
+}
+
+.ye-list-content .z-listbox {
+    border-top-color: $list-editor__listox--border-top-color;
+}
+
+.ye-list-toolbar .z-button {
+    width: $list-editor__toolbar-button--size;
+    height: $list-editor__toolbar-button--size;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    &:hover {
+        background-color: $list-editor__toolbar-button-hover--bg-color;
+    }
+
+    &[disabled] {
+        cursor: default;
+    }
+
+    &.ye-list-toolbar-button-add {
+        background-image: $list-editor__toolbar-add-button--bg-image;
+
+        &:hover {
+            background-image: $list-editor__toolbar-add-button-hover--bg-image;
+        }
+
+        &[disabled] {
+            background-image: $list-editor__toolbar-add-button-disabled--bg-image;
+        }
+    }
+
+    &.ye-list-toolbar-button-edit {
+        background-image: $list-editor__toolbar-edit-button--bg-image;
+
+        &:hover {
+            background-image: $list-editor__toolbar-edit-button-hover--bg-image;
+        }
+
+        &[disabled] {
+            background-image: $list-editor__toolbar-edit-button-disabled--bg-image;
+        }
+    }
+
+    &.ye-list-toolbar-button-delete {
+        background-image: $list-editor__toolbar-delete-button--bg-image;
+
+        &:hover {
+            background-image: $list-editor__toolbar-delete-button-hover--bg-image;
+        }
+
+        &[disabled] {
+            background-image: $list-editor__toolbar-delete-button-disabled--bg-image;
+        }
+    }
+}
+
+.ye-list-listbox {
+    .z-paging {
+        line-height: $list-editor__paging--line-height;
+    }
+    .ye-list-line-editor,
+    .z-listitem:hover .ye-list-line-editor,
+    div.z-listbox-body .z-listcell.z-draggable-over,
+    div.z-listbox-body tr.z-listitem-selected.z-listitem td.ye-list-line-editor div.z-listcell-content {
+        background: $list-editor__cell--bg;
+    }
+}
+
+.ye-list-line-editor button {
+    float: right;
+    margin-top: $list-editor__button--margin-top;
+    margin-left: $list-editor__button--margin-left;
+}
+
+.ye-list-toolbar-popup-add {
+    &.z-popup-open > .z-popup-content {
+        padding: $list-editor__toolbar-popup-content--padding;
+    }
+    // &.z-popup .z-popup-cl { //ToDo: Check if deprecated
+    //     background: #a5aebb; //ToDo: New Color
+    // }
+    .ye-btn-container {
+        text-align: right;
+        > button.z-button.ye-btn-cancel,
+        > button.z-button.y-btn-primary {
+            margin: $list-editor__toolbar-popup-cancel-primary-button--margin;
+            padding: $list-editor__toolbar-popup-cancel-primary-button--padding;
+        }
+    }
+    &-checkbox {
+        display: inline-block;
+        margin-top: $list-editor__toolbar-popup-checkbox--margin-top;
+    }
+}
+
+.ye-com_hybris_cockpitng_editor_defaultlist {
+    td.z-listcell > div.z-listcell-content {
+        min-height: $list-editor__list--line-height;
+    }
+    .z-paging-button {
+        background-image: $list-editor__list-paging-button--bg-image;
+    }
+    .ye-list-inline-editor .ye-com_hybris_cockpitng_editor_defaulttext {
+        width: 100%;
+    }
+}

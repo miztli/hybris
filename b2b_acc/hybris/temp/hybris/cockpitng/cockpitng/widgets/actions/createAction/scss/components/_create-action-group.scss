@@ -1,0 +1,31 @@
+/*================================
+    Action Group 
+================================*/
+// Styling of the Action Group 
+
+@import "../support/_create-variables.scss";
+
+.cng-action-group {
+    td > a.ya-create-type-selector-button.z-toolbarbutton {
+        width: $create__toolbar-action-group-item-create-type-button--width;
+        display: inline-block;
+        float: none;
+        text-align: center;
+        box-shadow: none;
+        
+        &:hover {
+            box-shadow: $create__create-new-action-hover--box-shadow;
+            background-color: $create__create-new-button--hover-bg-color;
+        }
+    }
+}
+
+.cng-action-group td > a.ya-create-type-selector-button.z-toolbarbutton,
+.ya-extended-group-cnt a.ya-create-type-selector-button.z-toolbarbutton {
+
+    .z-toolbarbutton-content {
+        left: $create__toolbar-action-group-item-create-type-button-content--left;
+        color: $create__toolbar-action-group-item-create-type-button-content--color;
+        right: $create__toolbar-action-group-item-create-type-button-content--right;
+    }
+}

@@ -1,0 +1,74 @@
+//_default-extendedmultireferenceeditor-header
+
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor {    
+    .z-listbox-header-bg {
+        display: none;
+    }
+    .ye-default-reference-editor-selected-listbox {
+        margin-bottom: $default-reference-editor__listbox-to-create-only-box--margin-bottom;
+
+        .z-listbox-header-border {
+            border-color: $editor-area__box--border-color;
+            // display: none;
+        }
+    }
+    .z-listbox-header {
+        .z-listhead-bar {
+            border-color: $multi-ref-editor__header-bar--border-color;
+        }
+        .z-listheader {
+            border: none;
+            height: $multi-ref-editor__header-content--height;
+            vertical-align: middle;
+            
+            .z-listheader-content {
+                padding: 0;
+                display: inline-block;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            &-sort {
+                .z-listheader-sorticon {
+                    top: auto;
+                    height: auto;
+                    position: relative;
+                    display: inline;
+                    float: right;
+                    line-height: inherit;
+                    
+                    font-size: $multi-ref-editor__header-sort-icon--font-size;
+                    margin: 0;
+                    left: $multi-ref-editor__header-sort-icon--left;
+                    @if $multi-ref-editor__header-sort-icon--color {
+                        color: $multi-ref-editor__header-sort-icon--color;
+                    }
+                    @else {
+                        color: inherit;
+                    }
+
+                    i {
+                        position: absolute;
+                        line-height: inherit; 
+                    }
+                }
+                .z-listheader-content {
+                    padding: $multi-ref-editor__header-content--padding;
+                    
+                    .y-editor-area-attributes-cnt-min & {
+                        padding-right: $multi-ref-editor__list-cell-bp-s--padding-x;
+                    }
+                }
+                &:first-child .z-listheader-content {
+                    padding-left: $multi-ref-editor__list-cell--padding-x;
+                }
+                .y-editor-area-attributes-cnt-min &:first-child .z-listheader-content {
+                    padding-left: $multi-ref-editor__list-cell-bp-s--padding-x;
+                }
+            }
+        }
+        th.z-auxheader {
+            border: none;
+        }
+    }
+}

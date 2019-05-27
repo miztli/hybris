@@ -1,0 +1,38 @@
+<!--
+	~ [y] hybris Platform
+	~
+	~ Copyright (c) 2000-2016 hybris AG
+	~ All rights reserved.
+	~
+	~ This software is the confidential and proprietary information of hybris
+	~ ("Confidential Information"). You shall not disclose such Confidential
+	~ Information and shall use it only in accordance with the terms of the
+	~ license agreement you entered into with hybris.
+-->
+
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<div sclass="yas-context">
+		<label value="@load(c:cat(labels.searchProfileContext.searchProfileContext,': '))" sclass="yas-label" />
+		<if test="@bind(vm.searchProfileInfo ne null)">
+			<label value="@bind(vm.searchProfileInfo.searchProfileLabel)" sclass="yas-search-profile-label" />
+			<label value="@bind(vm.searchProfileInfo.searchConfigurationInfo.contextLabel)"
+				sclass="@bind(c:cat('yas-search-configuration-label yas-',vm.searchProfileInfo.searchConfigurationInfo.type))" />
+			<a iconSclass="z-icon-info-circle" sclass="yas-info" popup="infoPopup" />
+			<popup id="infoPopup" sclass="yas-search-configuration-description">
+				<label value="@bind(vm.searchProfileInfo.searchConfigurationInfo.contextDescription)" />
+			</popup>
+		</if>
+	</div>
+	<div sclass="yas-sync-status">
+		<if test="@bind(vm.searchProfileInfo ne null)">
+			<button iconSclass="z-icon-refresh" sclass="yas-sync-status-button ye-text-button" tooltiptext="@load(labels.searchProfileContext.synchronize)"
+				onClick="@command('synchronize')" />
+			<span
+				sclass="@bind(vm.inSync ? 'yas-sync-status-icon yw-image-attribute-sync-status-in-sync' : 'yas-sync-status-icon yw-image-attribute-sync-status-out-of-sync')" />
+		</if>
+	</div>
+
+</widget>
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="Resource cache monitor Cockpit NG" contentType="text/html;charset=UTF-8"?>
+<?link  rel="stylesheet" type="text/css" href='../cng/css/cockpit.css'?>
+<!-- Experimental -->
+<div xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+	style="background: white; margin: 0 50px; position: relative"
+	if="${cockpitAdminService.adminModePermitted}" apply="${monitorWindowComposer}">
+	
+	<script type="text/javascript" src="/cng/scripts/monitor.js"/>
+
+	<style>
+		.canvasCnt { margin: 20px; padding-bottom: 20px; }
+		.canvasCnt canvas { background: #f5f5f5; border: 1px dashed #ccc; max-width: 100%; }
+		.cngGraphLabel { font-size: 24px;}
+	</style>
+	
+	<div style="padding: 20px; background: url('../cng/css/images/head_backgr.gif') repeat-x #275ACD; background-size: 30px 80px;">
+		<label style="font-size: 30px; color: white;" value="cockpitNG Cache Monitor"/>
+	</div>
+	
+	<div  sclass="canvasCnt">
+		<hlayout width="100%">
+			<div id="resourceCache" hflex="1">
+				<label sclass="cngGraphLabel" value="Resource cache"/><div/>
+				<h:canvas id="${self.parent.getUuid()}_canvas" width="400" height="300"/><div/>
+				<button id="resetResourceCache" label="Clear resource cache" />
+				<button id="showResourceCache" label="Show resource paths"/>
+				<listbox id="resList" mold="paging" pagingPosition="top" pageSize="10" width="90%"/>
+			</div>
+			<div id="zulCache" hflex="1">
+				<label value="ZUL cache" sclass="cngGraphLabel"/><div/>
+				<h:canvas id="${self.parent.getUuid()}_canvas" width="400" height="300"/><div/>
+				<button id="resetZulCache" label="Clear ZUL cache"/>
+				<button id="showZulPaths" label="Show zul paths"/>
+				<listbox id="zulList" mold="paging" pagingPosition="top" pageSize="10" width="90%"/>
+			</div>
+		</hlayout>
+		
+		<timer id="timer" running="true" repeats="true" delay="${$composer.timerDelay}"/>
+	</div>
+</div>

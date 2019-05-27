@@ -1,0 +1,61 @@
+/*================================
+    Switch-Type Checkbox
+================================*/
+// Default styling of Checkbox & Radiobox in Cockpitng
+
+
+@import "../support/_cockpit-variables.scss";
+
+.ye-switch-checkbox.z-checkbox {
+    min-height: $editor-defaults__switch-checkbox--line-height;
+    line-height: $editor-defaults__switch-checkbox--line-height;
+    width: $editor-defaults__switch-checkbox--width;
+    padding-left: $editor-defaults__switch-checkbox--width;
+    
+    label {
+        padding-left: 10px;
+            
+        &:before,
+        &:after {
+            width: $editor-defaults__switch-checkbox--width;
+            height: $editor-defaults__switch-checkbox-btn--size;
+            content: "";
+            border: $editor-defaults__switch-checkbox--border;
+            border-radius: $editor-defaults__switch-checkbox--border-radius;
+            background: $editor-defaults__switch-checkbox-btn--bg-color;
+            transition: $editor-defaults__switch-checkbox--transition;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -$editor-defaults__switch-checkbox--border-radius;
+            margin-left: 0;
+        }
+
+        &:after {
+            width: $editor-defaults__switch-checkbox-btn--size;
+        }
+        &:empty {
+            padding-left: 0;
+
+            &:before {
+                width: 100%;
+            }
+        }
+    }
+
+    input:checked + label {
+        &:before {
+            background: $editor-defaults__switch-checkbox-checked--bg-color;
+        }
+
+        &:after {
+            margin-left: -$editor-defaults__switch-checkbox-btn--size;
+            left: $editor-defaults__switch-checkbox--width;
+        }
+        &:empty {
+            &:after {
+                left: 100%;
+            }
+        }
+    }
+}

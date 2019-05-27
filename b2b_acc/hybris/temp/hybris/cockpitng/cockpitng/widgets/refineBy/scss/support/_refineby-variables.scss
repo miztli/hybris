@@ -1,0 +1,40 @@
+@import "cockpitng-globals.scss";
+
+$refineby__widget--bg-color: $white;
+$refineby__widget--color: $black__blueish--100;
+
+$refineby__main-container--padding: $container-spacing-default__half;
+
+$refineby__info-container--font-style: italic;
+$refineby__facet-container--margin-left: $container-spacing-default__half;
+
+$refineby__facet-slot--margin-bottom: $container-spacing-default__third;
+
+$refineby__facet-name--font-weight: $font-weight-bold;
+$refineby__facet-name--padding: $container-spacing-default__third 0;
+
+$refineby__toggle-facets--margin: $container-spacing-default__third 0 $container-spacing-default__third * 2;
+$refineby__toggle-facets--color: $blue__default;
+
+$refineby__colour-facet-box--width: 22px;
+$refineby__colour-facet-box--height: 22px;
+$refineby__colour-facet-box--border-radius: 2px;
+$refineby__colour-facet-box--text-align: center;
+$refineby__colour-facet-box--margin: 0 8px 8px 0;
+$refineby__colour-facet-box--bg-color: $white;
+$refineby__colour-facet-box--border: $boxes--border__thin inset rgba($black, 0.2);
+
+$refineby__colour-facet-box-selected--text-shadow: 0px 0px 2px $black;
+$refineby__colour-facet-box-selected--color: $white;
+$refineby__colour-facet-box-selected--content: $check--content;
+$refineby__colour-facet-box-selected--font: $font-family-fontawesome;
+$refineby__colour-facet-box-selected--line-height: $refineby__colour-facet-box--height - 2px;
+$refineby__colour-facet-box-selected--font-size: $font-size__base;
+
+$refineby__colour-facet-box-selected--border-color: $black;
+
+$refineby__checkbox--padding-left: 20px;
+$refineby__checkbox-label-after--width: 14px;
+$refineby__checkbox-label-after--height: 14px;
+$refineby__checkbox-label-after--margin-top: 2px;
+$refineby__checkbox-label-before--background-size: 14px;

@@ -1,0 +1,75 @@
+/*================================
+    Editor-Area: Tabs
+================================*/
+// Defines Tabs in the Tab-Panel of the Editor-Area
+
+
+@import "../support/_defaultEditorArea-mixins.scss";
+
+@include _addValidationTypeDefaults (error, $editor-area__validation_error--color, $editor-area__validation_error--bg-color, 2);
+@include _addValidationTypeDefaults (warn, $editor-area__validation_warn--color, $editor-area__validation_warn--bg-color, 1);
+@include _addValidationTypeDefaults (info, $editor-area__validation_info--color, $editor-area__validation_info--bg-color);
+
+.yw-loceditor{
+    &.ye-com_hybris_cockpitng_editor_localized {
+        .yw-loceditor-caption .z-label:after {
+            display: none;
+        }
+    }
+    &-dynamic-content {
+        .yw-loceditor-row input.z-textbox {
+            background: inherit;
+            color: $editor-area__input-field--color;
+        }
+    }
+}
+
+//yw-editorarea-overrides
+.yw-editorarea {
+    &-label-container {
+         // check if removable
+        &.ye-validation-warn, 
+        &.ye-validation-error, 
+        &.ye-validation-info {
+            float: left;
+        }
+        .ye-validation-exclamation-icon {
+            float: right;
+        }
+    }
+    &-tabbox-tabpanels-tabpanel-groupbox-attrcell {
+        > .yw-editorarea-label-container.ye-validation-warn,
+        > .yw-editorarea-label-container.ye-validation-error,
+        > .yw-editorarea-label-container.ye-validation-info {
+            float: none;
+        }
+        [class*="ye-validation-"] {
+            position: relative;
+        }
+        .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-ed-editor[class*="ye-validation-"] {
+            .ye-com_hybris_cockpitng_editor_defaultenum, 
+            .ye-com_hybris_cockpitng_editor_defaultdate {
+                input{
+                    border-right: 0;
+                }
+            }
+            .ye-com_hybris_cockpitng_editor_defaulttime, 
+            .ye-com_hybris_cockpitng_editor_defaultdate {
+                span, .z-datebox .z-datebox-input:focus + .z-datebox-button {
+                    border-left: 0;
+                }
+            }
+            > .ye-validation-panel.ye-localized > .ye-validation-exclamation-icon {
+                position:absolute;
+                right: 0;
+                top: 0;
+                z-index: 1;
+            }
+        }
+    }
+    // render-error
+    &-editor-render-error {
+        margin-left: 5px;
+        border: 1px solid $editor-area__validation_error--color;
+    }
+}

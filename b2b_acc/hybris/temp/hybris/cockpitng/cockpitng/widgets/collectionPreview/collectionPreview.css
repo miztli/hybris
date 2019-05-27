@@ -1,0 +1,25 @@
+.yw-collection-preview-cnt {
+  width: 100%;
+  height: 100%;
+  background: #eef3f7; }
+  .yw-collection-preview-cnt > div.z-listbox {
+    border: none; }
+  .yw-collection-preview-cnt > div.z-listboxdiv .z-listbox-body .z-listitem {
+    background: none; }
+  .yw-collection-preview-cnt > div.z-listboxdiv .z-listbox-body .z-listcell {
+    padding: 10px; }
+  .yw-collection-preview-cnt div.z-listbox-body .z-listitem-selected div.yw-collection-prev-imgcontainer img {
+    border-color: #1462bf; }
+
+.yw-collection-prev-imgcontainer img {
+  border: 1px solid #b5bcc8;
+  max-width: 150px; }
+.yw-collection-prev-label {
+  padding: 3px 0;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+.yw-collection-prev-descr {
+  overflow: hidden;
+  text-overflow: ellipsis; }
+  .yw-collection-prev-descr span.z-label {
+    color: #303030 !important; }

@@ -1,0 +1,393 @@
+@import "../support/configurablemultireference_variables.scss";
+
+.yw-de_hybris_platform_adaptivesearch_widgets_searchConfigurationAdapter {
+	.z-groupbox-content {
+		tr > .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell {
+			padding-bottom: $configurableMultireference__default-groupbox--padding-bottom;
+		}
+
+		& > .z-hbox:last-child tr > .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell:last-child {
+			padding-bottom: $configurableMultireference__default-groupbox-lastchild--padding-bottom;
+		}
+	}
+}
+
+.yas-editor {
+	width: 100%;
+
+	.yas-filter {
+		padding-bottom: 2px;
+	}
+
+	.yas-create {
+		padding-top: 2px;
+	}
+
+	.z-listbox {
+		width: 100%;
+		padding: 0;
+		border: none;
+		margin: 0;
+
+		.z-listitem {
+			padding: 0;
+
+			.z-listcell-content {
+				padding: 0;
+			}
+
+			.yas-item-detail {
+				.z-listcell-content {
+					left: $configurableMultireference__detail-list-item-intentation--left;
+					overflow: visible;
+					width: 75%;
+
+					.z-listitem-checkable.z-listitem-checkbox {
+						position: absolute;
+						top: 3px;
+						left: -22px;
+					}
+				}
+				.yas-facet-values {
+					.yas-actions {
+						display: block;
+						text-align: left;
+					}
+					.yas-action a {
+						padding-left: $configurableMultireference__detail-list-item-intentation--left;
+					}
+				}
+			}
+		}
+
+		.z-listbox-emptybody {
+			display: none;
+		}
+	}
+
+	.yas-item {
+		.z-label {
+			display: inline;
+			white-space: normal;
+			line-height: 27px;
+		}
+
+		.yas-item-master {
+			display: table;
+			width: 100%;
+
+			&-inner {
+				display: table-row;
+
+				.yas-toggle {
+					display: table-cell;
+					width: 16px;
+					vertical-align: middle;
+					text-align: center;
+					color: $blue__default;
+					font-size: 20px;
+
+					&-icon {
+						width: 100%;
+						height: 50%;
+						background: transparent;
+					}
+
+					&.yas-toggle-disabled {
+						color: $grey__dark--100;
+					}
+				}
+
+				.yas-info {
+					display: table-cell;
+					width: $configurableMultireference__info-element--size;
+					height: $configurableMultireference__info-element--size;
+					padding: $configurableMultireference__info-element--padding;
+					vertical-align: middle;
+					text-align: center;
+
+					&-icon {
+						width: $configurableMultireference__info-icon--size;
+						height: $configurableMultireference__info-icon--size;
+						background-repeat: no-repeat;
+						background-attachment: scroll;
+
+						&:after {
+							content: '';
+							display: none;
+							position: absolute;
+							top: $configurableMultireference__info-icon-appendix-external--top;
+							left: $configurableMultireference__info-icon-appendix-external--left;
+							height: $configurableMultireference__info-icon-appendix-external--size;
+							width: $configurableMultireference__info-icon-appendix-external--size;
+							background: url("images/icon_appendix_external-profile.png") no-repeat;
+						}
+					}
+				}
+
+				.yas-label {
+					display: table-cell;
+					vertical-align: middle;
+					text-align: left;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					max-width: $configurableMultireference__yas-label--max-width;
+					padding-right: $configurableMultireference__yas-label--padding-right;
+
+					.z-label {
+						color: $configurableMultireference__yas-label--color;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+				}
+
+				.yas-property {
+					display: table-cell;
+					width: 70px;
+					padding-right: $configurableMultireference__yas-label--padding-right;
+					vertical-align: middle;
+					text-align: left;
+
+				}
+
+				.yas-property.yas-editable {
+					.ye-instant-editor-label-editable {
+						margin: 0;
+					}
+
+					.ye-instant-editor-buttons-container {
+						position: static;
+					}
+				}
+
+				.yas-property.yas-property-facetFiltersCount {
+					width: $configurableMultireference__applied-filter-counter--width;
+					padding: $configurableMultireference__applied-filter-counter--padding;
+					text-align: $configurableMultireference__applied-filter-counter--text-align;
+				}
+			}
+		}
+
+		&.yas-from-search-configuration.yas-override .yas-item-master-inner .yas-info-icon:after {
+			left: $configurableMultireference__info-override-fromSearchConfiguration-icon-appendix-external--left;
+		}
+
+		.yas-item-detail {
+			.yas-item-detail-inner {
+				display: table-row;
+			}
+			.z-listitem {
+				.z-listcell{
+					border-top-width: $boxes--border__thin;
+				}
+				&:first-child .z-listcell {
+					border-top-width: 0;
+				}
+			}
+		}
+
+		.yas-actions {
+			width: $configurableMultireference__actions-container--width;
+			min-width: $configurableMultireference__actions-container--width;
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+
+			.z-button {
+				color: $configurableMultireference__actions-button--color;
+				font-size: $configurableMultireference__actions-button--font-size;
+				padding-left: $configurableMultireference__actions-button--padding-x;
+				padding-right: $configurableMultireference__actions-button--padding-x;
+				min-width: $configurableMultireference__actions-button--min-width;
+				text-align: center;
+				background: transparent;
+
+				&[disabled] {
+					background: transparent !important;
+				}
+
+				&:active,
+				&:focus {
+					box-shadow: none;
+				}
+			}
+		}
+
+		&.yas-invalid {
+			background-color: $validation__error--bg-color;
+		}
+
+		&:not(.yas-from-search-configuration) {
+			.yas-item-master-inner {
+				.yas-label,
+				.yas-property:not(.yas-property-facetFiltersCount) {
+					.z-label {
+						color: $adaptiveSearchBackoffice-default-facets-notcurrent--color;
+					}
+				}
+			}
+		}
+		&:not(.yas-from-search-profile):not(.yas-from-search-configuration),
+		&.yas-from-search-profile.yas-from-search-configuration.yas-override:not(.yas-override-from-search-profile) {
+			.yas-info-icon:after {
+				display: block;
+			}
+		}
+	}
+
+	.yas-property.yas-property-facetFiltersCount {
+		.z-label {
+			border-radius: $configurableMultireference__applied-filter-counter--border-radius;
+			padding: $configurableMultireference__applied-filter-counter-label--padding;
+			color: $configurableMultireference__applied-filter-counter--color;
+			font-size: $configurableMultireference__applied-filter-counter--font-size;
+			background: $configurableMultireference__applied-filter-counter--background;
+			white-space: nowrap;
+
+			&:after {
+				height: $configurableMultireference__applied-filter-icon--size;
+				width: $configurableMultireference__applied-filter-icon--size;
+				background: $configurableMultireference__applied-filter-icon--background;
+				transform: $configurableMultireference__applied-filter-icon--transform;
+				display: inline-block;
+				content: '';
+			}
+		}
+	}
+
+	/* Facets & Sorts */
+
+	/* Sprite Icon */
+
+	&.as-promoted-items-editor, //Boost Items
+	&.as-promoted-facets-editor,
+	&.as-promoted-sorts-editor {
+		@include _applyInfoSpriteIconPosition(-63px);
+	}
+
+	&.as-facets-editor {
+		@include _applyInfoSpriteIconPosition();
+	}
+
+	&.as-sorts-editor {
+		@include _applyInfoSpriteIconPosition(-91px);
+	}
+
+	&.as-excluded-items-editor, //Boost Items
+	&.as-excluded-facets-editor,
+	&.as-excluded-sorts-editor {
+		@include _applyInfoSpriteIconPosition(-32px);
+	}
+
+	&.as-facets-editor,
+	&.as-sorts-editor,
+	&.as-promoted-facets-editor,
+	&.as-promoted-sorts-editor {
+		.yas-item:not(.yas-in-search-result) {
+			.yas-item-master {
+				background: $configurableMultireference__default-facets-notvalid--background;
+
+				.yas-label {
+					.z-label {
+						color: $adaptiveSearchBackoffice-default-facets-notvalid--color;
+					}
+				}
+			}
+		}
+
+		.yas-item {
+			.yas-property.yas-property-priority {
+				width: 50px;
+				text-align: right;
+			}
+		}
+	}
+	.yas-item {
+		.yas-facet-values {
+			.yas-facet-value {
+				.yas-facet-value-count {
+					padding-left: $configurableMultireference__yas-label--padding-right;
+					font-weight: $font-weight-bold;
+				}
+			}
+
+			.yas-actions {
+				&,
+				.yas-action {
+					width: 100%;
+				}
+				.yas-action a {
+					background: $configurableMultireference__facet-value-list-action--bg-color;
+					line-height: $configurableMultireference__facet-value-list-action--line-height;
+					color: $configurableMultireference__facet-value-list-action--color;
+					padding-top: $configurableMultireference__facet-value-list-action--padding-y;
+					padding-bottom: $configurableMultireference__facet-value-list-action--padding-y;
+					display: inline-block;
+					width: 100%;
+					padding-left: 30px;
+
+					&:hover {
+						background: $configurableMultireference__facet-value-list-action--hover-bg-color;
+					}
+				}
+			}
+		}
+	}
+
+	/* Boost Rules */
+
+	&.as-boost-rules-editor {
+		.yas-item {
+			.yas-item-master {
+				.yas-item-master-inner {
+					.yas-info {
+						display: none;
+					}
+
+					.yas-property.yas-property-boostTypeSymbol {
+						 text-align: right;
+						 width: 20px;
+					 }
+
+					.yas-property.yas-property-boost {
+						text-align: right;
+						width: 50px;
+					}
+				}
+			}
+		}
+	}
+
+
+	/* Actions */
+
+	& > div:last-child .z-button {
+		display: block;
+		cursor: pointer;
+		text-align: left;
+		text-transform: none;
+		position: relative;
+		width: $configurableMultireference__add-item-button--width;
+		height: $configurableMultireference__add-item-button--height;
+		background: $configurableMultireference__add-item-button--background;
+		padding-left: $configurableMultireference__add-item-button--padding-left;
+		color: $configurableMultireference__add-item-button--color;
+		font-size: $configurableMultireference__add-item-button--font-size;
+		border: $configurableMultireference__add-item-button--border;
+		box-shadow: $configurableMultireference__add-item-button--box-shadow;
+		transition: 0s;
+
+		&:hover {
+			background: $configurableMultireference__add-item-button--hover-bg;
+		}
+
+		i {
+			position: relative;
+			top: $configurableMultireference__add-item-button-icon--top;
+			left: $configurableMultireference__add-item-button-icon--left;
+			color: $configurableMultireference__add-item-button-icon--color;
+			font-size: $configurableMultireference__add-item-button-icon--font-size;
+		}
+	}
+}

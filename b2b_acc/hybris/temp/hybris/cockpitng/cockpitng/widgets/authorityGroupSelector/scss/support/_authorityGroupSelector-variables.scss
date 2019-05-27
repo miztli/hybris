@@ -1,0 +1,58 @@
+@import "cockpitng-globals.scss";
+
+$login__body--bg-color: $loginPages__body-default--bg-color;
+
+$authorityGroupSelector__selector-body--width: 100%;
+$authorityGroupSelector__selector-body--height: 100%;
+
+$authorityGroupSelector__group-list--width: 100%;
+$authorityGroupSelector__group-list-cell--padding: 0 $container-spacing-default__half;
+$authorityGroupSelector__group-list-cell--transition: background-color .5s;
+
+$authorityGroupSelector__listcell-content--text-overflow: initial;
+$authorityGroupSelector__listcell-content--white-space: initial;
+$authorityGroupSelector__listcell-content--line-height: 24px;
+$authorityGroupSelector__listcell-content--text-indent: -35px;
+$authorityGroupSelector__listcell-content--padding-left: 50px;
+$authorityGroupSelector__listcell-content--word-wrap: break-word;
+
+$authorityGroupSelector__check-radio--margin-top: 2px;
+
+$authorityGroupSelector__grid--padding-top: 150px;
+$authorityGroupSelector__grid--bg: url("images/logo_transparent.png") no-repeat transparent;
+$authorityGroupSelector__grid--margin: 0 auto;
+$authorityGroupSelector__grid--transform: translate(0, 50%);
+$authorityGroupSelector__grid--width: 350px;
+
+$authorityGroupSelector__label--font-weight: normal;
+$authorityGroupSelector__label--color: $white;
+$authorityGroupSelector__label--font-size: $font-size__base;
+$authorityGroupSelector__label--line-height: $font-size__medium;
+$authorityGroupSelector__label--floor-value: ($authorityGroupSelector__label--line-height - $authorityGroupSelector__label--font-size)/2;
+$authorityGroupSelector__label--margin-bottom: $container-spacing-default__third - floor($authorityGroupSelector__label--floor-value);
+
+$authorityGroupSelector__image--size: 17px;
+$authorityGroupSelector__image--padding-left: 85%;
+$authorityGroupSelector__image--background: url("images/icon_questionmark.png") no-repeat 1px 0;
+
+$authorityGroupSelector__select-box--height: $editor-defaults__inline-box--height;
+
+$authorityGroupSelector__selector-button--margin-top: 20px;
+$authorityGroupSelector__selector-button--float: right;
+//2px is refering to the 2px used @login.zul for field-container-spacing (inline)
+
+$authorityGroupSelector__holder-divs--border: none;
+$authorityGroupSelector__holder-divs--background: none;
+
+//select-box not visible (unstyled), needs to be verified
+$authorityGroupSelector__selector--width: 97%;
+$authorityGroupSelector__selector--height: $editor-defaults__inline-box--height;
+$authorityGroupSelector__selector--outline: none;
+$authorityGroupSelector__selector--color: #8a8fa3;
+$authorityGroupSelector__selector--font-size: $font-size__base;
+$authorityGroupSelector__selector--border: 1px solid #21428b;
+$authorityGroupSelector__selector--padding: 4px 6px;
+$authorityGroupSelector__selector--background: url(images/selectbox_arrow.png) no-repeat center right #13275a;
+$authorityGroupSelector__selector--webkit-appearance: none;
+$authorityGroupSelector__selector--box-shadow: inset 0 -5px 5px rgba(0, 0, 0, 0.15);
+$authorityGroupSelector__selector--transition: border linear .2s, box-shadow linear .2s;

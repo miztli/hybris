@@ -1,0 +1,100 @@
+@import "cockpitng-globals.scss";
+
+$navigationContext__default--bg-color: $black__blueish--200;
+$navigationContext__default--color: $white;
+$navigationContext__widget--bg-color: transparent;
+$navigationContext__widget--padding: 0 $container-spacing-default__base;
+$navigationContext__widget-headline--color: $navigationContext__default--color;
+$navigationContext__context-element--padding: 0 0 $container-spacing-default__half;
+$navigationContext__context-element-first--padding-top: $container-spacing-default__third;
+$navigationContext__context-element-label--margin-bottom: $container-spacing-default__third;
+$navigationContext__context-element-label--color: $grey__default--900;
+$navigationContext__context-element-box--color: $navigationContext__default--color;
+$navigationContext__context-element-box--bg: $navigationContext__widget--bg-color;
+$navigationContext__context-element-box--border-right-width: $boxes--border__thin;
+$navigationContext__context-element-box-button--bg: $navigationContext__widget--bg-color;
+$navigationContext__context-element-box-button--width: $editor-defaults__inline-box--height - 2*$boxes--border__thin;
+$navigationContext__context-element-box-icon--color: $navigationContext__default--color;
+$navigationContext__context-element-box-icon-hover--color: $blue__default;
+$navigationContext__context-element-box-selected-item--color: $navigationContext__default--color;
+$navigationContext__context-element-box-selected-item--bg: $navigationContext__widget--bg-color;
+$navigationContext__context-element-disabled-item--opacity: 0.8;
+
+.yas-navigationcontext {
+    padding: $navigationContext__widget--padding;
+    background-color: $navigationContext__widget--bg-color;
+
+    &-element {
+        padding: $navigationContext__context-element--padding;
+        margin: 0;
+
+        &:first-child {
+            padding-top: $navigationContext__context-element-first--padding-top;
+        }
+        .z-label {
+            margin-bottom: $navigationContext__context-element-label--margin-bottom;
+            display: inline-block;
+            color: $navigationContext__context-element-label--color;
+        }
+
+        .z-combobox-input,
+        .z-div .z-bandbox-input {
+            color: $navigationContext__context-element-box--color;
+            background: $navigationContext__context-element-box--bg;
+        }
+        .z-combobox-disabled,
+        .z-bandbox-disabled {
+            background: $navigationContext__context-element-box--bg !important;
+            opacity: $navigationContext__context-element-disabled-item--opacity;
+        }
+
+        .z-combobox-disabled .z-combobox,
+        .z-bandbox-disabled .z-bandbox {
+            &-input,
+            &-button,
+            &-icon {
+                background: $navigationContext__context-element-box--bg !important;
+            }
+        }
+
+        .z-combobox-input {
+            border-right-width: $navigationContext__context-element-box--border-right-width;
+        }
+
+        .z-combobox-button,
+        .z-div .z-bandbox-button {
+            background: $navigationContext__context-element-box-button--bg;
+            width: $navigationContext__context-element-box-button--width;
+
+            .z-combobox-icon,
+            .z-bandbox-icon {
+                color: $navigationContext__context-element-box-icon--color;
+                width: 100%;
+            }
+
+            &:hover {
+                .z-combobox-icon,
+                .z-bandbox-icon {
+                    color: $navigationContext__context-element-box-icon-hover--color;
+                }
+            }
+        }
+    }
+
+    .ye-default-reference-editor-selected-listbox {
+        .z-listbox-body {
+            background: $navigationContext__context-element-box-selected-item--bg;
+
+            .z-listitem {
+                background: $navigationContext__context-element-box-selected-item--bg;
+
+                .ye-default-reference-editor-selected-item-container {
+                    background: $navigationContext__context-element-box-selected-item--bg;
+                }
+                .ye-default-reference-editor-selected-item-label {
+                    color: $navigationContext__context-element-box-selected-item--color;
+                }
+            }
+        }
+    }
+}

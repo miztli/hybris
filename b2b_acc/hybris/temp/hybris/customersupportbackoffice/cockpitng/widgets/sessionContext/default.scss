@@ -1,0 +1,142 @@
+@import "../../scss/customersupportbackoffice-variables.scss";
+
+.yw-com_hybris_cockpitng_widgets_customersupport_sessionContext {
+    padding: 0 0 15px;
+    background: $cst-common_backoffice_widget-navigation--background-color;
+    .header-container {
+        .z-label {
+            color: $white;
+            font-size: 14px;
+            padding: 0 0 0 20px;
+            text-transform: uppercase;
+            font-weight: 500;
+            line-height: 45px;
+        }
+    }
+    .z-vlayout-inner {
+        padding-bottom: 0 !important;
+    }
+    .y-session-context{
+        &-label-container {
+            padding: 0 5px 10px;
+        }
+        &-label-key {
+            color: $cst-session_context-label--color;
+            font-size: 12px;
+            display: block;
+        }
+        &-label-value {
+            font-size: 14px;
+            display: block;
+            text-decoration: none;
+            color: $cst-common_backoffice_widget-links--color;
+            &.z-label{
+                color: $white;
+            }
+        }
+    }
+    .y-start-call-btn,
+    .y-end-call-btn{
+        position: relative;
+        color: $green-light;
+        font-weight: normal;
+        height: 40px;
+        &:before {
+            content: "";
+            width: 16px;
+            height: 15px;
+            display: inline-block;
+            vertical-align: baseline;
+            margin-right: 14px;
+            margin-left: -30px;
+        }
+    }
+    .z-button.y-end-call-btn {
+        color: $red-light;
+    }
+    .z-button.y-start-call-btn:before {
+        color: $green-light;
+        background: url('imgs/icon_start_call.png');;
+    }
+    .z-button.y-end-call-btn:before {
+        background: url('imgs/icon_end_call.png');;
+    }
+}
+.y-sessioncontext-content .y-session-content-padding-box .z-tablechildren{
+    vertical-align: middle;
+}
+.y-session-content-padding-box {
+    padding: 0 15px;
+    .y-start-call-btn, .y-start-call-btn:hover {
+        background: transparent;
+    }
+    .y-end-call-btn, .y-end-call-btn:hover {
+        background: transparent;
+    }
+}
+.y-session-context{
+    &-duration,
+    &-end-session {
+        width: 45%;
+        margin: 0;
+        float: left;
+        .z-button,  .z-button:hover{
+            background: transparent;
+            border: 1px solid $cst-session_context-border--color;
+            border-right: 0 none;
+            height: 50px;
+        }
+    }
+    &-duration {
+        font-size: 16px;
+        height: 50px;
+        line-height: 40px;
+        border: 1px solid $cst-session_context-border--color;
+        border-right:0 none;
+        border-left:0 none;
+        text-align: center;
+        margin-left: 20px;
+        padding-top: 5px;
+        color: $white;
+        font-weight: 200;
+        .z-label {
+            font-size: 16px;
+        }
+    }
+    &-end-session button,
+    &-end-session button:hover {
+        color: $cst-common_backoffice_widget-links--color;
+    }
+    &-content {
+        padding-top: 15px;
+        background: $white;
+    }
+    &-session-data {
+        margin-top: 10px;
+    }
+    &-asm{
+        font-size: 12px;
+        color: $cst-session_context-label--color;
+        &-container{
+            padding: 10px 20px 30px 20px;
+            background: $cst-common_backoffice_widget-navigation--background-color;
+            table {
+                width: 100%;
+            }
+            .y-session-context-combobox .z-combobox{
+                .z-combobox-input,
+                .z-combobox-button,
+                .z-combobox-icon{
+                    color: $white;
+                    background: $cst-common_backoffice_widget-navigation--background-color;
+                }
+            }
+        }
+        &-icon {
+            margin-top: 2px;
+            width: 32px;
+            padding: 0;
+            background: transparent;
+        }
+    }
+}

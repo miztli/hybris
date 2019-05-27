@@ -1,0 +1,49 @@
+/*================================
+    Explorer Tree (Mixins)
+================================*/
+@import "_explorerTree-variables.scss";
+
+@mixin _placeholder-text-color ($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+@mixin _filter-textbox-colors ($color, $border-color, $bg-color:transparent, $focus-color:false, $focus-border-color:false, $focus-bg-color:false) {
+  color: $color;
+  border-color: $border-color;
+  background-color: $bg-color;
+
+  &:focus {
+    @if $focus-color {
+      color: $focus-color;
+    }
+    @if $focus-border-color {
+      border-color: $focus-border-color;
+    }
+    @if $focus-bg-color {
+      background-color: $focus-bg-color;
+    }
+    @include _placeholder-text-color ( transparent );
+  }
+}
+
+@mixin _comp-vertically-adjusted ($attribute, $relation-height, $object-height, $right: 0, $left: 0) {
+  #{$attribute} : ceil(($relation-height - $object-height)/2) $right floor(($relation-height - $object-height)/2) $left;
+}
+
+@mixin _rowStateColor ($selector, $color) {
+  .#{$selector} {
+    > .z-treecell {
+      .z-treecell-content {
+        color: $color;
+      }
+    }
+  }
+}

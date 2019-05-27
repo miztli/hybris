@@ -1,0 +1,85 @@
+@import "../support/_referenceadvancedsearchgroup_variables.scss";
+
+.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup {
+	.yw-advancedsearch {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		position: relative;
+
+		> .yw-caption-container {
+			display:block;
+			position: static;
+		}
+
+		> .yw-topcontainer-open {
+			top: $referenceadvancedsearchgroup__advancedsarch-topcontainer-open--top;
+			display: block;
+			position: absolute;
+			z-index: 0;
+			width: 100%;
+			height: auto !important;
+			overflow: auto;
+			bottom: 0;
+			
+			&,
+			&.yw-non-collapsible {
+				height: auto !important;
+			}
+		}
+		.yw-active-attributes-grid {
+			width: auto;
+
+			.z-grid-header {
+				width: auto !important;
+				max-width: 100%;
+			}
+		}
+		.yw-search-mode-container {
+			padding-left: $referenceadvancedsearchgroup__advancedsarch-searchmode-container--padding-left;
+		}
+	}
+
+	.yw-com_hybris_cockpitng_collectionBrowser .y-statusbar,
+	.yw-advancedsearch .yw-toggle-advanced-search.yw-toggle-open {
+		display: none;
+	}
+
+	.yw-coll-browser-container div.z-listbox-body,
+	.yw-coll-browser-container tbody.z-listbox-emptybody td {
+		background-color: $referenceadvancedsearchgroup__collection-browser-default--bg-color;
+	}
+	.yw-active-attributes-grid > .z-grid-body > table {
+		margin-bottom: 0;
+	}
+	.yw-advancedsearch {
+		.yw-caption-container.yw-noncollapsible-caption {
+			padding: $referenceadvancedsearchgroup__advancedsarch-caption-non-collapsible--padding;
+			.yw-textsearch {
+				overflow: hidden;
+			}
+		}
+		.yw-topcontainer-open {
+			border: $referenceadvancedsearchgroup__advancedsearch-attributes-container--border;
+			border-width: $referenceadvancedsearchgroup__advancedsearch-attributes-container--border-width 0;
+			
+			.yw-active-attributes-grid {
+				width: auto !important;
+				overflow: visible;	
+			}
+			.z-grid-body {
+				width: auto !important;
+			}
+		}
+	}
+	.yw-listview-actioncontainer {
+		padding-top: $referenceadvancedsearchgroup__listview-toolbar--padding-y;
+		padding-bottom: $referenceadvancedsearchgroup__listview-toolbar--padding-y;
+		border-bottom: $referenceadvancedsearchgroup__advancedsearch-attributes-container--border;
+		
+		.y-toolbar {
+			border-width: 0;
+			padding: 0;
+		}
+	}
+}

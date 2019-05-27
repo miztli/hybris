@@ -1,0 +1,72 @@
+@charset "UTF-8";
+.yw-com_hybris_cockpitng_navigationhistory {
+  height: 100%;
+  vertical-align: middle; }
+
+.yw-navigationhistory-back {
+  color: #7f90a5;
+  padding: 5px 0 7px 30px;
+  margin-right: 5px;
+  display: inline-block;
+  position: relative;
+  text-decoration: none; }
+  .yw-navigationhistory-back:before {
+    content: "";
+    height: 16px;
+    width: 16px;
+    font-family: "FontAwesome", sans-serif;
+    left: 15px;
+    line-height: 16px;
+    margin-top: -8px;
+    top: 50%;
+    position: absolute;
+    color: inherit;
+    text-align: center;
+    display: inline-block; }
+  .yw-navigationhistory-back:hover {
+    color: #0486e0;
+    cursor: pointer; }
+  .yw-navigationhistory-back-disabled, .yw-navigationhistory-back-disabled:hover {
+    color: #c4cedc;
+    cursor: default; }
+.yw-navigationhistory-stack {
+  width: 24px;
+  margin-right: 5px;
+  display: inline-block;
+  position: relative;
+  height: 32px;
+  line-height: 32px;
+  vertical-align: middle; }
+  .yw-navigationhistory-stack:after {
+    content: '';
+    background: url("images/dots.png") center 0 no-repeat;
+    width: 24px;
+    height: 24px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .yw-navigationhistory-stack:hover:after {
+    background-position: center -24px; }
+  .yw-navigationhistory-stack-disabled, .yw-navigationhistory-stack-disabled:hover {
+    opacity: 0.3;
+    background-position: center 0; }
+.yw-navigationhistory-nostack .yw-navigationhistory-stack {
+  display: none; }
+  .yw-navigationhistory-nostack .yw-navigationhistory-stack + .yw-navigationhistory-title {
+    margin-left: 10px; }
+.yw-navigationhistory-title {
+  color: #151c22;
+  border-left: 1px solid #999;
+  padding-left: 15px;
+  height: 24px;
+  display: inline-block; }
+.yw-navigationhistory-history {
+  min-width: 38px;
+  min-height: 10px;
+  margin-left: -7px; }
+  .yw-navigationhistory-history:before, .yw-navigationhistory-history:after {
+    left: 10px; }
+  .yw-navigationhistory-history .z-menuitem-text {
+    font-size: 14px; }

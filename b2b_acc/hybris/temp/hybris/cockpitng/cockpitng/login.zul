@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?page title="${cockpitProperties.getProperty('cockpitng.loginTitle')}" contentType="text/html;charset=UTF-8"?>
+<?link rel="stylesheet" type="text/css" href='${empty cockpitProperties.getProperty("cockpitng.mainpage.css") ? "./cng/css/cockpit.css" : cockpitProperties.getProperty("cockpitng.mainpage.css")}'?>
+<?link rel="stylesheet" type="text/css" href='${empty cockpitProperties.getProperty("cockpitng.loginpage.css") ? "./cng/css/login.css" : cockpitProperties.getProperty("cockpitng.loginpage.css")}'?>
+<?link rel="shortcut icon" type="image/x-icon" href='${empty cockpitProperties.getProperty("cockpitng.mainpage.favicon") ? "./cng/images/favicon.ico" : cockpitProperties.getProperty("cockpitng.mainpage.favicon")}'?>
+<?link rel="icon" type="image/x-icon" href='${empty cockpitProperties.getProperty("cockpitng.mainpage.favicon") ? "./cng/images/favicon.ico" : cockpitProperties.getProperty("cockpitng.mainpage.favicon")}'?>
+<?import org.zkoss.util.Locales?>
+<window xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml" mode="embedded" width="100%" visible="true" apply="com.hybris.cockpitng.composer.LoginFormComposer">
+
+	<div id="loginFormContainer" sclass="top_area" visible="false">
+		<div sclass="login-wrapper">
+			<h:form id="loginForm" action="j_spring_security_check" method="POST">
+				<div sclass="login_grid" id="loginGrid">
+					<div sclass="wrong_credentials_cnt" visible="${param.login_error==1}">
+						<label id="status" />
+					</div>
+					<div sclass="wrong_credentials_cnt" visible="${param.login_error==2}">
+						<label id="accessdenied" />
+					</div>
+					<vbox id="fieldContainer" sclass="z-grid" spacing="2px">
+						<div id="configuredFieldPanel"/>
+						<hbox widths="100px, 8em">
+							<label id="languageLabel" />
+							<listbox rows="1" mold="select" id="localeListbox">
+								<custom-attributes ytestid="language" />
+							</listbox>
+						</hbox>
+						<button id="loginButton" autodisable="self" sclass="login_btn y-btn-primary" type="submit" />
+						<cell sclass="singlesignon_login_cell">
+							<a visible="${not empty cockpitProperties.getProperty('cockpitng.login.singlesignon.redirect')}"
+								href="${cockpitProperties.getProperty('cockpitng.login.singlesignon.redirect')}">
+								${labels.login.singlesignon.label}
+							</a>
+						</cell>
+					</vbox>
+				</div>
+			</h:form>
+		</div>
+	</div>
+</window>
+

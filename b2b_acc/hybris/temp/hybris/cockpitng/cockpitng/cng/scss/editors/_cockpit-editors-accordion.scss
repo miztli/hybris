@@ -1,0 +1,62 @@
+/*================================
+    Editor-Area: Accordion
+================================*/
+// Defines labels, tabs, handling-styles of the Tabbox Accorion
+
+
+@import "../support/_cockpit-mixins.scss";
+/*
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel .z-tab .z-caption,
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel .z-tab-selected .z-caption {
+    background: url('images/icon_func_colapse_single_sprite.png') no-repeat 0 -63px !important;
+    padding-left: 20px;
+}
+
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel .z-tab-selected .z-caption {
+
+    background: url('images/icon_func_colapse_single_sprite.png') no-repeat 0 13px !important;
+}
+
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel .z-tab,
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel .z-tab-selected {
+    background: transparent;
+}
+
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel:hover .z-tab .z-caption {
+    background: url('images/icon_func_colapse_single_sprite.png') no-repeat 0 -101px !important;
+}
+
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel:hover .z-tab-selected .z-caption {
+    background: url('images/icon_func_colapse_single_sprite.png') no-repeat 0 -25px !important;
+}
+
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel .z-tab .z-tab-text {
+    color: #043263;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel .z-tab-selected .z-tab-text {
+    color: #0f56bf;
+}
+
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel .z-tab-selected .z-tab-text .z-label {
+    font-weight: bold;
+}
+
+.yw-editorarea-tabbox-accordion.z-tabbox {
+    overflow: auto;
+}
+
+.yw-editorarea-tabbox-accordion.z-tabbox .z-tabpanel > .z-tabpanel-content {
+    height: auto !important;
+}
+
+
+.z-dragged,
+tr.z-drag-over,
+tr.z-drag-over:hover {
+    @include _no-user-select();
+    background-color: $editor-defaults__drag-element--bg-color;
+}
+*/

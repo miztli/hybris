@@ -1,0 +1,16 @@
+.defaultTabWidget {
+  background-color: #e0e9f0 !important; }
+  .defaultTabWidget .z-tab div {
+    background: #d5d8dc !important; }
+  .defaultTabWidget .z-tab .z-tab-text {
+    color: #6f7c91;
+    font-weight: normal;
+    line-height: 30px;
+    padding: 0 5px;
+    font-size: 14px; }
+  .defaultTabWidget .z-tab.z-tab-selected div {
+    background: #ffffff !important; }
+  .defaultTabWidget .z-tab.z-tab-selected .z-tab-text {
+    color: #0486e0; }
+  .defaultTabWidget > .widget_cnt > .z-tabbox > .z-tabs > .z-tabs-header > .z-tabs-content {
+    border-bottom: none; }

@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/*================================
+    Summary View Widget
+================================*/
+.yw-valuechooser-container {
+  width: 100%;
+  display: inline-table;
+  table-layout: fixed;
+  border-top: 1px solid #e0e9f0;
+  border-bottom: 1px solid #e0e9f0;
+  color: #1e2830; }
+.yw-valuechooser-option-container {
+  border-left: 1px solid #e0e9f0;
+  padding: 30px 40px;
+  transition: background-color 0.3s;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  position: relative; }
+  .yw-valuechooser-option-container:first-child {
+    border-left-width: 0; }
+  .yw-valuechooser-option-container:hover {
+    background-color: #f4f7fa; }
+  .yw-valuechooser-option-container:before {
+    transition: border-color 0.3s;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 0; }
+.yw-valuechooser-selection-handler {
+  cursor: pointer; }
+.yw-valuechooser-option {
+  padding-left: 4px;
+  font-size: 16px; }
+  .yw-valuechooser-option.z-button, .yw-valuechooser-option.z-button:focus, .yw-valuechooser-option.z-button:active, .yw-valuechooser-option.z-button:hover {
+    background-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    min-height: auto; }
+.yw-valuechooser-option-selected:before {
+  border-bottom-color: #0486e0; }
+.yw-valuechooser-option-selected:after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  margin-top: -12px;
+  margin-left: -12px;
+  font-family: "FontAwesome", sans-serif;
+  font-size: 16px;
+  border-radius: 50%;
+  background-color: #d5eeff;
+  color: #0486e0;
+  left: 28px;
+  position: absolute;
+  display: block;
+  top: 50%; }

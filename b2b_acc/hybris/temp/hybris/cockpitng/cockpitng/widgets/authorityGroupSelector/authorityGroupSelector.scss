@@ -1,0 +1,112 @@
+@import "scss/support/_authorityGroupSelector-variables.scss";
+
+.yw-roleselector-container {
+    @if $login__body--bg-color {
+        width: 100%;
+        height: 100%;
+        background: $login__body--bg-color;
+    }
+}
+
+.yw-selector {
+    &-body{
+        width: $authorityGroupSelector__selector-body--width;
+        height: $authorityGroupSelector__selector-body--height;
+    }
+
+    &-grid {
+        width: $authorityGroupSelector__grid--width;
+        margin: $authorityGroupSelector__grid--margin;
+        padding-top: $authorityGroupSelector__grid--padding-top;
+        background: $authorityGroupSelector__grid--bg;
+        transform: $authorityGroupSelector__grid--transform;
+
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        label,
+        .z-label {
+            display: block;
+            font-size: $authorityGroupSelector__label--font-size;
+            font-weight: $authorityGroupSelector__label--font-weight;
+            color: $authorityGroupSelector__label--color;
+            line-height: $authorityGroupSelector__label--line-height;
+            margin-bottom: $authorityGroupSelector__label--margin-bottom;
+        }
+    }
+
+    &-holder {
+        &,
+        > div, 
+        > div > div {
+            border: $authorityGroupSelector__holder-divs--border;
+            background: $authorityGroupSelector__holder-divs--background;
+
+        }
+    }
+
+    &-image {
+        width: $authorityGroupSelector__image--size;
+        height: $authorityGroupSelector__image--size;
+        padding-left: $authorityGroupSelector__image--padding-left;
+        @if $authorityGroupSelector__image--background {
+            background: $authorityGroupSelector__image--background;
+            background-clip: content-box;
+            background-origin: content-box;
+        }
+    }
+
+    &-listitem {
+        .yw-selector-listcell {
+            transition: $authorityGroupSelector__group-list-cell--transition;
+
+            &.z-listcell:first-child{
+                width: $authorityGroupSelector__group-list--width;
+            }
+        }
+
+        &:first-child .z-listcell-content {
+            padding-left: $authorityGroupSelector__listcell-content--padding-left;
+        }
+
+        .z-listcell-content {
+            text-overflow: $authorityGroupSelector__listcell-content--text-overflow;
+            white-space: $authorityGroupSelector__listcell-content--white-space;
+            line-height: $authorityGroupSelector__listcell-content--line-height;
+            text-indent: $authorityGroupSelector__listcell-content--text-indent;
+            padding-left: $authorityGroupSelector__listcell-content--padding-left;
+            word-wrap: $authorityGroupSelector__listcell-content--word-wrap;
+        }
+    }
+
+    .z-listitem-checkable.z-listitem-radio {
+        margin-top: $authorityGroupSelector__check-radio--margin-top;
+    }
+}
+
+button.z-button.yw-selector-btn {
+    float: $authorityGroupSelector__selector-button--float;
+    margin-top: $authorityGroupSelector__selector-button--margin-top;
+    display: inline-block;
+}
+
+//select-box not visible (unstyled), needs to be verified
+.yw-selector {
+    select {
+        width: $authorityGroupSelector__selector--width;
+        height: $authorityGroupSelector__selector--height;
+        display: inline-block;
+        outline: $authorityGroupSelector__selector--outline;
+        color: $authorityGroupSelector__selector--color;
+        font-size: $authorityGroupSelector__selector--font-size;
+        border: $authorityGroupSelector__selector--border;
+        padding: $authorityGroupSelector__selector--padding;
+        background: $authorityGroupSelector__selector--background;
+        -webkit-appearance: $authorityGroupSelector__selector--webkit-appearance;
+        box-shadow: $authorityGroupSelector__selector--box-shadow;
+        transition: $authorityGroupSelector__selector--transition;
+    }
+}

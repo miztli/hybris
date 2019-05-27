@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<!-- WARNING: This is the Spring WEB configuration file. If you want to replace
+	items or managers you have to do this from the extensions core configuration
+	file (cockpit2/resources/cockpit2-spring.xml) -->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+	<alias alias="listViewRenderer" name="defaultListViewRenderer"/>
+	<bean id="defaultListViewRenderer"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.listview.renderer.DefaultListViewRenderer"
+		  scope="prototype">
+		<property name="defaultCellRenderer" ref="listCellRenderer"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+		<property name="objectValueService" ref="objectValueService"/>
+		<property name="typeFacade" ref="typeFacade"/>
+		<property name="labelService" ref="labelService"/>
+	</bean>
+
+	<alias name="defaultPermissionManagementListViewRenderer" alias="permissionManagementListViewRenderer"/>
+	<bean id="defaultPermissionManagementListViewRenderer"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.listview.renderer.PermissionManagementListViewRenderer"
+		  parent="defaultListViewRenderer" scope="prototype"/>
+
+	<alias name="defaultWidgetRenderingUtils" alias="widgetRenderingUtils"/>
+	<bean id="defaultWidgetRenderingUtils" class="com.hybris.cockpitng.widgets.util.impl.DefaultWidgetRenderingUtils">
+		<property name="propertyValueService" ref="propertyValueService"/>
+		<property name="labelService" ref="labelService"/>
+		<property name="typeFacade" ref="typeFacade"/>
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+	</bean>
+
+	<alias name="defaultReferenceModelProperties" alias="referenceModelProperties"/>
+	<bean id="defaultReferenceModelProperties"
+		  class="com.hybris.cockpitng.widgets.util.impl.DefaultReferenceModelProperties" scope="prototype">
+	</bean>
+
+	<alias name="defaultListCellRenderer" alias="listCellRenderer"/>
+	<bean id="defaultListCellRenderer"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.listview.renderer.DefaultListCellRenderer"
+		  scope="prototype">
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+	</bean>
+
+	<alias name="defaultNavigationTreeFactory" alias="navigationTreeFactory"/>
+	<bean id="defaultNavigationTreeFactory"
+		  class="com.hybris.cockpitng.tree.factory.impl.DefaultNavigationTreeFactory">
+		<property name="nodeFactories">
+			<map>
+				<entry value-ref="simpleNavigationFactory">
+					<key>
+						<value>com.hybris.cockpitng.config.explorertree.jaxb.NavigationNode
+						</value>
+					</key>
+				</entry>
+				<entry value-ref="typeNavigationFactory">
+					<key>
+						<value>com.hybris.cockpitng.config.explorertree.jaxb.TypeNode</value>
+					</key>
+				</entry>
+				<entry value-ref="dynamicNavigationFactory">
+					<key>
+						<value>com.hybris.cockpitng.config.explorertree.jaxb.DynamicNode</value>
+					</key>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<alias name="defaultDynamicNavigationFactory" alias="dynamicNavigationFactory"/>
+	<bean id="defaultDynamicNavigationFactory" class="com.hybris.cockpitng.tree.node.factory.impl.DynamicNodeFactory"/>
+
+	<alias name="defaultSimpleNavigationFactory" alias="simpleNavigationFactory"/>
+	<bean id="defaultSimpleNavigationFactory"
+		  class="com.hybris.cockpitng.tree.node.factory.impl.SimpleNodeFactory">
+	</bean>
+
+	<alias name="defaultTypeNavigationFactory" alias="typeNavigationFactory"/>
+	<bean id="defaultTypeNavigationFactory"
+		  class="com.hybris.cockpitng.tree.node.factory.impl.TypeNodeFactory">
+	</bean>
+
+	<alias alias="perspectiveResolvers" name="defaultPerspectiveResolvers"/>
+	<util:set id="defaultPerspectiveResolvers" set-class="java.util.LinkedHashSet">
+		<bean class="com.hybris.backoffice.widgets.perspectivechooser.perspectiveresolver.AuthorityGroupDefaultPerspectiveResolver">
+			<constructor-arg name="cockpitUserService" ref="cockpitUserService"/>
+			<constructor-arg name="cockpitConfigurationService" ref="cockpitConfigurationService"/>
+			<constructor-arg name="authorityGroupService" ref="authorityGroupService"/>
+		</bean>
+		<bean class="com.hybris.backoffice.widgets.perspectivechooser.perspectiveresolver.SequenceDefaultPerspectiveResolver"/>
+		<bean class="com.hybris.backoffice.widgets.perspectivechooser.perspectiveresolver.TreePerspectiveResolver">
+			<constructor-arg name="cockpitConfigurationService" ref="cockpitConfigurationService"/>
+			<constructor-arg name="resourceLoader" ref="widgetResourceReader"/>
+		</bean>
+	</util:set>
+
+	<alias name="defaultReferenceEditorSearchFacade" alias="referenceEditorSearchFacade"/>
+	<bean id="defaultReferenceEditorSearchFacade"
+		  class="com.hybris.cockpitng.editor.commonreferenceeditor.SampleReferenceEditorSearchFacade">
+	</bean>
+
+	<bean id="abstractEditorAreaComponentRenderer"
+		  class="com.hybris.cockpitng.widgets.editorarea.renderer.impl.AbstractEditorAreaComponentRenderer"
+		  abstract="true" scope="prototype">
+		<property name="propertyValueService" ref="propertyValueService"/>
+		<property name="cockpitUserService" ref="cockpitUserService"/>
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+		<property name="labelService" ref="labelService"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+		<property name="attributeDescriptionIconRenderer" ref="attributeDescriptionIconRenderer"/>
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+		<property name="editAvailabilityProviderFactory" ref="editAvailabilityProviderFactory"/>
+	</bean>
+
+	<alias name="defaultEditAvailabilityProviderFactory" alias="editAvailabilityProviderFactory"/>
+	<bean id="defaultEditAvailabilityProviderFactory"
+		  class="com.hybris.cockpitng.widgets.editorarea.renderer.impl.DefaultEditAvailabilityProviderFactory">
+		<property name="editAvailabilityProviders">
+			<map/>
+		</property>
+	</bean>
+
+	<alias name="defaultPositionedElementsComparator" alias="positionedElementsComparator"/>
+	<bean id="defaultPositionedElementsComparator"
+		  class="com.hybris.cockpitng.widgets.editorarea.PositionedElementsComparator"/>
+
+	<alias name="defaultConfigurableFlowRenderer" alias="configurableFlowRenderer"/>
+	<bean id="defaultConfigurableFlowRenderer"
+		  class="com.hybris.cockpitng.widgets.configurableflow.renderer.ConfigurableFlowRenderer"
+		  scope="prototype">
+		<property name="componentsVisitorFactory" ref="defaultConfigurableFlowComponentsVisitorFactory"/>
+		<property name="validationRenderer" ref="validationRenderer"/>
+		<property name="labelService" ref="labelService"/>
+		<property name="notificationService" ref="notificationService"/>
+	</bean>
+
+	<alias name="defaultConfigurableFlowComponentsVisitorFactory" alias="configurableFlowComponentsVisitorFactory"/>
+	<bean id="defaultConfigurableFlowComponentsVisitorFactory"
+		  class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.DefaultComponentsVisitorFactory"
+		  scope="prototype">
+		<property name="componentName" value="configurableFlowDynamicForms"/>
+		<property name="componentsVisitor" ref="configurableFlowCompoundComponentsVisitor"/>
+		<property name="componentsDisablingVisitor" ref="componentsDisablingVisitor"/>
+		<property name="notificationService" ref="notificationService"/>
+		<aop:scoped-proxy/>
+	</bean>
+
+	<alias name="defaultConfigurableFlowCompoundComponentsVisitor" alias="configurableFlowCompoundComponentsVisitor"/>
+	<bean id="defaultConfigurableFlowCompoundComponentsVisitor"
+		  class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.CompoundComponentsVisitor" scope="prototype">
+		<property name="visitors" ref="configurableFlowVisitorsList"/>
+	</bean>
+
+	<alias name="defaultConfigurableFlowVisitorsList" alias="configurableFlowVisitorsList"/>
+	<util:list id="defaultConfigurableFlowVisitorsList"
+			   value-type="com.hybris.cockpitng.widgets.common.dynamicforms.ComponentsVisitor" scope="prototype">
+		<ref bean="editorsVisitor"/>
+		<ref bean="dynamicCompoundComponentsVisitor"/>
+	</util:list>
+
+	<alias name="defaultEditorAreaRenderer" alias="editorAreaRenderer"/>
+	<bean id="defaultEditorAreaRenderer"
+		  class="com.hybris.cockpitng.widgets.editorarea.renderer.impl.DefaultEditorAreaRenderer"
+		  parent="abstractEditorAreaComponentRenderer" scope="prototype">
+		<property name="editorAreaTabRenderer" ref="editorAreaTabRenderer"/>
+		<property name="componentsVisitorFactory" ref="editorAreaComponentsVisitorFactory"/>
+		<property name="typeFacade" ref="typeFacade"/>
+	</bean>
+
+	<alias name="defaultEditorAreaComponentsVisitorFactory" alias="editorAreaComponentsVisitorFactory"/>
+	<bean id="defaultEditorAreaComponentsVisitorFactory"
+		  class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.DefaultComponentsVisitorFactory"
+		  scope="prototype">
+		<property name="componentName" value="editorAreaDynamicForms"/>
+		<property name="componentsVisitor" ref="editorAreaCompoundComponentsVisitor"/>
+		<property name="componentsDisablingVisitor" ref="componentsDisablingVisitor"/>
+		<property name="notificationService" ref="notificationService"/>
+		<aop:scoped-proxy/>
+	</bean>
+
+	<alias name="defaultEditorAreaCompoundComponentsVisitor" alias="editorAreaCompoundComponentsVisitor"/>
+	<bean id="defaultEditorAreaCompoundComponentsVisitor"
+		  class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.CompoundComponentsVisitor" scope="prototype">
+		<property name="visitors" ref="editorAreaVisitorsList"/>
+	</bean>
+
+	<alias name="defaultEditorAreaVisitorsList" alias="editorAreaVisitorsList"/>
+	<util:list id="defaultEditorAreaVisitorsList"
+			   value-type="com.hybris.cockpitng.widgets.common.dynamicforms.ComponentsVisitor" scope="prototype">
+		<ref bean="tabsVisitor"/>
+		<ref bean="sectionsVisitor"/>
+		<ref bean="editorsVisitor"/>
+		<ref bean="dynamicCompoundComponentsVisitor"/>
+	</util:list>
+
+	<alias name="defaultComponentsDisablingVisitor" alias="componentsDisablingVisitor"/>
+	<bean id="defaultComponentsDisablingVisitor"
+		  class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.visitors.ComponentsDisablingVisitor"
+		  scope="prototype"/>
+
+	<alias name="defaultDynamicCompoundComponentsVisitor" alias="dynamicCompoundComponentsVisitor"/>
+	<bean id="defaultDynamicCompoundComponentsVisitor"
+		  class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.DynamicCompoundComponentsVisitor"
+		  scope="prototype"/>
+
+	<alias name="defaultEditorsVisitor" alias="editorsVisitor"/>
+	<bean id="defaultEditorsVisitor"
+		  class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.visitors.EditorsVisitor"
+		  parent="abstractComponentVisitor" scope="prototype"/>
+
+	<alias name="defaultSectionsVisitor" alias="sectionsVisitor"/>
+	<bean id="defaultSectionsVisitor"
+		  class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.visitors.SectionsVisitor"
+		  parent="abstractComponentVisitor" scope="prototype"/>
+
+	<alias name="defaultTabsVisitor" alias="tabsVisitor"/>
+	<bean id="defaultTabsVisitor" class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.visitors.TabsVisitor"
+		  parent="abstractComponentVisitor" scope="prototype"/>
+
+	<bean id="abstractComponentVisitor" abstract="true"
+		  class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.visitors.AbstractComponentsVisitor">
+		<property name="expressionEvaluator" ref="expressionEvaluator"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+		<property name="typeFacade" ref="typeFacade"/>
+	</bean>
+
+	<alias name="defaultExpressionEvaluator" alias="expressionEvaluator"/>
+	<bean id="defaultExpressionEvaluator"
+		  class="com.hybris.cockpitng.widgets.common.dynamicforms.impl.DefaultExpressionEvaluator">
+		<property name="objectValueService" ref="objectValueService"/>
+	</bean>
+
+	<alias name="defaultEditorAreaTabRenderer" alias="editorAreaTabRenderer"/>
+	<bean id="defaultEditorAreaTabRenderer"
+		  class="com.hybris.cockpitng.widgets.editorarea.renderer.impl.DefaultEditorAreaTabRenderer"
+		  parent="abstractEditorAreaComponentRenderer" scope="prototype">
+		<property name="editorAreaSectionRenderer" ref="editorAreaSectionRenderer"/>
+
+	</bean>
+
+	<alias name="defaultEditorAreaSectionRenderer" alias="editorAreaSectionRenderer"/>
+	<bean id="defaultEditorAreaSectionRenderer"
+		  class="com.hybris.cockpitng.widgets.editorarea.renderer.impl.DefaultEditorAreaSectionRenderer"
+		  parent="abstractEditorAreaComponentRenderer" scope="prototype">
+		<property name="editorAreaPanelRenderer" ref="editorAreaPanelRenderer"/>
+		<property name="validationRenderer" ref="validationRenderer"/>
+
+	</bean>
+
+	<alias name="defaultEditorAreaPanelRenderer" alias="editorAreaPanelRenderer"/>
+	<bean id="defaultEditorAreaPanelRenderer"
+		  class="com.hybris.cockpitng.widgets.editorarea.renderer.impl.DefaultEditorAreaPanelRenderer"
+		  parent="abstractEditorAreaComponentRenderer" scope="prototype">
+	</bean>
+
+	<bean id="backofficeWidgetsLabelLocator" class="com.hybris.cockpitng.util.labels.ResourcesLabelLocator"
+		  scope="singleton" init-method="init" lazy-init="false">
+		<property name="location" value="/backoffice/labels"/>
+		<property name="name" value="labels"/>
+	</bean>
+
+	<bean id="permissionManagementListCellRenderer"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.listview.renderer.PermissionManagementListCellRenderer"
+		  scope="prototype">
+		<property name="permissionManagementFacade" ref="permissionManagementFacade"/>
+	</bean>
+
+	<alias name="defautlUnboundSectionRenderer" alias="unboundSectionRenderer"/>
+	<bean id="defautlUnboundSectionRenderer"
+		  class="com.hybris.cockpitng.widgets.editorarea.sections.UnboundSectionRenderer"
+		  parent="defaultEditorAreaSectionRenderer" scope="prototype">
+	</bean>
+
+	<util:properties id="extensionsToMime" location="classpath:META-INF/mediasupport/ext-mimes.properties"/>
+	<util:properties id="webMimes" location="classpath:META-INF/mediasupport/web-mimes.properties"/>
+	<util:properties id="mediaGroups" location="classpath:META-INF/mediasupport/media-groups.properties"/>
+	<util:properties id="mediaGroupIcons" location="classpath:META-INF/mediasupport/media-group-icons.properties"/>
+
+	<alias name="defaultObjectPreviewService" alias="objectPreviewService"/>
+	<bean id="defaultObjectPreviewService" class="com.hybris.cockpitng.services.media.impl.DefaultObjectPreviewService">
+		<property name="urlResolutionStrategies">
+			<list value-type="com.hybris.cockpitng.services.media.PreviewResolutionStrategy">
+				<bean class="com.hybris.cockpitng.services.media.impl.StringToPreviewResolutionStrategy">
+					<property name="extensionsToMime" ref="extensionsToMime"/>
+				</bean>
+			</list>
+		</property>
+		<property name="webMimes" ref="webMimes"/>
+		<property name="mediaGroups" ref="mediaGroups"/>
+		<property name="mediaIcons" ref="mediaGroupIcons"/>
+		<property name="propertyValueService" ref="propertyValueService"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+	</bean>
+
+
+	<alias name="defaultAttributeDescriptionIconRenderer" alias="attributeDescriptionIconRenderer"/>
+	<bean id="defaultAttributeDescriptionIconRenderer"
+		  class="com.hybris.cockpitng.renderers.attributedescription.DefaultAttributeDescriptionIconRenderer">
+		<property name="cockpitProperties" ref="cockpitProperties"/>
+	</bean>
+
+	<alias name="defaultConfigurableFlowValidationRenderer" alias="configurableFlowValidationRenderer"/>
+	<bean id="defaultConfigurableFlowValidationRenderer"
+		  class="com.hybris.cockpitng.widgets.configurableflow.validation.ConfigurableFlowValidationRenderer"
+		  parent="typeAwareValidationRenderer">
+	</bean>
+
+	<alias name="typeAwareValidationRenderer" alias="validationRenderer"/>
+	<bean id="typeAwareValidationRenderer"
+		  class="com.hybris.cockpitng.common.renderer.TypeAwareValidationRenderer"
+		  parent="defaultValidationRenderer">
+		<property name="typeFacade" ref="typeFacade"/>
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+		<property name="labelService" ref="labelService"/>
+	</bean>
+
+	<alias alias="treeViewRenderer" name="defaultTreeViewRenderer"/>
+	<bean id="defaultTreeViewRenderer"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.treeview.renderer.DefaultTreeViewRenderer"
+		  scope="prototype">
+		<property name="typeFacade" ref="typeFacade"/>
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+		<property name="labelService" ref="labelService"/>
+		<property name="objectPreviewService" ref="objectPreviewService"/>
+		<property name="fallbackLocaleProvider" ref="fallbackLocaleProvider"/>
+	</bean>
+
+	<alias name="defaultAbstractImageComponentRenderer" alias="abstractImageComponentRenderer"/>
+	<bean abstract="true" id="defaultAbstractImageComponentRenderer"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.common.renderer.AbstractImageComponentRenderer">
+		<property name="objectPreviewService" ref="objectPreviewService"/>
+		<property name="extensionsToMime" ref="extensionsToMime"/>
+	</bean>
+
+	<alias name="defaultAbstractImageBoxRenderer" alias="abstractImageBoxRenderer"/>
+	<bean abstract="true" id="defaultAbstractImageBoxRenderer"
+		  class="com.hybris.cockpitng.widgets.common.AbstractImageBoxRenderer"
+		  parent="abstractImageComponentRenderer" scope="prototype">
+		<property name="labelService" ref="labelService"/>
+	</bean>
+
+	<alias name="defaultGridBoxRenderer" alias="gridBoxRenderer"/>
+	<bean id="defaultGridBoxRenderer"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.gridview.renderer.DefaultGridBoxRenderer"
+		  parent="abstractImageBoxRenderer" scope="prototype">
+		<property name="extensionsToMime" ref="extensionsToMime"/>
+		<property name="alternativeFallbackImageURL" value="cng/img/default/grid_view_default_preview.png"/>
+		<property name="alternativeFallbackImageMime" value="image/png"/>
+		<property name="componentMarkingUtils" ref="componentMarkingUtils"/>
+	</bean>
+
+	<bean id="backofficeCockpitConfigurationServiceExtender"
+		  class="com.hybris.cockpitng.core.config.util.CockpitConfigurationServiceExtender"
+		  init-method="addAll" destroy-method="removeAll" lazy-init="false">
+		<property name="configurationService" ref="cockpitConfigurationService"/>
+		<property name="contextStrategies">
+			<map>
+				<entry key="tree-context" value-ref="treeCollectionContextStrategy"/>
+			</map>
+		</property>
+		<property name="configTypesAdapters">
+			<map>
+				<entry key="com.hybris.cockpitng.config.summaryview.jaxb.SummaryView"
+					   value-ref="summaryViewConfigAdapter"/>
+				<entry key="com.hybris.cockpitng.config.fulltextsearch.jaxb.FulltextSearch"
+					   value-ref="fullTextSearchConfigAdapter"/>
+				<entry key="com.hybris.cockpitng.config.links.jaxb.Links" value-ref="linksConfigAdapter"/>
+				<entry key="com.hybris.cockpitng.core.config.impl.jaxb.treecollection.TreeCollectionNodes"
+					   value-ref="treeCollectionFilteringPositionAdapter"/>
+				<entry key="com.hybris.cockpitng.config.explorertree.jaxb.ExplorerTree"
+					   value-ref="explorerTreeConfigAdapter"/>
+				<entry key="com.hybris.cockpitng.config.compareview.jaxb.CompareView"
+					   value-ref="compareViewConfigAdapter"/>
+			</map>
+		</property>
+		<property name="fallbackStrategies">
+			<map>
+				<entry key="com.hybris.cockpitng.config.summaryview.jaxb.SummaryView">
+					<list>
+						<ref bean="summaryViewConfigurationFallbackStrategy"/>
+					</list>
+				</entry>
+				<entry key="com.hybris.cockpitng.config.fulltextsearch.jaxb.FulltextSearch">
+					<list>
+						<ref bean="fullTextSearchConfigurationFallbackStrategy"/>
+					</list>
+				</entry>
+				<entry key="com.hybris.cockpitng.config.extendedsplitlayout.jaxb.ExtendedSplitLayout">
+					<list>
+						<ref bean="extendedSplitLayoutConfigurationFallbackStrategy"/>
+					</list>
+				</entry>
+				<entry key="com.hybris.cockpitng.config.links.jaxb.Links">
+					<list>
+						<ref bean="linksConfigFallbackStrategy"/>
+					</list>
+				</entry>
+				<entry key="com.hybris.cockpitng.config.notification.jaxb.NotificationArea">
+					<list>
+						<ref bean="notificationConfigFallbackStrategy"/>
+					</list>
+				</entry>
+				<entry key="com.hybris.cockpitng.config.refineby.jaxb.FacetConfig">
+					<list>
+						<ref bean="refineByConfigurationFallbackStrategy"/>
+					</list>
+				</entry>
+				<entry key="com.hybris.cockpitng.config.quicklist.jaxb.QuickList">
+					<list>
+						<ref bean="quickListConfigurationFallbackStrategy"/>
+					</list>
+				</entry>
+				<entry key="com.hybris.cockpitng.config.viewswitcher.jaxb.ViewSwitcher">
+					<list>
+						<ref bean="viewSwitcherConfigurationFallbackStrategy"/>
+					</list>
+				</entry>
+				<entry key="com.hybris.cockpitng.config.valuechooser.jaxb.ValueChooser">
+					<list>
+						<ref bean="valueChooserConfigurationFallbackStrategy"/>
+					</list>
+				</entry>
+				<entry key="com.hybris.cockpitng.config.compareview.jaxb.CompareView">
+					<list>
+						<ref bean="compareViewConfigurationFallbackStrategy"/>
+					</list>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<alias name="defaultPreviewListCellRenderer" alias="previewListCellRenderer"/>
+	<bean id="defaultPreviewListCellRenderer"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.listview.renderer.DefaultPreviewListCellRenderer"
+		  parent="abstractImageComponentRenderer"/>
+
+	<alias name="defaultCountingRenderer" alias="countingRenderer"/>
+	<bean id="defaultCountingRenderer"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.listview.renderer.CountingRenderer">
+		<property name="assetsCalculator" ref="assetsCalculator"/>
+		<property name="counterFormat" value="%d"/>
+	</bean>
+
+	<alias name="defaultAssetsCalculator" alias="assetsCalculator"/>
+	<bean id="defaultAssetsCalculator"
+		  class="com.hybris.cockpitng.common.logic.impl.ObjectAssetsCalculator">
+		<property name="objectValueService" ref="objectValueService"/>
+	</bean>
+
+	<alias name="defaultTreeCollectionContextStrategy" alias="treeCollectionContextStrategy"/>
+	<bean id="defaultTreeCollectionContextStrategy"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.context.DefaultTreeCollectionContextStrategy">
+		<property name="typeFacade" ref="typeFacade"/>
+	</bean>
+
+	<alias name="defaultTreeCollectionFilteringPositionAdapter" alias="treeCollectionFilteringPositionAdapter"/>
+	<bean id="defaultTreeCollectionFilteringPositionAdapter"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.context.TreeCollectionFilteringPositionAdapter">
+		<property name="typeFacade" ref="typeFacade"/>
+		<property name="positionedSort" ref="positionedSortAlgorithm"/>
+	</bean>
+
+	<alias name="defaultSummaryViewConfigAdapter" alias="summaryViewConfigAdapter"/>
+	<bean id="defaultSummaryViewConfigAdapter"
+		  class="com.hybris.cockpitng.widgets.summaryview.SummaryViewConfigAdapter">
+		<property name="positionedSort" ref="positionedSortAlgorithm"/>
+	</bean>
+
+	<alias name="defaultLinksConfigAdapter" alias="linksConfigAdapter"/>
+	<bean id="defaultLinksConfigAdapter"
+		  class="com.hybris.cockpitng.config.links.LinksConfigAdapter">
+		<property name="positionedSort" ref="positionedSortAlgorithm"/>
+	</bean>
+
+	<alias name="defaultExplorerTreeConfigAdapter" alias="explorerTreeConfigAdapter"/>
+	<bean id="defaultExplorerTreeConfigAdapter"
+		  class="com.hybris.cockpitng.widgets.common.explorertree.adapter.ExplorerTreeConfigAdapter">
+		<property name="positionedSort" ref="positionedSortAlgorithm"/>
+	</bean>
+
+	<alias name="defaultCompareViewConfigAdapter" alias="compareViewConfigAdapter"/>
+	<bean id="defaultCompareViewConfigAdapter"
+		  class="com.hybris.cockpitng.widgets.compare.adapter.DefaultCompareViewConfigAdapter">
+		<property name="positionedSort" ref="positionedSortAlgorithm"/>
+		<property name="cockpitConfigurationService" ref="cockpitConfigurationService"/>
+		<property name="gridViewToHeaderConverter" ref="gridViewToHeaderConverter"/>
+		<property name="tabToSectionConverter" ref="tabToSectionConverter"/>
+		<property name="essentialsToSectionConverter" ref="essentialsToSectionConverter"/>
+		<property name="mergeUtils" ref="cockpitConfigMergeUtils"/>
+	</bean>
+
+	<alias name="defaultAttributeToAttributeConverter" alias="attributeToAttributeConverter"/>
+	<bean id="defaultAttributeToAttributeConverter"
+		  class="com.hybris.cockpitng.widgets.compare.adapter.converters.DefaultAttributeToAttributeConverter"/>
+
+	<alias name="defaultGridViewToHeaderConverter" alias="gridViewToHeaderConverter"/>
+	<bean id="defaultGridViewToHeaderConverter"
+		  class="com.hybris.cockpitng.widgets.compare.adapter.converters.DefaultGridViewToHeaderConverter"/>
+
+	<alias name="defaultTabToSectionConverter" alias="tabToSectionConverter"/>
+	<bean id="defaultTabToSectionConverter"
+		  class="com.hybris.cockpitng.widgets.compare.adapter.converters.DefaultTabToSectionConverter">
+		<property name="editorAreaAttributeExtractor" ref="editorAreaAttributeExtractor"/>
+		<property name="attributeToAttributeConverter" ref="attributeToAttributeConverter"/>
+	</bean>
+
+	<alias name="defaultEssentialsToSectionConverter" alias="essentialsToSectionConverter"/>
+	<bean id="defaultEssentialsToSectionConverter"
+		  class="com.hybris.cockpitng.widgets.compare.adapter.converters.DefaultEssentialsToSectionConverter">
+		<property name="editorAreaAttributeExtractor" ref="editorAreaAttributeExtractor"/>
+		<property name="attributeToAttributeConverter" ref="attributeToAttributeConverter"/>
+	</bean>
+
+	<alias name="defaulteditorAreaAttributeExtractor" alias="editorAreaAttributeExtractor"/>
+	<bean id="defaulteditorAreaAttributeExtractor"
+		  class="com.hybris.cockpitng.widgets.compare.adapter.extractors.DefaultEditorAreaAttributeExtractor"/>
+
+	<alias name="defaultWidgetComponentRendererFactory" alias="widgetComponentRendererFactory"/>
+	<bean id="defaultWidgetComponentRendererFactory"
+		  class="com.hybris.cockpitng.widgets.common.DefaultWidgetComponentRendererFactory"/>
+
+	<alias name="defaultNotifyingWidgetComponentRendererFactory" alias="notifyingWidgetComponentRendererFactory"/>
+	<bean id="defaultNotifyingWidgetComponentRendererFactory"
+		  class="com.hybris.cockpitng.widgets.common.DefaultNotifyingWidgetComponentRendererFactory"/>
+
+	<alias name="defaultTypeCodeResolver" alias="typeCodeResolver"/>
+	<bean id="defaultTypeCodeResolver"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.DefaultTypeCodeResolver">
+		<property name="typeFacade" ref="typeFacade"/>
+	</bean>
+
+	<!-- CollectionBrowser mold strategies -->
+	<alias name="defaultAbstractMoldStrategy" alias="abstractMoldStrategy"/>
+	<bean id="defaultAbstractMoldStrategy" abstract="true"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.common.AbstractMoldStrategy"
+		  scope="prototype">
+		<property name="backofficeTypeUtils" ref="backofficeTypeUtils"/>
+		<property name="labelService" ref="labelService"/>
+		<property name="moldRendererFactory" ref="defaultNotifyingWidgetComponentRendererFactory"/>
+		<property name="notificationService" ref="notificationService"/>
+	</bean>
+
+	<alias name="defaultListViewCollectionBrowserMoldStrategy" alias="listViewCollectionBrowserMoldStrategy"/>
+	<bean id="defaultListViewCollectionBrowserMoldStrategy"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.listview.ListViewCollectionBrowserMoldStrategy"
+		  scope="prototype" parent="abstractMoldStrategy">
+		<property name="order" value="0"/>
+		<property name="resolverFactory" ref="expressionResolverFactory"/>
+	</bean>
+	<alias name="defaultTreeViewCollectionBrowserMoldStrategy" alias="treeViewCollectionBrowserMoldStrategy"/>
+	<bean id="defaultTreeViewCollectionBrowserMoldStrategy"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.treeview.TreeViewCollectionBrowserMoldStrategy"
+		  scope="prototype" parent="abstractMoldStrategy">
+		<property name="order" value="1"/>
+		<property name="objectValueService" ref="objectValueService"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+		<property name="typeFacade" ref="typeFacade"/>
+	</bean>
+	<alias name="defaultGridViewCollectionBrowserMoldStrategy" alias="gridViewCollectionBrowserMoldStrategy"/>
+	<bean id="defaultGridViewCollectionBrowserMoldStrategy"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.gridview.GridViewCollectionBrowserMoldStrategy"
+		  scope="prototype" parent="abstractMoldStrategy">
+		<property name="order" value="2"/>
+	</bean>
+
+	<alias name="defaultSelectAndFocusDelegateController" alias="selectAndFocusDelegateController"/>
+	<bean id="defaultSelectAndFocusDelegateController"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.DefaultSelectAndFocusDelegateController"
+		  scope="prototype"/>
+
+	<alias name="defaultPagingDelegateController" alias="pagingDelegateController"/>
+	<bean id="defaultPagingDelegateController"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.PagingDelegateController" scope="prototype">
+		<property name="notificationService" ref="notificationService"/>
+	</bean>
+
+	<alias name="defaultTitleDelegateController" alias="titleDelegateController"/>
+	<bean id="defaultTitleDelegateController"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.TitleDelegateController" scope="prototype"/>
+
+	<alias name="defaultCollectionBrowserConfigurationLoader" alias="collectionBrowserConfigurationLoader"/>
+	<bean id="defaultCollectionBrowserConfigurationLoader"
+		  class="com.hybris.cockpitng.widgets.collectionbrowser.mold.impl.CollectionBrowserConfigurationLoader"
+		  scope="prototype"/>
+
+	<alias name="defaultExtendedMultiReferenceEditorCellRenderer" alias="extendedMultiReferenceEditorCellRenderer"/>
+	<bean id="defaultExtendedMultiReferenceEditorCellRenderer"
+		  class="com.hybris.cockpitng.editor.extendedmultireferenceeditor.renderer.DefaultCellRenderer">
+		<property name="typeFacade" ref="typeFacade"/>
+		<property name="objectValueService" ref="objectValueService"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+		<property name="validationRenderer" ref="validationRenderer"/>
+		<property name="labelService" ref="labelService"/>
+	</bean>
+
+	<alias name="defaultReferenceEditorSearchConditionHandler" alias="referenceEditorSearchConditionHandler"/>
+	<bean id="defaultReferenceEditorSearchConditionHandler"
+		  class="com.hybris.cockpitng.editor.commonreferenceeditor.ReferenceEditorSearchConditionHandler">
+		<property name="propertyValueService" ref="propertyValueService"/>
+	</bean>
+
+	<alias name="defaultAdvancedSearchRenderer" alias="advancedSearchRenderer"/>
+	<bean id="defaultAdvancedSearchRenderer"
+		  class="com.hybris.backoffice.widgets.advancedsearch.impl.renderer.AdvancedSearchRenderer" scope="prototype">
+		<constructor-arg name="advancedSearchOperatorService" ref="advancedSearchOperatorService"/>
+		<constructor-arg name="cockpitLocaleService" ref="cockpitLocaleService"/>
+		<constructor-arg name="labelService" ref="labelService"/>
+		<constructor-arg name="permissionFacade" ref="permissionFacade"/>
+		<constructor-arg name="typeFacade" ref="typeFacade"/>
+	</bean>
+
+	<alias name="defaultFacetRenderer" alias="facetRenderer"/>
+	<bean id="defaultFacetRenderer" class="com.hybris.backoffice.widgets.advancedsearch.impl.facet.DefaultFacetRenderer"
+		  scope="prototype"/>
+
+
+	<alias name="defaultInlineEditorRowHandler" alias="inlineEditorRowHandler"/>
+	<bean id="defaultInlineEditorRowHandler"
+		  class="com.hybris.cockpitng.editor.extendedmultireferenceeditor.InlineEditorRowHandler">
+		<property name="labelService" ref="labelService"/>
+		<property name="objectFacade" ref="objectFacade"/>
+		<property name="objectValueService" ref="objectValueService"/>
+		<property name="notificationService" ref="notificationService"/>
+	</bean>
+
+	<alias name="defaultPerspectiveInfoService" alias="perspectiveInfoService"/>
+	<bean id="defaultPerspectiveInfoService" scope="session"
+		  class="com.hybris.backoffice.services.impl.DefaultPerspectiveInfoService">
+	</bean>
+
+	<alias name="backofficeWidgetsSchemaLocationRegistry" alias="cockpitConfigurationSchemaLocationRegistry"/>
+	<bean id="backofficeWidgetsSchemaLocationRegistry" parent="dataIntegrationSchemaLocationRegistry">
+		<property name="schemaLocations">
+			<map merge="true" key-type="java.lang.String" value-type="java.lang.String">
+				<entry key="explorer-tree" value="/schemas/config/cockpitng/explorer-tree.xsd"/>
+				<entry key="perspective-chooser" value="/schemas/config/cockpitng/perspective-chooser.xsd"/>
+				<entry key="simple-list" value="/schemas/config/cockpitng/simple-list.xsd"/>
+				<entry key="common-config" value="/schemas/config/cockpitng/common-config.xsd"/>
+				<entry key="fulltext-search" value="/schemas/config/cockpitng/fulltext-search.xsd"/>
+				<entry key="links" value="/schemas/config/cockpitng/links.xsd"/>
+				<entry key="notification-area" value="/schemas/config/cockpitng/notification-area.xsd"/>
+				<entry key="quick-list" value="/schemas/config/cockpitng/quick-list.xsd"/>
+				<entry key="refine-by" value="/schemas/config/cockpitng/refine-by.xsd"/>
+				<entry key="summary-view" value="/schemas/config/cockpitng/summary-view.xsd"/>
+				<entry key="extended-split-layout" value="/schemas/config/cockpitng/extended-split-layout.xsd"/>
+				<entry key="view-switcher" value="/schemas/config/cockpitng/view-switcher.xsd"/>
+				<entry key="compare-view" value="/schemas/config/cockpitng/compare-view.xsd"/>
+			</map>
+		</property>
+	</bean>
+
+	<alias name="defaultEditorAreaLogicHandler" alias="editorAreaLogicHandler"/>
+	<bean id="defaultEditorAreaLogicHandler"
+		  class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaLogicHandler">
+		<property name="objectFacade" ref="objectFacade"/>
+		<property name="validationHandler" ref="validationHandler"/>
+	</bean>
+
+	<alias name="breadcrumbPerspectiveChooserRenderer" alias="perspectiveChooserRenderer"/>
+	<bean id="flatPerspectiveChooserRenderer"
+		  class="com.hybris.backoffice.widgets.perspectivechooser.renderer.FlatPerspectiveChooserRenderer">
+	</bean>
+	<bean id="breadcrumbPerspectiveChooserRenderer"
+		  class="com.hybris.backoffice.widgets.perspectivechooser.renderer.BreadcrumbPerspectiveChooserRenderer">
+	</bean>
+
+	<alias name="defaultAdvancedSearchDataUtil" alias="advancedSearchDataUtil"/>
+	<bean id="defaultAdvancedSearchDataUtil"
+		  class="com.hybris.backoffice.widgets.advancedsearch.util.AdvancedSearchDataUtil">
+		<property name="advancedSearchOperatorService" ref="advancedSearchOperatorService"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+	</bean>
+
+	<bean id="abstractSummaryViewItemWithIconRenderer" abstract="true">
+		<property name="labelService" ref="labelService"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+		<property name="attributeLabelResolver" ref="attributeLabelResolver"/>
+	</bean>
+
+	<alias name="defaultSummaryViewSectionRenderer" alias="summaryViewSectionRenderer"/>
+	<bean id="defaultSummaryViewSectionRenderer"
+		  class="com.hybris.cockpitng.widgets.summaryview.renderer.DefaultSummaryViewSectionRenderer">
+		<property name="objectValueService" ref="objectValueService"/>
+		<property name="summaryViewAttributeRenderer" ref="summaryViewAttributeRenderer"/>
+		<property name="dataQualityGroupRenderer" ref="dataQualityGroupRenderer"/>
+	</bean>
+
+	<alias name="defaultSummaryViewAttributeRenderer" alias="summaryViewAttributeRenderer"/>
+	<bean id="defaultSummaryViewAttributeRenderer"
+		  parent="abstractSummaryViewItemWithIconRenderer"
+		  class="com.hybris.cockpitng.widgets.summaryview.renderer.DefaultSummaryViewAttributeRenderer">
+		<property name="editorWrappingUtils">
+			<bean parent="editorWrappingUtils">
+				<property name="wrapperSetting" value="defaultEditorWrapperTemplate"/>
+			</bean>
+		</property>
+	</bean>
+
+	<alias name="defaultSummaryViewThumbnailRenderer" alias="summaryViewThumbnailRenderer"/>
+	<bean id="defaultSummaryViewThumbnailRenderer"
+		  class="com.hybris.cockpitng.widgets.summaryview.renderer.DefaultSummaryViewThumbnailRenderer"
+		  parent="abstractImageComponentRenderer">
+		<property name="alternativeFallbackImageURL" value="cng/img/default/grid_view_default_preview.png"/>
+		<property name="alternativeFallbackImageMime" value="image/png"/>
+	</bean>
+
+	<alias name="defaultSummaryViewAssetsRenderer" alias="summaryViewAssetsRenderer"/>
+	<bean id="defaultSummaryViewAssetsRenderer"
+		  class="com.hybris.cockpitng.widgets.summaryview.renderer.DefaultSummaryViewAssetsRenderer"
+		  parent="abstractSummaryViewItemWithIconRenderer">
+		<property name="assetsCalculator" ref="assetsCalculator"/>
+		<property name="attributeLabelResolver">
+			<bean class="com.hybris.cockpitng.widgets.summaryview.ConstantAttributeLabelResolver">
+				<property name="labelKey" value="com.hybris.cockpitng.summaryView.assets"/>
+			</bean>
+		</property>
+		<property name="objectValueService" ref="objectValueService"/>
+	</bean>
+
+	<alias name="defaultSummaryViewConfigurationFallbackStrategy" alias="summaryViewConfigurationFallbackStrategy"/>
+	<bean id="defaultSummaryViewConfigurationFallbackStrategy"
+		  class="com.hybris.cockpitng.config.summaryview.DefaultSummaryViewConfigurationFallbackStrategy"
+		  parent="abstractCockpitConfigurationFallbackStrategy"/>
+
+	<alias name="defaultFullTextSearchConfigurationFallbackStrategy"
+		   alias="fullTextSearchConfigurationFallbackStrategy"/>
+	<bean id="defaultFullTextSearchConfigurationFallbackStrategy"
+		  class="com.hybris.cockpitng.config.fulltextsearch.DefaultFullTextSearchConfigurationFallbackStrategy"
+		  parent="abstractCockpitConfigurationFallbackStrategy"/>
+
+	<alias name="defaultExtendedSplitLayoutConfigurationFallbackStrategy"
+		   alias="extendedSplitLayoutConfigurationFallbackStrategy"/>
+	<bean id="defaultExtendedSplitLayoutConfigurationFallbackStrategy"
+		  class="com.hybris.cockpitng.config.extendedsplitlayout.DefaultExtendedSplitLayoutConfigurationFallbackStrategy"
+		  parent="abstractCockpitConfigurationFallbackStrategy"/>
+
+	<alias name="defaultLinksConfigFallbackStrategy" alias="linksConfigFallbackStrategy"/>
+	<bean id="defaultLinksConfigFallbackStrategy"
+		  class="com.hybris.cockpitng.config.links.DefaultLinksConfigFallbackStrategy"
+		  parent="abstractCockpitConfigurationFallbackStrategy"/>
+
+	<alias name="defaultNotificationSourceContextStrategy" alias="notificationSourceContextStrategy"/>
+	<bean id="defaultNotificationSourceContextStrategy"
+		  class="com.hybris.backoffice.widgets.notificationarea.NotificationSourceContextStrategy"/>
+
+	<alias name="defaultNotificationConfigFallbackStrategy" alias="notificationConfigFallbackStrategy"/>
+	<bean id="defaultNotificationConfigFallbackStrategy"
+		  class="com.hybris.cockpitng.config.notification.DefaultNotificationConfigFallbackStrategy"
+		  parent="abstractCockpitConfigurationFallbackStrategy"/>
+
+	<alias name="defaultRefineByConfigFallbackStrategy" alias="refineByConfigurationFallbackStrategy"/>
+	<bean id="defaultRefineByConfigFallbackStrategy"
+		  class="com.hybris.cockpitng.config.refineby.DefaultRefineByConfigFallbackStrategy"
+		  parent="abstractCockpitConfigurationFallbackStrategy"/>
+
+	<alias name="defaultQuickListConfigFallbackStrategy" alias="quickListConfigurationFallbackStrategy"/>
+	<bean id="defaultQuickListConfigFallbackStrategy"
+		  class="com.hybris.cockpitng.config.quicklist.DefaultQuickListConfigFallbackStrategy"
+		  parent="abstractCockpitConfigurationFallbackStrategy"/>
+
+	<alias name="defaultViewSwitcherConfigurationFallbackStrategy" alias="viewSwitcherConfigurationFallbackStrategy"/>
+	<bean id="defaultViewSwitcherConfigurationFallbackStrategy"
+		  class="com.hybris.cockpitng.config.viewswitcher.DefaultViewSwitcherConfigurationFallbackStrategy"
+		  parent="abstractCockpitConfigurationFallbackStrategy"/>
+
+	<alias name="defaultValueChooserConfigurationFallbackStrategy" alias="valueChooserConfigurationFallbackStrategy"/>
+	<bean id="defaultValueChooserConfigurationFallbackStrategy"
+		  class="com.hybris.cockpitng.config.valuechooser.DefaultValueChooserConfigurationFallbackStrategy"
+		  parent="abstractCockpitConfigurationFallbackStrategy"/>
+
+	<alias name="defaultCompareViewConfigurationFallbackStrategy" alias="compareViewConfigurationFallbackStrategy"/>
+	<bean id="defaultCompareViewConfigurationFallbackStrategy"
+		  class="com.hybris.cockpitng.config.compareview.DefaultCompareViewConfigurationFallbackStrategy"
+		  parent="abstractCockpitConfigurationFallbackStrategy"/>
+
+	<alias name="defaultStandardFacetRenderer" alias="standardFacetRenderer"/>
+	<bean id="defaultStandardFacetRenderer"
+		  class="com.hybris.backoffice.widgets.refineby.renderer.StandardFacetRenderer">
+		<property name="selectedFacetsModelKey"
+				  value="#{T(com.hybris.backoffice.widgets.refineby.RefineByController).MODEL_SELECTED_FACETS}"/>
+		<property name="expandedFacetsModelKey"
+				  value="#{T(com.hybris.backoffice.widgets.refineby.RefineByController).MODEL_EXPANDED_FACETS}"/>
+	</bean>
+
+	<bean id="colourFacetRenderer"
+		  class="com.hybris.backoffice.widgets.refineby.renderer.ColourFacetRenderer">
+		<property name="selectedFacetsModelKey"
+				  value="#{T(com.hybris.backoffice.widgets.refineby.RefineByController).MODEL_SELECTED_FACETS}"/>
+		<property name="expandedFacetsModelKey"
+				  value="#{T(com.hybris.backoffice.widgets.refineby.RefineByController).MODEL_EXPANDED_FACETS}"/>
+	</bean>
+
+	<alias name="defaultFieldQueryPopupRenderer" alias="fieldQueryPopupRenderer"/>
+	<bean id="defaultFieldQueryPopupRenderer"
+		  class="com.hybris.backoffice.widgets.fulltextsearch.renderer.impl.DefaultFieldQueryPopupRenderer">
+		<property name="fieldRenderer" ref="fieldQueryFieldRenderer"/>
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+		<property name="localizedValuesService" ref="localizedValuesService"/>
+	</bean>
+
+	<alias name="defaultFullTextSearchStrategy" alias="fullTextSearchStrategy"/>
+	<bean name="defaultFullTextSearchStrategy"
+		  class="com.hybris.backoffice.widgets.fulltextsearch.DefaultFullTextSearchStrategy">
+		<property name="typeFacade" ref="typeFacade"/>
+		<property name="advancedSearchOperatorService" ref="advancedSearchOperatorService"/>
+	</bean>
+
+	<alias name="defaultClassificationService" alias="classificationLabelService"/>
+	<bean id="defaultClassificationService"
+		  class="com.hybris.backoffice.services.impl.DefaultClassificationLabelService"/>
+
+	<alias name="defaultFieldQueryFieldRenderer" alias="fieldQueryFieldRenderer"/>
+	<bean id="defaultFieldQueryFieldRenderer"
+		  class="com.hybris.backoffice.widgets.fulltextsearch.renderer.impl.DefaultFieldQueryFieldRenderer">
+		<property name="typeFacade" ref="typeFacade"/>
+		<property name="cockpitConfigurationService" ref="cockpitConfigurationService"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+		<property name="localizedValuesService" ref="localizedValuesService"/>
+		<property name="searchStrategies">
+			<list>
+				<ref bean="defaultFullTextSearchStrategy"/>
+			</list>
+		</property>
+		<property name="defaultSearchStrategy" ref="fullTextSearchStrategy"/>
+		<property name="classificationLabelService" ref="classificationLabelService"/>
+		<property name="labelStringObjectHandler" ref="typeQualifierStringObjectHandler"/>
+	</bean>
+
+	<alias name="defaultFullTextSearchConfigAdapter" alias="fullTextSearchConfigAdapter"/>
+	<bean id="defaultFullTextSearchConfigAdapter"
+		  class="com.hybris.backoffice.widgets.fulltextsearch.FullTextSearchConfigAdapter">
+		<property name="positionedSort" ref="positionedSortAlgorithm"/>
+	</bean>
+
+	<alias name="defaultQuickListItemRenderer" alias="quickListItemRenderer"/>
+	<bean id="defaultQuickListItemRenderer" parent="abstractImageComponentRenderer"
+		  class="com.hybris.backoffice.widgets.quicklist.renderer.DefaultQuickListItemRenderer" scope="prototype">
+		<property name="labelService" ref="labelService"/>
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+		<property name="allowRemove" value="true"/>
+	</bean>
+
+	<alias name="defaultReadonlyQuickListItemRenderer" alias="readonlyQuickListItemRenderer"/>
+	<bean id="defaultReadonlyQuickListItemRenderer" parent="defaultQuickListItemRenderer" scope="prototype">
+		<property name="allowRemove" value="false"/>
+	</bean>
+
+	<alias name="defaultBeanNameWidgetDragAndDropStrategyResolver" alias="beanNameWidgetDragAndDropStrategyResolver"/>
+	<bean id="defaultBeanNameWidgetDragAndDropStrategyResolver"
+		  class="com.hybris.cockpitng.dnd.BeanNameWidgetDragAndDropStrategyResolver"/>
+
+	<alias name="defaultWidgetDragAndDropStrategyRepository" alias="widgetDragAndDropStrategyRepository"/>
+	<bean id="defaultWidgetDragAndDropStrategyRepository"
+		  class="com.hybris.cockpitng.dnd.DefaultWidgetDragAndDropStrategyRepository">
+		<constructor-arg>
+			<list>
+				<ref bean="beanNameWidgetDragAndDropStrategyResolver"/>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<alias name="defaultAttributeLabelResolver" alias="attributeLabelResolver"/>
+	<bean id="defaultAttributeLabelResolver"
+		  class="com.hybris.cockpitng.widgets.summaryview.label.impl.DefaultAttributeLabelResolver">
+		<property name="labelService" ref="labelService"/>
+	</bean>
+
+	<alias name="defaultDragAndDropConfigurationService" alias="dragAndDropConfigurationService"/>
+	<bean id="defaultDragAndDropConfigurationService"
+		  class="com.hybris.cockpitng.services.dnd.impl.DefaultDragAndDropConfigurationService">
+		<property name="cockpitSessionService" ref="cockpitSessionService"/>
+	</bean>
+
+	<alias name="defaultDataQualityGroupRenderer" alias="dataQualityGroupRenderer"/>
+	<bean id="defaultDataQualityGroupRenderer"
+		  class="com.hybris.cockpitng.widgets.summaryview.renderer.dataquality.DefaultDataQualityGroupRenderer">
+		<property name="dataQualityCalculationService" ref="dataQualityCalculationService"/>
+		<property name="dataQualityPropertyRenderer" ref="dataQualityPropertyRenderer"/>
+	</bean>
+
+	<alias name="defaultDataQualityPropertyRenderer" alias="dataQualityPropertyRenderer"/>
+	<bean id="defaultDataQualityPropertyRenderer"
+		  class="com.hybris.cockpitng.widgets.summaryview.renderer.dataquality.DefaultDataQualityPropertyRenderer">
+	</bean>
+
+	<alias name="defaultContextPopulator" alias="contextPopulator"/>
+	<bean id="defaultContextPopulator" class="com.hybris.backoffice.widgets.contextpopulator.DefaultContextPopulator"/>
+
+	<alias name="defaultValueChooserRenderer" alias="valueChooserRenderer"/>
+	<bean id="defaultValueChooserRenderer"
+		  class="com.hybris.cockpitng.widgets.valuechooser.DefaultValueChooserRenderer"/>
+
+	<alias name="defaultViewSwitcherUtils" alias="viewSwitcherUtils"/>
+	<bean id="defaultViewSwitcherUtils"
+		  class="com.hybris.backoffice.widgets.viewswitcher.permissions.impl.DefaultViewSwitcherUtils">
+		<property name="cockpitConfigurationService" ref="cockpitConfigurationService"/>
+		<property name="cockpitUserService" ref="cockpitUserService"/>
+		<property name="authorityGroupService" ref="authorityGroupService"/>
+	</bean>
+
+	<alias name="defaultPerspectiveContainerRenderer" alias="perspectiveContainerRenderer"/>
+	<bean id="defaultPerspectiveContainerRenderer" parent="tabContainerRenderer"
+		  class="com.hybris.backoffice.widgets.perspectivecontainer.controller.PerspectiveContainerRenderer">
+		<property name="viewSwitcherUtils" ref="viewSwitcherUtils"/>
+		<property name="showNewTab" value="false"/>
+		<property name="showTabs" value="false"/>
+	</bean>
+
+	<alias name="viewSwitcherSwitchContainerRenderer" alias="fallbackSwitchContainerRenderer"/>
+	<bean id="viewSwitcherSwitchContainerRenderer" parent="defaultFallbackSwitchContainerRenderer"
+		  class="com.hybris.backoffice.widgets.viewswitcher.ViewSwitcherContainerRenderer">
+		<property name="viewSwitcherUtils" ref="viewSwitcherUtils"/>
+	</bean>
+
+	<alias name="defaultCompareViewLayout" alias="compareViewLayout"/>
+	<bean id="defaultCompareViewLayout"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.DefaultCompareViewLayout">
+		<property name="headerRenderer" ref="compareViewHeaderRenderer"/>
+		<property name="sectionRenderer" ref="compareViewSectionRenderer"/>
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+	</bean>
+
+	<alias name="defaultCompareViewHeaderRenderer" alias="compareViewHeaderRenderer"/>
+	<bean id="defaultCompareViewHeaderRenderer"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.DefaultCompareViewHeaderRenderer">
+		<property name="itemRenderer" ref="compareViewHeaderItemRenderer"/>
+		<property name="summaryCellRenderer" ref="compareViewHeaderSummaryRenderer"/>
+	</bean>
+
+	<alias name="defaultCompareViewHeaderSummaryRenderer" alias="compareViewHeaderSummaryRenderer"/>
+	<bean id="defaultCompareViewHeaderSummaryRenderer"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.DefaultCompareViewHeaderSummaryRenderer">
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+	</bean>
+
+	<alias name="defaultPinRenderer" alias="pinRenderer"/>
+	<bean id="defaultPinRenderer" class="com.hybris.cockpitng.widgets.compare.renderer.DefaultPinRenderer">
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+	</bean>
+
+	<alias name="defaultRemoveItemRenderer" alias="removeItemRenderer"/>
+	<bean name="defaultRemoveItemRenderer"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.DefaultRemoveItemRenderer">
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+	</bean>
+
+	<alias name="defaultCompareViewBoxRenderer" alias="compareViewBoxRenderer"/>
+	<bean id="defaultCompareViewBoxRenderer"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.DefaultCompareViewBoxRenderer"
+		  parent="abstractImageBoxRenderer" scope="prototype">
+		<property name="pinRenderer" ref="pinRenderer"/>
+		<property name="removeItemRenderer" ref="removeItemRenderer"/>
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+		<property name="itemComparisonFacade" ref="itemComparisonFacade"/>
+	</bean>
+
+	<alias name="defaultCompareViewHeaderItemRenderer" alias="compareViewHeaderItemRenderer"/>
+	<bean id="defaultCompareViewHeaderItemRenderer"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.DefaultCompareViewHeaderItemRenderer">
+		<property name="imageBoxRenderer" ref="compareViewBoxRenderer"/>
+		<property name="itemComparisonFacade" ref="itemComparisonFacade"/>
+		<property name="objectFacade" ref="objectFacade"/>
+	</bean>
+
+	<alias name="defaultCompareViewSectionRenderer" alias="compareViewSectionRenderer"/>
+	<bean id="defaultCompareViewSectionRenderer"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.DefaultCompareViewSectionRenderer">
+		<property name="headerRenderer" ref="compareViewSectionHeaderRenderer"/>
+		<property name="attributeRenderer" ref="compareViewAttributeRenderer"/>
+		<property name="cockpitUserService" ref="cockpitUserService"/>
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+	</bean>
+
+	<alias name="defaultCompareViewSectionHeaderRenderer" alias="compareViewSectionHeaderRenderer"/>
+	<bean id="defaultCompareViewSectionHeaderRenderer"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.DefaultCompareViewSectionHeaderRenderer">
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+		<property name="itemComparisonFacade" ref="itemComparisonFacade"/>
+		<property name="objectFacade" ref="objectFacade"/>
+	</bean>
+
+	<alias name="defaultCompareViewAttributeRenderer" alias="compareViewAttributeRenderer"/>
+	<bean id="defaultCompareViewAttributeRenderer"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.DefaultCompareViewAttributeRenderer">
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+		<property name="labelService" ref="labelService"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+		<property name="objectValueService" ref="objectValueService"/>
+		<property name="widgetRenderingUtils" ref="widgetRenderingUtils"/>
+		<property name="editorWrappingUtils">
+			<bean parent="editorWrappingUtils">
+				<property name="wrapperSetting" value="editorWrapperTemplate"/>
+			</bean>
+		</property>
+		<property name="objectFacade" ref="objectFacade"/>
+		<property name="itemComparisonFacade" ref="itemComparisonFacade"/>
+		<property name="typeFacade" ref="typeFacade"/>
+	</bean>
+
+	<alias name="defaultCompareViewLabelRendererWrapper" alias="compareViewLabelRendererWrapper"/>
+	<bean abstract="true" id="defaultCompareViewLabelRendererWrapper"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.value.CompareViewLabelRendererWrapper">
+		<description>This renderer adds 'No data' label if a value is null</description>
+	</bean>
+
+	<alias name="defaultDirectValueCompareViewLabelRenderer" alias="directValueCompareViewLabelRenderer"/>
+	<bean id="defaultDirectValueCompareViewLabelRenderer" class="com.hybris.cockpitng.editor.instant.CustomizedInstantEditorLabelsRenderer"
+		  parent="instantEditorLabelRenderer">
+		<description>This renderer is used to render an object label next to it's thumbnail</description>
+		<property name="renderers">
+			<map key-type="java.lang.String" value-type="com.hybris.cockpitng.editors.CockpitEditorRenderer">
+				<entry key="^Map\(\s*(.+)\s*,\s*(.+)\s*\)$" value-ref="compareViewMapLabelRenderer"/>
+				<entry key="^List\(\s*(.+)\s*\)$" value-ref="compareViewCollectionLabelRenderer"/>
+				<entry key="^(Enum)?MultiReference-(COLLECTION|LIST|SET)\((\s*([\w.]+)\s*)\)$"
+					   value-ref="compareViewCollectionLabelRenderer"/>
+			</map>
+		</property>
+	</bean>
+
+	<alias name="defaultSingleValueCompareViewLabelRenderer" alias="singleValueCompareViewLabelRenderer"/>
+	<bean id="defaultSingleValueCompareViewLabelRenderer" parent="directValueCompareViewLabelRenderer">
+		<description>This renderer is used to render a single value representation</description>
+		<property name="renderers">
+			<map key-type="java.lang.String" value-type="com.hybris.cockpitng.editors.CockpitEditorRenderer" merge="true">
+				<entry key="^Reference\(([\w.]+)\)$" value-ref="itemPreviewLabelRenderer"/>
+			</map>
+		</property>
+	</bean>
+
+	<alias name="defaultCompareViewLabelRenderer" alias="compareViewLabelRenderer"/>
+	<bean id="defaultCompareViewLabelRenderer" parent="compareViewLabelRendererWrapper">
+		<description>This is a default renderer of a value - it draws collapsed collection, a label with thumbnail, etc.</description>
+		<property name="valueRenderer">
+			<bean class="com.hybris.cockpitng.editor.instant.CustomizedInstantEditorLabelsRenderer"
+				  parent="instantEditorLabelRenderer">
+				<property name="renderers">
+					<map key-type="java.lang.String" value-type="com.hybris.cockpitng.editors.CockpitEditorRenderer">
+						<entry key="^Map\(\s*(.+)\s*,\s*(.+)\s*\)$" value-ref="collapsibleCollectionLabelRenderer"/>
+						<entry key="^List\(\s*(.+)\s*\)$" value-ref="collapsibleCollectionLabelRenderer"/>
+						<entry key="^(Enum)?MultiReference-(COLLECTION|LIST|SET)\((\s*([\w.]+)\s*)\)$"
+							   value-ref="collapsibleCollectionLabelRenderer"/>
+						<entry key="^Reference\(([\w.]+)\)$" value-ref="itemPreviewLabelRenderer"/>
+					</map>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<alias name="defaultCollapsibleCollectionLabelRenderer" alias="collapsibleCollectionLabelRenderer"/>
+	<bean id="defaultCollapsibleCollectionLabelRenderer"
+		  class="com.hybris.cockpitng.widgets.compare.renderer.value.CollapsibleCollectionLabelRenderer">
+		<property name="valueRenderer" ref="singleValueCompareViewLabelRenderer"/>
+	</bean>
+
+	<alias name="defaultCompareViewCollectionLabelRenderer" alias="compareViewCollectionLabelRenderer"/>
+	<bean id="defaultCompareViewCollectionLabelRenderer" parent="compareViewLabelRendererWrapper">
+		<property name="valueRenderer">
+			<bean class="com.hybris.cockpitng.widgets.compare.renderer.value.CollectionLabelRenderer">
+				<property name="valueRenderer" ref="compareViewLabelRenderer"/>
+			</bean>
+		</property>
+	</bean>
+
+	<alias name="defaultCompareViewMapLabelRenderer" alias="compareViewMapLabelRenderer"/>
+	<bean id="defaultCompareViewMapLabelRenderer" parent="compareViewLabelRendererWrapper">
+		<property name="valueRenderer">
+			<bean class="com.hybris.cockpitng.widgets.compare.renderer.value.MapLabelRenderer">
+				<property name="valueRenderer" ref="compareViewLabelRenderer"/>
+			</bean>
+		</property>
+	</bean>
+
+	<alias name="defaultItemPreviewCompareViewLabelRenderer" alias="itemPreviewLabelRenderer"/>
+	<bean id="defaultItemPreviewCompareViewLabelRenderer" class="com.hybris.cockpitng.widgets.compare.renderer.value.ItemPreviewLabelRenderer">
+		<property name="configurationService" ref="cockpitConfigurationService"/>
+		<property name="objectPreviewService" ref="objectPreviewService"/>
+		<property name="labelRenderer" ref="directValueCompareViewLabelRenderer"/>
+		<property name="typeFacade" ref="typeFacade"/>
+	</bean>
+
+	<alias name="defaultEditorWrappingUtils" alias="editorWrappingUtils"/>
+	<bean id="defaultEditorWrappingUtils" class="com.hybris.cockpitng.widgets.util.impl.DefaultEditorWrappingUtils"
+		  abstract="true"/>
+
+	<alias name="defaultComposedFlowActionHandler" alias="composedFlowActionHandler"/>
+	<bean id="defaultComposedFlowActionHandler"
+		  class="com.hybris.cockpitng.widgets.configurableflow.ComposedFlowActionHandler">
+		<property name="proxyAdapterName" value="composedProxyFlowActionHandlerAdapter"/>
+	</bean>
+
+	<alias name="defaultComposedProxyFlowActionHandlerAdapter" alias="composedProxyFlowActionHandlerAdapter"/>
+	<bean id="defaultComposedProxyFlowActionHandlerAdapter"
+		  class="com.hybris.cockpitng.widgets.configurableflow.ProxyFlowActionHandlerAdapter" scope="prototype">
+		<constructor-arg name="handler">
+			<null/>
+		</constructor-arg>
+	</bean>
+
+	<alias name="defaultExplorerTreeItemRenderer" alias="explorerTreeItemRenderer"/>
+	<bean id="defaultExplorerTreeItemRenderer"
+		  class="com.hybris.cockpitng.widgets.common.explorertree.renderer.DefaultTreeitemRenderer" scope="prototype">
+		<constructor-arg>
+			<null/>
+		</constructor-arg>
+	</bean>
+
+	<alias name="defaultEditorAreaSettingsLoader" alias="editorAreaSettingsLoader"/>
+	<bean id="defaultEditorAreaSettingsLoader"
+		  class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaControllerSettingsLoader"
+		  scope="prototype">
+		<constructor-arg>
+			<null/>
+		</constructor-arg>
+	</bean>
+	<alias name="defaultEditorAreaConfigurationLoader" alias="editorAreaConfigurationLoader"/>
+	<bean id="defaultEditorAreaConfigurationLoader"
+		  class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaControllerConfigurationLoader"
+		  scope="prototype">
+		<constructor-arg>
+			<null/>
+		</constructor-arg>
+	</bean>
+	<alias name="defaultEditorAreaConcurrentModificationDelegate" alias="editorAreaConcurrentModificationDelegate"/>
+	<bean id="defaultEditorAreaConcurrentModificationDelegate"
+		  class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaControllerConcurrentModificationDelegate"
+		  scope="prototype">
+		<constructor-arg>
+			<null/>
+		</constructor-arg>
+	</bean>
+	<alias name="defaultEditorAreaFluidModeSwitcherDelegate" alias="editorAreaFluidModeSwitcherDelegate"/>
+	<bean id="defaultEditorAreaFluidModeSwitcherDelegate"
+		  class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaControllerFluidModeSwitcherDelegate"
+		  scope="prototype">
+		<constructor-arg>
+			<null/>
+		</constructor-arg>
+	</bean>
+	<alias name="defaultEditorAreaModelOperationsDelegate" alias="editorAreaModelOperationsDelegate"/>
+	<bean id="defaultEditorAreaModelOperationsDelegate"
+		  class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaControllerModelOperationsDelegate"
+		  scope="prototype">
+		<constructor-arg>
+			<null/>
+		</constructor-arg>
+	</bean>
+	<alias name="defaultEditorAreaPersistenceListeners" alias="editorAreaPersistenceListeners"/>
+	<bean id="defaultEditorAreaPersistenceListeners"
+		  class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaControllerPersistenceListenersDelegate"
+		  scope="prototype">
+		<constructor-arg>
+			<null/>
+		</constructor-arg>
+	</bean>
+	<alias name="defaultEditorAreaComponentsSizeDelegate" alias="editorAreaComponentsSizeDelegate"/>
+	<bean id="defaultEditorAreaComponentsSizeDelegate"
+		  class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaControllerComponentsSizeDelegate"
+		  scope="prototype">
+		<constructor-arg>
+			<null/>
+		</constructor-arg>
+	</bean>
+	<alias name="defaultEditorAreaValidationPopupDelegate" alias="editorAreaValidationPopupDelegate"/>
+	<bean id="defaultEditorAreaValidationPopupDelegate"
+		  class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaControllerValidationPopupDelegate"
+		  scope="prototype">
+		<constructor-arg>
+			<null/>
+		</constructor-arg>
+	</bean>
+	<alias name="defaultEditorAreaWidgetTitleDelegate" alias="editorAreaWidgetTitleDelegate"/>
+	<bean id="defaultEditorAreaWidgetTitleDelegate"
+		  class="com.hybris.cockpitng.widgets.baseeditorarea.DefaultEditorAreaControllerWidgetTitleDelegate"
+		  scope="prototype">
+		<constructor-arg>
+			<null/>
+		</constructor-arg>
+	</bean>
+
+	<bean id="attributesChooserRenderer" class="com.hybris.backoffice.attributechooser.AttributeChooserRenderer">
+		<property name="nodeOperationsHandler" ref="attributesChooserNodesOperationHandler"/>
+		<property name="treeItemRenderer" ref="attributesChooserItemRenderer"/>
+	</bean>
+
+	<alias name="defaultAttributesChooserItemRenderer" alias="attributesChooserItemRenderer"/>
+	<bean id="defaultAttributesChooserItemRenderer"
+		  class="com.hybris.backoffice.attributechooser.AttributeChooserTreeItemRenderer">
+		<property name="labelService" ref="labelService"/>
+	</bean>
+
+	<alias name="defaultAttributesChooserNodesOperationHandler" alias="attributesChooserNodesOperationHandler"/>
+	<bean id="defaultAttributesChooserNodesOperationHandler"
+		  class="com.hybris.backoffice.attributechooser.AttributesChooserNodesOperationsHandler"/>
+
+	<alias name="defaultAttributesForm" alias="attributesForm"/>
+	<bean id="defaultAttributesForm" class="com.hybris.backoffice.attributechooser.AttributeChooserForm"
+		  scope="prototype"/>
+
+	<alias alias="bookmarkHandler" name="defaultBookmarkHandler"/>
+	<bean id="defaultBookmarkHandler" class="com.hybris.cockpitng.widgets.controller.bookmark.DefaultBookmarkHandler">
+		<property name="objectFacade" ref="objectFacade"/>
+		<property name="permissionFacade" ref="permissionFacade"/>
+		<property name="notificationService" ref="notificationService"/>
+		<property name="cockpitUserService" ref="cockpitUserService"/>
+	</bean>
+
+</beans>

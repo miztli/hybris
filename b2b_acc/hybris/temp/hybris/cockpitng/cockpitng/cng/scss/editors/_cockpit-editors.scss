@@ -1,0 +1,688 @@
+/*================================
+    Editors
+================================*/
+// Basics for all Editors (action-icon, label, editor-specials)
+
+
+@import "../support/_cockpit-mixins.scss";
+
+.galleryContainer {
+    overflow-y: auto;
+}
+
+.galleryImgSlot {
+    width: 64px;
+    height: 64px;
+    display: inline-table;
+    padding: 2px;
+    margin: 2px;
+    border: thin #CDCDCD solid;
+}
+
+.defaultTabWidget {
+    background: #FFF !important;
+    
+    .z-tabpanel {
+        padding: 0 !important;
+    }
+}
+
+.editorAreaHeader .z-hbox {
+    table td {
+        &, 
+        &:first-child {
+            padding: 5px 0px;
+        }
+    }
+    .z-label {
+        font-weight: bold;
+    }
+}
+
+.cng-action {
+    &:hover {
+        cursor: pointer;
+    }
+
+    &-icon {
+        vertical-align: middle;
+    }
+    &-enabled .cng-action-icon {
+        &:hover, &:focus {
+            background: $editor-defaults__action-button--hover-bg-color;
+            color: $editor-defaults__action-button--hover-color;
+            transition: $editor-defaults__action-button--transition;
+        }
+    }
+    &-text {
+        padding-left: 2px;
+        padding-right: 2px;
+        white-space: nowrap;
+    }
+    &-disabled {
+        &:hover {
+            cursor: default !important;
+        }
+        .cng-action-text {
+            color: #808080;
+        }
+    }
+}
+
+// EDIT/PROPERTY LABELS
+// ====================
+//
+
+.yw-editorarea-tabbox-tabpanels, 
+.yw-editorarea-label-container, 
+.yw-wizard-property, 
+.ye-complextype-main-cnt {
+    .z-label {
+        display: inline-block;
+        margin-bottom: $editor-defaults__label-field--margin-bottom;
+        color: $editor-defaults__label-field--color;
+        line-height: $editor-defaults__label-field--line-height;
+    }
+}
+
+.yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell-label {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    
+    .ie &,
+    .edge & {
+        word-break: break-all;
+    }
+}
+
+.yw-wizard-property {
+    > .z-label {
+        overflow-wrap: break-word;
+        max-width: 100%;
+
+        .ie &,
+        .edge & {
+            word-break: break-all;
+        }
+    }
+
+    .yw-loceditor-caption {
+        padding-right: $editor-defaults__loceditor-caption--padding-right;
+        min-height: $editor-defaults__loceditor-caption--min-height;
+        position: relative;
+    }
+    &.ye-validation-error,
+    &.ye-validation-warn,
+    &.ye-validation-info {
+        > .z-label {
+            padding-right: $editor-defaults__editor-validation-label--padding-right;
+        }
+        .yw-loceditor-caption {
+            padding-right: $editor-defaults__editor-validation-loceditor-caption--padding-right;
+        }
+    }
+    &,
+    &.ye-validation-error,
+    &.ye-validation-warn,
+    &.ye-validation-info {
+        .yw-loceditor .yw-loceditor-caption > .y-icon-loceditor {
+            top: $editor-defaults__wizard-popup-locedtior-icont--top;
+            position: absolute;
+            left: auto;
+            right: 0;
+        }
+    }
+}
+
+
+// LOCALIZED VALUES
+// ====================
+//
+
+.yw-loceditor {
+    border: none;
+    &-caption > .z-caption-content {
+        display: block;
+    }
+
+    &-row-editor {
+        width: 100%;
+        display: table-cell;
+    }
+}
+
+// Validation icon for localized editor
+
+.ye-validation-error .ye-validation-exclamation-icon {
+    background-position: -32px 0px;
+}
+
+.ye-validation-warn .ye-validation-exclamation-icon {
+    background-position: -16px 0px;
+}
+
+.ye-validation-info .ye-validation-exclamation-icon {
+    background-position: 0px 0px;
+}
+
+// Validation colors for specific locales in localized editor
+
+.ye-validation-local-error > .yw-loceditor-row-editor .z-div .ye-input-text {
+    background: $orange__default--100;
+    border: 1px solid $orange__default--200;
+    color: $orange__default--200;
+}
+
+.ye-validation-local-warn > .yw-loceditor-row-editor .z-div .ye-input-text {
+    background: #fff9e9;
+    border: 1px solid #ff9914;
+    color: #ff9914;
+}
+
+.ye-validation-local-info > .yw-loceditor-row-editor .z-div .ye-input-text {
+    background: #e5eff8;
+    border: 1px solid #025eba;
+    color: #025eba;
+}
+
+.ye-validation-local-error > .yw-editorarea-tabbox-tabpanels-tabpanel .z-label.yw-loceditor-row-locale {
+    background: $orange__default--100;
+    border: 1px solid $orange__default--200;
+    color: $orange__default--200;
+}
+
+.ye-validation-local-warn > .yw-editorarea-tabbox-tabpanels-tabpanel .z-label.yw-loceditor-row-locale {
+    background: #fff9e9;
+    border: 1px solid #ff9914;
+    color: #ff9914;
+}
+
+.ye-validation-local-info > .yw-editorarea-tabbox-tabpanels-tabpanel .z-label.yw-loceditor-row-locale {
+    background: #e5eff8;
+    border: 1px solid #025eba;
+    color: #025eba;
+}
+
+.ye-editor-validation-popup-invisible {
+    opacity: 0;
+    visibility: hidden;
+}
+
+// TODO: optimize with @mixin _validation-icon in _defaultEditorArea-mixins.scss
+.ye-editor-validation-popup.z-window-popup .z-vlayout-inner .ye-validation-popup-row-cnt.ye-validation-info:before,
+.ye-editor-validation-popup.z-window-popup .z-vlayout-inner .ye-validation-popup-row-cnt.ye-validation-warn:before,
+.ye-editor-validation-popup.z-window-popup .z-vlayout-inner .ye-validation-popup-row-cnt.ye-validation-error:before {
+    position: absolute;
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin: 0px 10px 0px 0;
+    background: url("images/icon_validation_sprite.png") no-repeat;
+}
+
+.ye-editor-validation-popup.z-window-popup .z-vlayout-inner .ye-validation-popup-row-cnt.ye-validation-warn:before {
+    background-position: -16px 0;
+}
+
+.ye-editor-validation-popup.z-window-popup .z-vlayout-inner .ye-validation-popup-row-cnt.ye-validation-error:before {
+    background-position: -32px 0;
+}
+
+.ye-editor-validation-popup.z-window-popup {
+    background: $window__popup--bg-color none repeat scroll 0 0;
+    border: 1px solid #acacac;
+    box-shadow: 0px 0px 12px 1px rgba(127, 144, 164, 0.23);
+}
+
+.ye-editor-validation-popup.z-window-popup {
+    margin-top: -9px;
+    max-width: 270px;
+    min-width: 270px;
+}
+
+.ye-editor-validation-popup .ye-editor-validation-popup-content {
+    max-height: 400px;
+    overflow: auto;
+}
+
+// VALIDATION //
+// Mainly Editors, Should be combined with those in Editor Area? Or simply delclared in a separate File _cockpit-validation.scss (not yet existing)
+
+.ye-localized .ye-validation-exclamation-icon {
+    position: relative;
+    top: $editor-defaults__icon--size;
+}
+
+.ye-validation-info .yw-loceditor-caption span.y-icon-loceditor, 
+.ye-validation-warn .yw-loceditor-caption span.y-icon-loceditor, 
+.ye-validation-error .yw-loceditor-caption span.y-icon-loceditor {
+    margin-right: $editor-defaults__icon--size + 4px;
+    // background-position: 0 -112px;
+}
+
+.yw-loceditor.z-groupbox-collapsed .z-groupbox-header,
+.yw-loceditor .z-groupbox-header {
+    top: 0;
+    border: none;
+}
+
+.yw-loceditor-caption .y-icon-loceditor {
+    float: right;
+    margin-bottom: 1px;
+}
+
+.y-icon-loceditor,
+.y-icon-loceditor.z-button,
+.y-attributepicker-localized .z-tree-icon > i:after {
+    background: url("images/icon_func_localised_fields_sprite.png") no-repeat 0 0;
+}
+
+.y-icon-loceditor,
+.y-attributepicker-localized .z-tree-icon {
+    cursor: pointer;
+    opacity: 0.8;
+    
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.yw-loceditor-caption {
+    .y-icon-loceditor-disabled, .y-icon-loceditor-disabled:hover {
+        background-position: 0 -32px;
+        cursor: default;
+        opacity: 1;
+    }
+}
+
+.y-icon-loceditor {
+    .yw-loceditor-fixed-closed {
+        background-position: 0 0;
+    }
+
+    .yw-loceditor-fixed-open .y-icon-loceditor {
+        background-position: 0 -16px;
+    }
+
+    .ye-validation-info & {
+        background-position: 0 -48px;
+    }
+    .ye-validation-warn & {
+        background-position: 0 -64px;
+    } 
+    .ye-validation-error & { 
+        background-position: 0 -80px;
+    }
+}
+
+
+
+.z-label.yw-loceditor-row-locale {
+    font-size: $editor-defaults__input-field--font-size;//12px !important;
+    font-weight: normal !important;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+    background-color: $editor-defaults__locedit-label--bg-color;
+    border: $editor-defaults__locedit-box--border-width solid $grey__default--900;
+    border-right: none;
+    text-align: left;
+    padding: $editor-defaults__locedit-label--padding;
+    min-width: $editor-defaults__locedit-label--width;
+    color: $editor-defaults__label--color;
+    height: $editor-defaults__inline-box--height;
+}
+.yw-loceditor-row-wysiwyg .z-label.yw-loceditor-row-locale {
+    display: inline-block;
+    border-radius: $editor-defaults__input-field--border-radius;
+    border: $editor-defaults__locedit-box--border-width solid $editor-defaults__box--border-color;
+    border-bottom-width: 0;
+    height: $editor-defaults__inline-box--height;
+    line-height: $editor-defaults__inline-box--height;
+    margin-bottom: 0;
+    width: auto;
+    min-width: auto;
+}
+
+.yw-loceditor-fixed-open, 
+.yw-loceditor-dynamic-content {
+    .yw-loceditor-row-wysiwyg .yw-loceditor-row-locale + .yw-loceditor-row-editor .ye-wysiwyg .z-ckeditor > .cke {
+        border-top-left-radius: 0;
+    }
+
+    .ye-com_hybris_cockpitng_editor_boolean_wrapper tr tr {
+        border: $editor-defaults__locedit-box--border-width solid $grey__default--900;
+        border-right: none;
+    }
+    .yw-loceditor-row-editor > .z-div {
+        > .yw-feature-value-container-with-unit > div.z-div {
+            min-height: 100%;
+            height: auto;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+
+            .safari & {
+                .z-combobox {
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                    display: flex;
+                    
+                    &-button {
+                        display: -webkit-box;
+                        display: -webkit-flex;
+                        display: flex;
+                        -webkit-box-orient: vertical;
+                        -webkit-box-direction: normal;
+                        -webkit-flex-direction: column;
+                        flex-direction: column;
+                        -webkit-box-pack: center;
+                        -webkit-justify-content: center;
+                        justify-content: center;
+                    }
+                    &-input {
+                        -webkit-box-flex: 1;
+                        -webkit-flex: 1;
+                        flex: 1;
+                    }
+                }
+            }
+            .ie10,
+            .ie11 & {
+                .z-combobox {
+                    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    &-input{
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.yw-loceditor-dynamic-content {
+    .yw-loceditor-row-wysiwyg .z-label.yw-loceditor-row-locale {
+        margin-top: $editor-defaults__label-field--margin-bottom;
+    }
+}
+
+
+/* It disables border for validation but border is needed */
+.yw-wizard-content .yw-loceditor-fixed-open input.ye-input-text.ye-com_hybris_cockpitng_editor_defaulttext.z-textbox,
+.yw-wizard-content .yw-loceditor-dynamic-content input.ye-input-text.ye-com_hybris_cockpitng_editor_defaulttext.z-textbox {
+    border: 0 none;
+}
+
+
+.yw-loceditor-row {
+    margin-bottom: $editor-defaults__locedit-options--margin-y;
+    position: relative;
+    display: block;
+    border-collapse: separate;
+    border-radius: $editor-defaults__input-field--border-radius;
+
+    
+}
+
+.yw-loceditor-fixed-closed .yw-loceditor-row {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+
+    .ye-com_hybris_cockpitng_editor_boolean_wrapper tr tr {
+        border: none;
+    }
+}
+
+.yw-loceditor-fixed-closed .yw-loceditor-row-editor,
+.yw-loceditor-row-wysiwyg .yw-loceditor-row-editor {
+    display: block;
+}
+
+.yw-loceditor-fixed-open-wysiwyg .yw-loceditor-row {
+    display: block;
+    border: 0 none;
+}
+
+.yw-loceditor.ye-com_hybris_cockpitng_editor_localized .ye-default-reference-editor-bandbox .z-bandbox-input {
+    border-width: 0;
+    border-right-width: $editor-defaults__locedit-box--border-width;
+    // border: 0 none;
+}
+
+.yw-loceditor.ye-com_hybris_cockpitng_editor_localized .yw-loceditor-fixed-closed .ye-default-reference-editor-bandbox .z-bandbox-input {
+    border-width: $editor-defaults__locedit-box--border-width;
+    border-right-width: 0;
+}
+
+.yw-loceditor-row .z-bandbox {
+    border-spacing: 0;
+}
+
+.yw-loceditor .ye-default-reference-editor .z-bandbox-button {
+    border-width: 0;
+}
+
+.yw-loceditor-fixed-closed .ye-default-reference-editor .z-bandbox-button {
+    border-width: $editor-defaults__locedit-box--border-width;
+}
+
+// check if necessary (seems duplicate)
+.yw-loceditor-collapsed .yw-loceditor-fixed-closed {
+    .yw-loceditor-row {
+        display: table;
+        width: 100%;
+        .yw-loceditor-row-locale {
+            border: $editor-defaults__locedit-box--border-width solid $editor-defaults__box--border-color;
+            border-right: none;
+        }
+    }
+    .yw-loceditor-row-locale {
+        &:after, &:before {
+            width: $editor-defaults__locedit-box--border-width;
+            bottom: 0;
+            background: $editor-defaults__box--border-color;//#b7bdc8;
+            top: 0;
+            left: $editor-defaults__locedit-label--width;
+            content: '';
+            position: absolute;
+        }
+        &::after {
+            left: inherit;
+            right: 0;
+        }
+    }
+}
+
+.yw-loceditor-fixed-open .yw-loceditor-row {
+    width: 100%;
+}
+
+.yw-loceditor .yw-loceditor-disabled {
+    border: $editor-defaults__locedit-box--border-width solid $editor-defaults__input-box-disabled--border-color;
+    height: $editor-defaults__box--height;
+    line-height: $editor-defaults__input-field--line-height;
+    // text-align: center;
+}
+
+// Y EDITOR STYLING
+// ====================
+//
+
+// READ ONLY STYLES
+.z-textbox[readonly], .z-decimalbox[readonly], .z-intbox[readonly], .z-longbox[readonly], .z-doublebox[readonly],
+.z-textbox-readonly, .z-bandbox-readonly {
+    color: $editor-defaults__input-box-disabled--color;
+    border-color: $editor-defaults__input-box-disabled--border-color;
+    background-color: $editor-defaults__input-box-disabled--bg-color;
+    opacity: 1;
+}
+
+/*
+.ye-com_hybris_cockpitng_editor_defaultdecimal input,
+.ye-com_hybris_cockpitng_editor_defaultbigdecimal input,
+.ye-com_hybris_cockpitng_editor_defaultfloat input,
+.ye-com_hybris_cockpitng_editor_defaultinteger input,
+.ye-com_hybris_cockpitng_editor_defaultshort input,
+.ye-com_hybris_cockpitng_editor_defaultbyte input,
+.ye-com_hybris_cockpitng_editor_defaultlong input,
+input.ye-com_hybris_cockpitng_editor_defaultdecimal,
+input.ye-com_hybris_cockpitng_editor_defaultbigdecimal,
+input.ye-com_hybris_cockpitng_editor_defaultfloat,
+input.ye-com_hybris_cockpitng_editor_defaultinteger,
+input.ye-com_hybris_cockpitng_editor_defaultshort,
+input.ye-com_hybris_cockpitng_editor_defaultbyte,
+input.ye-com_hybris_cockpitng_editor_defaultlong,
+*/
+.ye-input-text,
+.y-general-textinput,
+.ye-onpremise-pk-editor.z-textbox {
+    width: 100%;
+}
+
+table.ye-com_hybris_cockpitng_editor_defaultdate td.z-hbox-separator {
+    width: 0.3em;
+}
+
+.yw-custompopup-referenceeditor {
+    width: $window__custom-popup-reference-editor--width;
+    height: $window__custom-popup-reference-editor--height;
+    min-height: $window__custom-popup-reference-editor--height;
+}
+
+.attribute-label-description {
+    display: inline-block;
+    margin: -1px 0 0 5px;
+    height: 12px;
+    width: 13px;
+    background-image: url("images/icon_tooltip_help.png");
+    cursor: pointer;
+}
+
+.ye-rows-height {
+    height: auto !important;
+}
+
+.ye-list .ye-list-content div.z-listbox-body {
+    // Do not remove this will break the responsive behavior of the editor area
+    width: 100% !important;
+}
+
+.yw-widget-rendering-error-container {
+    border-style: dashed;
+    border-width: thin;
+    margin: 5px;
+    padding: 5px;
+    width: auto;
+    border-color: darkred;
+}
+
+// Y RANGE EDITOR STYLING
+// ====================
+// basic styling for editors in range mode
+
+.ye-range {
+    .ye-range-label {
+        font-size: $editor-defaults__range-label-field--font-size;
+        text-transform: uppercase;
+        margin-top: 0;
+    }
+
+    .ye-range-editor-featurevalue + .ye-range-label {
+        margin-top: $editor-defaults__range-label-field--margin-top;
+    }
+}
+
+.yw-feature-value-container-with-unit {
+    width: 100%;
+    display: table;
+    height: 100%;
+
+    > div {
+        display: table-cell;
+
+        &.z-div {
+            vertical-align: top;
+            height: 100%;
+
+            &:first-child {
+                width: $editor-defaults__range-featurevalue--width-percentage;
+            }
+
+            &:last-child {
+                width: $editor-defaults__range-combobox--width-percentage;
+
+                .yw-loceditor-fixed-open &,
+                .yw-loceditor-dynamic-content & {
+                    
+                    .z-combobox,
+                    .z-combobox-input,
+                    .z-combobox-button {
+                        height: 100%;
+                    }
+                    .ie11 &,
+                    .ie10 & {
+                        border: $editor-defaults__locedit-box--border-width solid $grey__default--900;
+                        vertical-align: middle;
+
+                        .z-combobox,
+                        .z-combobox-input,
+                        .z-combobox-button {
+                            border:none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.yw-feature-value-container,
+.ye-com_hybris_cockpitng_editor_localized > .z-div {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.yw-editorarea-label-container {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+
+    &:empty {
+        width: 0 !important;
+        padding: 0;
+    }
+    & + .z-div {
+        -webkit-box-flex: 2;
+        -webkit-flex: 2 1 62%;
+        -ms-flex: 2 1 62%;
+        flex: 2 1 62%;
+    } 
+}
+
+.yw-feature-value-unit-container {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 36%;
+    -ms-flex: 1 1 36%;
+    flex: 1 1 36%;
+}
+
+.yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell [class*="ye-validation-"] > .ye-validation-panel:not([class*="ye-localized"]) .y-icon {
+    position: absolute;
+    right: 0;
+    top: -($editor-defaults__label-field--line-height + $editor-defaults__label-field--margin-bottom);
+}

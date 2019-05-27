@@ -1,0 +1,9 @@
+Dear Customer Service Agent
+
+	The customer support ticket ${ctx.ticketId} was updated with the following message:
+
+	${ctx.text}
+
+	Thank you
+
+	Your Customer Service Team

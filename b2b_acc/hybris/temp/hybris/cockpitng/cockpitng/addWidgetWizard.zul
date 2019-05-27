@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?script src="/scripts/tools.expose-1.0.3.js"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:h="http://www.w3.org/1999/xhtml"
+		xmlns:w="http://www.zkoss.org/2005/zk/client"
+		xmlns:zk="http://www.zkoss.org/2005/zk"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd http://www.hybris.com/schema/cockpitng/zul/zul.xsd">
+     
+	<div id="mainContainer" width="410px" height="410px" style="position:relative; overflow: hidden;"
+		apply="com.hybris.cockpitng.adminmode.wizards.AddWidgetWizardController" >
+
+        <div id="d1" width="410px" height="410px" style="position: absolute; top: 0px; left: 0;">
+        	<div id="tb0" height="44px" sclass="yo-searchNavigationBar">
+        		<label value="Select or filter:" />
+                <textbox id="widgetFilter" />
+        		<fileupload id="uploadButton" tooltiptext="Upload a jar file" label="Upload" style="position: absolute; right: 90px;" number="1" native="true" />
+        		<toolbarbutton id="refreshButton" label="Refresh library" style="position: absolute; right: 10px;" sclass="yo-refreshLibraryButton" />
+        	</div>
+			    <listbox height="362px" width="410px" id="categoryListbox"
+  				  w:onSelect="jq(this.parent.parent.$f('d1')).animate({left:'-410px'}, 500);
+  					     jq(this.parent.parent.$f('d2')).animate({left:'0px'}, 500);
+  					     jq(this.parent.parent.$f('d3')).animate({left:'410px'}, 500);"/>
+        </div>
+
+        <div id="d2" width="410px" height="410px" style="position: absolute; top: 0px; left: 410px;">
+        	<div id="tb1" height="44px" sclass="yo-searchNavigationBar">
+	    	    <button label="&#171; Categories" id="backButton1"
+		        	w:onClick="	jq(this.parent.parent.parent.$f('d1')).animate({left:'0px'}, 500);
+		        				jq(this.parent.parent.parent.$f('d2')).animate({left:'410px'}, 500);
+		        				jq(this.parent.parent.parent.$f('d3')).animate({left:'820px'}, 500);"/>
+      		</div>
+      		<listbox width="410px" height="362px" id="widgetListbox"
+      			w:onSelect="jq(this.parent.parent.$f('d1')).animate({left:'-820px'}, 500);
+	        				jq(this.parent.parent.$f('d2')).animate({left:'-410px'}, 500);
+	        				jq(this.parent.parent.$f('d3')).animate({left:'0px'}, 500);"/>
+        </div>
+
+        <div id="d3" width="410px" height="410px" style="position: absolute; top: 0px; left: 410px;">
+        	<div id="tb2" height="44px" sclass="yo-searchNavigationBar">
+	    	    <button label="" id="backButton2"
+		        	w:onClick="	jq(this.parent.parent.parent.$f('d1')).animate({left:'-410px'}, 500);
+		        				jq(this.parent.parent.parent.$f('d2')).animate({left:'0px'}, 500);
+		        				jq(this.parent.parent.parent.$f('d3')).animate({left:'410px'}, 500);"/>
+      		</div>
+      		<div id="widgetDescriptionContainer" sclass="addWidgetWizardDetails" height="362px"/>
+        </div>
+	</div>
+</zk> 

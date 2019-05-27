@@ -1,0 +1,74 @@
+/*================================
+    Advanced Search - Text-Search
+================================*/
+// Styling of the simpletext text-search
+
+
+@import "../support/_advancedsearch-variables.scss";
+
+.yw-textsearch {
+    padding: $advancedsearch__textsearch--padding;
+    
+    &-searchbox {
+        width: $advancedsearch__textsearch-box--width;
+        height: $advancedsearch__textsearch--height;
+        line-height: $advancedsearch__textsearch--line-height;
+        border-radius: $editor-defaults__input-field--border-radius;
+        color: $advancedsearch__textsearch--color;
+        margin-left: $advancedsearch__textsearch--margin-left;
+        vertical-align: $advancedsearch__textsearch--vertical-align;
+        box-sizing: border-box;
+
+        .z-bandbox {
+            &-input {
+                border-right-width: $advancedsearch-header__search-input-field--border-width;
+                vertical-align: top;
+            }
+            &-popup.z-bandbox-open {
+                top: auto !important;
+                left: auto !important;
+            }
+
+            &-button {
+                // we want to hide default magnifier icon for simple search bandbox
+                display: none;
+            }
+
+        }
+    }
+    .yw-search-mode-container .z-bandbox {
+        &-button {
+            height: $advancedsearch__default-button--size;
+            width: $advancedsearch__default-button--size;
+        }
+
+        &-icon {
+            width: $advancedsearch__textsearch-bandbox-icon--width;
+            line-height: $advancedsearch__textsearch-bandbox-icon--line-height;
+        }
+    }
+
+    &-searchbutton {
+        height: $editor-defaults__inline-box--height;
+        border: $advancedsearch__button--border;
+        border-left-width: 0;
+        &:hover,
+        &:focus {
+            border: $advancedsearch__button--border;
+            border-left-width: 0;
+        }
+    }
+
+    &.yw-toggle-open {
+
+        .yw-textsearch-searchbutton {
+            display: inline-block;
+            vertical-align: top;
+            float: left;
+            text-indent: 0;
+            &, &:hover, &:focus {
+                 border: $advancedsearch__button--border;
+            }
+        }
+    }
+}

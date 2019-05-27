@@ -1,0 +1,31 @@
+/*================================
+    Dashboard Charts
+================================*/
+// Defined Variables for Dashboard Charts
+
+
+@import "cockpitng-globals.scss";
+
+$dashboard__draggable-slot--bckg-color: rgba($blue__default, 0.3);
+$dashboard__draggable-slot--border-color: $grey__light--300;
+$dashboard--bckg-color: $grey__light--300;
+$dashboard__draggable-slot-ghost--bckg-color: $blue__default;
+$dashboard__draggable-slot-ghost--max-width: 500px;
+$dashboard__draggable-slot-ghost--border-height: $editor-defaults__input-field--border-width;
+$dashboard__info-value--font-size: $font-size__h1;
+$dashboard__dashboard-header--color: $blue__dark--700;
+$dashboard__dashboard-slot--padding: $container-spacing-default__third;
+$dashboard__dashboard-slot-draggable-icon--size: 27px;
+$dashboard__dashboard-slot-draggable--width: 100%;
+$dashboard__dashboard-slot-draggable--height: 6px;
+$dashboard__dashboard-slot-draggable--z-index: 2;
+$dashboard__dashboard-title-border--position-top: 60px;
+$dashboard__draggable-slot-ghost--height: $dashboard__dashboard-title-border--position-top;
+$dashboard__dashboard--padding-right: $container-spacing-default__third;
+$dashboard__dashboard-lock--right: $container-spacing-default__third;
+$dashboard__dashboard-actions--margin: $container-spacing-default__third;
+$_dashboard__dashboard-widget-body--box-shadow: 0 1px 2px rgba(111, 124, 145, 0.58);
+$_dashboard__dashboard-widget-body--bg-color: $white;
+
+$dashboard__action-button--hover-border-color: $editor-defaults__action-button-hover--border-color;
+$dashboard__action-button--border-width: $editor-defaults__action-button--border-width;

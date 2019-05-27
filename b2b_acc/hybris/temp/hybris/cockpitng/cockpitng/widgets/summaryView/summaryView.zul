@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+        height="100%">
+    <vlayout width="100%" height="100%" spacing="auto" sclass="yw-summaryview">
+        <div id="titleContainer" sclass="yw-summaryview-title-container"/>
+        <div id="thumbnailContainer" sclass="yw-summaryview-image-container"/>
+        <div sclass="yw-summaryview-main-content" vflex="1">
+            <div id="content"/>
+        </div>
+    </vlayout>
+</widget>

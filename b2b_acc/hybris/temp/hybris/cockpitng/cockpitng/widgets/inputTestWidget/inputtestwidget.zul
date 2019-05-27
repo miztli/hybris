@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:h="http://www.w3.org/1999/xhtml"
+		xmlns:zk="http://www.zkoss.org/2005/zk"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd">
+	<style src="${wr}/inputTestWidget.css"/>
+	<div>
+		<label  style="font-weight: bold;font-size: 13px;" value="${widgetSettings.inputType}"></label>
+		<div>
+			<codeeditor id="groovyConsole" width="100%" value="${widgetModel.groovyConsole}"
+				height="${widgetSettings.textAreaHeight}px" syntax="groovy">
+					<custom-attributes ytestid="groovyConsole"/>
+			</codeeditor>
+		</div>
+		<div id="gb_sticky_cnt">
+			<div sclass="yw-groupbox-content">
+				<panel id="outputConsoleBox" sclass="yw-outputConsole-box" framable="false" collapsible="true" open="false">
+					<caption label="Console">
+						<div>
+							<checkbox id="stickyCheckbox" onClick='gb_sticky_cnt.setSclass("sticky" + self.isChecked())'/>
+						</div>
+					</caption>
+					<panelchildren>
+						<label id="consoleOutput" sclass="yw-outputConsole" height="${widgetSettings.textAreaHeight / 3}px" multiline="true"/>
+					</panelchildren>
+				</panel>
+			</div>
+		</div>
+		<div style="padding: 5px;">
+			<hlayout sclass="z-valign-middle" spacing="5px">
+				<label value="History: " />
+				<div hflex="1">
+					<listbox id="historyBox" mold="select" width="100%"/>
+				</div>
+				<div>
+					<menupopup id="snippetMenu"/>
+ 					<button popup="${snippetMenu}" label="Snippets"/>
+				</div>
+			</hlayout>
+		</div>
+		<div align="right" style="padding: 5px;">
+			<button id="sendButton" label="SEND" width="50%"/>
+		</div>
+	</div>
+</widget>

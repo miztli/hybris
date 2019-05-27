@@ -1,0 +1,28 @@
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="de.hybris.platform.ruleenginebackoffice.widgets.listview.actions.pushrulestoengine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+
+   <name>title.pushrulestoengine</name>
+   <description>pushRulesToEngine</description>
+   <author>hybris.com</author>
+   <version>0.1</version>
+
+   <actionClassName>de.hybris.platform.ruleenginebackoffice.widgets.listview.actions.PushRulesToEngineAction</actionClassName>
+
+   <inputType>java.lang.String</inputType>
+   <outputType>java.lang.String</outputType>
+
+   <iconUri>icons/icon_action_compileall_default.png</iconUri>
+   <iconHoverUri>icons/icon_action_compileall_hover.png</iconHoverUri>
+   <iconDisabledUri>icons/icon_action_compileall_disabled.png</iconDisabledUri>
+
+</action-definition>

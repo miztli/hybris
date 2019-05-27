@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		width="100%" height="100%" align="center"
+		onSocketInput_zulContent='renderArea.getChildren().clear();
+			Executions.createComponentsDirectly(event.getData(), null, renderArea, null);
+			widgetModel.put("currentContent", event.getData());
+			if(widgetModel.get("zulHistory") != null) 
+				widgetModel.get("zulHistory").add(event.getData());
+			else {
+				java.util.ArrayList histList = new java.util.ArrayList();
+				histList.add(event.getData());
+				widgetModel.put("zulHistory", histList); }' >
+
+	<div style="position: relative;" width="100%" height="100%" align="left">
+		<custom-attributes ytestid="zulPlayground"/>
+		<div height="30px">
+			<div  style="background: #fafafa; margin: 2px; padding: 5px; padding-left: 15px; border: 1px solid #ccc; border-radius: 6px 6px 6px 6px;">
+				<hbox width="100%" widths="50%,50%">
+					<label value="${widgetTitle}" style="color: #4C7094"/>
+					<div align="right">
+						<menupopup id="mpop">
+							<attribute name="onOpen">
+							<![CDATA[
+								if(widgetModel.get("zulHistory") != null) { self.getChildren().clear(); 
+									int index = 0;
+									for(String s : widgetModel.get("zulHistory")) {
+										index++;
+										Menuitem mi = new Menuitem();
+										mi.setTooltiptext(org.apache.commons.lang.StringEscapeUtils.escapeHtml(s));
+										mi.setLabel(""+index);
+										mi.setAttribute("val",s);
+										mi.addEventListener("onClick", new EventListener() { public void onEvent(Event evt) {
+												widgetController.sendOutput("injectTemplate", evt.getTarget().getAttribute("val"));
+											} });
+										self.appendChild(mi);
+									}}
+								]]>
+							</attribute>
+						</menupopup>
+						<toolbarbutton label="History" popup="mpop"/>
+						<toolbarbutton label="Reset code" 
+							onClick='widgetController.sendOutput("injectTemplate", com.hybris.cockpitng.util.WidgetUtils.ZUL_TEMPLATE)'/>
+					</div>
+				</hbox>
+			</div>
+		</div>
+		
+		<div width="100%" style="position: absolute; top: 30px; bottom: 0px; background: #EDEDED;">
+			<div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 0px;">
+				<borderlayout height="100%" style="background-color: transparent;">
+					<west width="50%" splittable="true"  border="none" style="background-color: transparent;">
+						<div style="padding-left: 5px; padding-right: 5px;" height="100%">
+							<widgetslot slotID="contentSlot" height="100%" />
+						</div>
+					</west>
+					<center style="background-color: transparent;" border="none">
+						<div height="90%" style="position: relative;">
+							<div style="position: absolute; left: 0; top: 0; bottom: 0; right: 0;
+										background: #ccc; border: 3px dashed #86A4BE; z-index: -1;"/>
+							<div id="renderArea" onCreate='if(widgetModel.get("currentContent") != null) 
+									Executions.createComponentsDirectly(widgetModel.get("currentContent"), null, renderArea, null);'/>
+						</div>
+					</center>
+				</borderlayout>
+			</div>
+		</div>
+	</div>
+</widget>

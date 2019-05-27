@@ -1,0 +1,45 @@
+.ye-com_hybris_cockpitng_editor_defaultdate .z-datebox {
+  display: table;
+  position: relative;
+  width: 100%; }
+  .ye-com_hybris_cockpitng_editor_defaultdate .z-datebox-button {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+    padding: 0 5px;
+    border-left: none;
+    box-sizing: border-box; }
+    .ye-com_hybris_cockpitng_editor_defaultdate .z-datebox-button:hover {
+      border-left: none; }
+  .ye-com_hybris_cockpitng_editor_defaultdate .z-datebox-icon {
+    background-image: url("img/icon_inline_calendar_default.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center -1px !important;
+    height: 30px; }
+  .ye-com_hybris_cockpitng_editor_defaultdate .z-datebox-input {
+    margin-bottom: 0;
+    width: 100%;
+    display: table-cell;
+    border-right: none;
+    box-sizing: border-box; }
+  .ye-com_hybris_cockpitng_editor_defaultdate .z-datebox-input.z-datebox-invalid {
+    box-shadow: none;
+    border-right-width: 0 !important;
+    border-color: #ff3b30 !important; }
+    .ye-com_hybris_cockpitng_editor_defaultdate .z-datebox-input.z-datebox-invalid + .z-datebox-button {
+      border-color: #ff3b30 !important; }
+.ye-com_hybris_cockpitng_editor_defaultdate .z-icon-calendar:before {
+  content: ""; }
+.ye-com_hybris_cockpitng_editor_defaultdate .z-datebox-disabled * {
+  background-color: #f6f8fa; }
+.ye-com_hybris_cockpitng_editor_defaultdate .z-datebox-disabled .z-datebox-icon {
+  background-position: center -33px !important; }
+.ye-com_hybris_cockpitng_editor_defaultdate .ye-inline-editing-disabled .z-datebox-input[readonly] {
+  border-color: #acacac;
+  background-color: #ffffff; }
+  .ye-com_hybris_cockpitng_editor_defaultdate .ye-inline-editing-disabled .z-datebox-input[readonly]:focus {
+    border-color: #0486e0; }
+
+.z-window-highlighted .ye-com_hybris_cockpitng_editor_defaultdate table {
+  table-layout: fixed;
+  width: 100%; }

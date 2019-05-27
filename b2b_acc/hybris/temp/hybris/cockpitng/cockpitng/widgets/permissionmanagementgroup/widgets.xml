@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widgets>
+	<widget id="com.hybris.cockpitng.backoffice.permissionmanagementgroup" widgetDefinitionId="com.hybris.cockpitng.borderlayout"
+			  slotId="composedRootSlot" template="false">
+		<widget id="permissionManager" widgetDefinitionId="com.hybris.backoffice.widgets.permissionmanagement"
+				  slotId="cockpitWidgetChildrenInvisible" template="false">
+			<setting key="widgetStyleAttribute" value="" type="String"/>
+			<setting key="widgetStyleClass" value="" type="String"/>
+			<virtual-sockets/>
+		</widget>
+
+			<widget id="leftSlotContent" widgetDefinitionId="com.hybris.cockpitng.collapsiblecontainer" slotId="leftSlot" template="false">
+
+				<setting key="centerHeight" value="80px" type="java.lang.String"/>
+				<setting key="topCaption" value="com.hybris.cockpitng.backoffice.permissionmanagementgroup.filter.context" type="java.lang.String"/>
+				<setting key="bottomCaption" value="com.hybris.cockpitng.backoffice.permissionmanagementgroup.context" type="java.lang.String"/>
+				<setting key="thirdSectionDisabled" type="Boolean" value="true"/>
+
+				<widget id="widgetFilterTypeOrPrincipal" widgetDefinitionId="com.hybris.cockpitng.textsearch" slotId="center" template="false"/>
+				<widget id="typePermissions" widgetDefinitionId="com.hybris.cockpitng.collectionBrowser" slotId="bottom" template="false">
+					<setting key="widgetStyleAttribute" value="" type="String"/>
+					<setting key="colConfigCtxCode" value="permissionManagementTypes" type="String"/>
+					<setting key="collectionBrowserConfigCtx" value="permissionManagementTypesCollectionBrowser" type="String"/>
+					<setting key="actionSlotComponentId" value="permissionManagementlistviewActions" type="String"/>
+					<setting key="itemRenderer" value="permissionManagementListViewRenderer" type="String"/>
+					<setting key="widgetStyleClass" value="" type="String"/>
+					<setting key="socketDataType_$T" type="String">com.hybris.cockpitng.dataaccess.facades.permissions.impl.DefaultPermissionInfo</setting>
+					<virtual-sockets>
+						<output id="com.hybris.cockpitng.action.create.permission.success" type="java.lang.Object" visibility="default"/>
+						<output id="com.hybris.cockpitng.action.delete.permission.success" type="java.util.Collection" visibility="default"/>
+						<input id="permissionInfoType" type="java.lang.String" visibility="default"/>
+					</virtual-sockets>
+				</widget>
+			</widget>
+
+		<widget id="centerSlotContent" widgetDefinitionId="com.hybris.cockpitng.collapsiblecontainer" slotId="centerSlot">
+			<setting key="centerHeight" type="String" value="80px" />
+			<setting key="topCaption" type="String" value="com.hybris.cockpitng.backoffice.permissionmanagementgroup.filter.attributes" />
+			<setting key="bottomCaption" type="String" value="com.hybris.cockpitng.backoffice.permissionmanagementgroup.attributes" />
+			<setting key="thirdSectionDisabled" type="Boolean" value="true" />
+			<widget id="widgetFilterField" widgetDefinitionId="com.hybris.cockpitng.textsearch" slotId="center" template="false" />
+			<widget id="fieldPermissions" widgetDefinitionId="com.hybris.cockpitng.collectionBrowser" slotId="bottom" template="false">
+				<setting key="widgetStyleAttribute" type="String" value="" />
+				<setting key="colConfigCtxCode" type="String" value="permissionManagementFields" />
+				<setting key="collectionBrowserConfigCtx" type="String" value="permissionManagementFieldsCollectionBrowser" />
+				<setting key="widgetStyleClass" type="String" value="" />
+				<setting key="socketDataType_$T" type="String" value="com.hybris.cockpitng.dataaccess.facades.permissions.impl.DefaultPermissionInfo" />
+				<virtual-sockets />
+			</widget>
+		</widget>
+
+		<widget id="permissionLegend" widgetDefinitionId="com.hybris.cockpitng.joker" slotId="bottomSlot" template="false">
+			<setting key="view.zul">
+				<![CDATA[
+					<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+					<widget>
+						<div sclass="yw-permission-legend">
+							<div sclass="yw-permission-legend-holder">
+								<span sclass="yw-permission-legend-icon-inherited-id"></span>
+								<span sclass="yw-permission-legend-icon-inherited-ig"></span>
+								${c:l('permission.inherited')}
+							</div>
+							<div sclass="yw-permission-legend-holder">
+								<span sclass="yw-permission-legend-icon-d"></span>
+								${c:l('permission.denied')}
+							</div>
+							<div sclass="yw-permission-legend-holder">
+								<span sclass="yw-permission-legend-icon-g"></span>
+								${c:l('permission.granted')}
+							</div>
+						</div>
+					</widget>
+				]]>
+			</setting>
+		</widget>
+
+		<widget id="widgetFilterAttributes" widgetDefinitionId="com.hybris.cockpitng.textsearch" slotId="" template="false">
+
+		</widget>
+		<setting key="southHeight" value="30px" type="String"/>
+		<setting key="widgetStyleAttribute" value="" type="String"/>
+		<setting key="northHeight" value="50px" type="String"/>
+		<setting key="eastDisabled" value="true" type="Boolean"/>
+		<setting key="southDisabled" value="false" type="Boolean"/>
+		<setting key="widgetStyleClass" value="" type="String"/>
+		<setting key="southCollapsible" value="false" type="Boolean"/>
+		<setting key="westWidth" value="60%" type="String"/>
+		<virtual-sockets/>
+	</widget>
+
+	<widget-connection sourceWidgetId="com.hybris.cockpitng.backoffice.permissionmanagementgroup" outputId="inputObjectInputForward" targetWidgetId="permissionManager" inputId="inputObject"/>
+	<widget-connection sourceWidgetId="permissionManager" outputId="typePermissionInfos" targetWidgetId="typePermissions" inputId="pageable"/>
+	<widget-connection sourceWidgetId="permissionManager" outputId="principalPermissionInfos" targetWidgetId="typePermissions" inputId="pageable"/>
+	<widget-connection sourceWidgetId="typePermissions" outputId="selectedItem" targetWidgetId="permissionManager"  inputId="permissionInfo"/>
+	<widget-connection sourceWidgetId="permissionManager" outputId="fieldPermissionInfos" targetWidgetId="fieldPermissions"  inputId="pageable"/>
+	<widget-connection sourceWidgetId="typePermissions" outputId="com.hybris.cockpitng.action.create.permission.success" targetWidgetId="permissionManager"  inputId="createPermission"/>
+	<widget-connection sourceWidgetId="typePermissions" outputId="com.hybris.cockpitng.action.delete.permission.success" targetWidgetId="permissionManager"  inputId="removePermissions"/>
+	<widget-connection sourceWidgetId="permissionManager" outputId="permissionInfoType" targetWidgetId="typePermissions" inputId="permissionInfoType"/>
+	<widget-connection sourceWidgetId="widgetFilterTypeOrPrincipal" outputId="query" targetWidgetId="permissionManager" inputId="typeOrPrincipalFilter"/>
+	<widget-connection sourceWidgetId="widgetFilterField" outputId="query" targetWidgetId="permissionManager" inputId="fieldFilter"/>
+
+
+</widgets>

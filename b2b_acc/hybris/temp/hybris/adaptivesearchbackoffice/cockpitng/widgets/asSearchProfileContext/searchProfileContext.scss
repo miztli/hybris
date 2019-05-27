@@ -1,0 +1,75 @@
+/*
+ * [y] hybris Platform
+ *
+ * Copyright (c) 2000-2016 hybris AG
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of hybris
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with hybris.
+ */
+.yw-de_hybris_platform_adaptivesearch_widgets_searchProfileContext {
+	width: 100%;
+	line-height: 25px;
+	position: relative;
+	overflow: auto;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+
+	.yas-context {
+		-webkit-box-flex: 1;
+		-webkit-flex-grow: 1;
+		-ms-flex-positive: 1;
+		flex-grow: 1;
+
+		.yas-label {
+			vertical-align: middle;
+			font-size: $font-size__medium;
+			font-weight: bold;
+			color: $blue__default--600;
+		}
+
+		.yas-search-profile-label {
+			vertical-align: middle;
+			font-size: $font-size__medium;
+			margin-right: 6px;
+		}
+
+		.yas-search-configuration-label {
+			vertical-align: middle;
+			display: inline-block;
+			margin-right: 6px;
+			font-size: $font-size__medium;
+		}
+
+		.yas-info {
+			vertical-align: middle;
+			font-size: 17px;
+			color: $grey__default--1100;
+		}
+	}
+
+	.yas-sync-status {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+
+		&-icon,
+		&-button {
+			width: 28px;
+			height: 28px;
+			text-align: center;
+		}
+	}
+
+}

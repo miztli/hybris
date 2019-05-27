@@ -1,0 +1,41 @@
+@import "cockpitng-globals.scss";
+
+$border-layout__region--bg-color: $blue__dark--100;
+$border-layout__region--box-shadow: false;
+
+$border-layout__mold-light-splitter--bg-color: $grey__light--200;
+$border-layout__mold-light-splitter-button--color: $black;
+$border-layout__mold-light-splitter-button--hover-bg-color: lighten($grey__light--1000, 2%);
+
+.yw-borderlayout {
+	.opaquetrue .yw-layoutregion {
+		background: $border-layout__region--bg-color;
+		
+		@if $border-layout__region--box-shadow {
+			box-shadow: $border-layout__region--box-shadow;
+		}
+	}
+	&.yw-widget-mold-light {
+		> .z-borderlayout > div {
+            > .z-south,
+            > .z-north,
+            > .z-west,
+            > .z-east {
+                &-splitter {
+                    background-color: $border-layout__mold-light-splitter--bg-color;
+                    
+                    > span {
+                        color: $border-layout__mold-light-splitter-button--color;
+                        &:hover {
+                            background-color: transparent;
+                            color: $blue__default;
+                        }
+                    }
+                }
+                &-collapsed {
+                    background-color: $border-layout__mold-light-splitter--bg-color;
+                }
+            }
+        }
+	}
+}

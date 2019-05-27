@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0"
+		   targetNamespace="http://www.hybris.com/cockpitng/config/perspectiveChooser"
+		   xmlns:tns="http://www.hybris.com/cockpitng/config/perspectiveChooser"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="perspective-chooser">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="defaultPerspective" type="tns:defaultPerspective" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="authority" type="tns:authority" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="format" type="tns:format" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="defaultPerspective">
+		<xs:sequence/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+	</xs:complexType>
+
+	<xs:complexType name="perspective">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="authority">
+		<xs:sequence>
+			<xs:element name="perspective" type="tns:perspective" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+
+    <xs:complexType name="format">
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="title-key" type="xs:string" use="optional"/>
+        <xs:attribute name="title" type="xs:string" use="optional"/>
+        <xs:attribute name="description-key" type="xs:string" use="optional"/>
+        <xs:attribute name="description" type="xs:string" use="optional"/>
+        <xs:attribute name="icon-key" type="xs:string" use="optional"/>
+        <xs:attribute name="icon" type="xs:string" use="optional"/>
+    </xs:complexType>
+</xs:schema>

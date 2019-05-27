@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=de
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;Warenkorb
+;customer;Kunde
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;Gesamtsumme des Warenkorbs;Gesamtsumme des Warenkorbs {operator} {value}
+;y_qualifying_products;Qualifizierende Produkte;Warenkorb {products_operator} Produkte {products}
+;y_qualifying_categories;Qualifizierende Kategorien;Warenkorb {categories_operator} Kategorien {categories}
+;y_target_customers;Zielkunden;Ziel {customer_groups_operator} Kundengruppen {customer_groups} oder Kunden {customers}
+;y_product_price;Produktpreis-Schwellenwert;Produktpreis {operator} {value}
+;y_customer_support;Kundensupport;ASM-Sitzung ist aktiv: {value}
+;y_qualifying_group_types;Qualifizierende Gruppenarten;Warenkorbeintragsgruppe {operator} {groupTypes}
+;y_orders;Bestellungen oder Warenkörbe;Bestellungen oder Warenkörbe in {orders}
+;y_order_threshold_perfect_partner;PerfectPartner-Mindestbestellwert;PerfectPartner-Produkt {product} im Warenkorb und Gesamtsumme des Warenkorbs mehr als {cart_threshold} einschließlich rabattierter Preis {is_discounted_price_included}
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;Operator;Operator zum Vergleichen des Warenkorb-Gesamtwerts
+;y_cart_total;value;Gesamtwert des Warenkorbs;Map der Währung und des Werts der zu verwendenden Gesamtsumme des Warenkorbs
+;y_qualifying_products;operator;Operator;Operator zum Vergleichen der für qualifizierende Produkte erforderlichen Menge
+;y_qualifying_products;quantity;Menge pro Bestellungseintrag;Menge der erforderlichen qualifizierenden Produkte (pro Bestellungseintrag)
+;y_qualifying_products;products_operator;Produktauswahloperator;BELIEBIGES Produkt oder ALLE Produkte in der Liste der qualifizierenden Produkte auswählen
+;y_qualifying_products;products;Produkte;Liste der qualifizierenden Produkte
+;y_qualifying_products;catalog;Auswahl nach Katalog filtern;Ausgewählter Katalogwert wird zum Filtern von Zwecken in den zugehörigen Feldern verwendet
+;y_qualifying_categories;operator;Operator;Operator zum Vergleichen der für Produkte in qualifizierenden Kategorien erforderlichen Menge
+;y_qualifying_categories;quantity;Menge pro Bestellungseintrag;Menge der aus qualifizierenden Kategorien erforderlichen Produkte (pro Bestellungseintrag)
+;y_qualifying_categories;categories_operator;Kategorieauswahloperator;BELIEBIGE Kategorie oder ALLE Kategorien in der Liste der qualifizierenden Kategorien auswählen
+;y_qualifying_categories;categories;Kategorien;Liste der qualifizierenden Kategorien
+;y_qualifying_categories;excluded_categories;Ausgeschlossene Kategorien;Liste der aus qualifizierenden Kategorien auszuschließenden Unterkategorien
+;y_qualifying_categories;excluded_products;Ausgeschlossene Produkte;Liste der Produkte aus auszuschließenden qualifizierenden Kategorien
+;y_qualifying_categories;catalog;Auswahl nach Katalog filtern;Ausgewählter Katalogwert wird zum Filtern von Zwecken in den zugehörigen Feldern verwendet
+;y_target_customers;customer_groups_operator;Kundengruppen-Auswahloperator;Kunde muss Teil einer BELIEBIGEN oder ALLER Kundengruppen sein
+;y_target_customers;customer_groups;Kundengruppen;Liste der qualifizierenden Kundengruppen
+;y_target_customers;customers;Kunden;Liste der qualifizierenden Kunden
+;y_target_customers;excluded_customer_groups;Ausgeschlossene Kundengruppen;Liste der aus qualifizierenden Kundengruppen auszuschließenden Untergruppen
+;y_target_customers;excluded_customers;Ausgeschlossene Kunden;Liste der aus qualifizierenden Kundengruppen auszuschließenden Kunden
+;y_product_price;operator;Operator;Operator zum Vergleichen des Produktwerts
+;y_product_price;value;Preisschwellenwert;Map der Währung und des Schwellenwerts der zum Qualifizieren für diese Werbeaktion zu verwendenden Produkte
+;y_customer_support;value;ASM-Sitzung aktiv;Werbeaktion basierend darauf aktivieren, ob ein Kundenbetreuer den Kunden an der Storefront unterstützt
+;y_qualifying_group_types;operator;Operator;Gruppenart-Auswahloperator
+;y_qualifying_group_types;groupTypes;Gruppenarten;Liste der qualifizierenden Gruppenarten
+;y_order_threshold_perfect_partner;catalog;Auswahl nach Katalog filtern;Ausgewählter Katalogwert wird zum Filtern von Zwecken in den zugehörigen Feldern verwendet
+;y_order_threshold_perfect_partner;product;PerfectPartner-Produkt;PerfectPartner-Produkt, das mit Rabatt angeboten wird
+;y_order_threshold_perfect_partner;cart_threshold;Schwellenwert für Gesamtsumme des Warenkorbs;Der Gesamtbestellwert, ab dem diese Werbeaktion gilt. Für jede Währung, die für die Werbeaktion in Frage kommt, muss es einen individuellen Wert geben.
+;y_order_threshold_perfect_partner;is_discounted_price_included;Reduzierten Preis bei Zwischensumme einberechnen;Ob der (rabattierte Preis) des Partnerprodukts für den Vergleich mit dem Schwellwert eingerechnet wird oder nicht.
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;Warenkorbrabatte
+;product_discounts;Produktrabatte
+;partner_product_discounts;Partnerproduktrabatte
+;shipping;Versand
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;Prozentualer Rabatt auf Warenkorb;Rabatt von {value,number,percent*1} auf Gesamtsumme des Warenkorbs anwenden;
+;y_order_fixed_discount;Festrabatt auf Warenkorb;Rabatt von {value} auf Gesamtsumme des Warenkorbs anwenden;
+;y_order_entry_percentage_discount;Prozentualer Rabatt auf Produkte;Rabatt von {value,number,percent*1} auf die qualifizierenden Produkte anwenden;
+;y_order_entry_fixed_discount;Festrabatt auf Produkte;Rabatt von {value} auf die qualifizierenden Produkte anwenden;
+;y_order_entry_fixed_price;Zielfestpreis auf Produkte;Zielpreis {value} auf die qualifizierenden Produkte anwenden;
+;y_target_bundle_price;Ziel-Bundle-Preis;Zielpreis {value} auf das Bundle anwenden;
+;y_free_gift;Geschenk;{quantity} Produkt(e) ({product}) verschenken;
+;y_partner_order_entry_percentage_discount;Prozentualer Rabatt auf Partnerprodukte;Rabatt von {value,number,percent*1} auf die Partnerprodukte anwenden;
+;y_partner_order_entry_fixed_discount;Festrabatt auf Partnerprodukte;Rabatt von {value} auf die Partnerprodukte anwenden;
+;y_partner_order_entry_fixed_price;Zielfestpreis auf Partnerprodukte;Zielpreis {value} auf die Partnerprodukte anwenden;
+;y_change_delivery_mode;Lieferart ändern;Lieferart ändern in {delivery_mode};
+;y_trigger_message;Regelnachricht auslösen;Nachricht für die Regel anzeigen;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;Prozentualer Rabattwert;Prozentualer Rabatt, der auf die Gesamtsumme des Warenkorbs angewendet wird
+;y_order_fixed_discount;value;Absoluter Rabattwert;Map der Währung und des absoluten Rabattwerts, der auf die Gesamtsumme des Warenkorbs angewendet wird
+;y_order_entry_percentage_discount;value;Prozentualer Rabattwert;Prozentualer Rabatt, der auf die qualifizierenden Produkte angewendet wird
+;y_order_entry_fixed_discount;value;Absoluter Rabattwert;Map der Währung und des absoluten Rabattwerts, der auf die qualifizierenden Produkte angewendet wird
+;y_order_entry_fixed_price;value;Zielfestpreis;Map der Währung und des Zielpreiswerts, der auf die qualifizierenden Produkte angewendet wird
+;y_target_bundle_price;value;Ziel-Bundle-Preis;Map der Währung und des Zielpreiswerts, der auf das Bundle angewendet wird
+;y_target_bundle_price;selection_strategy;Auswahlstrategie;Zum Auswählen von Produkten zu verwendende Strategie, wenn mehrere Positionen im Warenkorb für das Bundle qualifiziert sind
+;y_target_bundle_price;qualifying_containers;Bundle-Produktmengen;Map der Container-IDs und der jeweiligen Mengen, aus denen das erforderliche Bundle besteht
+;y_free_gift;product;Gratisprodukt;Produkt, das automatisch in den Warenkorb gelegt werden und ein Werbegeschenk sein soll
+;y_free_gift;quantity;Menge;Menge der zu verschenkenden Positionen
+;y_free_gift;catalog;Auswahl nach Katalog filtern;Ausgewählter Katalogwert wird zum Filtern von Zwecken in den zugehörigen Feldern verwendet
+;y_free_gift;qualifying_containers;Qualifizierende Produktcontainer;Map der Container-IDs und der jeweiligen Mengen, aus denen die qualifizierenden Produkte bestehen
+;y_partner_order_entry_percentage_discount;value;Prozentualer Rabattwert;Prozentualer Rabatt, der auf die Partnerprodukte angewendet wird
+;y_partner_order_entry_percentage_discount;selection_strategy;Auswahlstrategie;Zum Auswählen von Produkten zu verwendende Strategie, wenn mehrere Positionen im Warenkorb für die Aktion qualifiziert sind
+;y_partner_order_entry_percentage_discount;qualifying_containers;Qualifizierende Produktcontainer;Map der Container-IDs und der jeweiligen Mengen, aus denen die qualifizierenden Produkte bestehen
+;y_partner_order_entry_percentage_discount;target_containers;Zielproduktcontainer;Map der Container-IDs und der jeweiligen Mengen, aus denen die Zielpartnerprodukte bestehen
+;y_partner_order_entry_fixed_discount;value;Absoluter Rabattwert;Map der Währung und des Zielpreiswerts, der auf die Partnerprodukte angewendet wird
+;y_partner_order_entry_fixed_discount;selection_strategy;Auswahlstrategie;Zum Auswählen von Produkten zu verwendende Strategie, wenn mehrere Positionen im Warenkorb für die Aktion qualifiziert sind
+;y_partner_order_entry_fixed_discount;qualifying_containers;Qualifizierende Produktcontainer;Map der Container-IDs und der jeweiligen Mengen, aus denen die qualifizierenden Produkte bestehen
+;y_partner_order_entry_fixed_discount;target_containers;Zielproduktcontainer;Map der Container-IDs und der jeweiligen Mengen, aus denen die Zielpartnerprodukte bestehen
+;y_partner_order_entry_fixed_price;value;Zielfestpreis;Map der Währung und des Zielpreiswerts, der auf die Partnerprodukte angewendet wird
+;y_partner_order_entry_fixed_price;selection_strategy;Auswahlstrategie;Zum Auswählen von Produkten zu verwendende Strategie, wenn mehrere Positionen im Warenkorb für die Aktion qualifiziert sind
+;y_partner_order_entry_fixed_price;qualifying_containers;Qualifizierende Produktcontainer;Map der Container-IDs und der jeweiligen Mengen, aus denen die qualifizierenden Produkte bestehen
+;y_partner_order_entry_fixed_price;target_containers;Zielproduktcontainer;Map der Container-IDs und der jeweiligen Mengen, aus denen die Zielpartnerprodukte bestehen
+;y_change_delivery_mode;delivery_mode;Lieferart;Lieferart, die infolge der Aktion auf den Warenkorb angewendet werden soll

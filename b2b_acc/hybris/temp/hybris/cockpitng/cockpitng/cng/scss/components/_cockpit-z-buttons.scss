@@ -1,0 +1,204 @@
+/*================================
+    z-Buttons
+================================*/
+// Definitions of the z-Buttons (Basic Button Component)
+
+
+@import "../support/_cockpit-variables.scss";
+
+.z-button {
+    background-color: $editor-defaults__button--bg-color;
+    border: medium none;
+    background-image: none;
+    border-radius: 0;
+    color: $editor-defaults__button--color;
+    cursor: pointer;
+    font-size: $editor-defaults__button--font-size;
+    font-style: normal;
+    font-weight: 100;
+    height: $editor-defaults__button--height;
+    min-height: $editor-defaults__button--height;
+    line-height: $editor-defaults__button--line-height;
+    padding: $editor-defaults__button--padding;
+    text-transform: uppercase;
+    transition: background-color .3s;
+    @include _prefixed(user-select, none);
+
+    &[disabled], &[disabled]:hover, &[disabled]:active {
+        cursor: default;
+        background-color: $editor-defaults__button-disabled--bg-color !important;
+        color: $editor-defaults__button-disabled--color !important;
+        border: none;
+        box-shadow: none !important;
+    }
+    &:hover {
+        border: none;
+        box-shadow: none;
+        background-color: $editor-defaults__button--hover-bg-color;
+    }
+
+    &:focus {
+        background-color: $editor-defaults__button--focus-bg-color;
+    }
+    &:active {
+        color: $editor-defaults__button--active-color;
+        background-color: $editor-defaults__button--focus-bg-color;
+        box-shadow: inset $editor-defaults__button--active-box-shadow-size $editor-defaults__button--active-box-shadow-color;
+    }
+    &.y-btn-primary {
+        @include _add-primary-button-styles();
+    }
+    &.y-btn-secondary {
+        @include _add-secondary-button-styles();
+    }
+}
+
+.ye-text-button {
+    text-align: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    text-transform: none;
+    white-space: normal;
+    padding: 0;
+    height: auto;
+    min-height: 0;
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $editor-defaults__button-text--bg-color;
+        color: $editor-defaults__button-text--color;
+        box-shadow: none;        
+    }
+    &:hover {
+        color: $editor-defaults__button-text--hover-color;
+        text-decoration: $editor-defaults__button-text--hover-text-decoration;
+    }
+    &[disabled], &[disabled]:hover, &[disabled]:active {
+        color: $editor-defaults__button-text--color;
+        opacity: .8;
+        text-decoration: none;
+    }
+}
+
+.ye-btn-container > button {
+    &.ye-btn-cancel.z-button {
+        padding: 0;
+    }
+}
+
+.ye-btn-container > button.z-button.y-btn-primary {
+    margin-top: .3em;
+}
+
+button.z-button.z-messagebox-button {
+    width: 85pt;
+}
+
+//added from buttons.scss - temorarly added for buttons only in highlighted z-windows
+//if it applies to all, move styleing accordingly
+.yw-syncpopup-navigation,
+.yw-wizard-navigation,
+.yw-dashboard {
+    button.z-button {
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: 500;
+        white-space: nowrap;
+        line-height: 1.33;
+        color: $window-highlighted__navigation-button--color;
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        
+        &:hover, &:active {
+            background-color: transparent;
+            box-shadow: none;
+        }
+        
+        &.y-btn-primary,
+        &.yw-btn-primary {
+            @include _add-primary-button-styles();
+        }
+        
+        &.y-btn-secondary,
+        &.yw-btn-secondary {
+            @include _add-secondary-button-styles();
+        }
+    }
+}
+
+
+button.y-btn-16x16 {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    &:hover {
+        background-position: 0 -16px;
+    }
+    &:active {
+        background-position: 0 -48px;
+    }
+    &.y-active {
+        background-position: 0 -32px;
+    }
+    &.y-disabled {
+        background-position: 0 -64px;
+    }
+}
+
+.ye-delete-btn,
+.cng_admin_deleteButton,
+.yo-delete-btn,
+.removeWidgetBtn {
+    color: $editor-defaults__item-delete-button--color;
+    position: relative;
+    
+    &:after {
+        width: $editor-defaults__item-delete-button--size;
+        height: $editor-defaults__item-delete-button--size;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -(floor($editor-defaults__item-delete-button--size/2));
+        margin-left: -(floor($editor-defaults__item-delete-button--size/2));
+        background: none;
+        content: $close--content;
+        font-family: $font-family-fontawesome;
+        font-size: $editor-defaults__item-delete-button--font-size;
+        line-height: $editor-defaults__item-delete-button--line-height;
+        color: inherit;
+        text-align: center;
+    }
+    &:focus {
+        color: $editor-defaults__item-delete-button--focus-color;
+    }
+    &:active, &:hover {
+        color: $editor-defaults__item-delete-button--hover-color;
+        box-shadow: none;
+    }
+    &:disabled, &[disabled]{
+        color: $editor-defaults__item-delete-button--disabled-color;
+    }
+}
+
+
+
+.ie8,
+.ie9, 
+.ie10 {
+    .z-upload-hover {
+        border: 0;
+        background: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        -ms-box-shadow: none;
+        -o-box-shadow: none;
+        box-shadow: none;
+
+        &.ye-text-button {
+            text-decoration: underline;
+        }
+    }
+}

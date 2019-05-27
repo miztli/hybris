@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=cs
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;Košík
+;customer;Zákazník
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;Košík celkem;Košík celkem {operator} {value}
+;y_qualifying_products;Kvalifikující se produkty;Košík {products_operator} – produkty {products}
+;y_qualifying_categories;Kvalifikující se kategorie;Košík {categories_operator} – kategorie {categories}
+;y_target_customers;Cíloví zákazníci;Cílové {customer_groups_operator} skupiny zákazníků {customer_groups} nebo zákazníci {customers}
+;y_product_price;Prahová cena produktu;Cena produktu {operator} {value}
+;y_customer_support;Zákaznická podpora;Relace s asistenční službou je aktivní: {value}
+;y_qualifying_group_types;Typy kvalifikujících se skupin;Skupina záznamu košíku {operator} {groupTypes}
+;y_orders;Objednávky nebo košíky;Objednávky nebo košíky v {orders}
+;y_order_threshold_perfect_partner;Prahová cena objednávky – ideální kombinace;Propojený produkt {product} v košíku a hodnota košíku vyšší než {cart_threshold} se započítanou zlevněnou cenou {is_discounted_price_included}
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;Operátor;Operátor pro porovnání celkové hodnoty košíku
+;y_cart_total;value;Celková hodnota košíku;Mapa měny a celkové hodnoty košíku, která se použije
+;y_qualifying_products;operator;Operátor;Operátor pro porovnání potřebného množství u kvalifikujících se produktů
+;y_qualifying_products;quantity;Množství na zadání objednávky;Povinné množství u kvalifikujících se produktů (na zadání objednávky)
+;y_qualifying_products;products_operator;Operátor výběru produktu;Vyberte JAKÝKOLI produkt nebo vyberte VŠECHNY produkty ze seznamu kvalifikujících se produktů
+;y_qualifying_products;products;Produkty;Seznam kvalifikujících se produktů
+;y_qualifying_products;catalog;Filtrovat výběr podle katalogu;Vybraná hodnota katalogu se použije pro účely filtrování v přidružených polích
+;y_qualifying_categories;operator;Operátor;Operátor pro porovnání potřebného množství u produktů v kvalifikujících se kategoriích
+;y_qualifying_categories;quantity;Množství na zadání objednávky;Povinné množství produktů z kvalifikujících se kategorií (na zadání objednávky)
+;y_qualifying_categories;categories_operator;Operátor výběru kategorie;Vyberte JAKOUKOLI kategorii nebo vyberte VŠECHNY kategorie ze seznamu kvalifikujících se kategorií
+;y_qualifying_categories;categories;Kategorie;Seznam kvalifikujících se kategorií
+;y_qualifying_categories;excluded_categories;Vyloučené kategorie;Seznam podkategorií, které jsou vyloučeny z kvalifikujících se kategorií
+;y_qualifying_categories;excluded_products;Vyloučené produkty;Seznam produktů z kvalifikujících se kategorií, které se mají vyloučit
+;y_qualifying_categories;catalog;Filtrovat výběr podle katalogu;Vybraná hodnota katalogu se použije pro účely filtrování v přidružených polích
+;y_target_customers;customer_groups_operator;Operátor výběru skupin zákazníků;Zákazník by měl být součástí JAKÝCHKOLI nebo VŠECH skupin zákazníků
+;y_target_customers;customer_groups;Skupiny zákazníků;Seznam kvalifikujících se skupin zákazníků
+;y_target_customers;customers;Zákazníci;Seznam kvalifikujících se zákazníků
+;y_target_customers;excluded_customer_groups;Vyloučené skupiny zákazníků;Seznam podskupin, které by měly být vyloučeny z kvalifikujících se skupin zákazníků
+;y_target_customers;excluded_customers;Vyloučení zákazníci;Seznam zákazníků, které by měly být vyloučeny z kvalifikujících se skupin zákazníků
+;y_product_price;operator;Operátor;Operátor pro porovnání hodnoty produktů
+;y_product_price;value;Cenový práh;Mapa měny a prahové hodnoty produktů, které se mají použít ke kvalifikaci pro tuto akci
+;y_customer_support;value;Relace s asistenční službou je aktivní;Aktivovat akci podle toho, zda pracovník zákaznické podpory pomáhá zákazníkovi ve storefrontu nebo ne
+;y_qualifying_group_types;operator;Operátor;Operátor výběru typu skupiny
+;y_qualifying_group_types;groupTypes;Typy skupin;Seznam typů kvalifikujících se skupin
+;y_order_threshold_perfect_partner;catalog;Filtrovat výběr podle katalogu;Vybraná hodnota katalogu se použije pro účely filtrování v přidružených polích
+;y_order_threshold_perfect_partner;product;Propojený produkt;Propojený produkt nabízený se slevou
+;y_order_threshold_perfect_partner;cart_threshold;Prahová hodnota hodnoty košíku;Celková cena objednávky, které musí být dosaženo, aby se kvalifikoval do této akce. Pro každou měnu je hodnota jiná. Musíte zadat hodnoty u všech měn, které se mohou kvalifikovat pro tuto objednávku.
+;y_order_threshold_perfect_partner;is_discounted_price_included;Počítat se zlevněnou cenou při výpočtu celkové částky;Zahrnout při porovnávání s prahem zlevněnou cenu propojeného produktu do celkové částky objednávky.
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;Slevy z košíku
+;product_discounts;Slevy z produktů
+;partner_product_discounts;Slevy z partnerských produktů
+;shipping;Expedice
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;Procentuální sleva z košíku;Použít slevu {value,number,percent*1} na celkový košík;
+;y_order_fixed_discount;Pevná sleva z košíku;Použít slevu {value} na celkový košík;
+;y_order_entry_percentage_discount;Procentuální sleva z produktů;Použít slevu {value,number,percent*1} na kvalifikující se produkty;
+;y_order_entry_fixed_discount;Pevná sleva z produktů;Použít slevu {value} na kvalifikující se produkty;
+;y_order_entry_fixed_price;Cílová pevná cena produktů;Použít cílovou cenu {value} kvalifikujících se produktů;
+;y_target_bundle_price;Cílová cena balíčku;Použít cílovou cenu {value} na balíček;
+;y_free_gift;Dárek zdarma;Dát {quantity} {product} produktů zdarma;
+;y_partner_order_entry_percentage_discount;Procentuální sleva z partnerských produktů;Použít slevu {value,number,percent*1} na partnerské produkty;
+;y_partner_order_entry_fixed_discount;Pevná sleva z partnerských produktů;Použít slevu {value} na partnerské produkty;
+;y_partner_order_entry_fixed_price;Cílová pevná cena partnerských produktů;Použít cílovou cenu {value} partnerských produktů;
+;y_change_delivery_mode;Změna způsobu dodání;Změnit způsob dodání na {delivery_mode};
+;y_trigger_message;Zpráva při spuštění pravidla;Zobrazit zprávu pro pravidlo;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;Hodnota procentuální slevy;Procentuální sleva, která bude použita na celkovou hodnotu košíku
+;y_order_fixed_discount;value;Hodnota absolutní slevy;Mapa měny a hodnota absolutní slevy, která bude použita na celkovou hodnotu košíku
+;y_order_entry_percentage_discount;value;Hodnota procentuální slevy;Procentuální sleva, která bude použita na kvalifikující se produkty
+;y_order_entry_fixed_discount;value;Hodnota absolutní slevy;Mapa měny a hodnota absolutní slevy, která bude použita na kvalifikující se produkty
+;y_order_entry_fixed_price;value;Cílová pevná cena;Mapa měny a hodnota cílové ceny, která bude použita na kvalifikující se produkty
+;y_target_bundle_price;value;Cílová cena balíčku;Mapa měny a hodnota cílové ceny, která bude použita na balíček
+;y_target_bundle_price;selection_strategy;Strategie výběru;Strategie, která se použije pro výběr produktů, pokud se pro balíček kvalifikuje více položek v košíku
+;y_target_bundle_price;qualifying_containers;Množství produktů pro balíček;Mapa ID kontejneru a příslušná množství, která tvoří požadovaný balíček
+;y_free_gift;product;Produkt zdarma;Produkt, který by se měl přidat do košíku automaticky a měl by být jako dárek zdarma
+;y_free_gift;quantity;Množství;Množství položek, které budou použity jako dárky zdarma
+;y_free_gift;catalog;Filtrovat výběr podle katalogu;Vybraná hodnota katalogu se použije pro účely filtrování v přidružených polích
+;y_free_gift;qualifying_containers;Kontejnery kvalifikujících se produktů;Mapa ID kontejneru a příslušná množství, která tvoří kvalifikující se produkty
+;y_partner_order_entry_percentage_discount;value;Hodnota procentuální slevy;Procentuální sleva, která bude použita na partnerské produkty
+;y_partner_order_entry_percentage_discount;selection_strategy;Strategie výběru;Strategie, která se použije pro výběr produktů, pokud se pro akci kvalifikuje více položek v košíku
+;y_partner_order_entry_percentage_discount;qualifying_containers;Kontejnery kvalifikujících se produktů;Mapa ID kontejneru a příslušná množství, která tvoří kvalifikující se produkty
+;y_partner_order_entry_percentage_discount;target_containers;Kontejnery cílových produktů;Mapa ID kontejneru a příslušná množství, která tvoří cílové partnerské produkty
+;y_partner_order_entry_fixed_discount;value;Hodnota absolutní slevy;Mapa měny a hodnota cílové ceny, která bude použita na partnerské produkty
+;y_partner_order_entry_fixed_discount;selection_strategy;Strategie výběru;Strategie, která se použije pro výběr produktů, pokud se pro akci kvalifikuje více položek v košíku
+;y_partner_order_entry_fixed_discount;qualifying_containers;Kontejnery kvalifikujících se produktů;Mapa ID kontejneru a příslušná množství, která tvoří kvalifikující se produkty
+;y_partner_order_entry_fixed_discount;target_containers;Kontejnery cílových produktů;Mapa ID kontejneru a příslušná množství, která tvoří cílové partnerské produkty
+;y_partner_order_entry_fixed_price;value;Cílová pevná cena;Mapa měny a hodnota cílové ceny, která bude použita na partnerské produkty
+;y_partner_order_entry_fixed_price;selection_strategy;Strategie výběru;Strategie, která se použije pro výběr produktů, pokud se pro akci kvalifikuje více položek v košíku
+;y_partner_order_entry_fixed_price;qualifying_containers;Kontejnery kvalifikujících se produktů;Mapa ID kontejneru a příslušná množství, která tvoří kvalifikující se produkty
+;y_partner_order_entry_fixed_price;target_containers;Kontejnery cílových produktů;Mapa ID kontejneru a příslušná množství, která tvoří cílové partnerské produkty
+;y_change_delivery_mode;delivery_mode;Způsob dodání;Způsob dodání, který se použije na košík v důsledku akce

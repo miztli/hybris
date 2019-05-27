@@ -1,0 +1,20 @@
+<jxb:bindings
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+		version="2.1">
+
+	<jxb:bindings schemaLocation="common-config.xsd">
+		<jxb:bindings node="//xs:complexType[@name='positioned']">
+			<jxb:class ref="com.hybris.cockpitng.core.config.impl.jaxb.hybris.commonconfig.Positioned"/>
+		</jxb:bindings>
+		<jxb:bindings node="//xs:complexType[@name='image-preview']">
+			<jxb:class ref="com.hybris.cockpitng.core.config.impl.jaxb.hybris.commonconfig.ImagePreview"/>
+		</jxb:bindings>
+		<jxb:bindings node="//xs:simpleType[@name='MergeMode']">
+			<jxb:typesafeEnumClass ref="com.hybris.cockpitng.core.config.impl.jaxb.hybris.commonconfig.MergeMode"/>
+		</jxb:bindings>
+		<jxb:bindings node="//xs:complexType[@name='parameter']">
+			<jxb:class ref="com.hybris.cockpitng.core.config.impl.jaxb.hybris.commonconfig.Parameter"/>
+		</jxb:bindings>
+	</jxb:bindings>
+</jxb:bindings>

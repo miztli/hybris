@@ -1,0 +1,198 @@
+/*================================
+    z-Components
+================================*/
+// Different changes on z-Components
+
+
+@import "../support/_cockpit-variables.scss";
+
+/*====== timezone ======*/
+.z-datebox-timezone select {
+    line-height: 1;
+    height: 30px;
+    font-size: 12px;
+    background: #fff;
+    color: #555555;
+    border: 1px solid white;
+    padding: 0 7px;
+    width: 100%;
+}
+
+.z-combobox-input:focus, .z-bandbox-input:focus, .z-datebox-input:focus, .z-spinner-input:focus, .z-doublespinner-input:focus {
+    //border-color: #66afe9;
+    //outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.z-combobox-invalid, .z-bandbox-invalid, .z-datebox-invalid, .z-timebox-invalid, .z-spinner-invalid, .z-doublespinner-invalid {
+    border-color: $editor-defaults__invalid-box--border-color !important;
+}
+
+.z-messagebox-question {
+    background-image: url("images/icon_dialog_question_default.png");
+    background-position: center;
+}
+
+/*====== combobox/bandbox-button ======*/
+
+//everything related to z-combobox and z-bandbox in _cockpit-box-defaults.scss
+
+.z-combobox .z-combobox-button {
+}
+.z-bandbox .z-bandbox-button,
+.z-combobox .z-combobox-button {
+}
+
+.z-combobox .z-combobox-button.z-combobox-disabled,
+.z-bandbox .z-bandbox-button.z-bandbox-disabled,
+.z-bandbox-button[disabled] {
+    background-color: $editor-defaults__input-box-disabled--bg-color !important;
+    i[class*="-icon"] {
+        background: none !important;
+        &:before {
+            color: $editor-defaults__input-box-disabled--color;
+        }
+    }
+}
+
+.z-combobox-disabled *, .z-bandbox-disabled *, .z-datebox-disabled *, .z-timebox-disabled *, .z-spinner-disabled *, .z-doublespinner-disabled * {
+    background-color: $editor-defaults__input-box-disabled--bg-color !important;
+}
+
+input[disabled] {
+    + .z-combobox-button:hover, 
+    + .z-bandbox-button:hover, 
+    + .z-datebox-button:hover, 
+    + .z-timebox-button:hover, 
+    + .z-spinner-button:hover, 
+    + .z-doublespinner-button:hover, 
+    + .z-combobox-button:active, 
+    + .z-bandbox-button:active, 
+    + .z-datebox-button:active, 
+    + .z-timebox-button:active, 
+    + .z-spinner-button:active, 
+    + .z-doublespinner-button:active,
+    + .z-datebox-button:hover {
+        border-color: $editor-defaults__input-box-disabled--border-color;
+    }
+}
+
+/*====== timebox/spinner-button ======*/
+.z-timebox-button, .z-spinner-button, .z-doublespinner-button {
+    > a:hover {
+        background: #a6b3c4;
+        color: #fff;
+    }
+    &:hover > i {
+        border-top: #3c4c66;
+    }
+}
+
+.invisibleWidgetChildren {
+    display: none;
+}
+
+
+/*====== Notifyer Entries ======*/
+
+.notifierEntry {
+    .progressCancel {
+        margin-top: 2px;
+        background-image: url(images/icon_system_close_available_i.png);
+        background-position: 0 2px;
+        background-repeat: no-repeat;
+        width: 12px;
+        height: 10px;
+        .z-toolbarbutton-content {
+            height: 10px;
+        }
+    }
+}
+
+/*====== Content-Splitter ======*/
+
+.splitterChildrenContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.splitterChildrenContainer_split {
+    visibility: hidden;
+}
+
+.splitterChildrenContainer .z-splitter-vertical-outer-td,
+.splitterChildrenContainer .z-splitter-horizontal-outer {
+    background: none;
+}
+
+.z-splitter-vertical-outer-td:HOVER .splitterChildrenContainer_split,
+.z-splitter-horizontal-outer:HOVER .splitterChildrenContainer_split {
+    visibility: visible;
+}
+
+
+/*====== Render-Status Display ======*/
+
+.cng-busy {
+    background-color: $window__popup--bg-color;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+}
+
+.cng-busy > .z-renderdefer {
+    left: 50%;
+    position: relative;
+    margin-left: -8px;
+}
+
+
+/*====== Loading Indicator ======*/
+.z-temp *{
+    background-color: transparent;
+}
+.z-temp .z-loading, .z-loading{
+    background-color: $editor-defaults__loading--bg-color;
+    
+    &-indicator{
+        font-size: $editor-defaults__loading--font-size;
+        color: $editor-defaults__loading--color;
+    }
+}
+.z-loading {
+    cursor: wait;
+    white-space: nowrap;
+    padding: 0;
+    top: 40% !important;
+    left: 50% !important;
+    font-size: $editor-defaults__loading--font-size;
+    color: $editor-defaults__loading--color;
+    border: none;
+    display: inline;
+    width: 0;
+    overflow: visible;
+
+    &-indicator {
+        padding: $editor-defaults__loading-indicator--padding;
+        text-transform: capitalize;
+        white-space: nowrap;
+        border: none;
+        display: inline-block;
+        background-color: inherit;
+        transform: translateX(-50%);
+    }
+    &-icon{
+        background-image: url(images/loading-spinner.gif);
+        width: $editor-defaults__loading-icon--size;
+        height: $editor-defaults__loading-icon--size;
+        position: static !important;
+        margin: 0 auto;
+        margin-bottom: $editor-defaults__loading--margin-y;
+    }
+}
+
+.z-apply-loading-icon, .z-renderdefer{
+    background-image: url(images/icon_loading_indicator_default.gif);
+}

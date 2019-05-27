@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+                   id="com.hybris.backoffice.widgets.collector.genericChart">
+    <name>Generic Chart</name>
+    <description>Generic Chart</description>
+    <defaultTitle>Generic Chart</defaultTitle>
+    <author>hybris</author>
+    <version>1.0</version>
+    <view src="genericChart.zul"/>
+    <keywords>
+        <keyword>Charts</keyword>
+    </keywords>
+    <controller class="de.hybris.platform.platformbackoffice.widgets.charts.GenericChartController"/>
+    <sockets>
+        <input id="refresh" type="java.lang.Object"/>
+    </sockets>
+    <settings>
+        <setting key="exportEnabled" default-value="false" type="java.lang.Boolean"/>
+        <setting key="roundValuesToInt" default-value="true" type="java.lang.Boolean"/>
+        <setting key="xMax" type="java.lang.Integer" default-value="null"/>
+        <setting key="xMin" type="java.lang.Integer" default-value="null"/>
+        <setting key="yMax" type="java.lang.Integer" default-value="null"/>
+        <setting key="yMin" type="java.lang.Integer" default-value="null"/>
+        <setting key="yAxisType" default-value="linear" type="ENUM(linear,logarithmic,datetime,category)"/>
+        <setting key="xAxisType" default-value="datetime" type="ENUM(linear,logarithmic,datetime,category)"/>
+        <setting key="xAxisLabel" type="java.lang.String"/>
+        <setting key="yAxisLabel" type="java.lang.String"/>
+        <setting key="chartTitle" type="java.lang.String"/>
+        <setting key="spacingTop" type="java.lang.Integer" default-value="60"/>
+        <setting key="spacingBottom" type="java.lang.Integer" default-value="0"/>
+        <setting key="spacingLeft" type="java.lang.Integer" default-value="20"/>
+        <setting key="spacingRight" type="java.lang.Integer" default-value="20"/>
+        <setting key="titleVerticalAlignment" type="ENUM(top,middle,bottom)" default-value="top"/>
+        <setting key="titleHorizontalAlignment" type="ENUM(left,center,right)" default-value="left"/>
+        <setting key="titleAxisX" type="java.lang.Integer" default-value="0"/>
+        <setting key="titleAxisY" type="java.lang.Integer" default-value="-20"/>
+        <setting key="titleStyle" type="java.lang.String"/>
+        <setting key="zoomType" default-value="x" type="ENUM(x,y,xy)"/>
+        <setting key="plotType" default-value="areaspline" type="java.lang.String"/>
+        <setting key="chartColors" default-value="#0486e0;#a4ce3c;#fcdf2b;#fbbb21;#ee5449;#b7c1ce;#313440;#2855a0" type="java.lang.String"/>
+        <setting key="chartType" type="java.lang.String"/>
+        <setting key="series" type="java.lang.String"/>
+        <setting key="handlerBeanId" type="java.lang.String" default-value="linearCollectorChartHandler"/>
+    </settings>
+</widget-definition>

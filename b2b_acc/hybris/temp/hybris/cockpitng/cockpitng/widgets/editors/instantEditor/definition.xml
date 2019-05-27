@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<editor-definition id="com.hybris.cockpitng.editor.instanteditor"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/editor-definition.xsd">
+
+    <name>Instant Editor</name>
+    <description>An editor wrapper which displays its value as a label and switches to underlying nested editor view on click
+    </description>
+    <author>hybris</author>
+    <version>1.0</version>
+
+    <type>java.lang.Object</type>
+    <editorClassName>com.hybris.cockpitng.editor.instant.InstantEditorRenderer</editorClassName>
+    <handlesLocalization>true</handlesLocalization>
+</editor-definition>

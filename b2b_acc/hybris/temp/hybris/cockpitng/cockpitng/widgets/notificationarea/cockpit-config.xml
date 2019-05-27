@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hybris.com/cockpit/config"
+        xsi:schemaLocation="http://www.hybris.com/cockpit/config http://www.hybris.com/schema/cockpitng/config/cockpit-configuration.xsd"
+        xmlns:na="http://www.hybris.com/cockpitng/config/notifications">
+
+    <context component="notification-area">
+        <na:notification-area>
+            <na:notifications eventType="WIMFailure" level="WARNING">
+                <na:message>user.notification.wim.wimfailure.warning</na:message>
+            </na:notifications>
+            <na:notifications eventType="BookmarkObjectAccess" level="WARNING">
+                <na:message>user.notification.bookmark.editor.access.violation.info</na:message>
+            </na:notifications>
+        </na:notification-area>
+    </context>
+
+</config>

@@ -1,0 +1,31 @@
+.yw-modifier-private .z-listcell-content {
+  background-color: red; }
+
+.yw-modifier-protected .z-listcell-content {
+  background-color: yellow; }
+
+.yw-modifier-public .z-listcell-content {
+  background-color: green;
+  border-radius: 5px; }
+
+.yw-modifier-default .z-listcell-content {
+  background-color: transparent; }
+
+.yw-modifier .z-listcell-content {
+  height: 7px;
+  width: 7px;
+  padding: 0px; }
+
+.yw-outputTest-listitem .z-listcell-content {
+  padding: 0; }
+
+.yw-outputTest-toolbar {
+  height: 30px;
+  background: red; }
+
+.yw-listcomponent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  top: 50px; }

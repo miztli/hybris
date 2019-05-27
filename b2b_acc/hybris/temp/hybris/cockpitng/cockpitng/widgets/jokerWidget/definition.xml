@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+	id="com.hybris.cockpitng.joker">
+
+	<name>Joker</name>
+	<description>Place your controller written in groovy as a text in the widget setting 'controller.groovy'.
+Use virtual sockets to communicate.
+Place your zul view as a text in the widget setting 'view.zul'.</description>
+	<defaultTitle>Joker</defaultTitle>
+	<author>hybris</author>
+	<version>0.1</version>
+
+	<sockets>
+	</sockets>
+
+	<view src="none"/>
+	<keywords>
+		<keyword>_hidden</keyword>
+	</keywords>
+
+	<settings>
+		<setting key="controller.groovy" default-value="package com.hybris.cockpitng.exampleGroovyWidget;&#xA;&#xA;import com.hybris.cockpitng.annotations.SocketEvent;&#xA;import com.hybris.cockpitng.util.DefaultWidgetController;&#xA;&#xA;/**&#xA; * Example groovy controller.&#xA; * You can use virtual sockets to communicate. &#xA; */&#xA;public class GroovyController extends DefaultWidgetController&#xA;{&#xA;&#x9;/**&#xA;&#x9; * you can accept incoming sockets like this:&#xA;&#x9; */&#xA;&#x9;@SocketEvent(socketId = &quot;mysocket&quot;)&#xA;&#x9;public void onMySocket(final Object data)&#xA;&#x9;{&#xA;&#x9;&#x9;// using widget model to store data&#xA;&#x9;&#x9;getModel().setAttribute(&quot;mydata&quot;, data);&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;/**&#xA;&#x9; * you can send data to outgoing sockets like this:&#xA;&#x9; */&#xA;&#x9;public void sendOutput()&#xA;&#x9;{&#xA;&#x9;&#x9;sendOutput(&quot;myoutput&quot;, getModel().getValue(&quot;mydata&quot;, Object.class));&#xA;&#x9;}&#xA;}"/>
+		<setting key="view.zul" default-value=""/>
+	</settings>
+
+</widget-definition>

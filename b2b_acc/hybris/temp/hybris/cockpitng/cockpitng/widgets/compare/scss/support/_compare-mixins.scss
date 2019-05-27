@@ -1,0 +1,16 @@
+@import "_compare-variables.scss";
+
+@mixin _difference-mark-indicator-icon (){
+	&:before {
+		content: "";
+		height: $compareview__difference-indicator-icon--size;
+		width: $compareview__difference-indicator-icon--size;
+		border-radius: $compareview__difference-indicator-icon--border-radius;
+		margin: $compareview__difference-indicator-icon--margin;
+		background: $compareview__difference-indicator--color $compareview__difference-indicator-icon--background-image no-repeat center;
+		background-size: contain;
+		text-align: center;
+		overflow: hidden;
+		display: inline-block;
+  	}
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="de.hybris.platform.adaptivesearch.widgets.searchProfileContext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+
+	<name>Search Profile Context</name>
+	<description>Search Profile Context</description>
+	<defaultTitle>Search Profile Context</defaultTitle>
+
+	<author>hybris</author>
+	<version>0.1</version>
+	<keywords>
+		<keyword>Adaptive Search</keyword>
+	</keywords>
+
+	<controller class="de.hybris.platform.adaptivesearchbackoffice.widgets.searchprofilecontext.SearchProfileContextViewModel" />
+
+	<sockets>
+		<input id="searchResult" type="de.hybris.platform.adaptivesearchbackoffice.data.SearchResultData" />
+		<output id="searchProfile" type="de.hybris.platform.adaptivesearch.model.AbstractAsSearchProfileModel" />
+	</sockets>
+</widget-definition>

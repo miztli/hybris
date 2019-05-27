@@ -1,0 +1,86 @@
+/*================================
+    Action Group 
+================================*/
+// Styling of the Action Group 
+
+@import "../support/_create-variables.scss";
+
+.cng-action-group.ya-split-group-cnt {
+    //general
+	> tbody table {
+        &, & td {
+            border-color: $create__toolbar-action-split-group-table--border-color;
+        }
+        td.z-hbox-separator + td {
+            .z-label,
+            .cng-action,
+            .ya-create-type-selector-button {
+                margin-left: $create__toolbar-action-split-group-items-overlap--margin;
+            }
+        }
+        td {
+            > .z-label {
+                padding-left: $create__toolbar-action-split-group-label--padding-x;
+                padding-right: $create__toolbar-action-split-group-label--padding-x;
+                width: $create__toolbar-action-split-group-label--width;
+            }
+        }
+    }
+	&:hover {
+        > tbody table {
+            .z-label,
+            .cng-action,
+            .ya-create-type-selector-button {
+                box-shadow: $create__create-new-action-hover--box-shadow;
+            }
+        }
+    }
+
+	//create-action specific
+    > tbody table {
+        td {
+            > .z-div > .ya-create-container {
+                margin-left: $create__toolbar-action-split-group-items-overlap--margin;
+            }
+            &:first-child {
+                > .z-div > .ya-create-container {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+    &:hover {
+        td .ya-create-type-selector-button,
+        .ya-create-container .ya-create-type-selector-button {
+            border-left: none;
+        }
+    }
+    .ya-create-type-selector-button {
+        border-top: 0;
+        border-bottom: 0;
+    }
+    td > .ya-create-type-selector-button {
+        box-sizing: border-box;
+        width: $create__toolbar-action-group-item-create-type-button--width;
+        margin-right: 0;
+
+        &:hover, 
+        &:focus {
+            border: none;
+            width: $create__toolbar-action-split-group-simple-create-type--hover-width;
+            margin-right: $create__toolbar-action-split-group-simple-create-type--margin-right;
+        }
+    }
+    .ya-create-container .ya-create-type-selector-button {
+        width: $create__create-action-default--size;
+        margin-left: $create__toolbar-action-split-group-items-overlap--margin;
+        margin-right: $create__toolbar-action-split-group-items-overlap--margin;
+        
+        &:hover,
+        &:focus {
+            width: $create__create-action-default--size;
+            margin-left: $create__toolbar-action-split-group-items-overlap--margin;
+            margin-right: $create__toolbar-action-split-group-items-overlap--margin;
+        }
+    }
+}

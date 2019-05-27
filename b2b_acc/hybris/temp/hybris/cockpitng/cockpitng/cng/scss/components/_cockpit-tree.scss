@@ -1,0 +1,218 @@
+/*================================
+    z-Tree
+================================*/
+// Modifications on z-Tree components (and their contents)
+
+
+@import "../support/_cockpit-mixins.scss";
+
+.z-tree {
+    //overwrite zk styling
+    border: none;
+}
+
+.z-treecell-content, .z-treefooter-content {
+    font-size: $treecell-default__content--font-size;
+    line-height: $treecell-default__content--line-height;
+    color: $treecell-default__content--color;
+    padding: $treecell-default__content--padding;
+}
+
+.z-treecell-content {
+    display: table;
+}
+
+.z-tree-spacer,
+.z-tree-icon,
+.z-treecell-text {
+    display: table-cell;
+}
+
+.z-treecell-text {
+    word-break: break-word;
+    
+    .ie10 &,
+    .ie11 &,
+    .edge & {
+      word-break: break-all;
+    }
+}
+
+.z-tree-icon, .z-tree-line {
+    height: 100%;
+    min-height: $treecell-default__content--line-height;
+}
+
+.z-tree-spacer {
+    width: $treecell-default__tree-spacer--width;
+}
+
+// Type selector
+// ====================
+//
+
+.yw-typeSelectorTree,
+.ya-create-type-selector-popup {
+    max-width: $tree-popup__menu--max-width;
+
+    .z-treecell {
+        padding: $treecell-default__type-selector-cell--padding;
+        border-top: $treecell-default__cell--border;
+    }
+    .z-tree-icon {
+        color: $tree-default__icon--color;
+    }
+    &[style*="width"] {
+      max-width: 100%;
+      min-width: 100%;
+    }
+    .z-treerow {
+        &:hover {
+            .z-treecell-text{
+                color: $treecell-default__type-selector-popup-action-hover--color;
+            }
+        }
+        &.ya-create-type-selector-abstracttype {
+            .z-treecell-text {
+                color: $createTypeSelector__abstracttype-text--color;
+            }
+        }
+    }
+}
+
+
+
+// Abstract type selector
+// ====================
+//
+
+.ya-create-type-selector-abstracttype {
+    .z-treecell,
+    .z-treecell-content {
+        cursor: $createTypeSelector__abstracttype-cell--cursor;
+    }
+
+    .z-treecell-text {
+        font-style: $createTypeSelector__abstracttype-text--font-style;
+        color: $createTypeSelector__abstracttype-text--color;
+    }
+}
+
+.z-treerow-focus > .z-treecell,
+.z-treerow:hover > .z-treecell {
+    //overwrite zk styling
+    background-color: $list-default__content--hover-bg-color;
+    border-color: $treecell-default__cell--border-color;
+
+    > .z-treecell-content {
+        //overwrite zk styling
+        color: $list-default__content--hover-color;
+    }
+}
+
+.z-treerow-selected > .z-treecell {
+    background-color: $treecell-default__row-selecte--bg-color;
+    > .z-treecell-content {
+        //overwrite zk styling
+        color: $list-default__content--selected-color;
+    }
+}
+
+
+// Vertical Filetree
+// ==================
+//
+
+.z-vfiletree {
+  border: $vfiletree__treebody--border;
+  border-width: 0;
+  
+  &-body,
+  .z-treebody {
+    &, & > table {
+      border-color: inherit;
+    }
+  }
+  .z-treecell-content {
+    .yw-treeCellInner .z-label,
+    .z-treecell-text {
+      padding: $vfiletree__item-label--padding;
+      word-wrap: break-word;
+    }
+  }
+
+  .z-vfiletree-icon,
+  .z-tree-icon {
+    width: $vfiletree__icon--width;
+    min-width: $vfiletree__icon--width;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: inherit;
+    line-height: $_vfiletree__icon--line-height;
+    
+    i:before {
+      margin-left: $vfiletree__icon-adjustment--margin-x;
+      margin-right: -$vfiletree__icon-adjustment--margin-x;
+    }
+  }
+  .z-treecell {
+    padding-top: $vfiletree__row--padding-y;
+    padding-bottom: $vfiletree__row--padding-y;
+    padding-right: 0;
+    border: none;
+    border-top: $vfiletree__row-cell--border;
+    border-top-color: inherit;
+    position: relative;
+    background: transparent;
+  }
+  .z-treerow {
+    transition: background-color .15s;
+    background-color: transparent;
+    border-width: 0;
+    border-color: $vfiletree__row--border-color;
+
+    &:first-child .z-treecell {
+      border-top-color: transparent !important;
+    }
+  
+    &-selected > .z-treecell > .z-treecell-content {
+      color: $vfiletree__row-selected--color;
+    }
+    &:hover {
+      background-color: transparent;
+      > .z-treecell {
+        border-top-color: inherit;
+        background-color: transparent;
+      }
+    }
+  }
+
+  .z-vfiletree-spacer,
+  .z-tree-spacer {
+    width: $vfiletree__item-indent-spacer--width;
+    min-width: $vfiletree__item-indent-spacer--width;
+    display: table-cell;
+  }
+
+  .z-vfiletree-body,
+  .z-tree-body {
+    width: 100% !important;
+    background: none;
+
+    & > table {
+      border-spacing: 0;
+    }
+  }
+
+  span.z-vfiletree{
+    &-ico,
+    &-firstspacer {
+      background: none;
+    }
+    &-tee,
+    &-last {
+      background-image: none;
+    }
+  }
+}

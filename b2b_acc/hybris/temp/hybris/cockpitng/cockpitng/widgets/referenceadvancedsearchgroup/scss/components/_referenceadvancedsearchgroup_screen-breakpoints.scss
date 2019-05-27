@@ -1,0 +1,48 @@
+@import "../support/_referenceadvancedsearchgroup_variables.scss";
+
+//bp-xl
+@media (max-width: $referenceadvancedsearchgroup__screen-bp-xl--max-width) {
+	.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-caption-container .yw-buttons-container {
+		float: right;
+	}
+}
+
+//bp-l
+@media (max-width: $referenceadvancedsearchgroup__screen-bp-l--max-width) {
+	.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch {
+		> .yw-topcontainer-open {
+			top: $referenceadvancedsearchgroup__advancedsarch-topcontainer-open-bp-l--top;
+		}
+		> .yw-caption-container .yw-search-mode-container {
+			float: none;
+		}
+	}
+}
+//bp-ml
+@media screen and (max-width: $referenceadvancedsearchgroup__screen-bp-ml--max-width) {
+	.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup {
+		.yw-advancedsearch {
+			> .yw-caption-container  .yw-textsearch-searchbox {
+				width: auto;
+				max-width: $referenceadvancedsearchgroup__advancedsarch-textsearchbox-open-bp-ml--width;
+				width: $referenceadvancedsearchgroup__advancedsarch-textsearchbox-open-bp-ml--width;
+			}
+			> .yw-caption-container .yw-textsearch .yw-global-typeSelector.z-bandbox {
+				max-width: none;
+				width: unset;
+			}
+		}
+		.yw-advancedsearch-header-container .yw-global-typeSelector-container.yw-advancedsearch-header-container {
+			width: auto;
+		}
+		.yw-textsearch.yw-toggle-open .yw-buttons-container{
+			margin-right: 0;
+		}
+	}
+}
+//bp-m
+@media screen and (max-width: $referenceadvancedsearchgroup__screen-bp-m--max-width) {
+	.yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup .yw-advancedsearch > .yw-topcontainer-open {
+		top: $referenceadvancedsearchgroup__advancedsarch-topcontainer-open-bp-m--top;
+	}
+}

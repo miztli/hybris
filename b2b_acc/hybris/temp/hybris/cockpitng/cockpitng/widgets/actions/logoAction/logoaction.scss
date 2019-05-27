@@ -1,0 +1,24 @@
+/*================================
+    Logo Action
+================================*/
+// Styling of the Logo Action
+@import "support/_logoaction-variables";
+
+.z-button.yw-logo-button {
+  width: $actionLogo__btn--width;
+  margin-left: $actionLogo__btn--margin-left;
+  margin-right: $actionLogo__btn--margin-right;
+  padding: $actionLogo__btn--padding;
+  background: $actionLogo__btn--background;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: $actionLogo__btn-hover--background;
+    box-shadow: none;
+  }
+
+  img {
+    height: $actionLogo__btn-img--height;
+  }
+}

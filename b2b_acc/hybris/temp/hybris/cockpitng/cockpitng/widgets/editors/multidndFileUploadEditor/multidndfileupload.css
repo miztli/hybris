@@ -1,0 +1,31 @@
+.ye-multidndfileupload .ye-dndfileupload-preview-container {
+  display: block;
+  padding: 0; }
+.ye-multidndfileupload .ye-dndfileupload-preview-list {
+  margin-bottom: 5px; }
+.ye-multidndfileupload .ye-dndfileupload-preview-listitem {
+  position: relative;
+  height: 40px;
+  text-align: left; }
+  .ye-multidndfileupload .ye-dndfileupload-preview-listitem .z-listcell-content {
+    padding-right: 34px;
+    padding-left: 10px; }
+.ye-multidndfileupload .ye-dndfileupload-preview-image {
+  max-height: 20px;
+  max-width: 20px;
+  margin-right: 10px;
+  border: 1px solid #b7c1cf; }
+.ye-multidndfileupload .ye-dndfileupload-preview-filename {
+  max-width: calc(100% - 30px);
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  display: inline;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+.ye-multidndfileupload .ye-dndfileupload-preview-image, .ye-multidndfileupload .ye-dndfileupload-preview-filename {
+  display: inline;
+  margin-bottom: 0; }
+.ye-multidndfileupload .ye-dndfileupload-preview-remove-btn {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 8px; }

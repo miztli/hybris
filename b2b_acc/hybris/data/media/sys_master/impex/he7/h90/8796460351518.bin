@@ -1,0 +1,101 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang = en
+$contentCatalog = powertoolsContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+$regulargroup = regulargroup
+$customergroup = customergroup
+
+$defaultPassword = 12341234
+
+$siteUid = powertools
+
+# Create Customer Group
+INSERT_UPDATE UserGroup; UID[unique = true]        ; groups(uid)[mode = append]
+                       ; powertools-cxmanagergroup ; cxmanagergroup
+                       ; powertools-cxusergroup    ; cxusergroup
+
+INSERT_UPDATE Employee; UID[unique = true]   ; password[default = $defaultPassword]; backOfficeLoginDisabled; groups(uid)[mode = append]; name                                   ; description
+                      ; cxmanager-powertools ;                                     ;                        ; powertools-cxmanagergroup ; Personalization Manager For Powertools ; Personalization Manager For Powertools
+                      ; cxuser-powertools    ;                                     ;                        ; powertools-cxusergroup    ; Personalization User For Powertools    ; Personalization Read Only User For Powertools
+
+INSERT_UPDATE Employee; UID[unique = true]; groups(uid)[mode = append];
+                      ; cxmanager         ; powertools-cxmanagergroup ;
+                      ; cxuser            ; powertools-cxusergroup
+
+INSERT_UPDATE CatalogVersion; catalog(id)[unique = true]; version[unique = true]; readPrincipals(uid)[mode = append]               ; writePrincipals(uid)[mode = append]
+                            ; powertoolsContentCatalog  ; Staged                ; powertools-cxusergroup                           ; powertools-cxmanagergroup
+                            ; powertoolsContentCatalog  ; Online                ; powertools-cxusergroup,powertools-cxmanagergroup ; cxmanager
+
+INSERT_UPDATE CxSegment; code[unique = true]; description                                  ;
+                       ; CATEGORY 1360      ; Users who browse Power Drills products often ;
+                       ; CATEGORY 1593      ; Users who browse Screwdrivers products often ;
+
+INSERT_UPDATE B2BCustomer; description        ; uid[unique = true]              ; email                           ; name               ; groups(uid)                   ; sessionCurrency(isocode)[default = 'USD']; password[default = $defaultPassword]; &userref                        ;
+                         ; Power Drills Lover ; powerdrillslover@pronto-hw.com  ; powerdrillslover@pronto-hw.com  ; Power Drills Lover ; Pronto Goods,b2bcustomergroup ;                                          ;                                     ; powerdrillslover@pronto-hw.com  ;
+                         ; Screwdrivers Lover ; screwdriverslover@pronto-hw.com ; screwdriverslover@pronto-hw.com ; Screwdrivers Lover ; Pronto Goods,b2bcustomergroup ;                                          ;                                     ; screwdriverslover@pronto-hw.com ;
+
+INSERT_UPDATE CxUserToSegment; segment(code)[unique = true]; user(uid)[unique = true]        ; baseSite(uid)[unique = true, default = $siteUid]; affinity[default = 1];
+                             ; CATEGORY 1360               ; powerdrillslover@pronto-hw.com  ;                                                 ;
+                             ; CATEGORY 1593               ; screwdriverslover@pronto-hw.com ;                                                 ;
+
+INSERT_UPDATE CxCustomizationsGroup; code                         ; $contentCV[unique = true]
+"#% beforeEach: de.hybris.platform.personalizationsampledataaddon.util.CxAddOnSampleDataUtils.verifyIfCxCustomizationsGroupExists(line, 1, impex, 1);"
+                                   ; powertoolsCustomizationGroup ; ;
+
+#Cx Customizations
+INSERT_UPDATE CxCustomization; code[unique = true]; name                     ; $contentCV[unique = true]; group(code, $contentCV)[default = 'powertoolsCustomizationGroup']; status(code)[default = ENABLED]
+                             ; CategoryLovers     ; Category Lover Discounts ;                          ;
+
+UPDATE CxCustomizationsGroup; $contentCV[unique = true]; customizations(code, $contentCV)[mode = append]
+                            ;                          ; CategoryLovers
+
+INSERT_UPDATE CxVariation; code[unique = true]                     ; name                                    ; $contentCV[unique = true]; enabled[default = true]; customization(code, $contentCV)[unique = true]; status(code)[default = ENABLED]
+                         ; PowerDrillsAndScrewdrivers20to39VipGold ; PowerDrillsAndScrewdrivers20to39VipGold ;                          ;                        ; CategoryLovers
+                         ; powerDrillsLover                        ; Power Drills Lover                      ;                          ;                        ; CategoryLovers
+                         ; screwdriversLover                       ; Screwdrivers Lover                      ;                          ;                        ; CategoryLovers
+                         ; categoryLoversDefault                   ; Category Lovers Default                 ;                          ;                        ; CategoryLovers                                ; DISABLED
+
+INSERT_UPDATE CxSegmentTrigger; code[unique = true]; variation(code, $contentCV)[unique = true]; $contentCV[unique = true]; segments(code); groupBy(code)[default = 'OR'];
+                              ; trigger1           ; powerDrillsLover                          ;                          ; CATEGORY 1360 ;
+                              ; trigger2           ; screwdriversLover                         ;                          ; CATEGORY 1593 ;
+
+INSERT_UPDATE CxExpressionTrigger; code[unique = true]; variation(code, $contentCV)[unique = true]; $contentCV[unique = true]; expression;
+                                 ; expressionTrigger1 ; PowerDrillsAndScrewdrivers20to39VipGold   ;                          ; "{""type"":""groupExpression"",""elements"":[{""type"":""groupExpression"",""elements"":[{""type"":""segmentExpression"",""code"":""CATEGORY 1360""},{""type"":""segmentExpression"",""code"":""CATEGORY 1593""}],""operator"":""AND""},{""type"":""groupExpression"",""elements"":[{""type"":""groupExpression"",""elements"":[{""type"":""segmentExpression"",""code"":""20-29""},{""type"":""segmentExpression"",""code"":""30-39""}],""operator"":""OR""},{""type"":""segmentExpression"",""code"":""VIPGold""}],""operator"":""AND""}],""operator"":""AND""}"
+
+INSERT_UPDATE CxDefaultTrigger; code[unique = true]; variation(code, $contentCV)[unique = true]; $contentCV[unique = true];
+                              ; defaultTrigger1    ; categoryLoversDefault                     ;
+
+UPDATE CxCustomization; code[unique = true]; $contentCV[unique = true]; variations(code, $contentCV)
+                      ; CategoryLovers     ;                          ; PowerDrillsAndScrewdrivers20to39VipGold,powerDrillsLover,screwdriversLover,categoryLoversDefault ;
+
+#Cx Models
+INSERT_UPDATE CxCmsAction; componentId                        ; code[unique = true]                             ; type(code); target                 ; &actionRef                                      ; $contentCV[unique = true]; containerId; componentCatalog[default = $contentCatalog];
+"#% beforeEach: de.hybris.platform.personalizationsampledataaddon.util.CxAddOnSampleDataUtils.verifyIfCxActionExists(line, 2, impex, 5);"
+#banner
+                         ; specialOffersSplashBannerComponent ; actionSpecialOffers                             ; PLAIN     ; cxCmsActionPerformable ; actionSpecialOffers                             ;                          ; Section1SlotHomepageCxContainer
+#content 2A
+                         ; powerDrillsLoverContentComponent   ; actionPowerDrillsLoverContent2A                 ; PLAIN     ; cxCmsActionPerformable ; actionPowerDrillsLoverContent2A                 ;                          ; Section2ASlotHomepageCxContainer
+                         ; powerDrillsLoverContentComponent   ; actionPowerDrillsAndScrewdrivers20to39VipGold2A ; PLAIN     ; cxCmsActionPerformable ; actionPowerDrillsAndScrewdrivers20to39VipGold2A ;                          ; Section2ASlotHomepageCxContainer
+#content 2B
+                         ; screwdriversLoverContentComponent  ; actionScrewdriversLover2B                       ; PLAIN     ; cxCmsActionPerformable ; actionScrewdriversLover2B                       ;                          ; Section2BSlotHomepageCxContainer
+                         ; screwdriversLoverContentComponent  ; actionPowerDrillsAndScrewdrivers20to39VipGold2B ; PLAIN     ; cxCmsActionPerformable ; actionPowerDrillsAndScrewdrivers20to39VipGold2B ;                          ; Section2BSlotHomepageCxContainer
+
+UPDATE CxVariation; code[unique = true]                     ; $contentCV[unique = true]; actions(&actionRef)[mode = append]                                                              ;
+                  ; PowerDrillsAndScrewdrivers20to39VipGold ;                          ; actionPowerDrillsAndScrewdrivers20to39VipGold2A,actionPowerDrillsAndScrewdrivers20to39VipGold2B ;
+                  ; powerDrillsLover                        ;                          ; actionPowerDrillsLoverContent2A                                                                 ;
+                  ; screwdriversLover                       ;                          ; actionScrewdriversLover2B                                                                       ;
+                  ; categoryLoversDefault                   ;                          ; actionSpecialOffers                                                                             ;
+
+INSERT_UPDATE CxDefaultPersonalizationCalculationCronJob; code[unique = true]             ; job(code)                                    ; singleExecutable; sessionLanguage(isocode); baseSites(uid)
+                                             ; cxDefaultPersonalizationCalculationCronJobPowertools ; cxDefaultPersonalizationCalculationJob ; false           ; en                      ; $siteUid ;

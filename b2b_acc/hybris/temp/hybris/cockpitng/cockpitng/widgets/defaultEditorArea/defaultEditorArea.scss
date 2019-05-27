@@ -1,0 +1,21 @@
+/*================================
+    Default Editor Area
+================================*/
+// Defines Defaults for the Editing Area
+
+
+@import "cockpitng-globals.scss";
+
+@import url('anythingzoomer.css');
+@import "scss/support/_defaultEditorArea-variables.scss";
+@import "scss/support/_defaultEditorArea-mixins.scss";
+
+@import "scss/components/_defaultEditorArea-defaults.scss";
+@import "scss/components/_defaultEditorArea-y-editor-area.scss";
+@import "scss/components/_defaultEditorArea-tabs.scss";
+@import "scss/components/_defaultEditorArea-panels.scss";
+@import "scss/components/_defaultEditorArea-centered-panel-editor-area.scss";
+
+@import "scss/editors/_defaultEditorArea-validation.scss";
+@import "scss/editors/_defaultEditorArea-inset-editor.scss";
+@import "scss/editors/_defaultEditorArea-edit-essential-section.scss";

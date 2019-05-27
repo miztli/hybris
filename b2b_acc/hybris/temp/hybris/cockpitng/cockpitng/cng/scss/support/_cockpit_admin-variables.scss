@@ -1,0 +1,147 @@
+/*================================
+    Cockpit Admin variables
+================================*/
+// Styling variables
+
+@import "cockpitng-globals.scss";
+
+$admin-defaults__z-button--size: $editor-defaults__inline-box--height;
+
+$admin-defaults__mainToolbar-logo--margin-right: 15px;
+
+$admin-defaults__headerToolbar--bg-color: $navigation__top-menu--bg-color; //$blue__default;
+$admin-defaults__headerToolbar--bg-image: false; //url("images/head_backgr.gif")
+$admin-defaults__mainToolbar--space-y: 4px;
+$admin-defaults__mainToolbar--space-x: 5px;
+$admin-defaults__mainToolbar--min-height: $navigation__top-menu--height - 2 * $admin-defaults__mainToolbar--space-y;
+$admin-defaults__mainToolbar--height: auto;
+$admin-defaults__mainToolbar-topCover--bg-color: $admin-defaults__headerToolbar--bg-color;
+$admin-defaults__mainToolbar-topCover--height: $admin-defaults__mainToolbar--space-y;
+$admin-defaults__mainToolbar-topCover--top: -$admin-defaults__mainToolbar-topCover--height;
+$admin-defaults__mainToolbar-topCover--left: 0;
+$admin-defaults__mainToolbar-topCover--right: 0;
+$admin-defaults__mainToolbar-td-element--border-color: $black__blueish--200;
+$admin-defaults__mainToolbar-td-element--border-width: $boxes--border__thin;
+$admin-defaults__mainToolbar-separator--border-left: none; //$admin-defaults__mainToolbar-td-element--border-width solid $white;
+$admin-defaults__mainToolbar-separator--border-right: none;
+$admin-defaults__mainToolbar-separator--width: auto;
+$admin-defaults__mainToolbar-label--font-size: $font-size__small;
+$admin-defaults__mainToolbar-label--color: $white;
+
+$admin-defaults__mainToolbar-inner--margin-bottom: $admin-defaults__mainToolbar--space-y;
+
+$admin-defaults__toolbar-button--border-radius: 4px;
+$admin-defaults__toolbar-button--size: 40px;
+$admin-defaults__toolbar-button--margin-left: 5px;
+$admin-defaults__toolbar-delimiter--height: 40px;
+$admin-defaults__toolbar-button-hover--bg-color: $navigation__top-menu-item-hover--bg-color; //$blue__default--100;
+
+$admin-defaults__toolbar-roleselector--min-width: 64px;
+$admin-defaults__toolbar-roleselector--padding: 0 4px;
+$admin-defaults__toolbar-roleselector--margin-right: $container-spacing-default__third - nth($admin-defaults__toolbar-roleselector--padding, 2);
+$admin-defaults__toolbar-roleselector-label--margin-right: $admin-defaults__mainToolbar--space-x;
+$admin-defaults__toolbar-roleselector-combobox--min-width: $editor-defaults__inline-box--height + $container-spacing-default__third;
+$admin-defaults__toolbar-roleselector-combobox-btn--min-size: 30px;
+$admin-defaults__toolbar-roleselector-combobox-btn--min-width: $admin-defaults__toolbar-roleselector-combobox-btn--min-size;
+$admin-defaults__toolbar-roleselector-combobox-btn--min-height: $admin-defaults__toolbar-button--size; //$editor-defaults__inline-box--height;
+$admin-defaults__toolbar-roleselector-combobox-btn--padding: floor(($admin-defaults__toolbar-roleselector-combobox-btn--min-height - $admin-defaults__toolbar-roleselector-combobox-btn--min-size)/2) 0;
+
+$admin-defaults__toolbar-checkbox--min-height: 24px;
+
+$admin-defaults__toolbar-connections-default--padding: $admin-defaults__mainToolbar--space-y;
+$admin-defaults__toolbar-connections--padding: $admin-defaults__mainToolbar--space-y 12px;
+$admin-defaults__toolbar--bp-xs: 320px;
+$admin-defaults__toolbar--bp-s: 400px;
+$admin-defaults__toolbar-connections-bp-xs--padding: $admin-defaults__toolbar-connections-default--padding;
+$admin-defaults__toolbar-connections-bp-s--margin-right: $admin-defaults__toolbar-button--size + $admin-defaults__mainToolbar--space-y;
+$admin-defaults__toolbar-connections-box-bp-s--margin-right: nth($admin-defaults__toolbar-connections--padding, 2) - $admin-defaults__mainToolbar--space-x;
+
+$admin-defaults__toolbar-clipboard-dropdown--max-height: $editor-defaults__popup-box--max-height;
+$admin-defaults__toolbar-clipboard-dropdown--bg-color: $white !important;
+
+$admin-defaults__toolbar-clipboard-icon--size: 16px;
+
+$admin-defaults__toolbar-clipboard-header--min-height: $admin-defaults__toolbar-clipboard-icon--size;
+
+$admin-defaults__toolbar-clipboard-label--padding: 0 5px 0 24px;
+$admin-defaults__toolbar-clipboard-label--min-height: $admin-defaults__toolbar-clipboard-icon--size;
+$admin-defaults__toolbar-clipboard-label--line-height: $admin-defaults__toolbar-clipboard-icon--size;
+
+$admin-defaults__toolbar-slider--height: 14px;
+$admin-defaults__toolbar-slider--margin-top: 7px;
+$admin-defaults__toolbar-slider-center--height: 4px;
+$admin-defaults__toolbar-slider-center--border-radius: 2px;
+$admin-defaults__toolbar-slider-center--left: 4px;
+$admin-defaults__toolbar-slider-center--bg-color: #d1e3ff;
+$admin-defaults__toolbar-slider-button--bg-color: #0a6ed1;
+$admin-defaults__toolbar-slider-area--height: $admin-defaults__toolbar-slider-center--height;
+$admin-defaults__toolbar-slider-area--border-radius: $admin-defaults__toolbar-slider-center--border-radius 0 0 $admin-defaults__toolbar-slider-center--border-radius;
+$admin-defaults__toolbar-slider-area--bg-color: $admin-defaults__toolbar-slider-button--bg-color;
+$admin-defaults__toolbar-slider-button--size: 20px;
+$admin-defaults__toolbar-slider-button--border-radius: round($admin-defaults__toolbar-slider-button--size/2);
+
+
+$admin-defaults__widget-container--space-x: 5px;
+$admin-defaults__widget-container--space-y: 5px;
+$admin-defaults__widget-container--border: 1px dotted #7D7D7D;
+$admin-defaults__widget-container--bg-color: #ededed;
+
+$admin-defaults__widget-toolbar--space-x: $admin-defaults__widget-container--space-x - 1px;
+
+$admin-defaults__widget-panel--top: $container-spacing-default__base; //$editor-defaults__inline-box--height;
+$admin-defaults__widget-panel--margin-top: $admin-defaults__widget-container--space-y;
+
+$admin-defaults__widget-body--top: $container-spacing-default__base;
+$admin-defaults__widget-body--margin-top: 50px !important;
+$admin-defaults__widget-body--bottom: $admin-defaults__widget-container--space-y;
+$admin-defaults__widget-body--space-x: $admin-defaults__widget-container--space-x;
+$admin-defaults__widget-body--bg-color: #b5bdc9;
+
+$admin-defaults__main-widget--top: 60px !important;
+$admin-defaults__main-widget--space-x: $admin-defaults__widget-container--space-x;
+$admin-defaults__main-widget-label--margin: 2px $admin-defaults__widget-container--space-x;
+
+$admin-defaults__symbolic-main-widget--top: $admin-defaults__main-widget--top;
+$admin-defaults__symbolic-main-widget--bg-color: $black__blueish--200;
+$admin-defaults__symbolic-window--bg-color: $black__blueish--200;
+$admin-defaults__symbolic-main-widget--margin-x: $admin-defaults__widget-container--space-x;
+
+$admin-defaults__widget-buttons--hover-bg-color: rgba($white, .3);
+
+$admin-defaults__content--border-width: $boxes--border__thin;
+
+$admin-defaults__chooze-wizard-refreshLibraryButton--height: $editor-defaults__inline-box--height;
+$admin-defaults__chooze-wizard-refreshLibraryButton--hover-color: $blue__default;
+$admin-defaults__chooze-wizard-topToolbar--space-y: 3px;
+$admin-defaults__chooze-wizard-refreshLibraryButton--line-height: $admin-defaults__chooze-wizard-refreshLibraryButton--height - 2* $admin-defaults__chooze-wizard-topToolbar--space-y;
+
+$admin-defaults__chooze-wizard-content--border: $admin-defaults__content--border-width solid $grey__default;
+
+$admin-defaults__remove-widget-button--color: $blue__greyish--800;//$black__blueish--200;
+$admin-defaults__filter-search-button-section--line-height: $editor-defaults__inline-box--height;
+$admin-defaults__filter-component-container--bg-color: $white;
+$admin-defaults__filter-container-toggle-button--line-height: $editor-defaults__inline-box--height; 
+$admin-defaults__filter-container-toggle-button--height: $editor-defaults__inline-box--height;
+
+$admin-defaults__filter-container-attribute-button--color: $white;
+$admin-defaults__filter-container-attribute-button--hover-color: $white;
+$admin-defaults__filter-attribute-button-icon--size: 16px;
+
+
+$admin-defaults__config-filter-attribute-container--padding: 5px;
+$admin-defaults__config-filter-attribute-container--bg-color: $white;
+$admin-defaults__config-filter-attribute-find-parent--line-height: $editor-defaults__inline-box--height;
+$admin-defaults__config-filter-attribute-name-label--padding-left: 0;
+$admin-defaults__config-popup-container--bg-color: $grey__light--500;
+
+$admin-defaults__popup-menu--padding-top: 4px;
+$admin-defaults__popup-menu-content--border-radius: 4px;
+$admin-defaults__popup-menu-content--padding: 4px 0;
+$admin-defaults__popup-menu-content--box-shadow: 0px 2px 5px 0px rgba($black, 0.1);
+$admin-defaults__popup-menu-content--bg-color: $white;
+$admin-defaults__popup-menu-item--color: #354a5f;
+$admin-defaults__popup-menu-separator--border-color: #354a5f; // $black__blueish--100;
+$admin-defaults__popup-menu-separator--min-height: $boxes--border__thin;
+$admin-defaults__popup-menu-separator--margin: 0 $container-spacing-default__half;
+$admin-defaults__popup-menu-pointer--right: 10px;
+$admin-defaults__popup-menu-pointer--margin-top: $admin-defaults__popup-menu--padding-top;

@@ -1,0 +1,61 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=en
+
+UPDATE GenericItem[processor=de.hybris.platform.ruleengineservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+$catalogVersionName=$config-ruleengineservices.mapper.value.catalogversionname
+
+############################# CONDITON DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleConditionDefinitionRuleTypeMapping;definition(id)[unique=true];ruleType(code)[default=PromotionSourceRule][unique=true]
+;y_cart_total;
+;y_qualifying_products;
+;y_qualifying_categories;
+;y_target_customers;
+;y_product_price;
+;y_customer_support;
+;y_qualifying_group_types;
+;y_order_threshold_perfect_partner;
+
+############################# ACTION DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleActionDefinitionRuleTypeMapping;definition(id)[unique=true];ruleType(code)[default=PromotionSourceRule][unique=true]
+;y_order_percentage_discount;
+;y_order_fixed_discount;
+;y_order_entry_percentage_discount;
+;y_order_entry_fixed_discount;
+;y_order_entry_fixed_price;
+;y_target_bundle_price;
+;y_free_gift;
+;y_partner_order_entry_percentage_discount;
+;y_partner_order_entry_fixed_discount;
+;y_partner_order_entry_fixed_price;
+;y_change_delivery_mode;
+;y_trigger_message;
+;y_trigger_message_parameterized_cart_total_threshold;
+;y_trigger_message_parameterized_category;
+;y_trigger_message_parameterized_product;
+
+INSERT_UPDATE RuleToEngineRuleTypeMapping;ruleType(code)[unique=true];engineRuleType(code)[default=PROMOTION]
+;PromotionSourceRule;
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];priority;translatorId;translatorParameters;categories(id)
+;y_trigger_message_parameterized_cart_total_threshold;100;ruleExecutableActionTranslator;actionId->ruleTriggerMessageAction;general;
+;y_trigger_message_parameterized_category;100;ruleExecutableActionTranslator;actionId->ruleTriggerMessageAction;general;
+;y_trigger_message_parameterized_product;100;ruleExecutableActionTranslator;actionId->ruleTriggerMessageAction;general;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];priority;type;value;required[default=true];validators;filters
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;100;Map(ItemType(Currency),java.math.BigDecimal);;false;rulePositiveNumberParameterValidator
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;90;java.lang.Integer;;false;rulePositiveNumberParameterValidator
+;y_trigger_message_parameterized_category;catalog;110;ItemType(Catalog);;false;;
+;y_trigger_message_parameterized_category;qualifying_categories;100;List(ItemType(Category));;false;;catalogVersion->catalog#catalogVersions.^[#this.version == '$catalogVersionName']
+;y_trigger_message_parameterized_product;catalog;100;ItemType(Catalog);;false;;
+;y_trigger_message_parameterized_product;qualifying_products_quantity;90;java.lang.Integer;;false;rulePositiveNumberParameterValidator
+;y_trigger_message_parameterized_product;qualifying_products;100;List(ItemType(Product));;false;;catalogVersion->catalog#catalogVersions.^[#this.version == '$catalogVersionName']

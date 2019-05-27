@@ -1,0 +1,59 @@
+$searchResultBrowser__navigation-toolbar--padding: 10px 0 40px;
+$searchResultBrowser__navigation-toolbar--margin: 0 $container-spacing-default__base;
+$searchResultBrowser__navigation-toolbar-fake-border--width: 100%;
+$searchResultBrowser__navigation-toolbar-fake-border--left: 0;
+$searchResultBrowser__navigation-toolbar-fake-border--bottom: $container-spacing-default__base;
+$searchResultBrowser__navigation-toolbar-fake-border--height: 1px;
+$searchResultBrowser__navigation-toolbar-fake-border--background: $grey__light--800;
+
+$searchResultBrowser__pagination--margin-top: 15px;
+$searchResultBrowser__result-count--margin-top: 20px;
+
+
+$searchResultBrowser__results-header--background: $grey__default--300;
+$searchResultBrowser__results-header--color: $grey__default--300;
+$searchResultBrowser__results-header--font-size: $font-size__small * 0.5;
+$searchResultBrowser__results-header--padding: 0 $container-spacing-default__base;
+
+$searchResultBrowser__result--background: $white;
+$searchResultBrowser__result--color: $black;
+$searchResultBrowser__result--border: $boxes--border__thin solid $grey__default;
+$searchResultBrowser__result--width: 100%;
+$searchResultBrowser__result-promoted--background: $white;
+$searchResultBrowser__result-drag-over--background: $blue__light;
+$searchResultBrowser__result-drag-ghost--width: 700px;
+$searchResultBrowser__result-drag-ghost--border: $boxes--border__thin solid $grey__default;
+$_searchResultBrowser__result-dragged--opacity: 0.7;
+
+$_searchResultBrowser__result-highlighted--background: mix($white, $blue__default, 95%);
+$_searchResultBrowser__result-highlighted-drag-over--background: mix($white, $blue__light, 12%);
+$_searchResultBrowser__result-highlighted-info-score--background: rgba($white, 0.4);
+
+$searchResultBrowser__result-title--font-weight: $font-weight-bold;
+$searchResultBrowser__result-title--font-size: $font-size__medium;
+$searchResultBrowser__result-price--font-weight: $font-weight-bold;
+$searchResultBrowser__result-price--font-size: $font-size__medium;
+
+$searchResultBrowser__result-info--width: 80px;
+$searchResultBrowser__result-info-score--padding: 3px;
+$searchResultBrowser__result-info-score--font-size: $font-size__small;
+$searchResultBrowser__result-info-icon---margin: auto;
+$searchResultBrowser__result-info-icon-md--size: 23px;
+$searchResultBrowser__result-info-icon-lg--height: 25px;
+$searchResultBrowser__result-info-icon-lg--width: 33px;
+$searchResultBrowser__result-info-icon-fromSearchConfiguration--bg-position: 0 -69px;
+$searchResultBrowser__result-info-icon-inherit--bg-position: -28px -69px;
+$searchResultBrowser__result-info-icon-fromSearchConfiguration-inherit--bg-position: -57px -65px;
+$searchResultBrowser__result-info-icon-and-text-icon--margin-top: -5px;
+$searchResultBrowser__result-info-icon-and-text-icon--top: -5px;
+
+$searchResultBrowser__result-actions--width: 50px;
+$searchResultBrowser__result-actions--padding: 4px;
+
+$searchResultBrowser__result-actions-button--background: transparent;
+$searchResultBrowser__result-actions-button--color: $blue__default;
+$searchResultBrowser__result-actions-button--font-size: 20px;
+
+$searchResultBrowser__result-content--padding-x: 4px;
+$searchResultBrowser__result-content--padding: 10px $searchResultBrowser__result-content--padding-x 15px;
+$searchResultBrowser__result-content--width: calc(100% - (#{$searchResultBrowser__result-info--width} + #{$searchResultBrowser__result-info-score--padding} + #{$searchResultBrowser__result-actions--width} + #{$searchResultBrowser__result-actions--padding} + #{$searchResultBrowser__result-content--padding-x}));

@@ -1,0 +1,77 @@
+@import "cockpitng-globals.scss";
+@import "../systemBarWidget/scss/support/_systembar-variables.scss";
+
+$notification_text--color: $white;
+$notification_message--top-position: $systembar__container--height;
+$notification_warn_text--color: $black--100;
+$notification_success--bckg-color: $green_light-300;
+$notification_failure--bckg-color: $red__light--400;
+$notification_warn--bckg-color: $orange__default;
+$notification_info--bckg-color: $blue__default;
+$notification_border--color: $black;
+$notification_message--bckg-opacity: .85;
+$notification_message_configurableflow--padding-right: 35px;
+$notification_message_configurableflow--padding-left: 20px;
+$notification_message--padding: 15px 45px 15px 35px; //padding-right of 45px for close icon
+
+.yw-notification {
+    position: absolute;
+    z-index: 1700;
+    top: $notification_message--top-position;
+    left: 0;
+    width: 100%;
+    height: auto!important; // Avoid to overlap any other area! 
+
+    &-type{
+        color: $notification_text--color;
+    }
+    &-message {
+        display: block;
+        padding: $notification_message--padding;
+        box-shadow: 0 0 1px $notification_border--color;
+        background: url("images/icon_close-window-bright.png") 99% 50% no-repeat;
+        cursor: pointer;
+        text-align: center;
+        word-wrap: break-word;
+        a,.z-label {
+            color: $notification_text--color;
+        }
+    }
+}
+
+.success {
+    background-color: rgba($notification_success--bckg-color, $notification_message--bckg-opacity);
+}
+.failure {
+    background-color: rgba($notification_failure--bckg-color, $notification_message--bckg-opacity);
+}
+.warning {
+    background-color: rgba($notification_warn--bckg-color, $notification_message--bckg-opacity);
+}
+.info {
+    background-color: rgba($notification_info--bckg-color, $notification_message--bckg-opacity);
+}
+
+/* Special Skin changes for Wizzard */
+.yw-com_hybris_cockpitng_widgets_configurableflow {
+    .yw-notification {
+        position: relative;
+        top: 0;
+        &-message {
+            padding-left: $notification_message_configurableflow--padding-left; //to align it with the rest of content in configurable flow
+            padding-right: $notification_message_configurableflow--padding-right;
+            text-align: left;
+            background-position: 98% 50%;
+            box-shadow: none;
+            .z-label{
+                word-wrap: break-word;
+                display: block;
+                padding-left: 0;
+                &.yw-notification-type{
+                    word-wrap: normal;
+                    padding: 0;
+                }
+            }
+        }
+    }
+}

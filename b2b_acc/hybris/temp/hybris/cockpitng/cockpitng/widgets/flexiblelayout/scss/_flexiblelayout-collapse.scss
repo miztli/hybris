@@ -1,0 +1,65 @@
+@import "support/_flexiblelayout-variables.scss";
+
+.yw-flexlayout-sidebar {
+    &-left > & {
+        .yw-flexlayout-sidebar-footer-collapse {
+            text-align: right;
+        }
+    }
+
+    &-right,
+    &-left.yw-flexlayout-sidebar-collapsed {
+        > .yw-flexlayout-sidebar .yw-flexlayout-sidebar-footer-collapse:before {
+            content: $flexlayout__sidebar-footer-angle-right--content;
+        }
+    }
+
+    &-right.yw-flexlayout-sidebar-collapsed,
+    &-left {
+        > .yw-flexlayout-sidebar .yw-flexlayout-sidebar-footer-collapse:before {
+            content: $flexlayout__sidebar-footer-angle-left--content;
+        }
+    }
+
+    &-collapsible {
+        > .yw-flexlayout-sidebar {
+            padding-bottom: $flexlayout__sidebar-collapsible--padding-bottom;
+        }
+
+        .yw-flexlayout-sidebar-footer {
+            width: $flexlayout__sidebar-footer--width;
+            position: absolute;
+            bottom: $flexlayout__sidebar-footer--bottom;
+            background-color: $flexlayout__sidebar-footer--bg-color;
+
+            &-collapse {
+                height: $flexlayout__sidebar-footer--height;
+                padding: $flexlayout__sidebar-footer--padding;
+                cursor: $flexlayout__sidebar-footer--cursor;
+                box-shadow: $flexlayout__sidebar-footer--box-shadow;
+
+                &:before {
+                    width: $flexlayout__sidebar-footer-before--width;
+                    color: $flexlayout__sidebar-footer-before--color;
+                    font-size: $flexlayout__sidebar-footer-before--font-size;
+                    font-family: $flexlayout__sidebar-footer-before--font-family;
+                    line-height: $flexlayout__sidebar-footer-before--line-height;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $flexlayout__media-query-xs--min-width) {
+    .yw-flexlayout-sidebar {
+
+        &-footer {
+            display: none;
+        }
+
+        &-collapsible > & {
+            padding-bottom: 0;
+        }
+    }
+}

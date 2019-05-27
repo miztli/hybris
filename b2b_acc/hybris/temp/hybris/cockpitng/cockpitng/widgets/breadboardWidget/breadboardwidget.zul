@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:zk="http://www.zkoss.org/2005/zk"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		height="100%">
+	<style src="${wr}/breadboardwidget.css" />
+	<div id="additionalStyleContainer"/>
+	<borderlayout height="100%" width="100%">
+		<north height="100px" splittable="true" collapsible="true">
+			<div sclass="yw-toparea">
+				<hlayout width="100%" height="100%" spacing="20px">
+					<div>
+						<div sclass="yw-toplabel-2">
+							<label value="Breadboard"/>
+						</div>
+						<div sclass="yw-toplabel-3">
+							<label value="Cockpit Development &amp; Testing Tool"/>
+						</div>
+					</div>
+					<div hflex="1">
+						<div sclass="yw-widgetselector">
+							<label value="Choose a widget: "/>
+							<listbox id="widgetSelector" mold="select" width="150px"/>
+							<div>
+								<a label="Open as link ..." id="linkButton" href="${widgetModel.linkURI}" />
+							</div>
+						</div>
+					</div>
+					<div hflex="1" height="100%">
+						<grid sclass="yw-infoGrid">
+							<columns>
+								<column width="100px"/>
+								<column/>
+							</columns>
+							<rows>
+								<row>
+									<label value="Name: "/>
+									<label id="widgetName"/>	
+								</row>
+								<row>
+									<label value="Code: "/>
+									<label id="widgetCode"/>
+								</row>
+								<row>
+									<label value="Description: "/>
+									<label id="widgetDescription"/>
+								</row>
+								<row>
+									<label value="DefaultTitle: "/>
+									<label id="widgetDefaultTitle"/>
+								</row>
+							</rows>
+						</grid>
+					</div>
+					<div hflex="1" height="100%">
+						<grid sclass="yw-infoGrid">
+							<columns>
+								<column width="100px"/>
+								<column width="100%"/>
+							</columns>
+							<rows>
+								<row>
+									<label value="Controller: "/>
+									<label id="widgetController"/>
+								</row>
+								<row>
+									<label value="ViewURI: "/>
+									<label id="widgetViewURI"/>
+								</row>
+								<row>
+									<label value="CategoryTag: "/>
+									<label id="widgetCategoryTag"/>
+								</row>
+							</rows>
+						</grid>
+					</div>
+					<div  id="divWidgetSettings">
+						<button id="buttonWidgetSettings" label="Widget Settings"/>
+					</div>
+<!-- 					<div hflex="1"> -->
+<!-- 					</div> -->
+				</hlayout>
+			</div>
+		</north>
+		<west width="20%" splittable="true" collapsible="true">
+			<widgetchildren id="inputChildren" slotID="inputs" type="tab"/>
+		</west>
+		<center>
+			<div sclass="yw-breadboardDiv">
+				<div sclass="yw-breadboardDiv-inner">
+					<div sclass="yw-breadboardDiv-content">
+						<widgetslot id="testSlot" slotID="testedWidget"/>
+					</div>
+				</div>
+			</div>
+		</center>
+		<east width="20%" splittable="true" collapsible="true">
+			<div height="100%">
+				<div sclass="yw-outputLabelCnt">
+					<label id="outputLabel"/>
+				</div>
+				<div vflex="1">
+					<div height="100%" style="position: relative">
+						<widgetslot id="outputSlot" slotID="output"/>
+					</div>
+				</div>
+			</div>
+		</east>			
+		<south height="20%" title="Console" collapsible="true" open="true" splittable="true">
+			<div height="100%" sclass="yw-output-console-cnt">
+				<div sclass="yw-output-console-toolbar">
+					<toolbarbutton id="clearButton" label="Clear"/>
+				</div>
+				<div id="bottom" height="100%" sclass="yw-output-console" />
+			</div>
+		</south>
+	</borderlayout>
+</widget>

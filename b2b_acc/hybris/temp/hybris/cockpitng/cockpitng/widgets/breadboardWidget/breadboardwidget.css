@@ -1,0 +1,70 @@
+.yw-toparea {
+  background: #ddd;
+  height: 100%;
+  padding: 10px; }
+
+.yw-toplabel-2 .z-label {
+  font-weight: bold;
+  font-size: 30px; }
+
+.yw-toplabel-3 .z-label {
+  font-size: 10px; }
+
+.yw-toparea .yw-infoGrid .z-row-inner {
+  border: none;
+  padding: 0; }
+
+.yw-infoGrid .z-grid-body {
+  padding: 3px; }
+
+.yw-widgetselector {
+  padding: 5px;
+  margin-left: 20px; }
+
+.yw-breadboardDiv {
+  background: url("warning.png");
+  height: 100%;
+  position: relative; }
+
+.yw-breadboardDiv-inner {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px; }
+
+.yw-breadboardDiv-content {
+  position: relative;
+  background: white;
+  height: 100%;
+  overflow: auto; }
+
+.yw-output-console {
+  color: #ccc;
+  background: #222;
+  font-family: monospace;
+  border: none;
+  padding: 0;
+  overflow: auto; }
+
+.yw-output-console .z-label {
+  display: block;
+  font-family: monospace; }
+
+.yw-outputLabelCnt {
+  height: 30px; }
+
+.yw-output-console-cnt {
+  position: relative; }
+
+.yw-output-console-toolbar {
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 30px;
+  background: #ccc;
+  visibility: hidden; }
+
+.yw-output-console-cnt:HOVER .yw-output-console-toolbar {
+  visibility: visible; }

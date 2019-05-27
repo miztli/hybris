@@ -1,0 +1,274 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+
+#
+# Import the CMS content for the Powertools site
+#
+$contentCatalog=powertoolsContentCatalog
+$productCatalog=powertoolsProductCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$siteResource=jar:de.hybris.platform.orderselfserviceaddon.constants.OrderselfserviceaddonConstants&/orderselfserviceaddon/import
+
+# Language
+$lang=en
+
+INSERT_UPDATE ApplicableCmsActionsTypeForCmsComponent;target(code)[unique=true];source(code)[unique=true];
+;JspIncludeComponent;CancelOrderAction;
+
+# CMS Cancel Order Action
+INSERT_UPDATE CancelOrderAction;$contentCV[unique=true];uid[unique=true];url;name;&actionRef
+;;CancelOrderAction;/my-account/order/{orderCode}/cancel;Cancel Order Action;CancelOrderAction
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV)[mode=append];&componentRef
+;;AccountOrderDetailsOverviewComponent;Account Order Details Overview Info Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/b2b/accountOrderDetailOverview.jsp;CancelOrderAction;AccountOrderDetailsOverviewComponent
+
+###### Cancel order page Start ######
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];title[lang=$lang]
+;;cancel-order;Cancel Order Page;AccountPageTemplate;cancel-order;;;;Cancel Order
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-cancel-order;Side Content Slot for My Account cancel-order;true;;;;
+;;BodyContent-cancel-order;Body Content Slot for My Account cancel-order;true;CancelOrderHeadlineComponent,CancelOrderComponent;;;
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='cancel-order'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-cancel-order;SideContent;;SideContent-cancel-order;;;
+;;BodyContent-cancel-order;BodyContent;;BodyContent-cancel-order;;;
+
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV)[mode=append];&componentRef
+;;CancelOrderComponent;Cancel Order Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/cancel/accountCancelOrderPage.jsp;;CancelOrderComponent
+;;CancelOrderHeadlineComponent;Cancel Order Headline Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/cancel/cancelOrderHeadline.jsp;;CancelOrderHeadlineComponent
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+;;cancelOrderPagePreview;text/png;cancelOrderPage.png;$siteResource/documents/images/cancelOrderPage.png;
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);title[lang=$lang]
+;;cancel-order;cancelOrderPagePreview;Cancel Order
+
+###### Cancel order page End ######
+
+###### Confirm Cancel order page starts ######
+
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];title[lang=$lang]
+;;confirm-cancel-order;Confirm Cancel Order Page;AccountPageTemplate;confirm-cancel-order;;;;Confirm Cancel Order
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-confirm-cancel-order;Side Content Slot for My Account confirm-cancel-order;true;;;;
+;;BodyContent-confirm-cancel-order;Body Content Slot for My Account confirm-cancel-order;true;ConfirmCancelOrderHeadlineComponent,CancelConfirmationOrderComponent;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='confirm-cancel-order'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-confirm-cancel-order;SideContent;;SideContent-confirm-cancel-order;;;
+;;BodyContent-confirm-cancel-order;BodyContent;;BodyContent-confirm-cancel-order;;;
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV)[mode=append];&componentRef
+;;CancelConfirmationOrderComponent;Cancel Confirmation Order Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/cancel/accountCancelConfirmationPage.jsp;;CancelConfirmationOrderComponent
+;;ConfirmCancelOrderHeadlineComponent;Cancel Order Headline Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/cancel/cancelConfirmOrderHeadline.jsp;;ConfirmCancelOrderHeadlineComponent
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+;;confirmCancelOrderPagePreview;text/png;confirmCancelOrderPage.png;$siteResource/documents/images/confirmCancelOrderPage.png;
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);title[lang=$lang]
+;;confirm-cancel-order;confirmCancelOrderPagePreview;Confirm Cancel Order
+
+###### Confirm Cancel order page End ######
+
+##### Return Request Action start ########
+
+INSERT_UPDATE ApplicableCmsActionsTypeForCmsComponent;target(code)[unique=true];source(code)[unique=true];
+;JspIncludeComponent;ReturnOrderAction;
+
+# CMS Return Order Action
+INSERT_UPDATE ReturnOrderAction;$contentCV[unique=true];uid[unique=true];url;name;&actionRef
+;;ReturnOrderAction;/my-account/order/{orderCode}/returns;Return Order Action;ReturnOrderAction
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV)[mode=append];&componentRef
+;;AccountOrderDetailsOverviewComponent;Account Order Details Overview Info Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/b2b/accountOrderDetailOverview.jsp;ReturnOrderAction;AccountOrderDetailsOverviewComponent
+
+##### Return Request Action end ########
+
+
+###### Return order page page Start ######
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];title[lang=$lang]
+;;return-order;Return Order Page;AccountPageTemplate;return-order;;;;Return Order
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-return-order;Side Content Slot for My Account return-order;true;;;;
+;;BodyContent-return-order;Body Content Slot for My Account return-order;true;ReturnOrderHeadlineComponent,ReturnOrderComponent;;;
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='return-order'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-return-order;SideContent;;SideContent-return-order;;;
+;;BodyContent-return-order;BodyContent;;BodyContent-return-order;;;
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV)[mode=append];&componentRef
+;;ReturnOrderComponent;Return Order Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/return/accountReturnOrderPage.jsp;;ReturnOrderComponent
+;;ReturnOrderHeadlineComponent;Return Order Headline Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/return/returnOrderHeadline.jsp;;ReturnOrderHeadlineComponent
+
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+;;returnOrderPagePreview;text/png;returnOrderPage.png;$siteResource/documents/images/returnOrderPage.png;
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);title[lang=$lang]
+;;return-order;returnOrderPagePreview;Return Order
+
+
+###### return order page page End ######
+
+###### confirm return order page page End ######
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];title[lang=$lang]
+;;confirm-return-order;Confirm Return Order Page;AccountPageTemplate;confirm-return-order;;;;Confirm Return Order
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-confirm-return-order;Side Content Slot for My Account confirm-return-order;true;;;;
+;;BodyContent-confirm-return-order;Body Content Slot for My Account confirm-return-order;true;ReturnConfirmOrderHeadlineComponent,ReturnOrderConfirmationComponent;;;
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='confirm-return-order'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-confirm-return-order;SideContent;;SideContent-confirm-return-order;;;
+;;BodyContent-confirm-return-order;BodyContent;;BodyContent-confirm-return-order;;;
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV)[mode=append];&componentRef
+;;ReturnOrderConfirmationComponent;Return Confirmation Order Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/return/accountReturnConfirmationPage.jsp;;ReturnOrderConfirmationComponent
+;;ReturnConfirmOrderHeadlineComponent;Confirm Return Order Headline Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/return/returnConfirmOrderHeadline.jsp;;ReturnConfirmOrderHeadlineComponent
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+;;confirmReturnOrderPagePreview;text/png;confirmReturnOrderPage.png;$siteResource/documents/images/confirmReturnOrderPage.png;
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);title[lang=$lang]
+;;confirm-return-order;returnOrderPagePreview;Confirm Return Order
+
+
+###### confirm return order page page End ######
+
+###### Account My Returns Start ######
+
+#cms-content.impex
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];previewImage(code, $contentCV);title[lang=$lang]
+;;returns;Returns Page;AccountPageTemplate;returns;;;;;Returns Listing
+
+# CMS Navigation Nodes (children of my account)
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&linkRef);&nodeRef
+;MyReturnsHistoryNavNode;;MyReturnsHistoryNavNode;MyAccountNavNode;;MyReturnsHistoryNavNode
+
+# create cms navigation entry for nvaigation child nodes
+INSERT_UPDATE CMSNavigationEntry;uid[unique=true];$contentCV[unique=true];name;navigationNode(&nodeRef);item(&linkRef);
+;MyReturnsHistoryNavNodeEntry;;MyReturnsHistoryNavNodeEntry;MyReturnsHistoryNavNode;MyReturnsHistoryLink;
+
+# CMS Link Components
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;&componentRef;target(code)[default='sameWindow'];$category;$product;
+;;MyReturnsHistoryLink;MyReturnsHistoryLink;/my-account/returns;MyReturnsHistoryLink;MyReturnsHistoryLink;;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='returns'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-returns;SideContent;;SideContent-returns;;;
+;;BodyContent-returns;BodyContent;;BodyContent-returns;;;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-returns;Side Content Slot for My Account Returns;true;;;;
+;;BodyContent-returns;Body Content Slot for My Account Returns;true;MyReturnsHistoryComponent;;;
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+;;returnsPagePreview;text/png;returnRequestDetailsPage.png;$siteResource/documents/images/returnRequestDetailsPage.png;
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);title[lang=$lang]
+;;returns;returnsPagePreview;Returns Listing
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV);&componentRef
+;;MyReturnsHistoryComponent;Account My Returns Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/return/accountReturnHistoryPage.jsp;;MyReturnsHistoryComponent
+
+###### Account My Returns End ######
+
+
+###### Return Request Details page starts ######
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];title[lang=$lang]
+;;return-request-details;Return Request Details Page;AccountPageTemplate;return-request-details;;;;Return Request Details
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-return-request-details;Side Content Slot for My Account return-request-details;true;;;;
+;;BodyContent-return-request-details;Body Content Slot for My Account return-request-details;true;ReturnRequestDetailsHeadlineComponent,ReturnRequestDetailsComponent;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='return-request-details'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-return-request-details;SideContent;;SideContent-return-request-details;;;
+;;BodyContent-return-request-details;BodyContent;;BodyContent-return-request-details;;;
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV)[mode=append];&componentRef
+;;ReturnRequestDetailsComponent;Return Request Details Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/return/accountReturnRequestDetails.jsp;;ReturnRequestDetailsComponent
+;;ReturnRequestDetailsHeadlineComponent;Return Request Details Headline Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/return/returnRequestDetailsHeadline.jsp;;ReturnRequestDetailsHeadlineComponent
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+;;returnRequestDetailsPagePreview;text/png;returnRequestDetailsPage.png;$siteResource/documents/images/returnRequestDetailsPage.png;
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);title[lang=$lang]
+;;return-request-details;returnRequestDetailsPagePreview;Return Request Details
+
+###### Return Request Details page End ######
+
+###### Cancel Return Page ######
+
+INSERT_UPDATE ApplicableCmsActionsTypeForCmsComponent;target(code)[unique=true];source(code)[unique=true];
+;JspIncludeComponent;CancelReturnAction;
+
+# CMS Cancel Return Action
+INSERT_UPDATE CancelReturnAction;$contentCV[unique=true];uid[unique=true];url;name;&actionRef
+;;CancelReturnAction;/my-account/returns/{returnCode}/cancel;Cancel Return Action;CancelReturnAction
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV)[mode=append];&componentRef
+;;ReturnRequestDetailsComponent;Return Request Details Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/return/accountReturnRequestDetails.jsp;CancelReturnAction;ReturnRequestDetailsComponent
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];title[lang=$lang]
+;;cancel-return;Cancel Return Page;AccountPageTemplate;cancel-return;;;;Cancel Return
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-cancel-return;Side Content Slot for My Account cancel-return;true;;;;
+;;BodyContent-cancel-return;Body Content Slot for My Account cancel-return;true;CancelReturnHeadlineComponent,CancelReturnComponent;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='cancel-return'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-cancel-return;SideContent;;SideContent-cancel-return;;;
+;;BodyContent-cancel-return;BodyContent;;BodyContent-cancel-return;;;
+
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV)[mode=append];&componentRef
+;;CancelReturnComponent;Cancel Return Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/return/cancel/accountCancelReturnPage.jsp;;CancelReturnComponent
+;;CancelReturnHeadlineComponent;Cancel Return Headline Component;/WEB-INF/views/addons/orderselfserviceaddon/responsive/pages/account/return/cancel/cancelReturnHeadline.jsp;;CancelReturnHeadlineComponent
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+;;cancelReturnPagePreview;text/png;cancelReturnPage.png;$siteResource/documents/images/cancelReturnPage.png;
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);title[lang=$lang]
+;;cancel-return;cancelReturnPagePreview;Cancel Return
+
+###### Cancel Return Page End ######

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<groups xmlns="http://www.isdc.ro/wro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.isdc.ro/wro wro.xsd">
+   <group name="addons_responsive">
+      <js>/_ui/addons/assistedservicestorefront/responsive/common/js/assistedservicestorefront.js</js>
+      <js>/_ui/addons/assistedservicestorefront/responsive/common/js/jquery.tablesorter.pager.js</js>
+      <js>/_ui/addons/assistedservicestorefront/responsive/common/js/jquery.tablesorter.min.js</js>
+      <js>/_ui/addons/assistedservicestorefront/responsive/common/js/Chart.min.js</js>
+      <js>/_ui/addons/assistedservicestorefront/responsive/common/js/asm.storefinder.js</js>
+      <css>/_ui/addons/assistedservicestorefront/responsive/common/css/assistedservicestorefront.css</css>
+      <css>/_ui/addons/assistedservicestorefront/responsive/common/css/storeFinder.css</css>
+      <css>/_ui/addons/assistedservicestorefront/responsive/common/css/customer360.css</css>
+      <js>/_ui/addons/smarteditaddon/shared/common/js/webApplicationInjector.js</js>
+      <js>/_ui/addons/smarteditaddon/shared/common/js/reprocessPage.js</js>
+      <js>/_ui/addons/smarteditaddon/shared/common/js/adjustComponentRenderingToSE.js</js>
+      <js>/_ui/addons/smarteditaddon/responsive/common/js/smarteditaddon.js</js>
+      <css>/_ui/addons/smarteditaddon/responsive/common/css/smarteditaddon.css</css>
+      <js>/_ui/addons/textfieldconfiguratortemplateaddon/responsive/common/js/textfieldconfiguratortemplateaddon.js</js>
+      <css>/_ui/addons/textfieldconfiguratortemplateaddon/responsive/common/css/textfieldconfiguratortemplateaddon.css</css>
+      <js>/_ui/addons/customerticketingaddon/responsive/common/js/customerticketingaddon.js</js>
+      <css>/_ui/addons/customerticketingaddon/responsive/common/css/customerticketingaddon.css</css>
+      <js>/_ui/addons/commerceorgaddon/responsive/common/js/commerceorgnavigation.js</js>
+      <js>/_ui/addons/commerceorgaddon/responsive/common/js/commerceorgaddon.js</js>
+      <js>/_ui/addons/commerceorgaddon/responsive/common/js/jquery.validate.js</js>
+      <js>/_ui/addons/b2bacceleratoraddon/responsive/common/js/acc.checkoutsummary.js</js>
+      <js>/_ui/addons/b2bacceleratoraddon/responsive/common/js/acc.paymentType.js</js>
+      <js>/_ui/addons/b2bacceleratoraddon/responsive/common/js/acc.replenishment.js</js>
+      <js>/_ui/addons/b2bacceleratoraddon/responsive/common/js/acc.orderform.js</js>
+      <js>/_ui/addons/b2bacceleratoraddon/responsive/common/js/acc.approval.js</js>
+      <js>/_ui/addons/orderselfserviceaddon/responsive/common/js/orderselfserviceaddon.js</js>
+      <js>/_ui/addons/orderselfserviceaddon/responsive/common/js/cms/cancelorderaction.js</js>
+      <js>/_ui/addons/orderselfserviceaddon/responsive/common/js/cms/returnorderaction.js</js>
+      <css>/_ui/addons/orderselfserviceaddon/responsive/common/css/orderselfserviceaddon.css</css>
+      <js>/_ui/addons/adaptivesearchsamplesaddon/responsive/common/js/adaptivesearchsamplesaddon.js</js>
+      <css>/_ui/addons/adaptivesearchsamplesaddon/responsive/common/css/adaptivesearchsamplesaddon.css</css>
+   </group>
+</groups>
+

@@ -1,0 +1,72 @@
+
+@import "../support/_cockpit-variables.scss";
+
+$editor-defaults__draggable-ghost--padding-y: 8px;
+$editor-defaults__draggable-ghost--max-width: 450px;
+$editor-defaults__draggable-ghost--box-shadow: 0 2px 3px -2px rgba($black, 0.3);
+$editor-defaults__draggable-ghost--bg-color: $blue__light--100;
+$editor-defaults__draggable-ghost--border: $boxes--border__thin solid $grey__default--1000;
+$editor-defaults__draggable-ghost-title--font-size: $font-size__base;
+$editor-defaults__draggable-ghost-title--line-height: $font-size__h3;
+$editor-defaults__draggable-ghost-title--color: $black;
+$editor-defaults__draggable-ghost-title--ellipse-out: true;
+$editor-defaults__draggable-ghost-indicator--width: 9px;
+
+$editor-defaults__draggable-ghost-indicator--left: $container-spacing-default__third;
+
+$editor-defaults__draggable-ghost-not-dropable-icon-before--visible: true;
+$editor-defaults__draggable-ghost-not-dropable-icon-before--size: 16px;
+$editor-defaults__draggable-ghost-not-dropable-icon-before--top: 1px;
+$editor-defaults__draggable-ghost-not-dropable-icon-before--left: 3px;
+$editor-defaults__draggable-ghost-not-dropable-icon-before--content: "\f05e";
+$editor-defaults__draggable-ghost-not-dropable-icon-before--font-family: $font-family-fontawesome;
+
+.yw-draggable-ghost {
+    background-color: $editor-defaults__draggable-ghost--bg-color;
+    border: $editor-defaults__draggable-ghost--border;
+    max-width: $editor-defaults__draggable-ghost--max-width;
+    box-shadow: $editor-defaults__draggable-ghost--box-shadow;
+    padding: $editor-defaults__draggable-ghost--padding-y $container-spacing-default__half ($editor-defaults__draggable-ghost--padding-y + 1px) $container-spacing-default__base;
+    width: auto;
+    height: auto;
+    position: fixed !important;
+
+    &-title {
+        color: $editor-defaults__draggable-ghost-title--color;
+        font-size: $editor-defaults__draggable-ghost-title--font-size;
+        line-height: $editor-defaults__draggable-ghost-title--line-height;
+        text-align: left;
+        
+        @if $editor-defaults__draggable-ghost-title--ellipse-out {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+    }
+    &-indicator {
+        width: $editor-defaults__draggable-ghost-indicator--width;
+        position: absolute;
+        top: $editor-defaults__draggable-ghost--padding-y;
+        height: auto;
+        bottom: $editor-defaults__draggable-ghost--padding-y;
+        left: $editor-defaults__draggable-ghost-indicator--left;
+        background: url("images/drag-indicator-dots.png") repeat;
+    }
+    &-not-droppable-target {
+        @if $editor-defaults__draggable-ghost-not-dropable-icon-before--visible {
+            &:before {
+                content: $editor-defaults__draggable-ghost-not-dropable-icon-before--content;
+                font-family: $editor-defaults__draggable-ghost-not-dropable-icon-before--font-family;
+                position: absolute;
+                left: $editor-defaults__draggable-ghost-not-dropable-icon-before--left;
+                top: $editor-defaults__draggable-ghost-not-dropable-icon-before--top;
+                width: $editor-defaults__draggable-ghost-not-dropable-icon-before--size;
+                height: $editor-defaults__draggable-ghost-not-dropable-icon-before--size;
+                line-height: $editor-defaults__draggable-ghost-not-dropable-icon-before--size;
+                text-align: center;
+            }    
+        }
+    }
+}
+

@@ -1,0 +1,232 @@
+/*================================
+    Collection Browser
+================================*/
+// Styling variables for the Collection Browser (including List-, Tree & Grid-View, Preview-icon & Loading-Screen)
+
+
+
+@import "cockpitng-globals.scss";
+
+$collection-browser__default--border-color: $grey__light--700; //$grey__light--200;
+$collection-browser__default-decent--border-color: $grey__light--1100;
+$collection-browser__default--bg-color: $white;
+$collection-browser__default--border-width: $boxes--border__thin;
+$collection-browser__default--border: $collection-browser__default--border-width solid $collection-browser__default--border-color;
+
+$collection-browser__default-table-list-border--border-color: $white;
+
+$collection-browser__title--color: $black__blueish--100;
+$collection-browser__sub-title--color: $black__blueish--100; //#085abc;
+$collection-browser__title--font-size: $font-size__base;
+
+$collection-browser__button--hover-bg-color: $white;
+$collection-browser__button--hover-box-shadow: inset 0 0 1px 1px rgba($grey__default--1000, .9);
+$collection-browser__button--border-width: $editor-defaults__action-button--border-width;
+$collection-browser__button--hover-border-color: $editor-defaults__action-button-hover--border-color;
+$collection-browser__button--line-height: $toolbar__vertical-centering-base--height;
+$collection-browser__action-button--height: $toolbar__vertical-centering-base--height;
+
+$collection-browser__side-content-indent--padding: $container-spacing-default__base;
+
+$collection-browser__action-container--padding-x: $container-spacing-default__base;
+$collection-browser__action-container--padding: $container-spacing-default__half $collection-browser__action-container--padding-x; //18px;
+
+$collection-browser__header--padding: 0 $collection-browser__action-container--padding-x 15px;
+$collection-browser__header-sort--color: $black__blueish--100;
+$collection-browser__header--bg-color: transparent;
+
+$collection-browser__header-sort-icon--space: 12px;
+$collection-browser__header-sort-icon--font-size: 14px;
+$collection-browser__header-sort-icon--top: -2px;
+$collection-browser__header-sort-icon-up--top: -3px;
+
+$collection-browser__header-content--padding-top: $container-spacing-default__half;
+$collection-browser__header-content--padding-bottom: $container-spacing-default__half;
+$collection-browser__list-header-item--border: $collection-browser__default--border-width solid $grey__light--700;
+;
+
+$collection-browser__list-item--color: $black__blueish--100;
+$collection-browser__list--bottom-border: $collection-browser__default--border-width solid $white;
+$collection-browser__list-item-selected-delimiter--border-color: $white; 
+$collection-browser__list-item-content--padding-y: $container-spacing-default__third;
+$collection-browser__list-item-content--padding-x: $container-spacing-default__third; //applies to header- & body-cells
+
+$collection-browser__checkbox--font-size: $font-size__base;
+$collection-browser__checkbox-unchecked--color: $grey__default--700;
+$collection-browser__checkbox-focused--color: $white;
+
+$collection-browser__status-icons-container--padding-left: 6px;
+
+$collection-browser__list-view-preview-image--max-size: 20px;
+$collection-browser__list-view-popup-image--height: 200px;
+$collection-browser__list-view-popup-image--width: 150px;
+$collection-browser__list-view-bottom-bar--bg-color: $grey__light--600;
+$collection-browser__list-view-bottom-bar--padding: 0 $collection-browser__side-content-indent--padding;
+$collection-browser__list-view-bottom-bar--height: $editor-defaults__inline-box--height;
+
+$collection-browser__list-view-toolbar-pagin--height: 28px;
+$collection-browser__list-view-toolbar-bottom-container--padding: floor(($collection-browser__list-view-bottom-bar--height - $collection-browser__list-view-toolbar-pagin--height)/2) 0;
+
+$collection-browser__list-view-entry--min-height: $editor-defaults__inline-box--height + $collection-browser__default--border-width;
+
+$collection-browser__list-view-status-button--color: $black__blueish--100;
+$collection-browser__list-view-status-button--hover-bg-color: $grey__light--600;
+$collection-browser__list-view-status-button--hover-color: $black__blueish--100;
+$collection-browser__list-view-status-button--padding: floor($container-spacing-default__third/2);
+
+$collection-browser__list-view-hover--bg-color: $grey__light--1200; //F6F8FA //old:  $grey__default--100
+$collection-browser__list-view-focus--bg-color: $blue__light--400; //E4EDF2 //old: $grey__default 
+$collection-browser__list-view-focus-hover--bg-color: $blue__light--600; //D5E5EF //old: $grey__dark--100 
+$collection-browser__list-view-selected--bg-color: $blue__light--100; //D5EEFF //old: $blue__light--700 
+$collection-browser__list-view-selected-hover--bg-color: $blue__light--200; //B3DAF6 //old: $blue__light--500 
+$collection-browser__list-view-selected-focus--bg-color: $blue__light--700; //BEE5FE //old:  $blue__default--200
+$collection-browser__list-view-selected-focus-hover--bg-color: $blue__light--200; //B3DAF6 //old:  $blue__default--400
+
+$collection-browser__list-cell--padding: $collection-browser__list-item-content--padding-y $collection-browser__list-item-content--padding-x ($collection-browser__list-item-content--padding-y - $collection-browser__default--border-width);
+$collection-browser__list-item--box-shadow: 0px $collection-browser__default--border-width 0px;
+
+$collection-browser__header-content--padding: $collection-browser__header-content--padding-top (floor($collection-browser__list-item-content--padding-x/2)) $collection-browser__header-content--padding-bottom $collection-browser__list-item-content--padding-x;
+
+$collection-browser__header-sort-content--padding-right: $collection-browser__header-sort-icon--space + $collection-browser__list-item-content--padding-x;
+$collection-browser__create-container--margin: 0;
+
+$collection-browser__toolbar--padding: 10px 0;
+$collection-browser__toolbar-item-delimiter--color: $grey__light--800;
+$collection-browser__toolbar--border: $collection-browser__default--border-width solid $collection-browser__toolbar-item-delimiter--color;
+$collection-browser__toolbar-mold-select-button--size: $toolbar__vertical-centering-base--height;
+$collection-browser__toolbar-paging-button--margin-right: 0;
+
+$collection-browser__toolbar-z-button--height: $toolbar__button-default--height;
+$collection-browser__toolbar-z-button--padding-y: 0;
+
+$collection-browser__tree-item--border-color: $collection-browser__default-decent--border-color;
+$collection-browser__tree-item--border: $collection-browser__default--border-width solid $collection-browser__tree-item--border-color;
+$collection-browser__tree-item-content--padding-y: 9px;
+$collection-browser__tree-item-content--padding-x: $collection-browser__side-content-indent--padding; //applies to header- & body-cells
+$collection-browser__tree-item--padding: ($collection-browser__tree-item-content--padding-y+$collection-browser__default--border-width) $collection-browser__tree-item-content--padding-x $collection-browser__tree-item-content--padding-y;
+$collection-browser__tree-item-preview-to-label--space: 8px;
+$collection-browser__tree-item-label--margin-left: 3px;
+$collection-browser__tree-item-subnode--bg-color: $white;
+
+$collection-browser__tree-item-emptynode--color: $black__blueish--100;
+
+//notifyer
+//added default-values, parts could be moved to cockpit.scss main-parts
+$collection-browser__notifyer--bg-color: $blue__greyish--800;
+$collection-browser__notifyer--opacity: 0.8;
+$collection-browser__notifyer--height: 26px;
+$collection-browser__notifyer--margin-left: 90px;
+$collection-browser__notifyer--color: $white;
+$collection-browser__notifyer-value-label--padding-left: 10px;
+$collection-browser__notifyer-value-label--font-size: $font-size__h4;
+$collection-browser__notifyer-progressmeter--bg-color: $grey__default--500;
+$collection-browser__notifyer-progressmeter-image--bg-color: $blue__default;
+$collection-browser__notifyer-progressmeter--width: 80%;
+$collection-browser__notifyer-progressmeter-container--width: 60%;
+$collection-browser__notifyer-progressmeter--font-weight: $font-weight-bold;
+
+
+$collection-browser__collection-preview--bg-color: $grey__light--500;
+$collection-browser__collection-preview--bg-position: 50% 5px;
+
+
+//variables for the collection-browser (Grid View)
+$collection-browser__grid-view-container--color: $blue__dark--100;
+
+$collection-browser__grid-tile--height: 268px;
+$collection-browser__grid-tile--width: 220px;
+$collection-browser__grid-tile--margin: $container-spacing-default__third;
+$collection-browser__grid-tile--border: $collection-browser__default--border;
+$collection-browser__grid-tile--bg-color: $white;
+$collection-browser__grid-tile--padding-value: 12px;
+$collection-browser__grid-tile--padding: $collection-browser__grid-tile--padding-value $collection-browser__grid-tile--padding-value 0;
+$collection-browser__grid-tile--shadow-color-value: $blue__dark--400;
+$collection-browser__grid-tile--shadow: 0 0 2px rgba($collection-browser__grid-tile--shadow-color-value, 0.1);
+$collection-browser__grid-tile--hover-shadow: 0 0 10px 1px rgba($collection-browser__grid-tile--shadow-color-value, 0.55);
+$collection-browser__grid-tile--focused-hover-shadow: 0 0 10px 1px rgba($blue__default--300, 0.55);
+$collection-browser__grid-tile--focused-shadow: 0 0 10px 1px rgba($collection-browser__grid-tile--shadow-color-value, 0.4);
+$collection-browser__grid-tile--focused--bg-color: $collection-browser__list-view-focus--bg-color;
+$collection-browser__grid-tile--focused--border-color: $blue__default;
+
+$collection-browser__grid-tile--transition: all 0.4s ease;
+
+$collection-browser__grid-tile-label--color: $blue__dark--100;
+$collection-browser__grid-tile-label--line-clamp: 3;
+$collection-browser__grid-tile-label--font-size: $font-size--base;
+$collection-browser__grid-tile-label--line-height: $font-size--medium;
+
+// for auto-positioning image, we need to take in consideration pixels that are occupied by border and padding
+$collection-browser__grid-pixel-fix--border-padding: 2px + $collection-browser__grid-tile--padding-value;
+
+$collection-browser__grid-tile-label--word-wrap: break-word;
+$collection-browser__grid-tile-label--height: ($collection-browser__grid-tile-label--line-height * $collection-browser__grid-tile-label--line-clamp) + 2px + $collection-browser__grid-tile--padding-value;
+$collection-browser__grid-tile-label--bottom: $collection-browser__grid-tile--padding-value;
+
+$collection-browser__grid-tile-image--overflow-x: 2px;
+
+$collection-browser__grid-tile-image--margin-top: -(floor($collection-browser__grid-tile-label--height/2)) - 2px;
+$collection-browser__grid-tile-image--max-height: $collection-browser__grid-tile--height - $collection-browser__grid-tile-label--height - $collection-browser__grid-pixel-fix--border-padding;
+$collection-browser__grid-tile-image--max-width: 100%;
+$collection-browser__grid-tile-image--center-widht-height: false;
+
+$collection-browser__grid-tile-image-part--bg-color: $white;
+$collection-browser__grid-tile-image-part--bottom: $collection-browser__grid-tile-label--height + $collection-browser__grid-tile-label--bottom;
+
+$collection-browser__grid-tile--border-color: $collection-browser__default--border-color;
+
+$collection-browser__grid-tile-select-button--indent: 5px;
+$collection-browser__grid-tile-unselected--color: $grey__default--800;
+$collection-browser__grid-tile-selected--color: $blue__default;
+$collection-browser__grid-tile-selected-check-icon--content: $check--content;
+$collection-browser__grid-tile-selected-check-icon--font-size: $font-size__base;
+$collection-browser__grid-tile-selected-check-icon--font-family: $font-family-fontawesome;
+$collection-browser__grid-tile-selected-check-icon--size: $font-size__medium;
+$collection-browser__grid-tile-selected--bg-color: $collection-browser__list-view-selected--bg-color;
+$collection-browser__grid-tile-selected-focused--bg-color: $collection-browser__list-view-selected-focus--bg-color;
+$collection-browser__grid-tile-selected--border-color: $collection-browser__grid-tile--focused--border-color;
+$collection-browser__grid-tile-hover--color: $grey__default--1000;
+$collection-browser__grid-tile-select-button--size: 28px;
+$collection-browser__grid-tile-focussed-select-button--color: $white;
+
+$collection-browser__grid-bottom-panel--height: 30px;
+
+$collection-browser__grid--padding-x: $collection-browser__side-content-indent--padding - $collection-browser__grid-tile--margin;
+$collection-browser__grid--padding: ($container-spacing-default__half - $collection-browser__grid-tile--margin) $collection-browser__grid--padding-x;
+$collection-browser__grid-modern--padding: ($container-spacing-default__half - $collection-browser__grid-tile--margin) $container-spacing-default__base;
+$collection-browser__grid-top-shadow--side-x: $collection-browser__side-content-indent--padding;
+$collection-browser__grid-top-shadow--box-shadow: 0 0 5px 4px;
+$collection-browser__grid-top-shadow--color: $grey__light--500;
+
+$collection-browser__grid-collapse-addition--space: 104px; // space the collapsed explorertree plus borders (& scrollbar) would take
+$collection-browser__grid-tile-narrow-image-part--bottom: $collection-browser__grid-tile-label--height + $collection-browser__grid-tile-label--bottom + $collection-browser__grid-bottom-panel--height;
+$collection-browser__grid-tile-narrow-image--max-height: $collection-browser__grid-tile-image--max-height - $collection-browser__grid-bottom-panel--height;
+$collection-browser__grid-tile-narrow-label--bottom: $collection-browser__grid-tile-label--bottom + $collection-browser__grid-bottom-panel--height;
+
+$collection-browser__hyperlink-label-hover--color: $blue__default;
+$collection-browser__hyperlink-label-hover--cursor: pointer;
+$collection-browser__focused-element-hyperlink-label--color: $collection-browser__hyperlink-label-hover--color;
+
+$collection-browser__hyperlink-hover-after--border-bottom: $collection-browser__default--border-width dashed $blue__dark--600;
+$collection-browser__hyperlink-hover-after--height: 1px;
+$collection-browser__hyperlink-hover-after--bottom: 4px;
+
+$collection-browser__tree-view-content--padding-left: 0px;
+$collection-browser__tree-view-content--cursor: inherit;
+
+$collection-browser__notifyer--z-index: 99;
+$collection-browser__notifyer--bg-color: $blue__greyish--800;
+$collection-browser__notifyer--opacity: 0.8;
+$collection-browser__notifyer--height: 26px;
+$collection-browser__notifyer--margin-left: 90px;
+$collection-browser__notifyer--color: $white;
+$collection-browser__notifyer-value-label--padding-left: 10px;
+$collection-browser__notifyer-value-label--font-size: $font-size__h4;
+$collection-browser__notifyer-progressmeter--bg-color: $grey__default--500;
+$collection-browser__notifyer-progressmeter-image--bg-color: $blue__default;
+$collection-browser__notifyer-progressmeter--width: 80%;
+
+$collection-browser__notifyer-progressmeter-container--width: 60%;
+$collection-browser__notifyer-progressmeter--font-weight: $font-weight-bold;
+
+$collection-browser__notifyer-progressvalue--width: 20%;
+$collection-browser__notifyer-progressvalue--line-height: 28px;

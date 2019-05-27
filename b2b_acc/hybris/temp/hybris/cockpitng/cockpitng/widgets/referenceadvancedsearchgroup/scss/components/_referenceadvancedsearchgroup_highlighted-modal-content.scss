@@ -1,0 +1,44 @@
+@import "../support/_referenceadvancedsearchgroup_variables.scss";
+
+.z-window-highlighted .yw-com_hybris_cockpitng_backoffice_referenceadvancedsearchgroup {
+	.yw-advancedsearch {
+		.yw-caption-container.yw-noncollapsible-caption {
+			padding-left: $referenceadvancedsearchgroup__popup-container--padding-x;
+			padding-right: $referenceadvancedsearchgroup__popup-container--padding-x;
+		}
+		.yw-toggle-advanced-search[style*="display:none;"] + .yw-search-mode-container {
+			padding-left: 0;
+		}
+		.yw-active-attributes-grid {
+			> .z-grid-header,
+			> .z-grid-body {
+				> table {
+					border-left-width: $referenceadvancedsearchgroup__popup-container--padding-x;
+					border-right-width: $referenceadvancedsearchgroup__popup-container--padding-x;
+				}
+			}
+		}
+	}
+	.yw-coll-browser-container {
+		tr.z-listhead th:first-of-type .z-listheader-content,
+		.z-listitem > td:first-of-type .z-listcell-content {
+			padding-left: $referenceadvancedsearchgroup__popup-container--padding-x;
+		}
+		tr.z-listhead th:nth-last-of-type(2) .z-listheader-content,
+		.z-listitem > td:last-of-type .z-listcell-content {
+			padding-right: $referenceadvancedsearchgroup__popup-container--padding-x;
+		}
+		.z-listitem > td:first-child .z-listcell-content,
+		tr.z-listhead th.yw-listview-colheader:first-child {
+			&:before {
+				left: $referenceadvancedsearchgroup__popup-container--padding-x;
+			}
+		}
+		.z-listitem > td:last-of-type .z-listcell-content,
+		tr.z-listhead th.yw-listview-colheader:nth-last-of-type(2){
+			&:before {
+				right: $referenceadvancedsearchgroup__popup-container--padding-x;
+			}
+		}
+	}
+}

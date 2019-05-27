@@ -1,0 +1,78 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+# Import CMS content for the Powertools site
+#
+
+$contentCatalog=powertoolsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Language
+$lang=zh
+
+
+# Content Pages
+    
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;account;"我的账户"
+;;add-edit-address;"添加/编辑地址"
+;;address-book;"地址簿"
+;;cartPage;"您的购物车"
+;;checkout-login;"继续结账"
+;;faq;"常见问题"
+;;homepage;"主页"
+;;importCSVSavedCartPage;"导入已保存购物车"
+;;login;"登录"
+;;multiStepCheckoutSummaryPage;"结账"
+;;my-quotes;"报价"
+;;my-replenishment-cancel-confirmation;"补货取消确认"
+;;my-replenishment-details;"补货单详细信息"
+;;my-replenishment-orders;"补货单"
+;;notFound;"未找到"
+;;order;"订单详细信息"
+;;order-approval-dashboard;"订单批准显示板页面"
+;;order-approval-details;"订单批准详细信息页面"
+;;orderConfirmationPage;"订单确认"
+;;orderExpired;"订单过期页面"
+;;orders;"订单历史记录"
+;;payment-details;"付款详细信息"
+;;profile;"个人资料"
+;;quickOrderPage;"快速订单"
+;;quote-detail;"我的报价详细信息"
+;;quoteEditPage;"报价编辑"
+;;replenishmentConfirmationPage;"补货确认"
+;;saved-carts;"已保存购物车"
+;;savedCartDetailsPage;"已保存购物车详细信息"
+;;search;"搜索结果列表页面"
+;;searchAdvancedEmpty;"订单表"
+;;searchEmpty;"无结果"
+;;searchGrid;"搜索结果网格页面"
+;;storefinderPage;"店铺搜索器"
+;;termsAndConditions;"条款和条件"
+;;update-email;"更新电子邮件"
+;;update-profile;"更新个人资料"
+;;updatePassword;"更新忘记的密码"
+
+    
+# Category Pages
+    
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;category;"默认类别页面"
+;;productGrid;"产品网格"
+;;productList;"产品列表"
+
+    
+# Product Pages
+    
+UPDATE ProductPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;productDetails;"产品详细信息"
+
+    

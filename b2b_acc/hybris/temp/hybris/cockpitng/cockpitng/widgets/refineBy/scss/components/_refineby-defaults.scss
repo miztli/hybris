@@ -1,0 +1,44 @@
+/*================================
+    Refine By Widget
+================================*/
+@import "../support/_refineby-variables.scss";
+
+.yw-refineby {
+    height: 100%;
+    background: $refineby__widget--bg-color;
+    color: $refineby__widget--color;
+    overflow: auto;
+
+    .yw-main-container {
+        padding: $refineby__main-container--padding;
+    }
+
+    .yw-info-container {
+        font-style: $refineby__info-container--font-style;
+    }
+
+    .yw-facet-container {
+        margin-left: $refineby__facet-container--margin-left;
+    }
+
+    .yw-facet-slot {
+        margin-bottom: $refineby__facet-slot--margin-bottom;
+    }
+
+    .yw-facet-name {
+        display: block;
+        font-weight: $refineby__facet-name--font-weight;
+        padding: $refineby__facet-name--padding;
+    }
+
+    .yw-toggle-facets {
+        display: block;
+        margin: $refineby__toggle-facets--margin;
+        color: $refineby__toggle-facets--color;
+
+        &:hover {
+            cursor: pointer;
+            color: $refineby__toggle-facets--color;
+        }
+    }
+}

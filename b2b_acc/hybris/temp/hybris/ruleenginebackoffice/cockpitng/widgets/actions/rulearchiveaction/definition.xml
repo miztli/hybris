@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="de.hybris.platform.ruleenginebackoffice.action.rulearchiveaction"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+
+	<name>title.rulearchiveaction</name>
+	<description>Action that archives the rule</description>
+	<author>hybris.com</author>
+	<version>1.0</version>
+
+	<actionClassName>de.hybris.platform.ruleenginebackoffice.actions.RuleArchiveAction</actionClassName>
+	<inputType>de.hybris.platform.ruleengineservices.model.AbstractRuleModel</inputType>
+	<outputType>java.lang.Object</outputType>
+
+	<sockets>
+		<output id="deselectItems"/>
+		<output id="selectItem"/>
+	</sockets>
+
+	<iconUri>icons/archive.png</iconUri>
+	<iconHoverUri>icons/archive_hover.png</iconHoverUri>
+	<iconDisabledUri>icons/archive_disabled.png</iconDisabledUri>
+
+</action-definition>

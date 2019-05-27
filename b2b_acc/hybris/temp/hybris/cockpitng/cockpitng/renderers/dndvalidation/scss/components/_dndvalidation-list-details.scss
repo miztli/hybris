@@ -1,0 +1,68 @@
+@import "../support/_dndvalidation-variables.scss";
+
+.y-dnd-validation-popup {
+
+    .y-validation-details-container {
+        .z-label {
+            max-width: $DndValidation__validation-details-labels--max-width;
+            font-size: $DndValidation__validation-details-labels--font-size;
+            display: inline-flex;
+            white-space: pre-line;
+        }
+
+        > div {
+            margin-top: $DndValidation__validation-details-container--margin-top;
+            // position: relative;
+            
+            > li {
+                padding: $DndValidation__validation-details-message--padding;
+                list-style: none;
+
+                &:last-child {
+                    padding-bottom: $DndValidation__validation-details-message-last-child--padding-bottom;
+                }
+                &:before {
+                    margin-top: $DndValidation__validation-details-message-fake-border--margin-top;
+                    height: $DndValidation__validation-details-message-fake-border--height;
+                    width: $DndValidation__validation-details-message-fake-border--width;
+                    left: $DndValidation__validation-details-message-fake-border--left;
+                    background: $DndValidation__validation-details-message-fake-border--bg;
+                    content: '';
+                    position: absolute;
+                }
+                &:first-child:before {
+                    height: $DndValidation__validation-details-headline-fake-border--height;
+                    width: $DndValidation__validation-details-headline-fake-border--width;
+                    left: $DndValidation__validation-details-content-fake-border--left;
+                    background: $DndValidation__validation-details-headline-fake-border--bg;
+                    position: absolute;
+                    content: '';
+                }
+            }
+        }
+        li > .y-validation-icon-cell {
+            display: table-cell;
+            table-layout: fixed;
+        }
+        li > .z-label {
+            display: table-cell;
+            table-layout: fixed;
+        }
+        .y-validation-icon-cell { 
+            .y-error, 
+            .y-warn {
+                top: $DndValidation__validation-details-icon-cell--top;
+                margin-right: $DndValidation__validation-details-icon-cell--margin-right;
+                position: relative;
+            }
+        } 
+    }
+
+    .y-row-selected .y-validation-details-container {
+        > div {
+            > li:before {
+                background: $DndValidation__row-selected-fake-borders--border-color;
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=it
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;Avvia messaggio regola (valore soglia totale carrello acquisti);Visualizza il messaggio per la regola a seconda dell’adempimento delle condizioni della regola;
+;y_trigger_message_parameterized_category;Avvia messaggio regola (categoria);Visualizza il messaggio per la regola a seconda dell’adempimento delle condizioni della regola;
+;y_trigger_message_parameterized_product;Avvia messaggio regola (prodotto);Visualizza il messaggio per la regola a seconda dell’adempimento delle condizioni della regola;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;Valore soglia totale carrello acquisti;Valore soglia totale carrello acquisti da controllare
+;y_trigger_message_parameterized_category;catalog;Filtra selezione in base al catalogo;Il valore catalogo selezionato verrà utilizzato per filtrare i dati all’interno dei campi associati
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;Quantità;Quantità di prodotti dalla categoria che dà diritto alle promozioni necessari
+;y_trigger_message_parameterized_category;qualifying_categories;Categorie;Categorie che danno diritto alla promozione
+;y_trigger_message_parameterized_product;catalog;Filtra selezione in base al catalogo;Il valore catalogo selezionato verrà utilizzato per filtrare i dati all’interno dei campi associati
+;y_trigger_message_parameterized_product;qualifying_products_quantity;Quantità;Quantità di prodotti che danno diritto alla promozione necessari
+;y_trigger_message_parameterized_product;qualifying_products;Prodotto;Prodotti che danno diritto alla promozione
+

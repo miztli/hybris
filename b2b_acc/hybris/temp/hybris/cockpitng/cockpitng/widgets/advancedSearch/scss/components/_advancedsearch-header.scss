@@ -1,0 +1,117 @@
+/*================================
+    Advanced Search - Header
+================================*/
+// Styling of the header of the advanced-search component.
+
+
+@import "../support/_advancedsearch-variables.scss";
+// to defaults?
+.yw-global-operator-selector {
+    max-width: $advancedsearch__operator-selector--max-width;
+    display: inline-table;
+    /*
+    .z-comboitem-text, .z-combobox-input {
+        text-transform: uppercase;
+    }*/
+}
+
+.yw-advancedsearch {
+    &-header {
+        max-width: $advancedsearch-header--max-width;
+        overflow: hidden;
+        
+        &-attribute-selector-container {
+            display: inline;
+            float: left;
+            padding-left: $advancedsearch__selector--padding-left;
+
+            .yw-header-attributes {
+                max-width: $advancedsearch-header__attribute-container--max-width;
+                display: inline-table;
+            }
+        }
+        > .z-bandbox {
+            max-width: $advancedsearch-header__bandbox--max-width;
+            margin-right: $advancedsearch-header__bandbox--margin-right;
+            display: inline-table; 
+        }
+        &-container {
+            float: left;
+
+            .z-combobox {
+                border-spacing: 0;
+            }
+            span.z-label, .z-checkbox label {
+                color: $advancedsearch-header__search-query-label--color;
+                line-height: $advancedsearch-header__search-query-label--line-height;
+                display: inline-block;
+            }
+            &.yw-global-typeSelector-container, .w-global-operator-selector-container, .yw-include-subtypes {
+                display: inline-block;
+                //float: left;
+            }
+            .z-bandbox.z-bandbox-readonly {
+                -webkit-text-fill-color: inherit;
+            }
+            .yw-caption-container & span.z-label {
+                width: auto;
+            }
+        }
+        /*
+        .yw-advancedsearch-header-container .yw-global-typeSelector-container.yw-advancedsearch-header-container {
+            display: block;
+            float: left;
+        }
+
+        .yw-advancedsearch-header-container .w-global-operator-selector-container {
+            display: block;
+            float: left;
+        }
+
+        .yw-advancedsearch-header-container .yw-include-subtypes {
+            display: block;
+            float: left;
+        }
+
+        .yw-advancedsearch-header-container .z-bandbox.z-bandbox-readonly {
+            -webkit-text-fill-color: inherit;
+        }
+        */
+
+        .yw-global {
+            &-typeSelector-container {
+                float: left;
+                width: 31%;
+            }
+            &-operator-selector-container {
+                float: left;
+                padding-left: $advancedsearch__selector--padding-left;
+            }
+        }
+    }
+}
+
+.z-button.yw-toggle-advanced-search {
+    background: url('images/icon_advancedsearch_toggle_default.png') no-repeat center;
+    width: $advancedsearch__default-button--size;
+    height: $advancedsearch__default-button--size;
+    margin: $advancedsearch__default-button-icon--margin;
+    float: left;
+    vertical-align: middle;
+    opacity: .8;
+
+    &:hover, &:active, &:focus, &:visited {
+        opacity: 1;
+        background-color: transparent !important;
+        box-shadow: none;
+    }
+    &.yw-toggle-open {
+        background-image: url('images/icon_disable_advancedsearch.png') !important;
+        background-position: center !important;
+    }
+}
+
+.yw-search-mode-container {
+    float: left;
+    box-sizing: border-box;
+}

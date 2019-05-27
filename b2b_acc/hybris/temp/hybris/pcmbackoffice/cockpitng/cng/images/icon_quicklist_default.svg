@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon/Quicklist</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/Quicklist" fill="#485470">
+            <circle id="Oval-2" cx="5" cy="6" r="1"></circle>
+            <circle id="Oval-2-Copy" cx="5" cy="12" r="1"></circle>
+            <circle id="Oval-2-Copy-2" cx="5" cy="18" r="1"></circle>
+            <rect id="Rectangle-6" x="8" y="5" width="12" height="2" rx="1"></rect>
+            <rect id="Rectangle-6-Copy" x="8" y="11" width="12" height="2" rx="1"></rect>
+            <rect id="Rectangle-6-Copy-2" x="8" y="17" width="12" height="2" rx="1"></rect>
+        </g>
+    </g>
+</svg>

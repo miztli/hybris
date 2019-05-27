@@ -1,0 +1,215 @@
+@import "../support/_cockpit-mixins.scss";
+
+//Generel Defaults (over all Validation-types)
+
+.ye-validation {
+
+  //for loceditor
+  &-info, &-warn, &-error {
+    .yw-loceditor-caption .z-label:after {
+      position: absolute;
+      @include _validation-icon();
+      right: 0;
+    }
+
+    .ye-validation-none, .ye-validation-none.yw-loceditor-row {
+      input, input.z-textbox, .z-longbox, .z-intbox, .z-decimalbox {
+        border-color: $editor-defaults__switch-checkbox--border-color;
+        background: none;
+        color: $editor-defaults__input-field--color;
+        &:focus {
+          border-color: $editor-defaults__box--focus-color;
+          background: none;
+        }
+      }
+      .z-bandbox-input:focus + .z-bandbox-button {
+        border-color: $editor-defaults__box--focus-color;
+      }
+    }
+  }
+
+  //in editor-area
+  &-exclamation-icon {
+    float: right;
+    cursor: pointer;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("images/icon_validation_sprite.png");
+    background-origin: padding-box;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    background-position: 32px 32px;
+  }
+
+  &-results {
+    &-list {
+      width: $validation-popup-results__default---width;
+      max-height: $validation-popup-results__list--max-height;
+      background: $validation-popup-results__list--bg-color;
+      overflow: auto;
+      border-left: none;
+      border-right: none;
+      border-top: $validation-popup-results__default--border;
+      border-bottom: $validation-popup-results__default--border;
+
+      .ye-validation-results-list-item {
+        padding-left: 36px;
+      }
+    }
+
+    &-popup {
+      box-shadow: $validation-popup-results__default--box-shadow;
+      border: $validation-popup-results__default--border;
+      margin-left: $validation-popup-results__default--margin-left;
+      margin-top: $validation-popup-results__default--margin-top;
+      overflow: visible;
+
+      &:before {
+        position: absolute;
+        top: $validation-popup__pointer-default-before--top;
+        right: $validation-popup__pointer-default-before--left;
+        border: $validation-popup__pointer-default--border;
+        border-width: $validation-popup__pointer-default-before--border-width;
+        border-bottom-color: $validation-popup__pointer-default-before--border-color;
+        z-index: $validation-popup__pointer-default-before--z-index;
+        content: '';
+        width: 0;
+        height: 0;
+      }
+      &:after {
+        position: absolute;
+        top: $validation-popup__pointer-default-after--top;
+        right: $validation-popup__pointer-default-after--right;
+        border: $validation-popup__pointer-default--border;
+        border-width: $validation-popup__pointer-default-after--border-width;
+        border-bottom-color: $validation-popup__pointer-default-after--border-color;
+        opacity: $validation-popup__pointer-default-after--opacity;
+        content: '';
+        width: 0;
+        height: 0;
+      }
+      &-left {
+        margin-left: $validation-popup__pointer-left--margin-left;
+
+        &:before {
+          top: $validation-popup__pointer-default-before--top;
+          left: $validation-popup__pointer-default-before--left;
+          border: $validation-popup__pointer-default--border;
+          border-width: $validation-popup__pointer-default-before--border-width;
+          border-bottom-color: $validation-popup__pointer-default-before--border-color;
+          z-index: $validation-popup__pointer-default-before--z-index;
+        }
+        &:after {
+          top: $validation-popup__pointer-default-after--top;
+          left: $validation-popup__pointer-default-after--left;
+          border: $validation-popup__pointer-default--border;
+          border-width: $validation-popup__pointer-default-after--border-width;
+          border-bottom-color: $validation-popup__pointer-default-after--border-color;
+          opacity: $validation-popup__pointer-default-after--opacity;
+        }
+      }
+      &-above {
+        margin-top: $validation-popup-results__pointer-above--margin-top;
+        
+        &:before {
+          top: $validation-popup__pointer--before-above--top;
+          right: $validation-popup__pointer-above-before--side;
+          border: $validation-popup__pointer-default--border;
+          border-width: $validation-popup__pointer-above-before--border-width;
+          border-top-color: $validation-popup__pointer-above-before--border-top-color;
+        }
+        &:after {
+          top: $validation-popup__pointer-above--top;
+          right: $validation-popup__pointer-above-after--side;
+          border: $validation-popup__pointer-default--border;
+          border-width: $validation-popup__pointer-above-after--border-width;
+          border-top-color: $validation-popup__pointer-default-after--border-color;
+        }
+        &.ye-validation-results-popup-left {
+          &:before {
+            top: $validation-popup__pointer--before-above--top;
+            left: $validation-popup__pointer-above-before--side;
+            border: $validation-popup__pointer-default--border;
+            border-width: $validation-popup__pointer-above-before--border-width;
+            border-top-color: $validation-popup__pointer-above-before--border-top-color;
+          }
+          &:after {
+            top: $validation-popup__pointer-above--top;
+            left: $validation-popup__pointer-above-after--side;
+            border: $validation-popup__pointer-default--border;
+            border-width: $validation-popup__pointer-above-after--border-width;
+            border-top-color: $validation-popup__pointer-default-after--border-color;
+          }
+        }
+        &.ye-validation-popup-invisible {
+          opacity: 0.0;
+        }
+      }
+      &.ye-global-validation-result-popup,
+      &.ye-row-validation-result-popup {
+        .ye-validation-results-list {  
+          max-height: $validation-popup-results__list-row-validation--max-height;
+          height: auto;
+        }
+      }
+      &.ye-opacity {
+        opacity: 0.0;
+      }
+      .z-window-header {
+        background: none;
+        font-size: $validation-popup-results__header-text--font-size;
+        font-weight: $validation-popup-results__header-text--font-weight;
+        padding: $validation-popup-results__header-text--padding;
+        
+        .z-window-close {
+          background: none;
+          color: inherit;
+        }
+      }
+      .z-window-content {
+        .z-vlayout-inner {
+          padding-bottom: 0 !important;
+
+          &:after {
+            content: '';
+            display: block;
+            clear: both;
+          }
+        }
+        > .z-vlayout .z-listcell {
+          border-color: $validation-popup-results__listcell--border-color;
+        }
+        > .z-vlayout div.z-listcell-content {
+          padding: $validation-popup__content-listcell--padding;
+          line-height: $validation-popup__content-listcell--line-height;
+          white-space: normal;
+
+          > .z-vlayout {
+            padding-left: $validation-popup__content-vlayout--padding-left;
+          }
+        }
+        .y-btn-primary {
+          margin: $validation-popup__button-primary--margin;
+          color: $validation-popup__button-primary--color;
+          float: right;
+          background: none;
+          
+          &.ye-validation-results-confirm {
+            color: $validation-popup__button-confirm--color;
+          }
+        }
+      }
+      .ye-validation {
+        &-warn,
+        &-info,
+        &-error {
+          .z-listcell-content:before {
+            position: absolute;
+            @include _validation-icon();
+          }
+        }
+      }
+    }
+  }
+}

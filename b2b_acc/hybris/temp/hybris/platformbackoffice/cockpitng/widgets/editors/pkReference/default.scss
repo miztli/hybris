@@ -1,0 +1,57 @@
+@import "cockpitng-globals.scss";
+
+$reference-pk-editor__item--bg-color: $white;
+$reference-pk-editor__box--border-color: $grey__default--900;
+$reference-pk-editor__item--padding: ($container-spacing-default__third - $editor-defaults__input-field--border-width) $container-spacing-default__third $container-spacing-default__third;
+$reference-pk-editor__item--hover-bg-color: $blue__light--300;
+$reference-pk-editor__item--height: $editor-defaults__inline-box--height;
+$reference-pk-editor__item--border: $editor-defaults__input-field--border-width solid $reference-pk-editor__box--border-color;
+$reference-pk-editor__item-delete-button--size: $editor-defaults__inline-box-delete-btn--size;
+$reference-pk-editor__item-delete-button--margin-top: floor($reference-pk-editor__item-delete-button--size/2) * -1;
+$reference-pk-editor__item-label--line-height: $font-size__large;
+$reference-pk-editor__item-hover--padding-right: $reference-pk-editor__item-delete-button--size + nth($reference-pk-editor__item--padding, 2); 
+
+.ye-onpremise-reference-pk-editor {
+	.ye-default-reference-container {
+		background: $reference-pk-editor__item--bg-color;
+		border: $reference-pk-editor__item--border;
+		height: $reference-pk-editor__item--height;
+		padding: $reference-pk-editor__item--padding;
+		position: relative;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		.z-label {
+			line-height: $reference-pk-editor__item-label--line-height;
+			display: inline;
+			white-space: nowrap;
+			margin: 0;
+			padding: 0;
+		}
+		.ye-remove-reference {
+			margin-top: $reference-pk-editor__item-delete-button--margin-top;
+			width: $reference-pk-editor__item-delete-button--size;
+			min-height: $reference-pk-editor__item-delete-button--size;
+			height: $reference-pk-editor__item-delete-button--size;
+			position: absolute;
+			display: none;
+			padding: 0;
+
+			&,
+			&:hover,
+			&:active,
+			&:focus {
+				background: transparent;
+				box-shadow: none;
+			}
+		}
+		&:hover {
+			background: $reference-pk-editor__item--hover-bg-color;
+			padding-right: $reference-pk-editor__item-hover--padding-right;
+
+			.ye-remove-reference {
+				display: block;
+			}
+		}
+	}
+}

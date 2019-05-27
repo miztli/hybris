@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:w="http://www.zkoss.org/2005/zk/client"
+    xmlns:h="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd">
+
+    <script type="text/javascript">
+        <![CDATA[
+        function handleValidationStatus(xhr) {
+            var responseStatus = xhr.getResponseHeader('validationStatus');
+            var validationLabel = xhr.getResponseHeader('validationLabel');
+            var info = $('#validationInfo');
+            info.text(validationLabel == null ? '' : validationLabel);
+            if (responseStatus === "success") {
+                info.removeClass('yw-error');
+                info.removeClass('yw-warning');
+                info.addClass('yw-success');
+            } else if (responseStatus === "warning") {
+                info.removeClass('yw-error');
+                info.addClass('yw-warning');
+                info.removeClass('yw-success');
+                info.show();
+            } else if (responseStatus === "error") {
+                info.addClass('yw-error');
+                info.removeClass('yw-warning');
+                info.removeClass('yw-success');
+            } else if (responseStatus != null) {
+                info.addClass('yw-error');
+                info.removeClass('yw-warning');
+                info.removeClass('yw-success');
+                console.log('Unexpected response status' + responseStatus);
+            }
+        }
+
+        function handlePersistenceStatus(xhr) {
+            var persistenceSuccessful = xhr.getResponseHeader('persistenceSuccessful');
+            if (persistenceSuccessful === "false") {
+                var persistenceFailureLabel = xhr.getResponseHeader('persistenceFailureLabel');
+                zAu.cmd0.showNotification(persistenceFailureLabel, "error", null, null, null, null, 3000, true);
+            }
+        }
+
+        fetchCurrentCode = function (_uuid) {
+            var area = $(document.getElementById(_uuid + '-textarea'));
+            return area.data('cmInstance').getValue();
+        }
+
+        triggerCloseOnFlawlessSuccess = function(xhr) {
+            var responseStatus = xhr.getResponseHeader('validationStatus');
+            if (responseStatus === "success") {
+                var wgt = zk.$('$closeButton');
+                if(wgt)
+                {
+                    wgt.fire('onClick',null,{toServer:true});
+                }
+            }
+        }
+
+        submitConfig = function (_trigger, _desktop, _uuid) {
+
+            jq.alert("Are you sure that the configuration should be persisted?", {
+                icon: "QUESTION",
+                title: "Confirmation needed",
+                button: {
+                    YES: function()
+                    {
+                        zAu.cmd0.showBusy();
+                        _trigger.setDisabled(true);
+                        jq.ajax({
+                            type: 'POST',
+                            url: zk.ajaxURI('/configUpload', {desktop: _desktop, au: true}),
+                            data: fetchCurrentCode(_uuid),
+                            contentType: 'multipart/form-data',
+                            dataType: 'text',
+                            async: true,
+                            success: function (data, status, xhr) {
+                                handleValidationStatus(xhr);
+                                handlePersistenceStatus(xhr);
+                                triggerCloseOnFlawlessSuccess(xhr);
+                            },
+                            complete: function (req, status) {
+                                _trigger.setDisabled(false);
+                                zAu.cmd0.clearBusy();
+                            }
+                        });
+                    },
+                    NO: {}
+                }
+            });
+        }
+
+        validateConfig = function (_trigger, _desktop, _uuid) {
+            zAu.cmd0.showBusy();
+            _trigger.setDisabled(true);
+            jq.ajax({
+                type: 'POST',
+                url: zk.ajaxURI('/configValidate', {desktop: _desktop, au: true}),
+                data: fetchCurrentCode(_uuid),
+                contentType: 'multipart/form-data',
+                dataType: 'text',
+                async: true,
+                success: function (data, status, xhr) {
+                    handleValidationStatus(xhr);
+                },
+                complete: function (req, status) {
+                    _trigger.setDisabled(false);
+                    zAu.cmd0.clearBusy();
+                }
+            });
+        }
+        ]]>
+    </script>
+
+    <div apply="${cockpitAdminComposer}">
+        <script type="text/javascript" src="/cng/scripts/vendor/jquery.jsPlumb-1.3.16-all-modified.js"/>
+        <script type="text/javascript" src="/cng/scripts/plumbConnections.js"/>
+
+        <style src="/cng/css/cockpit_admin.css"/>
+        <style src="/cng/css/cockpit_admin_plumb.css"/>
+        <style if="${execution.isBrowser('ff')}" src="/cng/css/cockpit_admin_ff_zk_fix.css"/>
+        <style if="${cockpitProperties.getProperty('cockpit.ytestid.enabled')} ?: false"
+               src="/cng/css/cockpit_admin_testing.css"/>
+
+        <div sclass="mainToolbar" id="adminModeToolbar" apply="${adminModeToolbarComposer}">
+            <div sclass="mainToolbarTopCover"/>
+            <div class="yw-logoContainer"></div>
+            <div sclass="exitBtn" visible="false">
+                <label id="exitOrchestratorLabel" value="${labels.cockpit_admin.exit_orchestrator}"
+                       sclass="toolbarComp"/>
+            </div>
+            <div sclass="mainToolbar_inner">
+                <hbox sclass="mainToolbar_table">
+                    <div sclass="mainToolbar_table-cell">
+                        <div sclass="roleselector">
+                            <label value="Select Authority Group" sclass="cng_admin_roleselectorlabel"/>
+                            <combobox id="roleSelector" sclass="toolbarComp" readonly="true" autocomplete="false"
+                                      w:onChange="cngResetConnections();">
+                                <custom-attributes ytestid="roleSelector"/>
+                                <comboitem label="">
+                                    <custom-attributes ytestid="roleSelectorItem"/>
+                                </comboitem>
+                            </combobox>
+                        </div>
+
+                        <div sclass="rolepreview toolbarComp">
+                            <checkbox id="rolePreviewCheckbox" tooltiptext="Impersonated preview">
+                                <custom-attributes ytestid="rolePreviewCheckbox"/>
+                            </checkbox>
+                            <div sclass="enablePreviewImg"/>
+                        </div>
+                    </div>
+
+                    <div sclass="mainToolbar_table-cell">
+                        <script type="text/javascript">
+                            <![CDATA[
+                            function setInvasiveness(percentage) {
+                                var leftBottomRight = 5 * percentage / 100;
+                                var cntTop = (30 * percentage / 100);
+                                var bodyTop = (27 * percentage / 100);
+
+                                $('.widget_toolbar').css('opacity', (percentage * 0.01));
+
+                                $('.widget_cnt').css({
+                                    'top': cntTop + 'px',
+                                    'bottom': leftBottomRight + 'px',
+                                    'left': leftBottomRight + 'px',
+                                    'right': leftBottomRight + 'px'
+                                });
+                                $('.widget_body').css({
+                                    'top': bodyTop + 'px',
+                                    'bottom': leftBottomRight + 'px',
+                                    'left': leftBottomRight + 'px',
+                                    'right': leftBottomRight + 'px'
+                                });
+                            }
+
+                            ]]>
+                        </script>
+                        <div id="outsetCnt" visible="${!symbolicWidgetsChk.checked}" sclass="cng_admin_outset_outer">
+                            <label value="Outset level" sclass="cng_admin_outset"/>
+                            <slider w:onScrolling="setInvasiveness(this.getCurpos() * 2)"
+                                    w:onScroll="setInvasiveness(this.getCurpos() * 2)"
+                                    curpos="50" sclass="cng_admin_slider"/>
+                        </div>
+                    </div>
+                    <checkbox id="symbolicWidgetsChk" label="Symbolic widgets" sclass="symbolicCheck toolbarComp"
+                              w:onClick="cngResetConnections()">
+                        <custom-attributes ytestid="symbolicWidgetsChk"/>
+                    </checkbox>
+                    <checkbox id="showSlotIdChk" label="Show slot ids" sclass="symbolicCheck toolbarComp"
+                              visible="${symbolicWidgetsChk.checked}" style="left: 200px;">
+                        <custom-attributes ytestid="showSlotIdChk"/>
+                    </checkbox>
+                    <checkbox id="showConnectionsChk" label="Show connections" sclass="symbolicCheck toolbarComp"
+                              visible="${symbolicWidgetsChk.checked}" style="left: 360px;"
+                              w:onCheck="showConnectionsChecked(event);">
+                        <custom-attributes ytestid="showConnectionsChk"/>
+                    </checkbox>
+                    <div sclass="toolbarComp cng-widget-clipboard">
+                        <groupbox mold="3d" open="false" sclass="widgetClipboard" id="clipboardDropBox"
+                                  contentStyle="border: 1px #aaa solid;border-top:0px; padding: 0;" droppable="widget">
+                            <caption id="widgetClipboardCaption" label="Widget Clipboard"/>
+                            <div id="widgetClipboard" sclass="cng-widget-clipboard-dropdown"
+                                 style="height: 300px; background: #ccc; border: 1px solid #aaa; overflow: auto;">
+                                <custom-attributes ytestid="widgetClipboard"/>
+                            </div>
+                        </groupbox>
+                    </div>
+                    <popup id="xmlWin" width="90%" height="90%">
+                        <codeeditor id="xmlTb" height="100%" width="100%" readonly="true"/>
+                    </popup>
+                    <popup id="xmlConfigWin" width="100%" height="100%" sclass="yw-xmlConfigWin">
+                        <borderlayout height="100%" id="borderLayout" width="100%">
+                            <north border="none" margins="5,5,5,5" id="north">
+                                <vlayout id="filterDiv" width="100%" sclass="filterDiv">
+                                    <hlayout id="filterOptions" visible="false" sclass="cockpit-config-filter"/>
+                                    <hlayout id="searchButtonSection" visible="false" sclass="searchButtonSection">
+                                        <div sclass="yw-admin-filter-options-searchsection">
+                                            <button id="searchButton" label="${labels.cockpit_config_filter.search}"/>
+                                            <label id="labelWarning" sclass="label-warning"
+                                                   value="${labels.cockpit_config_filter.limitations}"/>
+                                        </div>
+                                    </hlayout>
+                                    <toolbarbutton id="showFilterOptions"
+                                                   label="${labels.cockpit_config_filter.show.filter.options}"
+                                                   mode="toggle" sclass="show-filter-options-button"/>
+                                </vlayout>
+                            </north>
+                            <center border="none" margins="0,0,0,0">
+                                <codeeditor id="xmlConfig" syntax="xml" height="98%"/>
+                            </center>
+                            <south height="40px" border="none" margins="5,5,5,5" sclass="yw-xmlConfigWin-toolbar">
+                                <div align="right">
+                                    <h:span id="validationInfo" class="yw-validationInfo"/>
+                                    <button id="closeButton" label="Close"/>
+                                    <button id="submitForm" label="Store"
+                                            w:onClick="submitConfig(this.$f('submitForm'), this.desktop, this.$f('xmlConfig').uuid);"/>
+                                    <button id="validateForm" label="Validate"
+                                            w:onClick="validateConfig(this.$f('validateForm'), this.desktop, this.$f('xmlConfig').uuid);"/>
+                                </div>
+                            </south>
+                        </borderlayout>
+                    </popup>
+                    <popup id="searchConfigSimulator" width="100%" height="100%" sclass="yw-simulateSearchWin">
+                        <borderlayout height="100%" width="100%">
+                            <north border="none" height="400px">
+                                <vlayout id="contextDiv" width="100%" height="100%" sclass="filterDiv">
+                                    <div width="100%">
+                                        <label value="${labels.cockpit_config_simulator.className}" sclass="y-search-simulate-class-label"/>
+                                        <combobox id="simulateSearchClass" sclass="y-search-simulate-class-chooser"/>
+                                    </div>
+                                    <hlayout id="simulateSearchContext" sclass="cockpit-config-filter" width="100%"/>
+                                    <hlayout id="simulateButtonSection" sclass="searchButtonSection" width="100%">
+                                        <div sclass="yw-admin-filter-options-searchsection">
+                                            <button id="simulateButton" label="${labels.cockpit_config_simulator.simulate}"/>
+                                        </div>
+                                    </hlayout>
+                                </vlayout>
+                            </north>
+                            <center border="none">
+                                <tabbox id="searchConfigTabs" width="100%" height="100%">
+                                    <tabs>
+                                        <tab label="Matches"/>
+                                        <tab label="Merged result"/>
+                                        <tab label="Adapted result"/>
+                                        <tab label="Process description"/>
+                                    </tabs>
+                                    <tabpanels>
+                                        <tabpanel>
+                                            <textbox id="searchConfigMatches" width="100%" height="100%" multiline="true" readonly="true"/>
+                                        </tabpanel>
+                                        <tabpanel>
+                                            <textbox id="searchConfigMerged" width="100%" height="100%" multiline="true" readonly="true"/>
+                                        </tabpanel>
+                                        <tabpanel>
+                                            <textbox id="searchConfigFinal" width="100%" height="100%" multiline="true" readonly="true"/>
+                                        </tabpanel>
+                                        <tabpanel>
+                                            <div width="100%" height="100%" sclass="y-search-simulate-progress-container">
+                                                <div sclass="y-search-simulate-progress-tree-container" width="50%" height="100%">
+                                                    <tree id="searchConfigProgress" height="calc(100% - 64px)" width="100%"/>
+                                                    <hlayout sclass="y-search-simulate-progress-legend" width="100%">
+                                                        <div sclass="y-search-simulate-progress-legend-example y-search-simulate-needle-result-approved z-treecell">
+                                                            <div sclass="y-search-simulate-needle-attribute z-div">
+                                                                <span sclass="y-search-simulate-needle-attribute-name z-label">component</span>
+                                                                <span sclass="y-search-simulate-needle-attribute-value z-label">component-name</span>
+                                                            </div>
+                                                            <span sclass="y-search-simulate-progress-legend-explanation">Query included in result</span>
+                                                        </div>
+                                                        <div sclass="y-search-simulate-progress-legend-example y-search-simulate-needle-result-empty y-search-simulate-needle-result-approved z-treecell">
+                                                            <div sclass="y-search-simulate-needle-attribute z-div">
+                                                                <span sclass="y-search-simulate-needle-attribute-name z-label">component</span>
+                                                                <span sclass="y-search-simulate-needle-attribute-value z-label">component-name</span>
+                                                            </div>
+                                                            <span sclass="y-search-simulate-progress-legend-explanation">Empty query result</span>
+                                                        </div>
+                                                        <div sclass="y-search-simulate-progress-legend-example y-search-simulate-needle-result-empty z-treecell">
+                                                            <div sclass="y-search-simulate-needle-attribute z-div">
+                                                                <span sclass="y-search-simulate-needle-attribute-name z-label">component</span>
+                                                                <span sclass="y-search-simulate-needle-attribute-value z-label">component-name</span>
+                                                            </div>
+                                                            <span sclass="y-search-simulate-progress-legend-explanation">Query excluded from result</span>
+                                                        </div>
+                                                    </hlayout>
+                                                </div>
+                                                <tabbox width="49%">
+                                                    <tabs>
+                                                        <tab label="General description"/>
+                                                        <tab label="Node result"/>
+                                                    </tabs>
+                                                    <tabpanels>
+                                                        <tabpanel>
+                                                            <textbox id="searchConfigProgressNode" height="calc(100% - 14px)" multiline="true" readonly="true"/>
+                                                        </tabpanel>
+                                                        <tabpanel>
+                                                            <textbox id="searchConfigNodeResult" height="100%" multiline="true" readonly="true"/>
+                                                        </tabpanel>
+                                                    </tabpanels>
+                                                </tabbox>
+                                            </div>
+                                        </tabpanel>
+                                    </tabpanels>
+                                </tabbox>
+                            </center>
+                            <south height="40px" border="none" sclass="yw-xmlConfigWin-toolbar">
+                                <div align="right">
+                                    <button label="Close" onClick="searchConfigSimulator.close()"/>
+                                </div>
+                            </south>
+                        </borderlayout>
+                    </popup>
+                    <div sclass="ycon-container">
+                        <menupopup id="mainMenu" sclass="yw-pointer-menupopup yw-pointer-menupopup-top-right ycon-menupopup">
+                            <menuitem label="Refresh" id="refreshCockpit"/>
+                            <menuseparator/>
+                            <menuitem label="Show widgets.xml" id="showWidgetsXml"/>
+                            <menuitem label="Reset to Defaults" id="resetWidgetsXml"/>
+                            <menuseparator/>
+                            <menuitem label="Show cockpit-config.xml" id="showCockpitConfigXml"/>
+                            <menuitem label="Reset to Defaults" id="resetCockpitConfigXml"/>
+                            <menuitem label="Simulate config resolution" id="simulateConfigSearch"/>
+                            <menuseparator/>
+                            <menuitem label="Reset Everything" id="resetEverything"/>
+                            <menu label="Widget Toolbar Color" content="#color=#B0D7FF" id="toolbarColorPicker"/>
+                        </menupopup>
+                        <div sclass="ycon" id="ycon">
+                        </div>
+                    </div>
+                </hbox>
+            </div>
+            <div id="connectionsToolbar" visible="false" sclass="cng-connectionsToolbar">
+                <hlayout>
+                    <checkbox label="Show labels" w:onCheck="cngShowlabels(event.data);"
+                              tooltiptext="Show labels for connections."/>
+                    <checkbox label="Show input connections" w:onCheck="cngShowinputs(event.data);"
+                              tooltiptext="Show also incoming connections for a selected widget."/>
+                </hlayout>
+            </div>
+        </div>
+        <div>
+            <div sclass="roleIndicatorOverlay" apply="${roleIndicatorComposer}" id="roleIndicatorOverlay">
+                <custom-attributes ytestid="roleIndicatorOverlay"/>
+                <hbox>
+                    <label value="disabled" id="roleIndicator" sclass="roleIndicatorLabel roleindicatorComp">
+                        <custom-attributes ytestid="roleIndicator"/>
+                    </label>
+
+                    <div id="stopImpersonationPreview" sclass="stopImpersonationPreview roleindicatorComp">
+                        <custom-attributes ytestid="stopImpersonationPreview"/>
+                    </div>
+                </hbox>
+            </div>
+        </div>
+    </div>
+</zk>

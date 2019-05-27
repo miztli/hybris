@@ -1,0 +1,8 @@
+<package name="com.hybris.table" language="xul/html" depends="zul.wgt">
+    <widget name="Table"/>
+    <widget name="TableHeader"/>
+    <widget name="TableRows"/>
+    <widget name="TableRowsGroup"/>
+    <widget name="TableRow"/>
+    <widget name="TableCell"/>
+</package>

@@ -1,0 +1,35 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=ko
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;일반
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_group;그룹;{operator};
+;y_container;컨테이너;{id};
+;y_rule_executed;실행되는 규칙;코드 {rule} 실행이 허용된 규칙({allowed});
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_group;operator;그룹 연산자;OR/AND를 사용하여 그룹의 조건 결합
+;y_container;id;컨테이너 ID;작업에서 참조되는 컨테이너 ID 입력
+;y_rule_executed;rule;작업 규칙;이 규칙의 실행을 허용하거나 허용하지 않는 작업 입력
+;y_rule_executed;allowed;작업 규칙 실행 허용됨;작업 규칙 실행 허용 여부
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;general;일반
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_halt;규칙 실행 중단;후속 규칙의 실행을 중단;

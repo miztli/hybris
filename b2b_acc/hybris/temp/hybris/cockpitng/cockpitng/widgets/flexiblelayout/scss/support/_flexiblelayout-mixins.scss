@@ -1,0 +1,72 @@
+@import "_flexiblelayout-variables.scss";
+
+//sidebar overlap
+@mixin _flex-sidebar-overlap {
+    > .yw-flexlayout-sidebar {
+        visibility: visible;
+    }
+
+    &.yw-flexlayout-sidebar-left,
+    &.yw-flexlayout-sidebar-right {
+        > .yw-flexlayout-sidebar {
+            transform: translateX(0);
+        }
+    }
+}
+
+//sidebar show
+@mixin _flex-sidebar-show {
+
+    @include _flex-sidebar-overlap;
+
+    &:not(.yw-flexlayout-sidebar-collapsed) {
+        > .yw-flexlayout-contents {
+            width: $flexlayout__contents-opened--width;
+        }
+
+        &.yw-flexlayout-sidebar-left > .yw-flexlayout-contents {
+            transform: $flexlayout__contents-opened--transform-left;
+        }
+    }
+
+    &.yw-flexlayout-sidebar-collapsed {
+        > .yw-flexlayout-contents {
+            width: $flexlayout__contents-collapsed--width;
+        }
+
+        &.yw-flexlayout-sidebar-left > .yw-flexlayout-contents {
+            transform: $flexlayout__contents-collapsed--transform-left;
+        }
+    }
+}
+
+//responsive resolution breakpoints
+@mixin _flex_layout_sidebar_responsive($bp-key, $min-width) {
+    .yw-flexlayout-responsive-breakpoint-#{$bp-key} {
+
+        @media (min-width: $min-width) {
+
+            //show responsive sidebar
+            &.yw-flexlayout-sidebar-responsive {
+                @include _flex-sidebar-show;
+
+                > .yw-flexlayout-sidebar {
+                    transition: $flexlayout__sidebar-opened--transition;
+                }
+            }
+
+            //show trigger btn
+            &.yw-flexlayout-trigger {
+                display: none;
+            }
+        }
+
+        @media (max-width: $flexlayout__media-query-s--min-width - 1px) {
+
+            //show overlap sidebar
+            &.yw-flexlayout-sidebar-responsive.yw-flexlayout-sidebar-opened {
+                @include _flex-sidebar-overlap;
+            }
+        }
+    }
+}

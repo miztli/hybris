@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="authority group selector" contentType="text/html;charset=UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		  xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		  height="100%">
+	<div sclass="yw-selector-body">
+		<div sclass="yw-selector-grid">
+			<label value="${labels.authoritygroups}" sclass="yw-authoritygroup-label"/>
+			<div sclass="yw-selector-holder">
+				<listbox id="authorityGroupSelectorListbox" checkmark="true"/>
+			</div>
+			<button id="selectorButton" sclass="yw-selector-btn y-btn-primary" label="${labels.proceed}" focus="true"/>
+		</div>
+	</div>
+</widget>

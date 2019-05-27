@@ -1,0 +1,253 @@
+@import "cockpitng-globals.scss";
+
+/*================================
+   Y PERMISSION SKINNING
+================================*/
+
+
+$permission-management__splitter-color: $grey__light--300;
+$permission-management__borderlayout-color: $grey__light--300;
+$permission-management__controll-cell--size: 20px;
+$permission-management__cell-bg-icon--size: 20px;
+$permission-management__borderlayout-container--padding-x: 20px;
+$permission-management__header-container--padding-bottom: 5px;
+$permission-management__header-container--padding-top: 10px;
+$permission-management__header-container--padding: $permission-management__header-container--padding-top $permission-management__borderlayout-container--padding-x $permission-management__header-container--padding-bottom;
+$permission-management__filter-search--padding: 0px $permission-management__borderlayout-container--padding-x;
+$permission-management__body-container--padding: 0px 10px;
+$permission-management__list-body--bg-color: $white;
+$permission-management__center-container--bg-color: $white;
+
+$permission-management__permission-inherited-icon--color: #7f90a4;
+$permission-management__permission-inherited-icon--hover-color: lighten($permission-management__permission-inherited-icon--color, 1);
+$permission-management__permission-granted-icon--color: #18bc33;
+$permission-management__permission-granted-icon--hover-color: lighten($permission-management__permission-granted-icon--color, 1);
+$permission-management__permission-denied-icon--color: #ff3b30;
+$permission-management__permission-denied-icon--hover-color: lighten($permission-management__permission-denied-icon--color, 1);
+
+$permission-management__cell-icon--font-size: 16px;
+$permission-management__permission-legend-icon--font-size: 16px;
+
+$permission-management__permission-filter-container--bg-color: $grey__light--300;
+$permission-management__permission-legend-container--bg-color: $grey__light--300;
+$permission-management__permission-legend-container--padding: 15px 15px 20px;
+$permission-management__permission-legend-container--height: 64px;
+
+$permission-management__permission-legend-icon--size: 17px;
+$permission-management__permission-legend-holder--padding-x: 10px;
+$permission-management__permission-legend-holder--padding: 5px $permission-management__permission-legend-holder--padding-x;
+
+$permission-management__align-horizontal-splitter-color: false;
+
+
+@mixin _permission-cell-bg-icon-position ($type, $x-pos: 1, $incl-hover: true) {
+	&-#{$type} {
+		background-position: (-($x-pos * $permission-management__cell-bg-icon--size)) 0px;
+		
+		@if $incl-hover {	
+			&:hover {
+				background-position: (-($x-pos * $permission-management__cell-bg-icon--size)) (-$permission-management__cell-bg-icon--size);
+			}
+		}
+	}
+}
+
+@mixin _permission-cell-icon-font ($font-size, $container-size, $granted, $denied, $inherit-granted, $inherit-denied, $display-type: false, $add-hover:true) {
+	&-#{$inherit-granted},
+	&-#{$granted},
+	&-#{$inherit-denied},
+	&-#{$denied} {
+		height: $container-size;
+		width: $container-size;
+		position: relative;
+		@if $display-type {
+			display: $display-type;
+		}
+		&:before {
+			content: "\f00d";
+        	position: absolute;
+        	font: normal normal normal #{$font-size} FontAwesome;
+        	color: inherit;
+        	width: 100%;
+        	text-align: center;
+        	line-height: $container-size + 2;
+		}
+	}
+	&-#{$granted},
+	&-#{$inherit-granted} {
+		&:before {
+			content: "\f00c";
+		}
+	}
+	&-#{$inherit-denied}, &-#{$inherit-granted} {
+		color: $permission-management__permission-inherited-icon--color;
+		@if $add-hover {
+			&:hover {
+				color: $permission-management__permission-inherited-icon--hover-color;
+			}
+		}
+	}
+	&-#{$granted} {
+		color: $permission-management__permission-granted-icon--color;
+		@if $add-hover {
+			&:hover {
+				color: $permission-management__permission-granted-icon--hover-color;
+			}
+		}
+	}
+	&-#{$denied} {
+		color: $permission-management__permission-denied-icon--color;
+		@if $add-hover {
+			&:hover {
+				color: $permission-management__permission-denied-icon--hover-color;
+			}
+		}
+	}
+}
+
+.yw-modal-permissionmanagementgroup {
+	.z-west-splitter {
+		background: $permission-management__splitter-color;
+	}
+
+	.yw-com_hybris_cockpitng_borderlayout .z-borderlayout,
+	.yw-borderlayout .opaquetrue .yw-layoutregion.z-south {
+		background: $permission-management__permission-legend-container--bg-color;
+	}
+	.z-north {
+		&, &.yw-collapsed-down .z-north-header {
+			background: $permission-management__permission-filter-container--bg-color;
+		}
+		.z-north-header {
+			button.yw-expandCollapse {
+				margin-top: -$permission-management__header-container--padding-top;
+			}
+		}
+	}
+	.z-center {
+		background: $permission-management__permission-filter-container--bg-color;
+
+		&.yw-collapsed-down {
+			background: $permission-management__center-container--bg-color;
+		}
+	}
+	.yw-collapsibleContainer-caption {
+	    > .z-north-header,
+	    > .z-center-header {
+	        .yw-caption-container > .z-caption-content {
+	        //    margin-right: $collapsible-container__caption-content-container--padding-right;
+	            > button.yw-expandCollapse, > button.yw-collapsibleContainer-locked, > button.yw-collapsibleContainer-unlocked {
+	            	top: 50%;
+	            	margin-top: -8px;
+	            }
+	        }
+	    }
+    }
+
+	tbody.z-listbox-emptybody td {
+		background: transparent;
+	}
+	@if $permission-management__align-horizontal-splitter-color {
+		.z-south-splitter {
+			background: $permission-management__permission-legend-container--bg-color;
+		}
+		.yw-collapsibleContainer-caption > .z-south-header {
+			border-color: $permission-management__permission-legend-container--bg-color;
+		}
+		.z-north-splitter {
+			background: $permission-management__permission-filter-container--bg-color;
+		}
+		.yw-collapsed-down .z-north-header {
+			border-color: $permission-management__permission-filter-container--bg-color !important;
+		}
+	}
+	@else {
+		@if $permission-management__borderlayout-color {
+			.z-north-splitter, .z-south-splitter {
+				background: $permission-management__borderlayout-color;
+			}
+			.yw-collapsed-down .z-north-header, .yw-collapsibleContainer-caption > .z-south-header {
+				border-color: $permission-management__borderlayout-color !important;
+			}
+		}
+	}
+	
+	.yw-layoutregion{
+		&.z-south {
+			&, > .z-south-body {
+				min-height: $permission-management__permission-legend-container--height;
+			}
+		}
+	}
+
+	.yw-borderlayout .yw-caption-container {
+		min-height: auto;
+	}
+
+	.yw-textsearch-single {
+		padding: $permission-management__filter-search--padding;
+	}
+	.yw-collapsibleContainer-caption {
+		> .z-north-header, > .z-center-header {
+			height: auto;
+			padding: $permission-management__header-container--padding;
+		}
+		> .z-north-body {
+			height: auto !important;
+		}
+	}
+
+	.yw-com_hybris_cockpitng_collectionBrowser .yw-listview-actioncontainer {
+		padding-top: 0;
+	}
+
+	.z-listbox-body {
+		background: $permission-management__list-body--bg-color;
+	}
+}
+
+.yw-permission {
+	&-controll-cell {
+		height: $permission-management__controll-cell--size;
+		width: $permission-management__controll-cell--size;
+	}
+
+	&-cell {
+		@include _permission-cell-icon-font ($permission-management__cell-icon--font-size, $permission-management__cell-icon--font-size, 'denied-false', 'denied-true', 'inherit-denied-false', 'inherit-denied-true');
+		
+		&-disabled {
+		    opacity: 0.5;
+		    cursor: default;
+
+		    &:hover{
+				cursor: default;
+			}
+		}
+
+	}
+	&-notpersisted {
+	   font-style: italic;
+	}
+	&-legend {
+		display: table;
+		padding: $permission-management__permission-legend-container--padding;
+
+		&-holder {
+			display: table-cell;
+			padding: $permission-management__permission-legend-holder--padding;
+			
+			> span {
+				float: left;
+				line-height: $permission-management__permission-legend-icon--size + 2px;
+
+				&.z-label {
+					padding-left: floor($permission-management__permission-legend-holder--padding-x/2);
+					padding-right: $permission-management__permission-legend-holder--padding-x;
+				}
+			}
+		}
+		&-icon {
+			@include _permission-cell-icon-font ($permission-management__permission-legend-icon--font-size, $permission-management__permission-legend-icon--size, 'g', 'd', 'inherited-ig', 'inherited-id', inline-block);
+		}
+	}
+}

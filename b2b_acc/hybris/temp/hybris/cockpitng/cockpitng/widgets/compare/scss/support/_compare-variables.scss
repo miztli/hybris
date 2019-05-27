@@ -1,0 +1,178 @@
+@import "cockpitng-globals.scss";
+
+$compareview__container--font: $font-family-opensans;
+$compareview__container--bg-color: $grey__light--1100;
+$compareview__container--border-color: $grey__light--1100;
+$compareview__container--margin-left: $container-spacing-default__half;
+$compareview__cell-fill--bg-color: $white;
+$compareview__cell-defaults--border-width: $boxes--border__thin;
+$compareview__cell-defaults--color: $black__blueish--200;
+$compareview__cell-inprogress--color: $blue__greyish--500;
+
+$compareview__header--height: 325px;
+$compareview__rows-container--margin-top: $compareview__cell-defaults--border-width * -1; 
+$compareview__row-header--border-color: $grey__light--700;
+$compareview__row-header-border-top: $compareview__cell-defaults--border-width solid $compareview__row-header--border-color;
+$compareview__name-column--width: 285px;
+$compareview__name-column--margin-left: $container-spacing-default__half;
+$compareview__value-column--width: 310px;
+$compareview__column--border: $compareview__cell-defaults--border-width solid $grey__light--1100;
+$compareview__column--border-left-width: $boxes--border__medium;
+
+$compareview__column-selected--box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.25);
+$compareview__column-body-selected--box-shadow: nth($compareview__column-selected--box-shadow, 1) -1px nth($compareview__column-selected--box-shadow, 2) nth($compareview__column-selected--box-shadow, 4) nth($compareview__column-selected--box-shadow, 5);
+$compareview__column-selected-box-shadow--height: 1500px;
+$compareview__column-selected-box-shadow--width: 3px;
+$compareview__column-selected-box-shadow--top: 15px;
+
+$compareview__scroll-animate--transition: top 0.1s 0.02s ease-out, left 0.1s 0.02s ease-out;
+
+$compareview__component-mask--size: $compareview__column-selected-box-shadow--height;
+$compareview__side-component-mask--left: $compareview__component-mask--size * -1;
+$compareview__side-component-mask--height: $compareview__component-mask--size;
+$compareview__side-component-mask--width: 15px;
+$compareview__header-mask--top: $compareview__component-mask--size  * -1;
+
+$compareview__cell--padding: 5px $container-spacing-default__half 5px ($container-spacing-default__half + $compareview__cell-defaults--border-width);
+$compareview__cell-fill--margin-left: nth($compareview__cell--padding, 4) * -1;
+$compareview__cell-fill--width: 100%;
+$_compareview__cell-img--height: 20px;
+$_compareview__cell-img--margin-right: $container-spacing-default__third;
+
+$compareview__cell-localized-border--left: 0;
+$compareview__cell-localized-border--right: 0;
+$compareview__column-header-cell--top: 20px;
+$compareview__selected-column-header-cell--top: $container-spacing-default__third;
+$compareview__selected-column-cell-fill--width: calc(100% + #{nth($compareview__column--border,1)});
+$compareview__selected-column-cell-fill--margin-right: nth($compareview__column--border,1) * -1;
+$compareview__selected-column-cell-fill--bg-color: mix($blue__light, $white, 3%);
+$compareview__header-cell--padding-top: $compareview__column-header-cell--top + $container-spacing-default__half;
+$compareview__header-cell--padding-bottom: $container-spacing-default__half;
+$compareview-flex__header-cell--padding-top: $container-spacing-default__half;
+$compareview-flex__selected-column-header-cell-before--top: $compareview__selected-column-header-cell--top - $compareview__column-header-cell--top;
+$compareview__section-title-label--font-size: $font-size__h4;
+$compareview__section-title-label--line-height: $font-size__h3;
+$compareview__section-title-label--margin-bottom: $editor-defaults__inline-box--height + $container-spacing-default__third;
+$compareview__section-cell--padding-v: $container-spacing-default__half;
+$compareview__section-title-label--font-weight: $font-weight-bold;
+$compareview__section-cell--height: 50px;
+$compareview__section-label--margin: 0;
+
+$compareview__section-expand-button--content: $anglearrow__down--content;
+$compareview__section-collapse-button--content: $anglearrow__up--content;
+
+$compareview__hyperlink--color: $compareview__cell-defaults--color;
+$compareview__hyperlink-disabled--bg-color: transparent;
+
+$compareview__map-arrow-icon--background-image: url("images/icon_arrow_small_default.png");
+$compareview__map-arrow-icon--size: 8px;
+$compareview__map-arrow-icon--margin: 0 8px;
+
+$compareview__header-icon--size: 16px;
+$compareview__header-icon-centered--margin-top: ceil($compareview__header-icon--size/2) * -1;
+$compareview__header-icon-centered--margin-left: $compareview__header-icon-centered--margin-top;
+$compareview__header-icon--font: $font-family-fontawesome;
+
+$compareview__header-tile-top-button-content--height: $compareview__header-icon--size + $container-spacing-default__half;
+$compareview__header-tile-image--border: $compareview__column--border;
+$compareview__header-tile-image-container--margin: 0 auto;
+$compareview__header-tile-image-container--height: 150px;
+$compareview__header-tile-image--max-height: $compareview__header-tile-image-container--height;
+$compareview__header-tile-image-container--line-height: floor($compareview__header-tile-image-container--height * 0.94);
+$compareview__header-tile-selected--color: $blue__default;
+$compareview__header-tile-label--margin: 0 0 5px;
+$compareview__header-tile-image-label--margin-top: $container-spacing-default__half;
+$compareview__header-tile-label--height: 58px;
+$compareview__header-tile-label--font-size: $font-size__base;
+$compareview__header-tile-only-label--margin-top: nth($compareview__header-tile-image-container--margin, 1);
+$compareview__header-tile-label-hover--color: $blue__default;
+$compareview__header-tile-compound-container--margin-right: $container-spacing-default__third;
+$compareview__header-tile-compound-panel--padding-bottom: 15px;
+
+$compareview__header-close-button--top: 15px;
+$compareview__header-close-button--right: $compareview__header-close-button--top;
+
+$compareview__header-pin-button--top: $compareview__header-close-button--top;
+$compareview__header-pin-button--right: ($compareview__header-close-button--right + $compareview__header-icon--size + 5px);
+
+$compareview__header-buttons-icon--top: 2px;
+$compareview__header-buttons--padding-bottom: 2px;
+$compareview__header-buttons-icon--margin-right: 17px;
+$compareview__header-buttons--font-size: $font-size__base;
+
+$compareview__header-add-button--bottom: $container-spacing-default__base + $container-spacing-default_two-thirds;
+$compareview__header-add-button--line-height: $compareview__header-icon--size;
+$_compareview__header-show-diff-only--bottom: $container-spacing-default__base + $container-spacing-default_two-thirds;
+
+$compareview__header-difference-indicator--top: $container-spacing-default__half;
+$compareview-flex__header-difference-indicator--top: $compareview-flex__header-cell--padding-top;
+$compareview__header-difference-indicator--left: nth($compareview__cell--padding, 4);
+
+$compareview__difference-indicator--color: $red__default--100;
+$compareview__difference-indicator-icon--background-image: url("images/icon-half-circle-white.svg");
+$compareview__difference-indicator-icon--size: 8px;
+$compareview__difference-indicator-icon--border-radius: ceil($compareview__difference-indicator-icon--size/2);
+$compareview__difference-indicator-icon--margin: 0 2px;
+$compareview__difference-indicator-icon-v-middle--margin-top: $compareview__difference-indicator-icon--border-radius * -1;
+$compareview__difference-indicator-icon-h-middle--margin-left: $compareview__difference-indicator-icon-v-middle--margin-top;
+
+$compareview__progress-icon--size: $compareview__header-icon--size;
+$compareview__progress-icon-spinner--bg-size: 14px;
+$compareview__progress-icon-spinner--margin-top: floor($compareview__progress-icon--size/2) * -1;
+$compareview__progress-icon-spinner--border-radius: ceil($compareview__progress-icon--size/2);
+$compareview__progress-icon-spinner--animation-duration: 1500ms;
+$compareview__process-container--opacity: 0.5;
+
+$compareview__value-error--font-style: italic;
+
+$compareview__empty-container--width: 310px;
+$compareview__empty-container--padding: 370px 0 0;
+$compareview__empty-content--top: 50%;
+$compareview__empty-content--left: 50%;
+$compareview__empty-content--padding-top: -40px;
+$compareview__empty-item--padding: 30px;
+$compareview__empty-button--bottom: 30px;
+$compareview__empty-button--color: $blue__default;
+$compareview__empty-button--border: $boxes--border__thin solid $compareview__empty-button--color;
+$compareview__empty-button--border-radius: 2px;
+$compareview__empty-button--padding-space-x: 15px;
+$compareview__empty-button--padding-space-y: 7px;
+$compareview__empty-button--padding: $compareview__empty-button--padding-space-y $compareview__empty-button--padding-space-x $compareview__empty-button--padding-space-y ($compareview__empty-button--padding-space-x+25px);
+$compareview__empty-button--font-size: $font-size__medium;
+$compareview__empty-button--line-height: 24px;
+$compareview__empty-button--hover-color: $white;
+$compareview__empty-button--hover-bg-color: $compareview__empty-button--color;
+
+$compareview__empty-button-icon--margin-right: $compareview__empty-button--padding-space-x + 5px;
+$compareview__empty-button-icon--thickness: 2px;
+$compareview__empty-button-icon--size: 20px;
+$compareview__empty-button-icon-adjust--margin: floor($compareview__empty-button-icon--size/2)*-1;
+$compareview__empty-button-icon-border--margin: floor($compareview__empty-button-icon--thickness/2) * -1;
+
+$compareview__empty-button-icon--left: floor($compareview__empty-button-icon--size/2) + $compareview__empty-button--padding-space-x - 5px;
+
+$_compareview__localized-row-current--opacity: 1;
+$_compareview__localized-row-main--opacity: 0;
+
+$_compareview__localized-icon--top: 8px;
+$_compareview__localized-icon--right: 20px;
+$_compareview__localized-icon--padding: 0;
+
+$_compareview__localized-language-differentiator--top: 5px;
+$_compareview__localized-language-differentiator--right: 45px;
+$_compareview__localized-language-differentiator--color: $black__blueish--200;
+$_compareview__localized-language-differentiator-different--color: $red__default--100;
+
+$_compareview__collection-expand-button--content: $compareview__section-expand-button--content;
+$_compareview__collection-collapse-button--content: $compareview__section-collapse-button--content;
+$_compareview__collection-button-hover--color: $blue__default;
+
+$_compareview__collection-header-button--size: $compareview__header-icon--size;
+$_compareview__collection-header-button--top: 7px;
+$_compareview__collection-header-button--right: $container-spacing-default__half;
+$_compareview__collection-header-span--font-style: italic;
+
+$_compareview__collection-values-container--border-top: $boxes--border__thin solid $grey__light--1100;
+$_compareview__collection-values-container--spacing: 5px;
+
+$_compareview__collection-value-entry--margin-bottom: $_compareview__collection-values-container--spacing;

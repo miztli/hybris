@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="com.hybris.cockpitng.widgets.common.explorertree"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+	<name>Explorer Tree</name>
+	<description>Shows a hierarchical structure.</description>
+	<defaultTitle>Explorer Tree</defaultTitle>
+	<author>hybris</author>
+	<version>1.0</version>
+	<sockets>
+		<input id="nodeIdSelected" type="com.hybris.backoffice.navigation.TreeNodeSelector" />
+		<input id="setTreeContext" type="java.util.Collection" />
+		<input id="selectionContext" type="java.util.Map" />
+		<input id="clear" type="java.lang.Object" />
+		<output id="nodeSelected" type="com.hybris.backoffice.navigation.NavigationNode" />
+		<output id="dataSelected" type="java.lang.Object" />
+	</sockets>
+	<view src="explorertree.zul" />
+	<controller
+		class="com.hybris.cockpitng.widgets.common.explorertree.ExplorerTreeController" />
+	<keywords>
+		<keyword>Navigation</keyword>
+	</keywords>
+	<settings>
+		<setting key="explorerTreeConfigCtx" default-value="explorer-tree" type="String" />
+		<setting key="allowFilteringEntries" default-value="true" type="Boolean"/>
+
+		<setting key="showToolbar" default-value="false" type="Boolean"/>
+		<setting key="showPrimaryActions" default-value="true" type="Boolean"/>
+		<setting key="primaryActionsConfigCtx" default-value="explorer-tree-toolbar-primary-actions" type="String"/>
+		<setting key="showSecondaryActions" default-value="true" type="Boolean"/>
+		<setting key="secondaryActionsConfigCtx" default-value="explorer-tree-toolbar-secondary-actions" type="String"/>
+		<setting key="showNestedToolbarWidget" default-value="true" type="Boolean"/>
+		<setting key="widgetMold" type="ENUM(light,dark)" default-value="dark"/>
+		<setting key="refreshStrategies" type="java.lang.String" default-value=""/>
+		<setting key="minSearchInputLength" type="java.lang.Integer" default-value="0"/>
+		<setting key="treeItemRenderer" type="java.lang.String" default-value="explorerTreeItemRenderer"/>
+		<setting key="traversedItemsLimitDuringFilter" type="java.lang.Integer" default-value="3000"/>
+		<setting key="expandedItemsAfterFilterSoftLimit" type="java.lang.Integer" default-value="15"/>
+		<setting key="actionsComponent" type="java.lang.String"/>
+	</settings>
+</widget-definition>

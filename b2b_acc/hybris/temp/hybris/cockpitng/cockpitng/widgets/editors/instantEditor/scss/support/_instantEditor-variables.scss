@@ -1,0 +1,25 @@
+@import "cockpitng-globals.scss";
+
+$instantEditor__editor-buttons--size: $editor-defaults__inline-box--height;
+$instantEditor__editor-buttons--bg-color: $white;
+$instantEditor__editor-buttons--hover-bg-color: $grey__light--1200;
+$instantEditor__editor-buttons--border: $boxes--border__thin solid $grey__default--1000;
+$instantEditor__editor-buttons--border-top-width: 0;
+$instantEditor__editor-buttons--padding: 7px 0;
+
+$instantEditor__editor-buttons-container--right: 0;
+$instantEditor__editor-buttons-container--z-index: 1;
+
+$instantEditor__editor-confirm-button--color: $green_light-300;
+$instantEditor__editor-cancel-button--color: $blue__dark--400;
+$instantEditor__editor-cancel-button--border-right-width: 0;
+
+$instantEditor__editor-label-editable-border--width: $boxes--border__thin;
+$instantEditor__editor-icon-loceditor--margin-bottom: 8px;
+
+$instantEditor__editor-label-editable--margin-top: $container-spacing-default__third + $instantEditor__editor-label-editable-border--width;
+$instantEditor__editor-label-editable--margin-left: $container-spacing-default__third + $instantEditor__editor-label-editable-border--width;
+$instantEditor__editor-label-editable--margin-bottom: $container-spacing-default__half;
+$instantEditor__editor-label-editable--line-height: $font-size__large;
+
+$instantEditor__editor-localized-container--margin-top: -24px;

@@ -1,0 +1,25 @@
+/*================================
+    Explorer Tree
+================================*/
+@import "../support/_explorerTree-mixins.scss";
+
+.yw-explorerTree {
+  &-widget {
+    border: none;
+  }
+
+  &-filterDiv {
+    background: none;
+    padding: $explorertree__tree-filter-div--padding;
+  }
+
+  &-hideTextBoxDiv {
+    float: right;
+  }
+
+  &-inlineActions {
+    display: table-cell;
+    float: right;
+  }
+}
+

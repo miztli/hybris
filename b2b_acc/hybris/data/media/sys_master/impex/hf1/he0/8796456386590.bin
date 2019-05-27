@@ -1,0 +1,41 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Promotions for Powertools Store
+
+# Language
+$lang=de
+
+#3% off orders over $500
+UPDATE OrderThresholdDiscountPercentagePromotion;enabled[default=true][unique=true];code[unique=true];messageCouldHaveFired[lang=$lang];
+;;3PercentDiscountOver500;3% auf Bestellungen über $500;;
+
+
+#Buy 2 Power Drills, Get 1 Free
+UPDATE AcceleratorProductBOGOFPromotion;enabled[default=true][unique=true];code[unique=true];messageCouldHaveFired[lang=$lang];messageFired[lang=$lang];
+;;B2GOFPowerDrills;Kaufen Sie 2 Bohrmaschinen und bezahlen Sie nur eine.;Beim Kauf von 2 Bohrmaschinen erhalten Sie eine gratis.;;
+
+
+#Buy this great power tool package by Black & Decker for $255! Save $39!
+UPDATE ProductBundlePromotion;enabled[default=true][unique=true];code[unique=true];messageCouldHaveFired[lang=$lang];messageFired[lang=$lang];
+;;ProductBundlePowertoolsPackage;Kaufen Sie dieses großartige Powertool-Paket von Black & Decker für {2}! Sparen Sie $39!;Sie sparen {3}, wenn Sie dieses großartige Powertool-Paket von Black & Decker für {1} kaufen!;;
+
+
+#10% off on Sanders
+UPDATE ProductPercentageDiscountPromotion;enabled[default=true][unique=true];code[unique=true];messageFired[lang=$lang];
+;;10DiscountSanders;10% Rabatt auf Schleifmaschinen;;
+
+
+#Discount on the cart using a coupon (promotion voucher)
+UPDATE PromotionVoucher;voucherCode[unique=true];description[lang=$lang];
+;SUMMER69;$10 Rabatt auf den Warenkorb;
+;WINTER16;10% Rabatt auf den Warenkorb;
+
+

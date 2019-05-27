@@ -1,0 +1,69 @@
+/*
+ * [y] hybris Platform
+ *
+ * Copyright (c) 2018 SAP SE or an SAP affiliate company.
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of SAP
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with SAP.
+ */
+
+/*================================
+Customer Support Refine By Widget
+================================*/
+@import "support/customersupportrefineby-variables";
+
+.yw-customersupportrefineby {
+    height: 100%;
+    background: $customersupportrefineby__widget--bg-color;
+    color: $customersupportrefineby__widget--color;
+    overflow: auto;
+
+    .yw-customersupportrefineby-container {
+        padding: $customersupportrefineby__main-container--padding;
+
+        .z-label {
+            margin: $customersupportrefineby__main-container__label--margin;
+            font-weight: bold;
+            display: block;
+        }
+
+        .z-checkbox {
+            label {
+                padding: $customersupportrefineby__main-container__checkbox--padding;
+            }
+        }
+
+        .header-container {
+            .z-label {
+                line-height: 19px;
+                text-transform: uppercase;
+                margin: 0;
+            }
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    .yw-customersupport-no-filters {
+        color: $customersupportrefineby__no-filters--color;
+        font-style: $customersupportrefineby__info-container--font-style;
+        text-align: center;
+        display: block;
+    }
+}
+
+.yw-filter-icon {
+    background: url("images/icon_action_filter_default.png") 0 0;
+    display: block;
+    height: $customersupportrefineby__main-container__icon-size;
+    width: $customersupportrefineby__main-container__icon-size;
+    margin: $customersupportrefineby__main-container__icon--margin;
+    opacity: 1;
+}
+
+.z-vlayout-inner .yw-customersupport-filter-container{
+    margin-top: $customersupportrefineby__main-container__filter--margin4;
+}

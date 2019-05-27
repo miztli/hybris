@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0"
+           targetNamespace="http://www.hybris.com/customersupportbackoffice/config/customersupportrefineby"
+           xmlns:tns="http://www.hybris.com/customersupportbackoffice/config/customersupportrefineby"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="MergeMode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MERGE"/>
+            <xs:enumeration value="REPLACE"/>
+            <xs:enumeration value="REMOVE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="refine-by">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="field-list" type="tns:FieldList" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="FieldList">
+        <xs:sequence>
+            <xs:element name="search-field" type="tns:SearchField" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="merge-mode" type="tns:MergeMode" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="SearchField">
+        <xs:sequence>
+            <xs:element name="search-value" type="tns:SearchValue" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="label" type="xs:string"/>
+        <xs:attribute name="merge-mode" type="tns:MergeMode" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="SearchValue">
+        <xs:sequence>
+            <xs:element name="group-member-value" type="tns:GroupMemberValue" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="uniqueValue" type="xs:string"/>
+        <xs:attribute name="label" type="xs:string" use="required"/>
+        <xs:attribute name="merge-mode" type="tns:MergeMode" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="GroupMemberValue">
+        <xs:attribute name="value" type="xs:string" use="required"/>
+        <xs:attribute name="merge-mode" type="tns:MergeMode" use="optional"/>
+    </xs:complexType>
+
+</xs:schema>
+

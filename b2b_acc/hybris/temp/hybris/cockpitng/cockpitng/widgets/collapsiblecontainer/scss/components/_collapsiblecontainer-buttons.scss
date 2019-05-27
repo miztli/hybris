@@ -1,0 +1,103 @@
+button.yw-expandCollapse,
+.z-window-highlighted button.yw-expandCollapse {
+    position: absolute;
+    top: $collapsible-container__expand-button--top;
+    right: $collapsible-container__expand-button--right;
+    width: $collapsible-container__expand-button--size;
+    height: $collapsible-container__expand-button--size;
+    min-height: $collapsible-container__expand-button--size;
+    padding: 0;
+    background-image: url('images/icon_func_colapse_sprite.png') !important;
+    background-repeat: no-repeat;
+    background-position: $collapsible-container__expand-button--bg-position;
+    background-color: transparent;
+
+    &:focus,
+    &:hover,
+    &:active {
+        background-color: transparent;
+        color: inherit;
+        border-color: transparent;
+        box-shadow: none;
+    }
+    &:hover,
+    &:active {
+        background-position: $collapsible-container__expand-button-hover-active--bg-position;
+    }
+}
+
+.yw-expandCollapse.z-button[disabled],
+.yw-expandCollapse.z-button[disabled]:hover,
+.yw-expandCollapse.z-button[disabled]:active {
+    opacity: $collapsible-container__expand-button-disabled--opacity;
+    background-color: $collapsible-container__expand-button-disabled--bg-color;
+    background-position: $collapsible-container__expand-button-disabled--bg-position;
+
+    .yw-collapsed-down & {
+        background-position: $collapsible-container__collapsed-down-expand-button-disabled--bg-position;
+    }
+}
+
+.yw-com_hybris_backoffice_perspectiveContainer .yw-collapsibleContainer {
+    &-locked, 
+    &-unlocked {
+        top: $collapsible-container__lock-unlock-button--top;
+        right: $collapsible-container__lock-unlock-button--right;
+        width: $collapsible-container__lock-unlock-button--size;
+        height: $collapsible-container__lock-unlock-button--size;
+        min-height: $collapsible-container__lock-unlock-button--size;
+        position: absolute;
+        padding: 0;
+        background: none;
+        background-color: transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &:hover, 
+        &:active, 
+        &:focus {
+            min-height: $collapsible-container__lock-unlock-button--size;
+            background-color: transparent;
+            box-shadow: none;
+        }
+    }
+    &-locked, 
+    &-locked:hover, 
+    &-locked:active,
+    &-locked:focus {
+        background-image: $collapsible-container__lock-button--bg-image;
+    }
+    &-unlocked, 
+    &-unlocked:hover, 
+    &-unlocked:active {
+        background-image: $collapsible-container__unlock-button--bg-image;
+    }
+    &-caption {
+        > .z-center-header,
+        > .z-north-header,
+        > .z-south-header {
+            .yw-caption-container {
+
+                button.yw-expandCollapse, 
+                button.yw-collapsibleContainer-locked, 
+                button.yw-collapsibleContainer-unlocked {
+                    top: $collapsible-container__expand-button-header--top;
+                    margin-top: $collapsible-container__expand-button-header--margin-top;
+                }
+            }
+        }
+
+        &.yw-collapsed-down {
+            > .z-center-header,
+            > .z-north-header {
+                .yw-expandCollapse {
+                    background-position: $collapsible-container__collapsed-down-expand-button-top--bg-position;
+
+                    &:hover {
+                        background-position: $collapsible-container__collapsed-down-expand-button-top-hover--bg-position;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,216 @@
+// Color definitions
+// =====================
+
+//White
+$white: #ffffff;
+
+//Light Grey
+$grey__light--100: #d2dae4; //#d5dee8 //#d7dde4
+$grey__light--200: #f2f2f2; //#f1f4f7
+$grey__light--300: #eef3f7; 
+$grey__light--400: #a39530;
+$grey__light--500: #eaedf1; //#eeeeee //#eceff3
+$grey__light--600: #f7f7f7;
+$grey__light--700: #bdc6d2; //#bec4d1 //#bec8d3
+$grey__light--800: #d5d8dc; //#d7d7d7; //#d8d8d8; //#d3d9df; //#d6d6d6;
+$grey__light--900: #ebebeb;
+$grey__light--1000: #b7c1cf; //#bfbfbf; //#b7c1cf
+$grey__light--1100: #e0e9f0; //#ebecee
+$grey__light--1200: #f6f8fa; //#f4f7fa
+$grey__light--1300: #f4f7fa;
+$grey__light--1400: #fcfdfe; //fbfbfb
+
+//Default Grey
+$grey__default: #cccccc; //#c0c0c0 //#c9c9c9
+$grey__default--100: #eef2f6;
+$grey__default--200: #7d899c;
+$grey__default--300: #e5e9ed; //e5edf2
+$grey__default--400: #81878c;
+$grey__default--500: #7f90a4; //#7f90a5
+$grey__default--600: #818ea2; //#9eafc3 //#97a0ab //#8f9498
+$grey__default--700: #dbdbdb; //#dcdde1
+$grey__default--800: #b7b7b7;
+$grey__default--900: #acacac;
+$grey__default--1000: #c4cedc; //#8f9ba9 // #c2d1dc //#c6ced9
+$grey__default--1100: #6f7c91;
+
+//Dark Grey
+$grey__dark--100: #999;
+$grey__dark--200: #888; //candidate for removal
+$grey__dark--500: #787878;
+$grey__dark--600: #464e56;
+$grey__dark--700: #303030; //#333 // #333333
+
+//Light Blue
+$blue__light: #e1f3ff; // fbfeff
+$blue__light--100: #d5eeff; //#d1ecfe //#d1e8ff // --fd-color-shell-2
+$blue__light--200: #b3daf6;
+$blue__light--300: #eaf1f6;
+$blue__light--400: #e4edf2; //candidate for removal
+$blue__light--500: #69c2ff; //candidate for removal
+$blue__light--600: #d5e5ef; //candidate for removal
+$blue__light--700: #bee5fe; //candidate for removal
+
+//Default Blue
+$blue__default: #0486e0; //#049bdb;
+$blue__default--100: #32a0ec; //#2e9ae5;
+$blue__default--200: #31b9ff; //candidate for removal
+$blue__default--300: #085abc; //candidate for removal
+$blue__default--400: #0586e0; //#0e90d2;  // candidate for removal
+$blue__default--600: #043263; //#043d64;  
+
+//Dark Blue
+$blue__dark: #384d66;
+$blue__dark--100: #27394f;
+$blue__dark--200: #354A5F; // --fd-color-shell-1
+$blue__dark--300: #3f5876; //candidate for remvoal
+$blue__dark--400: #55667a; //#50748f;
+$blue__dark--500: #62768d;
+$blue__dark--600: #6b8098; //#6f7d90
+$blue__dark--700: #273a4e; //candidate for removal
+
+// Blue (Greyish)
+$blue__greyish--100: #e1e8f0;
+$blue__greyish--200: #a6b3c4;
+$blue__greyish--300: #9da8b6; //8a8fa1
+$blue__greyish--400: #7f90a5;
+$blue__greyish--500: #8192a6;
+$blue__greyish--600: #66afe9;
+$blue__greyish--700: #3c4c66;
+$blue__greyish--800: #4b5968;
+$blue__greyish--900: #b7bdc8;
+
+//Light Yellow
+$yellow__light: #fef1d3;
+
+//Yellow
+$yellow__default: #fcdf2b; //#FCDF2B;
+$yellow__default--100: #e2c713;
+$yellow__default--200: #f8dc2b; //#e6ca1f;
+$yellow__default--300: #ffeb08; //#ffe533;
+$yellow__default--400: #cfb611;
+$yellow__default--500: #ffeec6;
+$yellow__default--600: #fbbb21;
+$yellow__default--700: #c3b76c;
+
+//Default Orange
+$orange__default: #ff9914;
+$orange__default--100: #fef0ec;
+$orange__default--200: #f16b46;
+$orange__default--300: #ff3b30;
+$orange__default--400: #f8c31c;
+
+//Light Red
+$red__light--100: #ffdfdd;
+$red__light--400: #f22f2f;
+
+//Default Red
+$red__default: #8B0000;
+$red__default--100: #d50c01; //#d4145a
+$red__default--200: #ff3b30;
+
+//Light Green
+$green_light-300: #18bc33;
+$green_light-200: #7ed321;
+
+//Blueish Black
+$black__blueish--100: #151c22;
+$black__blueish--200: #1e2830; //#1d2830 //#1e2831
+$black__blueish--300: #364450;
+
+//Black
+$black: #000000;
+$black--100: rgba(0, 0, 0, 0.35);
+
+// Typography
+// ====================
+$font-size__base:          14px;
+$font-size__extra-small:   ceil(($font-size__base * 0.65)); // ~9px
+$font-size__small:         ceil(($font-size__base * 0.85)); // ~12px
+$font-size__semi-base:     ceil(($font-size__base * 0.92)); // ~13px
+$font-size__medium:        ceil(($font-size__base * 1.14)); // ~16px
+$font-size__large:         ceil(($font-size__base * 1.35)); // ~19px
+
+$font-size__h1:            floor(($font-size__base * 2.1)); // ~29px
+$font-size__h2:            floor(($font-size__base * 1.86)); // ~26px
+$font-size__h3:            ceil(($font-size__base * 1.5)); // ~21px
+$font-size__h4:            ceil(($font-size__base * 1.25)); // ~18px
+$font-size__h5:            $font-size__base;
+$font-size__h6:            ceil(($font-size__base * 0.85)); // ~12px
+
+$font-family-opensans: 'Open Sans', sans-serif;
+$font-family-fontawesome: 'FontAwesome', sans-serif;
+
+$font-weight-normal: normal;
+$font-weight-bold: bold;
+
+// Generic
+$loginPages__body-default--bg-color: $blue__default;
+
+$boxes--border__thin: 1px;
+$boxes--border__medium: 2px;
+$editor-defaults__input-field--border-radius: 0;
+$editor-defaults__input-field--border-width: $boxes--border__thin;
+$editor-defaults__inline-box--height: 40px;
+$editor-defaults__inline-box-delete-btn--size: 24px;
+$editor-defaults__popup-box--max-height: 300px;
+$editor-defaults__input-box-btn--padding: 0 5px;
+$editor-defaults__input-box-disabled--bg-color: $grey__light--1200;
+$editor-defaults__input-box-disabled--color: $grey__default--900;
+$editor-defaults__action-button-hover--border-color: $grey__default--1000;
+$editor-defaults__action-button--border-width: $boxes--border__thin;
+
+
+$toolbar__button-default--height: 28px;
+
+$container-spacing-default__base: 			30px;
+$container-spacing-default__half: 			floor($container-spacing-default__base/2);  // 15px;
+$container-spacing-default__third: 			ceil($container-spacing-default__base/3);   // 10px;
+$container-spacing-default_two-thirds: 		ceil($container-spacing-default__base/3 * 2);   // 20px;
+$container-spacing-default__semi-third: 	ceil($container-spacing-default__base/2.5); // 12px;
+
+$globals__toolbar--height: 50px;
+$globals__sidebar--width: 300px;
+
+//Font Awsome Caret Arrows
+$caretarrow__down--content: "\f0d7";
+$caretarrow__up--content: "\f0d8";
+$caretarrow__left--content: "\f0d9";
+$caretarrow__right--content: "\f0da";
+
+$simple-arrow__right--content: '\203A';
+
+$anglearrow__left--content: "\f104";
+$anglearrow__right--content: "\f105";
+$anglearrow__up--content: "\f106";
+$anglearrow__down--content: "\f107";
+
+$ellipsis--content: "\f141";
+$ellipsis-v--content: "\f142";
+
+$close--content: "\f00d";
+$check--content: "\f00c";
+$search--content: "\f002";
+
+//Validation Colors
+$validation__error--color: $orange__default--300; 
+$validation__error--bg-color: $red__light--100;
+$validation__warn--color: $orange__default; 
+$validation__warn--bg-color: $yellow__default--500;
+$validation__info--color: $blue__default; 
+$validation__info--bg-color: $blue__light--100;
+
+//Systembar navigation menu
+$navigation__top-menu--height: 48px; //interim definition will be removed, is temporary in place for the first step on theme unification
+$navigation__top-menu--bg-color: $blue__dark--200;
+$navigation__top-menu-item--bg-color: transparent; //interim definition will be removed, is temporary in place for the first step on theme unification
+$navigation__top-menu-item-hover--bg-color: #323C4C; //interim definition will be removed, is temporary in place for the first step on theme unification
+$navigation__top-menu-item-selected--bg-color: #2A3341; //interim definition will be removed, is temporary in place for the first step on theme unification
+
+$navigation__popup--bg-color: $white; //$blue__default--100;
+// $navigation__popup--color: #32363a; //interim definition will be removed, is temporary in place for the first step on theme unification
+$navigation__popup-hover--bg-color: #FAFAFA; //mix($white, $navigation__popup--bg-color, 40%);
+$navigation__popup-selected--bg-color: #EEF5FC; //mix($white, $navigation__popup--bg-color, 20%);
+
+//Toolbar
+$toolbar__vertical-centering-base--height: $toolbar__button-default--height;

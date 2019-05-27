@@ -1,0 +1,64 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+$storeUid=powertools
+$defaultCurrency=USD
+$defaultLanguage=en
+$googleHost=setthethirdpartyhost
+$googleUserName=setgoogleusername
+$googlePassword=setgooglepassword
+
+
+INSERT ExportDataCronJob;code[unique=true];job(code);baseStore(uid);cmsSite(uid);language(isocode);currency(isocode);user(uid);thirdPartyHost;thirdPartyUsername;thirdPartyPassword;dataGenerationPipeline;sessionLanguage(isocode)
+"#% beforeEach:
+import de.hybris.platform.core.Registry;
+import de.hybris.platform.acceleratorservices.model.export.ExportDataCronJobModel;
+String cronJobCode = line.get(Integer.valueOf(1));
+ExportDataCronJobModel exportDataCronJob;
+try
+{
+    exportDataCronJob = Registry.getApplicationContext().getBean(""cronJobService"").getCronJob(cronJobCode);
+}
+catch (Exception e)
+{
+    exportDataCronJob = null;
+}
+if (exportDataCronJob != null)
+{
+    line.clear();
+}"
+;googleLocationsPowertools;exportDataJobPerformable;$storeUid;$storeUid;$defaultLanguage;$defaultCurrency;anonymous;$googleHost;$googleUserName;$googlePassword;exportGooglePosPipeline;$defaultLanguage
+;googleProductsPowertools;exportDataJobPerformable;$storeUid;$storeUid;$defaultLanguage;$defaultCurrency;anonymous;$googleHost;$googleUserName;$googlePassword;exportGoogleProductPipeline;$defaultLanguage
+
+INSERT CronJob;code[unique=true];job(code);baseStore(uid);cmsSite(uid);sessionLanguage(isocode);sessionCurrency(isocode);sessionUser(uid);
+"#% beforeEach:
+import de.hybris.platform.core.Registry;
+import de.hybris.platform.cronjob.model.CronJobModel;
+String cronJobCode = line.get(Integer.valueOf(1));
+CronJobModel cronJob;
+try
+{
+    cronJob = Registry.getApplicationContext().getBean(""cronJobService"").getCronJob(cronJobCode);
+}
+catch (Exception e)
+{
+    cronJob = null;
+}
+if (cronJob != null)
+{
+    line.clear();
+}"
+;uploadExportsPowertools;uploadDataJobPerformable;$siteUid;$siteUid;$defaultLanguage;$defaultCurrency;anonymous;
+;quoteToExpireSoonJob;quoteToExpireSoonJobPerformable;;;en;;
+;quoteExpiredJob;quoteExpiredJobPerformable;;;en;;
+
+INSERT_UPDATE Trigger;active;second;minute;hour;day;month;year;cronExpression;cronJob(code)[unique=true];relative
+;true;0;0;0;0;0;0;0 0 6/12 * * ?;quoteToExpireSoonJob;true
+;true;0;0;0;0;0;0;0 0 0 * * ? *;quoteExpiredJob;true

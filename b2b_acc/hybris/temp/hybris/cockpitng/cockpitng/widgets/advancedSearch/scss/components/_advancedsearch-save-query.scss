@@ -1,0 +1,22 @@
+/*================================
+    Advanced Search - Save-Query 
+================================*/
+// Styling of defaults on the advanced-search component.
+
+// SECTION TEMPORARY !!
+
+@import "../support/_advancedsearch-variables.scss";
+/* TEMPORARY - until DOM is changed accordingly */
+
+/* Query Container (part) */
+
+.yw-add-field-row .cng-action-group {
+	position: absolute;
+	right: 0;
+	margin-top: -$advancedsearch__attributes-grid-item--space-y;
+}
+
+.yw-advancedsearch-actionslot{
+	display: inline-block;
+	float: right;
+}

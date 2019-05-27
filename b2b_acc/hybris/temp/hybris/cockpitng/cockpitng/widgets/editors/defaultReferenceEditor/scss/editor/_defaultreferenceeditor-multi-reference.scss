@@ -1,0 +1,28 @@
+.ye-com_hybris_cockpitng_editor_defaultmultireferenceeditor {
+    div.ye-default-reference-editor-item-container,
+    div.ye-default-reference-editor-selected-item-container {
+        padding-right: $default-reference-editor__multi-reference-list-item--padding-right;
+    }
+
+    .ye-default-reference-editor-bandbox.ye-create-only.z-bandbox-readonly {
+        .z-bandbox-button.z-bandbox-disabled {
+            display: none;
+        }
+    }
+    div.ye-default-reference-editor-selected-listbox {
+        margin-bottom: $default-reference-editor__listbox-to-create-only-box--margin-bottom;
+        &.yw-listbox-disabled {
+            div.ye-default-reference-editor-item-container.ye-remove-enabled:hover,
+            div.ye-default-reference-editor-selected-item-container:hover {
+                padding-right: $default-reference-editor__multi-reference-list-item--padding-right;
+            }
+        }
+    }
+    
+    div.ye-default-reference-editor-item-container.ye-remove-enabled:hover,
+    div.ye-default-reference-editor-selected-item-container:hover {
+        padding-right: $default-reference-editor__list-item-remove-enabled--hover-padding-right;
+
+    }
+
+}

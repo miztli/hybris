@@ -1,0 +1,51 @@
+@mixin open-sans-font-face ($weight: normal, $style: normal, $font-style-name: 'Regular', $font-family-name: 'Open Sans') {
+    font-family: $font-family-name;
+    src: url( ('font/OpenSans-' + $font-style-name + '.eot') );
+    src: url( ('font/OpenSans-' + $font-style-name + '.eot?#iefix') ) format('embedded-opentype'),
+    url( ('font/OpenSans-' + $font-style-name + '.woff') ) format('woff'),
+    url( ('font/OpenSans-' + $font-style-name + '.ttf') ) format('truetype'),
+    url( ('font/OpenSans-' + $font-style-name + '.svg#OpenSans' + $font-style-name) ) format('svg');
+    font-weight: $weight;
+    font-style: $style;
+}
+
+
+@font-face {
+    @include open-sans-font-face (normal, normal, 'Regular');
+}
+
+@font-face {
+    @include open-sans-font-face (normal, italic, 'Italic');
+}
+
+@font-face {
+    @include open-sans-font-face (bold, normal, 'Bold');
+}
+
+@font-face {
+    @include open-sans-font-face (bold, italic, 'BoldItalic');
+}
+
+@font-face {
+    @include open-sans-font-face (200, normal, 'Light');
+}
+
+@font-face {
+    @include open-sans-font-face (100, italic, 'LightItalic');
+}
+
+@font-face {
+    @include open-sans-font-face (700, normal, 'SemiBold');
+}
+
+@font-face {
+    @include open-sans-font-face (700, italic, 'SemiBoldItalic');
+}
+
+@font-face {
+    @include open-sans-font-face (800, normal, 'ExtraBold');
+}
+
+@font-face {
+    @include open-sans-font-face (800, italic, 'ExtraBoldItalic');
+}

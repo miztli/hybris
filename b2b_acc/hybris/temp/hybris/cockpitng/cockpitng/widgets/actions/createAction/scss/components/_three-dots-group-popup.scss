@@ -1,0 +1,19 @@
+/*================================
+    Three Dots
+================================*/
+// Styling of the Three Dots
+
+@import "../support/_create-variables.scss";
+
+.ya-three-dots-group-popup {
+    margin-top: $create__three-dots-group-popup--margin-top;
+    margin-left: $create__three-dots-group-popup--margin-left;
+    
+    &.yw-pointer-menupopup-top-right:before, 
+    &.yw-pointer-menupopup-top-right:after {
+        right: $create__three-dots-group-popup--pointer-right;
+    }
+    .cng-action{
+        padding: $create__three-dots-group-popup-content--padding;
+    }
+}

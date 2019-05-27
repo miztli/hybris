@@ -1,0 +1,137 @@
+/*================================
+    Systembar Mixins
+================================*/
+// Relevant Mixins applied to:
+// - Systembar (General)
+// - Quick Locale Toggle Popup
+// - User Role Chooser Popup
+// - Perspective Chooser Popup
+
+@import "_systembar-variables.scss";
+
+//should maybe be added as .yw-systemBarPopup (adding that styleclass to yw-roleChooser-popup & yw-quickToggleLocale)
+//to define the standard look of systembar-triggered Popups
+
+@mixin _default_systembar_popup () {
+    margin-top: $systembar-popup__container--margin-top;
+    padding: $systembar-popup__container--padding;
+    border: none;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: none;
+
+    .z-popup-content {
+        border-radius: $systembar-popup__menu--border-radius;
+        padding: $systembar-popup__menu--padding;
+        background: $systembar-popup__item--bg-color;
+        color: $systembar-popup__list-cell--font-color;
+        max-height: $systembar-popup__menu--max-height;
+        box-shadow: $systembar-popup__menu--box-shadow;
+        height: auto;
+        overflow: auto;
+
+        .z-listbox {
+            min-width: 100%;
+        }
+        .z-listbox .z-listbox {
+            min-width: 0;
+        }
+    }
+
+    .z-popup-cl {
+        border-top: none;
+        background-color: $systembar-popup__item-static--bg-color; 
+    }
+    .z-listbox {
+        border: none;
+    }
+    .z-listitem {
+        background-color: $systembar-popup__item--bg-color;
+        color: $systembar-popup__list-cell--font-color;
+
+        &:hover {
+            background-color: $systembar-popup__item--bg-color;
+        }
+
+        .z-listcell {
+            padding: $systembar-popup__list-cell--padding;
+            border-top: $systembar-popup__list-cell--border-top;
+            border-bottom: $systembar-popup__list-cell--border-bottom;
+            background: none;
+            
+            &:hover {
+                background-color: $systembar-popup__item-hover--bg-color;
+            }
+
+            &-content {
+                padding: $systembar-popup__list-cell-content--padding;
+            }
+            .z-listitem-checkable .z-listitem-icon.z-icon-check {
+                display: inline-block;
+                position: relative;
+                vertical-align: middle;
+                top: $systembar-popup__icon-check--top;
+                padding-top: $systembar-popup__icon-check--padding-top;
+                margin-top: $systembar-popup__icon-check--margin-top;
+                @include _systembar_fonts ($systembar-popup__icon-uncheck--color,
+                        $font-size__medium,
+                        $font-family-fontawesome);
+            }
+        }
+        .z-listcell-content,
+        .z-listcell-content .z-label,
+        &:hover .z-listcell-content {
+            @include _systembar_fonts ($systembar-popup__list-cell--font-color);
+        }
+
+        &.z-listitem-selected {
+            background-color: $systembar-popup__item--bg-color;
+            
+            .z-listcell,
+            .z-listcell-content,
+            .z-listcell-content .z-label,
+            &:hover .z-listcell-content {
+                color: $systembar-popup__item-selected--color;
+            }
+
+            &:hover {
+                background-color: $systembar-popup__item--bg-color;
+            }
+            .z-listcell {
+                background-color: $systembar-popup__item-selected--bg-color;
+
+                &:hover {
+                    background-color: $systembar-popup__item-selected-hover--bg-color;
+                }
+                .z-listitem-checkable .z-listitem-icon.z-icon-check {
+                    color: $systembar-popup__icon-check--color;
+                }
+            }
+            
+        }
+    }
+}
+
+//default systembar and popup menu font properties mixin
+@mixin _systembar_fonts (
+    $mixin--font-color: $systembar__default--font-color,
+    $mixin--font-size: $systembar__default--font-size,
+    $mixin--font-family: $systembar__default--font-family,
+    $mixin--font-weight: $systembar__default--font-weight ) {
+    color: $mixin--font-color;
+    font-weight: $mixin--font-weight;
+    font-size: $mixin--font-size;
+    font-family: $mixin--font-family;
+}
+
+@mixin _systembar_vertical_centering ($width: false, $height: false) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    @if ($width) {
+        margin-left: -($width/2);
+    }
+    @if ($height) {
+        margin-top: -($height/2);
+    }
+}

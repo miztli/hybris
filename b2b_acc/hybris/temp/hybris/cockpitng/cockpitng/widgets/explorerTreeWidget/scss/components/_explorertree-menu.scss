@@ -1,0 +1,180 @@
+/*================================
+    Explorer Tree Menu-Contents
+================================*/
+@import "../support/_explorerTree-mixins.scss";
+
+// Explorer Tree
+// ====================
+// General styling
+
+.yw-explorerTree {
+
+  &-widget {
+    .yw-explorerTree {
+      height: 100%;
+//      border: 0 none;
+      overflow-y: auto;
+
+      &.z-vfiletree {
+        background: none;
+        overflow: auto;
+
+        .z-treecell:not(.y-navigable-node) {
+          .z-vfiletree-spacer + .yw-treeCellInner {
+            margin-left: $explorertree__nested-plain-item--margin-left;
+            padding-left: $explorertree__nested-plain-item--padding-left;
+            
+            > .y-tree-icon {
+              left: $explorertree__nested-plain-item-icon--left;
+            }
+            .ie10 &,
+            .ie11 & {
+              padding-left: 0;
+              margin-left: 0;
+
+              > .y-tree-icon {
+                left: $explorertree__item-icon--left;
+              }
+            }
+          }
+        }
+      }
+
+      .yw-treeCellInner {
+        overflow: hidden;
+
+        .z-label {
+          display: block;
+          vertical-align: middle;
+          -webkit-flex: 1 1 auto;
+          -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+          overflow: hidden;
+        }
+        .ya-three-dots-group-cnt {
+          max-width: 100%;
+        }
+        
+        .ie10 &,
+        .ie11 & {
+          overflow: visible;
+        }
+      }
+
+      .z-treechildren .z-treecell-content {
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        padding: $explorertree__item--padding;
+        width: 100%;
+
+        & > * {
+          flex: auto;
+        }
+        .ie10 &,
+        .ie11 & {
+          display: table;
+
+          & > * {
+            vertical-align: top;
+          }
+        }
+      }
+    }
+  }
+
+  .z-treerow {
+    background-color: $explorertree__row--bg-color;
+    border-color: transparent;
+    
+    &:hover > .z-treecell {
+      background-color: $explorertree__treerow-hover--bg-color;
+    }
+  }
+
+  .y-tree-icon {
+    float: left;
+    height: $explorertree__item-icon--size;
+    left: $explorertree__item-icon--left;
+    margin-right: $explorertree__item-icon--margin-right;
+    margin-top: $explorertree__item-icon--margin-top;
+    min-height: $explorertree__item-icon--size;
+    position: absolute;
+    width: $explorertree__item-icon--size;
+  }
+
+  .z-treerow:hover [class^="y-tree-icon"] {
+    background-position: 0 (-1 * $explorertree__item-icon--size);
+  }
+
+  .yw-selected,
+  .yw-selected:hover {
+    [class^="y-tree-icon"] {
+      background-position: 0 (-2 * $explorertree__item-icon--size);
+    }
+  }
+
+  .z-treerow-focus,
+  .z-treerow-focus:hover {
+    [class^="y-tree-icon"] {
+      background-position: 0 (-3 * $explorertree__item-icon--size);
+    }
+  }
+
+  .yw-treeCellInner {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+    width: 100%;
+
+    > .yw-explorerTree-inlineActions {
+      display: block;
+      -webkit-box-flex: 0;
+      -ms-flex: 0 1;
+      flex: 0 1;
+    }
+
+    .ie10 &,
+    .ie11 & {
+      display: table-cell;
+      vertical-align: top;
+      height: auto;
+
+      > .z-div,
+      > .z-label,
+      > .yw-explorerTree-inlineActions {
+        display: table-cell;
+      }
+      > .z-label { 
+        word-break: break-all;
+        width: 100%;
+      }
+      > .yw-explorerTree-inlineActions {
+        float: none;
+
+        > table {
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+// explorer Tree related defintions
+// ====================
+//
+
+.yw-no-permission-label {
+  opacity: 0.3;
+  cursor: not-allowed !important;
+
+  > td {
+    cursor: not-allowed;
+  }
+}
+
+.yw-navigationNode-cannot-access {
+  opacity: 0.5;
+  font-style: italic;
+}

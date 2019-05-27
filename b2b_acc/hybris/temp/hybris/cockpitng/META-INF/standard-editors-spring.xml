@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+		 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<alias alias="editorRegistry" name="simpleEditorRegistry"/>
+	<bean id="simpleEditorRegistry" class="com.hybris.cockpitng.editor.registry.impl.SimpleEditorRegistry">
+		<property name="defaultEditorMapping">
+			<map merge="true" key-type="java.lang.String" value-type="java.lang.String">
+				<description>Defines what editor (by editor ID) is to be picked per default for the given editor type.</description>
+				<entry key="java.lang.String" value="com.hybris.cockpitng.editor.defaulttext"/>
+				<entry key="java.lang.Character" value="com.hybris.cockpitng.editor.defaultcharacter"/>
+				<entry key="java.lang.Boolean" value="com.hybris.cockpitng.editor.defaultboolean"/>
+				<entry key="java.util.Date" value="com.hybris.cockpitng.editor.defaultdate"/>
+				<entry key="java.lang.Double" value="com.hybris.cockpitng.editor.defaultdecimal"/>
+				<entry key="java.lang.Float" value="com.hybris.cockpitng.editor.defaultfloat"/>
+				<entry key="java.lang.Number" value="com.hybris.cockpitng.editor.defaultdecimal"/>
+				<entry key="java.math.BigDecimal" value="com.hybris.cockpitng.editor.defaultbigdecimal"/>
+				<entry key="java.lang.Integer" value="com.hybris.cockpitng.editor.defaultinteger"/>
+				<entry key="java.lang.Byte" value="com.hybris.cockpitng.editor.defaultbyte"/>
+				<entry key="java.lang.Short" value="com.hybris.cockpitng.editor.defaultshort"/>
+				<entry key="java.lang.Long" value="com.hybris.cockpitng.editor.defaultlong"/>
+				<entry key="java.lang.Enum(?:\((.*)\))?" value="com.hybris.cockpitng.editor.defaultenum"/>
+				<entry key="^Localized\((.*)\)$" value="com.hybris.cockpitng.editor.localized"/>
+				<entry key="^LocalizedSimple\((.*)\)$" value="com.hybris.cockpitng.editor.localizedsimple"/>
+				<entry key="^Range\((.*)\)$" value="com.hybris.cockpitng.editor.defaultrange"/>
+				<entry key="^List\((.*)\)$" value="com.hybris.cockpitng.editor.defaultlist"/>
+				<entry key="^Map\((.+),\s*(.+)\)$" value="com.hybris.cockpitng.editor.defaultmap"/>
+				<entry key="^Reference\((.*)\)$" value="com.hybris.cockpitng.editor.defaultreferenceeditor"/>
+				<entry key="^FixedValuesReference\((.*)\)$" value="com.hybris.cockpitng.editor.defaultfixedreferenceeditor"/>
+				<entry key="^MultiReference-(COLLECTION|LIST|SET)\((.*)\)$"
+						 value="com.hybris.cockpitng.editor.defaultmultireferenceeditor"/>
+                <entry key="^ExtendedMultiReference-(COLLECTION|LIST|SET)\((.*)\)$"
+						 value="com.hybris.cockpitng.editor.extendedmultireferenceeditor"/>
+                <entry key="^EnumMultiReference-(COLLECTION|LIST|SET)\((.*)\)$"
+                       value="com.hybris.cockpitng.editor.enummultireferenceeditor"/>
+				<entry key="com.hybris.cockpitng.editor.defaultfileupload.FileUploadResult"
+						 value="com.hybris.cockpitng.editor.defaultfileupload"/>
+				<entry key="java.lang.Class" value="com.hybris.cockpitng.editor.defaultclass"/>
+				<entry key="java.math.BigInteger" value="com.hybris.cockpitng.editor.defaultbiginteger"/>
+			</map>
+		</property>
+        <property name="defaultEditorCode" value="com.hybris.cockpitng.editor.dummy" />
+		<property name="componentDefinitionService" ref="componentDefinitionService"/>
+	</bean>
+
+	<alias name="defaultStandardEditorsProperties" alias="cockpitProperties"/>
+	<bean id="defaultStandardEditorsProperties" parent="defaultCockpitProperties">
+		<property name="properties">
+			<map merge="true">
+				<entry key="wysiwyg.config.uri" value="/widgetClasspathResource/widgets/editors/wysiwygEditor/ckeditorconfig.js"/>
+			</map>
+		</property>
+	</bean>
+
+	<alias name="defaultInstantEditorLabelRenderer" alias="instantEditorLabelRenderer"/>
+	<bean id="defaultInstantEditorLabelRenderer" class="com.hybris.cockpitng.editor.instant.DefaultInstantEditorLabelRenderer">
+		<property name="instantEditorLabelProviders" ref="instantEditorLabelProviders" />
+		<property name="permissionFacade" ref="permissionFacade" />
+		<property name="labelService" ref="labelService" />
+	</bean>
+
+	<alias name="defaultFixedInstantEditorLabelRenderer" alias="fixedInstantEditorLabelsRenderer"/>
+	<bean id="defaultFixedInstantEditorLabelRenderer" class="com.hybris.cockpitng.editor.instant.FixedInstantEditorLabelsRenderer">
+		<property name="permissionFacade" ref="permissionFacade" />
+		<property name="labelService" ref="labelService" />
+		<property name="expressionResolverFactory" ref="expressionResolverFactory"/>
+	</bean>
+
+	<alias name="editComponentDefinitionServiceResettables" alias="componentDefinitionServiceResettables"/>
+	<util:list id="editComponentDefinitionServiceResettables">
+		<ref bean="editorRegistry"/>
+	</util:list>
+
+	<alias name="defaultInstantEditorLabelProviders" alias="instantEditorLabelProviders"/>
+	<util:list id="defaultInstantEditorLabelProviders" list-class="java.util.ArrayList" value-type="com.hybris.cockpitng.editor.instant.labelprovider.InstantEditorLabelProvider">
+		<ref bean="collectionsInstantEditorLabelProvider"/>
+		<ref bean="localizedInstantEditorLabelProvider"/>
+		<ref bean="baseInstantEditorLabelProvider"/>
+	</util:list>
+
+	<alias name="defaultBaseInstantEditorLabelProvider" alias="baseInstantEditorLabelProvider"/>
+	<bean id="defaultBaseInstantEditorLabelProvider" class="com.hybris.cockpitng.editor.instant.labelprovider.impl.BaseInstantEditorLabelProvider">
+		<property name="order" value="999"/>
+		<property name="labelService" ref="labelService"/>
+	</bean>
+
+	<alias name="defaultLocalizedInstantEditorLabelProvider" alias="localizedInstantEditorLabelProvider"/>
+	<bean id="defaultLocalizedInstantEditorLabelProvider" class="com.hybris.cockpitng.editor.instant.labelprovider.impl.LocalizedInstantEditorLabelProvider">
+		<property name="order" value="500"/>
+		<property name="cockpitLocaleService" ref="cockpitLocaleService"/>
+	</bean>
+
+	<alias name="defaultCollectionsInstantEditorLabelProvider" alias="collectionsInstantEditorLabelProvider"/>
+	<bean id="defaultCollectionsInstantEditorLabelProvider" class="com.hybris.cockpitng.editor.instant.labelprovider.impl.CollectionsInstantEditorLabelProvider">
+		<property name="order" value="400"/>
+	</bean>
+
+</beans>

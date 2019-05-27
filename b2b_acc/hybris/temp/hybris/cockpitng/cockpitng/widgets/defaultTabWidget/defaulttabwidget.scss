@@ -1,0 +1,43 @@
+@import "cockpitng-globals.scss";
+
+$defaultTabWidget__tab-selected--bg-color: $white;
+$defaultTabWidget__tab-text--font-size: $font-size__base;
+$defaultTabWidget__tab-text--padding: 0 5px; 
+$defaultTabWidget__tab-text--font-weight: $font-weight-normal;
+$defaultTabWidget__tab-text--color: $grey__default--1100;
+$defaultTabWidget__tab-text--line-height: ceil(($defaultTabWidget__tab-text--font-size * 2.1));
+$defaultTabWidget__tab-selected--color: $blue__default; //$blue__default--300;
+$defaultTabWidget__tab--bg-color: $grey__light--800;
+$defaultTabWidget__widget--bg-color: $grey__light--1100;
+
+.defaultTabWidget {
+    background-color: $defaultTabWidget__widget--bg-color!important;
+    
+    .z-tab {
+        div {
+            background: $defaultTabWidget__tab--bg-color !important;
+        }
+
+        .z-tab-text {
+            color: $defaultTabWidget__tab-text--color;
+            font-weight: $defaultTabWidget__tab-text--font-weight;
+            line-height: $defaultTabWidget__tab-text--line-height;
+            padding: $defaultTabWidget__tab-text--padding;
+            font-size: $defaultTabWidget__tab-text--font-size;
+        }
+
+        &.z-tab-selected {
+            div {
+                background: $defaultTabWidget__tab-selected--bg-color !important;
+            }
+
+            .z-tab-text {
+                color: $defaultTabWidget__tab-selected--color;
+            }
+        }
+    }
+
+    > .widget_cnt > .z-tabbox > .z-tabs > .z-tabs-header > .z-tabs-content {
+        border-bottom: none;
+    }
+}

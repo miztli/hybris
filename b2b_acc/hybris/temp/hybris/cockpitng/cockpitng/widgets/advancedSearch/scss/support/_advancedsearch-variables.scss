@@ -1,0 +1,228 @@
+@import "cockpitng-globals.scss";
+
+//    Variables
+// ================================
+
+$advancedsearch__operator-selector--max-width: 100px;
+$advancedsearch__selector--padding-left: 2%;
+
+$advancedsearch-header--max-width: 900px;
+$advancedsearch-header__bandbox--max-width: 220px;
+$advancedsearch-header__bandbox-type-selector--max-width: 270px;
+$advancedsearch-header__bandbox--margin-right: $container-spacing-default__base;
+$advancedsearch-header__attribute-container--max-width: 350px;
+$advancedsearch-header__operator-selector--max-width: 100px;
+$advancedsearch-header__label--font-size: $font-size__base;
+$advancedsearch-header__search-input-field--border-width: $boxes--border__thin;
+$advancedsearch-header__search-query-element--font-size: $font-size__base;
+$advancedsearch-header__search-query-element--line-height: 32px;
+$advancedsearch-header__search-query-element--margin-bottom: 0;
+$advancedsearch-header__search-query-element--margin-right: $container-spacing-default__third;
+$advancedsearch-header__search-query-label--color: $blue__greyish--500;
+$advancedsearch-header__search-query-label--line-height: $editor-defaults__inline-box--height - 2px; // - border-size;
+// $advancedsearch-header__search-query-operator-label--margin-right: ceil($advancedsearch-header__bandbox--margin-right / 2);
+$advancedsearch__bandbox-button-element-defaults--border-width: $boxes--border__thin;
+$advancedsearch__textsearch-box--width: 300px;
+$advancedsearch__textsearch--color: $black;
+$advancedsearch__textsearch--margin-left: 0;
+$advancedsearch__textsearch--padding: 0;
+$advancedsearch__textsearch--vertical-align: top;
+$advancedsearch__textsearch--height: $editor-defaults__inline-box--height;
+$advancedsearch__textsearch--line-height: $advancedsearch__textsearch--height - 2* $advancedsearch__bandbox-button-element-defaults--border-width;
+$advancedsearch__textsearch-bandbox-icon--width: $advancedsearch__textsearch--height - 2* $advancedsearch__bandbox-button-element-defaults--border-width;
+$advancedsearch__textsearch-bandbox-icon--line-height: $advancedsearch__textsearch--line-height;
+
+$advancedsearch__textsearch-auto-suggestion--listcell--padding: 4px 6px 3px;
+
+$advancedsearch__box-space-to-follow-up-element--margin-right: $container-spacing-default__half;
+$advancedsearch__default-button--size: $editor-defaults__inline-box--height;
+$advancedsearch__default-button-icon--size: 16px;
+$advancedsearch__default-button-icon--margin: 0 $advancedsearch-header__search-query-element--margin-right $advancedsearch-header__search-query-element--margin-bottom floor(-1 * ($advancedsearch__default-button--size - $advancedsearch__default-button-icon--size)/2);
+
+$advancedsearch__button--border-color: $yellow__default--700;
+$advancedsearch__button--border: $advancedsearch__bandbox-button-element-defaults--border-width solid $advancedsearch__button--border-color;
+
+$advancedsearch__disabled-label--color: $grey__default;//#C0C0C0;
+
+$advancedsearch-body__header--border-top: false; //2px solid #dadfe5;
+
+$advancedsearch__attributes-container-outer--space-x: 0; //$container-spacing-default__half;
+$advancedsearch__attributes-container-outer--space-y: 0;
+$advancedsearch__attributes-container-inner--space-x: $container-spacing-default__base;
+$advancedsearch--attributes-container-inner--space-y: $container-spacing-default__third;
+
+$advancedsearch__attributes-grid-item--space-y: $container-spacing-default__third;
+$advancedsearch__attributes-grid-item--space-x: $container-spacing-default__half;
+
+$advancedsearch__attributes-grid--bg-color: $white;
+$advancedsearch__attributes-grid-border-color: $grey__default--700;
+$advancedsearch__attributes-grid--border-bottom: false;
+$advancedsearch__attributes-grid-add-row--no-border-bottom: true;
+$advancedsearch__attributes-grid-row--border-width: $boxes--border__thin;
+$advancedsearch__attributes-grid-row--border: $advancedsearch__attributes-grid-row--border-width solid $advancedsearch__attributes-grid-border-color;
+
+$advancedsearch__attributes-grid-row--line-height: $editor-defaults__inline-box--height - 4px;
+$advancedsearch__attributes-grid-row-label--line-height: $font-size__large;
+$advancedsearch__attributes-grid-row-label--margin-top: ceil(($advancedsearch__attributes-grid-row--line-height - $advancedsearch__attributes-grid-row-label--line-height)/2);
+$advancedsearch__attributes-grid-item--padding: $advancedsearch__attributes-grid-item--space-y $advancedsearch__attributes-grid-item--space-x 0 0;
+$advancedsearch__attributes-grid-last-row-item--padding: $advancedsearch__attributes-grid-item--space-y $advancedsearch__attributes-grid-item--space-x $advancedsearch__attributes-grid-item--space-y 0;
+$advancedsearch__attributes-grid-header-item--padding: 0 $advancedsearch__attributes-grid-item--space-x $advancedsearch__attributes-grid-item--space-y 0;
+
+$advancedsearch__attributes-grid-save-search-action--top: $advancedsearch__default-button--size + $advancedsearch__attributes-grid-row--border-width + 2 * $advancedsearch__attributes-grid-item--space-y;
+$advancedsearch__attributes-grid-table--margin-bottom: $advancedsearch__attributes-grid-save-search-action--top + $advancedsearch__attributes-grid-item--space-y;
+//$advancedsearch__attributes-grid-last-content-cell--padding-right: $advancedsearch__default-button--size;
+
+//$advancedsearch__attributes-grid--padding: 0px $advancedsearch__attributes-container-inner--space-x;
+//$advancedsearch__attributes-grid-header-border--margin: -1px $advancedsearch__attributes-container-inner--space-x 0 $advancedsearch__attributes-container-inner--space-x;
+
+$advancedsearch__attribute-mandatory--bg-color: $orange__default--100;
+$advancedsearch__attribute-mandatory--color: $orange__default--200;
+$advancedsearch__attribute-mandatory--button-color: $white;
+
+$advancedsearch__attribute-mandatory-filled--bg-color: $white;
+$advancedsearch__attribute-mandatory-filled--color: $black;
+$advancedsearch__attribute-mandatory-filled--border-color: $blue__greyish--900;
+$advancedsearch__attribute-mandatory-filled--hover-bg-color: #555;
+
+$advancedsearch__local--min-width: 80px;
+$advancedsearch__local--width: 1%;
+$advancedsearch__action-btn--size: 15px;
+
+//taken from defaults (due to ya-com_hybris_platformbackoffice_action_saveAdvancedSearchQuery not being a simple button but neede to be styled alike )
+$advancedsearch__save-query-tigger--bg-color: $blue__dark--300;
+$advancedsearch__save-query-tigger--hover-bg-color: $blue__dark--400;
+$advancedsearch__save-query-tigger--focus-bg-color: $blue__dark--500;
+
+$advancedsearch__footer--padding: 10px 0;
+$advancedsearch__footer--min-height: 34px;
+
+$advancedsearch-ref-editor__header-caption--padding: 10px 10px 0;
+
+$advancedsearch__sortorder-radio--size: 18px;
+$_advancedsearch__sortorder-radio--min-height: 20px;
+$advancedsearch__sortorder-radio--bg-color: transparent;
+$advancedsearch__sortorder-radio--border-radius: $advancedsearch__sortorder-radio--size/2;
+$advancedsearch__sortorder-radio--border-width: 2px;
+$advancedsearch__sortorder-radio--margin-right: 10px;
+$advancedsearch__sortorder-radio--color: $grey__default--800;//#a3a9b7;
+$advancedsearch__sortorder-radio-selected--color: $blue__default;
+$advancedsearch__sortorder-label--margin-right: 15px;
+$advancedsearch__sortorder-icon--font-size: 14px;
+$advancedsearch__sortorder-asc-icon--content: $caretarrow__up--content;
+$advancedsearch__sortorder-desc-icon--content: $caretarrow__down--content; 
+$advancedsearch__sortorder-asc-icon--line-height: round($advancedsearch__sortorder-icon--font-size * 0.9);
+$advancedsearch__sortorder-desc-icon--line-height: round($advancedsearch__sortorder-icon--font-size * 1.15);
+$advancedsearch__sortorder-radio--top: -3px;
+$advancedsearch__sortorder-asc-radio--top: $advancedsearch__sortorder-radio--top;
+$advancedsearch__sortorder-desc-radio--top: $advancedsearch__sortorder-radio--top + 2px;
+$advancedsearch__sortorder-button--line-height: $editor-defaults__inline-box--height/2;
+$advancedsearch__sortorder-button--height: $editor-defaults__inline-box--height/2;
+
+$advancedsearch-facets__selected-facet--height: $container-spacing-default__base;
+$advancedsearch-facets__selected-facet--border-radius: $advancedsearch-facets__selected-facet--height/2;
+$advancedsearch-facets__selected-facet--border-width: $boxes--border__thin;
+$advancedsearch-facets__selected-facet--margin-top: 5px;
+$advancedsearch-facets__selected-facet--margin-left: 4px;
+$advancedsearch-facets__selected-facet--padding: 0 8px;
+$advancedsearch-facets__selected-facet--color: $black__blueish--100;
+$advancedsearch-facets__selected-facet--bg-color: $white;
+$advancedsearch-facets__selected-facet--border-color: $grey__default--1000;
+$advancedsearch-facets__selected-facet--hover-bg-color: $blue__light--300;
+$advancedsearch-facets__selected-facet-container--margin-top: - $advancedsearch-facets__selected-facet--margin-top;
+$advancedsearch-facets__selected-facet-container--padding-left: 0;
+$advancedsearch-facets__selected-facet-label--font-size: $font-size__small;
+$advancedsearch-facets__selected-facet-label--line-height: $advancedsearch-facets__selected-facet--height - 2* $advancedsearch-facets__selected-facet--border-width;
+
+$advancedsearch-facets__container--bg-color: $white;
+$advancedsearch-facets__container--padding: ($container-spacing-default__half - $advancedsearch-facets__selected-facet--margin-top + 2px) $advancedsearch__attributes-container-inner--space-x $container-spacing-default__half;
+
+$advancedsearch-facets__add-facet-button--bg-color: $blue__default;
+$advancedsearch-facets__add-facet-button--hover-bg-color: lighten($blue__default, 4%);
+$advancedsearch-facets__add-facet-button--size: $advancedsearch-facets__selected-facet--height - 2* $advancedsearch-facets__selected-facet--border-width;
+$advancedsearch-facets__add-facet-button-icon--size: 24px auto;
+
+$advancedsearch-facets__add-facet-button-container--width: $advancedsearch-facets__add-facet-button--size + 4px;
+$advancedsearch-facets__add-facet-button--margin-top: $advancedsearch-facets__selected-facet--margin-top + $advancedsearch-facets__selected-facet--border-width;
+
+$advancedsearch-facets__selected-facet-remove-button--size: $font-size__medium;
+$advancedsearch-facets__selected-facet-remove-button--color: $black__blueish--100;
+$advancedsearch-facets__selected-facet-remove-button--hover-color: $blue__default;
+$advancedsearch-facets__selected-facet-remove-button--margin-left: 6px;
+$advancedsearch-facets__selected-facet-remove-button--margin-top: ceil($advancedsearch-facets__selected-facet--height/2 - $advancedsearch-facets__selected-facet--border-width - $advancedsearch-facets__selected-facet-remove-button--size/2);
+$advancedsearch-facets__selected-facet-remove-icon--font-size: 11px; //$font-size__extra-small;
+$advancedsearch-facets__selected-facet-remove-icon--margin-top: -$advancedsearch-facets__selected-facet-remove-icon--font-size/2;
+
+$advancedsearch-facets__popup--border-color: $grey__default--1000;
+$advancedsearch-facets__popup--border-width: $boxes--border__thin;
+$advancedsearch-facets__popup--bg-color: $white;
+$advancedsearch-facets__popup--margin-top: 6px;
+$advancedsearch-facets__popup--height: auto;
+$advancedsearch-facets__popup--max-width: 1320px;
+$advancedsearch-facets__popup--max-height: calc(100vh - 360px); // 360px is a rough manual calc of systembar two headers + popup footer
+$advancedsearch-facets__popup--max-height-calc: calc(100% -  (185px + $advancedsearch-facets__popup--margin-top));
+$advancedsearch-facets__popup-pointer--size: 6px;
+$advancedsearch-facets__popup-pointer-inner--border-width: $advancedsearch-facets__popup-pointer--size ($advancedsearch-facets__popup-pointer--size + 2*$advancedsearch-facets__popup--border-width);
+$advancedsearch-facets__popup-pointer-inner--top: -($advancedsearch-facets__popup-pointer--size * 2);
+$advancedsearch-facets__popup-pointer-inner--left: ($advancedsearch-facets__add-facet-button--size/2) - $advancedsearch-facets__popup--border-width - $advancedsearch-facets__popup-pointer--size + 2px; //last = difference in position of popup & trigger (add-facet-button)
+$advancedsearch-facets__popup-pointer-outer--border-width: (nth($advancedsearch-facets__popup-pointer-inner--border-width, 1)+$advancedsearch-facets__popup--border-width) (nth($advancedsearch-facets__popup-pointer-inner--border-width, 2)+$advancedsearch-facets__popup--border-width);
+$advancedsearch-facets__popup-pointer-outer--top: $advancedsearch-facets__popup-pointer-inner--top - 2*$advancedsearch-facets__popup--border-width;
+$advancedsearch-facets__popup-pointer-outer--left: $advancedsearch-facets__popup-pointer-inner--left - $advancedsearch-facets__popup--border-width;
+
+$advancedsearch-facets__popup-shadow--color: $black;
+$advancedsearch-facets__popup-shadow--color-alpha: 0.1;
+
+$advancedsearch-facets__popup-search-input--margin: ($container-spacing-default__third*2) 0 $container-spacing-default__half;
+$advancedsearch-facets__popup-search-input--max-width: 400px;
+
+$advancedsearch-facets__popup-search-input--focus-color: $blue__default;
+
+$advancedsearch-facets__popup-search-container--height: nth($advancedsearch-facets__popup-search-input--margin,1) + $editor-defaults__inline-box--height + nth($advancedsearch-facets__popup-search-input--margin,3);
+
+$advancedsearch-facets__popup-search-bandbox-button--height: $editor-defaults__inline-box--height - 6px;
+$advancedsearch-facets__popup-search-bandbox-button--top: 3px;
+
+
+$advancedsearch-facets__popup-apply-container--height: 60px - $advancedsearch-facets__popup--border-width;
+$advancedsearch-facets__popup-apply-container--bg-color: $grey__light--300;
+$advancedsearch-facets__popup-apply-container--padding: $container-spacing-default__third;
+$advancedsearch-facets__popup-apply-action-label--color: $grey__dark--500;
+$advancedsearch-facets__popup-apply-action-label--hover-color: $blue__default;
+$advancedsearch-facets__popup-apply-action-label--padding: $container-spacing-default__third;
+$advancedsearch-facets__popup-apply-action-label--margin-bottom: 4px;
+
+$advancedsearch-facets__popup-facets-container--top: $advancedsearch-facets__popup-search-container--height;
+$advancedsearch-facets__popup-facets-container--bottom: $advancedsearch-facets__popup-apply-container--height;
+$advancedsearch-facets__popup-facets-main-container--padding: 7px;
+$advancedsearch-facets__popup-facets-main-container--border: $advancedsearch-facets__popup--border-width solid $advancedsearch-facets__selected-facet--border-color;
+$advancedsearch-facets__popup-container--padding: 0 $container-spacing-default__base 6px;
+$advancedsearch-facets__popup-facets-items-container--padding-bottom: 24px;
+$advancedsearch-facets__popup-facets-items-container--margin-bottom: 18px;
+$advancedsearch-facets__popup-facets-items-container--width: 33%;
+$advancedsearch-facets__popup-facet-item--max-width: 250px;
+$advancedsearch-facets__popup-facet-item--min-width: 190px;
+
+$advancedsearch-facets__popup-facet-item--line-height: $editor-defaults__inline-box--height - 8px;
+$advancedsearch-facets__popup-facet-item-lable--padding-right: 5px;
+$advancedsearch-facets__popup-facet-item-lable-container--margin-bottom: 12px;
+$advancedsearch-facets__popup-facet-item-lable-container--margin-top: floor($advancedsearch-facets__popup-facet-item-lable-container--margin-bottom/2);
+$advancedsearch-facets__popup-facet-item-lable-selected-count--margin-left: 5px;
+$advancedsearch-facets__popup-facet-item-input-box--margin-top: 5px;
+$advancedsearch-facets__popup-facet-item--font-size: $font-size__base;
+
+$advancedsearch-facets__popup-search-list-item--font-size: $advancedsearch-facets__popup-facet-item--font-size; 
+$advancedsearch-facets__popup-search-list-item--line-height: floor($advancedsearch-facets__popup-search-list-item--font-size * 1.3);
+$advancedsearch-facets__popup-search-list-popup-container--max-width: $advancedsearch-facets__popup-search-input--max-width;
+$advancedsearch-facets__popup-search-list-popup-list-box--border: none;
+$advancedsearch-facets__popup-search-list-popup-container--max-height: 640px;
+
+$advancedsearch-facets__popup-facet-more-label--color: $advancedsearch-facets__popup-apply-action-label--color;
+$advancedsearch-facets__popup-facet-more-label--hover-color: $advancedsearch-facets__popup-apply-action-label--hover-color;
+
+$advancedsearch-facets__popup-facet-more-label--font-size: $font-size__small;
+$advancedsearch-facets__popup-facet-more-icon--margin-right: 2px;
+$advancedsearch-facets__popup-facet-more-icon--width: 18px;
+$advancedsearch-facets__popup-facet-item-note--font-size: $font-size__extra-small;
+$advancedsearch-facets__popup-facet-item-note--margin-top: 5px;
+$advancedsearch-facets__popup-facet-item-note--color: $grey__default;
+
+$advancedsearch-facets__popup-facet-item-ie-adjustment--margin-top: 3px;

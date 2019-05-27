@@ -1,0 +1,31 @@
+<widget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.zkoss.org/2005/zul">
+
+	<tabbox id="tb" width="100%" mold="accordion">
+		<tabs>
+			<tab id="generalTab" label="Tabular report" />
+			<tab label="Textual summary" />
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<grid id="duplicatedIDsGrid" mold="paging" pageSize="4">
+					<columns>
+						<column hflex="2" label="Composed type" align="left" />
+						<column hflex="1" label="Count" align="left" />
+						<column hflex="5" label="Identifier" align="left" />
+					</columns>
+					<rows>
+						<row>
+							<label id="composedTypeLabel"/>
+							<label id="countLabel"/>
+							<label id="identifierLabel"/>
+						</row>
+					</rows>
+				</grid>
+			</tabpanel>
+			<tabpanel>
+				<textbox id="reportTextBox" multiline="true" width="100%" style="margin:0px" rows="10"/>
+			</tabpanel>
+
+		</tabpanels>
+	</tabbox>
+</widget>

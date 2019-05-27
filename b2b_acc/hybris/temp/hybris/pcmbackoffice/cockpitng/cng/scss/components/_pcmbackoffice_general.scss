@@ -1,0 +1,189 @@
+@import "../support/_pcmbackoffice_general-variables.scss";
+
+.yw-pcmbackoffice-collection-toolbar,
+.yw-extendedsplitlayout-toolbar,
+.yw-pcmbackoffice-navibar,
+.yw-explorerTree-toolbar,
+.yw-listview-actioncontainer {
+    .z-vbox-separator,
+    .z-hbox-separator {
+        display: none;
+    }
+}
+
+.yw-pcmbackoffice {
+    &-contents {
+        width: $pcmbackoffice__contents--width;
+        height: $pcmbackoffice__contents--height;
+        background-color: $pcmbackoffice__contents--bg-color;
+    }
+
+     &-navibar {
+        .ya-navigation {
+            padding: $pcmbackoffice__navibar--navigation--padding;
+        }
+
+        .yw-toolbar-vertical {
+            width: $pcmbackoffice__navibar--toolbar-vertical--width;
+            height: $pcmbackoffice__navibar--toolbar-vertical--height;
+            font-size: $pcmbackoffice__navibar--toolbar-vertical--font-size;
+
+            .ya-toggle {
+                width: $pcmbackoffice__navibar--toolbar-toogle--width;
+                height: $pcmbackoffice__navibar--toolbar-toogle--height;
+                border-left: $pcmbackoffice__navibar--toolbar-toogle--border-left;
+                cursor: pointer;
+
+                &-active {
+                    background-color: $pcmbackoffice__navibar--toolbar-toogle-active--bg-color;
+                    border-left: $pcmbackoffice__navibar--toolbar-toogle-hover--border-left;
+                }
+
+                .cng-action {
+                    padding: $pcmbackoffice__navibar--toolbar-action--padding;
+                }
+            }
+        }
+
+        .yw-toolbar {
+            &-actions {
+                overflow: hidden;
+
+                table {
+                    width: 100%;
+                }
+            }
+
+            .cng-action-text {
+                padding-left: $pcmbackoffice__navibar--toolbar-action-text--padding-left;
+                padding-right: $pcmbackoffice__navibar--toolbar-action-text--padding-right;
+            }
+        }
+    }
+
+    //Dark and Light widget-mold-styling within pcm
+    //would be transfered as borderlayout will be be made available in both molds
+    //details on that need to be defined.
+    &-dark {
+        background-color: $pcmbackoffice__dark--bg-color;
+    }
+
+    &-light,
+    &-products-sidebar {
+        background-color: $pcmbackoffice__light--bg-color;
+    }
+
+    &-toolbar-summary {
+        .cng-action {
+            margin: $pcmbackoffice__toolbar-summary-action--margin;
+        }
+
+        .yw-flexlayout-trigger,
+        .yw-flexlayout-trigger-summary {
+            margin: $pcmbackoffice__toolbar-summary-flex-trigger--margin;
+        }
+    }
+
+    &-collection-toolbar {
+        color: $pcmbackoffice__collection-toolbar--color;
+        font-weight: $pcmbackoffice__collection-toolbar--font-weight;
+        border-left: $pcmbackoffice__collection-toolbar-delimited--border-left;
+
+        .yw-flexlayout-contents & {
+            border-left-color: $pcmbackoffice__collection-toolbar-delimited-light--border-left-color;
+            background-color: $pcmbackoffice__light--bg-color;
+        }
+        .cng-action .cng-action-text {
+            line-height: $pcmbackoffice__collection-toolbar-action-text--line-height;
+            padding-left: $pcmbackoffice__collection-toolbar-action-text--padding-left;
+            padding-right: $pcmbackoffice__collection-toolbar-action-text--padding-right;
+
+            &:hover {
+                color: $pcmbackoffice__collection-toolbar-action-text-hover--color;
+            }
+        }
+        .yw-toolbar-after {
+            float: $pcmbackoffice__toolbar-after--float;
+        }
+        > .yw-toolbar > .yw-toolbar-content > .yw-toolbar-actions .ya-toggle {
+            min-width: $pcmbackoffice__collection-toolbar-toggle-container--min-width;
+        }
+    }
+    
+    &-products-sidebar .yw-explorerTree-widget .yw-catalog-selector {
+        width: $pcmbackoffice__catalog-selector--width;
+
+        &:before,
+        &:after {
+            display: none;
+        }
+    }
+
+    .cng-action-group {
+        height: 100%;
+    }
+
+    .y-toolbar-inner {
+        width: auto;
+    }
+
+    // .yw-listview-actioncontainer {
+    //     padding: $pcmbackoffice__listview-actioncontainer--padding;
+    // }
+
+    .yw-catalog-selector {
+        color: $pcmbackoffice__catalog-selector-button--color;
+    }
+
+    .yw-panel-navigation {
+        .z-panelchildren {
+            background-color: $pcmbackoffice__general--bg-color;
+        }
+        .z-panel-body {
+            background-color: $pcmbackoffice__general--bg-color;
+        }
+    }
+
+    .yw-borderlayout .yw-layoutregion {
+        background-color: $pcmbackoffice__general--bg-color;
+    }
+    
+    //D&D between missing
+    .yw-extendedsplitlayout-box .yw-coll-browser-container .z-listitem.z-dragged,
+    .z-treerow.z-dragged {
+        background-color: $pcmbackoffice__dragn-n-drop-dragged-highlight--bg-color;
+        
+        .z-treecell-content{
+            &:before {
+                border: $pcmbackoffice__dragn-n-drop-dragged-highlight--border;
+                display: block;
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+            }
+        }
+    }
+    .z-drag-matching-drop-target.z-treerow {
+        .z-treecell{
+            background: $pcmbackoffice__dragn-n-drop-target--bg-color;
+
+            &:before {
+                height: $pcmbackoffice__dragn-n-drop-target-indicator-icon--size;
+                width: $pcmbackoffice__dragn-n-drop-target-indicator-icon--size;
+                margin-top: $pcmbackoffice__dragn-n-drop-target-indicator-icon--margin-top;
+                right: $pcmbackoffice__dragn-n-drop-target-indicator-icon--right;
+                border: $pcmbackoffice__dragn-n-drop-target-indicator-icon--border;
+                display: block;
+                content: '';
+                top: 50%;                
+                position: absolute;
+            }
+        }
+        &.z-drag-over .z-treecell {
+            background-color: $pcmbackoffice__dragn-n-drop-highlight--color;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/security
+                    http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+<beans:alias alias="backofficeAuthenticationDetailsSource" name="defaultBackofficeAuthenticationDetailsSource"/>
+	<beans:bean id="defaultBackofficeAuthenticationDetailsSource"
+		class="com.hybris.cockpitng.util.web.authentication.BackofficeAuthenticationDetailsSource">
+		<beans:property name="localeRequestParameter" value="locale" />
+	</beans:bean>
+
+	<beans:bean id="defaultBackofficeAuthenticationSuccessHandler"
+		class="com.hybris.cockpitng.util.web.authorization.BackofficeAuthenticationSuccessHandler">
+		<beans:property name="cockpitUserService" ref="cockpitUserService" />
+		<beans:property name="cockpitLocaleService" ref="cockpitLocaleService" />
+		<beans:property name="loginInfoSessionBeanName" value="loginInfoModel"/>
+	</beans:bean>
+
+	<beans:alias alias="backofficeAuthenticationSuccessHandler" name="resetConfigurationAuthenticationSuccessHandler"/>
+	<beans:bean id="resetConfigurationAuthenticationSuccessHandler"
+                class="com.hybris.cockpitng.util.web.authorization.ResetConfigurationAuthenticationSuccessHandler"
+				parent="defaultBackofficeAuthenticationSuccessHandler">
+        <beans:property name="widgetPersistenceService" ref="widgetPersistenceService"/>
+        <beans:property name="cockpitConfigurationService" ref="cockpitConfigurationService"/>
+        <beans:property name="resetStrategy" ref="resetConfigurationStrategy"/>
+    </beans:bean>
+
+	<beans:alias alias="backofficeAuthenticationFailureHandler" name="defaultBackofficeAuthenticationFailureHandler"/>
+	<beans:bean id="defaultBackofficeAuthenticationFailureHandler"
+                class="com.hybris.cockpitng.util.web.authorization.BackofficeAuthenticationFailureHandler">
+    </beans:bean>
+
+</beans:beans>

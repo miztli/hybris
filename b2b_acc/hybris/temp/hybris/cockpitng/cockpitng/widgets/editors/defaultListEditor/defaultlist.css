@@ -1,0 +1,72 @@
+/*================================
+    Default List
+================================*/
+/*================================
+    Default List Defaults
+================================*/
+.ye-list-toolbar,
+.ye-list-content .z-listbox {
+  border-color: #acacac; }
+
+.ye-list-content .z-listbox {
+  border-top-color: rgba(127, 144, 165, 0.2); }
+
+.ye-list-toolbar .z-button {
+  width: 40px;
+  height: 40px;
+  background-position: center center;
+  background-repeat: no-repeat; }
+  .ye-list-toolbar .z-button:hover {
+    background-color: #ffffff; }
+  .ye-list-toolbar .z-button[disabled] {
+    cursor: default; }
+  .ye-list-toolbar .z-button.ye-list-toolbar-button-add {
+    background-image: url("icons/icon_func_add_default.png"); }
+    .ye-list-toolbar .z-button.ye-list-toolbar-button-add:hover {
+      background-image: url("icons/icon_func_add_hover.png"); }
+    .ye-list-toolbar .z-button.ye-list-toolbar-button-add[disabled] {
+      background-image: url("icons/icon_func_add_disabled.png"); }
+  .ye-list-toolbar .z-button.ye-list-toolbar-button-edit {
+    background-image: url("icons/icon_func_edit_default.png"); }
+    .ye-list-toolbar .z-button.ye-list-toolbar-button-edit:hover {
+      background-image: url("icons/icon_func_edit_hover.png"); }
+    .ye-list-toolbar .z-button.ye-list-toolbar-button-edit[disabled] {
+      background-image: url("icons/icon_func_edit_disabled.png"); }
+  .ye-list-toolbar .z-button.ye-list-toolbar-button-delete {
+    background-image: url("icons/icon_func_delete_default.png"); }
+    .ye-list-toolbar .z-button.ye-list-toolbar-button-delete:hover {
+      background-image: url("icons/icon_func_delete_hover.png"); }
+    .ye-list-toolbar .z-button.ye-list-toolbar-button-delete[disabled] {
+      background-image: url("icons/icon_func_delete_disabled.png"); }
+
+.ye-list-listbox .z-paging {
+  line-height: 28px; }
+.ye-list-listbox .ye-list-line-editor,
+.ye-list-listbox .z-listitem:hover .ye-list-line-editor,
+.ye-list-listbox div.z-listbox-body .z-listcell.z-draggable-over,
+.ye-list-listbox div.z-listbox-body tr.z-listitem-selected.z-listitem td.ye-list-line-editor div.z-listcell-content {
+  background: #ffffff; }
+
+.ye-list-line-editor button {
+  float: right;
+  margin-top: 5px;
+  margin-left: 5px; }
+
+.ye-list-toolbar-popup-add.z-popup-open > .z-popup-content {
+  padding: 10px; }
+.ye-list-toolbar-popup-add .ye-btn-container {
+  text-align: right; }
+  .ye-list-toolbar-popup-add .ye-btn-container > button.z-button.ye-btn-cancel,
+  .ye-list-toolbar-popup-add .ye-btn-container > button.z-button.y-btn-primary {
+    margin: 0 0 0 5px;
+    padding: 0 15px; }
+.ye-list-toolbar-popup-add-checkbox {
+  display: inline-block;
+  margin-top: 10px; }
+
+.ye-com_hybris_cockpitng_editor_defaultlist td.z-listcell > div.z-listcell-content {
+  min-height: 18px; }
+.ye-com_hybris_cockpitng_editor_defaultlist .z-paging-button {
+  background-image: none; }
+.ye-com_hybris_cockpitng_editor_defaultlist .ye-list-inline-editor .ye-com_hybris_cockpitng_editor_defaulttext {
+  width: 100%; }

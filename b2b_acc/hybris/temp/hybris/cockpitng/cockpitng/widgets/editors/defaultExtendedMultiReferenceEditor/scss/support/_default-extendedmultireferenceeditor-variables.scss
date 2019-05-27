@@ -1,0 +1,106 @@
+@import "../../../defaultReferenceEditor/scss/support/defaultreferenceeditor-variables.scss";
+@import "../../../../defaultEditorArea/scss/support/_defaultEditorArea-variables.scss";
+
+$multi-ref-editor__fake-border-default--left: 0;
+$multi-ref-editor__fake-border-default--top: $editor-defaults__inline-box--height;
+$multi-ref-editor__fake-border-default--bottom: 0;
+$multi-ref-editor__fake-border-default--border: $default-reference-editor__box--border-width solid $editor-area__box--border-color;
+$multi-ref-editor__fake-border-after--right: 0;
+
+$multi-ref-editor__list-cell--padding-x: $container-spacing-default__base;
+$multi-ref-editor__list-cell-bp-s--padding-x: $container-spacing-default__half;
+
+//padding changed due to having the first cell added as blank in the row - for row-status
+$multi-ref-editor__header-content--padding: 0 $multi-ref-editor__list-cell--padding-x 0 0;
+$multi-ref-editor__header-content--height: $editor-defaults__inline-box--height;
+$multi-ref-editor__header-sort-icon--font-size: $font-size__small;
+$multi-ref-editor__header-sort-icon--left: $container-spacing-default__half; //
+$multi-ref-editor__header-sort-icon--color: false;
+$multi-ref-editor__header-bar--border-color: transparent;
+
+$multi-ref-editor__header-save-icon--bg-image: url("images/globalsave.png");
+$multi-ref-editor__header-save-icon--size: 16px;
+$multi-ref-editor__header-save-button--height: $multi-ref-editor__header-save-icon--size;
+$multi-ref-editor__header-save-button--side-adjustment: 22px;
+$multi-ref-editor__header-save-button--width: $multi-ref-editor__header-save-icon--size + 2* $multi-ref-editor__header-save-button--side-adjustment;
+$multi-ref-editor__header-save-button--margin: auto (-$multi-ref-editor__header-save-button--side-adjustment);
+
+$multi-ref-editor__list-default-content--color: $black__blueish--100;
+
+$multi-ref-editor__list-table--box-shadow: -3px -1px 1px 1px rgba($editor-area__box--border-color,0.6);
+$multi-ref-editor__list-cell--border: $default-reference-editor__box--border-width solid $default-reference-editor__list-tree-cell--border-color;
+$multi-ref-editor__list-cell--height: $editor-defaults__inline-box--height;
+$multi-ref-editor__list-cell--font-size: $editor-area__input-field--font-size;
+$multi-ref-editor__list-cell--line-height: $editor-area__input-field--line-height;
+$multi-ref-editor__list-cell--line-height-calc: $multi-ref-editor__list-cell--font-size * 1.4; // for calculation when displayed as inline-element (where effect of line-height is limited)
+@if $multi-ref-editor__list-cell--line-height > $multi-ref-editor__list-cell--line-height-calc {
+    $multi-ref-editor__list-cell--line-height-calc: $multi-ref-editor__list-cell--line-height;
+}
+
+$multi-ref-editor__list-cell-marked--border-width: 4px;
+
+
+$multi-ref-editor__list-cell--padding-y: floor(($editor-defaults__inline-box--height - 3*$default-reference-editor__box--border-width - $multi-ref-editor__list-cell--line-height-calc)/2);
+$multi-ref-editor__list-cell--padding: $multi-ref-editor__list-cell--padding-y $multi-ref-editor__list-cell--padding-x $multi-ref-editor__list-cell--padding-y 0;
+
+$multi-ref-editor__list-cell-inline-date-editor--max-width: 250px;
+$multi-ref-editor__list-cell-content--hover-color: $blue__default;
+$multi-ref-editor__list-cell-edit-icon--size: 15px;
+$multi-ref-editor__list-cell-edit-icon--right: -( $multi-ref-editor__list-cell-edit-icon--size + 8px);
+$multi-ref-editor__list-cell-compound-container--padding-left: 6px;
+
+$multi-ref-editor__list-item-actiondots-icon--size: 24px;
+$multi-ref-editor__list-item-actiondots-cell--width: $editor-defaults__inline-box--height;
+$multi-ref-editor__list-item-actiondots-button--margin-x: floor(($multi-ref-editor__list-item-actiondots-cell--width - $multi-ref-editor__list-item-actiondots-icon--size)/2);
+$multi-ref-editor__list-item-actiondots-save-button-adjustment--margin-left: floor(($multi-ref-editor__header-save-icon--size - $multi-ref-editor__list-item-actiondots-icon--size)/2);
+$multi-ref-editor__list-item-actiondots-first-cell--width: 30px;
+$multi-ref-editor__list-item-actiondots-first-cell--margin-left: floor(($multi-ref-editor__list-item-actiondots-first-cell--width - $multi-ref-editor__list-item-actiondots-icon--size)/2);
+
+$multi-ref-editor__list-item-status-exclamation-icon--size: 16px;
+$multi-ref-editor__list-item-status-exclamation-icon-indent--margin-left: 3px;
+$multi-ref-editor__list-item-status-exclamation-icon--margin-left: $multi-ref-editor__list-cell-marked--border-width + $multi-ref-editor__list-item-status-exclamation-icon-indent--margin-left;
+
+$multi-ref-editor__list-item-status-exclamation-icon--margin-top: -(ceil(($multi-ref-editor__list-item-status-exclamation-icon--size + $default-reference-editor__box--border-width)/2));
+$multi-ref-editor__list-item--bg-color: $editor-area__component--bg-color;
+$multi-ref-editor__list-item-selected--bg-color: $editor-area__component--bg-color;
+$multi-ref-editor__list-item-selected-hover--bg-color: $blue__light--300;
+
+$multi-ref-editor__inline-popup--bg-color: $white;
+$multi-ref-editor__inline-popup--border-color: $grey__default--1000;
+$multi-ref-editor__inline-popup--width: 160px;
+$multi-ref-editor__inline-popup-pointer--size: 15px;
+$multi-ref-editor__inline-popup-pointer-right-side--left: $multi-ref-editor__inline-popup--width - $default-reference-editor__box--border-width * 2;
+$multi-ref-editor__inline-popup-pointer-right-side--top: ceil($multi-ref-editor__inline-popup-pointer--size/2);
+$multi-ref-editor__inline-popup-pointer-bottom-side--left: 50%;
+$multi-ref-editor__inline-popup-pointer-bottom-side--margin-left: -($default-reference-editor__box--border-width * 2 + $multi-ref-editor__inline-popup-pointer--size);
+$multi-ref-editor__inline-popup--margin-top: -($editor-defaults__inline-box--height);
+$multi-ref-editor__inline-popup--margin-left: -$default-reference-editor__list-item-button-box--width + 3px;
+$multi-ref-editor__inline-popup-shadow--color: $black;
+$multi-ref-editor__inline-popup-shadow--color-alpha: 0.2;
+
+$multi-ref-editor__inline-edit-complex-popup--width: 300px;
+$multi-ref-editor__inline-edit-complex-popup-center--max-height: 200px;
+$multi-ref-editor__inline-edit-complex-popup-body--padding-x: $container-spacing-default__half;
+$multi-ref-editor__inline-edit-complex-popup-body--padding-y: $container-spacing-default__half;
+$multi-ref-editor__inline-edit-complex-popup-footer--min-height: $editor-defaults__inline-box--height;
+$multi-ref-editor__inline-edit-complex-popup-footer--padding: $multi-ref-editor__inline-edit-complex-popup-body--padding-y $multi-ref-editor__inline-edit-complex-popup-body--padding-x;
+$multi-ref-editor__inline-edit-complex-popup-footer-button--size: $editor-defaults__inline-box--height;
+$multi-ref-editor__inline-edit-complex-popup-footer-button-icon--font-size: $font-size__base;
+$multi-ref-editor__inline-edit-complex-popup-footer-button-icon--margin-top: -$multi-ref-editor__inline-edit-complex-popup-footer-button-icon--font-size/2;
+$multi-ref-editor__inline-edit-complex-popup-delimit--border: $default-reference-editor__box--border-width solid $editor-area__box--border-color;
+$multi-ref-editor__inline-edit-complex-popup-localized-editor--margin-top: 5px;
+$multi-ref-editor__inline-edit-boolean-wrapper--margin: 0 0 -5px;
+
+$multi-ref-editor__inline-row-status--border-left-width: $multi-ref-editor__list-cell-marked--border-width;
+$multi-ref-editor__inline-row-status-content--width: 25px;
+$multi-ref-editor__inline-row-status-content--padding: 0;
+$multi-ref-editor__inline-row-status-edited--border-color: $validation__info--color;
+$multi-ref-editor__inline-row-status-invalid--border-color: $validation__error--color;
+
+$multi-ref-editor__inline-edit-prop--box-shadow: inset 0 0 5px 0 rgba($black, 0.25);
+$multi-ref-editor__inline-edit-prop--height: 39px;
+
+$multi-ref-editor__inline-last-column--padding-right: 25px;
+$multi-ref-editor__inline-remove-button--right: -5px;
+$multi-ref-editor__inline-remove-button--height: 22px;
+

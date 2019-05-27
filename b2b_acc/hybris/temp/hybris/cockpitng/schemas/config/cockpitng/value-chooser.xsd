@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:common="http://www.hybris.com/cockpitng/config/common"
+               xmlns="http://www.hybris.com/cockpitng/component/valuechooser"
+               targetNamespace="http://www.hybris.com/cockpitng/component/valuechooser"
+               elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.hybris.com/cockpitng/config/common"
+               schemaLocation="../../../../../../../../cockpit-base/cockpit-data-integration/src/main/resources/schemas/config/cockpitng/common-config.xsd"/>
+
+    <xs:element name="value-chooser">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="option" type="option" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="parameter">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="option">
+        <xs:complexContent>
+            <xs:extension base="common:positioned">
+                <xs:sequence>
+                    <xs:element name="value" type="value" minOccurs="1" maxOccurs="unbounded" />
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:string" use="required"/>
+                <xs:attribute name="label" type="xs:string" use="required"/>
+                <xs:attribute name="selected" type="xs:boolean" use="optional" default="false"/>
+                <xs:attribute name="merge-mode" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="value">
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="expression" type="xs:string" use="required"/>
+        <xs:attribute name="type" type="xs:string" use="optional" default="java.lang.String"/>
+        <xs:attribute name="bean-factory" type="xs:string" use="optional"/>
+        <xs:attribute name="factory-method" type="xs:string" use="optional"/>
+        <xs:attribute name="merge-mode" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+</xs:schema>

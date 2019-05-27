@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+	sclass="yas-categoryelector">
+
+	<tree id="categorySelector" multiple="false" checkmark="false" sclass="z-vfiletree">
+		<treecols>
+			<treecol />
+		</treecols>
+		<template name="model">
+			<treeitem value="${each.data}">
+				<treerow>
+					<treecell>
+						<label value="${each.data.name}" />
+						<span sclass="yas-has-own-configuration" visible="${each.data.hasSearchConfiguration}" />
+						<label value="${each.data.numberOfConfigurations}"
+							visible="${each.data.numberOfConfigurations ne 0}" sclass="yas-has-configurations" />
+					</treecell>
+				</treerow>
+			</treeitem>
+		</template>
+	</tree>
+</widget>

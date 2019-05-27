@@ -1,0 +1,117 @@
+//_cockpit_admin-buttons
+
+// Buttons
+.connectBtn,
+.removeWidgetBtn,
+.templateBtn,
+.addWidgetBtn,
+.widget_toolbar .addWidgetBtn,
+.invisibleChildrenBtn,
+.settingsBtn,
+.groupBtn {
+	height:16px;
+    width: 16px;
+    background-repeat: no-repeat;
+
+    &:hover {
+    	background-color: $admin-defaults__widget-buttons--hover-bg-color;
+    	background-repeat: no-repeat;
+    }
+    &:active {
+    	box-shadow: none;
+    }
+}
+.addWidgetBtn {
+	&, &:hover {
+		background-image: url("images/icon_plus_16x16.png");
+    	height: 14px;
+    	top: 3px;
+	}
+}
+.connectBtn.connectBtn{
+    &_connected {
+        background-image: url(images/icon_status_link_good.png);
+    }
+    &_disconnected {
+        background-image: url(images/icon_func_link_available.png);
+    }
+}
+.removeWidgetBtn {
+	&, &:hover {
+    	margin-top: 2px;
+        color: $admin-defaults__remove-widget-button--color;
+	}
+    &:active, &:focus {
+        color: $admin-defaults__remove-widget-button--color;
+    }
+    .widgetClipboard & {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+    }
+}
+.exitBtn {
+    padding-top: 15px;
+    padding-left: 10px;
+    float: left;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+}
+.templateBtn {
+    &_activated {
+        background-image: url(images/templateIconActive.png);
+    }
+    &_deactivated {
+        background-image: url(images/templateIconInactive.png);
+    }
+}
+
+.invisibleChildrenBtn {
+	&, &:hover {
+    	background-image: url(images/icon_notvisible_16x16.png);
+    	background-position: 2px 2px;
+	}
+
+    .cng-adminmode-symbolic & {
+        display: none;
+    }
+}
+
+.invisibleWidgetChildren > .widget_cnt > .widget_toolbar .addWidgetBtn {
+    background-image: url("images/icon_plus_dark_16x16.png");
+}
+
+.settingsBtn {
+	&, &:hover {
+    	background-image: url(images/icon_edit_available_16x16.png);
+    	background-position: 2px 2px;
+	}
+}
+
+.groupBtn {
+	&, &:hover {
+    	background-image: url(images/icon_func_group.png);
+    	background-position: 2px 2px;
+
+	    &.ungroup {
+	        background-image: url(images/icon_func_ungroup.png);
+	    }
+	}
+}
+
+.settingsContent {    
+    button.z-button {
+        width: $admin-defaults__z-button--size;
+        height: $admin-defaults__z-button--size;
+    }
+}
+
+.widgetConnWizardRemoveBtnContainer,
+.settingsContent { 
+    .yo-delete-btn {
+        &, &:hover, &:focus, &:active {
+            background: none;
+        }
+    }
+}

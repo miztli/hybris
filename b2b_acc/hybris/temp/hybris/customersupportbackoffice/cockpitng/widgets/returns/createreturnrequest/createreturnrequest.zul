@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.
+ All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+        sclass="oms-widget-createreturnrequest-configuration"
+        id="createreturnview" height="100%" width="100%">
+
+    <hlayout sclass="oms-widget-createreturnrequest-header">
+        <hbox sclass="oms-widget-createreturnrequest-header--order__hbox">
+            <vbox sclass="oms-widget-createreturnrequest-header--order__vbox">
+                <label sclass="oms-widget-createreturnrequest-header--order__label"
+                        value="${labels.customersupportbackoffice.createreturnrequest.ordernumber}" 
+                        width="100%"/>
+                <textbox sclass="oms-widget-createreturnrequest-header--order__textbox" 
+                        readonly="true" 
+                        id="orderCode"
+                        width="140px"/>
+            </vbox>
+        </hbox>
+
+        <hbox sclass="oms-widget-createreturnrequest-header--customer__hbox">
+            <vbox sclass="oms-widget-createreturnrequest-header--customer__vbox">
+                <label sclass="oms-widget-createreturnrequest-header--customer__label"
+                        value="${labels.customersupportbackoffice.createreturnrequest.customer}" 
+                        width="100%"/>
+                <textbox sclass="oms-widget-createreturnrequest-header--customer__textbox" 
+                        readonly="true" 
+                        id="customer"
+                        width="240px"/>
+            </vbox>
+        </hbox>
+        <hbox sclass="oms-widget-createreturnrequest-header--totalDiscounts__hbox">
+            <vbox sclass="oms-widget-createreturnrequest-header--totalDiscounts__vbox">
+                <label sclass="oms-widget-createreturnrequest-header--totalDiscounts__label"
+                       value="${labels.customersupportbackoffice.createreturnrequest.totaldiscounts}"
+                       width="100%"/>
+                <doublebox sclass="oms-widget-createreturnrequest-header--totalDiscounts__textbox"
+                         format="0.00"
+                         readonly="true"
+                         id="totalDiscounts"
+                         width="160px"/>
+            </vbox>
+        </hbox>
+        <hbox sclass="oms-widget-createreturnrequest-header--orderTotal__hbox">
+            <vbox sclass="oms-widget-createreturnrequest-header--orderTotal__vbox">
+                <label sclass="oms-widget-createreturnrequest-header--orderTotal__label"
+                       value="${labels.customersupportbackoffice.createreturnrequest.ordertotal}"
+                       width="100%"/>
+                <doublebox sclass="oms-widget-createreturnrequest-header--orderTotal__textbox"
+                           format="0.00"
+                           readonly="true"
+                           id="orderTotal"
+                           width="160px"/>
+            </vbox>
+        </hbox>
+    </hlayout>
+
+    <hlayout sclass="oms-widget-createreturnrequest--body">
+        <div sclass="oms-widget-createreturnrequest-list-container">
+            <grid id="returnEntries" mold="paging"
+                  pageSize="5" width="100%" height="100%"
+                  sclass="oms-widget-createreturnrequest--body__grid">
+                <columns>
+                    <column width="30px" sclass="oms-widget-createreturnrequest-listbox-header">
+                        <checkbox id="globalReturnEntriesSelection"
+                                    sclass="oms-widget-createreturnrequest-list-container__checkbox"/>
+                    </column>
+                    <column width="12%" sclass="oms-widget-createreturnrequest-listbox-header">
+                        <label value="${labels.customersupportbackoffice.createreturnrequest.productcode}"
+                               width="100%"/>
+                    </column>
+                    <column width="18%" sclass="oms-widget-createreturnrequest-listbox-header">
+                        <label value="${labels.customersupportbackoffice.createreturnrequest.productname}"
+                               width="100%"/>
+                    </column>
+                    <column width="8%" sclass="oms-widget-createreturnrequest-listbox-header">
+                        <label value="${labels.customersupportbackoffice.createreturnrequest.currency}"
+                               width="100%"/>
+                    </column>
+                    <column width="8%" sclass="oms-widget-createreturnrequest-listbox-header">
+                        <label value="${labels.customersupportbackoffice.createreturnrequest.itemprice}"
+                               width="100%"/>
+                    </column>
+                    <column width="11%" sclass="oms-widget-createreturnrequest-listbox-header">
+                        <label value="${labels.customersupportbackoffice.createreturnrequest.qtypending}" width="100%"
+                               style="text-align: center;"/>
+                    </column>
+                    <column width="10%" sclass="oms-widget-createreturnrequest-listbox-header">
+                        <label value="${labels.customersupportbackoffice.createreturnrequest.qtyreturn}" width="100%"/>
+                    </column>
+                    <column width="12%" sclass="oms-widget-createreturnrequest-listbox-header">
+                        <label value="${labels.customersupportbackoffice.createreturnrequest.refundamount}"
+                               width="100%"/>
+                    </column>
+                    <column width="18%" sclass="oms-widget-createreturnrequest-listbox-header">
+                        <combobox id="globalReason"
+                                  placeholder="${labels.customersupportbackoffice.createreturnrequest.popup.placeholder.reason}"
+                                  readonly="true"/>
+                    </column>
+                    <column width="20%" sclass="oms-widget-createreturnrequest-listbox-header">
+                        <textbox id="globalComment" maxlength="255"
+                                sclass="oms-widget-createreturnrequest-listbox-header__comment"
+                                placeholder="${labels.customersupportbackoffice.createreturnrequest.popup.placeholder.comment}"/>
+                    </column>
+                </columns>
+                <rows sclass="oms-widget-createreturnrequest-listbox--rows">
+                    <template name="model">
+                        <row sclass="oms-widget-createreturnrequest-listbox--row">
+                            <checkbox sclass="oms-widget-createreturnrequest-list-container__checkbox"/>
+                            <label value="${each.refundEntry.orderEntry.product.code}" 
+                                    sclass="oms-widget-createreturnrequest-listbox--row__prd-code"/>
+                            <label value="${each.refundEntry.orderEntry.product.name}"
+                                    sclass="oms-widget-createreturnrequest-listbox--row__prd-name"/>
+                            <label value="${each.refundEntry.orderEntry.order.currency.isocode}"
+                                    sclass="oms-widget-createreturnrequest-listbox--row__isocode"/>
+                            <label value="${c:formatNumber(each.refundEntry.orderEntry.basePrice, '###,###,###.00')}"
+                                    sclass="oms-widget-createreturnrequest-listbox--row__base-price"/>
+                            <label value="${each.returnableQuantity}"
+                                    sclass="oms-widget-createreturnrequest-listbox--row__returnable-qty"/>
+                            <intbox value="${each.quantityToReturn}" 
+                                    sclass="oms-widget-createreturnrequest-listbox--row__return-qt"
+                                    constraint="no empty,no negative: Quantity Must be Greater Than Zero"/>
+                            <doublebox value="${each.refundEntry.amount}"
+                                        format="0.00"
+                                        sclass="oms-widget-createreturnrequest-listbox--row__refund-amt"
+                                        constraint="no empty,no negative: Quantity Must be Greater Than Zero"/>
+                            <combobox xmlns:w="client" 
+                                        w:onSelect="CockpitNG.sendEvent(this.uuid,'onCustomChange',this._value)"
+                                        model="${each.reasonsModel}"
+                                        sclass="oms-widget-createreturnrequest-listbox--row__reason"
+                                        placeholder="${labels.customersupportbackoffice.createreturnrequest.popup.placeholder.reason}"
+                                        readonly="true">
+                                <template name="model">
+                                    <comboitem label="${each}"/>
+                                </template>
+                            </combobox>
+                            <textbox value="${each.refundEntryComment}" 
+                                        maxlength="255" 
+                                        sclass="oms-widget-createreturnrequest-listbox--row__comment"
+                                        placeholder="${labels.customersupportbackoffice.createreturnrequest.popup.placeholder.comment}"/>
+                        </row>
+                    </template>
+                </rows>
+            </grid>
+        </div>
+    </hlayout>
+
+    <div sclass="oms-widget-createreturnrequest-footer">
+        <div width="40%" sclass="oms-widget-createreturnrequest-refund-amount-area">
+            <div style="" sclass="oms-widget-createreturnrequest-refund-amount-area--delivery-cost">
+                <div sclass="oms-widget-createreturnrequest-refund-amount-area--delivery-cost--wrapper">
+                    <div sclass="oms-widget-createreturnrequest-refund-amount-area--delivery-cost--wrapper--div">
+                        <checkbox id="refundDeliveryCost"
+                                    label="${labels.customersupportbackoffice.createreturnrequest.refundDeliveryCost}"
+                                    sclass="oms-widget-createreturnrequest-refund-amount-area--delivery-cost--wrapper__checkbox" />
+                    </div>
+                    <doublebox id="deliveryCost"
+                                format="0.00" 
+                                readonly="true"
+                                sclass="oms-widget-createreturnrequest-refund-amount-area--delivery-cost--wrapper__cost" />
+                </div>
+            </div>
+
+            <div sclass="oms-widget-createreturnrequest-refund-amount-area--estimated-tax">
+                <div sclass="oms-widget-createreturnrequest-refund-amount-area--estimated-tax--wrapper">
+                    <label value="${labels.customersupportbackoffice.createreturnrequest.estimatedtax}"
+                            sclass="oms-widget-createreturnrequest-refund-amount-area--estimated-tax-label" />
+                    <doublebox id="estimatedTax"
+                                format="0.00"
+                                sclass="oms-widget-createreturnrequest-refund-amount-area--estimated-tax-field"
+                                readonly="true"/>
+                </div>
+            </div>
+
+            <div sclass="oms-widget-createreturnrequest-refund-amount-area--total-refund">
+                <div sclass="oms-widget-createreturnrequest-refund-amount-area--total-refund--wrapper">
+                    <label value="${labels.customersupportbackoffice.createreturnrequest.totalrefund}"
+                            sclass="oms-widget-createreturnrequest-refund-amount-area--total-refund-label" />
+                    <doublebox id="totalRefundAmount"
+                                format="0.00"
+                                sclass="oms-widget-createreturnrequest-refund-amount-area--total-refund-field" 
+                                readonly="true" constraint="no empty,no negative: Quantity Must be Greater Than Zero"/>
+                </div>
+            </div>
+        </div>
+
+        <div sclass="oms-widget-createreturnrequest-controller-area">
+            <div sclass="oms-widget-createreturnrequest-controller-area--wrapper" >
+                <button id="resetcreatereturnrequest"
+                        label="${labels.customersupportbackoffice.createreturnrequest.button.reset}"
+                        sclass="oms-widget-createreturnrequest-configuration-button oms-widget-createreturnrequest-configuration-revert-button"/>
+                <div sclass="oms-widget-createreturnrequest-confirm-area" >
+                    <button id="confirmcreatereturnrequest"
+                            label="${labels.customersupportbackoffice.createreturnrequest.button.confirm}"
+                            sclass="y-btn-primary oms-widget-createreturnrequest-configuration-button oms-widget-createreturnrequest-configuration-save-button"/>
+
+                    <checkbox id="isReturnInstore"
+                                label="${labels.customersupportbackoffice.createreturnrequest.isReturnInstore}"
+                                class="oms-widget-createreturnrequest-confirm-area__checkbox"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</widget>

@@ -1,0 +1,189 @@
+/*================================
+    Collection Browser - Toolbar
+================================*/
+// All Defaults connected to the Collection Browser
+
+
+@import "../support/_collectionBrowser-mixins.scss";
+
+.y-toolbar {
+    padding: $collection-browser__toolbar--padding;
+    border-top: $collection-browser__toolbar--border;
+    border-bottom: $collection-browser__toolbar--border;
+    
+    .z-button {
+        height: $collection-browser__toolbar-z-button--height;
+        padding-top: $collection-browser__toolbar-z-button--padding-y;
+        padding-bottom: $collection-browser__toolbar-z-button--padding-y;
+        min-height: 0;
+    }
+
+    .yw-viewMode-btn {
+        &:hover, &:focus {
+            background-color: $collection-browser__button--hover-bg-color;
+            box-shadow: $collection-browser__button--hover-box-shadow;
+        }
+    }
+
+    .cng-action {
+        height: $collection-browser__action-button--height;
+        vertical-align: middle;
+
+        &-icon {
+            max-height: $collection-browser__action-button--height;
+        }
+    }
+}
+
+.yw-coll-browser-mold-sel {
+    &-container {
+        float: right;
+
+        .z-hbox-separator {
+            display: none;
+        }
+        td {
+            vertical-align: middle;
+        }
+    }
+
+    &-btn {
+        width: $collection-browser__toolbar-mold-select-button--size;
+        height: $collection-browser__toolbar-mold-select-button--size;
+        background-repeat: no-repeat;
+        background-position: center center;
+        
+        @include _add_collection-browser-mold-select-icon ('list');
+        @include _add_collection-browser-mold-select-icon ('tree');
+        @include _add_collection-browser-mold-select-icon ('grid');
+    }
+}
+
+.z-paging, .z-label {
+    &[style*="display:none"] + .yw-coll-browser-mold-sel-container {
+        border-right-width: 0;
+    }
+}
+
+.yw-listview{
+    &-actioncontainer {
+        padding: $collection-browser__header--padding;
+        background: $collection-browser__header--bg-color;
+
+        .yw-listview-actionSlot {
+            float: left;
+        }
+
+        .z-label.number-of-items-label {
+            float: right;
+        }
+
+        .yw-com_hybris_cockpitng_collectionBrowser & {
+            padding: $collection-browser__action-container--padding;
+
+            .ya-create-container {
+                border-color: $collection-browser__toolbar-item-delimiter--color;
+                background-color: transparent;
+            }
+
+            .z-paging-button {
+
+                &:disabled, &[disabled] {
+                    &:hover, &:focus {
+                        background-color: transparent;
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            .y-toolbar {
+                .yw-viewMode-btn,
+                .z-toolbarbutton {
+                    border: $collection-browser__button--border-width solid transparent;
+                    box-sizing: border-box;
+                }
+                .z-toolbarbutton[disabled] {
+                    &:hover, &:focus {
+                        border-color: transparent;
+                    }
+                }
+                .ya-create-type-selector-button {
+                    &:hover, &:focus {
+                        border-left-color: inherit;
+                    }
+                }
+                .ya-extended-group-cnt {
+                    .ya-create-type-selector-button {
+                        &, &:hover, &:focus {
+                            border-left-color: transparent;
+                            border-width: 0;
+                        }
+                    }
+                }
+                .cng-action-group.ya-split-group-cnt {
+                    .ya-create-type-selector-button {
+                        border-top: 0;
+                        border-bottom: 0;
+                    }
+                }
+                .yw-viewMode-btn,
+                .z-toolbarbutton {
+                    &:hover, &:focus {
+                        border-color: $collection-browser__button--hover-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &-paging-container-top {
+        float: right;
+    }
+}
+
+.yw-listview-bottom-bar {
+    background-color: $collection-browser__list-view-bottom-bar--bg-color;
+    padding: $collection-browser__list-view-bottom-bar--padding;
+    height: auto;
+    overflow: hidden;
+
+    .yw-listview-paging-container-bottom,
+    .number-of-items-label {
+        float: right;
+    }
+    .yw-listview-pagingcontainer {
+        padding: $collection-browser__list-view-toolbar-bottom-container--padding;
+        display: inline-block;
+        
+    }
+    .y-statusbar {
+        float: left;
+    }
+    > div {
+        height: $collection-browser__list-view-bottom-bar--height;
+        display: inline-block;
+        background: transparent;
+    }
+    .z-paging {
+        border-width: 0;
+    }
+}
+
+.yw-listview-actioncontainer, 
+.yw-listview-bottom-bar .yw-listview-paging-container-bottom  {
+    .z-paging, 
+    .z-paging-os {
+        float: right;
+        background: none;
+    }
+    .z-paging {
+        height: $collection-browser__list-view-toolbar-pagin--height;
+
+        &-button{
+            margin-right: $collection-browser__toolbar-paging-button--margin-right;
+        }
+    }
+}
+
+.yw-toolbar-center-container {
+	float: right;
+}

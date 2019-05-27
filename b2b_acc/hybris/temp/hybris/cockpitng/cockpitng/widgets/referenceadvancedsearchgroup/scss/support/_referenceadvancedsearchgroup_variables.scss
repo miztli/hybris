@@ -1,0 +1,22 @@
+@import "cockpitng-globals.scss";
+
+$referenceadvancedsearchgroup__screen-bp-xl--max-width: 1100px;
+$referenceadvancedsearchgroup__screen-bp-l--max-width: 1080px;
+$referenceadvancedsearchgroup__screen-bp-ml--max-width: 980px;
+$referenceadvancedsearchgroup__screen-bp-m--max-width: 950px;
+
+$referenceadvancedsearchgroup__advancedsearch-attributes-container--border-width: $boxes--border__thin;
+$referenceadvancedsearchgroup__advancedsearch-attributes-container--border-color: $grey__default--700;
+$referenceadvancedsearchgroup__advancedsearch-attributes-container--border: $referenceadvancedsearchgroup__advancedsearch-attributes-container--border-width solid $referenceadvancedsearchgroup__advancedsearch-attributes-container--border-color;
+$referenceadvancedsearchgroup__listview-toolbar--padding-y: $container-spacing-default__third;
+$referenceadvancedsearchgroup__advancedsearch-attributes-container--border-space-x: $container-spacing-default__base;
+$referenceadvancedsearchgroup__advancedsarch-caption-non-collapsible--padding: 0 $container-spacing-default__third $container-spacing-default__third;
+$referenceadvancedsearchgroup__advancedsarch-caption-container--line-height: $editor-defaults__inline-box--height;
+$referenceadvancedsearchgroup__advancedsarch-caption-container--height: $referenceadvancedsearchgroup__advancedsarch-caption-container--line-height + nth($referenceadvancedsearchgroup__advancedsarch-caption-non-collapsible--padding, 3);
+$referenceadvancedsearchgroup__advancedsarch-topcontainer-open--top: $referenceadvancedsearchgroup__advancedsarch-caption-container--height;
+$referenceadvancedsearchgroup__advancedsarch-topcontainer-open-bp-l--top: $referenceadvancedsearchgroup__advancedsarch-caption-container--height + $referenceadvancedsearchgroup__advancedsarch-caption-container--line-height;
+$referenceadvancedsearchgroup__advancedsarch-topcontainer-open-bp-m--top: $referenceadvancedsearchgroup__advancedsarch-topcontainer-open-bp-l--top + $referenceadvancedsearchgroup__advancedsarch-caption-container--line-height;
+$referenceadvancedsearchgroup__advancedsarch-searchmode-container--padding-left: $container-spacing-default_two-thirds;
+$referenceadvancedsearchgroup__advancedsarch-textsearchbox-open-bp-ml--width: 70%;
+$referenceadvancedsearchgroup__collection-browser-default--bg-color: $white;
+$referenceadvancedsearchgroup__popup-container--padding-x: $container-spacing-default_two-thirds;

@@ -1,0 +1,290 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+$defaultPassword=12341234
+
+INSERT_UPDATE UserGroup;uid[unique=true];locname[lang=en];
+;salesemployeegroup;Sales Employee;
+;salesadmingroup;Sales Admin;
+;salesmanagergroup;Sales Manager;
+;salesapprovergroup;Sales Approver;
+
+INSERT_UPDATE PrincipalGroupRelation;source(uid)[unique=true];target(uid)[unique=true]
+;salesemployeegroup;orgemployeegroup;
+;salesadmingroup;salesemployeegroup;
+;salesmanagergroup;salesemployeegroup;
+;salesapprovergroup;salesemployeegroup;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;salesadmingroup;;;;;;;;
+;;;;OrgUnit;+;+;+;+;-
+;;;;Address;+;+;+;-;-
+;;;;Employee;+;+;+;-;-
+;;;;StoreEmployeeGroup;+;+;+;-;-
+
+UserGroup;salesmanagergroup;;;;;;;;
+;;;;OrgUnit;+;+;-;-;-
+;;;;Address;+;+;-;-;-
+;;;;Employee;+;+;-;-;-
+;;;;OrgUnit.groups;+;-;-;-;-;
+;;;;StoreEmployeeGroup;+;+;-;-;-;
+
+UserGroup;salesemployeegroup;;;;;;;;
+;;;;OrgUnit;+;-;-;-;-
+;;;;Address;+;-;-;-;-
+;;;;Employee;+;-;-;-;-
+;;;;StoreEmployeeGroup;+;-;-;-;-;
+;;;;UserGroup;+;-;-;-;-
+;;;;Quote;+;-;-;-;-
+$END_USERRIGHTS;;;;;;;;;
+
+# Sales Units
+INSERT_UPDATE OrgUnit;uid[unique=true];name;description;lineofbuisness(code);active;supplier
+;ACME;ACME;Root node of the ACME organization;trade;TRUE;TRUE
+;Africa;Africa sales region;Africa sales region;trade;TRUE;TRUE
+;Nigeria;Nigeria sales region;Nigeria sales region;trade;TRUE;TRUE
+;South Africa;South Africa sales region;South Africa sales region;trade;TRUE;TRUE
+;Egypt;Egypt sales region;Egypt sales region;trade;TRUE;TRUE
+;Americas;Americas sales region;Americas sales region;trade;TRUE;TRUE
+;North America;North America sales region;North America sales region;trade;TRUE;TRUE
+;Canada;Canada sales region;Canada sales region;trade;TRUE;TRUE
+;Quebec;Quebec sales region;Quebec sales region;trade;TRUE;TRUE
+;Montreal North;Montreal North sales region;Montreal North sales region;trade;TRUE;TRUE
+;Montreal South;Montreal South sales region;Montreal South sales region;trade;TRUE;TRUE
+;USA;USA sales region;USA sales region;trade;TRUE;TRUE
+;Mexico;Mexico sales region;Mexico sales region;trade;TRUE;TRUE
+;South America;South America sales region;South America sales region;trade;TRUE;TRUE
+;Asia;Asia sales region;Asia sales region;trade;TRUE;TRUE
+;India;India sales region;India sales region;trade;TRUE;TRUE
+;China;China sales region;China sales region;trade;TRUE;TRUE
+;Japan;Japan sales region;Japan sales region;trade;TRUE;TRUE
+;Europe;Europe sales region;Europe sales region;trade;TRUE;TRUE
+;Europe West;Europe West sales region;Europe West sales region;trade;TRUE;TRUE
+;Germany;Germany sales region;Germany sales region;trade;TRUE;TRUE
+;France;France sales region;France sales region;trade;TRUE;TRUE
+;UK;United Kingdom sales region;United Kingdom sales region;trade;TRUE;TRUE
+;Europe East;Europe East sales region;Europe East sales region;trade;TRUE;TRUE
+;Poland;Poland sales region;Poland sales region;trade;TRUE;TRUE
+;Russia;Russia sales region;Russia sales region;trade;TRUE;TRUE
+
+#  Assign SalesUnits to OrgUnits 
+INSERT_UPDATE PrincipalGroupRelation;source(uid)[unique=true];target(uid)[unique=true]
+;Africa;ACME;
+;Nigeria;Africa;
+;South Africa;Africa;
+;Egypt;Africa;
+;Americas;ACME;
+;North America;Americas;
+;Canada;North America;
+;Quebec;Canada;
+;Montreal North;Quebec;
+;Montreal South;Quebec;
+;USA;North America;
+;Mexico;North America;
+;South America;Americas;
+;Asia;ACME;
+;India;Asia;
+;China;Asia;
+;Japan;Asia;
+;Europe;ACME;
+;Europe West;Europe;
+;Germany;Europe West;
+;France;Europe West;
+;UK;Europe West;
+;Europe East;Europe;
+;Poland;Europe East;
+;Russia;Europe East;
+
+# Employees
+INSERT_UPDATE Employee;name;password[default=$defaultPassword];uid[unique=true];groups(uid)[mode=append]
+;Brandon Leclair;;brandon.leclair@acme.com;salesemployeegroup
+;Janetta Estepp;;janetta.estepp@acme.com;salesemployeegroup
+;Yoshie Dority;;yoshie.dority@acme.com;salesmanagergroup
+;Glen Hofer;;glen.hofer@acme.com;salesapprovergroup
+;Temeka Meekins;;temeka.meekins@acme.com;salesemployeegroup
+;Dionne Siguenza;;dionne.siguenza@acme.com;salesemployeegroup
+;Hermelinda Cusick;;hermelinda.cusick@acme.com;salesemployeegroup
+;Karleen Holub;;karleen.holub@acme.com;salesemployeegroup
+;Abraham Mclane;;abraham.mclane@acme.com;salesmanagergroup
+;Marvel Fargo;;marvel.fargo@acme.com;salesapprovergroup
+;Darrin Hesser;;darrin.hesser@acme.com;salesemployeegroup
+;Jules Hasson;;jules.hasson@acme.com;salesemployeegroup
+;Ula Barragan;;ula.barragan@acme.com;salesemployeegroup
+;Juliane Tickle;;juliane.tickle@acme.com;salesmanagergroup
+;Lavone Dupler;;lavone.dupler@acme.com;salesapprovergroup
+;Chelsie Steck;;chelsie.steck@acme.com;salesemployeegroup
+;Daniele Sorber;;daniele.sorber@acme.com;salesemployeegroup
+;Yan Shehorn;;yan.shehorn@acme.com;salesmanagergroup
+;Fern Henline;;fern.henline@acme.com;salesapprovergroup
+;Debera Spiller;;debera.spiller@acme.com;salesemployeegroup
+;Albert Decastro;;albert.decastro@acme.com;salesemployeegroup
+;Piedad Holdren;;piedad.holdren@acme.com;salesmanagergroup
+;Bernardo Coelho;;bernardo.coelho@acme.com;salesapprovergroup
+;Sade Mcdougall;;sade.mcdougall@acme.com;salesemployeegroup
+;Latisha Latimer;;latisha.latimer@acme.com;salesemployeegroup
+;Tom Ziebarth;;tom.ziebarth@acme.com;salesemployeegroup
+;Mara Martino;;mara.martino@acme.com;salesemployeegroup
+;Elizabeth Juhlin;;elizabeth.juhlin@acme.com;salesemployeegroup
+;Sheilah Duffin;;sheilah.duffin@acme.com;salesmanagergroup
+;Eusebio Scharff;;eusebio.scharff@acme.com;salesapprovergroup
+;Alda Kamaka;;alda.kamaka@acme.com;salesemployeegroup
+;Anamaria Coots;;anamaria.coots@acme.com;salesemployeegroup
+;Lael Garibay;;lael.garibay@acme.com;salesmanagergroup
+;Jamey Sowa;;jamey.sowa@acme.com;salesapprovergroup
+;Dot Cohan;;dot.cohan@acme.com;salesemployeegroup
+;Dorthy Geoghegan;;dorthy.geoghegan@acme.com;salesemployeegroup
+;Marie Kempner;;marie.kempner@acme.com;salesemployeegroup
+;Dietrich Brand;;dietrich.brand@acme.com;salesemployeegroup
+;Dagmar Fischer;;dagmar.fischer@acme.com;salesemployeegroup
+;Angelyn Lobaugh;;angelyn.lobaugh@acme.com;salesmanagergroup
+;Tilda Prisbrey;;tilda.prisbrey@acme.com;salesapprovergroup
+;James Davis;;james.davis@acme.com;salesemployeegroup
+;Amelia Hill;;amelia.hill@acme.com;salesemployeegroup
+;Oliver Baker;;oliver.baker@acme.com;salesemployeegroup
+;Emily Bennett;;emily.bennett@acme.com;salesemployeegroup
+;Noah Jenkins;;noah.jenkins@acme.com;salesemployeegroup
+;Isabella Jackson;;isabella.jackson@acme.com;salesmanagergroup
+;Richard Martin;;richard.martin@acme.com;salesapprovergroup
+;Hanna Andresen;;hanna.andresen@acme.com;salesemployeegroup
+;Ossie Dilks;;ossie.dilks@acme.com;salesemployeegroup
+;Annabel Golder;;annabel.golder@acme.com;salesmanagergroup
+;Francie Wildman;;francie.wildman@acme.com;salesapprovergroup
+;Yuka Kobayashi;;yuka.kobayashi@acme.com;salesemployeegroup
+;Shun Watanabe;;shun.watanabe@acme.com;salesemployeegroup
+;Natsumi Takahashi;;natsumi.takahashi@acme.com;salesemployeegroup
+;Keita Tanaka;;keita.tanaka@acme.com;salesemployeegroup
+;Ayumi Nakamura;;ayumi.nakamura@acme.com;salesemployeegroup
+;Yu Yamamoto;;yu.yamamoto@acme.com;salesmanagergroup
+;Mai Matsumoto;;mai.matsumoto@acme.com;salesapprovergroup
+;Aarav Devi;;aarav.devi@acme.com;salesemployeegroup
+;Arjun Sewant;;arjun.sewant@acme.com;salesemployeegroup
+;Chandni Devaraju;;chandni.devaraju@acme.com;salesmanagergroup
+;Sandesh Patwary;;sandesh.patwary@acme.com;salesapprovergroup
+;Zhang Wei;;zhang.wei@acme.com;salesemployeegroup
+;Wang Lei;;wang.lei@acme.com;salesemployeegroup
+;Liu Yang;;liu.yang@acme.com;salesmanagergroup
+;Chen Gao;;chen.gao@acme.com;salesapprovergroup
+;Vada Rahm;;vada.rahm@acme.com;salesadmingroup
+
+#  Assign Employees to OrgUnits 
+INSERT_UPDATE PrincipalGroupRelation;source(uid)[unique=true];target(uid)[unique=true]
+;vada.rahm@acme.com;ACME;
+;brandon.leclair@acme.com;Nigeria;
+;janetta.estepp@acme.com;Nigeria;
+;yoshie.dority@acme.com;Nigeria;
+;glen.hofer@acme.com;Nigeria;
+;temeka.meekins@acme.com;Canada;
+;dionne.siguenza@acme.com;Canada;
+;hermelinda.cusick@acme.com;Canada;
+;karleen.holub@acme.com;Canada;
+;abraham.mclane@acme.com;Canada;
+;marvel.fargo@acme.com;Canada;
+;darrin.hesser@acme.com;Quebec;
+;jules.hasson@acme.com;Quebec;
+;ula.barragan@acme.com;Quebec;
+;juliane.tickle@acme.com;Quebec;
+;lavone.dupler@acme.com;Quebec;
+;chelsie.steck@acme.com;Montreal North;
+;daniele.sorber@acme.com;Montreal North;
+;yan.shehorn@acme.com;Montreal North;
+;fern.henline@acme.com;Montreal North;
+;debera.spiller@acme.com;Montreal South;
+;albert.decastro@acme.com;Montreal South;
+;piedad.holdren@acme.com;Montreal South;
+;bernardo.coelho@acme.com;Montreal South;
+;sade.mcdougall@acme.com;USA;
+;latisha.latimer@acme.com;USA;
+;tom.ziebarth@acme.com;USA;
+;mara.martino@acme.com;USA;
+;elizabeth.juhlin@acme.com;USA;
+;sheilah.duffin@acme.com;USA;
+;eusebio.scharff@acme.com;USA;
+;alda.kamaka@acme.com;Europe West;
+;anamaria.coots@acme.com;Europe West;
+;lael.garibay@acme.com;Europe West;
+;jamey.sowa@acme.com;Europe West;
+;dot.cohan@acme.com;Germany;
+;marie.kempner@acme.com;Germany;
+;dietrich.brand@acme.com;Germany;
+;dagmar.fischer@acme.com;Germany;
+;dorthy.geoghegan@acme.com;Germany;
+;angelyn.lobaugh@acme.com;Germany;
+;tilda.prisbrey@acme.com;Germany;
+;james.davis@acme.com;UK;
+;amelia.hill@acme.com;UK;
+;oliver.baker@acme.com;UK;
+;emily.bennett@acme.com;UK;
+;noah.jenkins@acme.com;UK;
+;isabella.jackson@acme.com;UK;
+;richard.martin@acme.com;UK;
+;hanna.andresen@acme.com;France;
+;ossie.dilks@acme.com;France;
+;annabel.golder@acme.com;France;
+;francie.wildman@acme.com;France;
+;yuka.kobayashi@acme.com;Japan;
+;shun.watanabe@acme.com;Japan;
+;natsumi.takahashi@acme.com;Japan;
+;keita.tanaka@acme.com;Japan;
+;ayumi.nakamura@acme.com;Japan;
+;yu.yamamoto@acme.com;Japan;
+;mai.matsumoto@acme.com;Japan;
+;aarav.devi@acme.com;India;
+;arjun.sewant@acme.com;India;
+;chandni.devaraju@acme.com;India;
+;sandesh.patwary@acme.com;India;
+;zhang.wei@acme.com;China;
+;wang.lei@acme.com;China;
+;liu.yang@acme.com;China;
+;chen.gao@acme.com;China;
+
+# Create sample customers
+INSERT_UPDATE Customer;originalUid[unique=true];uid[unique=true];title(code);name;description;sessionLanguage(isocode);sessionCurrency(isocode);groups(uid);password[default=$defaultPassword]
+;chris.rumple@ehost.com;chris.rumple@ehost.com;;Chris Rumple;Test user Chris Rumple;en;USD;customergroup;
+;dan.cameron@siteb.com;dan.cameron@siteb.com;;Dan Cameron;Test user Dan Cameron;en;USD;customergroup;
+;harold.wine@asite.org;harold.wine@asite.org;;Harold Wine;Test user Harold Wine;en;USD;customergroup;
+;h.williams@peabody.ca;h.williams@peabody.ca;;Hanna Williams;Test user Hanna Williams;en;USD;customergroup;
+;daisy.smith@irc.uk;daisy.smith@irc.uk;;Daisy Smith;Test user Daisy Smith;en;USD;customergroup;
+;elena.bulav@internet.ru;elena.bulav@internet.ru;;Elena Bulavintseva;Test user Elena Bulavintseva;en;USD;customergroup;
+;wei.liu@homemail.ch;wei.liu@homemail.ch;;Wei Liu;Test user Wei Liu;en;USD;customergroup;
+
+# Assign sample customers to sales units
+INSERT_UPDATE PrincipalGroupRelation;source(uid)[unique=true];target(uid)[unique=true]
+;chris.rumple@ehost.com;Montreal South;
+;dan.cameron@siteb.com;Montreal South;
+;harold.wine@asite.org;Montreal North;
+;h.williams@peabody.ca;Montreal North;
+;daisy.smith@irc.uk;Montreal North;
+;elena.bulav@internet.ru;Montreal North;
+;wei.liu@homemail.ch;Montreal North;
+
+#
+# Add restriction on salesemployeegroup. salesemployeegroup shall only see the employees from salesemployeegroup.
+#
+INSERT_UPDATE SearchRestriction;code[unique=true];name[lang=en];query;principal(UID);restrictedType(code);active;generate
+;salesemployeegroupEmployeesVisibility;A member of salesemployeegroup shall only see the employees from salesemployeegroup;EXISTS ({{ SELECT {pk} FROM {PrincipalGroupRelation as pgr LEFT JOIN UserGroup as ug ON {pgr:target}={ug:pk}} WHERE {pgr:source}={item:pk} AND {ug:uid} IN ('salesemployeegroup', 'salesadmingroup', 'salesmanagergroup', 'salesapprovergroup')}});salesemployeegroup;Employee;true;true
+
+#
+# Add restriction on salesemployeegroup. salesemployeegroup shall only see the addresses where their owners are Org Units.
+#
+INSERT_UPDATE SearchRestriction;code[unique=true];name[lang=en];query;principal(UID);restrictedType(code);active;generate
+;addressesVisibilitySalesUnits;A sales employee shall only see addresses where the owner is of type OrgUnit and has supplier flag set to TRUE;EXISTS ({{ select {adr.pk} from {Address as adr JOIN OrgUnit as org on {org.pk}={adr.owner} JOIN Type as type on {type.pk}={org.itemtype}} WHERE {type.code}='OrgUnit' AND {org.supplier}=TRUE AND {adr.pk}={item.pk} }});salesemployeegroup;Address;true;true
+
+#
+# Restrict quotes so that sales employees can only see the latest versions of quotes that are linked to their sales units.
+#
+INSERT_UPDATE SearchRestriction;code[unique=true];name[lang=en];query;principal(UID);restrictedType(code);active;generate
+;salesemployeegroupQuotesMaxVersionRestriction;A sales employee can only see the latest version of a quote with a given code;EXISTS ( SELECT CODE_MAX_VERSION.code, CODE_MAX_VERSION.maxVersion FROM ({{ SELECT {code} as code, max({version}) as maxVersion FROM {Quote} GROUP BY {code} }}) CODE_MAX_VERSION WHERE {item:code} = CODE_MAX_VERSION.code AND {item:version} = CODE_MAX_VERSION.maxVersion );salesemployeegroup;Quote;true;true
+
+#
+# Restrict organizational units for member of salesemployeegroup so that they can only see units in their branch of the organization.
+#
+INSERT_UPDATE SearchRestriction;code[unique=true];name[lang=en];query;principal(UID);restrictedType(code);active;generate
+;salesemployeegroupOrgUnitVisibility;A member of salesemployeegroup shall only see sales units in their branch;NOT EXISTS({{ SELECT {unit:pk} FROM {OrgUnit! as unit} WHERE {unit:pk}={item:pk} }}) OR EXISTS({{ SELECT {unit:pk} FROM { Employee as empl JOIN PrincipalGroupRelation as rel ON {empl:pk} = {rel:source} JOIN OrgUnit as unit ON {unit:PK} = {rel:target} } WHERE {empl:pk} = (?session.user) AND {item:path} LIKE CONCAT({unit:path},'%') }});salesemployeegroup;OrgUnit;true;true

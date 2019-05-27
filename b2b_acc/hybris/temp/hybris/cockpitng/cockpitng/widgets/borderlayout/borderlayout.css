@@ -1,0 +1,23 @@
+.yw-borderlayout .opaquetrue .yw-layoutregion {
+  background: #27394f; }
+.yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-south-splitter,
+.yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-north-splitter,
+.yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-west-splitter,
+.yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-east-splitter {
+  background-color: #f2f2f2; }
+  .yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-south-splitter > span,
+  .yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-north-splitter > span,
+  .yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-west-splitter > span,
+  .yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-east-splitter > span {
+    color: #000000; }
+    .yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-south-splitter > span:hover,
+    .yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-north-splitter > span:hover,
+    .yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-west-splitter > span:hover,
+    .yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-east-splitter > span:hover {
+      background-color: transparent;
+      color: #0486e0; }
+.yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-south-collapsed,
+.yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-north-collapsed,
+.yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-west-collapsed,
+.yw-borderlayout.yw-widget-mold-light > .z-borderlayout > div > .z-east-collapsed {
+  background-color: #f2f2f2; }

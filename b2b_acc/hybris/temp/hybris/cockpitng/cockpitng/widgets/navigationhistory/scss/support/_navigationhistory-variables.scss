@@ -1,0 +1,31 @@
+@import 'cockpitng-globals.scss';
+
+$navigationhistory__actioncontainer--height: 32px;
+
+$navigationhistory__back-icon--size: 16px;
+$navigationhistory__back-icon--left: $container-spacing-default__half;
+$navigationhistory__back-button--padding: 5px 0 7px $container-spacing-default__base;
+$navigationhistory__back-button--color: $blue__greyish--400;
+$navigationhistory__back-button--hover-color: $blue__default;
+$navigationhistory__back-button-disabled--color: $grey__default--1000;
+
+$navigationhistory__button-default--margin-right: 5px;
+$navigationhistory__stack-button--size: 24px;
+$navigationhistory__stack-button-disabled--opacity: 0.3;
+
+
+
+$navigationhistory__title--padding-left: $container-spacing-default__half;
+$navigationhistory__title--height: 24px;
+
+$navigationhistory__no-stack-title--margin-left: $navigationhistory__title--padding-left - $navigationhistory__button-default--margin-right;
+
+$navigationhistory__content--color: $black__blueish--100;
+$navigationhistory__content-delimit__border: $boxes--border__thin solid $grey__dark--100;
+
+$navigationhistory__menuitem-text--font-size: $font-size__base;
+
+$navigationhistory__history-menupopup--margin-left: -7px;
+$navigationhistory__history-menupopup-pointer--left: $container-spacing-default__third;
+$navigationhistory__history-menupopup--min-width: $editor-defaults__inline-box--height - 2 * $boxes--border__thin;
+$navigationhistory__history-menupopup--min-height: $container-spacing-default__third; 

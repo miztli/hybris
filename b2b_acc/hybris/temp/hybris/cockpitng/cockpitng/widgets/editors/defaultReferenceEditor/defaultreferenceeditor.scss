@@ -1,0 +1,18 @@
+/*================================
+    Default Editor Area
+================================*/
+// Defines Defaults for the Editing Area
+
+
+@import "scss/support/_defaultreferenceeditor-variables.scss";
+
+@import "scss/components/_defaultreferenceeditor-defaults.scss";
+
+@import "scss/components/_defaultreferenceeditor-list-box.scss";
+@import "scss/components/_defaultreferenceeditor-create-type.scss";
+@import "scss/components/_defaultreferenceeditor-tree.scss";
+
+@import "scss/components/_defaultreferenceeditor-read-only.scss";
+@import "scss/components/_defaultreferenceeditor-validation.scss";
+
+@import "scss/editor/_defaultreferenceeditor-multi-reference.scss";

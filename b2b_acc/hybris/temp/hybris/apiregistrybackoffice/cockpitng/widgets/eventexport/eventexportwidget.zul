@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+
+
+<widget xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+        height="100%" width="100%">
+        <style src="${wr}/certificate.css"/>
+        <vlayout>
+            <div class="yrb-modal-content">
+                <vbox>
+                    <hbox>
+                        <label value="${c:l('apiregistry_backoffice_eventExport.state')}" />
+                        <label id="stateLabel" value="" />
+                    </hbox>
+                    <columnlayout>
+                        <columnchildren width="50%">
+                            <button id="enableNode" label="${c:l('button.label.enableNode')}" style="margin: 10px; width: 95%"/>
+                            <button id="enableCluster" label="${c:l('button.label.enableCluster')}" style="margin: 10px; width: 95%"/>
+                        </columnchildren>
+                        <columnchildren width="50%">
+                            <button id="disableNode" label="${c:l('button.label.disableNode')}" style="margin: 10px; width: 95%"/>
+                            <button id="disableCluster" label="${c:l('button.label.disableCluster')}" style="margin: 10px; width: 95%"/>
+                        </columnchildren>
+                    </columnlayout>
+                </vbox>
+            </div>
+        </vlayout>
+        <timer id="timer" delay="1000" repeats="true"/>
+</widget>

@@ -1,0 +1,33 @@
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="com.hybris.cockpitng.action.workflow.create"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+
+    <name>Create workflow action</name>
+    <description>Create workflow action</description>
+    <author>hybris</author>
+    <version>1.0</version>
+
+    <actionClassName>de.hybris.platform.platformbackoffice.actions.workflow.CreateWorkflowAction</actionClassName>
+
+    <inputType>de.hybris.platform.workflow.model.WorkflowTemplateModel</inputType>
+    <outputType>java.lang.Object</outputType>
+    <sockets>
+        <output id="createWorkflowForm" type="de.hybris.platform.platformbackoffice.widgets.workflow.CreateWorkflowForm"/>
+    </sockets>
+
+    <!-- folder icons with the icons must be created in the following directory: myextension/backoffice/resources/widgets/actions/myaction -->
+    <iconUri>icons/icon_action_add_workflow_default.png</iconUri>
+    <iconHoverUri>icons/icon_action_add_workflow_hover.png</iconHoverUri>
+    <iconDisabledUri>icons/icon_action_add_workflow_disabled.png</iconDisabledUri>
+
+</action-definition>

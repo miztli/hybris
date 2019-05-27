@@ -1,0 +1,20 @@
+/*
+ This is firefox specific workaround for zk's bug
+ http://tracker.zkoss.org/browse/ZK-2587
+
+ Note: Fixed in zk 7.0.5
+*/
+.widget_label {
+  pointer-events: none; }
+
+.widget_toolbar.z-drag-ghost {
+  display: table;
+  background: #516483;
+  opacity: 0.8;
+  padding: 5px; }
+
+.widget_toolbar.z-drag-ghost .toolbarComponent {
+  display: none; }
+
+.clipboardEntry .z-label {
+  pointer-events: none; }

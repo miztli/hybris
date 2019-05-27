@@ -1,0 +1,187 @@
+@import "../support/_pcmbackoffice_general-variables.scss";
+
+.yw-pcmbackoffice{
+    .yw-coll-browser-container {
+        tr.z-listhead th:first-of-type .z-listheader-content,
+        tr.z-listitem > td:first-of-type .z-listcell-content {
+            padding-left: $pcmbackoffice__collection-browser-container-side-cell--padding-x;
+        }
+        tr.z-listhead th:first-of-type,
+        tr.z-listitem > td:first-of-type .z-listcell-content {
+            &:before {
+                left: 0;
+            }
+        }
+        tr.z-listhead th:nth-last-of-type(2) .z-listheader-content,
+        tr.z-listitem > td:last-of-type .z-listcell-content {
+            padding-right: $pcmbackoffice__collection-browser-container-side-cell--padding-x;
+        }
+        tr.z-listhead th:nth-last-of-type(2),
+        tr.z-listitem > td:last-of-type .z-listcell-content {
+            &:before {
+                right: 0;
+            }
+        }
+    }
+
+    &-browser {
+        margin: $pcmbackoffice__browser--margin;
+        position: relative;
+
+        .yw-listview-busynotifier .notifierEntry {
+            width: auto;
+            left: $pcmbackoffice__browser-busy-notifier--side;
+            right: $pcmbackoffice__browser-busy-notifier--side;
+        }
+
+        .z-vlayout-inner {
+            > .y-statusbar {
+                background-color: $pcmbackoffice__collection-browser-statusbar--bg-color;
+                box-shadow: $pcmbackoffice__collection-browser-statusbar--box-shadow;
+            }
+        }
+        > .z-vlayout {
+            overflow: visible;
+            max-width: $pcmbackoffice__browser--max-width;
+            margin: auto;
+        }
+        .yw-listview-actioncontainer .y-toolbar {
+            .yw-listview-actionSlot .z-hbox-separator {
+                background-color: transparent;
+            }
+            .yw-coll-browser-mold-sel-container {
+                border: $pcmbackoffice__collection-browser-default--border-width solid $pcmbackoffice__collection-browser-toolbar--border-color;
+                border-width: 0 $pcmbackoffice__collection-browser-default--border-width;
+                padding: $pcmbackoffice__collection-browser-toolbar-delimiter--padding;
+            }
+            .yw-listview-paging-container-top:empty + .yw-coll-browser-mold-sel-container {
+                border-right-width: 0;
+            }
+        }
+        .yw-listview-bottom-bar {
+            background: transparent;
+            padding: 0;
+        }
+        .yw-grid-view-container {
+            margin: $pcmbackoffice__collection-browser-grid-view-indented--margin;
+            width: auto;
+
+            &:after {
+                color: $pcmbackoffice__contents--bg-color;
+            }
+            
+        }
+        > div > .yw-listview-actioncontainer {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    .yw-coll-browser-tree-view-table {
+        .z-tree-body td.z-treecell,
+        .z-tree-footer td.z-treefooter {
+            padding-left: $pcmbackoffice__collection-browser-tree-view-treecell--padding-x;
+            padding-right: $pcmbackoffice__collection-browser-tree-view-treecell--padding-x;
+
+            &:before {
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+
+    .yw-listview-bottom-bar {
+        border-top: $pcmbackoffice__collection-browser-toolbar-bottom--border-top;
+    }
+
+    .y-toolbar,
+    .yw-com_hybris_cockpitng_collectionBrowser .yw-listview-actioncontainer .ya-create-container {
+        border-color: $pcmbackoffice__collection-browser-toolbar--border-color;
+    }
+
+    &-browser,
+    .yw-extendedsplitlayout-holder {
+        &:before {
+            content: "";
+            box-shadow: $pcmbackoffice__browser-shadow--box-shadow;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
+    }
+    &-browser {
+        &:before {
+            left: $pcmbackoffice__browser-shadow--side;
+            right: $pcmbackoffice__browser-shadow--side;
+        }
+    }
+    
+    &-browser,
+    .yw-extendedsplitlayout-box {
+        .y-statusbar {
+            &, .yw-listview-statusbar-button {
+                background-color: transparent;
+            }
+            .yw-listview-statusbar-button {
+                &:hover, &:focus, &:active {
+                    color: $pcmbackoffice__collection-browser-statusbar-button--hover-color;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+    .yw-extendedsplitlayout-box {
+        .yw-listview-bottom-bar {
+            background: transparent;
+            border-top: $pcmbackoffice__splitlayout-toolbar-bottom--border-top;
+            padding-right: $pcmbackoffice__splitlayout-toolbar--padding-x;
+            padding-left: $pcmbackoffice__splitlayout-toolbar--padding-x;
+        }
+        .yw-grid-view {
+            padding: $pcmbackoffice__collection-browser-grid-view--padding;
+            
+            &-container {
+                &:after {
+                    color: transparent;
+                }
+            }
+        }
+    }
+
+    .yw-image-attribute-variant-product {
+        width: 16px;
+        height: 16px;
+        padding: 8px 8px 8px 20px;
+        display: inline;
+        position: relative; }
+    .yw-image-attribute-variant-product:before {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 16px;
+        height: 16px;
+        margin-left: -8px;
+        margin-top: -8px;
+        background: url("../images/icon_product_variants.svg") center no-repeat; }
+
+    .yw-image-attribute-product {
+        width: 16px;
+        height: 16px;
+        padding: 8px 8px 8px 14px;
+        display: inline;
+        position: relative; }
+    .yw-image-attribute-product:before {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 16px;
+        height: 16px;
+        margin-left: -8px;
+        margin-top: -8px;
+        background: url("../images/icon_base_product.svg") center no-repeat; }
+}

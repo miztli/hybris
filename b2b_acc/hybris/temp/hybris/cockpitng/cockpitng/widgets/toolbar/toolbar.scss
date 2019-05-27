@@ -1,0 +1,36 @@
+@import "cockpitng-globals.scss";
+
+.yw-toolbar-horizontal {
+	width: 100%;
+
+	.yw-toolbar-content {
+		.yw-toolbar-before,
+		.yw-toolbar-actions,
+		.yw-toolbar-after {
+			height: 100%;
+			display: inline-block;
+
+			.cng-action {
+				&, &-group {
+					table td {
+						vertical-align: middle;
+					}
+				}
+			}
+		}
+
+		.yw-toolbar-actions {
+			vertical-align: middle;
+		}
+	}
+
+	> .yw-toolbar-content > .yw-toolbar-before {
+		float: left;
+	}
+}
+
+.yw-toolbar-before {
+    > .widget_cnt:empty {
+        display: none;
+    }
+}

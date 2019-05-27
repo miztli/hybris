@@ -1,0 +1,181 @@
+/*================================
+    Editor-Area: Panels
+================================*/
+// Defines Panel-Details needed for the Editor-Area
+
+
+.yw-editorarea-tabbox-tabpanels-tabpanel-groupbox {
+    padding: $editor-area__tabpanel-groupbox--padding;
+
+//thes attributes are supposedly not needed (or overrwritten)
+    .z-tablechildren .ye-default-reference-editor-bandbox .z-bandbox-button {
+        top: $editor-area__tabpanel-groupbox-ref-editor-bandbox-button--top;
+    }
+    &-ed {
+        padding-right: $editor-area__tabpanel-groupbox-ed--padding-right;
+        padding-bottom: $editor-area__tabpanel-groupbox-ed--padding-bottom;
+
+        &::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+    }
+    &-desc .z-label{
+        font-size: $editor-area__tabpanel-description-text--font-size;
+        line-height: $editor-area__tabpanel-description-text--line-height;
+        font-weight: normal;
+        padding: $editor-area__tabpanel-groupbox-desc-label--padding;
+        margin-bottom: 0;
+    }
+
+    .yw-loceditor {
+        position: relative;
+    
+        &-caption {
+            padding-right: $editor-defaults__loceditor-caption--padding-right;
+            width:100%;
+            overflow: hidden;
+            position: static;
+        
+            > .y-icon-loceditor {
+                position: absolute;
+                right: 0;
+                bottom: 100%;
+            }
+
+            > .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-attrcell-label + .y-icon-loceditor {
+                top: 0;
+                bottom: auto;
+            }
+        }
+
+        & .yw-loceditor-fixed-open,
+        & .yw-loceditor-dynamic-content {
+
+            .ye-com_hybris_cockpitng_editor_boolean_wrapper .z-hbox {
+                td table td {
+                    margin-right: 0;
+                    margin-left: $_editor-area-loceditor-open__radio-group--margin-left;
+                }
+            }
+        }
+
+        .yw-feature-value-container{
+            & .ye-com_hybris_cockpitng_editor_defaulttext,
+            & .z-doublebox {
+                border-right-width: 0; 
+            }
+        }
+    }
+
+    &-attrcell-label.z-label {
+        margin-bottom: 0;
+    }
+
+    .ye-validation-error,
+    .ye-validation-warn,
+    .ye-validation-info {
+        > .yw-loceditor .yw-loceditor-caption {
+            padding-right: $editor-defaults__editor-validation-loceditor-caption--padding-right;
+        }
+    }
+    > .z-groupbox-content {
+        padding: $editor-area__tabpanel-groupbox-body--padding;
+    }
+    &-caption {
+        padding: $editor-area__tabpanel-groupbox-header-caption--padding;
+    }
+}
+
+.yw-editor-area-main-content {
+    .z-groupbox {
+        &-header .z-caption-content,
+        &-title-content {
+            color: $editor-area__tabpanel-groupbox-header-caption--color;
+            font-weight: $editor-area__tabpanel-groupbox-header-caption--font-weight;
+            text-transform: uppercase;
+        }
+        &-header {
+            &:after{
+                clear: both;
+                display: block;
+                content: '';
+            }
+            .z-caption-content,
+            .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-caption.z-caption {
+                &:hover {
+                    &:after {
+                        content: "";
+                        width: 100%;
+                        position: absolute;
+                        bottom: -1px;
+                        border-bottom: $editor-area__tabpanel-delimit-horizontal--border-width solid $editor-area__tabpanel-delimit-horizontal--border-color;
+                        height: 1px;
+                        display: block;
+                        left: 0;
+                    }
+                    .z-caption-content {
+                        color: $editor-area__tabpanel-groupbox-header-caption--hover-color;
+                    }
+                }
+            }
+
+            .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-caption {
+                &.z-caption {
+                    width: 100%;
+
+                    top: 0 !important;
+                    border: 0;
+                    padding: $editor-area__tabpanel-groupbox-header-caption--padding;
+                    white-space: normal;
+                    min-height: $editor-area__tabpanel-groupbox-header-caption--min-height;
+                    display: block;
+        
+                    @if $editor-area__tabpanel-groupbox-header-caption--hover-bg-color {
+                        &:hover {
+                            background: $editor-area__tabpanel-groupbox-header-caption--hover-bg-color;
+                        }    
+                    }
+                }
+                .z-caption-content {
+                    font-size: $editor-area__tabpanel-groupbox-header-caption--font-size;
+                    line-height: $editor-area__tabpanel-groupbox-header-caption--line-height;
+                }
+                .yw-expandCollapse.z-button {
+                    top: $editor-area__tabpanel-groupbox-header-caption--space-top;
+                }
+            }
+        }
+        &-collapsed .z-groupbox-header {
+            .z-caption-content:hover,
+            .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-caption.z-caption {
+                border-bottom-width: 0;
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .yw-editorarea-tabbox-tabpanels-tabpanel .z-groupbox-header {
+        border: $editor-area__tabpanel-delimit-horizontal--border-width solid $editor-area__tabpanel-delimit-horizontal--border-color;
+        border-width: $editor-area__tabpanel-delimit-horizontal--border-width 0 0;
+        padding: 0;
+        height: auto;
+    }
+}
+
+.yw-modal-notificationEA {
+    .yw-listview-actioncontainer.yw-editorarea-actioncontainer,
+    .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .yw-editorarea-tabbox-tabs-tab:first-child {
+        padding-left: 20px;
+    }
+    .yw-editorarea-tabbox-tabs-tab:last-child {
+        padding-right: 20px;
+    }
+}

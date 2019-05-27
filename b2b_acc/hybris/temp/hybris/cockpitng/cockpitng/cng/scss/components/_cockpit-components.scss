@@ -1,0 +1,204 @@
+/*================================
+    Components
+================================*/
+// Different changes on Basic Components
+
+
+@import "../support/_cockpit-variables.scss";
+
+.editorAreaHeader {
+    height: 70px;
+    position: relative;
+}
+
+.editorAreaLabel {
+    height: 50px;
+    padding: 10px;
+    background-color: white;
+}
+
+.editorAreaNotifier {
+    background: none repeat scroll 0 0 #ebd960;
+    border: 1px solid #CCCCCC;
+    bottom: 0;
+    color: #333333;
+    cursor: pointer;
+    left: 1px;
+    padding: 3px;
+    position: absolute;
+    right: 1px;
+}
+
+.editorAreaAttributesList {
+    overflow-y: auto;
+    position: absolute;
+    top: 72px;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+}
+
+.attributesList {
+    position: absolute;
+    top: 72px;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+}
+
+.editorAreaRow {
+    margin: 2px;
+}
+
+.editorAreaLabel .z-label {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.editorImg {
+    height: 40px;
+    margin-right: 20px;
+}
+
+.noBG {
+    background-color: transparent;
+}
+
+.baseWidgetTab {
+    > .z-tabbox {
+        > .z-tabs {
+            position: absolute;
+            top: -50px;
+            left: 300px;
+            right: 0;
+            width: auto !important;
+            background: none;
+            border: none;
+            height: 40px;
+
+            > .z-tabs-header {
+                width: 100% !important;
+                height: 100%;
+
+                > .z-tabs-content {
+                    background: none;
+                    border: none;
+                    height: 100%;
+
+                    .z-tab-text {
+                        color: #C6D0D8;
+                        font-size: 12px;
+                        font-weight: bold;
+                    }
+                    .z-tab-selected .z-tab-text {
+                        color: #333333;
+                        font-size: 14px;
+                    }
+                    .z-tab {
+                        min-width: 100px;
+                        line-height: 30px;
+                        &:hover {
+                            background: #444E62;
+                            .z-tab-text {
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        > .z-tabpanels {
+            height: 100% !important;
+
+            > .z-tabpanel {
+                border: none;
+                height: 100% !important;
+            }
+        }
+    }
+}
+
+.channelTab {
+    padding: 10px;
+    margin-right: 20px;
+    border: none;
+
+    &.z-toolbarbutton:hover {
+        background: #444E62;
+
+        .z-toolbarbutton-body {
+            border: none;
+            padding: 0 1px;
+        }
+    }
+    &-sel {
+        &, &.z-toolbarbutton:hover {
+            background: #EDEDED;
+        }
+        .z-toolbarbutton-content {
+            color: #333333;
+            font-size: 14px;
+        }
+    }
+    .z-toolbarbutton-content {
+        color: #C6D0D8;
+        font-size: 12px;
+        font-weight: bold;
+    }
+}
+
+.navHeader {
+//    background-image: url(images/head_backgr.gif);
+    background-color: $body-bg-color;
+//    background-repeat: repeat-x;
+    padding: 20px 0px 20px 10px;
+    margin-right: 5px;
+}
+
+.navChildren {
+    position: absolute;
+    top: 70px;
+    left: 5px;
+    right: 5px;
+    bottom: 0;
+    overflow: auto;
+}
+
+.mainHeader {
+    background: #1540AA;
+    height: 100%;
+}
+
+.mainFooter, .mainFooter .z-south-body {
+    overflow: visible !important;
+}
+
+.widget_cnt {
+    height: 100%;
+}
+
+.navigationArea .widgetPanel {
+    margin: 5px;
+    margin-left: 0;
+}
+
+.defaultPortalWidget .widgetPanel {
+    margin: 2px;
+    margin-top: 0;
+}
+
+.defaultPortalWidget {
+    overflow-y: auto;
+}
+
+.widgetPanel > .z-panel-body > .z-panel-children > .widget_cnt,
+.widgetPanel > .z-panel-body > .z-panel-children > .widget_cnt > .widget_body {
+    margin: 0;
+}
+
+.z-dragged,
+tr.z-drag-over,
+tr.z-drag-over:hover {
+    @include _no-user-select();
+    background-color: $editor-defaults__drag-element--bg-color;
+}

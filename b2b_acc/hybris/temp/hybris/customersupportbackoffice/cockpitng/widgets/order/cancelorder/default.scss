@@ -1,0 +1,90 @@
+@import "cockpitng-globals.scss";
+
+$oms-widget-popup-bottom-toolbar--height: 80px;
+$oms-widget-cancelorder-header--height: 60px;
+$oms-widget-cancelorder-separator--height: 2*$container-spacing-default__third;
+$oms-widget-footer-gutter: 2*$container-spacing-default__third;
+$oms-widget-gutter: 2*$container-spacing-default__third;
+$oms-widget-footer--border: 1px solid $grey__default--300;
+
+$oms-widget-cancelorder-list-container__checkbox-label--margin-left: 3px;
+$oms-widget-cancelorder-listbox-header__column-header--padding: 4px;
+$oms-widget-cancelorder-listbox-header__comment--margin-top: -3px;
+
+
+//implementing the footer buttons styling
+.oms-widget-footer{
+    padding: $oms-widget-footer-gutter;
+    text-align: right;
+    border-top: $oms-widget-footer--border;
+}
+
+.oms-widget-cancelorder-configuration-footer,
+.oms-widget-footer{
+    height: $oms-widget-popup-bottom-toolbar--height;
+}
+
+.oms-widget-cancelorder-configuration--separator{
+    height: $oms-widget-cancelorder-separator--height;
+}
+
+.oms-widget-cancelorder-header{
+    height: $oms-widget-cancelorder-header--height;
+}
+
+.oms-widget-cancelorder-header, 
+.oms-widget-cancelorder-list{
+    padding-left: $oms-widget-gutter;
+    padding-right: $oms-widget-gutter;
+}
+
+//overwrite styling from backoffice - as the case is not implemented by the framework
+//move some inline styling in the scss file
+.oms-widget-cancelorder-list-container__checkbox.z-checkbox {
+    display: block;
+    padding-left: 2*$container-spacing-default__third;
+    label{
+        display: inline;
+        padding-right: 0;
+        margin-left: $oms-widget-cancelorder-list-container__checkbox-label--margin-left;
+    }
+
+    >input{
+        width: 0;
+    }
+
+}
+
+.oms-widget-cancelorder-listbox-header .z-column-content{
+    padding: $oms-widget-cancelorder-listbox-header__column-header--padding;
+}
+
+.oms-widget-cancelorder-listbox-header__comment .z-column-content{
+    margin-top: $oms-widget-cancelorder-listbox-header__comment--margin-top;
+}
+
+.oms-widget-cancelorder-configuration,
+.oms-widget-cancelorder-list-container{
+    border-top: $oms-widget-footer--border;
+}
+
+//overwriting grid styling to match the listbox - header
+.oms-widget-cancelorder-list-container .z-grid-header{
+    background: transparent;
+}
+
+.oms-widget-cancelorder-list{
+    height: calc(100% - #{$oms-widget-popup-bottom-toolbar--height + 2*$oms-widget-cancelorder-separator--height + $oms-widget-cancelorder-header--height});
+}
+
+.oms-widget-cancelorder--qty-label{
+    display: inline-block;
+    text-align: right;
+    padding-right: 30px;
+}
+
+.oms-widget-cancelorder--qty-label__centered{
+    display: inline-block;
+    text-align: center;
+
+}

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0"
+           targetNamespace="http://www.hybris.com/cockpitng/config/notifications"
+           xmlns:tns="http://www.hybris.com/cockpitng/config/notifications"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:common="http://www.hybris.com/cockpitng/config/common">
+
+    <xs:import namespace="http://www.hybris.com/cockpitng/config/common" schemaLocation="common-config.xsd"/>
+
+    <xs:element name="notification-area">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:sequence>
+                    <xs:element name="notifications" type="tns:Notification" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+                <xs:element name="defaults" type="tns:NotificationDefaults" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="NotificationRenderingInfo">
+        <xs:sequence>
+            <xs:element name="parameter" type="tns:NotificationParameter" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="renderer" type="xs:string" use="optional"/>
+        <xs:attribute name="merge-mode" type="common:MergeMode" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="Notification">
+        <xs:complexContent>
+            <xs:extension base="tns:NotificationRenderingInfo">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="timeout" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="references" type="tns:NotificationReferences" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:attribute name="eventType" type="xs:string" use="required"/>
+                <xs:attribute name="level" type="tns:ImportanceLevel" use="required"/>
+                <xs:attribute name="destination" type="tns:Destination" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="ImportanceLevel">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SUCCESS"/>
+            <xs:enumeration value="FAILURE"/>
+            <xs:enumeration value="WARNING"/>
+            <xs:enumeration value="INFO"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="NotificationParameter">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="optional"/>
+        <xs:attribute name="evaluate" type="xs:boolean" use="optional" default="false"/>
+        <xs:attribute name="merge-mode" type="common:MergeMode" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="NotificationReferences">
+        <xs:sequence>
+            <xs:element name="reference" type="tns:NotificationReference" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="linksEnabled" type="xs:boolean" use="optional" default="false"/>
+    </xs:complexType>
+
+    <xs:complexType name="NotificationReference">
+        <xs:sequence>
+            <xs:element name="context" type="tns:NotificationLinkReferenceContext" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="index" type="xs:nonNegativeInteger" use="optional"/>
+        <xs:attribute name="placeholder" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="link" type="xs:string" use="optional"/>
+        <xs:attribute name="label" type="xs:string" use="optional"/>
+        <xs:attribute name="message" type="xs:string" use="optional"/>
+        <xs:attribute name="merge-mode" type="common:MergeMode" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="NotificationLinkReferenceContext">
+        <xs:attribute name="parameter" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="optional"/>
+        <xs:attribute name="evaluate" type="xs:boolean" use="optional" default="false"/>
+        <xs:attribute name="merge-mode" type="common:MergeMode" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="NotificationDefaults">
+        <xs:sequence>
+            <xs:element name="fallback" type="tns:NotificationRenderingInfo" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="timeouts" type="tns:NotificationTimeouts" minOccurs="0" maxOccurs="1"/>
+            <xs:sequence>
+                <xs:element name="destinations" type="tns:NotificationDestination" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:sequence>
+        <xs:attribute name="linksEnabled" type="xs:boolean" use="optional" default="false"/>
+    </xs:complexType>
+
+    <xs:complexType name="NotificationDestination">
+        <xs:attribute name="level" type="tns:ImportanceLevel" use="required" />
+        <xs:attribute name="destination" type="tns:Destination" use="optional" default="GLOBAL" />
+    </xs:complexType>
+
+    <xs:simpleType name="Destination">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TOPMOST"/>
+            <xs:enumeration value="PREVIOUS"/>
+            <xs:enumeration value="GLOBAL"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="NotificationTimeouts">
+        <xs:sequence>
+            <xs:element name="timeout" type="tns:NotificationTimeout" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="default" type="xs:nonNegativeInteger" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="NotificationTimeout">
+        <xs:attribute name="level" type="tns:ImportanceLevel" use="required"/>
+        <xs:attribute name="value" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,38 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# Import the Solr configuration for the Powertools store
+#
+# Localization en
+#
+$lang=en
+
+$indexedType=powertoolsProductType
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedType];name[unique=true];displayName[lang=$lang]
+ ;;allPromotions;Promotion;
+ ;;brand;Brand;
+ ;;category;Category;
+ ;;code;Code;
+ ;;description;Description;
+ ;;manufacturerName;Manufacturer Name;
+ ;;name;Name;
+ ;;price;Price;
+ ;;summary;Summary;
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedType];code[unique=true];name[lang=$lang]
+ ;;name-asc;Name (ascending);
+ ;;name-desc;Name (descending);
+ ;;price-asc;Price (lowest first);
+ ;;price-desc;Price (highest first);
+ ;;relevance;Relevance;
+ ;;topRated;Top Rated;

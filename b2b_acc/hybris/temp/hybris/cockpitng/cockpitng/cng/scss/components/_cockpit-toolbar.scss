@@ -1,0 +1,180 @@
+/*================================
+    Cockpit Toolbar
+================================*/
+// Definitions of Tabs, Tabpanel
+
+@import "../support/_cockpit-variables.scss";
+
+/*====== ICONS FOR TOOLBAR ======*/
+
+/* TODO USE PSEUDOCLASS FOR GENERAL BUTTON STYLE
+[class^="y-icon-"],
+[class*=" y-icon-"]{
+
+ }
+ */
+//check if is this toolbar-only definition
+.y-icon {
+    width: $editor-defaults__icon--size;
+    height: $editor-defaults__icon--size;
+    display: inline-block;
+}
+
+/*===== TOOLBAR GENERAL ======*/
+
+/*===== z-TOOLBAR ======*/
+.z-toolbar {
+    background-color: $_toolbar-defaults__ztoolbar--bg-color;
+    border-bottom: none;
+    padding: $_toolbar-defaults__ztoolbar--padding;
+    min-height: $_toolbar-defaults__ztoolbar--min-height;
+
+    .z-button {
+        border: none;
+        margin: $_toolbar-defaults__ztoolbar-button--margin;
+        padding: $_toolbar-defaults__ztoolbar-button--padding;
+        background: none;
+    }
+}
+
+/*===== y-TOOLBAR ======*/
+
+.y-toolbar,
+.yw-listview-bottom-bar {
+    .z-label.number-of-items-label {
+        padding: $_toolbar-defaults__ytoolbar-number-of-items--padding;
+        line-height: $_toolbar-defaults__ytoolbar-number-of-items--line-height;
+    }
+
+    .z-paging {
+        border: none;
+
+        &-input,
+        &-text {
+            margin-top: 0;
+        }
+    }
+}
+
+.y-toolbar {
+    overflow: hidden;
+
+    &-leftslot {
+        float: left;
+
+        .cng-action-group {
+            margin-right: $_toolbar-defaults__ytoolbar-leftslot-action-group--margin;
+        }
+    }
+
+    &-rightslot {
+        float: right;
+
+        .cng-action-group {
+            margin-left: $_toolbar-defaults__ytoolbar-rightslot-action-group--margin;
+        }
+    }
+
+    .z-hbox-separator {
+        width: $_toolbar-defaults__ytoolbar-separator--width;
+        background-color: $_toolbar-defaults__ytoolbar-separator--bg-color;
+    }
+
+    .z-paging-button,
+    .yw-itemSelectorButton,
+    .cng-action-enabled .cng-action-icon {
+        box-shadow: $_toolbar-defaults__ytoolbar-button--shadow;
+
+        &:hover,
+        &:focus {
+            box-shadow: $_toolbar-defaults__ytoolbar-button-hover-focus--shadow;
+        }
+    }
+
+    .z-paging-button[disabled] {
+        &:hover,
+        &:focus {
+            box-shadow: $_toolbar-defaults__ytoolbar-button-disabled-hover-focus--shadow;
+        }
+    }
+
+    .cng-action-group {
+        display: inline-block;
+
+        > tbody {
+            display: inline-table;
+        }
+
+        td {
+            > .z-label {
+                line-height: $window__action-group-label--line-height;
+                padding: $window__action-group-label--padding;
+                color: $window__action-group-label--color;
+                display: inline-block;
+            }
+        }
+
+        + .cng-action-group {
+            &:before {
+                content: "";
+                display: inline-block;
+                margin-right: $window__action-group-delimiter--margin-x;
+                height: $window__action-group-delimiter--height;
+                z-index: $window__action-group-delimiter--z-index;
+                width: 0;
+                float: left;
+            }
+        }
+
+        + .cng-action-separator {
+            &:before {
+                border-left: $window__action-group-delimiter--border;
+                margin-left: $window__action-group-delimiter--margin-x;
+            }
+        }
+    }
+}
+
+/*===== STATUS BAR ======*/
+
+.y-statusbar {
+    background: $toolbar-defaults__statusbar--bg-color;
+}
+
+/*===== TOOLBAR BUTTON ======*/
+
+.z-toolbarbutton {
+    border: none;
+}
+
+.z-toolbarbutton:hover {
+    background-color: $_toolbar-defaults__toolbarbutton-hover--bg-color; //#6f7c91;
+    box-shadow: none;
+    border: none;
+}
+
+.y-toolbar .z-toolbarbutton {
+    display: block;
+    float: left;
+
+    &:hover {
+        background-color: $_toolbar-defaults__toolbarbutton-hover--bg-color;
+    }
+}
+
+.y-toolbar .z-toolbarbutton,
+.y-toolbar .z-toolbarbutton .z-toolbarbutton-body,
+.y-toolbar .z-toolbarbutton .z-toolbarbutton-body .z-toolbarbutton-content {
+    margin: $_toolbar-defaults__toolbarbutton--margin;
+    padding: $_toolbar-defaults__toolbarbutton--padding;
+}
+
+.y-toolbar .z-toolbarbutton:hover,
+.y-toolbar .z-toolbarbutton:hover .z-toolbarbutton-body {
+    border: none;
+}
+
+.z-toolbarbutton-content,
+.z-toolbarbutton:hover .z-toolbarbutton-content {
+    color: $_toolbar-defaults__toolbarbutton-content--color;
+}

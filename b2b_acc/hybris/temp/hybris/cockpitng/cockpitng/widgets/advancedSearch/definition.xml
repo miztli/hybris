@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+                   id="com.hybris.cockpitng.advancedsearch">
+    <name>Advanced Search</name>
+    <description>Advanced search widget</description>
+    <defaultTitle>Advanced Search</defaultTitle>
+    <author>hybris</author>
+    <version>0.1</version>
+
+    <sockets>
+        <input id="type" type="java.lang.String"/>
+        <input id="initContext" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchInitContext"/>
+        <input id="sortData" type="com.hybris.cockpitng.search.data.SortData"/>
+        <input id="refreshResults" type="java.lang.Object"/>
+        <input id="fullTextSearchData" type="com.hybris.cockpitng.search.data.FullTextSearchData"/>
+        <input id="autosuggestions" type="java.util.Map"/>
+        <output id="autosuggestionQuery" type="com.hybris.cockpitng.search.data.AutosuggestionQueryData"/>
+        <output id="searchData" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchData"/>
+        <output id="reset" type="java.util.Map"/>
+    </sockets>
+
+    <controller class="com.hybris.backoffice.widgets.advancedsearch.AdvancedSearchController"/>
+    <keywords>
+        <keyword>Search</keyword>
+    </keywords>
+    <settings>
+        <setting key="advancedSearchConfigCtxCode" default-value="advanced-search" type="String"/>
+        <setting key="simpleSearchConfigCtxCode" default-value="simple-search" type="String"/>
+        <setting key="addRowPosition" type="ENUM(Top,Bottom,None)" default-value="Bottom"/>
+        <setting key="instantFacets" default-value="true" type="Boolean"/>
+        <setting key="enableQuickFacetFilter" default-value="true" type="Boolean"/>
+        <setting key="maxInlineFacets" default-value="5" type="java.lang.Integer"/>
+        <setting key="isNestedObjectCreationDisabled" default-value="true" type="Boolean"/>
+        <setting key="forceSearchForCode" type="String"/>
+        <setting key="disableSubtypesCheckbox" default-value="false" type="Boolean"/>
+        <setting key="disableAttributesComparator" default-value="false" type="Boolean"/>
+        <setting key="disableSortOrder" default-value="false" type="Boolean"/>
+        <setting key="disableSimpleSearch" type="Boolean" default-value="false"/>
+        <setting key="disableAutoSearch" type="Boolean" default-value="false"/>
+        <setting key="disableAdvancedSearchToolbar" type="Boolean" default-value="false"/>
+        <setting key="disableSearchModelCache" type="Boolean" default-value="false"/>
+        <setting key="enableNestedWidgetView" type="Boolean" default-value="false"/>
+        <setting key="sendResetWhenDisableAutoSearch" type="Boolean" default-value="true"/>
+        <setting key="displayInNonCollapsibleContainer" type="Boolean" default-value="false"/>
+        <setting key="actionSlotComponentName" type="String" default-value="advancedSearchActions"/>
+        <setting key="minAutosuggestionsQueryLength" type="Integer" default-value="3"/>
+        <setting key="referenceAdvancedSearchEnabled" type="Boolean" default-value="false"/>
+    </settings>
+</widget-definition>

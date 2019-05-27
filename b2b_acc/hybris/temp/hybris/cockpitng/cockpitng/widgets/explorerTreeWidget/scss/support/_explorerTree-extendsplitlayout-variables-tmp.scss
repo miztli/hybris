@@ -1,0 +1,15 @@
+@import "cockpitng-globals.scss";
+
+$explorertree-extendsplitlayout--tree-body--border-width: $boxes--border__thin;
+$explorertree-extendsplitlayout--tree-filter--padding: $container-spacing-default__half;
+
+$explorertree-extendsplitlayout--row-hover--bg-color: $grey__light--1200;
+
+$explorertree-extendsplitlayout--row-focus--bg-color: $blue__light--400;
+$explorertree-extendsplitlayout--row-focus-hover--bg-color: $blue__light--600;
+
+$explorertree-extendsplitlayout--row-selected--bg-color: $blue__light--100;
+$explorertree-extendsplitlayout--row-selected-focus--bg-color: $blue__light--700;
+$explorertree-extendsplitlayout--row-selected-focus-hover--bg-color: $blue__light--200;
+
+$explorertree-extendsplitlayout--row-dragged--bg-color: $grey__light--1200; //$white; 

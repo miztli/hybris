@@ -1,0 +1,59 @@
+@import "cockpitng-globals.scss";
+
+@import "../scss/support/_cockpit-variables.scss";
+
+@import "../scss/utilities/_cockpit-font-roboto.scss";
+@import "../scss/utilities/_cockpit-font-open-sans.scss";
+
+
+
+// BASIC ZK adjustments //
+@import "../scss/utilities/_cockpit-checkbox-radiobox.scss";
+@import "../scss/components/_cockpit-window-defaults.scss";
+@import "../scss/components/_cockpit-box-defaults.scss";
+@import "../scss/components/_cockpit-z-dnd-ghost.scss";
+
+
+//=======================================================/
+//===== FRAMEWORK STUFF / z-COMPONENTS ==================/
+//=======================================================/
+
+// z-calendar //
+@import "../scss/components/_cockpit-calendar.scss";
+// z-window //
+@import "../scss/components/_cockpit-window-messagebox.scss";
+@import "../scss/components/_cockpit-listbox.scss";
+@import "../scss/components/_cockpit-tree.scss";
+@import "../scss/components/_cockpit-popup.scss";
+@import "../scss/components/_cockpit-tabs.scss";
+@import "../scss/components/_cockpit-groupbox.scss";
+@import "../scss/components/_cockpit-validation.scss";
+@import "../scss/components/_cockpit-grid.scss";
+// basic z-components //
+@import "../scss/components/_cockpit-z-buttons.scss";
+@import "../scss/components/_cockpit-paging.scss";
+@import "../scss/components/_cockpit-z-components.scss";
+
+//=======================================================/
+//===== UTILITIES =======================================/
+//=======================================================/
+@import "../scss/utilities/_cockpit-switch-checkbox.scss";
+
+//=======================================================/
+//===== COMPONENTS ======================================/
+//=======================================================/
+@import "../scss/components/_cockpit-components.scss";
+@import "../scss/components/_cockpit-toolbar.scss";
+@import "../scss/components/_cockpit-view-switch.scss";
+@import "../scss/components/_cockpit-table.scss";
+@import "../scss/components/_cockpit-widget-modal-messagebox.scss";
+
+//=======================================================/
+//===== Editors =========================================/
+//=======================================================/
+@import "../scss/editors/_cockpit-selectbox.scss";
+@import "../scss/editors/_cockpit-editors.scss";
+@import "../scss/editors/_cockpit-editors-accordion.scss";
+@import "../scss/editors/_cockpit-editors-password.scss";
+@import "../scss/editors/_cockpit-error-notificationbox.scss";
+@import "../scss/editors/_cockpit-item-browser-widget.scss";

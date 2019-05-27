@@ -1,0 +1,74 @@
+/*================================
+          Progressmeter
+================================*/
+// Styling of the header of the progressmeter (Loading-Screen of Collection-browser) component.
+
+
+@import "../support/_collectionBrowser-variables.scss";
+
+
+.yw-listview-busynotifier {
+  .notifierEntry{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba( $collection-browser__notifyer--bg-color, $collection-browser__notifyer--opacity );
+    border: none;
+    padding: 0;
+    z-index: $collection-browser__notifyer--z-index;
+
+    > .z-hbox,
+    > .z-vbox {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
+    .z-hbox {
+      margin-top: -($collection-browser__notifyer--height/2);
+      margin-left: -$collection-browser__notifyer--margin-left;
+    }
+    .z-vbox {
+      width: 50%;
+    }
+    .progressTitle {
+      color: $collection-browser__notifyer--color;
+      display: inline-block;
+      width: $collection-browser__notifyer-progressmeter-container--width;
+      left: -$collection-browser__notifyer-progressmeter-container--width/2;
+      position: relative;
+    }
+    .z-vbox-separator{
+      width: $collection-browser__notifyer-progressmeter--width;
+    }
+    .progressMeterContainer{
+      position: relative;
+      width: $collection-browser__notifyer-progressmeter-container--width;
+      left: -$collection-browser__notifyer-progressmeter-container--width/2;
+      .z-progressmeter {
+        background: $collection-browser__notifyer-progressmeter--bg-color;
+        border: none;
+        height: $collection-browser__notifyer--height;
+        display: inline-block;
+        width: $collection-browser__notifyer-progressmeter--width;
+        &-image {
+          height: $collection-browser__notifyer--height;
+          background: $collection-browser__notifyer-progressmeter-image--bg-color;
+          top: 2px;
+          left: 0;
+        }
+      }
+      .progressValueLabel {
+        color: $collection-browser__notifyer--color;
+        font-size: $collection-browser__notifyer-value-label--font-size;
+        font-weight: $collection-browser__notifyer-progressmeter--font-weight;
+        display: inline-block;
+        text-align: center;
+        width: $collection-browser__notifyer-progressvalue--width;
+        line-height: $collection-browser__notifyer-progressvalue--line-height;
+        vertical-align: top;
+      }
+    }
+  }
+}

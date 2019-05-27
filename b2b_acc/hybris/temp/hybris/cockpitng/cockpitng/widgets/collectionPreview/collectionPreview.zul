@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:h="http://www.w3.org/1999/xhtml" 
+		xmlns:zk="http://www.zkoss.org/2005/zk"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd " height="100%">
+
+	<div sclass="yw-collection-preview-cnt">
+
+		<div width="100%" height="100%" sclass="yw-collection-preview">
+			<custom-attributes org.zkoss.zul.listbox.rod="true"/>
+			<custom-attributes org.zkoss.zul.listbox.initRodSize="${widgetSettings.renderOnDemandSize}"/>
+
+			<listbox vflex="1" id="itemList" emptyMessage="${labels.emptylist}">
+			</listbox>
+		</div>
+	</div>
+</widget>

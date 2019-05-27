@@ -1,0 +1,29 @@
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="de.hybris.platform.platformbackoffice.actions.deletecronjoblogs.DeleteCronJobLogsAction" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+
+    <name>Delete CronJob Logs</name>
+    <description>Delete CronJob Logs</description>
+    <author>hybris</author>
+    <version>1.0</version>
+
+    <actionClassName>de.hybris.platform.platformbackoffice.actions.deletecronjoblogs.DeleteCronJobLogsAction</actionClassName>
+
+    <inputType>java.lang.CronJobModel</inputType>
+    <outputType>java.lang.Object</outputType>
+
+    <!-- folder icons with the icons must be created in the following directory: myextension/backoffice/resources/widgets/actions/myaction -->
+    <iconUri>icons/icon_action_clear_log_default.png</iconUri>
+    <iconHoverUri>icons/icon_action_clear_log_hover.png</iconHoverUri>
+    <iconDisabledUri>icons/icon_action_clear_log_disabled.png</iconDisabledUri>
+
+</action-definition>

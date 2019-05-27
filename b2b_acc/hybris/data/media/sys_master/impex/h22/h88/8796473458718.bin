@@ -1,0 +1,15 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# catalog version specific access rights for marketingManagerGroup
+# this allows read access for catalog-aware items in the rule builder UI
+INSERT_UPDATE CatalogVersion ; catalog(id)[unique=true] ; version[unique=true] ; readPrincipals(uid)[mode=append] ; writePrincipals(uid)[mode=append]
+                             ; powertoolsProductCatalog ; Staged               ; searchmanagergroup               ; searchmanagergroup               
+                             ; powertoolsProductCatalog ; Online               ; searchmanagergroup               ; searchmanagergroup               

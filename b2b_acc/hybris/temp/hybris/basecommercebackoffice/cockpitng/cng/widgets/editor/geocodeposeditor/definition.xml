@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<editor-definition id="de.hybris.platform.basecommerce.backoffice.editor.geocodeposeditor"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/editor-definition.xsd">
+
+	<name>Geo code pos editor</name>
+	<description>Geo code pos editor</description>
+	<author>hybris</author>
+	<version>0.1</version>
+
+	<type>java.lang.String</type>
+   <editorClassName>de.hybris.platform.basecommerce.backoffice.editor.GeoCodePosSectionRenderer</editorClassName>
+	<!--<sockets>-->
+	<!--        <input id="testInput"/>-->
+	<!--<output id="testOutput" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchInitContext"/>-->
+	<!--</sockets>-->
+	
+</editor-definition>

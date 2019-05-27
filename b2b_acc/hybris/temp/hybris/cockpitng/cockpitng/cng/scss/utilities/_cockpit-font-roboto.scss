@@ -1,0 +1,74 @@
+@mixin roboto-font-face ($weight: normal, $style: normal, $font-style-name: 'Regular', $font-family-name: 'Roboto') {
+    font-family: $font-family-name;
+    src: url( ('font/Roboto-' + $font-style-name + '-webfont.eot') );
+    src: url( ('font/Roboto-' + $font-style-name + '-webfont.eot?#iefix') ) format('embedded-opentype'),
+    url( ('font/Roboto-' + $font-style-name + '-webfont.woff') ) format('woff'),
+    url( ('font/Roboto-' + $font-style-name + '-webfont.ttf') ) format('truetype'),
+    url( ('font/Roboto-' + $font-style-name + '-webfont.svg#Roboto' + $font-style-name) ) format('svg');
+    font-weight: $weight;
+    font-style: $style;
+}
+
+@font-face {
+    @include roboto-font-face (normal, normal, 'Regular');
+}
+
+@font-face {
+    @include roboto-font-face (normal, italic, 'Italic');
+}
+
+@font-face {
+    @include roboto-font-face (bold, normal, 'Bold');
+}
+
+@font-face {
+    @include roboto-font-face (bold, italic, 'BoldItalic');
+}
+
+@font-face {
+    @include roboto-font-face (normal, normal, 'Condensed', 'RobotoCondensed');
+}
+
+@font-face {
+    @include roboto-font-face (normal, italic, 'CondensedItalic', 'RobotoCondensed');
+}
+
+@font-face {
+    @include roboto-font-face (bold, normal, 'BoldCondensed', 'RobotoCondensed');
+}
+
+@font-face {
+    @include roboto-font-face (bold, italic, 'BoldCondensedItalic', 'RobotoCondensed');
+}
+
+@font-face {
+    @include roboto-font-face (100, normal, 'Thin');
+}
+
+@font-face {
+    @include roboto-font-face (100, italic, 'ThinItalic');
+}
+
+@font-face {
+    @include roboto-font-face (200, normal, 'Light');
+}
+
+@font-face {
+    @include roboto-font-face (200, italic, 'LightItalic');
+}
+
+@font-face {
+    @include roboto-font-face (500, normal, 'Medium');
+}
+
+@font-face {
+    @include roboto-font-face (500, italic, 'MediumItalic');
+}
+
+@font-face {
+    @include roboto-font-face (800, normal, 'Black', 'RobotoBlack');
+}
+
+@font-face {
+    @include roboto-font-face (800, italic, 'BlackItalic', 'RobotoBlackItalic');
+}

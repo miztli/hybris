@@ -1,0 +1,24 @@
+/* READ ONLY SKINNING */
+.ye-default-editor-readonly {
+    div.ye-default-reference-editor-item-container,
+    div.ye-default-reference-editor-selected-item-container,
+    .z-listitem-selected:hover div.ye-default-reference-editor-selected-item-container,
+    .z-listitem:hover div.ye-default-reference-editor-selected-item-container,
+    .ye-default-reference-editor-selected-listbox .z-listitem,
+    .ye-default-reference-editor-selected-listbox .z-listitem tr.z-listitem:hover > td.z-listcell {
+        background: none repeat scroll 0 0 $editor-defaults__input-box-disabled--bg-color !important;
+    //    border-color: #D4D8DE !important;
+        opacity: 1;
+        cursor: default;
+    }
+    div.ye-default-reference-editor-listbox span.z-label,
+    div.ye-default-reference-editor-selected-listbox span.z-label,
+    .z-listcell > .z-listcell-content,
+    .z-listcell {
+        color: $editor-defaults__input-box-disabled--color !important;
+    }
+    div.ye-default-reference-editor-item-container.ye-remove-enabled:hover,
+    div.ye-default-reference-editor-selected-item-container:hover {
+        padding-right: $default-reference-editor__list-item-content--padding-x;
+    }
+}

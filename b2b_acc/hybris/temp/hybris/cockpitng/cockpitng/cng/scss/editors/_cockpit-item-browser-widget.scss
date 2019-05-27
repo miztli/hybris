@@ -1,0 +1,44 @@
+/*================================
+    Item-Browser Widget
+================================*/
+// Styling of the item-Browser Component (Search)
+
+
+.z-panel-children > .widget_cnt > .itemBrowserMainCnt {
+    min-height: 300px;
+}
+
+.itemBrowserResultCnt {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    width: 100%;
+    bottom: 2px;
+}
+
+.cng-adminmode .itemBrowserResultCnt {
+    top: 150px;
+    width: auto;
+    left: 5px;
+    right: 5px;
+}
+
+.itemBrowserSearchCnt {
+    height: 70px;
+}
+
+.cng-adminmode .itemBrowserSearchCnt {
+    height: 140px;
+    padding-top: 3px;
+}
+
+.cng-adminmode .itemBrowserSearchCnt .widget_cnt .widget_body {
+    height: 90px !important;
+}
+
+.itemListCell .z-listcell-content {
+    max-height: 1em;
+    text-overflow: ellipsis;
+    -moz-binding: url('util/ellipsis-xbl.xml#ellipsis');
+    white-space: nowrap;
+}

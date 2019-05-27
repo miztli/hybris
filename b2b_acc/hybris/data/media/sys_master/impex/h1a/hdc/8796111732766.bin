@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=ja
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_trigger_message_parameterized_cart_total_threshold;ルールメッセージをトリガする (カート合計しきい値);ルール条件を満たすかどうかに応じてルールメッセージを表示する;
+;y_trigger_message_parameterized_category;ルールメッセージをトリガする (カテゴリ);ルール条件を満たすかどうかに応じてルールメッセージを表示する;
+;y_trigger_message_parameterized_product;ルールメッセージをトリガする (商品);ルール条件を満たすかどうかに応じてルールメッセージを表示する;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_trigger_message_parameterized_cart_total_threshold;cart_total_threshold_parameter;カート合計しきい値;制御対象のカート合計しきい値
+;y_trigger_message_parameterized_category;catalog;カタログによる選択値のフィルタ;関連項目内のフィルタのために、選択されたカタログ値が使用されます
+;y_trigger_message_parameterized_category;qualifying_categorizied_products_quantity;数量;適格カテゴリの必須商品の数量
+;y_trigger_message_parameterized_category;qualifying_categories;カテゴリ;適格カテゴリ
+;y_trigger_message_parameterized_product;catalog;カタログによる選択値のフィルタ;関連項目内のフィルタのために、選択されたカタログ値が使用されます
+;y_trigger_message_parameterized_product;qualifying_products_quantity;数量;適格必須商品の数量
+;y_trigger_message_parameterized_product;qualifying_products;商品;適格商品
+

@@ -1,0 +1,47 @@
+/*================================
+    z-Groupbox
+================================*/
+// Basic Defintions of Groupboxes
+
+
+.z-groupbox {
+    border-top: $editor-area__groupbox--border-top;
+    border: none;
+}
+
+.z-groupbox-content {
+    border: none;
+}
+
+.z-groupbox-content .z-tablechildren > input {
+    margin-bottom: 2px;
+}
+
+.z-tablelayout {
+    margin: 0 0 0 -3px;
+}
+
+.z-groupbox>.z-groupbox-header {
+    padding: $editor-area__groupbox--padding-y 0 0 0;
+    border: none;
+}
+
+.z-groupbox .z-groupbox .z-groupbox-header {
+    padding: $editor-area__groupbox--padding-y 0 $editor-area__groupbox--padding-y 0;
+}
+
+.z-caption-content {
+    padding: 3px 0 0;
+}
+
+.z-groupbox-header .z-caption-content,
+.z-groupbox-title-content {
+    color: $editor-defaults__headline--color;
+    font-weight: $editor-defaults__headline--font-weight;
+    background: transparent;
+    font-style: normal;
+}
+
+.z-groupbox .z-groupbox .z-groupbox-header .z-caption-content {
+    padding: 0;
+}

@@ -1,0 +1,173 @@
+@charset "UTF-8";
+.y-dnd-validation-popup {
+  width: 700px; }
+  .y-dnd-validation-popup .z-window-header {
+    padding-bottom: 0; }
+  .y-dnd-validation-popup .z-window-content {
+    max-height: 440px; }
+  .y-dnd-validation-popup .z-checkbox,
+  .y-dnd-validation-popup .z-radio {
+    line-height: 24px;
+    height: 24px; }
+  .y-dnd-validation-popup .y-window-container {
+    /*    display: flex;
+        flex-direction: column;
+    */
+    height: 100%; }
+  .y-dnd-validation-popup .y-summary-error-info {
+    padding: 0 0 10px 20px;
+    color: #ff3b30; }
+  .y-dnd-validation-popup .y-multi-select {
+    display: inline-block;
+    margin: 0 0 10px 20px; }
+  .y-dnd-validation-popup .y-control-container {
+    padding: 15px 20px 14px;
+    text-align: right; }
+  .y-dnd-validation-popup .y-cancel.z-button {
+    background: transparent;
+    color: #7f90a5; }
+    .y-dnd-validation-popup .y-cancel.z-button:active, .y-dnd-validation-popup .y-cancel.z-button:focus {
+      box-shadow: none; }
+  .y-dnd-validation-popup .y-ignore-save.z-button {
+    background: transparent;
+    color: #ff3b30;
+    border: 1px solid #ff3b30;
+    margin-left: 30px; }
+
+.y-multi-select.y-multi-state-check.z-checkbox:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  width: 14px;
+  height: 4px;
+  background: #0486e0; }
+
+.y-dnd-validation-popup .y-validation-details-container .z-label {
+  max-width: 95%;
+  font-size: 12px;
+  display: inline-flex;
+  white-space: pre-line; }
+.y-dnd-validation-popup .y-validation-details-container > div {
+  margin-top: 7px; }
+  .y-dnd-validation-popup .y-validation-details-container > div > li {
+    padding: 15px 0;
+    list-style: none; }
+    .y-dnd-validation-popup .y-validation-details-container > div > li:last-child {
+      padding-bottom: 8px; }
+    .y-dnd-validation-popup .y-validation-details-container > div > li:before {
+      margin-top: -15px;
+      height: 1px;
+      width: 150%;
+      left: -20px;
+      background: #e0e9f0;
+      content: '';
+      position: absolute; }
+    .y-dnd-validation-popup .y-validation-details-container > div > li:first-child:before {
+      height: 1px;
+      width: 150%;
+      left: -60px;
+      background: #e0e9f0;
+      position: absolute;
+      content: ''; }
+.y-dnd-validation-popup .y-validation-details-container li > .y-validation-icon-cell {
+  display: table-cell;
+  table-layout: fixed; }
+.y-dnd-validation-popup .y-validation-details-container li > .z-label {
+  display: table-cell;
+  table-layout: fixed; }
+.y-dnd-validation-popup .y-validation-details-container .y-validation-icon-cell .y-error,
+.y-dnd-validation-popup .y-validation-details-container .y-validation-icon-cell .y-warn {
+  top: 3px;
+  margin-right: 20px;
+  position: relative; }
+.y-dnd-validation-popup .y-row-selected .y-validation-details-container > div > li:before {
+  background: #ffffff; }
+
+.y-dnd-validation-popup .y-content-list {
+  border: 1px solid #e0e9f0;
+  border-width: 1px 0;
+  max-height: 305px; }
+  .y-dnd-validation-popup .y-content-list > .z-listbox-body {
+    max-height: 305px;
+    overflow-y: auto; }
+    .y-dnd-validation-popup .y-content-list > .z-listbox-body > table {
+      overflow: hidden; }
+  .y-dnd-validation-popup .y-content-list .z-listitem:hover {
+    background-color: inherit; }
+  .y-dnd-validation-popup .y-content-list .z-listitem > .z-listcell {
+    padding: 7px 0;
+    border-color: #e0e9f0; }
+    .y-dnd-validation-popup .y-content-list .z-listitem > .z-listcell:nth-child(2) {
+      overflow: visible; }
+      .y-dnd-validation-popup .y-content-list .z-listitem > .z-listcell:nth-child(2) .z-listcell-content {
+        overflow: visible; }
+  .y-dnd-validation-popup .y-content-list .z-listitem .z-listcell-content {
+    margin: 0;
+    padding: 0;
+    white-space: pre-wrap; }
+  .y-dnd-validation-popup .y-content-list .z-listitem.y-row-selected {
+    background: #d5eeff; }
+    .y-dnd-validation-popup .y-content-list .z-listitem.y-row-selected > .z-listcell {
+      border-color: #ffffff; }
+  .y-dnd-validation-popup .y-content-list .y-validation-overview-container .z-label {
+    display: block; }
+  .y-dnd-validation-popup .y-content-list .y-select-cell {
+    vertical-align: baseline;
+    position: relative;
+    width: 60px; }
+    .y-dnd-validation-popup .y-content-list .y-select-cell .z-listcell-content {
+      margin: 0 5px 0 20px; }
+  .y-dnd-validation-popup .y-content-list .y-validation-icon-cell {
+    vertical-align: baseline;
+    position: relative; }
+    .y-dnd-validation-popup .y-content-list .y-validation-icon-cell .y-error,
+    .y-dnd-validation-popup .y-content-list .y-validation-icon-cell .y-warn {
+      width: 16px;
+      height: 16px;
+      background: url("images/icon_validation_sprite.png") -16px 0 no-repeat; }
+    .y-dnd-validation-popup .y-content-list .y-validation-icon-cell .y-error {
+      background-position: -32px 0; }
+  .y-dnd-validation-popup .y-content-list td.y-validation-icon-cell {
+    width: 60px; }
+    .y-dnd-validation-popup .y-content-list td.y-validation-icon-cell .y-error,
+    .y-dnd-validation-popup .y-content-list td.y-validation-icon-cell .y-warn {
+      float: right; }
+  .y-dnd-validation-popup .y-content-list .y-details-cell {
+    text-align: right;
+    width: 70px;
+    vertical-align: baseline;
+    position: relative; }
+    .y-dnd-validation-popup .y-content-list .y-details-cell .z-listcell-content {
+      line-height: 20px; }
+  .y-dnd-validation-popup .y-content-list .y-show-details-btn {
+    height: 16px;
+    line-height: 16px;
+    margin-right: 20px;
+    display: inline-block;
+    background: transparent; }
+    .y-dnd-validation-popup .y-content-list .y-show-details-btn.y-expanded-details:after {
+      content: ""; }
+    .y-dnd-validation-popup .y-content-list .y-show-details-btn:after {
+      content: "";
+      color: #7f90a5;
+      font-size: 16px;
+      font-family: "FontAwesome", sans-serif;
+      top: 0;
+      right: 20px;
+      display: inline-block;
+      width: 100%;
+      position: absolute; }
+  .y-dnd-validation-popup .y-content-list .y-validation-icon-cell > .z-listcell-content,
+  .y-dnd-validation-popup .y-content-list .y-details-cell > .z-listcell-content,
+  .y-dnd-validation-popup .y-content-list .y-select-cell > .z-listcell-content {
+    top: 10px;
+    position: absolute;
+    width: 100%; }
+  .y-dnd-validation-popup .y-content-list .y-title {
+    font-weight: bold;
+    white-space: pre-line; }
+  .y-dnd-validation-popup .y-content-list .y-message {
+    font-size: 12px;
+    white-space: pre-line;
+    display: block !important; }

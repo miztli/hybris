@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=ru
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;Корзина
+;customer;Клиент
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;Общая сумма корзины;Общая сумма корзины {operator} {value}
+;y_qualifying_products;Участвующие продукты;Продукты {products} корзины {products_operator}
+;y_qualifying_categories;Участвующие категории;Категории {categories} корзины {categories_operator}
+;y_target_customers;Целевые клиенты;Целевые {customer_groups_operator} группы клиентов {customer_groups} или клиенты {customers}
+;y_product_price;Пороговое значение цены продукта;Цена продукта {operator} {value}
+;y_customer_support;Служба поддержки клиентов;Сеанс вспомогательной службы активен: {value}
+;y_qualifying_group_types;Участвующие типы групп;Группа записей корзины {operator} {groupTypes}
+;y_orders;Заказы или корзины;Заказы или корзины в {orders}
+;y_order_threshold_perfect_partner;Порог на заказы идеального партнера;Продукт идеального партнера {product} в корзине и общая сумма корзины превышают {cart_threshold} с учетом стоимости скидки {is_discounted_price_included}
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;Оператор;Оператор, сравнивающий значения общей суммы корзины
+;y_cart_total;value;Значение общей суммы корзины;Используемые валюта и значение общей суммы корзины
+;y_qualifying_products;operator;Оператор;Оператор, сравнивающий количество участвующих продуктов
+;y_qualifying_products;quantity;Количество на одну запись заказа;Необходимое количество участвующих продуктов (на одну запись заказа)
+;y_qualifying_products;products_operator;Оператор по выбору продуктов;Выбор ЛЮБОГО продукта или ВСЕХ продуктов из списка участвующих продуктов
+;y_qualifying_products;products;Продукты;Список участвующих продуктов
+;y_qualifying_products;catalog;Фильтрация выбора по каталогу;Выбранное значение каталога будет использовано для фильтрации в связанных полях
+;y_qualifying_categories;operator;Оператор;Оператор, сравнивающий количество продуктов в участвующих категориях
+;y_qualifying_categories;quantity;Количество на одну запись заказа;Необходимое количество продуктов из участвующих категорий (на одну запись заказа)
+;y_qualifying_categories;categories_operator;Оператор по выбору категорий;Выбор ЛЮБОЙ категории или ВСЕХ категорий из списка участвующих категорий
+;y_qualifying_categories;categories;Категории;Список участвующих категорий
+;y_qualifying_categories;excluded_categories;Исключенные категории;Список подкатегорий для исключения из участвующих категорий
+;y_qualifying_categories;excluded_products;Исключенные продукты;Список продуктов из участвующих категорий для исключения
+;y_qualifying_categories;catalog;Фильтрация выбора по каталогу;Выбранное значение каталога будет использовано для фильтрации в связанных полях
+;y_target_customers;customer_groups_operator;Оператор по выбору групп клиентов;Клиент должен быть участником ЛЮБОЙ группы или ВСЕХ групп клиентов
+;y_target_customers;customer_groups;Группы клиентов;Список участвующих групп клиентов
+;y_target_customers;customers;Клиенты;Список участвующих клиентов
+;y_target_customers;excluded_customer_groups;Исключенные группы клиентов;Список подгрупп для исключения из участвующих групп клиентов
+;y_target_customers;excluded_customers;Исключенные клиенты;Список клиентов для исключения из участвующих групп клиентов
+;y_product_price;operator;Оператор;Оператор, сравнивающий значения продуктов
+;y_product_price;value;Пороговое значение цены;Валюта и пороговое значение продуктов, используемые для участия в рекламной акции
+;y_customer_support;value;Сеанс вспомогательной службы активен;Указывает, помогает ли агент службы поддержки клиенту в онлайн-магазине
+;y_qualifying_group_types;operator;Оператор;Оператор по выбору типов групп
+;y_qualifying_group_types;groupTypes;Типы групп;Список участвующих типов групп
+;y_order_threshold_perfect_partner;catalog;Фильтрация выбора по каталогу;Выбранное значение каталога будет использовано для фильтрации в связанных полях
+;y_order_threshold_perfect_partner;product;Продукт идеального партнера;Продукт идеального партнера, предлагаемый со скидкой
+;y_order_threshold_perfect_partner;cart_threshold;Пороговое значение общей суммы корзины;Общая минимальная сумма заказа для участия в рекламной акции. Каждой валюте присваивается свое значение, и все валюты, применимые к заказу, должны иметь значение.
+;y_order_threshold_perfect_partner;is_discounted_price_included;При расчете общей суммы учитывать стоимость скидки;Включите цену товара партнера со скидкой в общую сумму заказа при сравнении с пороговым значением.
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;Скидки на корзину
+;product_discounts;Скидки на продукты
+;partner_product_discounts;Скидки на продукты партнера
+;shipping;Доставка
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;Процентная скидка на корзину;Применить скидку {value,number,percent*1} к общей сумме корзины;
+;y_order_fixed_discount;Фиксированная скидка на корзину;Применить скидку {value} к общей сумме корзины;
+;y_order_entry_percentage_discount;Процентная скидка на продукты;Применить скидку {value,number,percent*1} к участвующим продуктам;
+;y_order_entry_fixed_discount;Фиксированная скидка на продукты;Применить скидку {value} к участвующим продуктам;
+;y_order_entry_fixed_price;Целевая фиксированная цена на продукты;Применить целевую цену {value} к участвующим продуктам;
+;y_target_bundle_price;Целевая цена пакета;Применить целевую цену {value} к пакету;
+;y_free_gift;Бесплатный подарок;Бесплатная раздача {quantity} {product} продуктов;
+;y_partner_order_entry_percentage_discount;Процентная скидка на продукты партнеров;Применить скидку {value,number,percent*1} к продуктам партнеров;
+;y_partner_order_entry_fixed_discount;Фиксированная скидка на продукты партнеров;Применить скидку {value} к продуктам партнеров;
+;y_partner_order_entry_fixed_price;Целевая фиксированная цена на продукты партнеров;Применить целевую цену {value} к продуктам партнеров;
+;y_change_delivery_mode;Изменить режим доставки;Изменение режима доставки на {delivery_mode};
+;y_trigger_message;Инициировать сообщение для правила;Отображение сообщения для правила;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;Значение процентной скидки;Процентная скидка для применения к общей сумме корзины
+;y_order_fixed_discount;value;Значение абсолютной скидки;Валюта и значение абсолютной скидки для применения к общей сумме корзины
+;y_order_entry_percentage_discount;value;Значение процентной скидки;Процентная скидка для применения к участвующим продуктам
+;y_order_entry_fixed_discount;value;Значение абсолютной скидки;Валюта и значение абсолютной скидки для применения к участвующим продуктам
+;y_order_entry_fixed_price;value;Целевая фиксированная сумма;Валюта и значение целевой цены для применения к участвующим продуктам
+;y_target_bundle_price;value;Целевая цена пакета;Валюта и значение целевой цены для применения к пакету
+;y_target_bundle_price;selection_strategy;Стратегия выбора;Стратегия, используемая для выбора продуктов в случае, когда несколько позиций в корзине являются частью пакета
+;y_target_bundle_price;qualifying_containers;Количества продуктов в пакете;Ид. контейнера и соответствующие количества требуемого пакета
+;y_free_gift;product;Подарочный продукт;Бесплатный продукт, добавляемый в корзину автоматически
+;y_free_gift;quantity;Количество;Количество позиций для бесплатной выдачи
+;y_free_gift;catalog;Фильтрация выбора по каталогу;Выбранное значение каталога будет использовано для фильтрации в связанных полях
+;y_free_gift;qualifying_containers;Участвующие контейнеры продуктов;Ид. контейнера и соответствующие количества участвующих продуктов
+;y_partner_order_entry_percentage_discount;value;Значение процентной скидки;Процентная скидка для применения к продуктам партнеров
+;y_partner_order_entry_percentage_discount;selection_strategy;Стратегия выбора;Стратегия, используемая для выбора продуктов в случае, когда несколько позиций в корзине являются частью действия
+;y_partner_order_entry_percentage_discount;qualifying_containers;Участвующие контейнеры продуктов;Ид. контейнера и соответствующие количества участвующих продуктов
+;y_partner_order_entry_percentage_discount;target_containers;Целевые контейнеры продуктов;Ид. контейнера и соответствующие количества целевых продуктов партнеров
+;y_partner_order_entry_fixed_discount;value;Значение абсолютной скидки;Валюта и значение целевой цены для применения к продуктам партнеров
+;y_partner_order_entry_fixed_discount;selection_strategy;Стратегия выбора;Стратегия, используемая для выбора продуктов в случае, когда несколько позиций в корзине являются частью действия
+;y_partner_order_entry_fixed_discount;qualifying_containers;Участвующие контейнеры продуктов;Ид. контейнера и соответствующие количества участвующих продуктов
+;y_partner_order_entry_fixed_discount;target_containers;Целевые контейнеры продуктов;Ид. контейнера и соответствующие количества целевых продуктов партнеров
+;y_partner_order_entry_fixed_price;value;Целевая фиксированная сумма;Валюта и значение целевой цены для применения к продуктам партнеров
+;y_partner_order_entry_fixed_price;selection_strategy;Стратегия выбора;Стратегия, используемая для выбора продуктов в случае, когда несколько позиций в корзине являются частью действия
+;y_partner_order_entry_fixed_price;qualifying_containers;Участвующие контейнеры продуктов;Ид. контейнера и соответствующие количества участвующих продуктов
+;y_partner_order_entry_fixed_price;target_containers;Целевые контейнеры продуктов;Ид. контейнера и соответствующие количества целевых продуктов партнеров
+;y_change_delivery_mode;delivery_mode;Режим поставки;Режим поставки для применения к корзине в результате действия

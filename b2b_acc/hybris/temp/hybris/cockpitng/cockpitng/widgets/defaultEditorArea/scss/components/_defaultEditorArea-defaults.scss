@@ -1,0 +1,149 @@
+/*================================
+    Editor-Area Defaults
+================================*/
+// Defaults applying on the Editor-Area
+
+
+@import "../support/_defaultEditorArea-mixins.scss";
+
+.yw-editor-area-main-content {
+    .y-toolbar {
+	   margin: $editor-area__toolbar--margin/2 $editor-area__toolbar--margin $editor-area__toolbar--margin;
+    }
+    > div, .yw-editorarea {
+        height: 100%;
+    }
+    .yw-editorarea-tablabel {
+        font-weight: normal;
+        font-size: $editor-area__tablabel--font-size;
+        padding: 0;
+    }
+    .yw-editorarea-tab-pinned .yw-editorarea-tablabel {
+       font-weight: bold;
+    }
+    .z-window-highlighted .z-textbox {
+        border-radius: $editor-area__input-field--border-radius;
+        /* height, line-height may also be removed */
+            height: 21px;
+            line-height: 21px;
+        padding: 0 5px;
+    }
+    input[disabled] {
+        + .z-combobox-button:hover, 
+        + .z-bandbox-button:hover, 
+        + .z-datebox-button:hover, 
+        + .z-timebox-button:hover, 
+        + .z-spinner-button:hover, 
+        + .z-doublespinner-button:hover, 
+        + .z-combobox-button:active, 
+        + .z-bandbox-button:active, 
+        + .z-datebox-button:active, 
+        + .z-timebox-button:active, 
+        + .z-spinner-button:active, 
+        + .z-doublespinner-button:active,
+        + .z-datebox-button:hover {
+            border-color: $editor-area__box-disabled--border-color;
+        }
+    }
+}
+
+.yw-editorarea-tabbox-tabpanels {
+    padding: $container-spacing-default__third 0 $container-spacing-default__base;
+
+    &-tabpanel {
+        overflow: auto;
+        border: none;
+        padding: 0;
+        &-groupbox {
+            border: none;
+            background: $white;
+        }
+    }
+    button.yw-expandCollapse {
+        right: 5px;
+    }
+}
+
+.yw-editorarea-tab-pin-div {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: none;
+}
+
+.z-tab-selected .yw-editorarea-tab-pin-div {
+	display: block;
+}
+
+.yw-editorarea-title {
+    font-size: $editor-area__header-title-caption--font-size;
+    font-weight: 500; /* MEDIUM */
+    color: $editor-area__header-title-caption--color;
+    padding: $editor-area__header-title-caption--padding;
+}
+
+.yw-loceditor-dynamic-content > .yw-loceditor-row {
+    width: 100%;
+}
+
+.ye-editorarea-bottom-bar {
+    background-color: $editor-area__bottom-bar--bg-color;
+    text-align: $editor-area__bottom-bar--text-align;
+    font-size: $editor-area__bottom-bar--font-size;
+
+    .ye-cancel-container .z-button {
+        background-color: $editor-area__bottom-bar-cancel-btn--bg-color;
+        border-left: $editor-area__bottom-bar-cancel-btn--border-left;
+    }
+
+    .yw-editor-area-nested-toolbar-widget {
+        display: inline-block;
+        float: left;
+    }
+}
+
+.yw-editorarea-notaglabels .yw-editorarea .z-groupbox-header {
+	display:none;
+}
+
+.yw-editorarea-notaglabels .yw-editorarea .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-ed-label {
+	display:none;
+}
+
+.yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-ed {
+    overflow-wrap: break-word;
+
+    > .yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-ed-editor {
+        margin-top: $editor-area__tabpanel-groupbox-ed-editor--margin-top;
+    }
+}
+
+.yw-editorarea-label-container,
+.yw-loceditor-caption {
+    padding-bottom: $editor-defaults__editor-label-container--padding-bottom;
+    overflow-wrap: break-word;
+}
+
+.yw-editorarea-label-container,
+.yw-loceditor-caption,
+.yw-editorarea-tabbox-tabpanels-tabpanel-groupbox-ed {
+    
+    > .z-label {
+        display: inline;
+        margin-bottom: 0;
+    }
+    .ie &,
+    .edge & {
+        word-break: break-all;
+    }
+}
+
+.yw-editorarea-label-container {
+    &.ye-validation-error,
+    &.ye-validation-warn,
+    &.ye-validation-info {
+        padding-right: $editor-defaults__editor-validation-label--padding-right;
+    }
+}

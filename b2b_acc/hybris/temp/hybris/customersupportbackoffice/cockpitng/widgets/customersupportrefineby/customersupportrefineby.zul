@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.
+ All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+		sclass="yw-customersupportrefineby">
+	<vlayout sclass="yw-customersupportrefineby-container">
+		<span id="headerContainer" sclass="header-container">
+			<label id="headerLabel" value="${labels.customersupportbackoffice.refineby.filters.header.label}"/>
+			<div id="filterIcon" sclass="yw-filter-icon"></div>
+		</span>
+		<div id="customersupportFilterContainer" sclass="yw-customersupport-filter-container">
+		</div>
+		<label id="emptyFilters" value="${labels.customersupportbackoffice.refineby.filters.none}" sclass="yw-customersupport-no-filters"/>
+	</vlayout>
+</widget>

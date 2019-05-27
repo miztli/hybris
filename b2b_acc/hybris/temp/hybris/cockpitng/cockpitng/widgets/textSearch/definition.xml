@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd" id="com.hybris.cockpitng.textsearch">
+	<name>Text Search</name>
+	<description>Input widget for any text based search</description>
+	<defaultTitle>Text Search</defaultTitle>
+	<author>hybris</author>
+	<version>0.1</version>
+
+	<sockets>
+		<input type="java.lang.Object" id="clearQuery"/>
+		<input type="java.lang.Boolean" id="enabled"/>
+		<input type="java.lang.String" id="query"/>
+		<output type="java.lang.String" id="query"/>
+	</sockets>
+
+	<view src="textsearch.zul"/>
+	<controller class="com.hybris.cockpitng.widgets.controller.TextSearchController"/>
+
+	<keywords>
+		<keyword>Search</keyword>
+	</keywords>
+
+	<settings>
+  		<setting key="enabledByDefault" type="Boolean" default-value="true"/>
+  	</settings>
+</widget-definition>

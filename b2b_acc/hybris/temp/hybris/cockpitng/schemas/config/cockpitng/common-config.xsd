@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<xs:schema elementFormDefault="qualified" version="1.0"
+           targetNamespace="http://www.hybris.com/cockpitng/config/common"
+           xmlns="http://www.hybris.com/cockpitng/config/common"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="positioned" abstract="true">
+        <xs:attribute name="position" type="xs:integer" use="optional"/>
+    </xs:complexType>
+
+    <xs:simpleType name="MergeMode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MERGE"/>
+            <xs:enumeration value="REPLACE"/>
+            <xs:enumeration value="REMOVE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="image-preview" abstract="true">
+        <xs:attribute name="display-thumbnail" type="xs:boolean" default="true"/>
+        <xs:attribute name="display-preview" type="xs:boolean" use="optional" default="false" />
+        <xs:attribute name="display-default-image" type="xs:boolean" use="optional" default="true"/>
+        <xs:attribute name="default-image" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="parameter">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

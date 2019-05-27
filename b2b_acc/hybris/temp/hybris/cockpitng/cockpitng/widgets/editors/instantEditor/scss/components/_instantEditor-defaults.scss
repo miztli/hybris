@@ -1,0 +1,69 @@
+/*================================
+    instant-Editor Defaults
+================================*/
+// Defaults applying on the instant-Editor
+
+.ye-instant-editor {
+    &.z-div:after {
+        content: ' ';
+        display: block;
+        clear: both;
+    }
+
+    &-buttons-container {
+        position: absolute;
+        right: $instantEditor__editor-buttons-container--right;
+        z-index: $instantEditor__editor-buttons-container--z-index;
+
+        .z-button {
+            width: $instantEditor__editor-buttons--size;
+            height: $instantEditor__editor-buttons--size;
+            background: $instantEditor__editor-buttons--bg-color;
+            padding: $instantEditor__editor-buttons--padding;
+            text-align: center;
+            border: $instantEditor__editor-buttons--border;
+            border-top-width: $instantEditor__editor-buttons--border-top-width;
+
+            &:hover,
+            &:focus {
+                background: $instantEditor__editor-buttons--hover-bg-color;
+            }
+        }
+
+        .ye-instant-editor-button-confirm {
+            color: $instantEditor__editor-confirm-button--color;
+        }
+        .ye-instant-editor-button-cancel {
+            color: $instantEditor__editor-cancel-button--color;
+            border-right-width: $instantEditor__editor-cancel-button--border-right-width;
+        }
+    }
+
+    &-editor-container {
+        .yw-loceditor-caption .y-icon-loceditor {
+            margin-bottom: $instantEditor__editor-icon-loceditor--margin-bottom;
+        }
+        > .z-div > .yw-loceditor {
+            margin-top: $instantEditor__editor-localized-container--margin-top;
+        }
+    }
+
+    &-label-editable {
+        margin-top: $instantEditor__editor-label-editable--margin-top;
+        margin-left: $instantEditor__editor-label-editable--margin-left;
+        line-height: $instantEditor__editor-label-editable--line-height;
+
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .yw-editorarea-tabbox-tabpanels &.z-label {
+            margin-bottom: $instantEditor__editor-label-editable--margin-bottom;
+            line-height: $instantEditor__editor-label-editable--line-height;
+        }
+    }
+
+    &-component-hidden {
+        display: none !important;
+    }
+}

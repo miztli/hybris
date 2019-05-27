@@ -1,0 +1,23 @@
+@import "support/_flexiblelayout-variables.scss";
+
+.yw-flexlayout-sidebar {
+    transition: $flexlayout__sidebar--transition;
+
+    &-opened > & {
+        transition: $flexlayout__sidebar-opened--transition;
+    }
+
+    @media (min-width: $flexlayout__media-query-xs--min-width + 1px) {
+        &-hover-overlap > & {
+            transition: $flexlayout__sidebar-overlap--transition;
+
+            &:hover {
+                transition: $flexlayout__sidebar-overlap-hover--transition;
+            }
+        }
+    }
+}
+
+.yw-flexlayout-contents {
+    transition: $flexlayout__contents--transition;
+}

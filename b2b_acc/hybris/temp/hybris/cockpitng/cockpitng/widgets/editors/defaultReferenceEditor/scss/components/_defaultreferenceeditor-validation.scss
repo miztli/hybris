@@ -1,0 +1,104 @@
+//    DefaultReferenceEditor Validation
+// ================================
+
+@import "../support/_defaultreferenceeditor-variables.scss";
+@import "../../../../defaultEditorArea/scss/support/_defaultEditorArea-mixins.scss";
+
+@mixin _addReferenceEditorElementsInValidationStates ($type, $color, $bg-color, $change-reference-editor-selected-listbox:true, $button-hover-bg-color:false) {
+    .ye-validation-#{$type} {
+        div.ye-default-reference-editor-selected {
+            &-item-container {
+                @include _colored-background-border ($color, $bg-color);
+                border-bottom: 0;
+
+                .z-label {
+                    color: $color;
+                }
+            }
+            &-listbox .z-listitem:hover {
+                div.ye-default-reference-editor-selected-item-container.ye-remove-enabled {
+                    background-color: $bg-color;
+                }            
+                /*.ye-default-reference-editor-remove-button:after {
+                    background-position: center  (-$default-reference-editor__list-item-remove-icon--size*3);
+                }*/
+            }
+        }
+        
+        .ye-default-reference-editor-selected-listbox .z-listitem div.ye-default-reference-editor-selected-item-container{
+            border-bottom: $default-reference-editor__box--border-width solid $color;
+        }
+
+        .ye-default-reference-editor-bandbox {
+            border-color: $color;
+            .z-bandbox-input {
+                border-right-width: 0;
+                background: $bg-color;
+                color: $color;
+            }
+            .z-bandbox-button,
+            .z-bandbox-input {
+                border: $default-reference-editor__box--border-width solid $color;
+            }
+            
+        }
+
+        > .yw-loceditor-row-locale.z-label, 
+        > .yw-loceditor-row-editor .ye-wysiwyg > .z-ckeditor > .cke {
+            border-color: $color;
+        }
+        > .yw-loceditor-row-editor .ye-wysiwyg > .z-ckeditor {
+            .cke_bottom, .cke_top {
+                background-color: transparent;
+            }
+            > .cke {
+                background: $bg-color;
+            }
+        }
+       /* > .yw-loceditor-row-editor .ye-wysiwyg > .z-ckeditor .cke_wysiwyg_frame {
+            background-color: $bg-color;
+        }
+        */
+        .yw-loceditor-dynamic-content {
+            .z-bandbox-input {
+                color: $editor-area__box--text-color;
+                background: inherit;
+            }
+            .z-bandbox-button,
+            .z-bandbox-input {
+                border-color: $editor-area__box--border-color;
+            }
+
+            .ye-validation-#{$type} {
+                .z-bandbox-button,
+                .z-bandbox-input {
+                    border-color: $color;
+                }
+            }
+        }
+        @if $change-reference-editor-selected-listbox {
+            .ye-default-reference-editor-selected-listbox .ye-default-reference-editor-selected-item-container {
+                background: $bg-color;
+                color: $color;
+            }
+        }
+    }
+    .yw-loceditor-fixed-open .ye-validation-#{$type}, .ye-validation-#{$type} .yw-loceditor-dynamic-content { 
+        .ye-default-reference-editor-bandbox .z-bandbox-button {
+            border: none;
+        }
+    }
+    @if $button-hover-bg-color {
+        .yw-loceditor-fixed-open, 
+        .yw-loceditor-fixed-closed,
+        .yw-loceditor-dynamic-content  {
+            .ye-validation-#{$type} .z-bandbox-button:hover {
+                background: $button-hover-bg-color;
+            }
+        }
+    }
+}
+
+@include _addReferenceEditorElementsInValidationStates(error, $validation__error--color, $validation__error--bg-color); //, true, $validation__error--color); //add (<-) for coloring bg in validation-state
+@include _addReferenceEditorElementsInValidationStates(warn, $validation__warn--color, $validation__warn--bg-color);
+@include _addReferenceEditorElementsInValidationStates(info, $validation__info--color, $validation__info--bg-color, false);

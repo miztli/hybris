@@ -1,0 +1,9 @@
+try
+								{
+									de.hybris.ant.taskdefs.AntPerformable p = new de.hybris.ant.taskdefs.InitPlatformAntPerformableImpl("master");
+									p.doPerform();
+								}
+								finally
+								{
+									de.hybris.platform.util.RedeployUtilities.shutdown();
+								}

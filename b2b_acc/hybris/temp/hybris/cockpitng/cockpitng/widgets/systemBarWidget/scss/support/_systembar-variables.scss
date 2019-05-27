@@ -1,0 +1,168 @@
+/*================================
+    Systembar Variables
+================================*/
+// SASS Variables relevant for:
+// - Systembar (General)
+// - Quick Locale Toggle Popup
+// - User Role Chooser Popup
+// - Perspective Chooser Popup
+
+@import "cockpitng-globals.scss";
+
+$systembar__default--font-color: $white;
+$systembar__default--font-weight: $font-weight-normal;
+$systembar__default--font-size: $font-size__base;
+$systembar__default--font-family: $font-family-opensans;
+$systembar__default--border-color: rgba($white, 0.1);
+
+$systembar__default--bp-xs: 500px;
+$systembar__default--bp-s: 580px;
+$systembar__default--bp-ms: 680px;
+$systembar__default--bp-m: 1020px;
+
+$systembar__content--sizer: 40px;
+$systembar__container--height: $navigation__top-menu--height;
+$systembar__container--padding: floor(($systembar__container--height - $systembar__content--sizer)/2) 0;
+$systembar__container--padding-x: 32px;
+$systembar__container-bp-s--padding-x: 8px;
+$systembar__container-bp-m--padding-x: 16px;
+
+$systembar__container--bg-color: $navigation__top-menu--bg-color;
+$systembar__container-hover--bg-color: $navigation__top-menu-item-hover--bg-color; //$blue__default--100;
+
+$systembar-popup__item--color: #515559;
+$systembar-popup__item-selected--color: #32363a;
+
+$systembar__perspective-breadcrumb--padding-x: 12px;
+$systembar__perspective-breadcrumb-icon--size: 28px;
+$systembar__perspective-breadcrumb--padding: (($systembar__content--sizer - 32px) / 2) ($systembar__perspective-breadcrumb--padding-x + floor(($systembar__content--sizer - $systembar__perspective-breadcrumb-icon--size)/2));
+$systembar__perspective-breadcrumb--margin-right: 0;
+$systembar__perspective-breadcrumb-content--padding: 2px 0;
+$systembar__perspective-breadcrumb-label-bp-xs--min-width: 0.96em;
+
+$systembar__perspective-breadcrumb-content-bp-s--text-overflow: ellipsis;
+$systembar__perspective-breadcrumb-content-bp-s--overflow: hidden;
+$systembar__perspective-breadcrumb-content-bp-s--white-space: nowrap;
+$systembar__perspective-breadcrumb-content-bp-xs--max-width: 50px;
+$systembar__perspective-breadcrumb-content-bp-s--max-width: $systembar__perspective-breadcrumb-content-bp-xs--max-width + 30px;
+$systembar-flexible__perspective-breadcrumb-caption--max-width: calc(100% - 14px);
+$systembar-flexible__perspective-breadcrumg-caption-label--min-width: 0.96em;
+$systembar-flexible__perspective-breadcrumb-content--text-overflow: $systembar__perspective-breadcrumb-content-bp-s--text-overflow;
+
+//line-height has to be same as .z-caption min-height from zk.css
+$systembar__perspective-breadcrumb-content--line-height: $systembar__perspective-breadcrumb-icon--size;
+$systembar__perspective-breadcrumb-content--font-size: $font-size__medium;
+$systembar__perspective-breadcrumb-content--font-weight: $font-weight-bold;
+
+$systembar__perspective-item--border-color: $systembar__default--border-color;
+$systembar__perspective-item--border: $boxes--border__thin solid $systembar__perspective-item--border-color;
+
+$systembar__perspective-caption--width: auto;
+
+$systembar__perspective-item-image--margin-right: $systembar__perspective-breadcrumb--padding-x;
+$systembar__perspective-item-image-bp-xs--display: none;
+$systembar__perspective-item-icon--position: static;
+$systembar__perspective-item-icon--color: #d1e8ff; // $blue__light--100 // --fd-color-shell-2
+$systembar__perspective-item-icon--font-size: 14px;
+$systembar__perspective-item-icon--line-height: $systembar__perspective-breadcrumb-content--line-height;
+$systembar__perspective-item-icon--margin-left: 8px;
+$systembar__perspective-item-icon-bp-s--margin-left: 0;
+$systembar__perspective-item-icon--content: $caretarrow__down--content;
+
+$systembar__perspective-menu--border-color: $systembar__default--border-color;
+$systembar__perspective-menu--border-width: $boxes--border__thin;
+$systembar__perspective-menu-domain-node--margin-left: $systembar__perspective-menu--border-width;
+$systembar__perspective-menu--border: $systembar__perspective-menu--border-width solid $systembar__perspective-menu--border-color;
+$systembar__perspective-menu--padding: 4px 0;
+$systembar__perspective-menu--bg-color: #3f5367;
+$systembar__perspective-menu--border-radius: 4px;
+
+$systembar__perspective-popup-container--bg-color: $navigation__popup--bg-color;
+$systembar__perspective-popup-item--bg-color: $navigation__popup--bg-color; //$systembar__perspective-menu--bg-color;
+$systembar__perspective-popup-item-hover--bg-color: $navigation__popup-hover--bg-color; //#354a5f;
+$systembar__perspective-popup-item-selected--bg-color: $navigation__popup-selected--bg-color; // #2A3341;
+$systembar__perspective-popup-item--color: $systembar-popup__item--color;
+$systembar__perspective-breadcrumb-item--color: $systembar__default--font-color;
+
+$systembar__system-items-container--line-height: $systembar__content--sizer;
+
+$systembar__toolbar-part-left--float: left;
+$systembar__toolbar-part-center--width: 100%;
+$systembar__toolbar-part-center--height: 0;
+$systembar__toolbar-part-center--position: absolute;
+$systembar__toolbar-part-center--text-align: center;
+$systembar__toolbar-part-right--float: right;
+$systembar__toolbar-part-right--text-align: right;
+
+$systembar__toolbar-button--line-height: $systembar__content--sizer;
+$systembar__toolbar-button--width: $systembar__toolbar-button--line-height;
+$systembar__toolbar-button--height: $systembar__toolbar-button--line-height;
+$systembar__toolbar-button--text-align: center;
+$systembar__toolbar-button--border-radius: 4px;
+$systembar__toolbar-button--margin-left: 12px;
+$systembar__toolbar-button-bp-s--margin-left: 4px;
+$systembar__toolbar-button-bp-m--margin-left: 8px;
+
+$systembar__toolbar-button-toggle--position: relative;
+$systembar__toolbar-button-toggle-active--bg-color: $navigation__top-menu-item-selected--bg-color; //mix($systembar__container--bg-color, $systembar__container-hover--bg-color, 25%);
+
+$systembar__logo-container--width: 48px;
+$systembar__logo-container--height: $systembar__content--sizer;
+$systembar__toolbar-logo--margin: 0;
+
+$systembar__logo-container--image-url: url('images/logo-sap.png');
+$systembar__logo-container--image-repeat: no-repeat;
+$systembar__logo-container--image-position: left center;
+$systembar__logo-container--image-size: $systembar__logo-container--width;
+
+$systembar-popup__menu--width: 240px;
+$systembar-popup__menu--top: $systembar__container--height;
+$systembar-popup__menu--padding: 4px 0;
+$systembar-popup__menu--box-shadow: 0px 2px 5px 0px rgba($black, 0.1);
+$systembar-popup__menu--border-radius: 4px;
+$systembar-popup__menu--max-height: calc(100vh - #{$systembar__container--height + nth($systembar-popup__menu--padding, 1)});
+$systembar-popup__container--top: $systembar__container--height;
+$systembar-popup__container--margin-top: 0; //
+$systembar-popup__container--padding: nth($systembar__container--padding, 1) 0;
+
+$systembar-popup__item--bg-color: $navigation__popup--bg-color;
+$systembar-popup__item-hover--bg-color: $navigation__popup-hover--bg-color;
+$systembar-popup__item-selected--bg-color: $navigation__popup-selected--bg-color;
+$systembar-popup__item-selected-hover--bg-color: mix($navigation__popup-hover--bg-color,$navigation__popup-selected--bg-color, 50%);
+$systembar-popup__item-static--bg-color: transparent;
+
+$systembar-popup__treerow--width: 100%;
+$systembar-popup__treerow--indentation: $systembar__perspective-breadcrumb--padding-x;
+$systembar-popup__treerow--indentation-step: 10px;
+
+$systembar-popup__tree-cell-content--line-height: $systembar__perspective-breadcrumb-content--line-height;
+$systembar-popup__tree-cell--padding: (floor(($systembar__content--sizer - $systembar-popup__tree-cell-content--line-height)/2) - $boxes--border__thin) 8px;
+$systembar-popup__tree-cell-content--padding: 0;
+$systembar-popup__tree-cell-label-content--padding-right: 10px;
+$systembar-popup__tree-cell-icon-content--padding: 0;
+$systembar-popup__tree-cell-image--height: 28px;
+$systembar-popup__tree-cell-image--margin-right: 4px + nth($systembar-popup__tree-cell--padding, 1);
+$systembar-popup__tree-cell-image--margin-left: -4px + nth($systembar-popup__tree-cell--padding, 1);
+$systembar-popup__tree-icon--padding: 15px;
+
+$systembar-popup__list-cell--font-color: $systembar-popup__item--color;
+$systembar-popup__list-cell--padding: 8px 10px;
+$systembar-popup__list-cell-content--padding: 3px 5px 2px 5px;
+$systembar-popup__list-cell--border-color: transparent; //$systembar__default--border-color;
+$systembar-popup__list-cell--border-top: $boxes--border__thin solid $systembar-popup__list-cell--border-color;
+$systembar-popup__list-cell--border-bottom: none;
+
+$systembar-popup__plain-label--padding: 13px 15px;
+$systembar-popup__plain-label--line-height: 20px;
+
+$systembar-popup__icon-check--color: #0a6ed1;
+$systembar-popup__icon-check--top: 0;
+$systembar-popup__icon-check--padding-top: 0;
+$systembar-popup__icon-check--margin-top: -5px;
+$systembar-popup__icon-uncheck--color: #dededf;
+
+$systembar__caret--font-color: $systembar__default--font-color;
+$systembar__caret-right--width: 4px;
+$systembar__caret-right--height: 14px;
+$systembar__caret-down--width: 8px;
+$systembar__caret-down--height: 14px;

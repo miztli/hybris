@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+                   id="com.hybris.cockpitng.flexiblelayout">
+	<name>Flexible Layout</name>
+	<description>Flexible layout widget is a main content slot with responsive sidebar</description>
+	<defaultTitle>Flexible Layout</defaultTitle>
+	<author>hybris</author>
+	<version>0.1</version>
+
+	<sockets>
+		<input id="openSidebar" type="java.lang.Object"/>
+		<input id="closeSidebar" type="java.lang.Object"/>
+		<input id="toggleSidebar" type="java.lang.Object"/>
+		<input id="toggleCollapsedSidebar" type="java.lang.Object"/>
+		<input id="sidebarState" type="java.lang.String"/>
+		<input id="responsiveBreakpoint" type="java.lang.String"/>
+		<output id="sidebarState" type="java.lang.String"/>
+	</sockets>
+
+	<view src="flexiblelayout.zul"/>
+	<controller class="com.hybris.cockpitng.widgets.controller.FlexibleLayoutWidgetController"/>
+
+	<settings>
+		<setting key="sidebarPosition" type="ENUM(left,right)" default-value="left"/>
+		<setting key="sidebarState" type="ENUM(opened,closed)" default-value="opened"/>
+		<setting key="sidebarCollapsed" type="java.lang.Boolean" default-value="false"/>
+		<setting key="sidebarCollapsible" type="java.lang.Boolean" default-value="true"/>
+		<setting key="overlapOnHover" type="java.lang.Boolean" default-value="false"/>
+		<setting key="sidebarOverlap" type="java.lang.Boolean" default-value="false" />
+		<setting key="showSidebarHeader" type="java.lang.Boolean" default-value="true" />
+	</settings>
+
+	<keywords>
+		<keyword>Layout</keyword>
+	</keywords>
+</widget-definition>

@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=ja
+
+############################# CONDITIONS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart;カート
+;customer;顧客
+
+INSERT_UPDATE RuleConditionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang]
+;y_cart_total;カート合計;カート合計 {operator} {value}
+;y_qualifying_products;適格商品;カート {products_operator} 商品 {products}
+;y_qualifying_categories;適格カテゴリ;カート {categories_operator} カテゴリ {categories}
+;y_target_customers;ターゲット顧客;ターゲット {customer_groups_operator} 顧客グループ {customer_groups} または顧客 {customers}
+;y_product_price;商品価格しきい値;商品価格 {operator} {value}
+;y_customer_support;カスタマーサポート;支援されたサービスセッションは有効です: {value}
+;y_qualifying_group_types;適格グループタイプ;カートエントリグループ {operator} {groupTypes}
+;y_orders;オーダーまたはカート;{orders} 内のオーダーまたはカート
+;y_order_threshold_perfect_partner;注文しきい値パーフェクトパートナ;カート内のパーフェクトパートナ製品 {product} と、割引価格 {is_discounted_price_included} を含めた {cart_threshold} を超えるカート合計
+
+INSERT_UPDATE RuleConditionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_cart_total;operator;演算子;カート合計値を比較する演算子
+;y_cart_total;value;カート合計値;カート合計で使用される通貨と値のマップ
+;y_qualifying_products;operator;演算子;適格商品の必要数量を比較する演算子
+;y_qualifying_products;quantity;注文エントリごとの数量;適格必須商品の数量 (注文エントリごと)
+;y_qualifying_products;products_operator;商品選択演算子;適格商品のリストから任意の商品またはすべての商品を選択します
+;y_qualifying_products;products;商品;適格商品のリスト
+;y_qualifying_products;catalog;カタログによる選択値のフィルタ;関連項目内のフィルタのために、選択されたカタログ値が使用されます
+;y_qualifying_categories;operator;演算子;適格カテゴリの商品の必要数量を比較する演算子
+;y_qualifying_categories;quantity;注文エントリごとの数量;適格カテゴリの必須商品の数量 (注文エントリごと)
+;y_qualifying_categories;categories_operator;カテゴリ選択演算子;適格カテゴリのリストから任意のカテゴリまたはすべてのカテゴリを選択します
+;y_qualifying_categories;categories;カテゴリ;適格カテゴリのリスト
+;y_qualifying_categories;excluded_categories;除外されるカテゴリ;適格カテゴリから除外されるサブカテゴリのリスト
+;y_qualifying_categories;excluded_products;除外される商品;適格カテゴリから除外される商品のリスト
+;y_qualifying_categories;catalog;カタログによる選択値のフィルタ;関連項目内のフィルタのために、選択されたカタログ値が使用されます
+;y_target_customers;customer_groups_operator;顧客グループ選択演算子;顧客は任意またはすべての顧客グループの一部でなければなりません
+;y_target_customers;customer_groups;顧客グループ;適格顧客グループのリスト
+;y_target_customers;customers;顧客;適格顧客のリスト
+;y_target_customers;excluded_customer_groups;除外される顧客グループ;適格顧客グループから除外されるサブグループのリスト
+;y_target_customers;excluded_customers;除外される顧客;適格顧客グループから除外される顧客のリスト
+;y_product_price;operator;演算子;商品価額を比較する演算子
+;y_product_price;value;価格しきい値;このプロモーションを適用するために使用される商品の通貨としきい値のマップ
+;y_customer_support;value;支援サービスセッションが有効;カスタマーサポートエージェントが店頭で顧客を支援しているかどうかに基づいて、プロモーションを有効化します
+;y_qualifying_group_types;operator;演算子;グループタイプ選択演算子
+;y_qualifying_group_types;groupTypes;グループタイプ;適格グループタイプのリスト
+;y_order_threshold_perfect_partner;catalog;カタログによる選択値のフィルタ;関連項目内のフィルタのために、選択されたカタログ値が使用されます
+;y_order_threshold_perfect_partner;product;パーフェクトパートナ製品;割引価格で提供されるパーフェクトパートナー製品
+;y_order_threshold_perfect_partner;cart_threshold;カート合計しきい値;このプロモーションの適用に必要な注文合計。通貨ごとに値は異なり、この注文に適用可能なすべての通貨について値が指定されている必要があります。
+;y_order_threshold_perfect_partner;is_discounted_price_included;合計を計算するときは、割引価格を含めます;しきい値と比較するときは、注文合計にはパートナー商品の割引価格も含めます。
+
+############################# ACTIONS ##########################
+
+INSERT_UPDATE RuleActionDefinitionCategory;id[unique=true];name[lang=$lang]
+;cart_discounts;カート割引
+;product_discounts;製品割引
+;partner_product_discounts;パートナ製品割引
+;shipping;出荷
+
+INSERT_UPDATE RuleActionDefinition;id[unique=true];name[lang=$lang];breadcrumb[lang=$lang];
+;y_order_percentage_discount;カートに対する割引率;カート合計に {value,number,percent*1} 割引を適用;
+;y_order_fixed_discount;カートに対する固定割引;カート合計に {value} 割引を適用;
+;y_order_entry_percentage_discount;商品に対する割引率;適格商品に {value,number,percent*1} 割引を適用;
+;y_order_entry_fixed_discount;商品に対する固定割引;適格商品に {value} 割引を適用;
+;y_order_entry_fixed_price;商品に対する目標固定価格;適格商品に目標価格 {value} を適用;
+;y_target_bundle_price;目標バンドル価格;バンドルに目標価格 {value} を適用;
+;y_free_gift;無料ギフト;{quantity} {product} 商品を無料で進呈;
+;y_partner_order_entry_percentage_discount;パートナ商品に対する割引率;パートナ商品に {value,number,percent*1} 割引を適用;
+;y_partner_order_entry_fixed_discount;パートナ商品に対する固定割引;パートナ商品に {value} 割引を適用;
+;y_partner_order_entry_fixed_price;パートナ商品に対する目標固定価格;パートナ商品に目標価格 {value} を適用;
+;y_change_delivery_mode;配送モードを変更;配送モードを {delivery_mode} に変更;
+;y_trigger_message;ルールメッセージをトリガする;ルールメッセージを表示する;
+
+INSERT_UPDATE RuleActionDefinitionParameter;definition(id)[unique=true];id[unique=true];name[lang=$lang];description[lang=$lang]
+;y_order_percentage_discount;value;割引率;カート合計に適用される割引率
+;y_order_fixed_discount;value;絶対割引額;カート合計に適用される絶対割引額と通貨のリスト
+;y_order_entry_percentage_discount;value;割引率;適格商品に適用される割引率
+;y_order_entry_fixed_discount;value;絶対割引額;適格商品に適用される絶対割引額と通貨のリスト
+;y_order_entry_fixed_price;value;目標固定価格;適格商品に適用される目標価格と通貨のリスト
+;y_target_bundle_price;value;目標バンドル価格;バンドルに適用される目標価格と通貨のリスト
+;y_target_bundle_price;selection_strategy;選択方針;カート内の複数の品目がバンドルに適用できる場合に商品の選択に使用される方針
+;y_target_bundle_price;qualifying_containers;バンドル商品数量;必須バンドルを構成するコンテナ ID と個別数量のマップ
+;y_free_gift;product;無償品;カートに自動的に追加され、無償で進呈される商品
+;y_free_gift;quantity;数量;無償で進呈される品目の数量
+;y_free_gift;catalog;カタログによる選択値のフィルタ;関連項目内のフィルタのために、選択されたカタログ値が使用されます
+;y_free_gift;qualifying_containers;適格商品コンテナ;適格商品を構成するコンテナ ID と個別数量のマップ
+;y_partner_order_entry_percentage_discount;value;割引率;パートナ製品に適用される割引率
+;y_partner_order_entry_percentage_discount;selection_strategy;選択方針;カート内の複数の品目がアクションに適用できる場合に商品の選択に使用される方針
+;y_partner_order_entry_percentage_discount;qualifying_containers;適格商品コンテナ;適格商品を構成するコンテナ ID と個別数量のマップ
+;y_partner_order_entry_percentage_discount;target_containers;目標商品コンテナ;目標パートナ商品を構成するコンテナ ID と個別数量のマップ
+;y_partner_order_entry_fixed_discount;value;絶対割引額;パートナ商品に適用される目標価格と通貨のリスト
+;y_partner_order_entry_fixed_discount;selection_strategy;選択方針;カート内の複数の品目がアクションに適用できる場合に商品の選択に使用される方針
+;y_partner_order_entry_fixed_discount;qualifying_containers;適格商品コンテナ;適格商品を構成するコンテナ ID と個別数量のマップ
+;y_partner_order_entry_fixed_discount;target_containers;目標商品コンテナ;目標パートナ商品を構成するコンテナ ID と個別数量のマップ
+;y_partner_order_entry_fixed_price;value;目標固定価格;パートナ商品に適用される目標価格と通貨のリスト
+;y_partner_order_entry_fixed_price;selection_strategy;選択方針;カート内の複数の品目がアクションに適用できる場合に商品の選択に使用される方針
+;y_partner_order_entry_fixed_price;qualifying_containers;適格商品コンテナ;適格商品を構成するコンテナ ID と個別数量のマップ
+;y_partner_order_entry_fixed_price;target_containers;目標商品コンテナ;目標パートナ商品を構成するコンテナ ID と個別数量のマップ
+;y_change_delivery_mode;delivery_mode;配送モード;アクションの結果としてカートに適用される配送モード

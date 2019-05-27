@@ -1,0 +1,16 @@
+.yw-referencesearch .yw-referencesearch-cnt {
+  height: 100%; }
+.yw-referencesearch .yw-reference-search-control {
+  border-top: 1px solid #cccccc; }
+  .yw-referencesearch .yw-reference-search-control .cancel-button,
+  .yw-referencesearch .yw-reference-search-control .select-button {
+    text-decoration: none;
+    margin: 0; }
+  .yw-referencesearch .yw-reference-search-control .cancel-button {
+    margin-right: 10px; }
+.yw-referencesearch .reference-search-control-bar {
+  padding: 15px 20px;
+  overflow: hidden;
+  text-align: right; }
+.yw-referencesearch .yw-advancedsearch .yw-advancedsearch-circle-delete {
+  margin-left: 8px; }

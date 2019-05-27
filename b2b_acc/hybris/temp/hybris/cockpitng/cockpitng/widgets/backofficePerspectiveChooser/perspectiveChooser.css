@@ -1,0 +1,208 @@
+@charset "UTF-8";
+/*================================
+    PerspectiveChooser Popup (Systembar)
+================================*/
+/*================================
+    Systembar Mixins
+================================*/
+/*================================
+    Systembar Variables
+================================*/
+.yw-perspective-popup {
+  top: 48px !important;
+  width: 240px;
+  padding: 4px 0;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  border: none; }
+  .yw-perspective-popup .z-treechildren {
+    background-color: #ffffff; }
+  .yw-perspective-popup .z-treerow {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    border-top: 1px solid transparent;
+    background: none; }
+    .yw-perspective-popup .z-treerow:hover {
+      background-color: #FAFAFA; }
+    .yw-perspective-popup .z-treerow:first-child {
+      border-top-color: transparent;
+      margin-top: -1px; }
+    .yw-perspective-popup .z-treerow.yw-perspective-popup-level0 .yw-perspective-popup-treecell {
+      padding-left: 12px; }
+    .yw-perspective-popup .z-treerow.yw-perspective-popup-level1 .yw-perspective-popup-treecell {
+      padding-left: 22px; }
+    .yw-perspective-popup .z-treerow.yw-perspective-popup-level2 .yw-perspective-popup-treecell {
+      padding-left: 32px; }
+    .yw-perspective-popup .z-treerow.yw-perspective-popup-level3 .yw-perspective-popup-treecell {
+      padding-left: 42px; }
+    .yw-perspective-popup .z-treerow.yw-perspective-popup-level4 .yw-perspective-popup-treecell {
+      padding-left: 52px; }
+    .yw-perspective-popup .z-treerow.yw-perspective-popup-level5 .yw-perspective-popup-treecell {
+      padding-left: 62px; }
+    .yw-perspective-popup .z-treerow .z-treecell {
+      padding: 5px 8px;
+      background: none; }
+    .yw-perspective-popup .z-treerow .z-treecell-content {
+      line-height: 28px;
+      position: static;
+      color: #ffffff;
+      font-weight: normal;
+      font-size: 14px;
+      font-family: "Open Sans", sans-serif; }
+    .yw-perspective-popup .z-treerow > .z-treecell > .z-treecell-content {
+      color: #515559; }
+    .yw-perspective-popup .z-treerow.z-treerow-selected {
+      background-color: #EEF5FC; }
+      .yw-perspective-popup .z-treerow.z-treerow-selected:hover {
+        background-color: #EEF5FC; }
+  .yw-perspective-popup .z-treecell-content {
+    padding: 0; }
+    .yw-perspective-popup .z-treecell-content .z-tree-spacer {
+      display: none; }
+    .yw-perspective-popup .z-treecell-content .z-treecell-text {
+      display: inline-block; }
+      .yw-perspective-popup .z-treecell-content .z-treecell-text img {
+        margin-right: 9px;
+        height: 28px;
+        width: auto; }
+        .yw-perspective-popup .z-treecell-content .z-treecell-text img:only-child {
+          margin-left: 1px; }
+    .yw-perspective-popup .z-treecell-content .z-tree-icon {
+      text-align: left;
+      padding: 15px; }
+  .yw-perspective-popup .z-tree {
+    border: none; }
+  .yw-perspective-popup .z-icon-caret-right {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -2px;
+    margin-top: -7px; }
+  .yw-perspective-popup .z-icon-caret-down {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -4px;
+    margin-top: -7px; }
+  .yw-perspective-popup .z-icon-caret-right:before,
+  .yw-perspective-popup .z-icon-caret-down:before {
+    color: #d1e8ff; }
+
+/*================================
+    PerspectiveChooser Menu (Systembar)
+================================*/
+/*================================
+    Systembar Variables
+================================*/
+.yw-perspective-breadcrumb {
+  cursor: pointer;
+  float: left;
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  padding: 4px 18px;
+  margin-right: 0;
+  border-radius: 4px; }
+  .z-hlayout-inner + .z-hlayout-inner .yw-perspective-breadcrumb {
+    border-left: 1px solid rgba(255, 255, 255, 0.1); }
+  .yw-perspective-breadcrumb .z-caption {
+    width: auto;
+    display: inline-block; }
+  .yw-perspective-breadcrumb .z-caption,
+  .yw-perspective-breadcrumb .z-icon-caret-down {
+    color: #ffffff; }
+  .yw-perspective-breadcrumb.yw-perspective-breadcrumb-expanded {
+    background: transparent; }
+  .yw-perspective-breadcrumb .z-caption-content {
+    line-height: 28px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 2px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .yw-perspective-breadcrumb .z-caption-image {
+    margin-right: 12px; }
+  .yw-perspective-breadcrumb .z-menu-icon {
+    display: inline-block;
+    position: static;
+    font-size: 14px;
+    line-height: 28px;
+    margin-left: 8px;
+    color: #d1e8ff;
+    vertical-align: top; }
+    .yw-perspective-breadcrumb .z-menu-icon:before {
+      content: ""; }
+  @media (max-width: 500px) {
+    .yw-perspective-breadcrumb .z-caption-content {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 50px; }
+    .yw-perspective-breadcrumb .z-caption-image {
+      display: none; }
+    .yw-perspective-breadcrumb .z-menu-icon {
+      margin-left: 0; } }
+
+.yw-perspective-menu .z-menubar-horizontal {
+  background-color: transparent; }
+  .yw-perspective-menu .z-menubar-horizontal .yw-domain-node {
+    display: table-cell;
+    margin-right: 0;
+    margin-left: 1px; }
+    .yw-perspective-menu .z-menubar-horizontal .yw-domain-node:first-child {
+      margin-left: 0; }
+    .yw-perspective-menu .z-menubar-horizontal .yw-domain-node .z-menuitem-content {
+      background-color: #354A5F;
+      height: 48px;
+      min-width: 48px;
+      z-index: initial;
+      display: table-cell;
+      vertical-align: middle;
+      line-height: initial;
+      margin: auto 0;
+      text-align: center;
+      table-layout: fixed;
+      padding: 0; }
+    .yw-perspective-menu .z-menubar-horizontal .yw-domain-node .z-menuitem-content:hover, .yw-perspective-menu .z-menubar-horizontal .yw-domain-node.yw-selectednode .z-menuitem-content {
+      background-color: #323C4C; }
+    .yw-perspective-menu .z-menubar-horizontal .yw-domain-node .z-menuitem-text {
+      vertical-align: middle; }
+    .yw-perspective-menu .z-menubar-horizontal .yw-domain-node .z-menuitem-text:empty {
+      display: none; }
+    .yw-perspective-menu .z-menubar-horizontal .yw-domain-node .z-menuitem-image {
+      top: auto; }
+
+.yw-systemBarContainer_flexible .yw-perspectiveChooser {
+  flex: auto;
+  max-width: 100%;
+  overflow: hidden; }
+  .yw-systemBarContainer_flexible .yw-perspectiveChooser > .widget_body {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .yw-systemBarContainer_flexible .yw-perspectiveChooser .z-caption-content {
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+    .yw-systemBarContainer_flexible .yw-perspectiveChooser .z-caption-content .z-caption-label {
+      flex: 1 1 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block; }
+  .yw-systemBarContainer_flexible .yw-perspectiveChooser .z-caption {
+    max-width: calc(100% - 14px); }
+    .ie .yw-systemBarContainer_flexible .yw-perspectiveChooser .z-caption {
+      max-width: 100%; }
+.yw-systemBarContainer_flexible .yw-perspective-menu > .z-hlayout-inner {
+  max-width: 100%;
+  overflow: hidden; }
+@media (min-width: 501px) and (max-width: 580px) {
+  .yw-systemBarContainer_flexible .yw-perspective-breadcrumb .z-caption-content {
+    max-width: 80px; }
+  .yw-systemBarContainer_flexible .yw-perspective-breadcrumb .z-caption-image {
+    display: none; } }
+.yw-systemBarContainer_flexible .yw-perspective-breadcrumb .z-caption-label {
+  min-width: 0.96em; }

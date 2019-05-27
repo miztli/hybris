@@ -1,0 +1,274 @@
+@import "cockpitng-globals.scss";
+$editor-defaults__list-box--hover-color: $blue__light--300;
+$editor-defaults__listitem--color: $black;
+$editor-defaults__listitem--bckg-color: $white;
+$editor-defaults__list-box--height: $editor-defaults__inline-box--height - 2 * $editor-defaults__input-field--border-width;
+$editor-defaults__editor-key--font-size: $font-size__base;
+$editor-defaults__listitem-btn--size: $font-size__medium;
+$editor-defaults__listitem-editor--button-width: $editor-defaults__inline-box--height;
+$editor-defaults__listitem-map-inline-edit--min-width: $editor-defaults__listitem-editor--button-width * 2;
+$editor-defaults__listitem-editor--padding-right: $editor-defaults__listitem-map-inline-edit--min-width + $container-spacing-default__third;
+$editor-defaults__listitem--padding: $container-spacing-default__third;
+$editor-defaults__listitem--margin: $container-spacing-default__third;
+$editor-defaults__listitem-map-value--font-weight: $font-weight-bold;
+$editor-defaults__list-box--border-width: $editor-defaults__input-field--border-width;
+$editor-defaults__list-box--border-color: $grey__default--900;
+$editor-defaults__list-box--border: $editor-defaults__list-box--border-width solid $editor-defaults__list-box--border-color;
+
+$editor-defaults__listitem-removable-container--padding-right: 26px;
+
+$editor-defaults__listitem-map-btn-container--margin-top: $container-spacing-default__third * -2; 
+
+
+$editor-defaults__listitem-map-inline-edit--margin-y: 6px;
+$editor-defaults__listitem-map-inline-edit-container--margin-bottom: $editor-defaults__listitem-map-inline-edit--margin-y * -1;
+$editor-defaults__listitem-map-inline-edit-editor--margin-bottom: $editor-defaults__listitem-map-inline-edit--margin-y;
+$editor-defaults__listitem-map-inline-edit-btn-container--margin-top: $editor-defaults__listitem-map-btn-container--margin-top + ($editor-defaults__listitem-map-inline-edit--margin-y/2) * -1;
+$editor-defaults__listitem-map-btn-container-inline--margin-top: $editor-defaults__listitem-map-inline-edit--margin-y * -1;
+$editor-defaults__listitem-map-inline-edit--min-width: 80px;
+//taken from _editorArea-variables.scss
+
+$editor-area__box--border-color: $grey__default--900;
+$editor-area__box--focus-color: $blue__default;
+$editor-area__input-field--color: $grey__dark--700;
+
+//taken from _cockpit-variables.scss
+$selectbox__combobox--hover-bckg-color: $blue__light--300;
+
+.ye-list-inline{
+    position: relative;
+    width: 100%;
+    float: left;
+
+    &-editor input{
+        width: 96%;
+    }
+    min-height: $editor-defaults__editor-key--font-size * 2; //fix for .ye-map-inline-editor-key alignment of input field when the label doesn't exist
+}
+.z-listcell-content {
+    position: relative;
+    &:hover{
+        .ye-remove-button {
+            background: url("icons/icon-delete-red.png") no-repeat;
+            width: $editor-defaults__listitem-btn--size;
+            height: $editor-defaults__listitem-btn--size;
+            position: absolute;
+            top: 50%;
+            margin-top: -(floor($editor-defaults__listitem-btn--size/2));
+            right: $editor-defaults__listitem--padding;
+        }
+    }
+}
+.ye-com_hybris_cockpitng_editor_defaultmap {
+    .z-listitem {
+        .z-listcell-content {
+            padding: 0 $editor-defaults__listitem--padding;
+            height: $editor-defaults__list-box--height;
+            line-height: $editor-defaults__list-box--height;
+            &:hover {
+                background: $editor-defaults__list-box--hover-color;
+                padding-right: $editor-defaults__listitem--padding + $editor-defaults__listitem-btn--size;
+            }
+            .ye-map-value, .ye-map-key{
+                color: $editor-defaults__listitem--color;
+            }
+            .ye-map-value {
+                font-weight: $editor-defaults__listitem-map-value--font-weight;
+                display: inline;
+            }
+        }
+        .ye-list-line-editor {
+            .z-listcell-content {
+                height: auto;
+                line-height: normal;
+                padding: $editor-defaults__listitem--padding;
+                &:hover {
+                    padding: $editor-defaults__listitem--padding;
+                }
+                .ye-list-line-editor {
+                    position: relative;
+                    padding-right: $editor-defaults__listitem-editor--padding-right;
+                    
+                    input {
+                        width: 100%;
+                    }
+                }
+                .ye-list-inline {
+                    width: 100%;
+                    min-width: $editor-defaults__listitem-map-inline-edit--min-width;
+                    float: none;
+                }
+                .ye-map-editor-btn-container {
+                    bottom: 0;
+                    margin-top: -6px;
+                }
+            }
+        }
+    }
+    .ye-list-listbox .z-listitem:hover .ye-list-line-editor {
+        background-color: transparent;
+    }
+    .ye-list-line-editor {
+        .z-listcell-content {
+            height: auto;
+            // line-height: normal;
+            > .z-label:empty {
+                line-height: 38px;
+            }
+        }
+        >.ye-map-editor-btn-container {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: $editor-defaults__listitem-map-inline-edit-btn-container--margin-top;
+            .z-image {
+                padding: $editor-defaults__listitem--padding + 1px;
+                border: $editor-defaults__list-box--border;
+                &:first-child {
+                    border-right: none;
+                }
+            }
+        }
+        &:after {
+            clear: both;
+            display: block;
+            content: '';
+        }
+    }
+    .z-listitem-selected {
+        &.z-listitem {
+            background-color: initial;
+        }
+        .ye-default-reference-editor .ye-default-reference-editor-selected-item-container.ye-remove-enabled {
+            padding-right: $editor-defaults__listitem-removable-container--padding-right;
+        }
+    }
+    .ye-map-footer {
+        background: $editor-defaults__listitem--bckg-color;
+        .z-listfooter-content {
+            padding: $editor-defaults__listitem--padding;
+            cursor: pointer;
+            .z-label {
+                margin-left: $editor-defaults__listitem--margin;
+                color: $editor-defaults__listitem--color;
+                margin-bottom: 0;
+                vertical-align: middle;
+            }
+        }
+        >.z-listfooter {
+            .ye-list-line-editor {
+                padding-right: $editor-defaults__listitem-editor--padding-right - 5px;
+                position: relative;
+                margin-bottom: $editor-defaults__listitem-map-inline-edit--margin-y * -1;
+                > .ye-map-editor-btn-container,
+                > .ye-list-inline {
+                    margin-bottom: $editor-defaults__listitem-map-inline-edit--margin-y;
+                }
+                > .ye-list-inline {
+                    min-width: $editor-defaults__listitem-map-inline-edit--min-width;
+                    
+                }
+                .ye-list-inline-editor > input {
+                    width: 100%;
+                }
+            }
+        }
+        .ye-list-line-editor {
+            .ye-list-inline {
+                width: 50%;
+                padding-right: $editor-defaults__listitem--padding;
+                box-sizing: border-box;
+            }
+        }
+        > .z-listfoot-bar:empty {
+            display: none;
+        }
+    }
+    >.ye-list-content {
+        >.ye-list-listbox {
+            border: none;
+        }
+    }
+    .ye-list-listbox {
+        >.z-listbox-footer {
+            margin-top: $editor-defaults__listitem--margin/2;
+            border: $editor-defaults__list-box--border;
+            width: 100% !important;
+            .z-listfooter {
+                width: 100% !important;
+            }
+            .z-listfoot-bar,
+            .z-listfooter-bar {
+                &:empty {
+                    display: none;
+                }
+            }
+        }
+        >.z-listbox-body {
+            border: $editor-defaults__list-box--border;
+        }
+    }
+    .ye-map-separator {
+        margin: $editor-defaults__listitem--margin/2 $editor-defaults__listitem--margin;
+    }
+}
+
+.yw-loceditor-fixed-open,.yw-loceditor-dynamic-content {
+    .ye-com_hybris_cockpitng_editor_defaultmap {
+        .ye-list-listbox {
+            >.z-listbox-body {
+                border: none;
+            }
+            >.z-listbox-footer {
+                border-width: $editor-defaults__list-box--border-width 0 0;
+            }
+        }
+    }
+}
+
+.ye-validation {
+    &-error,
+    &-warn,
+    &-info {
+        .ye-list-listbox .ye-map-footer {
+            input, input.z-textbox, .z-longbox, .z-intbox, .z-decimalbox, .z-doublebox {
+                border-color: $editor-area__box--border-color;
+                background: none;
+                color: $editor-area__input-field--color;
+
+                &:focus {
+                    border-color: $editor-area__box--focus-color;
+                    background: none;
+                }
+            }
+            .z-bandbox-input:focus + .z-bandbox-button {
+                border-color: $editor-area__box--focus-color;
+            }
+            .z-combobox-button {
+                border-color: $editor-area__box--border-color;
+                background: none;
+            }
+            input:focus + .z-combobox-button {
+                border-color: $editor-area__box--focus-color;
+            }
+            .z-combobox:focus .z-combobox-input,
+            .z-combobox:focus .z-combobox-button,
+            .z-combobox:hover .z-combobox-input,
+            .z-combobox:hover .z-combobox-button {
+                background-color: $selectbox__combobox--hover-bckg-color;
+            }
+        }
+    }
+}
+
+.yw-loceditor-fixed-open,
+.yw-loceditor-dynamic-content {
+    .ye-list.ye-com_hybris_cockpitng_editor_defaultmap {
+        .ye-list-line-editor .ye-input-text.z-textbox {
+            border-width: $editor-defaults__list-box--border-width !important;
+        }
+        .z-listbox-footer {
+            margin-top: 0;
+        }
+    }
+}

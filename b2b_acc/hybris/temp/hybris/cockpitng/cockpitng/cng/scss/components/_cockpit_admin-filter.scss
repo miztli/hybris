@@ -1,0 +1,160 @@
+.cockpit-config-filter {
+    overflow: auto;
+    padding-left: 5px;
+    padding-top: 5px;
+    height: auto;
+
+    .attribute {
+        &-container {
+            background-color: $admin-defaults__config-filter-attribute-container--bg-color;
+            padding: $admin-defaults__config-filter-attribute-container--padding;
+            margin-right: 10px;
+
+            tbody.z-listbox-emptybody td {
+                font-size: smaller;
+            }
+        }
+        &-name-label {
+            font-weight: bold;
+            text-transform: capitalize;
+            padding-left: $admin-defaults__config-filter-attribute-name-label--padding-left;
+        }
+        &-find-parent {
+            line-height: $editor-defaults__inline-box--height;
+            width: 100%;
+        }
+    }
+    .selected-attribute {
+        &-container {
+            display: inline-table;
+            background-color: #5C6A7D;
+        }
+        &-value-label {
+            color: #ffffff;
+            padding-left: 10px;
+            padding-right: 10px;
+            height: 24px;
+            line-height: 24px;
+            display: inline-block;
+        }
+        &-value-remove {
+            background-color: #5C6A7D;
+            height: 24px;
+            min-height: 24px;
+            width: 16px;
+            margin-left: 0px;
+            margin-right: 10px;
+            padding: 0px;
+        }
+    }
+    .search-parent {
+        position: relative;
+        &:after {
+            font-family: $font-family-fontawesome;
+            content: $search--content;
+            color: inherit;
+            font-size: $font-size__base;
+            line-height: 1;
+            width: $admin-defaults__filter-attribute-button-icon--size;
+            text-align: center;
+            height: $admin-defaults__filter-attribute-button-icon--size;
+            margin-top: -$admin-defaults__filter-attribute-button-icon--size/2;
+            margin-left: -$admin-defaults__filter-attribute-button-icon--size/2;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    }
+    .clear-parent,
+    .selected-attribute-value-remove {
+        color: $admin-defaults__filter-container-attribute-button--color;
+        &:hover, &:active, &:focus {
+            color: $admin-defaults__filter-container-attribute-button--color;
+        }
+    }
+    div.z-listbox-body {
+        background-color: #ffffff;
+
+        .z-listcell {
+            border-style: none;
+        }
+    }
+    .disabled_listbox {
+        div.z-listbox-body {
+            background-color: #f2f2f2;
+        }
+        .z-listcell div.z-listcell-content {
+            background-color: #f2f2f2;
+            color: #acacac;
+        }
+    }
+    .btn_minimalize {
+        background-color: transparent;
+        background-image: url("images/icon_func_colapse_sprite.png") !important;
+        background-repeat: no-repeat;
+        height: 16px;
+        min-height: 16px;
+        padding: 0;
+        width: 16px;
+        margin-top: 5px;
+        
+        &[disabled] {
+            background-color: transparent;
+            cursor: default;
+        }
+        &.expanded {
+            background-position: 0px 0px;
+
+            &-disabled {
+                background-position: 0px -16px;
+            }
+        }
+        &.collapsed {
+            background-position: -16px 0px;
+        }
+    }
+    > .z-hlayout-inner {
+        height: auto;
+        display: table-cell;
+    }
+}
+
+.yw-xmlConfigWin .filterDiv {
+    background-color: $admin-defaults__filter-component-container--bg-color;
+
+    .searchButtonSection {
+        line-height: $admin-defaults__filter-search-button-section--line-height;
+    }
+}
+
+.show-filter-options-button {
+    width: 100%;
+    color: #7B848E;
+    background-color: #C2C9D2;
+    margin: 0;
+    padding: 0;
+    line-height: $admin-defaults__filter-container-toggle-button--line-height;
+    height: $admin-defaults__filter-container-toggle-button--height;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.yw-admin-filter-options-searchsection {
+    .z-button {
+        width: 250px;
+        background-color: #1460BC;
+        margin-left: 10px;
+        position: absolute;
+    }
+
+    .label-warning {
+        max-width: calc(100% - 270px);
+        margin-left: 270px;
+    }
+}
+
+.yw-admin-searchbuttonsection {
+    .z-hlayout-inner {
+        width: 100%;
+    }
+}

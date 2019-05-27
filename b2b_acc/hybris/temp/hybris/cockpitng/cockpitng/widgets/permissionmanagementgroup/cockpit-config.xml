@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hybris.com/cockpit/config"
+		  xsi:schemaLocation="http://www.hybris.com/cockpit/config http://www.hybris.com/schema/cockpitng/config/cockpit-configuration.xsd">
+
+	<context component="permissionManagementTypesCollectionBrowser" type="com.hybris.cockpitng.dataaccess.facades.permissions.impl.DefaultPermissionInfo">
+		<cb:collection-browser xmlns:cb="http://www.hybris.com/cockpitng/config/collectionbrowser">
+			<cb:available-molds>
+				<cb:mold spring-bean="listViewCollectionBrowserMoldStrategy"/>
+			</cb:available-molds>
+		</cb:collection-browser>
+	</context>
+
+	<context component="permissionManagementTypes" type="com.hybris.cockpitng.dataaccess.facades.permissions.impl.DefaultPermissionInfo">
+		<list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+			<list:column qualifier="label" label="context"/>
+			<list:column qualifier="read" spring-bean="permissionManagementListCellRenderer" label="read" width="70px"/>
+			<list:column qualifier="change" spring-bean="permissionManagementListCellRenderer" label="change" width="70px"/>
+			<list:column qualifier="create" spring-bean="permissionManagementListCellRenderer" label="create" width="70px"/>
+			<list:column qualifier="remove" spring-bean="permissionManagementListCellRenderer" label="remove" width="70px"/>
+		</list:list-view>
+	</context>
+
+	<context component="permissionManagementFieldsCollectionBrowser" type="com.hybris.cockpitng.dataaccess.facades.permissions.impl.DefaultPermissionInfo">
+		<cb:collection-browser xmlns:cb="http://www.hybris.com/cockpitng/config/collectionbrowser">
+			<cb:available-molds>
+				<cb:mold spring-bean="listViewCollectionBrowserMoldStrategy"/>
+			</cb:available-molds>
+		</cb:collection-browser>
+	</context>
+
+	<context component="permissionManagementFields" type="com.hybris.cockpitng.dataaccess.facades.permissions.impl.DefaultPermissionInfo">
+		<list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+			<list:column qualifier="label" label="attribute"/>
+			<list:column qualifier="read" spring-bean="permissionManagementListCellRenderer" label="read" width="70px"/>
+			<list:column qualifier="change" spring-bean="permissionManagementListCellRenderer" label="change" width="70px"/>
+		</list:list-view>
+	</context>
+
+	<context component="permissionManagementlistviewActions" type="com.hybris.cockpitng.dataaccess.facades.permissions.impl.DefaultPermissionInfo">
+		<y:actions xmlns:y="http://www.hybris.com/cockpit/config/hybris" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<y:group qualifier="common">
+				<y:action action-id="com.hybris.cockpitng.action.delete.permission" property="selectedObjects" triggerOnKeys="#del">
+					<y:parameter>
+						<y:name>needsConfirmation</y:name>
+						<y:value>true</y:value>
+					</y:parameter>
+				</y:action>
+				<y:action action-id="com.hybris.cockpitng.action.create.permission" property="$_permissionInfoType"/>
+			</y:group>
+		</y:actions>
+	</context>
+
+
+</config>

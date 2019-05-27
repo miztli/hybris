@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+    <widget xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+            height="100%">
+        <a id="backButton" sclass="yw-navigationhistory-back">${c:l('common.back')}</a>
+        <a id="stackButton" sclass="yw-navigationhistory-stack"/>
+        <div id="currentItem" sclass="yw-navigationhistory-title">
+            <label id="currentItemLabel"/>
+        </div>
+        <menupopup id="historyStack" sclass="yw-navigationhistory-history yw-pointer-menupopup yw-pointer-menupopup-top"/>
+    </widget>
+</zk>

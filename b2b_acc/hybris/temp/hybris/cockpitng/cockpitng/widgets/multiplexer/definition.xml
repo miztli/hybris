@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="com.hybris.cockpitng.widgets.common.multiplexer"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+	<name>Multiplexer</name>
+	<description>
+		Multiplexer is used to notify n of m (n &lt;= m) of its virtual output sockets.
+		The notification decision is based on SpEL expression evaluation.
+		For a virtual output socket "virtSocketX" the condition must be stored in a string widget setting named "virtSocketX_expression".
+	</description>
+	<defaultTitle>Multiplexer</defaultTitle>
+	<author>hybris</author>
+	<version>0.1</version>
+	<sockets>
+		<input id="element" type="java.lang.Object" />
+	</sockets>
+	<view src="none" />
+	<controller
+		class="com.hybris.cockpitng.widgets.common.multiplexer.MultiplexerController" />
+	<keywords>
+		<keyword>Adapters</keyword>
+	</keywords>
+
+</widget-definition>

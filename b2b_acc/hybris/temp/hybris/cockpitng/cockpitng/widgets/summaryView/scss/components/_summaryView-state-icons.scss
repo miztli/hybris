@@ -1,0 +1,89 @@
+@import "../support/_summaryView-variables.scss";
+
+.yw-summaryview {
+    &-icon-item-icon {
+        width: $summaryView__widget-state-icon--size;
+        min-height: $summaryView__widget-state-icon--size;
+        background-repeat: no-repeat;
+        background-position: center center;
+        float: left;
+        position: relative;
+        
+        &:after {
+            font-family: $summaryView__widget-state-icon-default--font-family;
+            font-size: $summaryView__widget-state-icon-default--font-size;
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+    }
+    &-section-container-content &-icon-item-icon {
+        margin-top: $summaryView__widget-attribute-icon-element--margin-top;
+        margin-left: $summaryView__widget-attribute-icon-element--margin-left;
+        position: absolute;
+        top: 50%;
+        left: 0;
+    }
+    &-approval-status {
+        &-approved{
+            background-image: $summaryView__approval-status-approved--bg-image;
+        }
+        &-unapproved {
+            background-image: $summaryView__approval-status-unapproved--bg-image;
+        }
+        &-check {
+            background-image: $summaryView__approval-status-check--bg-image;
+        }
+    }
+    &-online-status {
+        &-online,
+        &-offline {
+            &:after {
+                content: $summaryView__online-state-online--content;
+                color: $summaryView__online-state-online--color;
+            }
+        }
+        &-offline:after {
+            color: $summaryView__online-state-offline--color;
+        }
+    }
+    &-attribute-itemtype {
+        background-image: $summaryView__type--bg-image;
+    }
+    &-attribute-variants {
+        background-image: $summaryView__variants--bg-image;
+    }
+    &-attribute-catalogversion {
+        background-image: $summaryView__source-target-sync--bg-image;
+    }
+    &-assets-thumbnail-picture-normal-thumbnails-detail-logo-data_sheet-others {
+        background-image: $summaryView__digital-assets--bg-image;
+    }
+
+    &-icon-item-container {
+        &.yw-summaryview-container-editable.yw-summaryview-sync-status {
+            .yw-summaryview-icon-item-text-container {
+                width: $summaryView__sync-state-hover-text-container--width;
+
+                &:after {
+                    background: $summaryView__sync-state-hover-icon--background;
+                    width: $summaryView__sync-state-hover-icon--size;
+                    height: $summaryView__sync-state-hover-icon--size;
+                    margin-top: $summaryView__sync-state-hover-icon--margin;
+                    margin-left: $summaryView__sync-state-hover-icon--margin;
+                    right: $summaryView__sync-state-hover-icon--right;
+                    cursor: pointer;
+                    left: auto;
+                    top: 50%;
+                }
+            }
+            &:hover {
+                .yw-summaryview-icon-item-text-container:after {
+                    display: inline-block;
+                    content: " ";
+                    z-index: 1;
+                }
+            }
+        }
+    }
+}

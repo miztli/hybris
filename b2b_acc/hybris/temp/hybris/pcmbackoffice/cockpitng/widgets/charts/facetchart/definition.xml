@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition id="com.hybris.pcmbackoffice.charts.facetchart"
+				   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+
+	<name>Solr Facet Chart</name>
+	<description>Chart widget based on solr facets for products</description>
+	<defaultTitle>Product Stats</defaultTitle>
+	<author>hybris</author>
+	<version>1.0</version>
+
+	<view src="facetchart.zul"/>
+	<controller
+			class="com.hybris.pcmbackoffice.widgets.charts.facetchart.FacetChartController"/>
+	<keywords>
+		<keyword>Charts</keyword>
+	</keywords>
+
+	<sockets>
+		<input id="initSearch" type="java.lang.Object"/>
+		<input id="fullTextSearchPageable" type="com.hybris.cockpitng.search.data.pageable.FullTextSearchPageable"/>
+
+		<output id="initialSearchData" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchData"/>
+		<output id="selectedFacets" type="com.hybris.backoffice.widgets.advancedsearch.impl.AdvancedSearchData"/>
+	</sockets>
+
+	<settings>
+		<setting key="bottomPanelRenderer" default-value="facetChartBottomPanelRenderer" type="String"/>
+		<setting key="filterPanelRenderer" default-value="facetChartFiltersRenderer" type="String"/>
+		<setting key="facetChooserRenderer" default-value="facetChartFacetChooserRenderer" type="String"/>
+		<setting key="rightPanelRenderer" type="String"/>
+
+		<setting key="chartDecorator" default-value="dataQualityChartComposer" type="String"/>
+
+		<setting key="facetsNames" type="String"/>
+		<setting key="filterPanelRendererNames" type="String"/>
+		<setting key="exportEnabled" type="Boolean" default-value="false"/>
+		<setting key="chartTitleKey" type="String" />
+	</settings>
+
+</widget-definition>

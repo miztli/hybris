@@ -1,0 +1,23 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+
+$lang=es
+$solrIndexedType=solrIndexedType(identifier)[unique=true,default='BackofficeProduct'];
+
+#Currencies
+UPDATE Currency;isocode[unique=true];name[lang=$lang];
+;EUR;Euro;
+;USD;Dólar estadounidense;
+
+UPDATE SolrIndexedProperty;name[unique=true];$solrIndexedType;backofficeDisplayName[lang=$lang];
+;catalogVersion;;Versión de catálogo;
+;catalog;;catálogo;
+;itemtype;;Tipo de elemento;

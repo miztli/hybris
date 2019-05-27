@@ -1,0 +1,88 @@
+@import "scss/support/_categorySelector-variables.scss";
+
+.yas-categoryelector {
+    background-color: $categorySelector__widget--bg-color;
+
+    > .z-tree {
+        margin-left: $categorySelector__tree--margin-left;
+    }
+
+    .z-treecell {
+        border: none;
+    }
+    .z-treerow {
+        .z-treecell-content {
+            color: $categorySelector__default--color;
+            display: table;
+            width: 100%;
+
+            > .z-div,
+            > .z-label,
+            > .z-span,
+            > .z-tree-icon,
+            > .z-tree-spacer {
+                display: table-cell;
+            }
+            > .z-label.yas-has-configurations {
+                display: block;
+                min-height: $categorySelector__numlabel--min-height;
+            }
+        }
+
+        &-selected .z-treecell-content {
+            color: $categorySelector__treerow-selected--color;
+        }
+        &:hover .z-treecell-content {
+            color: $categorySelector__default-hover--color;
+        }
+    }
+    .z-tree-icon + .z-label {
+        padding-left: $categorySelector__tree-label--padding-left;
+        width: 100%;
+    }
+    .z-tree-spacer + .z-label {
+        width: 100%;
+    }
+    
+    .yas-has-own-configuration,
+    .yas-has-configurations {
+        padding: $categorySelector__config-label--padding;
+        font-size: $categorySelector__config-label--font-size;
+        line-height: $categorySelector__config-label--line-height;
+        max-height: $categorySelector__config-label--max-height;
+        min-width: $categorySelector__config-label--min-width;
+        width: auto;
+        position: relative;
+        text-align: center;
+    }
+
+    .yas-has-configurations {
+        color: $categorySelector__numlabel--color;
+        top: $categorySelector__numlabel--top;
+
+        
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: $categorySelector__numlabel-inner--left;
+            border-radius: $categorySelector__numlabel--border-radius;
+            top: $categorySelector__numlabel-inner--top;
+            right: $categorySelector__numlabel-inner--right;
+            bottom: $categorySelector__numlabel-inner--bottom;
+            border: $categorySelector__numlabel--border;
+        }
+    }
+    .yas-has-own-configuration {
+        &:before {
+            background: $categorySelector__config-icon-label--background;
+            left: $categorySelector__config-icon-label--left;
+            top: $categorySelector__config-icon-label--top;
+            width: $categorySelector__config-icon-label--size;
+            height: $categorySelector__config-icon-label--size;
+            content: "";
+            display: block;
+            position: absolute;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@import "_cockpit_admin-variables.scss";
+
+//    Mixins
+//================================
+
+@mixin _addBarHeaderBackground() {
+    background-color: $admin-defaults__headerToolbar--bg-color;
+    @if $admin-defaults__headerToolbar--bg-image {
+        background-image: $admin-defaults__headerToolbar--bg-image;
+        background-repeat: repeat-x;
+    }
+}
+@mixin _addAlignedZeroHeightEndPoints ($top1, $top2){
+    .endPoint {
+        left: -4px;
+        top: $top1;
+    }
+    .endPoint2 {
+        top: $top2;
+    }
+}

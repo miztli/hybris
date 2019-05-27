@@ -1,0 +1,211 @@
+.ye-com_hybris_cockpitng_editor_extendedmultireferenceeditor {
+    .ye-default-reference-editor-selected-listbox {
+        position: relative;
+        border-bottom: $multi-ref-editor__fake-border-default--border;
+
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            border-left: $multi-ref-editor__fake-border-default--border;
+            width: 0;
+            left: $multi-ref-editor__fake-border-default--left;
+            top: $multi-ref-editor__fake-border-default--top;
+            bottom: $multi-ref-editor__fake-border-default--bottom;
+            display: block;
+            z-index: 1;
+        }
+        &:after {
+            left: auto;
+            right: $multi-ref-editor__fake-border-after--right;
+        }
+
+        > div.z-listbox-body {
+            background-image: url("images/icon_loading_indicator_default.gif");
+            background-position: $default-reference-editor__list-body-loading-icon--background-position;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+
+            .yw-last-column {
+                .z-listcell-content {
+                    padding-right: $multi-ref-editor__inline-last-column--padding-right;
+                    position: relative;
+                    overflow: visible;
+
+                    .ye-default-reference-editor-remove-button {
+                        right: $multi-ref-editor__inline-remove-button--right;
+                        height: $multi-ref-editor__inline-remove-button--height;
+                    }
+                }
+            }
+            > table {
+                box-shadow: $multi-ref-editor__list-table--box-shadow;
+            }
+        }
+        .z-listitem {
+            > .z-listcell {
+                border-bottom: $multi-ref-editor__list-cell--border;
+                height: $multi-ref-editor__list-cell--height;
+                position: relative;
+
+                &.ye-editable-property {
+                    &.ye-current-edit-state-inline-cell {
+                        > .z-listcell-content {
+                            .yw-listview-cell-label,
+                            &:hover:after {
+                                display: none;
+                            }
+                        }
+                    }
+                    > .z-listcell-content {
+                        input {
+                            box-shadow: $multi-ref-editor__inline-edit-prop--box-shadow;
+                            left: -10px;
+                            position: relative;
+                            height: $multi-ref-editor__inline-edit-prop--height;
+                        }
+
+                        &:hover:after {
+                            width: $multi-ref-editor__list-cell-edit-icon--size;
+                            min-height: $multi-ref-editor__list-cell-edit-icon--size;
+                            right: $multi-ref-editor__list-cell-edit-icon--right;
+                            background: transparent url('images/icon_edit-pencil.png') center no-repeat;
+                            content: "";
+                            position: absolute;
+                            height: 100%;
+                            bottom: 0;
+                            cursor: default;
+                        }
+                    }
+                }
+                &.ye-current-edit-state-inline-cell {
+                    overflow: visible;
+                    
+                    > .z-listcell-content > .z-div {
+                        display: inline-block;
+                    }
+                }
+            }
+            &:last-child > .z-listcell {
+                border-bottom-width: 0;
+            }
+            .yw-ref-list-cell {
+                > .z-listcell-content {
+                    display: inline;
+                }
+                &.ye-editable-property .ye-com_hybris_cockpitng_editor_boolean_wrapper {
+                    margin: $multi-ref-editor__inline-edit-boolean-wrapper--margin;
+                    padding: 0;
+
+                    td table td,
+                    .z-div {
+                        line-height: 1 !important;
+                    }
+                    table {
+                        display: inline-block;
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+        .z-listcell {
+            &.ye-row-status {
+                padding: 0;
+                position: relative;
+
+                .z-listcell-content {
+                    width: $multi-ref-editor__inline-row-status-content--width;
+                    padding: $multi-ref-editor__inline-row-status-content--padding;
+                }
+                &-edited,
+                &-invalid {
+                    border-left-color: $multi-ref-editor__inline-row-status-edited--border-color;
+                    box-sizing: border-box;
+
+                    &:before {
+                        border-left: $multi-ref-editor__inline-row-status--border-left-width solid transparent;
+                        content: "";
+                        border-left-color: inherit;
+                        position: absolute;
+                        height: auto;
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                        display: block;
+                    }
+                    .ie &,
+                    .edge & {
+                        border-left: $multi-ref-editor__inline-row-status--border-left-width solid $multi-ref-editor__inline-row-status-edited--border-color;
+
+                        .ye-validation-exclamation-icon {
+                            margin-left: $multi-ref-editor__list-item-status-exclamation-icon-indent--margin-left;
+                        }
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+                &-invalid {
+                    border-left-color: $multi-ref-editor__inline-row-status-invalid--border-color;
+                }
+                .ye-validation-exclamation-icon {
+                    float: left;
+                    margin-left: $multi-ref-editor__list-item-status-exclamation-icon--margin-left;
+                }
+
+            }
+            &.yw-ref-list-cell {
+                padding-right: 30px;
+                .y-editor-area-attributes-cnt-min & {
+                    padding-right: $multi-ref-editor__list-cell-bp-s--padding-x;
+                    &:first-child {
+                        padding-left: $multi-ref-editor__list-cell-bp-s--padding-x;
+                    }
+                }
+                &:first-child {
+                    padding-left: $multi-ref-editor__list-cell--padding-x;
+                }
+            }
+            &.ye-cell-modified > .z-listcell-content {
+                font-style: italic;
+            }
+        }
+        .ye-current-edit-state-inline-cell .z-listcell-content {
+            .ye-com_hybris_cockpitng_editor_defaultdate {
+                max-width: $multi-ref-editor__list-cell-inline-date-editor--max-width;
+            }
+        }
+    }
+    .z-listitem {
+        background-color: $multi-ref-editor__list-item--bg-color;
+
+        .z-listcell-content {
+            position: relative;
+        }
+
+        &.z-listitem-selected {
+            background-color: $multi-ref-editor__list-item-selected--bg-color;
+            &:hover {
+                background-color: $multi-ref-editor__list-item-selected-hover--bg-color;
+            }
+            div.z-listcell-content {
+                color: inherit;
+            }
+        }
+    }
+    .z-listcell {
+        &, &-content {
+            font-size: $multi-ref-editor__list-cell--font-size;
+            line-height: $multi-ref-editor__list-cell--line-height;
+        }
+        &-content .yw-compound-renderer-container {
+            padding-left: $multi-ref-editor__list-cell-compound-container--padding-left;
+
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+    }
+}
+
+

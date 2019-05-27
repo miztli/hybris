@@ -1,0 +1,73 @@
+
+$coupon-code-editor__multicode-generator-separation--space: 10px;
+$coupon-code-editor__multicode-generator-button--width: 106px;
+$coupon-code-editor__multicode-generator-text-input--width: calc(100% - #{$coupon-code-editor__multicode-generator-button--width + $coupon-code-editor__multicode-generator-separation--space});
+$coupon-code-download-icon--size: $editor-defaults__inline-box--height - 2* $boxes--border__thin;
+$coupon-code-close-icon--width: 30px;
+$coupon-code-read-only-label--space-right: $coupon-code-close-icon--width;
+$coupon-code-download-btn--padding: 2px;
+$coupon-code-label--space-right: $coupon-code-download-icon--size + $coupon-code-read-only-label--space-right + $coupon-code-download-btn--padding;
+
+// .ye-inset-editor
+.ye-com_hybris_cockpitng_editor_couponcodelisteditor {
+    .z-listcell {
+        position: relative;
+    }
+
+    div.ye-default-reference-editor-selected-listbox {
+        margin-bottom: $coupon-code-editor__multicode-generator-separation--space;
+        span.z-label {
+            margin-right: $coupon-code-label--space-right;
+        }
+    }
+    .ye-default-editor-readonly & {
+        div.ye-default-reference-editor-selected-listbox span.z-label {
+            margin-right: $coupon-code-read-only-label--space-right;
+        }
+    }
+}
+
+.ye-default-download-coupon-codes {
+    position: absolute;
+    top: 0;
+    padding: $coupon-code-download-btn--padding;
+    right: $coupon-code-close-icon--width;
+    background: url('imgs/CPN_22x22.png') no-repeat center;
+    width: $coupon-code-download-icon--size;
+    height: $coupon-code-download-icon--size;
+    
+    &:hover {
+        background: url('imgs/CPN_22x22_hover.png') no-repeat center;
+        cursor: pointer;
+    }
+    a {
+        width: $coupon-code-download-icon--size;
+        height: $coupon-code-download-icon--size;
+        display: block;
+    }
+    img {
+        max-width: initial !important; 
+        max-height: initial !important;
+    }
+    .ye-default-editor-readonly & {
+        right: 0;
+    }
+}
+
+div.ye-default-reference-editor-selected-item-container.ye-default-download-coupon-codes {
+    padding-right: $coupon-code-read-only-label--space-right;
+}
+
+.ye-multicode-coupon-generator {
+    margin-top: $coupon-code-editor__multicode-generator-separation--space;
+    
+    .ye-coupon-inset-textbox {
+        padding-right: 0;
+        float: left;
+        width: $coupon-code-editor__multicode-generator-text-input--width;
+    }
+    .ye-coupon-inset-button {
+        margin-left: $coupon-code-editor__multicode-generator-separation--space;
+        width: $coupon-code-editor__multicode-generator-button--width;
+    }
+}

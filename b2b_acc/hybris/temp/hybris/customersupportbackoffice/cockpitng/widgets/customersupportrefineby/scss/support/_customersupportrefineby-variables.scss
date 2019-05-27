@@ -1,0 +1,31 @@
+/*
+ * [y] hybris Platform
+ *
+ * Copyright (c) 2018 SAP SE or an SAP affiliate company.
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of SAP
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with SAP.
+ */
+@import "cockpitng-globals.scss";
+
+$customersupportrefineby__widget--bg-color: $black__blueish--200;
+$customersupportrefineby__widget--color: $white;
+$customersupportrefineby__no-filters--color: $grey__default--900;
+
+$customersupportrefineby__info-container--font-style: italic;
+
+$customersupportrefineby__checkbox--padding-left: 2*$container-spacing-default__third;
+$customersupportrefineby__checkbox-label-after--width: 14px;
+$customersupportrefineby__checkbox-label-after--height: 14px;
+$customersupportrefineby__checkbox-label-after--margin-top: 2px;
+$customersupportrefineby__checkbox-label-before--background-size: 14px;
+
+$customersupportrefineby__main-container--padding: 2*$container-spacing-default__third 2*$container-spacing-default__third $container-spacing-default__third 2*$container-spacing-default__third;
+$customersupportrefineby__main-container__label--margin:10px 0 5px 1px;
+$customersupportrefineby__main-container__checkbox--padding: 0 14px 6px 1px;
+$customersupportrefineby__main-container__icon-size: 28px;
+$customersupportrefineby__main-container__icon--margin: 2px 0 2px 0;
+$customersupportrefineby__main-container__filter--margin4: -10px;

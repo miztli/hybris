@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+	id="com.hybris.cockpitng.widgets.customersupport.sessionContext">
+
+	<name>Session Context</name>
+	<description>Session Context</description>
+	<defaultTitle>Session Context</defaultTitle>
+	<author>hybris</author>
+	<version>1.0</version>
+	<controller
+		class="de.hybris.platform.customersupportbackoffice.widgets.sessioncontext.SessionContextController" />
+
+	<keywords>
+		<keyword>SessionContext</keyword>
+	</keywords>
+
+	<sockets>
+		<input id="selectedItem" type="java.lang.Object" />
+		<input id="itemCreated" type="java.lang.Object" />
+		<output id="itemToShow" type="java.lang.Object" />
+		<output id="viewData" type="java.lang.Object" />
+	</sockets>
+
+</widget-definition>

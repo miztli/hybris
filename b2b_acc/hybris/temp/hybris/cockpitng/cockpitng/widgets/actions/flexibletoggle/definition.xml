@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<action-definition id="com.hybris.cockpitng.action.flexibletoggle"
+						 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						 xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+	<name>Flexible sidebar toggle action</name>
+	<description>An action to send toggle visibility of FlexibleLayout's sidebar</description>
+	<author>hybris</author>
+	<version>0.1</version>
+
+	<actionClassName>com.hybris.cockpitng.actions.flexibletoggle.FlexibleSidebarToggleAction</actionClassName>
+	<customRendererClassName>com.hybris.cockpitng.actions.flexibletoggle.FlexibleSidebarToggleActionRenderer</customRendererClassName>
+	<iconUri>icons/icon_menu_default.svg</iconUri>
+
+	<settings>
+		<setting key="toggleSocket" default-value="toggle" type="java.lang.String"/>
+		<setting key="stateInput" default-value="toggleState" type="java.lang.String"/>
+		<setting key="breakpointOutput" default-value="breakpoint" type="java.lang.String"/>
+		<setting key="breakpoint" default-value="none" type="ENUM(xl,l,m,s)"/>
+	</settings>
+</action-definition>

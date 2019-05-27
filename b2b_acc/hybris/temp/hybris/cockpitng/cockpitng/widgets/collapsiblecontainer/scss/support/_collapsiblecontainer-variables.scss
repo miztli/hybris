@@ -1,0 +1,51 @@
+@import "cockpitng-globals.scss";
+
+//Container Defaults
+$collapsible-container__button--size: 16px;
+$collapsible-container__button--spacing: 5px;
+$collapsible-container__button--top: $collapsible-container__button--spacing;
+$collapsible-container__button--right: 0;
+$collapsible-container__button-disabled--opacity: .5;
+
+$collapsible-container__capcnt--min-height: 21px;
+
+$collapsible-container__header--padding: $container-spacing-default__third $container-spacing-default__base;
+$collapsible-container__header--height: $editor-defaults__inline-box--height;
+$collapsible-container__header--border-color: $blue__dark--100;
+$collapsible-container__header--border-width: 5px;
+$collapsible-container__header-bottom--border-top: $collapsible-container__header--border-width solid $collapsible-container__header--border-color;
+$collapsible-container__header-bottom--bg-color: $white;
+$collapsible-container__header-top--bg-color: $white;
+$collapsible-container__header-button--top: 50%;
+$collapsible-container__header-button--margin-top: -0.5 * $collapsible-container__button--size;
+$collapsible-container__header-search-limited-button--top: $editor-defaults__inline-box--height/2; // Invastigate it
+
+$collapsible-container__expand-button--size: $collapsible-container__button--size;
+$collapsible-container__expand-button--top: $collapsible-container__button--top;
+$collapsible-container__expand-button--right: $collapsible-container__button--right;
+$collapsible-container__expand-button--bg-position: 0 0;
+$collapsible-container__expand-button-hover-active--bg-position: 0 (-1 * $collapsible-container__expand-button--size);
+$collapsible-container__expand-button-disabled--opacity: $collapsible-container__button-disabled--opacity;
+$collapsible-container__expand-button-disabled--bg-color: transparent !important;
+$collapsible-container__expand-button-disabled--bg-position: 0px (-4 * $collapsible-container__button--size) !important;
+$collapsible-container__expand-button-header--top: $collapsible-container__header-button--top;
+$collapsible-container__expand-button-header--margin-top: $collapsible-container__header-button--margin-top;
+
+$collapsible-container__collapsed-down-expand-button-disabled--opacity: $collapsible-container__button-disabled--opacity;
+$collapsible-container__collapsed-down-expand-button-disabled--bg-color: transparent !important;
+$collapsible-container__collapsed-down-expand-button-disabled--bg-position: (-1 * $collapsible-container__button--size) (-4 * $collapsible-container__button--size) !important;
+$collapsible-container__collapsed-down-expand-button-top--bg-position: (-1 * $collapsible-container__button--size) 0;
+$collapsible-container__collapsed-down-expand-button-top-hover--bg-position: (-1 * $collapsible-container__button--size) (-3 * $collapsible-container__button--size);
+
+$collapsible-container__lock-unlock-button--size: $collapsible-container__button--size;
+$collapsible-container__lock-unlock-button--top: $collapsible-container__button--top;
+$collapsible-container__lock-unlock-button--right: $collapsible-container__button--right + $collapsible-container__button--size + $collapsible-container__button--spacing;
+$collapsible-container__lock-button--bg-image: url('images/icon_action_lock_colapse_active.png') !important;
+$collapsible-container__unlock-button--bg-image: url('images/icon_action_lock_colapse_default.png') !important;
+
+$collapsible-container__caption-label--color: $blue__default--600;
+$collapsible-container__caption-label--font-size: $font-size__medium;
+$collapsible-container__caption-content-container--padding-right: $collapsible-container__lock-unlock-button--right + $collapsible-container__button--size + $collapsible-container__button--right;
+
+$collapsible-container__search-button--margin-left: -1px;
+$collapsible-container__search-button--border-left-width: 1px !important;

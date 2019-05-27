@@ -1,0 +1,101 @@
+@import 'cockpitng-globals.scss';
+
+$solrfacetchart__container--box-shadow: 0 1px 2px rgba(111, 124, 145, 0.58);
+
+$solrfacetchart__toppanel--bg-color: $white;
+$solrfacetchart__toppanel--padding: $container-spacing-default_two-thirds $container-spacing-default_two-thirds ($container-spacing-default__half - $boxes--border__thin);
+$solrfacetchart__toppanel--height: 60px;
+
+$solrfacetchart__toppanel-facetchooser-combobox--min-height: $toolbar__button-default--height;
+$solrfacetchart__toppanel-facetchooser-combobox--height: $toolbar__button-default--height;
+$solrfacetchart__toppanel-facetchooser-combobox--border: $boxes--border__thin solid transparent;
+$solrfacetchart__toppanel-facetchooser-combobox-focus--border-color: $grey__default--1000 !important;
+$solrfacetchart__toppanel-facetchooser-combobox-hover--border-color: $grey__default--1000;
+$solrfacetchart__toppanel-facetchooser-combobox-hover--color: $blue__default;
+$solrfacetchart__toppanel-facetchooser-combobox-input--width: 250px;
+$solrfacetchart__toppanel-facetchooser-combobox-button--width: $toolbar__button-default--height;
+$solrfacetchart__toppanel-facetchooser-combobox-button-icon--width: 26px;
+$solrfacetchart__toppanel-facetchooser-combobox-button-icon--height: 26px;
+$solrfacetchart__toppanel-facetchooser-combobox-button-icon--line-height: 26px;
+
+$solrfacetchart__toppanel-button--padding: 7px 12px;
+$solrfacetchart__toppanel-button--size: $toolbar__button-default--height;
+$solrfacetchart__toppanel-button--border: $boxes--border__thin solid transparent;
+$solrfacetchart__toppanel-button--right: $container-spacing-default_two-thirds;
+$solrfacetchart__toppanel-button--top: $container-spacing-default_two-thirds;
+$solrfacetchart__toppanel-button-hover--bg-position: 5px -50px;
+$solrfacetchart__toppanel-button-hover--bg-color: $white;
+$solrfacetchart__toppanel-button-hover--border-color: $grey__default--1000;
+
+$solrfacetchart__toppanel-filters--padding: $container-spacing-default__half;
+$solrfacetchart__toppanel-filters-label--margin-bottom: $container-spacing-default__third;
+$solrfacetchart__toppanel-filters-label--color: $grey__dark--500;
+$solrfacetchart__toppanel-filters-combobox-hover--bg-color: $blue__light--300;
+$solrfacetchart__toppanel-filters-combobox--margin-bottom: $container-spacing-default__third;
+$solrfacetchart__toppanel-filterbutton--background: transparent url('img/icon-full-text-search-fieldquery.png') no-repeat 5px -22px;
+
+$_solrfacetchart__toppanel-filters-counter--height: 15px;
+$_solrfacetchart__toppanel-filters-counter--min-width: $_solrfacetchart__toppanel-filters-counter--height;
+$_solrfacetchart__toppanel-filters-counter--font-size: $font-size__small;
+$_solrfacetchart__toppanel-filters-counter--font-weight: $font-weight-bold;
+$_solrfacetchart__toppanel-filters-counter--color: $white;
+$_solrfacetchart__toppanel-filters-counter--bg-color: $blue__default;
+$_solrfacetchart__toppanel-filters-counter--border-radius: (ceil($_solrfacetchart__toppanel-filters-counter--height/2));
+$_solrfacetchart__toppanel-filters-counter--line-height: $_solrfacetchart__toppanel-filters-counter--height;
+$_solrfacetchart__toppanel-filters-counter--padding: 0 4px;
+$_solrfacetchart__toppanel-filters-counter--right: 5px;
+$_solrfacetchart__toppanel-filters-counter--top: 5px;
+$_solrfacetchart__toppanel-filters-counter--transform: translate3d(50%, -50%, 0);
+$_solrfacetchart__toppanel-filters-counter--z-index: 1;
+
+$_solrfacetchart__toppanel-filters-popup--width: 320px;
+
+$_solrfacetchart__toppanel-elements--padding-left: 5px;
+
+$_solrfacetchart__toppanel-filters-delet-btn--width: 16px;
+$_solrfacetchart__toppanel-filters-label--max-width: calc(100% - #{$_solrfacetchart__toppanel-filters-delet-btn--width + $_solrfacetchart__toppanel-elements--padding-left});
+
+$_solrfacetchart__toppanel-filters-editor--margin-top: $container-spacing-default__third;
+$_solrfacetchart__toppanel-filters-editor--margin-bottom: $container-spacing-default__half;
+
+$solrfacetchart__toppanel-title--font-size: 18px;
+$solrfacetchart__toppanel-title--top: 1px;
+
+$solrfacetchart__default-chart-area--height: 400px;
+$solrfacetchart__charts--bg-color: $white;
+$solrfacetchart__chart-container--height: 350px;
+$solrfacetchart__chart-container--margin-top: 58px;
+$solrfacetchart__chart-container--margin-bottom: $solrfacetchart__default-chart-area--height - $solrfacetchart__chart-container--height - $solrfacetchart__chart-container--margin-top;
+
+$solrfacetchart__rightpanel-button--color: $blue__default;
+$solrfacetchart__rightpanel-button-icon--color: mix($white, $blue__default, 5%);
+$solrfacetchart__rightpanel-button--font-size: $font-size__base;
+$solrfacetchart__rightpanel-button-icon--size: 12px;
+$solrfacetchart__rightpanel-button-icon--left: ($solrfacetchart__rightpanel-button-icon--size + 8px) * -1;
+$solrfacetchart__rightpanel-button--margin-left: $solrfacetchart__rightpanel-button-icon--left * -1;
+$solrfacetchart__rightpanel-button--margin-bottom: $container-spacing-default__third;
+$solrfacetchart__rightpanel-button-icon--margin-top: $solrfacetchart__rightpanel-button-icon--size/2 * -1;
+$solrfacetchart__rightpanel-button-add--bg-image: url("img/icon_add-product.svg");
+$solrfacetchart__rightpanel-button-all--bg-image: url("img/icon_all-products.svg");
+
+$solrfacetchart__rightpanel-total-count--font-size: 42px;
+$solrfacetchart__rightpanel-total-count-delimiter--width: 60%;
+$solrfacetchart__rightpanel-total-count-delimiter--border: $boxes--border__thin solid $grey__default--1000;
+$solrfacetchart__rightpanel-total-count-delimiter--space-y: $container-spacing-default__half;
+
+$solrfacetchart__rightpanel-container--padding: $container-spacing-default__half;
+$solrfacetchart__rightpanel-container--bg-color: $solrfacetchart__toppanel--bg-color;
+
+
+$solrfacetchart__bottompanel-stats--min-height: 85px;
+$solrfacetchart__bottompanel-stats--bg-color: rgba(127, 144, 165, 0.2);
+$solrfacetchart__bottompanel-stats-hover--bg-color: rgba(127, 144, 165, 0.3);
+$solrfacetchart__pcm-bottompanel-stats--bg-color: $grey__light--1300;
+
+$solrfacetchart__bottompanel-stats--padding: $container-spacing-default__third;
+$solrfacetchart__bottompanel-stats-label--font-size: 24px;
+$solrfacetchart__bottompanel-stats-label--line-height: $solrfacetchart__bottompanel-stats-label--font-size;
+$solrfacetchart__bottompanel-stats-label--font-weight: $font-weight-bold;
+$solrfacetchart__bottompanel-stats-color-label--width: 15px;
+$solrfacetchart__bottompanel-stats-color-label--height: $solrfacetchart__bottompanel-stats-color-label--width;
+$solrfacetchart__bottompanel-stats-color-label--border-radius: 50%;

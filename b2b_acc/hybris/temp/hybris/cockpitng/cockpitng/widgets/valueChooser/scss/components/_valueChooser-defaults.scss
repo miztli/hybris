@@ -1,0 +1,82 @@
+@import "../support/_valueChooser-variables";
+
+.yw-valuechooser {
+	&-container {
+		width: 100%;
+		display: inline-table;
+		table-layout: fixed;
+		border-top: $valueChooser__option-container--border;
+		border-bottom: $valueChooser__option-container--border;
+		color: $black__blueish--200;
+	}
+	&-option-container {
+		border-left: $valueChooser__option-container--border;
+		padding: $valueChooser__option-container--padding;
+		transition: $valueChooser__option-container-transition;
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+		position: relative;	
+
+		&:first-child {
+			border-left-width: 0;
+		}
+		&:hover {
+			background-color: $valueChooser__option--hover-bg-color;
+		}
+		&:before {
+			transition: $valueChooser__option-transition;
+			border-bottom: $valueChooser__option--border-bottom;
+			box-sizing: border-box;
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0;
+			z-index: 0;
+		}
+	}
+	&-selection-handler {
+		cursor: pointer;
+	}
+	&-option {
+		padding-left: $valueChooser__option--padding-left;
+		font-size: $valueChooser__option--font-size;
+
+		&.z-button {
+			&, 
+			&:focus, 
+			&:active,
+			&:hover {
+				background-color: transparent;
+				box-shadow: none;
+				color: inherit;
+				min-height: auto;
+			}
+		}
+	}
+	&-option-selected {
+		&:before {
+			border-bottom-color: $valueChooser__option-selected--border-bottom-color;
+		}
+		
+		&:after {
+			content: $check--content;
+			width: $valueChooser__option-selected-icon--size;
+			height: $valueChooser__option-selected-icon--size;
+			line-height: $valueChooser__option-selected-icon--line-height;
+			margin-top: $valueChooser__option-selected-icon--margin-top;
+			margin-left: $valueChooser__option-selected-icon--margin-left;
+			font-family: $valueChooser__option-selected-icon--font;
+			font-size: $valueChooser__option-selected-icon--font-size;
+			border-radius: $valueChooser__option-selected-icon--border-radius;
+			background-color: $valueChooser__option-selected-icon--bg-color;
+			color: $valueChooser__option-selected-icon--color;
+			left: $valueChooser__option-selected-icon--left;
+			position: absolute;
+			display: block;
+			top: 50%;
+		}
+	}
+}

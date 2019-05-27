@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="16px" viewBox="0 0 15 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/Source-Target Sync</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/Source-Target-Sync" fill="#8592A2">
+            <polygon id="Fill-1" points="13.4172 8.0004 9.4122 4.9954 9.4122 7.0004 5.4102 7.0004 5.4102 4.9954 1.4052 7.9994 5.4102 11.0044 5.4102 9.0004 9.4122 9.0004 9.4122 11.0054"></polygon>
+            <path d="M13.1694,11.005 C12.0824,13.079 9.9114,14.5 7.4114,14.5 C4.9114,14.5 2.7404,13.079 1.6534,11.005 L0.0004,11.005 C1.1884,13.933 4.0564,16 7.4114,16 C10.7664,16 13.6344,13.933 14.8224,11.005 L13.1694,11.005 Z" id="Fill-2"></path>
+            <path d="M1.6531,4.995 C2.7401,2.921 4.9111,1.5 7.4111,1.5 C9.9111,1.5 12.0821,2.921 13.1691,4.995 L14.8221,4.995 C13.6341,2.067 10.7661,0 7.4111,0 C4.0561,0 1.1881,2.067 0.0001,4.995 L1.6531,4.995 Z" id="Fill-4"></path>
+        </g>
+    </g>
+</svg>

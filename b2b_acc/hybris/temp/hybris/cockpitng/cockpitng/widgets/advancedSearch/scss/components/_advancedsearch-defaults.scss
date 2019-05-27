@@ -1,0 +1,293 @@
+/*================================
+    Advanced Search - Defaults
+================================*/
+// Styling of defaults on the advanced-search component.
+
+
+@import "../support/_advancedsearch-variables.scss";
+
+/* general */
+/*
+.z-combobox-popup.yw-advancedsearch-operator .z-comboitem-text,
+.yw-advancedsearch-line .yw-advancedsearch-operator input,
+.yw-global-operator-selector input,
+.yw-global-operator-selector {
+    text-transform: lowercase;
+}
+*/
+
+.yw-collapsibleContainer-caption > .z-center-header,
+.yw-active-attributes-grid-container {
+    background-color: $grey__light--500;
+}
+
+.yw-advancedsearch {
+    padding: 0;
+
+    .yw-active-attributes-grid {
+        & > td, 
+        & > td.z-cell {
+            border-bottom: $advancedsearch__attributes-grid-row--border;
+            line-height: $advancedsearch__attributes-grid-row--line-height;
+            vertical-align: top;
+        }
+
+        &:last-child > td.z-cell {
+            border-bottom: none;
+        }
+
+        &:first-child.yw-add-field-row > td.z-cell {
+            border-bottom: none;
+        }
+
+    }
+
+    .yw-add-field-row + .yw-active-attributes-grid > td.z-cell {
+        border-top: $advancedsearch__attributes-grid-row--border;
+    }
+
+    &.yw-com_hybris_cockpitng_advancedsearch {
+        height: 100%;
+
+        @if $advancedsearch-body__header--border-top {
+            &.widget_body.z-div {
+                border-top: $advancedsearch-body__header--border-top;
+            }
+        }
+        div.yw-active-attributes-grid {
+            @if $advancedsearch__attributes-grid--border-bottom {
+                border-bottom: $advancedsearch__attributes-grid--border-bottom;
+            }
+            background: $advancedsearch__attributes-grid--bg-color;
+            padding: $advancedsearch__attributes-container-inner--space-y 0 0;
+            overflow: auto;
+
+            .z-grid-header {
+                background-color: transparent;
+                width: 100% !important;
+            }
+        }
+        .yw-topcontainer-open .yw-active-attributes-grid-container {
+            padding: $advancedsearch__attributes-container-outer--space-y 0 0;
+
+        }
+    }
+    .z-groupbox-content {
+        padding: 0;
+    }
+    .z-grid {
+        .z-row {
+            .z-row-inner {
+                vertical-align: top;
+            }
+            .yw-remove-container {
+                text-align: right;
+            }
+            .z-cell {
+                border-bottom: none;
+            }
+        }
+        .yw-active-attributes-grid .z-cell {
+            padding: $advancedsearch__attributes-grid-item--padding;
+
+            &:last-child {
+                overflow: visible;
+                padding-right: 0;
+            }
+        }
+        .yw-add-field-row {
+            .z-row-inner, .z-cell {
+                padding: $advancedsearch__attributes-grid-last-row-item--padding;
+                vertical-align: top;
+
+                @if $advancedsearch__attributes-grid-add-row--no-border-bottom {
+                    border-bottom: 0;
+                } @else {
+                    border-bottom: $advancedsearch__attributes-grid-row--border;
+                }
+                
+                &:last-child {
+                    position: relative;
+                }
+            }
+            .z-row-content {
+                padding: 0;
+            }
+        }
+        .yw-advancedsearch-editor {
+            > table:only-child,
+            >.z-hbox td:only-child table:only-child {
+                table-layout: fixed;
+                width: 100%;
+            }
+        }
+
+        .z-row .yw-advanced-search-rowspan,
+        .yw-advancedsearch-last-row-for-condition .z-cell {
+            border-bottom: $advancedsearch__attributes-grid-row--border;
+            padding: $advancedsearch__attributes-grid-last-row-item--padding;
+            
+            > .z-label {
+                line-height: $advancedsearch__attributes-grid-row-label--line-height;
+                margin-top: $advancedsearch__attributes-grid-row-label--margin-top;
+                display: inline-block;
+            }
+        }
+
+        &-body {
+            width: 100% !important;
+            padding: 0;
+
+            display: inline-table;
+            > table {
+                border-right: $advancedsearch__attributes-container-inner--space-x solid transparent;
+                border-left: $advancedsearch__attributes-container-inner--space-x solid transparent;
+            }
+        }
+        &-header {
+            display: inline-table;
+            overflow: visible;
+            > table {
+                border-right: $advancedsearch__attributes-container-inner--space-x solid transparent;
+                border-left: $advancedsearch__attributes-container-inner--space-x solid transparent;
+            }
+
+            &-border {
+                display: none;
+            }
+            th.z-columns-bar {
+                border-left-width: 0;
+                border-bottom-width: 0;
+            }
+        }
+    }
+
+    .yw-active-header .z-column-content {
+        padding: $advancedsearch__attributes-grid-header-item--padding;
+        padding-bottom: 0;
+        font-weight: bold;
+    }
+
+    .yw-caption-container.yw-noncollapsible-caption {
+        padding: $advancedsearch-ref-editor__header-caption--padding;
+        display: inline-block;
+    }
+
+    .yw-topcontainer-open {
+        &, .yw-nested-widget,
+        .yw-nested-widget .yw-coll-browser-container,
+        .yw-nested-widget div.z-listbox-body,
+        .yw-nested-widget .yw-coll-browser-tree-view-table,
+        .yw-nested-widget div.z-tree-body,
+        .yw-nested-widget .yw-com_hybris_cockpitng_collectionBrowser .z-vlayout-inner {
+            height: auto !important;
+        }
+        &.yw-non-collapsible {
+            height: 100% !important;
+            overflow: auto !important;
+        }
+    }
+
+    &-line {
+        > div {
+            min-height: $advancedsearch-header__search-query-label--line-height;
+            display: block;
+        }
+        > .yw-advancedsearch-editor {
+            min-height: auto;
+        }
+    }
+}
+
+/* Title / Label */
+
+.yw-active-attributes-grid .yw-advanced-search-cnd-disabled.z-label,
+.yw-active-attributes-grid .ye-editor-disabled.z-label {
+    color: $advancedsearch__disabled-label--color;
+}
+
+.yw-type-label {
+    float: left;
+}
+
+.yw-caption-container.yw-noncollapsible-caption {
+    .yw-textsearch {
+        .yw-buttons-container {
+            display: inline-block;
+            float: left;
+        }
+    }
+}
+
+.yw-caption-container .yw-textsearch {
+    span.z-label {
+        display: inline-block;
+        font-size: $advancedsearch-header__search-query-element--font-size;
+        font-weight: normal;
+        line-height: $advancedsearch-header__search-query-element--line-height;
+        margin-right: $advancedsearch-header__search-query-element--margin-right;
+        float: none;
+        vertical-align: top;
+    }
+    .yw-global-typeSelector-container span.z-label {
+        display: none;
+    }
+    .yw-buttons-container {
+        display: inline-block;
+        float: right;
+    }
+}
+
+/* Container */
+/* global-typeSelector */
+.yw-textsearch .yw-global-typeSelector.z-bandbox {
+    display: inline-table;
+    width: auto;
+    max-width: $advancedsearch-header__bandbox-type-selector--max-width;
+    line-height: $advancedsearch-header__search-query-label--line-height;
+    border-spacing: 0;
+    
+    .z-bandbox-input,
+    .z-bandbox-button {
+        vertical-align: top;
+    }
+}
+
+.yw-global-typeSelector-container,
+.w-global-operator-selector-container {
+    display: inline-block;
+    margin: 0 $advancedsearch__box-space-to-follow-up-element--margin-right $advancedsearch-header__search-query-element--margin-bottom 0;
+}
+
+.yw-include-subtypes {
+    display: inline-block;
+    margin-right: $advancedsearch__box-space-to-follow-up-element--margin-right;
+    line-height: $editor-defaults__inline-box--height;
+    vertical-align: middle;
+}
+
+/* Query Container */
+
+.ya-com_hybris_platformbackoffice_action_saveAdvancedSearchQuery {
+    background: $advancedsearch__save-query-tigger--bg-color;
+    height: $advancedsearch__default-button--size;
+    width: $advancedsearch__default-button--size;
+    float: right;
+
+    &:hover {
+        background: $advancedsearch__save-query-tigger--hover-bg-color;
+    }
+    &.cng-action.cng-action-enabled .cng-action-icon {
+        &:hover, &:focus {
+            background: transparent;
+        }
+    }
+    table {
+        width: 100%;
+        td {
+            vertical-align: middle;
+            text-align: center;
+        }
+    }
+}
+

@@ -1,0 +1,25 @@
+.yw-textsearch-single {
+  padding: 0 10px;
+  height: 42px;
+  display: inline-table; }
+  .yw-textsearch-single .yw-textsearch-searchbox {
+    background-position: 3px 50%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 200;
+    padding-left: 5px;
+    float: left;
+    height: 40px;
+    padding: 0 5px;
+    margin: 0; }
+  .yw-textsearch-single .yw-textsearch .yw-buttons-container {
+    display: inline-block;
+    margin: 0;
+    height: 40px; }
+  .yw-textsearch-single button.z-button {
+    margin-left: 0px; }
+
+body.safari .yw-textsearch-single .yw-textsearch-searchbox {
+  height: 38px; }

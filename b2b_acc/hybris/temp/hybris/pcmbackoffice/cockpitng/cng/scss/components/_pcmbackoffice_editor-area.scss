@@ -1,0 +1,233 @@
+@import "../support/_pcmbackoffice_mixins.scss";
+
+.yw-pcmbackoffice {
+    .yw-navigationhistory-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .yw-editorarea-tabbox.yw-static-section-active .z-tabbox-static-section {
+        background-color: $pcmbackoffice__editorarea-tabbox-tabpanles-static-section--bg-color;
+    }
+    
+    .yw-extendedsplitlayout-toolbar,
+    .yw-editorarea-actioncontainer .y-toolbar .cng-action-group {
+        @include _addPrimaryToolbarActionDefaultStates();
+
+        .cng-action {
+            margin-left: 0;
+        }
+    }
+
+    .yw-editorarea-actioncontainer {
+        .y-toolbar {
+            &-leftslot {
+                margin-left: 0;
+            }
+            &-rightslot {
+                margin-right: 0;
+            }
+        }
+        .yw-navigationhistory-title,
+        .yw-navigationhistory-back {
+            vertical-align: middle;
+            padding-bottom: 0;
+            padding-top: 0;
+            height: $pcmbackoffice__editorarea-actioncontainer-navigation-history-text-element--height;
+            line-height: $pcmbackoffice__editorarea-actioncontainer-navigation-history-text-element--height;
+        }
+        .yw-navigationhistory-title {
+            width: $pcmbackoffice__editorarea-actioncontainer-navigation-history-title--width;
+        }
+        .yw-navigationhistory-back span {
+            @media all and (max-width: $pcmbackoffice__media-query-xs--max-width) {
+                display: none;
+            }
+        }
+        .yw-com_hybris_cockpitng_navigationhistory {
+            display: -ms-flexbox;
+            display: flex;
+        }
+        .cng-action-group {
+            border-right: $pcmbackoffice__editorarea-toolbar-action-group--border-right;
+
+            .z-hbox table td {
+                vertical-align: middle;
+            }
+            .cng-action {
+                margin-right: $pcmbackoffice__editorarea-toolbar-action--margin-right; 
+            }
+        }
+        .ye-cancel-container {
+            .z-button {
+                box-shadow: none;
+                background-color: $pcmbackoffice__editorarea-toolbar-text-button-default--bg-color;
+                color: $pcmbackoffice__editorarea-toolbar-text-button-default--color;
+
+                &:hover, &:focus {
+                    color: $pcmbackoffice__editorarea-toolbar-text-button-default--hover-color;
+                }
+            }
+        }
+    }
+    .yw-centered-panel-editor-area .y-toolbar {
+        display: table;
+        width: 100%;
+
+        .y-toolbar-leftslot-widget {
+            display: table-cell;
+            vertical-align: middle;
+
+            + .y-toolbar-inner {
+                vertical-align: middle;
+                display: table-cell;
+
+                .y-toolbar-leftslot,
+                .y-toolbar-rightslot {
+                    display: inline-table;
+                }
+            }
+        }
+        .y-toolbar-leftslot,
+        .y-toolbar-rightslot {
+            .yw-listview-actionSlot {
+                display: table-row-group;
+                
+                > .cng-action-group {
+                    display: table-cell;
+                    border-right: none;
+                    position: relative;
+
+                    + .cng-action-group:before {
+                        font-size: $pcmbackoffice__editorarea-action-group-delimiter--font-size;
+                        line-height: $pcmbackoffice__editorarea-action-group-delimiter--line-height;
+                        margin-left: $pcmbackoffice__editorarea-action-group-delimiter--margin-left;
+                        display: inline;
+                        float: none;
+                        position: absolute;
+                        z-index: 0;
+                        margin-right: 0;
+                    }
+                    .ya-extended-group-cnt {
+                        margin-right: $pcmbackoffice__primary-toolbar-action--margin;
+                    }
+
+                    &.ya-split-group-cnt {
+                        padding-right: $pcmbackoffice__primary-toolbar-action--margin;
+                        margin-top: $pcmbackoffice__primary-toolbar-action--margin;
+                        margin-bottom: $pcmbackoffice__primary-toolbar-action--margin;
+
+                        .cng-action {
+                            margin-top: 0;
+                            margin-bottom: 0;
+                            margin-right: 0;
+                            position: static;
+
+                            &:before {
+                                left: auto;
+                                right: 0;
+                            }
+                        }
+                        .ya-extended-group-cnt {
+                            margin-right: 0;
+                        }
+                        .z-label {
+                            white-space: nowrap;
+                        }
+                        > tbody {
+                            position: relative;
+                            
+                            table td.z-hbox-separator + td {
+                                .ya-create-type-selector-button {
+                                    width: $pcmbackoffice__editorarea-split-group-create-button--width;
+
+                                    &:hover {
+                                        width: $pcmbackoffice__editorarea-split-group-create-button--width;
+                                        margin-right: 0;
+                                    }
+                                }
+                                .ya-create-container .ya-create-type-selector-button {
+                                    width: $pcmbackoffice__editorarea-split-group-create-container-button--width;
+
+                                    &:hover {
+                                        margin-right: $pcmbackoffice__editorarea-split-group-create-button-adjust--margin-right;
+                                        width: $pcmbackoffice__editorarea-split-group-create-container-button--width;
+                                    }
+                                }
+                            }                          
+                        }
+                        &:hover > tbody {
+                            table td.z-hbox-separator + td .ya-create-container .ya-create-type-selector-button {
+                                padding-left: $pcmbackoffice__editorarea-split-group-hover-create-container-button--padding-left;
+                            }
+                        }
+                        > tbody:hover .cng-action:before, 
+                        .ya-extended-group-cnt a.ya-create-type-selector-button.z-toolbarbutton:hover:before,
+                        .ya-extended-group-cnt.ya-cng-extended-action-container-hover a.ya-create-type-selector-button.z-toolbarbutton:before {
+                            display: none;
+                        }
+                    }
+
+                    &.ya-split-group-cnt > tbody:hover:before,
+                    .ya-extended-group-cnt a.ya-create-type-selector-button.z-toolbarbutton:hover:before,
+                    .ya-extended-group-cnt.ya-cng-extended-action-container-hover a.ya-create-type-selector-button.z-toolbarbutton:before {
+                        box-shadow: $pcmbackoffice__primary-toolbar-action-shadow--hover-box-shadow;
+                        position: absolute;
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .yw-listview-actioncontainer .y-toolbar {
+        height: auto;
+
+        > .y-toolbar-leftslot-widget {
+            max-width: $pcmbackoffice__editorarea-actioncontainer-leftslot__max-width;
+            padding: $pcmbackoffice__editorarea-actioncontainer-navigation-history-container--padding;
+            width:100%;
+        }
+    }
+
+    .yw-extendedsplitlayout {
+        .yw-listview-actioncontainer {
+            padding: $pcmbackoffice__splitlayout-actioncontainer--padding;
+
+            .y-toolbar {
+                min-height: $pcmbackoffice__splitlayout-toolbar--min-height;
+                background-color: $pcmbackoffice__splitlayout-toolbar--bg-color;
+                border-top: $pcmbackoffice__splitlayout-toolbar--border-top;
+                padding: $pcmbackoffice__splitlayout-toolbar--padding;
+                height: auto;
+            }
+        }
+        &-toolbar-action,
+        &-content-box .yw-explorerTree-secondary-actions {
+            .ya-com_hybris_cockpitng_action_splitlayoutchooser {
+                
+                table {
+                    td {
+                        display: none;
+                        vertical-align: middle;
+                        text-align: center;
+                        
+                        &:first-child {
+                            display: table-cell;
+                        }
+                    }
+                }
+            }
+        }
+        &-content-box {
+            .yw-explorerTree-right-holder {
+                > div {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}

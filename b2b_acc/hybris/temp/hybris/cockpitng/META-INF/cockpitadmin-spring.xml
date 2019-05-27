@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- <import resource="classpath:cockpitcore-spring.xml"/> -->
+    <bean id="cockpitAdminLabelLocator" class="com.hybris.cockpitng.util.labels.ResourcesLabelLocator"
+          init-method="init" lazy-init="false">
+        <property name="location" value="/cockpitng/labels"/>
+        <property name="name" value="cockpitadmin-labels"/>
+    </bean>
+
+	<alias name="defaultMonitorWindowComposer" alias="monitorWindowComposer" />
+	<bean id="defaultMonitorWindowComposer" class="com.hybris.cockpitng.admin.MonitorWindowComposer" lazy-init="true"/>
+
+    <bean id="abstractConnectionWindowComposer" abstract="true"
+          class="com.hybris.cockpitng.admin.AbstractConnectionWindowComposer"/>
+
+    <alias name="defaultConnectionWindowComposer" alias="connectionWindowComposer"/>
+    <bean id="defaultConnectionWindowComposer" class="com.hybris.cockpitng.admin.ConnectionWindowComposer"
+          scope="prototype" parent="abstractConnectionWindowComposer"/>
+
+    <alias name="defaultMultiConnectionWindowComposer" alias="multiConnectionWindowComposer"/>
+    <bean id="defaultMultiConnectionWindowComposer" class="com.hybris.cockpitng.admin.MultiConnectionWindowComposer"
+          scope="prototype" parent="abstractConnectionWindowComposer">
+        <property name="socketMatchStrategies">
+            <list>
+                <bean class="com.hybris.cockpitng.admin.strategy.socket.impl.PerfectMatch">
+                    <property name="cockpitAdminService" ref="cockpitAdminService"/>
+                </bean>
+                <bean class="com.hybris.cockpitng.admin.strategy.socket.impl.TypeMatch">
+                    <property name="cockpitAdminService" ref="cockpitAdminService"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="defaultSocketListItemRenderer" alias="socketListItemRenderer"/>
+    <bean id="defaultSocketListItemRenderer"
+          class="com.hybris.cockpitng.admin.renderer.ConnectionWindowListItemRenderer">
+        <property name="socketConnectionService" ref="socketConnectionService"/>
+        <property name="cockpitComponentDefinitionService" ref="widgetDefinitionService"/>
+    </bean>
+
+    <alias name="defaultCngMainWindowComposer" alias="cngMainWindowComposer"/>
+    <bean id="defaultCngMainWindowComposer" class="com.hybris.cockpitng.admin.CockpitMainWindowComposer"
+          scope="prototype"/>
+
+    <alias name="defaultCockpitAdminComposer" alias="cockpitAdminComposer"/>
+    <bean id="defaultCockpitAdminComposer" class="com.hybris.cockpitng.adminmode.CockpitAdminComposer"
+          scope="prototype">
+        <property name="cockpitJAXBContextFactory" ref="cockpitJAXBContextFactory"/>
+        <property name="labelService" ref="labelService" />
+        <property name="cockpitSessionService" ref="cockpitSessionService" />
+    </bean>
+
+    <alias name="defaultAdminModeToolbarComposer" alias="adminModeToolbarComposer"/>
+    <bean id="defaultAdminModeToolbarComposer" class="com.hybris.cockpitng.admin.AdminModeToolbarComposer"
+          scope="prototype">
+        <property name="groupChangeListeners">
+            <list>
+                <ref bean="cockpitLocaleService"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="defaultRoleIndicatorComposer" alias="roleIndicatorComposer"/>
+    <bean id="defaultRoleIndicatorComposer" class="com.hybris.cockpitng.admin.RoleIndicatorComposer" scope="prototype"/>
+
+    <alias name="defaultTemplatePopupComposer" alias="templatePopupComposer"/>
+    <bean id="defaultTemplatePopupComposer" class="com.hybris.cockpitng.admin.DefaultTemplatePopupComposer" scope="prototype"/>
+
+    <alias name="defaultGroupWizardComposer" alias="groupWizardComposer" />
+    <bean id="defaultGroupWizardComposer" class="com.hybris.cockpitng.admin.DefaultGroupWizardComposer" scope="prototype"/>
+
+    <alias alias="cockpitAdminService" name="defaultCockpitAdminService"/>
+    <bean id="defaultCockpitAdminService" class="com.hybris.cockpitng.admin.impl.DefaultCockpitAdminService">
+        <property name="sessionService" ref="cockpitSessionService"/>
+        <property name="widgetUtils" ref="widgetUtils"/>
+        <property name="widgetPersistenceService" ref="widgetPersistenceService"/>
+        <property name="xmlBasedWidgetPersistenceService" ref="xmlWidgetPersistenceService"/>
+        <property name="widgetDefinitionService" ref="widgetDefinitionService"/>
+        <property name="widgetService" ref="widgetService"/>
+        <property name="sessionWidgetInstanceRegistry" ref="sessionWidgetInstanceRegistry"/>
+        <property name="widgetInstanceService" ref="widgetInstanceService"/>
+        <property name="widgetLibUtils" ref="widgetLibUtils"/>
+        <property name="socketConnectionService" ref="socketConnectionService"/>
+        <property name="cockpitProperties" ref="cockpitProperties"/>
+        <property name="impersonationPreviewHelper" ref="impersonationPreviewHelper"/>
+        <property name="cockpitUserService" ref="cockpitUserService"/>
+        <property name="typedSettingsRenderer" ref="typedSettingsRenderer"/>
+        <property name="notificationStack" ref="notificationStack"/>
+        <property name="modalWindowStack" ref="modalWindowStack"/>
+    </bean>
+
+    <alias alias="cockpitWidgetEngine" name="adminmodeWidgetEngine"/>
+    <bean id="adminmodeWidgetEngine" class="com.hybris.cockpitng.engine.impl.AdminmodeWidgetEngine"
+          parent="defaultCockpitWidgetEngine">
+        <property name="cockpitAdminService" ref="cockpitAdminService"/>
+        <property name="widgetInstanceFacade" ref="widgetInstanceFacade"/>
+        <property name="cockpitComponentDefinitionService" ref="widgetDefinitionService"/>
+        <property name="symbolicModeRenderer" ref="symbolicModeRenderer"/>
+        <property name="widgetPersistenceService" ref="widgetPersistenceService"/>
+        <property name="connectButtonRenderer" ref="connectButtonRenderer" />
+        <property name="widgetWizardCreationDelegate" ref="widgetWizardCreationDelegate" />
+        <property name="widgetToolbarRenderer" ref="widgetToolbarRenderer" />
+    </bean>
+
+    <alias name="defaultTemplateButtonRenderer" alias="templateButtonRenderer" />
+    <bean id="defaultTemplateButtonRenderer" class="com.hybris.cockpitng.engine.impl.DefaultTemplateButtonRenderer" >
+        <property name="widgetPersistenceService" ref="widgetPersistenceService" />
+    </bean>
+
+    <alias name="defaultConnectButtonRenderer" alias="connectButtonRenderer" />
+    <bean id="defaultConnectButtonRenderer" class="com.hybris.cockpitng.engine.impl.DefaultConnectButtonRenderer">
+        <property name="widgetPersistenceService" ref="widgetPersistenceService" />
+        <property name="cockpitAdminService" ref="cockpitAdminService" />
+        <property name="widgetAuthorizationService" ref="widgetAuthorizationService" />
+        <property name="widgetUtils" ref="widgetUtils" />
+    </bean>
+
+    <alias name="defaultWidgetToolbarRenderer" alias="widgetToolbarRenderer" />
+    <bean id="defaultWidgetToolbarRenderer" class="com.hybris.cockpitng.engine.impl.DefaultWidgetToolbarRenderer">
+        <property name="cockpitAdminService" ref="cockpitAdminService" />
+        <property name="widgetService" ref="widgetService" />
+        <property name="widgetPersistenceService" ref="widgetPersistenceService" />
+        <property name="widgetGroupingService" ref="widgetGroupingService" />
+        <property name="connectButtonRenderer" ref="connectButtonRenderer" />
+        <property name="templateButtonRenderer" ref="templateButtonRenderer" />
+        <property name="sessionWidgetInstanceRegistry" ref="sessionWidgetInstanceRegistry" />
+        <property name="cockpitComponentDefinitionService" ref="cockpitComponentDefinitionService" />
+    </bean>
+
+    <alias name="defaultWidgetWizardCreationDelegate" alias="widgetWizardCreationDelegate" />
+    <bean id="defaultWidgetWizardCreationDelegate" class="com.hybris.cockpitng.engine.impl.DefaultWidgetWizardCreationDelegate">
+        <property name="widgetPersistenceService" ref="widgetPersistenceService" />
+        <property name="widgetService" ref="widgetService" />
+        <property name="authorityGroupService" ref="authorityGroupService" />
+    </bean>
+
+    <alias name="jsPlumbSymbolicModeRenderer" alias="symbolicModeRenderer"/>
+    <bean id="jsPlumbSymbolicModeRenderer" class="com.hybris.cockpitng.engine.impl.JsPlumbSymbolicModeRenderer">
+        <property name="cockpitProperties" ref="cockpitProperties"/>
+        <property name="widgetDefinitionService" ref="widgetDefinitionService"/>
+        <property name="widgetUtils" ref="widgetUtils"/>
+        <property name="cockpitSessionService" ref="cockpitSessionService"/>
+        <property name="widgetWizardCreationDelegate" ref="widgetWizardCreationDelegate" />
+    </bean>
+
+
+    <alias name="adminWidgetAuthorizationService" alias="widgetAuthorizationService"/>
+    <bean id="adminWidgetAuthorizationService"
+          class="com.hybris.cockpitng.admin.security.AdminWidgetAuthorizationService"
+          parent="defaultWidgetAuthorizationService">
+        <property name="cockpitAdminService" ref="cockpitAdminService"/>
+    </bean>
+
+
+    <alias name="adminWidgetInstanceFacade" alias="widgetInstanceFacade"/>
+    <bean id="adminWidgetInstanceFacade" class="com.hybris.cockpitng.engine.impl.AdminWidgetInstanceFacade">
+        <property name="widgetInstanceService" ref="widgetInstanceService"/>
+        <property name="cockpitAdminService" ref="cockpitAdminService"/>
+    </bean>
+
+    <alias alias="widgetGroupingService" name="defaultWidgetGroupingService"/>
+    <bean id="defaultWidgetGroupingService" class="com.hybris.cockpitng.admin.impl.DefaultWidgetGroupingService">
+        <property name="cockpitAdminService" ref="cockpitAdminService"/>
+        <property name="widgetService" ref="widgetService"/>
+        <property name="widgetPersistenceService" ref="widgetPersistenceService"/>
+        <property name="sessionWidgetInstanceRegistry" ref="sessionWidgetInstanceRegistry"/>
+    </bean>
+
+
+    <alias alias="breadboardSnippetService" name="defaultBreadboardSnippetService"/>
+    <bean id="defaultBreadboardSnippetService" class="com.hybris.cockpitng.admin.impl.DefaultBreadboardSnippetService">
+        <property name="snippets">
+            <list>
+                <bean class="com.hybris.cockpitng.breadboard.BreadboardSnippet">
+                    <property name="codeSnippet"
+                              value='def list=[]&#xA;&#xA;for (i in 0..10){&#xA;&#09;def obj = new StringBuilder("sb")&#xA;&#09;obj.append(i)&#xA;&#09;list.add(obj)&#xA;}&#xA;&#xA;return list&#xA;'/>
+                    <property name="label" value="FOR loop"/>
+                    <property name="description" value="Generate some simple objects"/>
+                    <property name="category" value="General"/>
+                </bean>
+                <bean class="com.hybris.cockpitng.breadboard.BreadboardSnippet">
+                    <property name="codeSnippet" value='return "string"&#xA;'/>
+                    <property name="label" value="Simple string"/>
+                    <property name="description" value="Generate a string object"/>
+                    <property name="category" value="General"/>
+                </bean>
+                <bean class="com.hybris.cockpitng.breadboard.BreadboardSnippet">
+                    <property name="codeSnippet"
+                              value='// access with "springBeans.BEAN_ID"&#xA;def service1 = springBeans.widgetDefinitionService&#xA;// "ctx" refers to the application context&#xA;def service2 = ctx.getBean("widgetService")&#xA;&#xA;def str1 = service1.class.name&#xA;def str2 = service2.class.name&#xA;&#xA;return str1 + ", " + str2&#xA;'/>
+                    <property name="label" value="Bean access"/>
+                    <property name="description" value="How to access a spring bean"/>
+                    <property name="category" value="General"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="impersonationPreviewHelper" class="com.hybris.cockpitng.admin.ImpersonationPreviewHelper">
+        <property name="cockpitSessionService" ref="cockpitSessionService"/>
+    </bean>
+
+    <alias name="adminmodeSessionUserConfigurationContextDecorator" alias="sessionUserConfigurationContextDecorator"/>
+    <bean id="adminmodeSessionUserConfigurationContextDecorator"
+          class="com.hybris.cockpitng.admin.config.impl.AdminmodeConfigurationContextDecorator"
+          parent="defaultSessionUserConfigurationContextDecorator">
+        <property name="cockpitAdminService" ref="cockpitAdminService"/>
+        <property name="impersonationPreviewHelper" ref="impersonationPreviewHelper"/>
+    </bean>
+
+
+</beans>

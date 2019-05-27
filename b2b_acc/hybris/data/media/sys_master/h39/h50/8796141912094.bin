@@ -1,0 +1,2 @@
+﻿<div class="content">${ctx.content}</div>
+

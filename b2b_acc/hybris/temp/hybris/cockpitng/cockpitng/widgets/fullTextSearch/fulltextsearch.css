@@ -1,0 +1,254 @@
+@charset "UTF-8";
+.yw-fulltextsearch-search-button, .yw-fulltextsearch-fieldquery-button, .yw-fulltextsearch-clear-button {
+  width: 28px;
+  height: 28px;
+  min-height: 28px;
+  box-sizing: border-box;
+  padding: 0; }
+.yw-fulltextsearch-search-button, .yw-fulltextsearch-search-button:hover, .yw-fulltextsearch-search-button:active, .yw-fulltextsearch-search-button:focus, .yw-fulltextsearch-fieldquery-button, .yw-fulltextsearch-fieldquery-button:hover, .yw-fulltextsearch-fieldquery-button:active, .yw-fulltextsearch-fieldquery-button:focus {
+  border: 1px solid transparent;
+  box-shadow: none; }
+.yw-fulltextsearch-search-button:hover, .yw-fulltextsearch-search-button:active, .yw-fulltextsearch-search-button:focus, .yw-fulltextsearch-fieldquery-button:hover, .yw-fulltextsearch-fieldquery-button:active, .yw-fulltextsearch-fieldquery-button:focus {
+  border-color: #c4cedc; }
+.yw-fulltextsearch-search-button {
+  background: transparent url("images/icon-full-text-search.png") no-repeat 5px -23px; }
+  .yw-fulltextsearch-search-button:hover, .yw-fulltextsearch-search-button:focus, .yw-fulltextsearch-search-button:active, .yw-fulltextsearch-container-expanded .yw-fulltextsearch-search-button {
+    background: #ffffff url("images/icon-full-text-search.png") no-repeat 5px -51px; }
+  .yw-fulltextsearch-container-expanded .yw-fulltextsearch-search-button {
+    border: 1px solid #0486e0; }
+.yw-fulltextsearch-wrapper {
+  display: inline-block;
+  position: relative;
+  margin-right: 10px; }
+.yw-fulltextsearch-input {
+  width: 200px;
+  min-height: 28px; }
+  .yw-fulltextsearch-input-wrapper {
+    padding: 0;
+    transition: padding 0.5s ease-in-out; }
+    .yw-fulltextsearch-container-expanded .yw-fulltextsearch-input-wrapper {
+      padding-left: 201px; }
+  .yw-fulltextsearch-input-box {
+    overflow: hidden;
+    position: absolute;
+    right: 27px;
+    transition: width 0.5s ease-in-out, border 0.5s ease-in-out; }
+    .yw-fulltextsearch-container-collapsed .yw-fulltextsearch-input-box .z-bandbox-input, .yw-fulltextsearch-container-expanded .yw-fulltextsearch-input-box .z-bandbox-input {
+      border-color: #0486e0; }
+    .yw-fulltextsearch-container-collapsed .yw-fulltextsearch-input-box {
+      width: 0;
+      border-right: 1px solid transparent; }
+    .yw-fulltextsearch-container-expanded .yw-fulltextsearch-input-box {
+      width: 201px;
+      border-right: 1px solid #0486e0; }
+  .yw-fulltextsearch-input .z-bandbox-input {
+    height: 28px;
+    padding-right: 20px;
+    border-right-width: 0;
+    box-shadow: none; }
+  .yw-fulltextsearch-input .z-bandbox-button {
+    display: none; }
+.yw-fulltextsearch-container {
+  font-size: 0;
+  text-align: right; }
+.yw-fulltextsearch-clear-button.ye-delete-btn {
+  box-shadow: none;
+  background-color: transparent;
+  width: 20px; }
+.yw-fulltextsearch-container-expanded .yw-fulltextsearch-clear-button {
+  padding: 0 5px;
+  position: relative; }
+.yw-fulltextsearch-fieldquery-button {
+  background: transparent url("images/icon-full-text-search-fieldquery.png") no-repeat 5px -23px; }
+  .yw-fulltextsearch-fieldquery-button:hover, .yw-fulltextsearch-fieldquery-button:focus, .yw-fulltextsearch-fieldquery-button:active {
+    background: #ffffff url("images/icon-full-text-search-fieldquery.png") no-repeat 5px -51px; }
+.yw-fulltextsearch-filters-counter {
+  min-width: 15px;
+  height: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 15px;
+  color: #ffffff;
+  text-align: center;
+  display: inline-block;
+  background: #0486e0;
+  border-radius: 8px;
+  padding: 0 4px; }
+  .yw-fulltextsearch-filters-counter:empty {
+    display: none; }
+  .yw-fulltextsearch-filters-counter-wrapper {
+    pointer-events: none;
+    text-align: center;
+    width: auto;
+    min-width: 28px;
+    margin-left: 7px;
+    top: -3px;
+    position: absolute; }
+.y-toolbar .yw-fulltextsearch-fieldquery-button, .y-toolbar .yw-fulltextsearch-search-button {
+  transition: background-color 0.05s, border-color 0.05s;
+         /*    
+            &:after {
+                box-shadow: none;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                position: absolute;
+            }
+        }
+        &-fieldquery-button:hover,
+        &-fieldquery-button:active,
+        &-fieldquery-button:focus,
+        &-search-button:hover {
+            &:after {
+                content: "";
+                box-shadow: $fullTextSearch__collection-browser-toolbar-button--box-shadow;
+                transition: $fullTextSearch__collection-browser-toolbar-button--transition;
+            }
+        }
+
+        &-container-expanded .yw-fulltextsearch-search-button:after {
+            content: normal;
+        */ }
+
+.yw-fulltextsearch-fieldquery-popup {
+  width: 320px;
+  overflow: auto; }
+  .yw-fulltextsearch-fieldquery-popup-layout > .z-vlayout-inner {
+    padding: 0 !important; }
+  .yw-fulltextsearch-fieldquery-popup-header, .yw-fulltextsearch-fieldquery-popup-body {
+    padding: 20px 15px; }
+  .yw-fulltextsearch-fieldquery-popup-body {
+    padding: 0;
+    max-height: 342px;
+    border-top: 1px solid #e0e9f0;
+    overflow: auto; }
+    .yw-fulltextsearch-fieldquery-popup-body:empty {
+      display: none; }
+  .yw-fulltextsearch-fieldquery-popup-footer {
+    border-top: 1px solid #ffffff;
+    background-color: #f6f8fa;
+    position: relative; }
+    .yw-fulltextsearch-fieldquery-popup-footer > .z-hlayout-inner {
+      position: static; }
+  .yw-fulltextsearch-fieldquery-popup-button-add-filter {
+    color: #7f90a4;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: 54px;
+    text-transform: initial;
+    border-width: 0;
+    position: relative; }
+    .yw-fulltextsearch-fieldquery-popup-button-add-filter, .yw-fulltextsearch-fieldquery-popup-button-add-filter:hover, .yw-fulltextsearch-fieldquery-popup-button-add-filter:focus, .yw-fulltextsearch-fieldquery-popup-button-add-filter:active {
+      box-shadow: none;
+      background-color: transparent; }
+    .yw-fulltextsearch-fieldquery-popup-button-add-filter:hover, .yw-fulltextsearch-fieldquery-popup-button-add-filter:focus, .yw-fulltextsearch-fieldquery-popup-button-add-filter:active {
+      color: #0486e0;
+      border-color: #0486e0; }
+    .yw-fulltextsearch-fieldquery-popup-button-add-filter:before {
+      font-family: "FontAwesome", sans-serif;
+      font-size: 10px;
+      line-height: 12px;
+      height: 16px;
+      width: 16px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      top: -2px;
+      margin-right: 8px;
+      content: "";
+      color: inherit;
+      border-color: inherit;
+      display: inline-block;
+      position: relative;
+      box-sizing: border-box; }
+  .yw-fulltextsearch-fieldquery-popup-apply-filters.z-button {
+    float: right;
+    height: 54px; }
+
+.yw-fulltextsearch-fieldquery-popup-filter {
+  background-color: #d5eeff;
+  padding: 15px 15px 15px;
+  border-top: 1px solid #ffffff;
+  position: relative; }
+  .yw-fulltextsearch-fieldquery-popup-filter:first-child {
+    margin-top: -1px; }
+  .yw-fulltextsearch-fieldquery-popup-filter-fields {
+    width: 100%;
+    height: auto;
+    display: block; }
+    .yw-fulltextsearch-fieldquery-popup-filter-fields > .z-div {
+      width: auto;
+      height: auto;
+      overflow: hidden; }
+      .yw-fulltextsearch-fieldquery-popup-filter-fields > .z-div > .z-radiogroup {
+        line-height: 40px; }
+  .yw-fulltextsearch-fieldquery-popup-filter table {
+    width: 100%; }
+  .yw-fulltextsearch-fieldquery-popup-filter-control-container {
+    position: absolute;
+    top: 15px;
+    right: 15px; }
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox .z-combobox-input,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox .z-combobox-input + .z-combobox-button,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-bandbox .z-bandbox-input,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-bandbox .z-bandbox-input + .z-bandbox-button,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied input.z-textbox,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-label {
+    opacity: 0.5;
+    color: #000000; }
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox-icon, .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox-button:hover > i {
+    color: #000000; }
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox-button:focus > i, .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox-input:focus + .z-combobox-button > i {
+    color: inherit; }
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox-button:focus,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox-input:focus + .z-combobox-button,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox-input:focus,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied input.z-textbox:focus {
+    color: #151c22; }
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox .z-combobox-input:focus,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-combobox .z-combobox-input:focus + .z-combobox-button,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-bandbox .z-bandbox-input:focus,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .z-bandbox .z-bandbox-input:focus + .z-bandbox-button,
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied input.z-textbox:focus {
+    opacity: 1; }
+  .yw-fulltextsearch-fieldquery-popup-filter-disabled.yw-fulltextsearch-fieldquery-popup-filter-applied .yw-fulltextsearch-fieldquery-popup-filtername.z-label {
+    text-decoration: line-through; }
+  .yw-fulltextsearch-fieldquery-popup-filter-applied {
+    background-color: transparent;
+    padding-top: 10px; }
+    .yw-fulltextsearch-fieldquery-popup-filter-applied .yw-fulltextsearch-fieldquery-popup-checkbox-filter {
+      display: inline-block; }
+    .yw-fulltextsearch-fieldquery-popup-filter-applied .yw-fulltextsearch-fieldquery-popup-filter-control-container {
+      top: 10px; }
+  .yw-fulltextsearch-fieldquery-popup-filter-applied + .yw-fulltextsearch-fieldquery-popup-filter-applied, .yw-fulltextsearch-fieldquery-popup-filter-applied + .yw-fulltextsearch-fieldquery-popup-filter {
+    border-top: 1px solid #e0e9f0; }
+.yw-fulltextsearch-fieldquery-popup-filtername, .yw-fulltextsearch-fieldquery-popup-operator {
+  margin-bottom: 10px; }
+.yw-fulltextsearch-fieldquery-popup-filtername {
+  width: 70%; }
+  .yw-fulltextsearch-fieldquery-popup-filtername.z-label {
+    display: block;
+    line-height: 40px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 0; }
+.yw-fulltextsearch-fieldquery-popup-operator.z-label {
+  line-height: 40px;
+  color: #000000;
+  display: inline-block; }
+.yw-fulltextsearch-fieldquery-popup .yw-advancedsearch-local {
+  width: calc(30% - 10px);
+  margin-right: 10px; }
+  .yw-fulltextsearch-fieldquery-popup .yw-advancedsearch-local, .yw-fulltextsearch-fieldquery-popup .yw-advancedsearch-local-editor {
+    display: inline-block;
+    float: left; }
+  .yw-fulltextsearch-fieldquery-popup .yw-advancedsearch-local-editor {
+    width: 70%; }
+.yw-fulltextsearch-fieldquery-popup-checkbox-filter {
+  right: 30px;
+  display: none; }
+.yw-fulltextsearch-fieldquery-popup .ye-delete-btn {
+  box-shadow: none;
+  background-color: transparent;
+  position: absolute;
+  right: 0; }
