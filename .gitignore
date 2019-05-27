@@ -22,3 +22,8 @@ platform_only_recipe/hybris/bin/ext-supportability/
 platform_only_recipe/hybris/bin/ext-template/
 platform_only_recipe/hybris/bin/ext-smartedit
 platform_only_recipe/hybris/bin/ext-webservices
+
+# b2b_acc recipe
+
+b2b_acc/hybris/bin/ext*
+
