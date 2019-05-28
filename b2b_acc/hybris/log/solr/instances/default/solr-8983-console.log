@@ -1,87 +1,17 @@
-2019-05-27 22:17:11.755 INFO  (main) [   ] o.e.j.u.log Logging initialized @5675ms to org.eclipse.jetty.util.log.Slf4jLog
-2019-05-27 22:17:11.856 INFO  (main) [   ] o.a.s.u.c.SSLCredentialProviderFactory Processing SSL Credential Provider chain: env;sysprop
-2019-05-27 22:17:11.889 WARN  (main) [   ] o.e.j.s.AbstractConnector Ignoring deprecated socket close linger time
-2019-05-27 22:17:11.897 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.14.v20181114; built: 2018-11-14T21:20:31.478Z; git: c4550056e785fb5665914545889f21dc136ad9e6; jvm 1.8.0_211-b12
-2019-05-27 22:17:11.926 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///Users/miztlimelgoza/workspace/personal/hybris_tutorial/b2b_acc/hybris/bin/ext-commerce/solrserver/resources/solr/7.7/server/server/contexts/] at interval 0
-2019-05-27 22:17:12.081 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
-2019-05-27 22:17:12.088 INFO  (main) [   ] o.e.j.s.session DefaultSessionIdManager workerName=node0
-2019-05-27 22:17:12.088 INFO  (main) [   ] o.e.j.s.session No SessionScavenger set, using defaults
-2019-05-27 22:17:12.090 INFO  (main) [   ] o.e.j.s.session node0 Scavenging every 600000ms
-2019-05-27 22:17:12.114 INFO  (main) [   ] o.a.s.u.c.SSLCredentialProviderFactory Processing SSL Credential Provider chain: env;sysprop
-2019-05-27 22:17:12.122 INFO  (main) [   ] o.a.s.u.c.SSLConfigurations Setting javax.net.ssl.keyStorePassword
-2019-05-27 22:17:12.122 INFO  (main) [   ] o.a.s.u.c.SSLConfigurations Setting javax.net.ssl.trustStorePassword
-2019-05-27 22:17:12.131 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2019-05-27 22:17:12.134 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 7.7.1
-2019-05-27 22:17:12.134 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
-2019-05-27 22:17:12.134 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: /Users/miztlimelgoza/workspace/personal/hybris_tutorial/b2b_acc/hybris/bin/ext-commerce/solrserver/resources/solr/7.7/server
-2019-05-27 22:17:12.135 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2019-05-27T22:17:12.135Z
-May 27, 2019 10:19:41 PM org.restlet.Application start
-INFO: Starting org.apache.solr.rest.SolrSchemaRestApi application
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/managed	wt=javabin&version=2	200	-	0	20	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/synonyms/ja	wt=javabin&version=2	200	-	0	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/synonyms/ja	wt=javabin&version=2	200	-	-	3	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/synonyms/en	wt=javabin&version=2	200	-	0	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/synonyms/en	wt=javabin&version=2	200	-	-	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/synonyms/de	wt=javabin&version=2	200	-	0	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/synonyms/de	wt=javabin&version=2	200	-	-	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/synonyms/zh	wt=javabin&version=2	200	-	0	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/synonyms/zh	wt=javabin&version=2	200	-	-	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/stopwords/ja	wt=javabin&version=2	200	-	0	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/stopwords/ja	wt=javabin&version=2	200	-	-	2	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/stopwords/en	wt=javabin&version=2	200	-	0	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/stopwords/en	wt=javabin&version=2	200	-	-	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/stopwords/de	wt=javabin&version=2	200	-	0	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/stopwords/de	wt=javabin&version=2	200	-	-	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/stopwords/zh	wt=javabin&version=2	200	-	0	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:19:41 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:19:41	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/stopwords/zh	wt=javabin&version=2	200	-	-	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/managed	wt=javabin&version=2	200	-	0	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/synonyms/ja	wt=javabin&version=2	200	-	0	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/synonyms/ja	wt=javabin&version=2	200	-	-	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/synonyms/en	wt=javabin&version=2	200	-	0	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/synonyms/en	wt=javabin&version=2	200	-	-	2	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/synonyms/de	wt=javabin&version=2	200	-	0	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/synonyms/de	wt=javabin&version=2	200	-	-	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/synonyms/zh	wt=javabin&version=2	200	-	0	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/synonyms/zh	wt=javabin&version=2	200	-	-	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/stopwords/ja	wt=javabin&version=2	200	-	0	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/stopwords/ja	wt=javabin&version=2	200	-	-	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/stopwords/en	wt=javabin&version=2	200	-	0	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/stopwords/en	wt=javabin&version=2	200	-	-	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/stopwords/de	wt=javabin&version=2	200	-	0	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/stopwords/de	wt=javabin&version=2	200	-	-	1	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	GET	/solr/schema/analysis/stopwords/zh	wt=javabin&version=2	200	-	0	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
-May 27, 2019 10:21:55 PM org.restlet.engine.log.LogFilter afterHandle
-INFO: 2019-05-27	22:21:55	127.0.0.1	solrindexingclient	127.0.0.1	8983	POST	/solr/schema/analysis/stopwords/zh	wt=javabin&version=2	200	-	-	0	https://localhost:8983	Solr[org.apache.solr.client.solrj.impl.HttpSolrClient] 1.0	-
+2019-05-28 20:20:11.002 INFO  (main) [   ] o.e.j.u.log Logging initialized @5603ms to org.eclipse.jetty.util.log.Slf4jLog
+2019-05-28 20:20:11.117 INFO  (main) [   ] o.a.s.u.c.SSLCredentialProviderFactory Processing SSL Credential Provider chain: env;sysprop
+2019-05-28 20:20:11.151 WARN  (main) [   ] o.e.j.s.AbstractConnector Ignoring deprecated socket close linger time
+2019-05-28 20:20:11.160 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.14.v20181114; built: 2018-11-14T21:20:31.478Z; git: c4550056e785fb5665914545889f21dc136ad9e6; jvm 1.8.0_211-b12
+2019-05-28 20:20:11.188 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///Users/miztlimelgoza/workspace/personal/hybris_tutorial/b2b_acc/hybris/bin/ext-commerce/solrserver/resources/solr/7.7/server/server/contexts/] at interval 0
+2019-05-28 20:20:11.356 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2019-05-28 20:20:11.363 INFO  (main) [   ] o.e.j.s.session DefaultSessionIdManager workerName=node0
+2019-05-28 20:20:11.363 INFO  (main) [   ] o.e.j.s.session No SessionScavenger set, using defaults
+2019-05-28 20:20:11.364 INFO  (main) [   ] o.e.j.s.session node0 Scavenging every 600000ms
+2019-05-28 20:20:11.392 INFO  (main) [   ] o.a.s.u.c.SSLCredentialProviderFactory Processing SSL Credential Provider chain: env;sysprop
+2019-05-28 20:20:11.401 INFO  (main) [   ] o.a.s.u.c.SSLConfigurations Setting javax.net.ssl.keyStorePassword
+2019-05-28 20:20:11.401 INFO  (main) [   ] o.a.s.u.c.SSLConfigurations Setting javax.net.ssl.trustStorePassword
+2019-05-28 20:20:11.410 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2019-05-28 20:20:11.413 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 7.7.1
+2019-05-28 20:20:11.413 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
+2019-05-28 20:20:11.413 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: /Users/miztlimelgoza/workspace/personal/hybris_tutorial/b2b_acc/hybris/bin/ext-commerce/solrserver/resources/solr/7.7/server
+2019-05-28 20:20:11.414 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2019-05-28T20:20:11.414Z

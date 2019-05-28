@@ -1,6 +1,7 @@
 <hybrisconfig xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../bin/platform/resources/schemas/extensions.xsd'>
   <extensions>
     <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
+
     <extension name='adaptivesearchsolr' />
     <extension name='adaptivesearchbackoffice' />
     <extension name='adaptivesearchsamplesaddon' />
@@ -61,5 +62,8 @@
     <extension name='kymaintegrationbackoffice' />
     <extension name='kymaintegrationsampledata' />
     <extension name='yb2bacceleratorstorefront' />
+
+    <!-- Custom extensions -->
+    <extension name='applecorps' />
   </extensions>
 </hybrisconfig>

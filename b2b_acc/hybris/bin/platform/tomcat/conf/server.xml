@@ -426,6 +426,15 @@
 				</JarScanner>
 			</Context>
 
+			<!-- 'applecorps' extension's context for tenant 'master' -->
+			<Context path="/applecorps" docBase="/Users/miztlimelgoza/workspace/personal/hybris_tutorial/b2b_acc/hybris/bin/custom/applecorps/web/webroot" >
+				<Manager pathname="" />
+				<Loader platformHome="/Users/miztlimelgoza/workspace/personal/hybris_tutorial/b2b_acc/hybris/bin/platform" className="de.hybris.tomcat.HybrisWebappLoader" deployName="default" />
+				<JarScanner >
+					<JarScanFilter defaultTldScan="true" defaultPluggabilityScan="true" />
+				</JarScanner>
+			</Context>
+
 			<!-- 'ycommercewebservices' extension's context for tenant 'master' -->
 			<Context path="/rest" docBase="/Users/miztlimelgoza/workspace/personal/hybris_tutorial/b2b_acc/hybris/bin/ext-template/ycommercewebservices/web/webroot" >
 				<Manager pathname="" />

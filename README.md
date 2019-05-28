@@ -44,6 +44,8 @@ To build a new extension:
   - add the new extension to the `localextensions.xml` and comment out all the others.
   - run command `ant clean all`
 
+For more information: https://help.sap.com/viewer/3fb5dcdfe37f40edbac7098ed40442c0/1811/en-US/438db70eb0234697976eeceaba6d0394.html
+
 ### The localextensions.xml file
 
 The localextensions.xml file contains the list of extensions your specific SAP Commerce configuration includes at compile- and run-time.
