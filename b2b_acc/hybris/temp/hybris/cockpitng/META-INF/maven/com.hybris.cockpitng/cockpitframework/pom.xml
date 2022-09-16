@@ -14,7 +14,7 @@
 		<root.project.relative.path>../../</root.project.relative.path>
 		<sass.compilation.skip>false</sass.compilation.skip>
 
-		<zk.version>8.5.1.2</zk.version>
+		<zk.version>9.6.0.2</zk.version>
 		<zkspring.version>3.2.0</zkspring.version>
 	</properties>
 
